@@ -1,0 +1,4 @@
+.DS_Store
+.stop_harness
+artifacts/_logs/
+lean/.DS_Store

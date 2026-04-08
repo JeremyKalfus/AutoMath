@@ -1,0 +1,126 @@
+[
+  {
+    "title": "Is the zero-divisor graph \u0393(Z_5 \u00d7 Z_5 \u00d7 Z_3) prime?",
+    "slug": "z5-z5-z3-prime-zero-divisor-graph",
+    "question": "Does the zero-divisor graph of the ring Z_5 \u00d7 Z_5 \u00d7 Z_3 admit a prime labeling?",
+    "canonical_source": "Fox and Mooney, \"On prime labelings of zero-divisor graphs,\" Congressus Numerantium 236 (2025), Conjecture 4.3, https://doi.org/10.61091/cn236-06",
+    "open_status_checked_on": "2026-04-07",
+    "canonical_statement": "Conjecture 4.3. The zero-divisor graph \u0393(Z_p \u00d7 Z_p \u00d7 Z_q) is prime for all prime numbers p and q.",
+    "intended_statement": "The zero-divisor graph \u0393(Z_5 \u00d7 Z_5 \u00d7 Z_3) is prime.",
+    "definitions": [
+      "Z_p denotes the ring of integers modulo the prime p.",
+      "For a commutative ring R, \u0393(R) has as vertices the nonzero zero-divisors of R, with x adjacent to y iff xy = 0.",
+      "For R = Z_5 \u00d7 Z_5 \u00d7 Z_3, multiplication is coordinatewise, so adjacency depends only on which coordinates are zero.",
+      "A prime labeling of an N-vertex graph is a bijection to {1, ..., N} such that adjacent vertices receive coprime labels."
+    ],
+    "why_reasoning_friendly": "The same support-pattern structure from Conjecture 4.3 remains intact here, and the graph is still small enough at 42 vertices for a deliberate hand-built labeling. The extra third-factor size may permit cleaner parity and coprimality packing than the q = 2 case.",
+    "why_low_token": "The graph has 42 vertices, still small enough for a full witness and cheap checker. The description by support classes remains compact.",
+    "verifier_hint": "Enumerate the 42 nonzero zero-divisors of Z_5 \u00d7 Z_5 \u00d7 Z_3 and check the gcd condition on every edge of a proposed labeling.",
+    "lean_hint": "Use ZMod 5 \u00d7 ZMod 5 \u00d7 ZMod 3 or an explicit finite support-class model, then formalize a bijection to Fin 42 with Nat.Coprime along adjacency edges.",
+    "red_flags": [
+      "This is not the smallest omitted case in Conjecture 4.3, so rediscovery risk is a little higher than for Z_5 \u00d7 Z_5 \u00d7 Z_2.",
+      "The larger label set makes a hand construction slightly more fiddly."
+    ],
+    "attack_style": [
+      "support-type decomposition",
+      "prime-scarcity packing",
+      "explicit constructive labeling"
+    ],
+    "rediscovery_risk": "Moderate: this is a second-step instance from the same fresh family conjecture, so there is more chance of an unadvertised note or example than for the smallest omitted case; exact and alternate searches still failed to surface any instance-specific resolution.",
+    "why_still_appears_open": "The exact-instance search returned no relevant match, the alternate ASCII search produced only generic or unrelated pages, and the canonical source still moves directly from the solved p = 2 and p = 3 families to Conjecture 4.3 with no theorem, proposition, example, or observation settling the p = 5, q = 3 case. The shared 2025-2026 DOI/source search showed no later sequel.",
+    "curation_confidence": "high"
+  },
+  {
+    "title": "Is the zero-divisor graph \u0393(Z_5 \u00d7 Z_25) prime?",
+    "slug": "z5-z25-prime-zero-divisor-graph",
+    "question": "Does the zero-divisor graph of the ring Z_5 \u00d7 Z_25 admit a prime labeling?",
+    "canonical_source": "Fox and Mooney, \"On prime labelings of zero-divisor graphs,\" Congressus Numerantium 236 (2025), Conjecture 4.4, https://doi.org/10.61091/cn236-06",
+    "open_status_checked_on": "2026-04-07",
+    "canonical_statement": "Conjecture 4.4. The zero-divisor graph \u0393(Z_p \u00d7 Z_{q^2}) is prime for all prime numbers p and q.",
+    "intended_statement": "The zero-divisor graph \u0393(Z_5 \u00d7 Z_25) is prime.",
+    "definitions": [
+      "Z_n denotes the ring of integers modulo n.",
+      "For a commutative ring R, \u0393(R) has as vertices the nonzero zero-divisors of R, with x adjacent to y iff xy = 0.",
+      "In Z_25, the nonzero zero-divisors are exactly the nonzero multiples of 5.",
+      "A prime labeling of an N-vertex graph is a bijection to {1, ..., N} such that adjacent vertices receive coprime labels."
+    ],
+    "why_reasoning_friendly": "This keeps the same two-factor structure as Z_3 \u00d7 Z_25 while staying small at 44 vertices. The symmetry between the 5-primary factors may make an explicit labeling pattern easier to guess than in more uneven parameter choices.",
+    "why_low_token": "Only 44 vertices are present, and the ring has a short description. A candidate witness or obstruction remains concise and checker-friendly.",
+    "verifier_hint": "Enumerate the 44 nonzero zero-divisors of Z_5 \u00d7 Z_25, generate the adjacency relation by multiplication-to-zero, and verify Nat.gcd = 1 on each edge.",
+    "lean_hint": "Model the graph from ZMod 5 \u00d7 ZMod 25 or a finite partition of vertex classes and verify a bijection to Fin 44 is coprime on edges.",
+    "red_flags": [
+      "This is not the first omitted case in Conjecture 4.4, so rediscovery risk is somewhat higher than for Z_3 \u00d7 Z_25.",
+      "Because both factors are 5-primary, there may be a hidden simplification or obstruction not obvious from the family statement alone."
+    ],
+    "attack_style": [
+      "vertex-class decomposition",
+      "symmetry-guided constructive labeling",
+      "coprimality packing"
+    ],
+    "rediscovery_risk": "Moderate: this is a second-step instance in Conjecture 4.4 rather than the smallest omitted one, but exact and alternate searches still did not expose any later instance-specific theorem, example, or discussion.",
+    "why_still_appears_open": "The exact-instance search produced no relevant hit, the alternate ASCII search surfaced only generic zero-divisor-graph results, and the canonical source still jumps from Theorems 2.12, 2.14, and 2.15 to Conjecture 4.4 without resolving this p = 5, q = 5 case. The shared 2025-2026 DOI/source search showed only the source paper and archive pages.",
+    "curation_confidence": "high"
+  },
+  {
+    "title": "Is the zero-divisor graph \u0393(Z_2^8) prime?",
+    "slug": "z2-power-8-prime-zero-divisor-graph",
+    "question": "Does the zero-divisor graph of the 8-fold direct product ring Z_2^8 admit a prime labeling?",
+    "canonical_source": "Fox and Mooney, \"On prime labelings of zero-divisor graphs,\" Congressus Numerantium 236 (2025), Conjecture 4.2, https://doi.org/10.61091/cn236-06",
+    "open_status_checked_on": "2026-04-07",
+    "canonical_statement": "Conjecture 4.2. The zero-divisor graph \u0393(Z_2^n) is prime for any positive integer n.",
+    "intended_statement": "The zero-divisor graph \u0393(Z_2^8) is prime.",
+    "definitions": [
+      "Z_2^n means the direct product of n copies of the ring Z_2.",
+      "Vertices of \u0393(R) are the nonzero zero-divisors of R; x and y are adjacent iff xy = 0.",
+      "For R = Z_2^n, vertices can be identified with nonempty proper subsets of {1, ..., n}, with adjacency corresponding to disjoint supports.",
+      "A prime labeling of an N-vertex graph is a bijection to {1, ..., N} such that adjacent vertices receive coprime labels."
+    ],
+    "why_reasoning_friendly": "The graph has the cleanest model in the queue: nonempty proper subsets of an 8-set with adjacency = disjointness. The paper explicitly says the bit-pattern labeling idea works for n = 6 and 7 and that only a general proof is missing, so n = 8 is the first concrete frontier step.",
+    "why_low_token": "The witness space is large at 254 vertices, but the structure compresses to 8-bit subsets and any successful argument is likely to be a rule-based construction rather than a raw table.",
+    "verifier_hint": "Represent vertices as nonempty proper subsets of {1, ..., 8}, test disjointness for edges, and check gcd(label(A), label(B)) = 1 on every adjacent pair.",
+    "lean_hint": "Use nonempty proper Finsets of Fin 8 as vertices, adjacency as Disjoint, and formalize a bijection to Fin 254 satisfying Nat.Coprime on adjacent pairs.",
+    "red_flags": [
+      "The graph is much larger than the other queue entries, so a brute-force search would be a mistake.",
+      "Exact-instance web search is noisy because the notation clashes with unrelated uses of \u0393 and Z_2^8."
+    ],
+    "attack_style": [
+      "support-disjointness encoding",
+      "prime-factor assignment scheme",
+      "extension of the n <= 7 pattern"
+    ],
+    "rediscovery_risk": "Moderate: the paper already gives labelings through n = 7 and states the general conjecture, so the intended n = 8 target is inferred as the first omitted case; exact and alternate searches did not reveal any later instance-specific resolution, but notation noise is higher here.",
+    "why_still_appears_open": "Inside the canonical source, the authors state that the construction works for n = 6 and 7 but that a general proof still eludes them, and a direct find for Z_2^8 in the paper returns nothing. The exact-notation web search was swallowed by unrelated \u0393/Z\u03b3 noise, the alternate search found other zero-divisor-graph papers but no solution to this instance, and the 2025-2026 DOI/source search still only surfaced the 2025 Fox-Mooney paper and archive pages.",
+    "curation_confidence": "high"
+  },
+  {
+    "title": "Is the zero-divisor graph \u0393(Z_5 \u00d7 Z_5 \u00d7 Z_2) prime?",
+    "slug": "z5-z5-z2-prime-zero-divisor-graph",
+    "question": "Does the zero-divisor graph of the ring Z_5 \u00d7 Z_5 \u00d7 Z_2 admit a prime labeling?",
+    "canonical_source": "Fox and Mooney, \"On prime labelings of zero-divisor graphs,\" Congressus Numerantium 236 (2025), Conjecture 4.3, https://doi.org/10.61091/cn236-06",
+    "open_status_checked_on": "2026-04-07",
+    "canonical_statement": "Conjecture 4.3. The zero-divisor graph \u0393(Z_p \u00d7 Z_p \u00d7 Z_q) is prime for all prime numbers p and q.",
+    "intended_statement": "The zero-divisor graph \u0393(Z_5 \u00d7 Z_5 \u00d7 Z_2) is prime.",
+    "definitions": [
+      "Z_p denotes the ring of integers modulo the prime p.",
+      "For a commutative ring R, \u0393(R) has as vertices the nonzero zero-divisors of R, with x adjacent to y iff xy = 0.",
+      "For R = Z_5 \u00d7 Z_5 \u00d7 Z_2, multiplication is coordinatewise, so adjacency is determined coordinatewise.",
+      "A prime labeling of an N-vertex graph is a bijection to {1, ..., N} such that adjacent vertices receive coprime labels."
+    ],
+    "why_reasoning_friendly": "This is the first repeated-prime case left after Theorems 2.9 and 2.11 cover the p = 2 and p = 3 families. The graph has only 33 vertices and splits cleanly into coordinate-support types, so a short constructive labeling or a sharp obstruction is plausible.",
+    "why_low_token": "The full graph has 33 vertices. A complete witness is a 33-label assignment, and the ring structure compresses to a small number of support classes.",
+    "verifier_hint": "Enumerate the 33 nonzero zero-divisors of Z_5 \u00d7 Z_5 \u00d7 Z_2, build edges by coordinatewise zero product, and check gcd(label(x), label(y)) = 1 on every edge.",
+    "lean_hint": "Model vertices as the nonzero zero-divisors of ZMod 5 \u00d7 ZMod 5 \u00d7 ZMod 2 or via explicit support classes, then formalize a bijection to Fin 33 satisfying Nat.Coprime on adjacent pairs.",
+    "red_flags": [
+      "The paper states a family conjecture, not this concrete instance by name.",
+      "A naive search over all labelings is unnecessary and should stay off the critical path."
+    ],
+    "attack_style": [
+      "support-type decomposition",
+      "explicit constructive labeling",
+      "coprimality packing"
+    ],
+    "rediscovery_risk": "Low to moderate: the exact instance is inferred from Conjecture 4.3 after the source proves only the p = 2 and p = 3 repeated-prime families; exact-notation and alternate-notation searches did not surface any later instance-specific resolution.",
+    "why_still_appears_open": "The exact-instance search did not return any matching resolution, the alternate ASCII search returned only generic or irrelevant zero-divisor-graph material, and the canonical source still lists Conjecture 4.3 as open while Theorem 2.11 only settles \u0393(Z_3 \u00d7 Z_3 \u00d7 Z_p). A 2025-2026 DOI/source search surfaced the Fox-Mooney paper and its volume listing but no sequel resolving this case.",
+    "curation_confidence": "high"
+  }
+]

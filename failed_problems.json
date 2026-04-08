@@ -1,0 +1,16 @@
+[
+  {
+    "slug": "c12-1-3-6-cnbc",
+    "reason": "REDISCOVERY",
+    "title": "Is the quintic circulant C_12(1,3,6) a CNBC graph?",
+    "notes": "Targeted prior-art audit found that the exact instance is already covered by an earlier theorem in the canonical 2025 source.",
+    "checked_on": "2026-04-07"
+  },
+  {
+    "slug": "z3-z25-prime-zero-divisor-graph",
+    "reason": "EXACT",
+    "title": "Is the zero-divisor graph Γ(Z_3 × Z_25) prime?",
+    "notes": "Lean verified the exact instance in the AutoMath backend; the artifact is being preserved while external novelty review proceeds separately.",
+    "checked_on": "2026-04-08"
+  }
+]

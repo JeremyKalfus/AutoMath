@@ -1,0 +1,12 @@
+{
+  "slug": "c12-1-3-6-cnbc",
+  "title": "Is the quintic circulant C_12(1,3,6) a CNBC graph?",
+  "stage": "verify",
+  "verify_verdict": "REDISCOVERY",
+  "classification": "REDISCOVERY",
+  "confidence": "high",
+  "code_used": true,
+  "lean_ready": false,
+  "lean_complete": false,
+  "next_action": "archive_as_rediscovery"
+}

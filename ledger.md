@@ -1,0 +1,31 @@
+# Ledger
+
+- Setup on 2026-04-07: Lean is currently unavailable on this machine because `lake` is not installed.
+- Queue was empty or exhausted, so curation started.
+- Curation did not leave any usable problems in the queue.
+- Queue was empty or exhausted, so curation started.
+- Smoke test on 2026-04-07 was stopped during curation after prolonged web search, so no queue was written.
+- Curation did not leave any usable problems in the queue.
+- Queue was empty or exhausted, so curation started.
+- Curation timed out before producing a usable queue, so this cycle ended cleanly.
+- Queue was empty or exhausted, so curation started.
+- Queued slugs on 2026-04-07: c12-1-3-6-cnbc, c16-4-5-8-cnbc, z5-z5-z2-prime-zero-divisor-graph, z3-z25-prime-zero-divisor-graph, z2-power-8-prime-zero-divisor-graph
+- started solving c12-1-3-6-cnbc
+- Solve stage for c12-1-3-6-cnbc produced a no-code candidate proof: the closed-neighborhood operator has kernel only at Fourier frequencies 3 and 9, forcing a 4-periodic witness; one CNB-coloring is red on {0,1,4,5,8,9} and blue on {2,3,6,7,10,11}.
+- Lean is unavailable on this machine, so Lean was skipped for c12-1-3-6-cnbc.
+- c12-1-3-6-cnbc was reclassified as REDISCOVERY after a targeted prior-art audit and was moved aside.
+- The previous queue was cleared because it had been curated before the stronger rediscovery audit was added, c12-1-3-6-cnbc was preserved as a rediscovery artifact, and the harness is now rerunning fresh curation.
+- Queue was empty or exhausted, so curation started.
+- Queued slugs on 2026-04-07: z5-z5-z2-prime-zero-divisor-graph, z3-z25-prime-zero-divisor-graph, z5-z5-z3-prime-zero-divisor-graph, z5-z25-prime-zero-divisor-graph, z2-power-8-prime-zero-divisor-graph
+- started solving z5-z5-z2-prime-zero-divisor-graph
+- Solve infrastructure failure for z5-z5-z2-prime-zero-divisor-graph: the worker timed out before a real verdict.
+- started solving z3-z25-prime-zero-divisor-graph
+- Solve stage for z3-z25-prime-zero-divisor-graph produced an explicit prime-labeling candidate by splitting the 34 vertices into a 4-clique `M`, a 20-set `N`, two universal-to-`A` vertices `U`, and an 8-set `W` joined only to `M`; labels `13,17` on `U`, `1,3,5,7` on `M`, `2,4,8,11,16,22,26,34` on `W`, and the remaining 20 labels on `N` passed a tiny local edge checker with 86 edges and 0 coprimality violations.
+- Lean is unavailable on this machine, so Lean was skipped for z3-z25-prime-zero-divisor-graph.
+- Under the patched semantics, z3-z25-prime-zero-divisor-graph counted only as a CANDIDATE until Lean completed.
+- Lean then completed for z3-z25-prime-zero-divisor-graph in the local lean project, so the exact instance was upgraded to EXACT.
+- Stop marker set after Lean completed for z3-z25-prime-zero-divisor-graph.
+- Lean was installed via elan, a minimal local Lake project was created under lean/, and z3-z25-prime-zero-divisor-graph was formalized there.
+- Stop marker already exists, so this cycle was skipped.
+- The exact Lean artifact for z3-z25-prime-zero-divisor-graph was preserved, external novelty review was left to a separate channel, and the harness is continuing on later problems.
+- The stop marker was cleared after preserving the exact Lean artifact for z3-z25-prime-zero-divisor-graph, so the harness can continue on later queued problems.

@@ -1,0 +1,12 @@
+{
+  "slug": "z3-z25-prime-zero-divisor-graph",
+  "title": "Is the zero-divisor graph Γ(Z_3 × Z_25) prime?",
+  "stage": "lean",
+  "verify_verdict": "VERIFIED",
+  "classification": "EXACT",
+  "confidence": "high",
+  "code_used": true,
+  "lean_ready": true,
+  "lean_complete": true,
+  "next_action": "preserve_exact_instance_and_continue_harness_while_external_novelty_review_proceeds"
+}
