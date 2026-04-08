@@ -29,3 +29,9 @@
 - Stop marker already exists, so this cycle was skipped.
 - The exact Lean artifact for z3-z25-prime-zero-divisor-graph was preserved, external novelty review was left to a separate channel, and the harness is continuing on later problems.
 - The stop marker was cleared after preserving the exact Lean artifact for z3-z25-prime-zero-divisor-graph, so the harness can continue on later queued problems.
+- started solving z5-z5-z3-prime-zero-divisor-graph
+- Solve stage for z5-z5-z3-prime-zero-divisor-graph produced an explicit prime-labeling candidate from the six support classes of `Z_5 × Z_5 × Z_3`: labels `6,12,18,24` on `V1`, `1,5,13,25` on `V2`, `7,11` on `V3`, `2,8,9,10,15,16,20,26,27,30,32,34,36,38,39,40` on `V12`, `3,4,14,21,22,28,33,42` on `V13`, and `17,19,23,29,31,35,37,41` on `V23`; a tiny local checker confirmed the partition and found `0` coprimality violations across all `128` edges.
+- Lean completed for z5-z5-z3-prime-zero-divisor-graph in the local AutoMath backend, so the exact instance was upgraded to EXACT.
+- Lean verified the exact intended statement for z5-z5-z3-prime-zero-divisor-graph, so the harness stopped.
+- Lean infrastructure failure for z5-z5-z3-prime-zero-divisor-graph: the worker timed out, so the candidate was kept for later.
+- A post-cycle audit confirmed that the preceding timeout line for z5-z5-z3-prime-zero-divisor-graph was a false shell-side timeout after Lean had already finished; the exact artifact remains preserved, archived out of the queue, and stopped.

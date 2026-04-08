@@ -1,0 +1,12 @@
+{
+  "slug": "z5-z5-z3-prime-zero-divisor-graph",
+  "title": "Is the zero-divisor graph Γ(Z_5 × Z_5 × Z_3) prime?",
+  "stage": "lean",
+  "verify_verdict": "VERIFIED",
+  "classification": "EXACT",
+  "confidence": "high",
+  "code_used": true,
+  "lean_ready": true,
+  "lean_complete": true,
+  "next_action": "Stop the harness: the exact intended statement has been formalized and checked in the local AutoMath Lean backend; `lean4checker --fresh` was unavailable, and the `#print axioms` audit reported only the standard dependencies `[propext, Classical.choice, Quot.sound]`."
+}

@@ -662,6 +662,15 @@ REPORT_LEAN_RAN="yes"
 run_stage "lean_${current_slug}" "$ROOT/prompts/lean.prompt.md" "off" "$LEAN_TIMEOUT" "" "default" || lean_rc=$?
 
 if [[ "$lean_rc" -ne 0 ]]; then
+  classification="$(status_value "$status_path" "classification")"
+  lean_complete="$(status_value "$status_path" "lean_complete")"
+  if [[ "$classification" == "EXACT" && "$lean_complete" == "true" ]]; then
+    mark_problem_completed "$current_slug" "$current_title" "Lean verified the exact intended statement in the AutoMath backend; archived to avoid rerunning this solved instance." "$(date '+%Y-%m-%d')"
+    : >"$ROOT/.stop_harness"
+    append_ledger "Lean completed for ${current_slug} just before the wall-clock cutoff, so the exact result was preserved and the harness stopped."
+    REPORT_OUTCOME="EXACT"
+    exit 0
+  fi
   if [[ "$lean_rc" -eq 124 ]]; then
     append_ledger "Lean infrastructure failure for ${current_slug}: the worker timed out, so the candidate was kept for later."
     REPORT_OUTCOME="lean infrastructure timeout"

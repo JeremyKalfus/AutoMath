@@ -1,44 +1,44 @@
-# Is the zero-divisor graph Γ(Z_3 × Z_25) prime?
+# Is the zero-divisor graph Γ(Z_5 × Z_5 × Z_3) prime?
 
-- slug: `z3-z25-prime-zero-divisor-graph`
-- canonical_source: Fox and Mooney, "On prime labelings of zero-divisor graphs," Congressus Numerantium 236 (2025), Conjecture 4.4, https://doi.org/10.61091/cn236-06
+- slug: `z5-z5-z3-prime-zero-divisor-graph`
+- canonical_source: Fox and Mooney, "On prime labelings of zero-divisor graphs," Congressus Numerantium 236 (2025), Conjecture 4.3, https://doi.org/10.61091/cn236-06
 - open_status_checked_on: 2026-04-07
-- attack_style: `['vertex-class decomposition', 'explicit constructive labeling', 'small obstruction counting']`
+- attack_style: `['support-type decomposition', 'prime-scarcity packing', 'explicit constructive labeling']`
 - curation_confidence: `high`
 
 ## question
-Does the zero-divisor graph of the ring Z_3 × Z_25 admit a prime labeling?
+Does the zero-divisor graph of the ring Z_5 × Z_5 × Z_3 admit a prime labeling?
 
 ## canonical_statement
-Conjecture 4.4. The zero-divisor graph Γ(Z_p × Z_{q^2}) is prime for all prime numbers p and q.
+Conjecture 4.3. The zero-divisor graph Γ(Z_p × Z_p × Z_q) is prime for all prime numbers p and q.
 
 ## intended_statement
-The zero-divisor graph Γ(Z_3 × Z_25) is prime.
+The zero-divisor graph Γ(Z_5 × Z_5 × Z_3) is prime.
 
 ## definitions
-- Z_n denotes the ring of integers modulo n.
+- Z_p denotes the ring of integers modulo the prime p.
 - For a commutative ring R, Γ(R) has as vertices the nonzero zero-divisors of R, with x adjacent to y iff xy = 0.
-- In Z_25, the nonzero zero-divisors are exactly the nonzero multiples of 5.
+- For R = Z_5 × Z_5 × Z_3, multiplication is coordinatewise, so adjacency depends only on which coordinates are zero.
 - A prime labeling of an N-vertex graph is a bijection to {1, ..., N} such that adjacent vertices receive coprime labels.
 
 ## why_reasoning_friendly
-This is the first concrete case omitted by Conjecture 4.4 after the source proves Z_p × Z_4, Z_p × Z_9, and Z_2 × Z_{q^2}. The graph has only 34 vertices and an evident split into coordinate-zero and multiple-of-5 classes.
+The same support-pattern structure from Conjecture 4.3 remains intact here, and the graph is still small enough at 42 vertices for a deliberate hand-built labeling. The extra third-factor size may permit cleaner parity and coprimality packing than the q = 2 case.
 
 ## why_low_token
-There are only 34 vertices, and the second factor has a single obvious zero-divisor chain. A full witness or counterexample certificate stays compact.
+The graph has 42 vertices, still small enough for a full witness and cheap checker. The description by support classes remains compact.
 
 ## verifier_hint
-Enumerate the 34 nonzero zero-divisors of Z_3 × Z_25, generate edges by zero product, and test coprimality on each labeled edge.
+Enumerate the 42 nonzero zero-divisors of Z_5 × Z_5 × Z_3 and check the gcd condition on every edge of a proposed labeling.
 
 ## lean_hint
-Formalize the graph from ZMod 3 × ZMod 25 or from explicit vertex classes, then prove a bijection to Fin 34 respects Nat.Coprime on edges.
+Use ZMod 5 × ZMod 5 × ZMod 3 or an explicit finite support-class model, then formalize a bijection to Fin 42 with Nat.Coprime along adjacency edges.
 
 ## rediscovery_risk
-Low to moderate: Theorems 2.12, 2.14, and 2.15 settle only the q = 2, q = 3, and p = 2 border families, so this p = 3, q = 5 case is inferred as the first omitted instance; exact and alternate searches did not reveal a later resolution.
+Moderate: this is a second-step instance from the same fresh family conjecture, so there is more chance of an unadvertised note or example than for the smallest omitted case; exact and alternate searches still failed to surface any instance-specific resolution.
 
 ## why_still_appears_open
-The exact-instance search produced no useful hit, the alternate ASCII search surfaced only generic zero-divisor-graph material, and inside the canonical source the solved earlier results stop at Z_p × Z_4, Z_p × Z_9, and Z_2 × Z_{q^2} before Conjecture 4.4 is stated. The 2025-2026 DOI/source search showed the paper and archive page but no instance-specific follow-up.
+The exact-instance search returned no relevant match, the alternate ASCII search produced only generic or unrelated pages, and the canonical source still moves directly from the solved p = 2 and p = 3 families to Conjecture 4.3 with no theorem, proposition, example, or observation settling the p = 5, q = 3 case. The shared 2025-2026 DOI/source search showed no later sequel.
 
 ## red_flags
-- The target is inferred as the smallest unsolved instance rather than named explicitly in the paper.
-- A successful labeling may still need careful coordination across the two main vertex classes.
+- This is not the smallest omitted case in Conjecture 4.3, so rediscovery risk is a little higher than for Z_5 × Z_5 × Z_2.
+- The larger label set makes a hand construction slightly more fiddly.
