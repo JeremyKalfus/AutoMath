@@ -1,3 +1,6 @@
+# Project context
+You are working in AutoMath, an automated method of finding niche open math problems and using AI to solve them
+
 # Goal
 
 Continuously hunt for one Lean-verified exact proof or disproof of a very niche, simple, still-open math problem that GPT-5.4 could plausibly solve.
@@ -11,6 +14,7 @@ Continuously hunt for one Lean-verified exact proof or disproof of a very niche,
 - `prompts/`: the 4 stage prompts.
 - `artifacts/<slug>/`: per-problem work files created on demand.
 - `run_once.sh`: one full cycle.
+- `run_n_cycles.sh`: run a fixed number of cycles, then stop unless the harness stops earlier.
 - `run_continuous.sh`: repeat cycles until stopped.
 
 # Workflow
@@ -19,7 +23,7 @@ Continuously hunt for one Lean-verified exact proof or disproof of a very niche,
 2. Pick the next non-failed problem from the queue.
 3. Solve it in a fresh no-web context.
 4. Verify it in a fresh skeptical context that begins with a bounded rediscovery / prior-art search.
-5. Run Lean only if verification says the candidate is genuinely strong and not a rediscovery.
+5. Run Lean--only if verification says the candidate is genuinely strong and not a rediscovery.
 6. Treat any non-Lean exact-looking positive result as a `CANDIDATE`, not a final success.
 7. If Lean fully verifies a frontier-novel exact intended statement, stop the harness.
 8. If verification finds a rediscovery, move the problem aside so it is not curated again.

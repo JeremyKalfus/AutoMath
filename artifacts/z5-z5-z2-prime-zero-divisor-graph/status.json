@@ -1,0 +1,12 @@
+{
+  "slug": "z5-z5-z2-prime-zero-divisor-graph",
+  "title": "Is the zero-divisor graph Γ(Z_5 × Z_5 × Z_2) prime?",
+  "stage": "lean",
+  "verify_verdict": "VERIFIED",
+  "classification": "EXACT",
+  "confidence": "high",
+  "code_used": true,
+  "lean_ready": true,
+  "lean_complete": true,
+  "next_action": "Stop the harness for this instance; the exact intended statement has been formalized and checked in the local Lean backend."
+}

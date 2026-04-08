@@ -407,12 +407,14 @@ run_stage() {
   local transport_profile="${6:-default}"
   python3 - "$ROOT" "$stage_name" "$prompt_file" "$search_mode" "$timeout_secs" "$reasoning_effort" "$transport_profile" <<'PY'
 import datetime
+import json
 import os
 import pathlib
 import shutil
 import subprocess
 import sys
 import tempfile
+import time
 
 root, stage_name, prompt_file, search_mode, timeout_secs, reasoning_effort, transport_profile = sys.argv[1:8]
 timeout_secs = int(timeout_secs)
@@ -499,27 +501,76 @@ if transport_profile == "tuned_openai":
         )
         env["HOME"] = str(temp_home_path)
 
-with stdout_log.open("w", encoding="utf-8") as out:
+lean_status_path = None
+lean_artifact_dir = None
+if stage_name.startswith("lean_"):
+    slug = stage_name[len("lean_"):]
+    lean_status_path = root_path / "artifacts" / slug / "status.json"
+    lean_artifact_dir = root_path / "artifacts" / slug / "lean"
+
+
+def lean_stage_completed() -> bool:
+    if lean_status_path is None or lean_artifact_dir is None:
+        return False
+    if not lean_status_path.exists() or not lean_artifact_dir.exists():
+        return False
     try:
-        completed = subprocess.run(
-            cmd,
-            input=prompt_text,
-            text=True,
-            stdout=out,
-            stderr=subprocess.STDOUT,
-            timeout=timeout_secs,
-            check=False,
-            env=env,
-        )
-    except subprocess.TimeoutExpired:
-        out.write(f"\n[run_stage timeout after {timeout_secs} seconds]\n")
-        if temp_home is not None:
-            temp_home.cleanup()
-        sys.exit(124)
+        data = json.loads(lean_status_path.read_text(encoding="utf-8"))
+    except Exception:
+        return False
+    if data.get("classification") != "EXACT" or not data.get("lean_complete", False):
+        return False
+    return any(lean_artifact_dir.glob("*.lean"))
+
+
+timed_out = False
+returncode = 0
+with stdout_log.open("w", encoding="utf-8") as out:
+    proc = subprocess.Popen(
+        cmd,
+        stdin=subprocess.PIPE,
+        stdout=out,
+        stderr=subprocess.STDOUT,
+        text=True,
+        env=env,
+    )
+    assert proc.stdin is not None
+    proc.stdin.write(prompt_text)
+    proc.stdin.close()
+
+    deadline = time.monotonic() + timeout_secs
+    while True:
+        returncode = proc.poll()
+        if returncode is not None:
+            break
+
+        if lean_stage_completed():
+            out.write(
+                "\n[run_stage detected a completed Lean artifact and ended the worker early]\n"
+            )
+            out.flush()
+            proc.terminate()
+            try:
+                proc.wait(timeout=5)
+            except subprocess.TimeoutExpired:
+                proc.kill()
+                proc.wait()
+            returncode = 0
+            break
+
+        if time.monotonic() >= deadline:
+            timed_out = True
+            proc.kill()
+            proc.wait()
+            out.write(f"\n[run_stage timeout after {timeout_secs} seconds]\n")
+            returncode = 124
+            break
+
+        time.sleep(2)
 
 if temp_home is not None:
     temp_home.cleanup()
-sys.exit(completed.returncode)
+sys.exit(returncode)
 PY
 }
 

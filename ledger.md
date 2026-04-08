@@ -35,3 +35,20 @@
 - Lean verified the exact intended statement for z5-z5-z3-prime-zero-divisor-graph, so the harness stopped.
 - Lean infrastructure failure for z5-z5-z3-prime-zero-divisor-graph: the worker timed out, so the candidate was kept for later.
 - A post-cycle audit confirmed that the preceding timeout line for z5-z5-z3-prime-zero-divisor-graph was a false shell-side timeout after Lean had already finished; the exact artifact remains preserved, archived out of the queue, and stopped.
+- started solving z5-z25-prime-zero-divisor-graph
+- Solve stage for z5-z25-prime-zero-divisor-graph produced an explicit prime-labeling candidate by decomposing the 44 vertices into classes `A,B,C,D` with edge types `A-C`, `B-B`, `B-C`, and `B-D`; labels `11,23,29,31` on `C`, `1,37,41,43` on `B`, a 20-label set on `A`, and the remaining 16 labels on `D` passed a tiny local checker with 44 vertices, 166 edges, and 0 coprimality violations.
+- Lean completed for z5-z25-prime-zero-divisor-graph in the local AutoMath backend; the exact intended statement was formalized and checked, so the instance was upgraded to EXACT.
+- The Lean audit for z5-z25-prime-zero-divisor-graph found no `sorry` placeholders or `sorryAx`; `#print axioms` reported only `[propext, Classical.choice, Quot.sound]`, and `lean4checker --fresh` was unavailable on this machine.
+- Lean verified the exact intended statement for z5-z25-prime-zero-divisor-graph, so the harness stopped.
+- started solving z2-power-8-prime-zero-divisor-graph
+- Solve stage for z2-power-8-prime-zero-divisor-graph produced a strong exact-instance CANDIDATE via a coordinate-owned prime-factor construction: `2` was assigned to one coordinate, the odd primes up to `251` were assigned cyclically across the other seven coordinates, a deterministic containment matching gave a bijection from `{1,...,254}` to the `254` nonempty proper subsets of `[8]`, and the local checker wrote `witness.json` and found `0` coprimality violations on all disjoint pairs.
+- Verify stage for z2-power-8-prime-zero-divisor-graph did a bounded prior-art audit on 2026-04-08 and did not establish rediscovery; an independent local check then confirmed that `witness.json` is a bijection on all 254 vertices and has 0 gcd violations on every disjoint pair, so the problem remains a frontier-novel CANDIDATE and is ready for Lean.
+- Lean infrastructure failure for z2-power-8-prime-zero-divisor-graph: the worker timed out, so the candidate was kept for later.
+- Lean build for z2-power-8-prime-zero-divisor-graph succeeded in the local AutoMath backend after the worker timeout; the exact theorem file is mirrored under `artifacts/z2-power-8-prime-zero-divisor-graph/lean/AutoMath/Z2Power8.lean`, and the axiom audit reported only `[propext, Classical.choice, Quot.sound]`.
+- z2-power-8-prime-zero-divisor-graph was upgraded to EXACT and archived so it will not be re-curated.
+- started solving z5-z5-z2-prime-zero-divisor-graph
+- Solve stage for z5-z5-z2-prime-zero-divisor-graph produced an explicit prime-labeling candidate from the six support classes of `Z_5 × Z_5 × Z_2`: `1` on `(0,0,1)`, `2,4,8,16` on `A = {(i,0,0)}`, `3,5,9,25` on `B = {(0,i,0)}`, `14,22,26,32` on `E = {(i,0,1)}`, `7,11,13,17` on `F = {(0,i,1)}`, and the remaining `16` labels on `D = {(i,j,0)}`; a tiny local checker confirmed a full bijection on `33` vertices, found `72` edges, and found `0` coprimality violations.
+- Lean completed for z5-z5-z2-prime-zero-divisor-graph in the local AutoMath backend; the exact intended statement was formalized and checked, so the instance was upgraded to EXACT.
+- The Lean audit for z5-z5-z2-prime-zero-divisor-graph found no `sorry` placeholders or `sorryAx`; `#print axioms` reported only `[propext, Classical.choice, Quot.sound]`, and `lean4checker --fresh` was unavailable on this machine.
+- Lean verified the exact intended statement for z5-z5-z2-prime-zero-divisor-graph, so the harness stopped.
+- Lean verified the exact intended statement for z5-z5-z2-prime-zero-divisor-graph, so the harness stopped.

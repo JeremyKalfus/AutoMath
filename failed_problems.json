@@ -19,5 +19,26 @@
     "title": "Is the zero-divisor graph \u0393(Z_5 \u00d7 Z_5 \u00d7 Z_3) prime?",
     "notes": "Lean verified the exact intended statement in the AutoMath backend; archived to avoid rerunning this solved instance.",
     "checked_on": "2026-04-08"
+  },
+  {
+    "slug": "z5-z25-prime-zero-divisor-graph",
+    "reason": "EXACT",
+    "title": "Is the zero-divisor graph \u0393(Z_5 \u00d7 Z_25) prime?",
+    "notes": "Lean verified the exact intended statement in the AutoMath backend; archived to avoid rerunning this solved instance.",
+    "checked_on": "2026-04-08"
+  },
+  {
+    "slug": "z2-power-8-prime-zero-divisor-graph",
+    "reason": "EXACT",
+    "title": "Is the zero-divisor graph \u0393(Z_2^8) prime?",
+    "notes": "Lean verified the exact intended statement in the AutoMath backend; archived to avoid rerunning this solved instance.",
+    "checked_on": "2026-04-08"
+  },
+  {
+    "slug": "z5-z5-z2-prime-zero-divisor-graph",
+    "reason": "EXACT",
+    "title": "Is the zero-divisor graph \u0393(Z_5 \u00d7 Z_5 \u00d7 Z_2) prime?",
+    "notes": "Lean verified the exact intended statement in the AutoMath backend; archived to avoid rerunning this solved instance.",
+    "checked_on": "2026-04-08"
   }
 ]
