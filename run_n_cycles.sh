@@ -5,13 +5,16 @@ SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 ROOT="$SCRIPT_DIR"
 cd "$ROOT"
 
-SLEEP_SECONDS=300
+SLEEP_SECONDS="${AUTOMATH_SLEEP_SECONDS:-300}"
+CYCLE_LOG_PATH="$ROOT/artifacts/_logs/cycle.log"
 
 usage() {
   cat <<'EOF'
 Usage: ./run_n_cycles.sh <positive-integer>
 
-Runs AutoMath for a fixed number of cycles, stopping early if .stop_harness appears.
+Runs AutoMath for a fixed number of cycles.
+Any .stop_harness marker is deferred until the requested cycle count completes.
+Set AUTOMATH_SLEEP_SECONDS to override the default 300-second pause between cycles.
 EOF
 }
 
@@ -34,27 +37,60 @@ append_ledger() {
   printf -- "- %s\n" "$1" >>"$ROOT/ledger.md"
 }
 
+append_cycle_log() {
+  printf -- "%s\n" "$1" | tee -a "$CYCLE_LOG_PATH"
+}
+
 completed_cycles=0
-while (( completed_cycles < TARGET_CYCLES )) && [[ ! -f "$ROOT/.stop_harness" ]]; do
+deferred_stop_marker=0
+while (( completed_cycles < TARGET_CYCLES )); do
   cycle_number=$((completed_cycles + 1))
-  append_ledger "bounded run cycle ${cycle_number}/${TARGET_CYCLES} started at $(date '+%Y-%m-%d %H:%M:%S %Z')."
+  if [[ -f "$ROOT/.stop_harness" ]]; then
+    rm -f "$ROOT/.stop_harness"
+    deferred_stop_marker=1
+    message="bounded run deferred an existing stop marker before cycle ${cycle_number}/${TARGET_CYCLES} so the requested run could continue."
+    append_ledger "$message"
+    append_cycle_log "[run_n_cycles] $message"
+  fi
+
+  cycle_started_at="$(date '+%Y-%m-%d %H:%M:%S %Z')"
+  message="bounded run cycle ${cycle_number}/${TARGET_CYCLES} started at ${cycle_started_at}."
+  append_ledger "$message"
+  append_cycle_log "[run_n_cycles] $message"
   if ./run_once.sh; then
-    append_ledger "bounded run cycle ${cycle_number}/${TARGET_CYCLES} finished at $(date '+%Y-%m-%d %H:%M:%S %Z')."
+    message="bounded run cycle ${cycle_number}/${TARGET_CYCLES} finished at $(date '+%Y-%m-%d %H:%M:%S %Z')."
+    append_ledger "$message"
+    append_cycle_log "[run_n_cycles] $message"
   else
-    append_ledger "bounded run cycle ${cycle_number}/${TARGET_CYCLES} ended with an error at $(date '+%Y-%m-%d %H:%M:%S %Z')."
+    message="bounded run cycle ${cycle_number}/${TARGET_CYCLES} ended with an error at $(date '+%Y-%m-%d %H:%M:%S %Z')."
+    append_ledger "$message"
+    append_cycle_log "[run_n_cycles] $message"
+  fi
+
+  if [[ -f "$ROOT/.stop_harness" ]]; then
+    rm -f "$ROOT/.stop_harness"
+    deferred_stop_marker=1
+    message="bounded run deferred a stop marker raised during cycle ${cycle_number}/${TARGET_CYCLES} until the requested run completes."
+    append_ledger "$message"
+    append_cycle_log "[run_n_cycles] $message"
   fi
 
   completed_cycles=$cycle_number
-  [[ -f "$ROOT/.stop_harness" ]] && break
 
   if (( completed_cycles < TARGET_CYCLES )); then
-    append_ledger "cycle sleeping for ${SLEEP_SECONDS} seconds."
+    message="cycle sleeping for ${SLEEP_SECONDS} seconds."
+    append_ledger "$message"
+    append_cycle_log "[run_n_cycles] $message"
     sleep "$SLEEP_SECONDS"
   fi
 done
 
-if [[ -f "$ROOT/.stop_harness" ]]; then
-  append_ledger "bounded run stopped early after ${completed_cycles} cycle(s) because the harness stop marker exists."
-else
-  append_ledger "bounded run completed ${completed_cycles}/${TARGET_CYCLES} requested cycle(s)."
+message="bounded run completed ${completed_cycles}/${TARGET_CYCLES} requested cycle(s)."
+append_ledger "$message"
+append_cycle_log "[run_n_cycles] $message"
+if (( deferred_stop_marker == 1 )); then
+  : >"$ROOT/.stop_harness"
+  message="bounded run restored the deferred stop marker after completing ${completed_cycles}/${TARGET_CYCLES} requested cycle(s)."
+  append_ledger "$message"
+  append_cycle_log "[run_n_cycles] $message"
 fi

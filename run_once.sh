@@ -15,6 +15,7 @@ CURATION_TIMEOUT=660
 SOLVE_TIMEOUT=1200
 VERIFY_TIMEOUT=720
 LEAN_TIMEOUT=600
+CYCLE_LOG_PATH="$ROOT/artifacts/_logs/cycle.log"
 
 mkdir -p "$ROOT/prompts" "$ROOT/artifacts" "$ROOT/artifacts/_logs"
 [[ -f "$ROOT/ledger.md" ]] || printf '# Ledger\n' >"$ROOT/ledger.md"
@@ -33,22 +34,49 @@ append_ledger() {
   printf -- "- %s\n" "$1" >>"$ROOT/ledger.md"
 }
 
+append_cycle_log() {
+  printf -- "%s\n" "$1" | tee -a "$CYCLE_LOG_PATH"
+}
+
 print_cycle_report() {
-  printf '\n=== Cycle Report ===\n'
-  printf 'selected title: %s\n' "$REPORT_TITLE"
-  printf 'selected slug: %s\n' "$REPORT_SLUG"
-  printf 'final outcome: %s\n' "$REPORT_OUTCOME"
-  printf 'lean ran: %s\n' "$REPORT_LEAN_RAN"
-  printf 'artifact path: %s\n' "$REPORT_ARTIFACT_DIR"
+  local report_started_at status_stage status_classification status_verify status_lean_ready status_lean_complete
+  report_started_at="$(date '+%Y-%m-%d %H:%M:%S %Z')"
+  status_stage="(none)"
+  status_classification="(none)"
+  status_verify="(none)"
+  status_lean_ready="(none)"
+  status_lean_complete="(none)"
+
   if [[ -n "$REPORT_STATUS_PATH" && -f "$REPORT_STATUS_PATH" ]]; then
-    printf '\n=== status.json ===\n'
-    cat "$REPORT_STATUS_PATH"
+    status_stage="$(status_value "$REPORT_STATUS_PATH" "stage")"
+    status_classification="$(status_value "$REPORT_STATUS_PATH" "classification")"
+    status_verify="$(status_value "$REPORT_STATUS_PATH" "verify_verdict")"
+    status_lean_ready="$(status_value "$REPORT_STATUS_PATH" "lean_ready")"
+    status_lean_complete="$(status_value "$REPORT_STATUS_PATH" "lean_complete")"
+    [[ -n "$status_stage" ]] || status_stage="(none)"
+    [[ -n "$status_classification" ]] || status_classification="(none)"
+    [[ -n "$status_verify" ]] || status_verify="(none)"
+    [[ -n "$status_lean_ready" ]] || status_lean_ready="(none)"
+    [[ -n "$status_lean_complete" ]] || status_lean_complete="(none)"
   fi
-  printf '\n=== Ledger Tail ===\n'
-  tail -n 30 "$ROOT/ledger.md" || true
+
+  append_cycle_log ""
+  append_cycle_log "=== run_once cycle report @ ${report_started_at} ==="
+  append_cycle_log "selected title: ${REPORT_TITLE}"
+  append_cycle_log "selected slug: ${REPORT_SLUG}"
+  append_cycle_log "final outcome: ${REPORT_OUTCOME}"
+  append_cycle_log "lean ran: ${REPORT_LEAN_RAN}"
+  append_cycle_log "artifact path: ${REPORT_ARTIFACT_DIR}"
+  append_cycle_log "status stage: ${status_stage}"
+  append_cycle_log "status classification: ${status_classification}"
+  append_cycle_log "status verify verdict: ${status_verify}"
+  append_cycle_log "status lean ready: ${status_lean_ready}"
+  append_cycle_log "status lean complete: ${status_lean_complete}"
 }
 
 trap print_cycle_report EXIT
+
+append_cycle_log "[run_once] cycle started at $(date '+%Y-%m-%d %H:%M:%S %Z')."
 
 queue_has_usable() {
   python3 - "$ROOT/queue.json" "$ROOT/failed_problems.json" <<'PY'
