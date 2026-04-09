@@ -1,0 +1,15 @@
+{
+  "slug": "d4-balanced-equi-28-square",
+  "title": "Does there exist a 4-balanced equi-28-square?",
+  "stage": "verify",
+  "verify_verdict": "WRONG_STATEMENT",
+  "classification": "VARIANT",
+  "confidence": "high",
+  "code_used": false,
+  "lean_ready": false,
+  "lean_complete": false,
+  "next_action": "continue solving the actual arbitrary-partition 4x7-subrectangle problem; retain the current 7<=4 counting argument only as a disproof of the stricter regular-grid variant",
+  "publication_status": "NONE",
+  "publication_confidence": "high",
+  "proof_artifacts_preserved": true
+}

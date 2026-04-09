@@ -1,0 +1,19 @@
+{
+  "slug": "family-cnbc_quintic_nonexistence",
+  "title": "CNBC quintic nonexistence family campaign",
+  "entry_type": "family_campaign",
+  "family_slug": "cnbc_quintic_nonexistence",
+  "family_name": "Closed-neighborhood balanced colorings of quintic circulants",
+  "stage": "campaign_seed",
+  "classification": "COUNTEREXAMPLE",
+  "confidence": "high",
+  "code_used": false,
+  "lean_ready": false,
+  "lean_complete": false,
+  "publication_status": "SLICE_CANDIDATE",
+  "publication_confidence": "medium-high",
+  "strongest_honest_claim": "The repo already supports a theorem-slice campaign based on Fourier and periodicity obstructions to CNBC colorings in selected quintic circulants.",
+  "paper_title_hint": "Fourier and periodicity obstructions to closed-neighborhood balanced colorings in quintic circulants",
+  "proof_artifacts_preserved": true,
+  "next_action": "run_generalize_to_package_the_exact_counterexamples_into_structural_obstruction_lemmas"
+}

@@ -1,0 +1,15 @@
+{
+  "slug": "szymanski-q5",
+  "title": "Does Szymanski's routing conjecture hold for Q_5?",
+  "stage": "verify",
+  "verify_verdict": "VERIFIED",
+  "classification": "PARTIAL",
+  "confidence": "medium",
+  "code_used": false,
+  "lean_ready": false,
+  "lean_complete": false,
+  "next_action": "Do not run Lean; verification found no rediscovery and no fatal flaw in the partial Q4-lift lemmas, but the fully mixed-coordinate regime remains unresolved so the exact intended Q_5 statement is still only PARTIAL.",
+  "publication_status": "NONE",
+  "publication_confidence": "medium",
+  "proof_artifacts_preserved": true
+}

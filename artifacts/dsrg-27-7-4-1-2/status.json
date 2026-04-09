@@ -1,0 +1,15 @@
+{
+  "slug": "dsrg-27-7-4-1-2",
+  "title": "Does a directed strongly regular graph with parameters (27,7,4,1,2) exist?",
+  "stage": "verify",
+  "verify_verdict": "VERIFIED",
+  "classification": "PARTIAL",
+  "confidence": "high",
+  "code_used": false,
+  "lean_ready": false,
+  "lean_complete": false,
+  "next_action": "do not run Lean; keep this problem marked PARTIAL and continue the harness, since verification found no rediscovery but also no exact existence/nonexistence result",
+  "publication_status": "NONE",
+  "publication_confidence": "high",
+  "proof_artifacts_preserved": true
+}

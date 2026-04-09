@@ -1,0 +1,15 @@
+{
+  "slug": "srg-88-27-6-9",
+  "title": "Does a strongly regular graph with parameters (88,27,6,9) exist?",
+  "stage": "verify",
+  "verify_verdict": "CRITICAL_FLAW",
+  "classification": "FAILED",
+  "confidence": "high",
+  "code_used": true,
+  "lean_ready": false,
+  "lean_complete": false,
+  "next_action": "mark_failed_and_continue",
+  "publication_status": "NONE",
+  "publication_confidence": "high",
+  "proof_artifacts_preserved": true
+}

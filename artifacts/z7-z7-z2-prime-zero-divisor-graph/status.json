@@ -1,0 +1,16 @@
+{
+  "slug": "z7-z7-z2-prime-zero-divisor-graph",
+  "title": "Is the zero-divisor graph Gamma(Z_7 x Z_7 x Z_2) prime?",
+  "stage": "lean",
+  "verify_verdict": "VERIFIED",
+  "classification": "EXACT",
+  "confidence": "high",
+  "code_used": true,
+  "lean_ready": true,
+  "lean_complete": true,
+  "next_action": "Stop the harness for this slug: the exact intended statement has been formalized and checked in Lean. Note that repo-wide `lake build` still has an unrelated existing failure in `lean/AutoMath/C16458CNBC.lean`.",
+  "publication_status": "INSTANCE_ONLY",
+  "publication_confidence": "high",
+  "proof_artifacts_preserved": true,
+  "family_affinity": "zero_divisor_prime_labelings"
+}

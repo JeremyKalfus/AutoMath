@@ -1,0 +1,15 @@
+{
+  "slug": "b21-munchhausen-matrix",
+  "title": "Is the Baron's omni-sequence value B(21) equal to 3?",
+  "stage": "verify",
+  "verify_verdict": "UNVERIFIED",
+  "classification": "PARTIAL",
+  "confidence": "high",
+  "code_used": true,
+  "lean_ready": false,
+  "lean_complete": false,
+  "next_action": "do not run Lean; continue solve-stage work only if a stronger global invariant or an exact non-balanced witness route is found, since current verification confirms only a PARTIAL obstruction analysis and no rediscovery",
+  "publication_status": "NONE",
+  "publication_confidence": "high",
+  "proof_artifacts_preserved": true
+}

@@ -8,5 +8,8 @@
   "code_used": true,
   "lean_ready": false,
   "lean_complete": false,
-  "next_action": "archive_as_rediscovery"
+  "next_action": "archive_as_rediscovery",
+  "publication_status": "REDISCOVERY",
+  "publication_confidence": "high",
+  "proof_artifacts_preserved": true
 }

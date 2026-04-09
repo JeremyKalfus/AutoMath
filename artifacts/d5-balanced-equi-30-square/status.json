@@ -1,0 +1,15 @@
+{
+  "slug": "d5-balanced-equi-30-square",
+  "title": "Does a 5-balanced equi-30-square exist?",
+  "stage": "verify",
+  "verify_verdict": "UNVERIFIED",
+  "classification": "PARTIAL",
+  "confidence": "medium",
+  "code_used": true,
+  "lean_ready": false,
+  "lean_complete": false,
+  "next_action": "continue solve with a sharper multi-symbol structural obstruction or a broader but still structured construction search; do not run Lean because no exact proof or disproof is available, and bounded PASS 1 did not establish rediscovery",
+  "publication_status": "NONE",
+  "publication_confidence": "medium",
+  "proof_artifacts_preserved": true
+}

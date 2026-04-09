@@ -1,0 +1,15 @@
+{
+  "slug": "srg-99-42-21-15",
+  "title": "Does a strongly regular graph with parameters (99,42,21,15) exist?",
+  "stage": "verify",
+  "verify_verdict": "VERIFIED",
+  "classification": "PARTIAL",
+  "confidence": "high",
+  "code_used": true,
+  "lean_ready": false,
+  "lean_complete": false,
+  "next_action": "Do not run Lean. Archive this as a verified PARTIAL result and continue only with a stronger global obstruction or a different proof strategy.",
+  "publication_status": "NONE",
+  "publication_confidence": "high",
+  "proof_artifacts_preserved": true
+}

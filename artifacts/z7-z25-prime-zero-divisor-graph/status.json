@@ -1,0 +1,16 @@
+{
+  "slug": "z7-z25-prime-zero-divisor-graph",
+  "title": "Is the zero-divisor graph Gamma(Z_7 x Z_25) prime?",
+  "stage": "lean",
+  "verify_verdict": "VERIFIED",
+  "classification": "EXACT",
+  "confidence": "high",
+  "code_used": true,
+  "lean_ready": true,
+  "lean_complete": true,
+  "next_action": "Stop the harness. The exact intended statement has been formalized and checked in Lean for the frontier-novel `Z_7 x Z_25` instance.",
+  "publication_status": "INSTANCE_ONLY",
+  "publication_confidence": "high",
+  "proof_artifacts_preserved": true,
+  "family_affinity": "zero_divisor_prime_labelings"
+}

@@ -1,0 +1,19 @@
+{
+  "slug": "family-dsrg_obstructions",
+  "title": "DSRG obstruction reserve campaign",
+  "entry_type": "family_campaign",
+  "family_slug": "dsrg_obstructions",
+  "family_name": "Directed strongly regular graph obstruction packages",
+  "stage": "campaign_seed",
+  "classification": "PARTIAL",
+  "confidence": "medium",
+  "code_used": false,
+  "lean_ready": false,
+  "lean_complete": false,
+  "publication_status": "NONE",
+  "publication_confidence": "medium",
+  "strongest_honest_claim": "The ledger supports a reserve dossier of structural obstruction packages, but not yet a publication-priority family theorem campaign.",
+  "paper_title_hint": "reserve only",
+  "proof_artifacts_preserved": true,
+  "next_action": "hold_in_reserve_until_one_dsrg_vein_becomes_slice_ready"
+}

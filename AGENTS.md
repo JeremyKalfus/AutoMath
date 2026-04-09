@@ -1,33 +1,59 @@
 # Project context
-You are working in AutoMath, an automated method of finding niche open math problems and using AI to solve them
+You are working in AutoMath, an automated method for finding niche open math problems and turning exact-instance discoveries into publishable theorem slices, family theorems, or publishable counterexample theorems.
 
 # Goal
 
-Continuously hunt for one Lean-verified exact proof or disproof of a very niche, simple, still-open math problem that GPT-5.4 could plausibly solve.
+The exact-instance engine is still alive, but it is now feeder mode.
+The main objective is publication mode:
+
+- harvest exact wins, partials, and verified counterexamples
+- turn them into active family campaigns
+- push those campaigns toward theorem slices, reusable lemmas, family theorems, or paper-grade counterexample theorems
+- stop automatically only when the strongest honest claim reaches `publication_status = PAPER_READY`
 
 # Repo layout
 
 - `ledger.md`: append-only human-readable log of what the harness did.
-- `queue.json`: current batch of exactly 5 curated problem dossiers.
-- `failed_problems.json`: problems that failed solve/verify and should not be re-curated.
-- `selected_problem.md`: the active problem copied from the queue.
-- `prompts/`: the 4 stage prompts.
-- `artifacts/<slug>/`: per-problem work files created on demand.
-- `run_once.sh`: one full cycle.
-- `run_n_cycles.sh`: run a fixed number of cycles, then stop unless the harness stops earlier.
-- `run_continuous.sh`: repeat cycles until stopped.
+- `queue.json`: current batch of exactly 5 curated dossiers. Entries may now be `family_campaign` or `feeder_instance`.
+- `failed_problems.json`: problems that failed, rediscoveries, archived exacts, and other do-not-recur memory.
+- `selected_problem.md`: the currently active queue entry or family campaign brief.
+- `campaigns/`: active campaign dossiers plus campaign manifest/state.
+- `prompts/`: stage prompts for `curate`, `solve`, `verify`, `generalize`, `publication_audit`, and `lean`.
+- `artifacts/<slug>/`: per-instance work files.
+- `artifacts/families/<family_slug>/`: durable family-campaign work files.
+- `lean/`: the official AutoMath Lean backend, including reusable family-supporting lemmas.
+- `run_once.sh`: one publication-oriented cycle by default.
+- `run_n_cycles.sh`: bounded repeated cycles.
+- `run_continuous.sh`: repeated cycles until stopped.
 
 # Workflow
 
-1. Curate a queue of 5 problems with web search ON.
-2. Pick the next non-failed problem from the queue.
-3. Solve it in a fresh no-web context.
-4. Verify it in a fresh skeptical context that begins with a bounded rediscovery / prior-art search.
-5. Run Lean--only if verification says the candidate is genuinely strong and not a rediscovery.
-6. Treat any non-Lean exact-looking positive result as a `CANDIDATE`, not a final success.
-7. If Lean fully verifies a frontier-novel exact intended statement, stop the harness.
-8. If verification finds a rediscovery, move the problem aside so it is not curated again.
-9. Otherwise add the problem to `failed_problems.json`, remove it from the queue, and continue later.
+AutoMath now has 6 conceptual stages:
+
+1. `curate`
+2. `solve`
+3. `verify`
+4. `generalize`
+5. `publication_audit`
+6. `lean`
+
+Publication mode rules:
+
+1. Prefer an active family campaign before broad fresh curation.
+2. Use exact instances as feeder evidence, templates, and discriminating tests for campaigns.
+3. After a strong feeder result, run `generalize` before `lean`.
+4. Use `publication_audit` to decide whether the strongest honest claim is instance-only, slice-level, family-level, rediscovered, or genuinely paper-ready.
+5. Use Lean for reusable lemmas, theorem slices, and family-supporting facts, not only isolated exact instances.
+6. `EXACT` alone is not a stop condition.
+7. Stop automatically only when `publication_status = PAPER_READY` and the relevant proof/formal artifacts are preserved.
+8. If verification finds rediscovery, archive it and do not treat it as a frontier success.
+9. If a campaign stalls, use feeder curation to strengthen that campaign before wandering to unrelated one-offs.
+
+Parallel policy:
+
+- One manager thread/worktree orchestrates the run.
+- If the repo is under Git, isolated publication workers may run in dedicated worktrees.
+- Merge back only stable dossier and artifact updates.
 
 # Core rules
 
@@ -42,15 +68,25 @@ Continuously hunt for one Lean-verified exact proof or disproof of a very niche,
   - `EXACT`
   - `COUNTEREXAMPLE`
   - `REDISCOVERY`
-- `EXACT` is reserved for an exact intended statement or exact intended disproof that has been fully checked in Lean. Before Lean completes, the strongest positive proof classification is `CANDIDATE`.
-- A non-Lean explicit disproof may still be labeled `COUNTEREXAMPLE`, but it does not stop the harness until the exact instance-level result is also checked through the Lean stage.
-- `REDISCOVERY` means the exact intended statement appears solved or directly implied in existing literature; the current run may still contain a correct proof, but it does not count as frontier-novel success, and Lean should not be used as a stop condition for rediscoveries.
-- Do not start solve with SAT, ILP, CP-SAT, brute force, or generic optimization unless the problem is explicitly marked `search-heavy` OR two reasoning strategies have already failed.
-- Before any nontrivial code, the solver must write a reasoning section in `artifacts/<slug>/record.md`.
+- Separate publication-facing status:
+  - `NONE`
+  - `INSTANCE_ONLY`
+  - `REDISCOVERY`
+  - `SLICE_CANDIDATE`
+  - `SLICE_EXACT`
+  - `FAMILY_CANDIDATE`
+  - `PAPER_READY`
+- `EXACT` is reserved for an exact intended statement or exact intended disproof fully checked in Lean.
+- Before Lean completes, the strongest positive proof classification is `CANDIDATE`.
+- A non-Lean explicit disproof may still be labeled `COUNTEREXAMPLE`, but it does not stop the harness on its own.
+- A Lean-backed exact instance may still have `publication_status = INSTANCE_ONLY`.
+- `REDISCOVERY` means the exact intended statement is already solved or directly implied in prior art; it never counts as a frontier-novel publication win.
+- Do not start solve with SAT, ILP, CP-SAT, brute force, or generic optimization unless the problem is explicitly marked `search-heavy` or two reasoning strategies have already failed.
+- Before any nontrivial code, write the reasoning section in the relevant `record.md`.
 - Minimal code only: checker, falsifier, tiny experiment, witness verification, or later exact search justified by the reasoning stage.
 - Verification begins with a bounded rediscovery / prior-art search before proof checking.
-- Curation must explicitly downrank or reject likely rediscoveries, downrank search-heavy problems, and prefer reasoning-friendly ones.
-- If a specific instance is extracted from a broader open family, curation must check whether an earlier theorem, proposition, example, observation, corollary, or sufficient condition in the same source already settles that exact instance.
-- Solve and Lean must run with web search disabled. Verification may use limited web only for the first rediscovery pass.
-- Be conservative about claim types.
+- Curation must explicitly downrank likely rediscoveries, search-heavy targets, and isolated one-offs that do not strengthen an active campaign.
+- If a specific instance is extracted from a broader open family, curation must check whether an earlier theorem, proposition, example, observation, corollary, or sufficient condition already settles that exact instance.
+- Solve and most family generalization must run with web disabled. Verification may use limited web for the bounded rediscovery pass. Publication audit may use limited web.
+- Be conservative about claim types and theorem scope.
 - Keep the ledger updated in plain English.

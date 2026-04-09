@@ -1,0 +1,8 @@
+import AutoMath.DSRG3011925
+
+#print axioms AutoMath.DSRG3011925.no_dsrg_30_11_9_2_5_statement
+#print axioms AutoMath.DSRG3011925.exact_counterexample_statement_faithful
+#print axioms AutoMath.DSRG3011925.no_dsrg_30_11_9_2_5_skeleton
+#print axioms AutoMath.DSRG3011925.correct_row_sum_consequence
+#print axioms AutoMath.DSRG3011925.corrected_local_constraints_force_d_plus_h
+#print axioms AutoMath.DSRG3011925.corrected_local_constraints_consistent

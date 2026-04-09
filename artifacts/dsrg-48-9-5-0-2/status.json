@@ -1,0 +1,15 @@
+{
+  "slug": "dsrg-48-9-5-0-2",
+  "title": "Does a directed strongly regular graph with parameters (48,9,5,0,2) exist?",
+  "stage": "verify",
+  "verify_verdict": "CRITICAL_FLAW",
+  "classification": "PARTIAL",
+  "confidence": "medium",
+  "code_used": false,
+  "lean_ready": false,
+  "lean_complete": false,
+  "next_action": "archive_partial_no_lean_and_remove_the_unsupported_no_cayley_theorem",
+  "publication_status": "NONE",
+  "publication_confidence": "medium",
+  "proof_artifacts_preserved": true
+}

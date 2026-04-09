@@ -1,0 +1,15 @@
+{
+  "slug": "binary-legendre-pair-115",
+  "title": "Does there exist a binary Legendre pair of length 115?",
+  "stage": "verify",
+  "classification": "VARIANT",
+  "confidence": "high",
+  "code_used": true,
+  "lean_ready": false,
+  "lean_complete": false,
+  "verify_verdict": "WRONG_STATEMENT",
+  "next_action": "return_to_solve_with_canonical_definition_and_rederive_invariants",
+  "publication_status": "NONE",
+  "publication_confidence": "high",
+  "proof_artifacts_preserved": true
+}

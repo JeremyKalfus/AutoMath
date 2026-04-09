@@ -1,0 +1,15 @@
+{
+  "slug": "abelian-difference-set-4761-120-3",
+  "title": "Does there exist an abelian (4761,120,3)-difference set?",
+  "stage": "verify",
+  "verify_verdict": "UNVERIFIED",
+  "classification": "PARTIAL",
+  "confidence": "medium",
+  "code_used": true,
+  "lean_ready": false,
+  "lean_complete": false,
+  "next_action": "Supply an exact cited abelian prime-multiplier theorem covering p=13 for this tuple, verify its hypotheses explicitly, then rerun verification before any Lean stage.",
+  "publication_status": "NONE",
+  "publication_confidence": "medium",
+  "proof_artifacts_preserved": true
+}

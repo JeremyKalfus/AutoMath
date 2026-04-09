@@ -1,0 +1,15 @@
+{
+  "slug": "dsrg-60-16-9-2-5",
+  "title": "Does a directed strongly regular graph with parameters (60,16,9,2,5) exist?",
+  "stage": "verify",
+  "verify_verdict": "UNVERIFIED",
+  "classification": "PARTIAL",
+  "confidence": "high",
+  "code_used": true,
+  "lean_ready": false,
+  "lean_complete": false,
+  "next_action": "do not run Lean; continue only if a new unconditional obstruction or a credible exact witness route appears",
+  "publication_status": "NONE",
+  "publication_confidence": "high",
+  "proof_artifacts_preserved": true
+}

@@ -1,0 +1,15 @@
+{
+  "slug": "srg-100-33-8-12",
+  "title": "Does a strongly regular graph with parameters (100,33,8,12) exist?",
+  "stage": "lean",
+  "verify_verdict": "MINOR_FIX",
+  "classification": "FAILED",
+  "confidence": "high",
+  "code_used": false,
+  "lean_ready": false,
+  "lean_complete": false,
+  "next_action": "return this slug to skeptical proof repair: the Lean trace audit shows the recorded global spectrum multiplicities must be 66 and 33, not 77 and 22, so the current 22-dimensional rank argument for Omega does not support the claimed contradiction",
+  "publication_status": "NONE",
+  "publication_confidence": "high",
+  "proof_artifacts_preserved": true
+}

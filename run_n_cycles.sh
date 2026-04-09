@@ -12,8 +12,9 @@ usage() {
   cat <<'EOF'
 Usage: ./run_n_cycles.sh <positive-integer>
 
-Runs AutoMath for a fixed number of cycles.
-Any .stop_harness marker is deferred until the requested cycle count completes.
+Runs AutoMath for a fixed number of publication-first cycles.
+`run_once.sh` now defaults to publication mode; exact-instance feeder mode remains available via `./run_feeder_cycle.sh`.
+Any `.stop_harness` marker is deferred until the requested cycle count completes.
 Set AUTOMATH_SLEEP_SECONDS to override the default 300-second pause between cycles.
 EOF
 }
@@ -48,21 +49,21 @@ while (( completed_cycles < TARGET_CYCLES )); do
   if [[ -f "$ROOT/.stop_harness" ]]; then
     rm -f "$ROOT/.stop_harness"
     deferred_stop_marker=1
-    message="bounded run deferred an existing stop marker before cycle ${cycle_number}/${TARGET_CYCLES} so the requested run could continue."
+    message="bounded publication run deferred an existing stop marker before cycle ${cycle_number}/${TARGET_CYCLES} so the requested run could continue."
     append_ledger "$message"
     append_cycle_log "[run_n_cycles] $message"
   fi
 
   cycle_started_at="$(date '+%Y-%m-%d %H:%M:%S %Z')"
-  message="bounded run cycle ${cycle_number}/${TARGET_CYCLES} started at ${cycle_started_at}."
+  message="bounded publication run cycle ${cycle_number}/${TARGET_CYCLES} started at ${cycle_started_at}."
   append_ledger "$message"
   append_cycle_log "[run_n_cycles] $message"
   if ./run_once.sh; then
-    message="bounded run cycle ${cycle_number}/${TARGET_CYCLES} finished at $(date '+%Y-%m-%d %H:%M:%S %Z')."
+    message="bounded publication run cycle ${cycle_number}/${TARGET_CYCLES} finished at $(date '+%Y-%m-%d %H:%M:%S %Z')."
     append_ledger "$message"
     append_cycle_log "[run_n_cycles] $message"
   else
-    message="bounded run cycle ${cycle_number}/${TARGET_CYCLES} ended with an error at $(date '+%Y-%m-%d %H:%M:%S %Z')."
+    message="bounded publication run cycle ${cycle_number}/${TARGET_CYCLES} ended with an error at $(date '+%Y-%m-%d %H:%M:%S %Z')."
     append_ledger "$message"
     append_cycle_log "[run_n_cycles] $message"
   fi
@@ -70,7 +71,7 @@ while (( completed_cycles < TARGET_CYCLES )); do
   if [[ -f "$ROOT/.stop_harness" ]]; then
     rm -f "$ROOT/.stop_harness"
     deferred_stop_marker=1
-    message="bounded run deferred a stop marker raised during cycle ${cycle_number}/${TARGET_CYCLES} until the requested run completes."
+    message="bounded publication run deferred a stop marker raised during cycle ${cycle_number}/${TARGET_CYCLES} until the requested run completes."
     append_ledger "$message"
     append_cycle_log "[run_n_cycles] $message"
   fi
@@ -85,12 +86,12 @@ while (( completed_cycles < TARGET_CYCLES )); do
   fi
 done
 
-message="bounded run completed ${completed_cycles}/${TARGET_CYCLES} requested cycle(s)."
+message="bounded publication run completed ${completed_cycles}/${TARGET_CYCLES} requested cycle(s)."
 append_ledger "$message"
 append_cycle_log "[run_n_cycles] $message"
 if (( deferred_stop_marker == 1 )); then
   : >"$ROOT/.stop_harness"
-  message="bounded run restored the deferred stop marker after completing ${completed_cycles}/${TARGET_CYCLES} requested cycle(s)."
+  message="bounded publication run restored the deferred stop marker after completing ${completed_cycles}/${TARGET_CYCLES} requested cycle(s)."
   append_ledger "$message"
   append_cycle_log "[run_n_cycles] $message"
 fi

@@ -1,0 +1,16 @@
+{
+  "slug": "c24-4-5-12-cnbc",
+  "title": "Is the quintic circulant C_24(4,5,12) a CNBC graph?",
+  "stage": "verify",
+  "verify_verdict": "VERIFIED",
+  "classification": "COUNTEREXAMPLE",
+  "confidence": "high",
+  "code_used": false,
+  "lean_ready": true,
+  "lean_complete": false,
+  "next_action": "formalize the exact nonexistence proof in Lean for C_24(4,5,12); do not upgrade beyond COUNTEREXAMPLE until Lean completes",
+  "publication_status": "INSTANCE_ONLY",
+  "publication_confidence": "high",
+  "proof_artifacts_preserved": true,
+  "family_affinity": "cnbc_quintic_nonexistence"
+}

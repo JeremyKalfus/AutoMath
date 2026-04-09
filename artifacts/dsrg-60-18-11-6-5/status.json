@@ -1,0 +1,15 @@
+{
+  "slug": "dsrg-60-18-11-6-5",
+  "title": "Does a directed strongly regular graph with parameters (60,18,11,6,5) exist?",
+  "stage": "verify",
+  "verify_verdict": "UNVERIFIED",
+  "classification": "PARTIAL",
+  "confidence": "medium-high",
+  "code_used": true,
+  "lean_ready": false,
+  "lean_complete": false,
+  "next_action": "return_to_solve; keep the tuple as unresolved PARTIAL, do not run Lean, and seek a genuinely unconditional obstruction or construction.",
+  "publication_status": "NONE",
+  "publication_confidence": "medium-high",
+  "proof_artifacts_preserved": true
+}

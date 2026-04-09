@@ -1,0 +1,15 @@
+{
+  "slug": "m5-mobius-ladder-prime-labeling",
+  "title": "Does the M\u00f6bius ladder M_5 admit a prime labeling?",
+  "stage": "verify",
+  "verify_verdict": "REDISCOVERY",
+  "classification": "REDISCOVERY",
+  "confidence": "high",
+  "code_used": false,
+  "lean_ready": false,
+  "lean_complete": false,
+  "next_action": "archive_as_rediscovery",
+  "publication_status": "REDISCOVERY",
+  "publication_confidence": "high",
+  "proof_artifacts_preserved": true
+}

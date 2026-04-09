@@ -1,43 +1,78 @@
-Read `AGENTS.md`, `selected_problem.md`, `artifacts/<slug>/record.md`, `artifacts/<slug>/status.json`, and `PROOFS.md` if it exists.
+Read `AGENTS.md`, `selected_problem.md`, the relevant `record.md`, the relevant `status.json`, and `PROOFS.md` if it exists.
 
 This is the LEAN stage.
 Do NOT browse the internet.
 
-Only continue if the verified result is strong enough to formalize and the current classification is not `REDISCOVERY`.
+First detect whether the selected entry is:
+
+- a `family_campaign`, in which case work under `artifacts/families/<family_slug>/`
+- a `feeder_instance`, in which case work under `artifacts/<slug>/`
+
+Only continue if the verified or generalized result is strong enough to formalize and the current classification is not `REDISCOVERY`.
 
 Goal:
-Formalize the EXACT intended statement, not a proxy.
+Formalize the strongest honest target, not a proxy.
+That target may be:
+
+- the exact intended statement
+- a reusable lemma
+- a theorem slice
+- a family-supporting lemma used by the publication campaign
 
 Rules:
-- use the existing `lean/` AutoMath project as the official Lean/Lake backend when it exists
-- keep the problem-specific Lean source mirrored under `artifacts/<slug>/lean/`
-- start with the exact theorem statement
+
+- use the existing `lean/` AutoMath project as the official Lean/Lake backend
+- keep problem-specific or family-specific Lean sources mirrored under the relevant artifact directory
+- start with the exact theorem or lemma statement
 - then write a proof skeleton
 - then try a full proof only if feasible
 - do not introduce new axioms
 - do not use `sorry`, `admit`, or placeholders in the final claimed proof
-- if Lean is available, run the build/check commands needed to confirm the file really checks, including `lake build`, a `#print axioms` audit for the target theorem, and `lean4checker --fresh` if it is available
-- audit the theorem for faithfulness to the intended statement
-- audit for hidden axioms / `sorryAx` if possible
-- if blocked, leave the best exact statement and proof skeleton you can
+- if Lean is available, run the build/check commands needed to confirm the file really checks
+- when the real publication target is a theorem slice or reusable lemma, formalize that instead of spending all effort on yet another isolated instance
 
-Write under:
-- `artifacts/<slug>/lean/`
+Append to the relevant `record.md`:
 
-Append to `artifacts/<slug>/record.md`:
 - `lean_statement`
 - `lean_skeleton`
 - `lean_result`
 - `lean_blockers`
 
+Update the relevant `status.json` with:
+
+- `stage = "lean"`
+- `lean_ready`
+- `lean_complete`
+- `classification`
+- `confidence`
+- `publication_status`
+- `publication_confidence`
+- `strongest_honest_claim`
+- `theorem_slice_target`
+- `fallback_target`
+- `next_blocker`
+- `next_feeder_instances`
+- `campaign_health`
+- `next_action`
+- `proof_artifacts_preserved`
+
+`PROOFS.md` policy:
+
+- keep `PROOFS.md` as the exact-instance inventory
+- update `PROOFS.md` only if a run really earns `classification = "EXACT"` with `lean_complete = true`
+- do not remove existing exact wins
+- exact-instance entries may still have `publication_status = INSTANCE_ONLY`
+
 If and only if the run really earns `classification = "EXACT"` with `lean_complete = true`, also update `PROOFS.md` in the same run:
+
 - keep exactly one section per solved slug using heading `## <slug>`
 - if the slug already has a section, replace that section instead of duplicating it
-- if `PROOFS.md` does not exist yet, create it with a short header explaining that the LEAN stage maintains it
+- if `PROOFS.md` does not exist yet, create it with a short header
 - include at least:
   - title
   - exact statement
   - verify verdict
+  - publication status
   - Lean completion date in repo state
   - artifact directory
   - record file
@@ -48,17 +83,17 @@ If and only if the run really earns `classification = "EXACT"` with `lean_comple
   - explicit Lean theorem if present
   - axiom audit note if run
   - `lean4checker --fresh` note if unavailable
-- IMPORTANT: update `PROOFS.md` before the final `status.json` write that flips the run to `EXACT`, because the harness may stop the worker as soon as `status.json` says `EXACT`
 
-Update `artifacts/<slug>/status.json` with:
-- `stage = "lean"`
-- `lean_ready`
-- `lean_complete`
-- `classification`
-- `confidence`
-- `next_action`
+Important:
 
-Stop condition:
-- set `classification = "EXACT"` and `lean_complete = true` ONLY if the exact intended statement is fully formalized and checked
-- otherwise keep the run at `CANDIDATE` if the mathematics still looks strong
-- otherwise be conservative
+- update `PROOFS.md` before the final `status.json` write that flips the run to `EXACT`
+- `EXACT` alone is not the global stop condition
+- the automatic stop condition is `publication_status = PAPER_READY`
+
+Classification / publication guidance:
+
+- full formalization of the exact intended instance: `classification = EXACT`
+- full formalization of a nontrivial theorem slice may still leave `classification` as the underlying exact or counterexample class, while `publication_status` becomes `SLICE_EXACT`
+- use `PAPER_READY` only when the strongest honest campaign-level claim looks publishable and the proof artifacts are preserved
+
+Be conservative.

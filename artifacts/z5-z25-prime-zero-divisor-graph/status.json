@@ -1,6 +1,6 @@
 {
   "slug": "z5-z25-prime-zero-divisor-graph",
-  "title": "Is the zero-divisor graph Γ(Z_5 × Z_25) prime?",
+  "title": "Is the zero-divisor graph \u0393(Z_5 \u00d7 Z_25) prime?",
   "stage": "lean",
   "verify_verdict": "VERIFIED",
   "classification": "EXACT",
@@ -8,5 +8,9 @@
   "code_used": true,
   "lean_ready": true,
   "lean_complete": true,
-  "next_action": "Stop the harness and preserve the Lean-checked exact artifact for z5-z25-prime-zero-divisor-graph; `lake build` and the axiom audit passed, and `lean4checker --fresh` was unavailable."
+  "next_action": "Stop the harness and preserve the Lean-checked exact artifact for z5-z25-prime-zero-divisor-graph; `lake build` and the axiom audit passed, and `lean4checker --fresh` was unavailable.",
+  "publication_status": "INSTANCE_ONLY",
+  "publication_confidence": "high",
+  "proof_artifacts_preserved": true,
+  "family_affinity": "zero_divisor_prime_labelings"
 }

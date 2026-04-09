@@ -1,0 +1,15 @@
+{
+  "slug": "ruskey-savage-q6",
+  "title": "Ruskey-Savage at dimension 6",
+  "stage": "verify",
+  "classification": "PARTIAL",
+  "confidence": "high",
+  "code_used": false,
+  "lean_ready": false,
+  "lean_complete": false,
+  "verify_verdict": "MINOR_FIX",
+  "next_action": "continue solve from the repaired parallel and face-contained lemmas; drop the quotient-obstruction claim as a verified tool and do not start Lean",
+  "publication_status": "NONE",
+  "publication_confidence": "high",
+  "proof_artifacts_preserved": true
+}

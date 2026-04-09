@@ -1,0 +1,15 @@
+{
+  "slug": "dsrg-48-22-11-9-11",
+  "title": "Does a directed strongly regular graph with parameters (48,22,11,9,11) exist?",
+  "stage": "verify",
+  "verify_verdict": "MINOR_FIX",
+  "classification": "PARTIAL",
+  "confidence": "medium",
+  "code_used": true,
+  "lean_ready": false,
+  "lean_complete": false,
+  "next_action": "return to solve with the verified algebra package only; the five-cell obstruction needs either stronger hypotheses or a new argument before any stronger claim",
+  "publication_status": "NONE",
+  "publication_confidence": "medium",
+  "proof_artifacts_preserved": true
+}

@@ -1,0 +1,61 @@
+[
+  {
+    "family_slug": "zero_divisor_prime_labelings",
+    "title": "Zero-divisor prime labelings family campaign",
+    "family_name": "Prime labelings of zero-divisor graph families",
+    "entry_type": "family_campaign",
+    "priority": 1,
+    "active": true,
+    "dossier_path": "campaigns/zero_divisor_prime_labelings.md",
+    "artifact_dir": "artifacts/families/zero_divisor_prime_labelings",
+    "publication_status": "SLICE_CANDIDATE",
+    "theorem_slice_hint": "Start with a support-template theorem for Γ(Z_p × Z_25) and Γ(Z_p × Z_p × Z_2), then pressure-test p = 11 as the next feeder.",
+    "why_now": "The repo already has a cluster of Lean-backed exact instances with repeated support-class decompositions and reusable label roles.",
+    "seed_instances": [
+      "z3-z25-prime-zero-divisor-graph",
+      "z5-z25-prime-zero-divisor-graph",
+      "z7-z25-prime-zero-divisor-graph",
+      "z5-z5-z2-prime-zero-divisor-graph",
+      "z5-z5-z3-prime-zero-divisor-graph",
+      "z7-z7-z2-prime-zero-divisor-graph",
+      "z2-power-8-prime-zero-divisor-graph"
+    ]
+  },
+  {
+    "family_slug": "cnbc_quintic_nonexistence",
+    "title": "CNBC quintic nonexistence family campaign",
+    "family_name": "Closed-neighborhood balanced colorings of quintic circulants",
+    "entry_type": "family_campaign",
+    "priority": 2,
+    "active": true,
+    "dossier_path": "campaigns/cnbc_quintic_nonexistence.md",
+    "artifact_dir": "artifacts/families/cnbc_quintic_nonexistence",
+    "publication_status": "SLICE_CANDIDATE",
+    "theorem_slice_hint": "Package the verified exact nonexistence proofs as a Fourier and periodicity criterion for quintic circulants before hunting more isolated tuples.",
+    "why_now": "The repo already contains three verified exact nonexistence arguments with a common circulant-operator backbone.",
+    "seed_instances": [
+      "c16-4-5-8-cnbc",
+      "c20-2-3-10-cnbc",
+      "c24-4-5-12-cnbc"
+    ]
+  },
+  {
+    "family_slug": "dsrg_obstructions",
+    "title": "DSRG obstruction reserve campaign",
+    "family_name": "Directed strongly regular graph obstruction packages",
+    "entry_type": "family_campaign",
+    "priority": 3,
+    "active": false,
+    "dossier_path": "campaigns/dsrg_obstructions.md",
+    "artifact_dir": "artifacts/families/dsrg_obstructions",
+    "publication_status": "NONE",
+    "theorem_slice_hint": "Hold in reserve unless one dsrg vein develops a clean family obstruction rather than another isolated local package.",
+    "why_now": "The ledger contains many exact local obstruction packages, but theorem-level closure is still weaker than the top two campaigns.",
+    "seed_instances": [
+      "dsrg-91-12-6-5-1",
+      "dsrg-40-18-9-7-9",
+      "dsrg-48-22-11-9-11",
+      "dsrg-30-11-9-2-5"
+    ]
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "slug": "srg-85-30-11-10",
+  "title": "Does a strongly regular graph with parameters (85,30,11,10) exist?",
+  "stage": "verify",
+  "verify_verdict": "VERIFIED",
+  "classification": "PARTIAL",
+  "confidence": "high",
+  "code_used": false,
+  "lean_ready": false,
+  "lean_complete": false,
+  "next_action": "do not run Lean; continue only if a sharper unconditional obstruction or a credible exact witness route appears",
+  "publication_status": "NONE",
+  "publication_confidence": "high",
+  "proof_artifacts_preserved": true
+}

@@ -1,0 +1,15 @@
+{
+  "slug": "b20-munchhausen-matrix",
+  "title": "Is the Baron's omni-sequence value B(20) equal to 3?",
+  "stage": "verify",
+  "verify_verdict": "UNVERIFIED",
+  "classification": "PARTIAL",
+  "confidence": "high",
+  "code_used": true,
+  "lean_ready": false,
+  "lean_complete": false,
+  "next_action": "mark_failed_and_continue; no rediscovery was established within budget, but the current record still lacks an exact proof or disproof of B(20)=3, so Lean should not run",
+  "publication_status": "NONE",
+  "publication_confidence": "high",
+  "proof_artifacts_preserved": true
+}

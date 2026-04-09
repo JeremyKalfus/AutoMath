@@ -1,0 +1,15 @@
+{
+  "slug": "dsrg-91-12-6-5-1",
+  "title": "Does a directed strongly regular graph dsrg(91,12,6,5,1) exist?",
+  "stage": "lean",
+  "verify_verdict": "UNVERIFIED",
+  "classification": "PARTIAL",
+  "confidence": "high",
+  "code_used": false,
+  "lean_ready": false,
+  "lean_complete": false,
+  "next_action": "downgrade the prior counterexample claim and return to solve/verify with a new exact argument; the current block-count proof fails because the mutual block row sum must include the six forced edges into x, so Lean should stop at the exact statement plus blocker lemmas",
+  "publication_status": "NONE",
+  "publication_confidence": "high",
+  "proof_artifacts_preserved": true
+}

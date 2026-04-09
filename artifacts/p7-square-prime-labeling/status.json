@@ -1,0 +1,15 @@
+{
+  "slug": "p7-square-prime-labeling",
+  "title": "Does the square of the 7-vertex path P_7^2 admit a prime labeling?",
+  "stage": "lean",
+  "verify_verdict": "VERIFIED",
+  "classification": "EXACT",
+  "confidence": "high",
+  "code_used": false,
+  "lean_ready": true,
+  "lean_complete": true,
+  "next_action": "stop the harness; the exact intended statement for P_7^2 is formalized and checked in Lean",
+  "publication_status": "INSTANCE_ONLY",
+  "publication_confidence": "high",
+  "proof_artifacts_preserved": true
+}

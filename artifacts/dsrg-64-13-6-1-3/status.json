@@ -1,0 +1,15 @@
+{
+  "slug": "dsrg-64-13-6-1-3",
+  "title": "Does a directed strongly regular graph with parameters (64,13,6,1,3) exist?",
+  "stage": "verify",
+  "verify_verdict": "VERIFIED",
+  "classification": "VARIANT",
+  "confidence": "high",
+  "code_used": false,
+  "lean_ready": false,
+  "lean_complete": false,
+  "next_action": "do not run Lean; keep this slug as a verified VARIANT only and move aside unless a new argument addresses the full non-Cayley case",
+  "publication_status": "NONE",
+  "publication_confidence": "high",
+  "proof_artifacts_preserved": true
+}

@@ -1,0 +1,15 @@
+{
+  "slug": "dsrg-54-10-4-1-2",
+  "title": "Does a directed strongly regular graph with parameters (54,10,4,1,2) exist?",
+  "stage": "verify",
+  "verify_verdict": "UNVERIFIED",
+  "classification": "PARTIAL",
+  "confidence": "high",
+  "code_used": false,
+  "lean_ready": false,
+  "lean_complete": false,
+  "next_action": "do not run Lean; the current record is internally consistent but still lacks an unconditional proof of nonexistence",
+  "publication_status": "NONE",
+  "publication_confidence": "high",
+  "proof_artifacts_preserved": true
+}

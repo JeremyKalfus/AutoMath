@@ -1,0 +1,91 @@
+import Mathlib.Data.Nat.GCD.Basic
+
+namespace AutoMath
+namespace Families
+namespace PrimeSupportTemplates
+
+/-- A reusable coprimality lemma for the four-class support graph that appears in
+`Γ(Z_p × Z_25)`. The theorem deliberately abstracts away the ring and keeps only the support-class
+edge pattern. -/
+theorem edgeCoprime_of_zp_z25_template
+    {V : Type*}
+    (Adj : V → V → Prop)
+    (A B C D : V → Prop)
+    (label : V → Nat)
+    (hAdj :
+      ∀ x y, Adj x y →
+        ((A x ∧ C y) ∨ (C x ∧ A y) ∨
+         (B x ∧ B y) ∨
+         (B x ∧ C y) ∨ (C x ∧ B y) ∨
+         (B x ∧ D y) ∨ (D x ∧ B y)))
+    (hAC : ∀ x y, A x → C y → Nat.Coprime (label x) (label y))
+    (hBB : ∀ x y, B x → B y → Nat.Coprime (label x) (label y))
+    (hBC : ∀ x y, B x → C y → Nat.Coprime (label x) (label y))
+    (hBD : ∀ x y, B x → D y → Nat.Coprime (label x) (label y)) :
+    ∀ x y, Adj x y → Nat.Coprime (label x) (label y) := by
+  intro x y hxy
+  rcases hAdj x y hxy with h | h | h | h | h | h | h
+  · exact hAC x y h.1 h.2
+  · simpa [Nat.coprime_comm] using hAC y x h.2 h.1
+  · exact hBB x y h.1 h.2
+  · exact hBC x y h.1 h.2
+  · simpa [Nat.coprime_comm] using hBC y x h.2 h.1
+  · exact hBD x y h.1 h.2
+  · simpa [Nat.coprime_comm] using hBD y x h.2 h.1
+
+/-- A reusable coprimality lemma for the six-class support graph that appears in
+`Γ(Z_p × Z_p × Z_2)` after the singleton class gets label `1`. -/
+theorem edgeCoprime_of_zp_zp_z2_template
+    {V : Type*}
+    (Adj : V → V → Prop)
+    (A B C D E F : V → Prop)
+    (label : V → Nat)
+    (hAdj :
+      ∀ x y, Adj x y →
+        ((A x ∧ B y) ∨ (B x ∧ A y) ∨
+         (A x ∧ F y) ∨ (F x ∧ A y) ∨
+         (B x ∧ E y) ∨ (E x ∧ B y) ∨
+         (C x ∧ D y) ∨ (D x ∧ C y)))
+    (hAB : ∀ x y, A x → B y → Nat.Coprime (label x) (label y))
+    (hAF : ∀ x y, A x → F y → Nat.Coprime (label x) (label y))
+    (hBE : ∀ x y, B x → E y → Nat.Coprime (label x) (label y))
+    (hCD : ∀ x y, C x → D y → Nat.Coprime (label x) (label y)) :
+    ∀ x y, Adj x y → Nat.Coprime (label x) (label y) := by
+  intro x y hxy
+  rcases hAdj x y hxy with h | h | h | h | h | h | h | h
+  · exact hAB x y h.1 h.2
+  · simpa [Nat.coprime_comm] using hAB y x h.2 h.1
+  · exact hAF x y h.1 h.2
+  · simpa [Nat.coprime_comm] using hAF y x h.2 h.1
+  · exact hBE x y h.1 h.2
+  · simpa [Nat.coprime_comm] using hBE y x h.2 h.1
+  · exact hCD x y h.1 h.2
+  · simpa [Nat.coprime_comm] using hCD y x h.2 h.1
+
+/-- A campaign-oriented specialization of the six-class support template: once the singleton class
+gets label `1`, the `C-D` interface is automatically coprime and the theorem slice reduces to the
+three genuinely constrained interfaces `A-B`, `A-F`, and `B-E`. -/
+theorem edgeCoprime_of_zp_zp_z2_template_of_singleton_one
+    {V : Type*}
+    (Adj : V → V → Prop)
+    (A B C D E F : V → Prop)
+    (label : V → Nat)
+    (hAdj :
+      ∀ x y, Adj x y →
+        ((A x ∧ B y) ∨ (B x ∧ A y) ∨
+         (A x ∧ F y) ∨ (F x ∧ A y) ∨
+         (B x ∧ E y) ∨ (E x ∧ B y) ∨
+         (C x ∧ D y) ∨ (D x ∧ C y)))
+    (hAB : ∀ x y, A x → B y → Nat.Coprime (label x) (label y))
+    (hAF : ∀ x y, A x → F y → Nat.Coprime (label x) (label y))
+    (hBE : ∀ x y, B x → E y → Nat.Coprime (label x) (label y))
+    (hC1 : ∀ x, C x → label x = 1) :
+    ∀ x y, Adj x y → Nat.Coprime (label x) (label y) := by
+  apply edgeCoprime_of_zp_zp_z2_template Adj A B C D E F label hAdj hAB hAF hBE
+  intro x y hx hy
+  rw [hC1 x hx]
+  simp
+
+end PrimeSupportTemplates
+end Families
+end AutoMath

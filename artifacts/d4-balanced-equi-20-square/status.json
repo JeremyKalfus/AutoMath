@@ -1,0 +1,15 @@
+{
+  "slug": "d4-balanced-equi-20-square",
+  "title": "Does there exist a 4-balanced equi-20-square?",
+  "stage": "verify",
+  "verify_verdict": "WRONG_STATEMENT",
+  "classification": "VARIANT",
+  "confidence": "high",
+  "code_used": true,
+  "lean_ready": false,
+  "lean_complete": false,
+  "next_action": "mark_failed_variant_and_continue",
+  "publication_status": "NONE",
+  "publication_confidence": "high",
+  "proof_artifacts_preserved": true
+}

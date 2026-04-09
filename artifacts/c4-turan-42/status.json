@@ -1,0 +1,15 @@
+{
+  "slug": "c4-turan-42",
+  "title": "Is ex(42, C4) = 137?",
+  "stage": "verify",
+  "verify_verdict": "UNVERIFIED",
+  "classification": "PARTIAL",
+  "confidence": "high",
+  "code_used": true,
+  "lean_ready": false,
+  "lean_complete": false,
+  "next_action": "archive_as_failed_no_exact_proof",
+  "publication_status": "NONE",
+  "publication_confidence": "high",
+  "proof_artifacts_preserved": true
+}

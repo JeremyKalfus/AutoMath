@@ -1,0 +1,27 @@
+{
+  "slug": "family-cnbc_quintic_nonexistence",
+  "title": "CNBC quintic nonexistence family campaign",
+  "entry_type": "family_campaign",
+  "family_slug": "cnbc_quintic_nonexistence",
+  "family_name": "Closed-neighborhood balanced colorings of quintic circulants",
+  "stage": "campaign_seed",
+  "classification": "COUNTEREXAMPLE",
+  "confidence": "high",
+  "code_used": false,
+  "lean_ready": false,
+  "lean_complete": false,
+  "publication_status": "SLICE_CANDIDATE",
+  "publication_confidence": "medium-high",
+  "strongest_honest_claim": "The repo already supports a theorem-slice campaign based on Fourier and periodicity obstructions to CNBC colorings in selected quintic circulants.",
+  "paper_title_hint": "Fourier and periodicity obstructions to closed-neighborhood balanced colorings in quintic circulants",
+  "theorem_slice_target": "A two-route Fourier/periodicity nonexistence theorem for selected quintic circulants.",
+  "fallback_target": "A structural obstruction package with exact frontier applications C16, C20, and C24 if the unified criterion theorem is not yet clean.",
+  "next_blocker": "Package the exact C16, C20, and C24 proofs as one clean criterion theorem, especially the opposite-pair reduction in the C20 line.",
+  "next_feeder_instances": [
+    "c28-4-5-14-cnbc",
+    "c28-2-3-14-cnbc"
+  ],
+  "campaign_health": "warm",
+  "proof_artifacts_preserved": true,
+  "next_action": "run_generalize_to_package_the_exact_counterexamples_into_structural_obstruction_lemmas"
+}

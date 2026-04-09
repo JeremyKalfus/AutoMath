@@ -19,23 +19,23 @@ append_cycle_log() {
 }
 
 while [[ ! -f "$ROOT/.stop_harness" ]]; do
-  message="cycle started at $(date '+%Y-%m-%d %H:%M:%S %Z')."
+  message="publication cycle started at $(date '+%Y-%m-%d %H:%M:%S %Z')."
   append_ledger "$message"
   append_cycle_log "[run_continuous] $message"
   if ./run_once.sh; then
-    message="cycle finished at $(date '+%Y-%m-%d %H:%M:%S %Z')."
+    message="publication cycle finished at $(date '+%Y-%m-%d %H:%M:%S %Z')."
     append_ledger "$message"
     append_cycle_log "[run_continuous] $message"
   else
-    message="cycle ended with an error at $(date '+%Y-%m-%d %H:%M:%S %Z')."
+    message="publication cycle ended with an error at $(date '+%Y-%m-%d %H:%M:%S %Z')."
     append_ledger "$message"
     append_cycle_log "[run_continuous] $message"
   fi
   if [[ -f "$ROOT/.stop_harness" ]]; then
-    append_cycle_log "[run_continuous] stop marker detected after the cycle; stopping the continuous runner."
+    append_cycle_log "[run_continuous] stop marker detected after the publication cycle; stopping the continuous runner."
     break
   fi
-  message="cycle sleeping for 300 seconds."
+  message="publication cycle sleeping for 300 seconds."
   append_ledger "$message"
   append_cycle_log "[run_continuous] $message"
   sleep 300

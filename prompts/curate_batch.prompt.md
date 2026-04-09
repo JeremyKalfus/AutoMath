@@ -4,117 +4,198 @@ This is the CURATION stage.
 Use web search.
 
 Goal:
-Create a queue of exactly 5 VERY NICHE, SIMPLE, still-open math problems that GPT-5.4 could plausibly solve in one dedicated no-web run.
+Write `queue.json` as a publication-oriented mixed queue of exactly 5 dossiers.
+The queue may contain both:
+
+- `entry_type = "family_campaign"`
+- `entry_type = "feeder_instance"`
+
+The harness is no longer optimizing for isolated one-off wins.
+Optimize for:
+
+- publication potential
+- named family / named conjecture alignment
+- theorem-slice plausibility
+- generalization potential
+- reusable proof-template potential
+- verifier and Lean tractability
+- rediscovery resistance
+- diversity across families
 
 Hard limits:
+
 - max 20 searches total
-- maximum 8 minutes of curation effort
-- stop early as soon as 5 acceptable problems are found
+- max 8 minutes of curation effort
+- stop early once 5 acceptable entries are secured
 - do not keep browsing after a valid queue has been found
 - at or before the budget boundary, stop browsing and immediately write `queue.json` and `selected_problem.md` before any closing prose
 
-Skip any problem whose slug already appears in `failed_problems.json` or is clearly a duplicate / near-duplicate of a failed problem.
+Pre-search exclusion sweep:
+Before any web search, build an exclusion set from cheap local memory.
+Check, if present and inexpensive to read:
+
+- `failed_problems.json`
+- `queue.json`
+- `selected_problem.md`
+- `ledger.md`
+- `PROOFS.md`
+- `campaigns/`
+- `campaigns/manifest.json`
+- artifact directory names and cheap status summaries if available
+- any `attempted_problems.json`, `rediscoveries.json`, `candidate_problems.json`, or similar memory file
+
+Treat a problem as ALREADY ATTEMPTED if it appears under any prior non-`NEW` status, including:
+
+- `FAILED`
+- `PARTIAL`
+- `VARIANT`
+- `CANDIDATE`
+- `COUNTEREXAMPLE`
+- `REDISCOVERY`
+- `EXACT`
+
+Hard skip any exact or near-duplicate attempted problem, not just failed ones.
+Near-duplicate means any of:
+
+- same slug
+- same exact title
+- same exact parameter tuple / instance
+- same canonical-source anchor
+- same intended statement up to trivial rewording, reordered tuple, or notation change
+
+When uncertain whether a candidate is just a rephrasing of an earlier attempt, skip it.
+
+Campaign-first policy:
+
+- Up to 2 queue entries may be `family_campaign`.
+- Remaining entries may be `feeder_instance`.
+- Prefer feeder instances that strengthen an active campaign rather than random unrelated one-offs.
+- If there is at least one active campaign with an unresolved theorem-slice blocker, at least 3 of the 5 queue entries must support active campaigns.
+- In that case, at most 2 queue entries may be broad unrelated candidates.
+- If two family-campaign entries are queued, fill the remaining three slots with campaign feeders before considering unrelated problems.
+- If a named family already has either:
+  - 2 or more exact instances in repo memory, or
+  - 1 exact instance plus 2 strong verified near-results,
+  then prefer opening or extending a campaign instead of queueing yet another isolated instance from that family.
+
+Priority order:
+
+1. active publication campaigns already seeded from repo memory
+2. feeder instances that discriminate between campaign theorem templates
+3. only then fresh unrelated curation
+
+Diversity control:
+
+- Do not let all 5 queued items collapse into one paper or one narrow literature vein unless it is overwhelmingly stronger than the alternatives.
+- At most 2 queued items may come from the same narrow source family unless that family is an active campaign.
+- Sample at least 3 distinct source families or literature veins during discovery unless the campaign-first evidence is overwhelmingly stronger.
+
+Search protocol under the 20-search cap:
+
+1. Discovery pass:
+   - first 4 to 6 searches must sample at least 3 distinct families or literature veins
+2. Triage pass:
+   - next 3 to 4 searches reduce to at most 8 candidates
+3. Audit pass:
+   - use remaining searches only on the strongest candidates and stop as soon as 5 survive
+
+Use varied query shapes:
+
+- family-level search for small open instances
+- exact-instance search using exact notation / tuple / title
+- alternate-notation / reordered-tuple / synonym search
+- canonical-source search
+- source-internal theorem / proposition / example / observation / corollary / sufficient-condition search
+- outside-source status search
+- recent status / citation / discussion search when the source is a paper or discussion page
+
+Required publication audit for each final queued candidate:
+
+- exact-instance search
+- alternate-notation / synonym search
+- canonical-source search
+- theorem / proposition / example / observation / corollary / sufficient-condition check inside the canonical source
+- one independent outside-source status search
+- one recent status / citation / discussion search when appropriate
+- attempted-problem conflict check against repo memory
+- explicit `why_still_appears_open`
+- explicit `why_this_could_be_publishable`
+
+Hard rediscovery rule:
+
+- If a specific instance is extracted from a broader open family, you MUST check whether the same source already contains an earlier theorem, proposition, example, observation, corollary, or sufficient condition that settles that exact instance.
+- Do not trust only a concluding-question sentence.
+- Reject or strongly downrank candidates when:
+  - the exact instance already appears in an example or theorem
+  - the status is family-open but instance-specific status is unclear
+  - the only evidence of openness is vague
+  - the instance is likely already implied by a general sufficient condition
 
 Strong preferences:
+
 - crisp exact statements
+- publication-worthy theorem targets
+- theorem-slice plausibility
+- structural or family-level leverage
 - low prerequisite depth
 - verifier-friendly problems
 - reasoning-friendly problems
 - no huge brute-force-first path
-- diversity across the 5 queued problems; downrank batches that collapse into one narrow recent literature vein unless that vein is overwhelmingly stronger
-
-What "GPT-5.4-capable" means for this harness:
-- intended statement fits in at most about 120 words
-- at most 6 basic definitions or conventions are needed
-- finite or small-parameter problem
-- one of these shapes:
-  - exact value
-  - minimum / maximum size
-  - existence / nonexistence
-  - explicit counterexample
-  - exact small-parameter bound
-- plausible short structural attack via symmetry, invariant, extremal reasoning, construction, or contradiction
-- cheap verifier or witness-checker exists
-- low literature dependence
-- plausible Lean statement formalization
-- if code is needed at all, it should mainly be a short checker or tiny bounded experiment
+- plausible Lean formalization
+- diversity across the queue
 
 Hard reject if any of these hold:
+
 - broad asymptotic conjecture
-- heavy analysis / probability / algebraic geometry / large machinery
+- heavy machinery dominates
 - stale or unclear open status
 - likely already solved
 - only realistic path is huge brute force / generic SAT / ILP / optimization
 - no clear verifier
 - intended statement is ambiguous
+- clearly already attempted in this repo
+- duplicate / near-duplicate of any queued, selected, solved, rediscovered, candidate, variant, partial, counterexample, or failed problem
 
-Prefer canonical or near-canonical sources:
-- problem repositories
-- parameter tables
-- benchmark pages
-- official problem pages
-- recent status-confirming discussions
-- Prefer canonical open-problem repositories, parameter tables, and gap pages over paper-conclusion "open directions".
-- If a candidate comes from a recent paper conjecture or open-problems section, downrank it unless there is independent evidence that the exact instance still appears open.
+Every final queue entry must include:
 
-Every final queued candidate must pass a bounded rediscovery audit before it enters the queue.
-Every final queued candidate must also pass a deeper open-status audit, not just a quick source-local check.
-For each final candidate, explicitly do all of these checks:
-- exact instance search using the exact notation / tuple / title
-- alternate notation / reordered tuple / synonym search
-- canonical-source search
-- theorem / proposition / example / observation / corollary search inside the canonical source
-- one independent search outside the canonical source for status evidence
-- one recent status / citation / discussion search if the source is a paper or discussion rather than a repository or table
-
-Hard rediscovery rule:
-- If a specific instance is extracted from a broader open family, you MUST check whether the same source already contains an earlier theorem, proposition, example, observation, corollary, or sufficient condition that settles that exact instance.
-- Do not trust a conclusion or open-question section by itself.
-- Reject or strongly downrank candidates when:
-  - the exact instance already appears in an example or theorem
-  - the status is family-open but instance-specific status is unclear
-  - the only apparent evidence of openness is a vague concluding question
-  - the instance is likely already implied by a general sufficient condition
-
-For each chosen problem, collect:
+- `entry_type`
 - `title`
 - `slug`
 - `question`
+- `family_name`
+- `named_conjecture`
 - `canonical_source`
 - `open_status_checked_on`
 - `canonical_statement`
 - `intended_statement`
 - `definitions`
+- `attack_style`
+- `generalization_potential`
+- `proof_template_reuse_score`
+- `publishability_score`
+- `theorem_slice_hint`
+- `campaign_affinity`
+- `publication_red_flags`
 - `why_reasoning_friendly`
 - `why_low_token`
 - `verifier_hint`
 - `lean_hint`
-- `red_flags`
-- `attack_style`
 - `rediscovery_risk`
 - `why_still_appears_open`
+- `why_this_could_be_publishable`
+- `attempted_conflict_check`
 - `curation_confidence`
+- `publication_status`
 
-Rules for the queue:
-- `queue.json` must be a valid JSON array of exactly 5 dossiers
-- use at most 2 queued problems from the same paper, source family, or very narrow recent literature vein unless the evidence is overwhelmingly stronger than the alternatives
-- keep the queue best-first by:
-  1. reasoning_friendliness
-  2. verifier_feasibility
-  3. freshness / open-status confidence
-  4. low prerequisite depth
-  5. low token cost
-- preferred outcome: 5 solid dossiers
-- if fewer than 5 high-confidence problems are found within the budget, fill the remaining slots with the best available candidates and set `"curation_confidence": "low"` on those weaker entries rather than hanging forever
-- when weaker candidates are used, include clear `rediscovery_risk` notes rather than silently treating them as frontier-clean
-- otherwise use `"curation_confidence": "high"`
+Status guidance at curation time:
 
-Write guarantee:
-- before exiting, ALWAYS write `queue.json`
-- before exiting, ALWAYS write `selected_problem.md`
-- the first queue entry must be copied into `selected_problem.md`
-- append exactly one short line to `ledger.md` in plain English saying which 5 slugs were queued
+- new family campaign target with real theorem-slice traction: `SLICE_CANDIDATE`
+- exact feeder instance with no family closure yet: `NONE` or `INSTANCE_ONLY`
+- suspected rediscovery: do not queue it
 
-Do not solve anything during curation.
-Do not write a long essay.
-Preserve the reasoning-first bias and downrank search-heavy or giant-bruteforce-first tasks.
+Queue-writing requirements:
+
+- `queue.json` must contain exactly 5 entries
+- no placeholder prose
+- write `selected_problem.md` for the highest-priority first entry
+- preserve bounded behavior
