@@ -143,5 +143,13 @@
   "dsrg-48-22-11-9-11",
   "dsrg-56-12-3-1-3",
   "dsrg-48-9-5-0-2",
-  "dsrg-30-11-9-2-5"
+  "dsrg-30-11-9-2-5",
+  {
+    "slug": "z11-z25-prime-zero-divisor-graph",
+    "reason": "CANDIDATE",
+    "title": "Is the zero-divisor graph Γ(Z_11 × Z_25) prime?",
+    "notes": "Verified feeder evidence archived so the p = 11 witness remains campaign input for the zero-divisor theorem slice without reentering the live queue as a fresh target.",
+    "publication_status": "SLICE_CANDIDATE",
+    "checked_on": "2026-04-09"
+  }
 ]

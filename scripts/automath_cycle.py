@@ -563,6 +563,24 @@ def archive_exact_instance(entry: dict, notes: str, publication_status: str = "I
     remove_problem_from_queue(slug)
 
 
+def archive_attempted_problem(entry: dict, reason: str, notes: str, publication_status: str | None = None) -> None:
+    slug = entry["slug"]
+    failed = load_json(FAILED, [])
+    if slug not in {slug_of(item) for item in failed}:
+        failed.append(
+            {
+                "slug": slug,
+                "reason": reason,
+                "title": entry.get("title"),
+                "notes": notes,
+                "publication_status": publication_status or entry.get("publication_status", "NONE"),
+                "checked_on": today_str(),
+            }
+        )
+    write_json(FAILED, failed)
+    remove_problem_from_queue(slug)
+
+
 def transport_env(profile: str) -> tuple[dict, tempfile.TemporaryDirectory | None]:
     env = os.environ.copy()
     temp_home = None
@@ -629,6 +647,12 @@ def run_stage(root: pathlib.Path, stage_name: str, prompt_file: pathlib.Path, se
             " Use live web only inside the bounded prior-art or publication-status pass, "
             "then return to skeptical checking. Keep the audit bounded and update the status "
             "file before any closing message."
+        )
+    elif stage_name.startswith("lean_family_"):
+        preface += (
+            " Stay bounded to the active family dossier, family record/status, and current family Lean modules. "
+            "Do not roam solved exact-instance artifact directories unless the family record explicitly names one as a necessary dependency. "
+            "Prefer one reusable family lemma or one theorem-slice skeleton, update the family status file, and stop once the current Lean target is honestly checked."
         )
 
     prompt_text = preface + "\n\n" + prompt_file.read_text(encoding="utf-8")
@@ -802,9 +826,16 @@ def write_publication_summary(active_campaign_slug: str | None, worker_status: s
     if primary is None and campaigns:
         primary = campaigns[0]
     strongest_status = strongest_publication_status(campaigns) if campaigns else "NONE"
+    strongest_claim = status_or_manifest(primary, "strongest_honest_claim") if primary else "(none)"
     theorem_target = status_or_manifest(primary, "theorem_slice_target") if primary else "(none)"
     next_blocker = status_or_manifest(primary, "next_blocker", status_or_manifest(primary, "next_action")) if primary else "(none)"
     next_feeders = status_or_manifest(primary, "next_feeder_instances", []) if primary else []
+    next_decisive_feeder = next_feeders[0] if next_feeders else "(none listed)"
+    lean_family_complete = any(
+        bool(load_campaign_status(campaign).get("lean_complete"))
+        or bool(load_campaign_status(campaign).get("lean_family_lemma_complete"))
+        for campaign in campaigns
+    )
     status_paths = [str(campaign_status_path(campaign).relative_to(ROOT)) for campaign in campaigns[:3]]
     summary_lines = [
         "# AutoMath Publication Summary",
@@ -812,9 +843,12 @@ def write_publication_summary(active_campaign_slug: str | None, worker_status: s
         f"- Updated: `{now_str()}`",
         f"- Active campaigns: {', '.join(c['family_slug'] for c in campaigns) if campaigns else '(none)'}",
         f"- Strongest current publication status: `{strongest_status}`",
+        f"- Strongest honest claim: {strongest_claim}",
         f"- Active theorem-slice target: {theorem_target}",
         f"- Next blocker: {next_blocker}",
+        f"- Next decisive feeder instance: {next_decisive_feeder}",
         f"- Next feeder instances: {', '.join(next_feeders) if next_feeders else '(none listed)'}",
+        f"- Any Lean family lemma or slice complete: `{'yes' if lean_family_complete else 'no'}`",
         f"- xhigh usable in this environment: `{'yes' if supports_xhigh() else 'no'}`",
         f"- Isolated git worktrees feasible: `{'yes' if git_worktree_supported() else 'no'}`",
         "- Automatic stop condition: `publication_status = PAPER_READY` with preserved proof artifacts",
@@ -829,9 +863,12 @@ def write_publication_summary(active_campaign_slug: str | None, worker_status: s
     report_lines = [
         f"[publication_summary] active campaign: {primary['family_slug'] if primary else '(none)'}",
         f"[publication_summary] strongest publication_status: {strongest_status}",
+        f"[publication_summary] strongest honest claim: {strongest_claim}",
         f"[publication_summary] theorem slice target: {theorem_target}",
         f"[publication_summary] next blocker: {next_blocker}",
+        f"[publication_summary] next decisive feeder: {next_decisive_feeder}",
         f"[publication_summary] next feeders: {', '.join(next_feeders) if next_feeders else '(none listed)'}",
+        f"[publication_summary] any Lean family lemma complete: {'yes' if lean_family_complete else 'no'}",
         f"[publication_summary] worker infra: {worker_status}",
         f"[publication_summary] summary path: {FAMILY_SUMMARY.relative_to(ROOT)}",
         f"[publication_summary] status paths: {', '.join(status_paths) if status_paths else '(none)'}",
@@ -1169,6 +1206,19 @@ def run_feeder_cycle() -> int:
 
     run_instance_lean(entry, status_path)
     ensure_publication_defaults(status_path)
+    classification = status_value(status_path, "classification")
+    verify_verdict = status_value(status_path, "verify_verdict")
+    publication_status = status_value(status_path, "publication_status") or "NONE"
+    if verify_verdict == "VERIFIED" and classification in {"CANDIDATE", "COUNTEREXAMPLE"}:
+        archive_attempted_problem(
+            entry,
+            classification,
+            "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+            publication_status,
+        )
+        append_ledger(
+            f"Archived verified feeder evidence for {entry['slug']} so it remains campaign fuel without reentering the live queue."
+        )
     if publication_stop_ready(status_path):
         STOP_MARKER.write_text("", encoding="utf-8")
         append_ledger(f"Publication-ready stop marker set after feeder result {entry['slug']} reached PAPER_READY.")

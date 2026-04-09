@@ -547,6 +547,7 @@
 - Parallel publication worker started for cnbc_quintic_nonexistence in isolated git worktree.
 - Generalize timed out for family campaign zero_divisor_prime_labelings.
 - Publication audit timed out for family campaign zero_divisor_prime_labelings.
+- The bounded publication cycle was stopped during family Lean after the generalize and publication-audit passes had already preserved the current campaign state; no worker infrastructure failure occurred.
 - Parallel publication worker finished cleanly for cnbc_quintic_nonexistence and synced stable dossier/artifact updates back.
 - Campaign zero_divisor_prime_labelings remains active with publication status SLICE_CANDIDATE.
 - publication mode selected active family campaign zero_divisor_prime_labelings.
@@ -556,3 +557,13 @@
 - Publication audit timed out for family campaign zero_divisor_prime_labelings.
 - Parallel publication worker finished cleanly for cnbc_quintic_nonexistence and synced stable dossier/artifact updates back.
 - Campaign zero_divisor_prime_labelings remains active with publication status SLICE_CANDIDATE.
+- Queue was empty or exhausted, so it was locally reseeded from active publication campaigns before any broad web curation.
+- started solving z11-z25-prime-zero-divisor-graph
+- Solve stage for `z11-z25-prime-zero-divisor-graph` ran on 2026-04-09 18:22:56 EDT as a reasoning-first local pass. It locked the exact feeder instance `Γ(Z_11 × Z_25)`, re-derived the four support classes `A,B,C,D` and the exact edge pattern `A-C`, `B-B`, `B-C`, `B-D`, then constructed an explicit classwise prime-labeling witness with `C = {37,41,43,47,53,59,61,67,71,73}`, `B = {1,19,23,29}`, `A` absorbing the obstructing multiples `{38,46,57,58,69}`, and `D` taking the clean complement. A tiny post-reasoning checker confirmed `74` vertices, `406` edges, bijection onto `{1,...,74}`, and zero coprimality violations. The artifact was preserved at `artifacts/z11-z25-prime-zero-divisor-graph/` with solve-stage `classification = CANDIDATE`, `publication_status = INSTANCE_ONLY`, `lean_ready = true`, and the next action set to bounded verify plus immediate campaign generalization before any Lean step.
+- Verify stage for `z11-z25-prime-zero-divisor-graph` ran on 2026-04-09 as a skeptical pass with a bounded prior-art audit followed by offline proof checking. Within the web budget, exact-instance and family-notation searches did not establish rediscovery, and inspection of the recent topic paper `On Prime Labelings of Zero-Divisor Graphs` did not reveal `Z_25`, the family `Γ(Z_p × Z_25)`, or the exact `p = 11` instance. Offline verification then reran the witness checker, independently rechecked the label-set cover of `{1,...,74}`, and confirmed the edge decomposition `A-C`, `B-B`, `B-C`, `B-D` with `406` total edges and no gcd violations. The dossier was updated to `stage = verify`, `verify_verdict = VERIFIED`, `classification = CANDIDATE`, `lean_ready = true`, and `publication_status = SLICE_CANDIDATE`; the next action is family generalization from the verified `p = 11` feeder before any Lean work on this instance.
+- The bounded `p = 11` feeder manager was intentionally stopped after the verified witness was preserved, so publication effort could return to the family campaign instead of spending more time on instance-only follow-through.
+- The zero-divisor family status was promoted manually from that verified feeder: `Γ(Z_11 × Z_25)` now counts as preserved campaign evidence, the live theorem-slice blocker moved to packaging that feeder plus the existing Lean reduction skeletons, and the next decisive feeders are now `Γ(Z_11 × Z_11 × Z_2)` and `Γ(Z_13 × Z_25)`.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker started for cnbc_quintic_nonexistence in isolated git worktree.
+- Generalize timed out for family campaign zero_divisor_prime_labelings.
+- Publication audit timed out for family campaign zero_divisor_prime_labelings.

@@ -136,8 +136,9 @@
 - Explicit theorem target for `F2(p)`:
   - prime labelability reduces exactly to fixing `C = 1`, after which only three cross-class interfaces remain: `A-B`, `A-F`, and `B-E`.
 - Strongest plausible arithmetic upgrade after the chosen slice:
-  - test `F25(11)` and `F2(11)` as the first nontrivial corollaries of the reduction theorems;
-  - use `p = 13` only as the first tight follow-up, not as the next default target.
+  - the verified feeder `F25(11)` now shows the current `Γ(Z_p × Z_25)` reservoir template survives the first decisive breakpoint;
+  - the next best paired arithmetic upgrades are `F2(11)` on the six-class line and `F25(13)` on the four-class line;
+  - `p = 13` is therefore the first tight follow-up on the `Z_p × Z_25` side, not just a speculative reserve.
 
 ## reusable_lemmas
 
@@ -173,7 +174,8 @@
 
 - The likely fallback theorem is not "non-prime graph" but "first failure of the naive arithmetic template."
 - Smallest likely obstruction for `F25(p)`:
-  - `F25(11)`, where the upper-half-prime `C` block and the sparse `B` clique barrier first need a real count argument rather than ad hoc packing.
+  - no longer `F25(11)`: the verified feeder now shows the current upper-half-prime `C` block and sparse `B` barrier survive there.
+  - `F25(13)` is now the next tight arithmetic stress test for the same pattern.
 - Smallest likely obstruction for `F2(p)`:
   - `F2(11)` if the current smooth-reservoir heuristic already under-supplies one of `A,E,F`;
   - `F2(13)` if `p = 11` survives, because the smooth-reservoir count becomes visibly tight there.
@@ -185,12 +187,10 @@
 
 ## next_best_feeder_instances
 
-- `z11-z25-prime-zero-divisor-graph`
-  - first discriminator for whether the `F25(p)` upper-half-prime plus sparse-barrier template actually satisfies Slice 1 beyond the solved exact cluster.
 - `z11-z11-z2-prime-zero-divisor-graph`
   - first discriminator for whether the `F2(p)` smooth-reservoir and prime-block split really satisfies Slice 2 beyond `p = 5,7`.
 - `z13-z25-prime-zero-divisor-graph`
-  - next tight follow-up only after the `p = 11` verdict is clean.
+  - next tight follow-up now that the verified `p = 11` feeder has removed the first `F25` breakpoint.
 - `z13-z13-z2-prime-zero-divisor-graph`
   - first visibly tight follow-up for the smooth-reservoir side if `p = 11` survives.
 
@@ -199,7 +199,8 @@
 - The campaign is already stronger than `INSTANCE_ONLY` because five Lean-backed exacts now share two family-level support templates.
 - The strongest honest present publication value is:
   - paired reduction theorems that package the structural heart of the exact proofs;
-  - a clear arithmetic feeder program at `p = 11`, with `p = 13` as the next tight discriminator;
+  - a verified `F25(11)` feeder showing that the four-class template survives its first decisive unsolved odd prime;
+  - a sharpened arithmetic feeder program with `F2(11)` and `F25(13)` as the next tight discriminators;
   - reusable family lemmas that are Lean-ready even though the family theorems are not yet Lean-complete.
 - Honest current publication verdict:
   - the campaign is not `PAPER_READY`;

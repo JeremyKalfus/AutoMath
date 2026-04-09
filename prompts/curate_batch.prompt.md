@@ -70,8 +70,8 @@ Campaign-first policy:
 - Up to 2 queue entries may be `family_campaign`.
 - Remaining entries may be `feeder_instance`.
 - Prefer feeder instances that strengthen an active campaign rather than random unrelated one-offs.
-- If there is at least one active campaign with an unresolved theorem-slice blocker, at least 3 of the 5 queue entries must support active campaigns.
-- In that case, at most 2 queue entries may be broad unrelated candidates.
+- If there is at least one active campaign with an unresolved theorem-slice blocker, at least 4 of the 5 queue entries must support active campaigns.
+- In that case, at most 1 queue entry may be a broad unrelated candidate.
 - If two family-campaign entries are queued, fill the remaining three slots with campaign feeders before considering unrelated problems.
 - If a named family already has either:
   - 2 or more exact instances in repo memory, or

@@ -23,9 +23,12 @@ Rules:
 
 - use the existing `lean/` AutoMath project as the official Lean/Lake backend
 - keep problem-specific or family-specific Lean sources mirrored under the relevant artifact directory
+- if the selected entry is a `family_campaign`, stay bounded to the family dossier, family record/status, and current family Lean modules first
+- for family campaigns, do not roam solved exact-instance artifact directories unless the family record explicitly names one as a dependency you still need
 - start with the exact theorem or lemma statement
 - then write a proof skeleton
 - then try a full proof only if feasible
+- for family campaigns, prefer one reusable lemma or one theorem-slice skeleton over a broad multi-file excursion
 - do not introduce new axioms
 - do not use `sorry`, `admit`, or placeholders in the final claimed proof
 - if Lean is available, run the build/check commands needed to confirm the file really checks
