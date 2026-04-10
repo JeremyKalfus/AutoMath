@@ -1,13 +1,13 @@
 # AutoMath Publication Summary
 
-- Updated: `2026-04-09 21:20:00 EDT`
+- Updated: `2026-04-09 21:38:00 EDT`
 - Active campaigns: zero_divisor_prime_labelings, cnbc_quintic_nonexistence
 - Strongest current publication status: `SLICE_CANDIDATE`
-- Strongest honest claim: The zero-divisor campaign now has paired verified p = 11 feeders on both active lines, checked Lean names for the paired abstract support-template reductions, and a checked reusable singleton-one lemma on the Γ(Z_p × Z_p × Z_2) line. The strongest honest slice remains that prime labelability of Γ(Z_p × Z_25) and Γ(Z_p × Z_p × Z_2) reduces to explicit classwise coprimality partitions on tiny support graphs, with the second family collapsing to three parameter-sensitive interfaces after setting C = 1. What remains is to connect those abstractions to checked support decompositions of the actual zero-divisor families and then pressure-test the arithmetic program at p = 13.
+- Strongest honest claim: The zero-divisor campaign now has paired verified p = 11 feeders on both active lines, a verified p = 13 feeder on the four-class Γ(Z_p × Z_25) line, checked Lean names for the paired abstract support-template reductions, and a checked reusable singleton-one lemma on the Γ(Z_p × Z_p × Z_2) line. The strongest honest slice is now that the four-class line survives the first p = 13 frontier after refining the C block to allow two doubled-prime exceptions into D, while the six-class line still waits on its zero-slack p = 13 test.
 - Active theorem-slice target: Paired support-template reduction theorems for Γ(Z_p × Z_25) and Γ(Z_p × Z_p × Z_2), with the second theorem stated on the actual support graph A-B, A-C, A-F, B-C, B-E, C-D and reduced to three parameter-sensitive interfaces after setting C = 1.
-- Next blocker: The Lean surface now contains the checked singleton-one reduction lemma, but the campaign still lacks checked support-decomposition lemmas deriving the actual F25(p) and F2(p) support graphs from zero-divisor structure before the p = 13 arithmetic audit can be promoted cleanly.
-- Next decisive feeder instance: z13-z25-prime-zero-divisor-graph
-- Next feeder instances: z13-z25-prime-zero-divisor-graph, z13-z13-z2-prime-zero-divisor-graph
+- Next blocker: The Lean surface now contains the checked singleton-one reduction lemma and the four-class line has survived p = 13 with a refined C block, but the campaign still lacks checked support-decomposition lemmas and still needs the decisive six-class p = 13 audit at Γ(Z_13 × Z_13 × Z_2).
+- Next decisive feeder instance: z13-z13-z2-prime-zero-divisor-graph
+- Next feeder instances: z13-z13-z2-prime-zero-divisor-graph
 - Any Lean family lemma or slice complete: `yes`
 - xhigh usable in this environment: `yes`
 - Isolated git worktrees feasible: `yes`
@@ -16,9 +16,9 @@
 - Summary path: `artifacts/families/summary.md`
 - Family status paths: artifacts/families/zero_divisor_prime_labelings/status.json, artifacts/families/cnbc_quintic_nonexistence/status.json
 - Ledger tail:
-  - publication mode selected active family campaign zero_divisor_prime_labelings.
-  - Parallel publication worker started for cnbc_quintic_nonexistence in isolated git worktree.
-  - Generalize timed out for family campaign zero_divisor_prime_labelings.
-  - Publication audit timed out for family campaign zero_divisor_prime_labelings.
   - A bounded manager continuation was attempted twice after the p = 11 reconciliation. In both attempts, zero-divisor stayed the primary campaign and CNBC stayed in its isolated worktree, but the family generalize and publication-audit stages only returned bounded timeouts and the manager then stalled after worker exit instead of finishing the cycle cleanly.
   - No new stable dossier or status changes were produced by those bounded continuation attempts, so the manager stopped them manually, removed the orphaned CNBC worktrees, and preserved the live frontier exactly where the verified paired p = 11 checkpoint left it: `Γ(Z_13 × Z_25)` first, then `Γ(Z_13 × Z_13 × Z_2)`, with `publication_status = SLICE_CANDIDATE`.
+  - Reconciled uncommitted local zero-divisor family progress before starting the next bounded continuation: the checked Lean family surface now includes `singleton_one_lemma` in `lean/AutoMath/Families/ZeroDivisorReductions.lean`, and the family status/summary were updated to name that lemma explicitly.
+  - Patched the parallel publication worker cleanup path so the manager no longer waits forever on worker exit or worktree removal; bounded timeouts now log the infra failure and let the main publication cycle finish cleanly.
+  - Solve and verify completed for `z13-z25-prime-zero-divisor-graph` on 2026-04-09 as the decisive four-class `p = 13` feeder. The explicit witness uses `C = {37,41,43,47,53,59,61,67,71,73,79,83}`, keeps `B = {1,19,23,29}`, absorbs the barrier spill labels `38,46,57,58,69,76` into `A`, and lets the doubles `74` and `82` of the two sub-half `C` primes land in `D`; the checker confirmed `84` vertices, `486` edges, bijection onto `{1,...,84}`, and zero coprimality violations.
+  - Publication audit after `z13-z25` kept the campaign at `publication_status = SLICE_CANDIDATE` but sharpened the honest theorem-slice package: the four-class line now survives the first `p = 13` frontier, the old upper-half-prime-only `C` subtemplate is honestly obsolete, and the live decisive feeder is now `z13-z13-z2-prime-zero-divisor-graph`.

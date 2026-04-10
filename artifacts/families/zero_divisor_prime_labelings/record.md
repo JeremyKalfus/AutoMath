@@ -257,3 +257,20 @@
   - no checked support-decomposition lemma yet derives the `F25(p)` and `F2(p)` support graphs directly from the actual zero-divisor families;
   - the current theorem-slice wrappers still live at the abstract support-template level;
   - the next arithmetic frontier remains the paired `p = 13` audit, especially the refined `F25(13)` `C` block and the zero-slack `F2(13)` smooth-reservoir test.
+
+## z13_z25_feeder_checkpoint
+
+- Bounded feeder run completed for `z13-z25-prime-zero-divisor-graph`.
+- Outcome:
+  - the four-class `Γ(Z_p × Z_25)` line survives the first `p = 13` frontier;
+  - the unchanged upper-half-prime-only `C` subtemplate does not survive unchanged;
+  - a refined `C` block using `37,41,43,47,53,59,61,67,71,73,79,83` works once the only two extra multiples `74` and `82` are allowed to land in `D`.
+- Arithmetic consequence:
+  - `B = {1,19,23,29}` remains a viable barrier set at `p = 13`;
+  - the spill labels `38,46,57,58,69,76` still fit inside the twenty `A` slots;
+  - the real four-class theorem-slice lemma is now a refined prime-block statement, not the old stricter half-interval version.
+- Campaign consequence:
+  - the strongest honest publication story is no longer “paired verified `p = 11` checkpoint plus open `p = 13` frontier”;
+  - it is now “paired verified `p = 11` checkpoint, verified refined `F25(13)` success, and one remaining decisive `F2(13)` zero-slack test.”
+- Next decisive feeder:
+  - `z13-z13-z2-prime-zero-divisor-graph`.

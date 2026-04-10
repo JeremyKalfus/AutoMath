@@ -10,19 +10,19 @@ Turn the existing exact-instance cluster on prime labelings of zero-divisor grap
 - Primary theorem-slice statement:
   paired support-template reduction theorems showing that `Γ(Z_p × Z_25)` and `Γ(Z_p × Z_p × Z_2)` become prime-labeling problems on tiny support graphs once the label interval is partitioned into the right classwise coprimality blocks.
 - Fallback theorem-slice statement:
-  a first `p = 13` template-break obstruction for the current arithmetic program, either on `Γ(Z_13 × Z_25)` for the four-class line or on `Γ(Z_13 × Z_13 × Z_2)` for the naive `{2,3}`-smooth six-class line.
+  a first `p = 13` arithmetic-break theorem for the current paired program: the old upper-half-prime-only `C` subtemplate already fails on the four-class line even though `Γ(Z_13 × Z_25)` stays prime after refinement, while `Γ(Z_13 × Z_13 × Z_2)` remains the first zero-slack test of the naive `{2,3}`-smooth six-class line.
 - Reusable support-template lemmas:
   `support_decomposition_F25`, `classwise_template_lemma`, `pairwise_coprime_clique_lemma`, `forbidden_multiples_reservoir_lemma`, `support_decomposition_F2`, `singleton_one_lemma`, `three_interface_pack_lemma`, and the Lean wrapper theorems in [lean/AutoMath/Families/ZeroDivisorReductions.lean](/Users/jeremykalfus/CodingProjects/AutoMath/lean/AutoMath/Families/ZeroDivisorReductions.lean).
 - Parameter-sensitive steps:
-  supply `p - 1` large primes for the `C` block in `Γ(Z_p × Z_25)`, choose a four-label sparse barrier set for the `B` clique whose spill labels fit inside the `20` available `A` slots, count enough smooth labels for `A ∪ E` in `Γ(Z_p × Z_p × Z_2)`, choose a disjoint large-prime block for `B`, and keep the `F` block away from the prime support carried by `A`.
+  supply `p - 1` labels for the `C` block in `Γ(Z_p × Z_25)`, now allowing a bounded number of sub-half primes whose doubles are pushed into `D` while keeping `A ∪ B` clear of every `C`-prime factor; choose a four-label sparse barrier set for the `B` clique whose spill labels fit inside the `20` available `A` slots; count enough smooth labels for `A ∪ E` in `Γ(Z_p × Z_p × Z_2)`; choose a disjoint large-prime block for `B`; and keep the `F` block away from the prime support carried by `A`.
 - Next decisive feeder and why:
-  `Γ(Z_13 × Z_25)` is now the next decisive feeder because both active family lines have already survived the campaign-designated `p = 11` checkpoint, so the four-class line is the next user-priority frontier and the first full `p = 13` arithmetic stress test.
+  `Γ(Z_13 × Z_13 × Z_2)` is now the next decisive feeder because the four-class line has already survived the first `p = 13` stress test after refining its `C` block, so the remaining first `p = 13` frontier is the six-class line where the naive `{2,3}`-smooth reservoir has exactly zero slack.
 - Strongest honest current claim:
-  the paired support-template program is now backed by verified `p = 11` feeders on both active zero-divisor lines, checked Lean names for the paired abstract reduction theorems, and a checked reusable `singleton_one_lemma` on the `Γ(Z_p × Z_p × Z_2)` line; the main uncertainty has shifted from “do the two lines both survive `p = 11`?” to “how far does the arithmetic program extend at `p = 13`?”
+  the paired support-template program is now backed by verified `p = 11` feeders on both active zero-divisor lines, a verified `Γ(Z_13 × Z_25)` feeder on the four-class line, checked Lean names for the paired abstract reduction theorems, and a checked reusable `singleton_one_lemma` on the `Γ(Z_p × Z_p × Z_2)` line; the main uncertainty has shifted from “does the four-class line survive `p = 13`?” to “can the six-class line survive the first zero-slack `p = 13` test, and can the support decompositions be formalized cleanly enough for a paper section?”
 - `publication_status`: `SLICE_CANDIDATE`
 - `publication_confidence`: `high`
-- `next_action`: `connect_the_checked_family_support_surface_to_actual_support_decompositions_then_run_z13_z25_with_parallel_z13_z13_z2_template_audit`
-- `paper_title_hint`: `Support-template reductions for prime labelings of two zero-divisor graph families`
+- `next_action`: `package_the_refined_F25_p13_C_block_lemma_connect_the_family_support_surface_to_actual_support_decompositions_then_run_z13_z13_z2`
+- `paper_title_hint`: `Support-template reductions and refined prime-block arithmetic in two zero-divisor prime-labeling families`
 
 ## Why This Campaign Exists
 
@@ -42,7 +42,8 @@ Verified feeder evidence beyond [PROOFS.md](/Users/jeremykalfus/CodingProjects/A
 
 - [artifacts/z11-z25-prime-zero-divisor-graph/record.md](/Users/jeremykalfus/CodingProjects/AutoMath/artifacts/z11-z25-prime-zero-divisor-graph/record.md) is now a preserved `VERIFIED` feeder on the `Γ(Z_p × Z_25)` line.
 - [artifacts/z11-z11-z2-prime-zero-divisor-graph/record.md](/Users/jeremykalfus/CodingProjects/AutoMath/artifacts/z11-z11-z2-prime-zero-divisor-graph/record.md) is now a preserved `VERIFIED` feeder on the `Γ(Z_p × Z_p × Z_2)` line.
-- They do not belong in `PROOFS.md` yet because Lean has not completed, but together they materially upgrade the family campaign because the paired theorem-slice program has now survived the campaign-designated `p = 11` checkpoint on both active lines.
+- [artifacts/z13-z25-prime-zero-divisor-graph/record.md](/Users/jeremykalfus/CodingProjects/AutoMath/artifacts/z13-z25-prime-zero-divisor-graph/record.md) is now a preserved `VERIFIED` feeder showing that the four-class `p = 13` frontier survives after refining the `C` block.
+- They do not belong in `PROOFS.md` yet because Lean has not completed, but together they materially upgrade the family campaign because the paired theorem-slice program has now survived the campaign-designated `p = 11` checkpoint on both active lines and the four-class line has already crossed the first `p = 13` frontier.
 
 ## Strongest Current Publication Targets
 
@@ -79,6 +80,7 @@ No other edge types appear in the exact proofs.
 Shared label-role template:
 
 - `C` receives large primes whose only multiples in the label interval are themselves.
+- after the verified `p = 13` feeder, the honest refined version allows a bounded number of `C` primes below the half-interval cutoff so long as their nontrivial multiples are pushed into `D` rather than into `A ∪ B`.
 - `B` receives a pairwise-coprime barrier set with sparse forbidden multiples.
 - `A` receives labels avoiding the primes assigned to `C`.
 - `D` receives the residual label reservoir avoiding the barrier primes in `B`.
@@ -96,6 +98,7 @@ Reusable coprimality lemmas visible already:
 Parameter-sensitive steps:
 
 - existence of `p - 1` sufficiently large primes inside the active label range for `C`
+- existence of a refined `C` block if the pure upper-half-prime version runs short, while still keeping every nontrivial `C` multiple out of `A ∪ B`
 - keeping the `B` forbidden multiples sparse enough so `D` still has a reservoir
 - proving the reservoir-count argument without hand-picked instance arithmetic
 
@@ -197,9 +200,9 @@ Candidate first breakpoint:
 
 Reason:
 
-- both active family lines now survive the campaign-designated `p = 11` feeders
-- `p = 13` is the first post-checkpoint arithmetic stress test on either line
-- success or honest template failure at `p = 13` would materially sharpen the theorem-slice scope
+- the four-class line now survives `p = 13` after refining the `C` block
+- the six-class line is still at its first post-checkpoint zero-slack arithmetic test
+- success or honest template failure on the remaining `p = 13` line would materially sharpen the theorem-slice scope
 
 ## Chosen Campaign Target
 
@@ -224,9 +227,9 @@ Secondary target:
 ## Strongest Path Forward
 
 1. Package the paired verified `p = 11` feeders as arithmetic evidence for the existing support-template reduction program.
-2. Identify the minimal arithmetic supply conditions needed at the first `p = 13` frontier.
+2. Package the refined `F25(13)` arithmetic gain honestly: the graph stays prime, but the old upper-half-prime-only `C` subtemplate does not.
 3. Prove the cleanest honest theorem slice first, even if it remains a sufficient-condition theorem.
-4. Use `Γ(Z_13 × Z_25)` first and `Γ(Z_13 × Z_13 × Z_2)` second to test whether the current arithmetic lemmas are really enough.
+4. Use `Γ(Z_13 × Z_13 × Z_2)` next to test whether the remaining six-class arithmetic lemma is really enough.
 5. Only after a clean slice exists, consider a stronger all-odd-prime or infinite-family claim.
 
 ## Fallback Path
@@ -241,24 +244,23 @@ If the theorem slice stalls:
 
 ## Next Best Feeders
 
-Highest value next instances:
+Highest value next instance:
 
-- `Γ(Z_13 × Z_25)`
 - `Γ(Z_13 × Z_13 × Z_2)`
 
-Why these:
+Why this:
 
-- both active family lines have already cleared the campaign-designated `p = 11` feeders
-- they are now the smallest natural `p = 13` discriminators after the upgraded exact-plus-verified cluster
-- they directly test whether the current support-template proof logic is genuinely scalable beyond the paired checkpoint
+- the four-class line has already cleared the first `p = 13` test after a refined `C` block
+- `Γ(Z_13 × Z_13 × Z_2)` is now the remaining smallest natural `p = 13` discriminator after the upgraded exact-plus-verified cluster
+- it directly tests whether the current paired support-template logic is genuinely scalable beyond the four-class refinement
 
 ## Blockers
 
 - The support-graph reductions are visible, but they still need to be stated and preserved as explicit theorem slices rather than just campaign prose.
 - The Lean surface now has the checked `singleton_one_lemma`, but the repo still lacks checked support-decomposition lemmas deriving the actual `F25(p)` and `F2(p)` support graphs from zero-divisor structure.
-- The arithmetic reservoir arguments for `C`, `B`, and the residual classes are still hand-tuned in the solved exact and verified feeder instances.
-- The next honest publication question is no longer `p = 11`; it is whether the arithmetic program survives the first `p = 13` frontier without overclaiming.
+- The four-class `p = 13` gain is now explicit, but it must be packaged honestly as a refined `C`-block lemma rather than as survival of the old upper-half-prime-only subtemplate.
+- The next honest publication question is now concentrated on whether the six-class arithmetic program survives the first zero-slack `p = 13` frontier without overclaiming.
 
 ## Publication Value
 
-The current repo already has enough exact and verified-feeder evidence to justify a paper-oriented campaign. A publishable outcome still does not require proving every odd-prime case immediately. A clean support-template theorem backed by paired verified `p = 11` feeders, plus either a nontrivial `p = 13` slice or a clean `p = 13` template-break obstruction theorem, would already be stronger than “here are more isolated examples.”
+The current repo already has enough exact and verified-feeder evidence to justify a paper-oriented campaign. A publishable outcome still does not require proving every odd-prime case immediately. A clean support-template theorem backed by paired verified `p = 11` feeders, the verified refined `F25(13)` checkpoint, and either a six-class `p = 13` success or a clean smallest-break obstruction theorem would already be stronger than “here are more isolated examples.”

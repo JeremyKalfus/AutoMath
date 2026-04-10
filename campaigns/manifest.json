@@ -11,31 +11,19 @@
     "publication_status": "SLICE_CANDIDATE",
     "theorem_slice_target": "Paired support-template reduction theorems for Γ(Z_p × Z_25) and Γ(Z_p × Z_p × Z_2).",
     "fallback_target": "A first p = 13 template-break theorem for the current arithmetic program: either Γ(Z_13 × Z_25) is the first tight four-class failure, or the naive {2,3}-smooth six-class template fails at Γ(Z_13 × Z_13 × Z_2).",
-    "current_blocker": "The Lean surface now contains the checked singleton-one reduction lemma, but the campaign still lacks checked support-decomposition lemmas deriving the actual F25(p) and F2(p) support graphs before the p = 13 arithmetic audit can be promoted cleanly.",
-    "theorem_slice_hint": "Promote the paired verified p = 11 feeders into the theorem-slice writeup, then run Γ(Z_13 × Z_25) first and Γ(Z_13 × Z_13 × Z_2) as the parallel p = 13 pressure test.",
+    "current_blocker": "The Lean surface now contains the checked singleton-one reduction lemma and the four-class line has survived p = 13 with a refined C block, but the campaign still lacks checked support-decomposition lemmas and still needs the decisive six-class p = 13 audit at Γ(Z_13 × Z_13 × Z_2).",
+    "theorem_slice_hint": "Package the refined F25(13) C-block gain into the theorem-slice writeup, then run Γ(Z_13 × Z_13 × Z_2) as the next decisive zero-slack p = 13 pressure test.",
     "why_now": "The repo already has a cluster of Lean-backed exact instances with repeated support-class decompositions and reusable label roles.",
     "recommended_feeders": [
-      {
-        "slug": "z13-z25-prime-zero-divisor-graph",
-        "title": "Is the zero-divisor graph Γ(Z_13 × Z_25) prime?",
-        "question": "Does the zero-divisor graph Γ(Z_13 × Z_25) admit a prime labeling?",
-        "canonical_statement": "Determine whether Γ(Z_13 × Z_25) is prime.",
-        "intended_statement": "Use Γ(Z_13 × Z_25) after the paired verified p = 11 checkpoint to test whether the four-class Γ(Z_p × Z_25) template still has arithmetic room at the first real p = 13 frontier.",
-        "named_conjecture": "Prime labelings of zero-divisor graph families",
-        "attack_style": "tightness feeder for a publication campaign",
-        "theorem_slice_hint": "Use first after the paired p = 11 feeders to test the edge of the four-class arithmetic reservoir.",
-        "why_still_appears_open": "No exact result for p = 13 is currently preserved in the repo.",
-        "why_this_could_be_publishable": "It distinguishes genuine theorem-slice scalability from a fragile small-prime phenomenon."
-      },
       {
         "slug": "z13-z13-z2-prime-zero-divisor-graph",
         "title": "Is the zero-divisor graph Γ(Z_13 × Z_13 × Z_2) prime?",
         "question": "Does the zero-divisor graph Γ(Z_13 × Z_13 × Z_2) admit a prime labeling?",
         "canonical_statement": "Determine whether Γ(Z_13 × Z_13 × Z_2) is prime.",
-        "intended_statement": "Use Γ(Z_13 × Z_13 × Z_2) after the verified p = 11 six-class feeder to test whether the current smooth-reservoir template really survives the first zero-slack p = 13 case.",
+        "intended_statement": "Use Γ(Z_13 × Z_13 × Z_2) after the verified p = 11 six-class feeder and the verified refined F25(13) checkpoint to test whether the remaining smooth-reservoir template really survives the first zero-slack p = 13 case.",
         "named_conjecture": "Prime labelings of zero-divisor graph families",
         "attack_style": "tightness feeder for a publication campaign",
-        "theorem_slice_hint": "Use after the verified p = 11 six-class feeder to test the first zero-slack follow-up for Γ(Z_p × Z_p × Z_2).",
+        "theorem_slice_hint": "Use next after the refined F25(13) gain to test the first zero-slack follow-up for Γ(Z_p × Z_p × Z_2).",
         "why_still_appears_open": "No exact result for p = 13 is currently preserved on the Γ(Z_p × Z_p × Z_2) line.",
         "why_this_could_be_publishable": "It distinguishes a reusable six-class theorem slice from a small-prime smooth-reservoir accident."
       }
