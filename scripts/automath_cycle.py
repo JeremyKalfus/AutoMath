@@ -407,6 +407,17 @@ def feeder_queue_entry(campaign: dict, feeder: dict) -> dict:
     }
 
 
+def add_queue_entry(entries: list[dict], seen: set[str], failed: set[str], entry: dict | None) -> bool:
+    if not entry:
+        return False
+    slug = entry.get("slug")
+    if not slug or slug in seen or slug in failed:
+        return False
+    entries.append(entry)
+    seen.add(slug)
+    return True
+
+
 def seed_campaign_queue() -> bool:
     campaigns = active_campaigns()[:2]
     if not campaigns:
@@ -414,27 +425,27 @@ def seed_campaign_queue() -> bool:
     failed = failed_slug_set()
     entries: list[dict] = []
     seen: set[str] = set()
-    for campaign in campaigns:
-        entry = campaign_queue_entry(campaign)
-        entries.append(entry)
-        seen.add(entry["slug"])
-    feeder_lists = [list(campaign.get("recommended_feeders", [])) for campaign in campaigns]
-    while len(entries) < 5:
-        added = False
-        for index, campaign in enumerate(campaigns):
-            while feeder_lists[index]:
-                feeder = feeder_lists[index].pop(0)
-                slug = feeder.get("slug")
-                if not slug or slug in seen or slug in failed:
-                    continue
-                entries.append(feeder_queue_entry(campaign, feeder))
-                seen.add(slug)
-                added = True
-                break
-            if len(entries) >= 5:
-                break
-        if not added:
+    primary = campaigns[0]
+    secondary = campaigns[1] if len(campaigns) > 1 else None
+    primary_feeders = list(primary.get("recommended_feeders", []))
+    secondary_feeders = list(secondary.get("recommended_feeders", [])) if secondary else []
+
+    add_queue_entry(entries, seen, failed, campaign_queue_entry(primary))
+    while len(entries) < 3 and primary_feeders:
+        add_queue_entry(entries, seen, failed, feeder_queue_entry(primary, primary_feeders.pop(0)))
+
+    if secondary is not None:
+        add_queue_entry(entries, seen, failed, campaign_queue_entry(secondary))
+        while len(entries) < 5 and secondary_feeders:
+            add_queue_entry(entries, seen, failed, feeder_queue_entry(secondary, secondary_feeders.pop(0)))
             break
+
+    while len(entries) < 5 and primary_feeders:
+        add_queue_entry(entries, seen, failed, feeder_queue_entry(primary, primary_feeders.pop(0)))
+
+    while len(entries) < 5 and secondary_feeders:
+        add_queue_entry(entries, seen, failed, feeder_queue_entry(secondary, secondary_feeders.pop(0)))
+
     if len(entries) != 5:
         return False
     write_json(QUEUE, entries)
@@ -777,6 +788,40 @@ def render_queue_selection(entry: dict) -> pathlib.Path:
     return status_path
 
 
+def find_queue_entry_by_slug(slug: str) -> dict | None:
+    for item in load_json(QUEUE, []):
+        if isinstance(item, dict) and item.get("slug") == slug:
+            return item
+    return None
+
+
+def next_campaign_feeder_entry(campaign: dict) -> dict | None:
+    status = load_campaign_status(campaign)
+    failed = failed_slug_set()
+    candidates: list[str] = []
+    decisive = status.get("next_decisive_feeder")
+    if decisive:
+        candidates.append(decisive)
+    candidates.extend(status.get("next_feeder_instances", []))
+    candidates.extend(
+        feeder.get("slug")
+        for feeder in campaign.get("recommended_feeders", [])
+        if isinstance(feeder, dict) and feeder.get("slug")
+    )
+    seen: set[str] = set()
+    for slug in candidates:
+        if not slug or slug in seen or slug in failed:
+            continue
+        seen.add(slug)
+        queued = find_queue_entry_by_slug(slug)
+        if queued is not None:
+            return queued
+        for feeder in campaign.get("recommended_feeders", []):
+            if isinstance(feeder, dict) and feeder.get("slug") == slug:
+                return feeder_queue_entry(campaign, feeder)
+    return None
+
+
 def run_curation_if_needed() -> bool:
     if queue_has_usable():
         return True
@@ -1070,6 +1115,18 @@ def run_campaign_flow(campaign: dict, allow_parallel: bool) -> int:
 
     maybe_run_campaign_lean(campaign)
 
+    ensure_publication_defaults(status_path)
+    if (
+        campaign.get("family_slug") == "zero_divisor_prime_labelings"
+        and not publication_stop_ready(status_path)
+    ):
+        feeder_entry = next_campaign_feeder_entry(campaign)
+        if feeder_entry is not None:
+            append_ledger(
+                f"Publication mode is advancing {campaign['family_slug']} through its decisive feeder {feeder_entry['slug']}."
+            )
+            run_feeder_entry(feeder_entry, emit_summary=False)
+
     if worker is not None:
         worker_status = worker.finish()
 
@@ -1143,20 +1200,7 @@ def run_affiliated_generalize(entry: dict, status_path: pathlib.Path) -> None:
     maybe_run_campaign_lean(campaign)
 
 
-def run_feeder_cycle() -> int:
-    if STOP_MARKER.exists():
-        append_ledger("Stop marker already exists, so this cycle was skipped.")
-        return 0
-
-    if not run_curation_if_needed():
-        return 0
-
-    entry = select_queue_entry(prefer_feeders=True)
-    if entry is None:
-        append_ledger("No usable problem was available after curation checks, so this cycle ended cleanly.")
-        write_publication_summary(None, "not_used")
-        return 0
-
+def run_feeder_entry(entry: dict, emit_summary: bool = True) -> int:
     if entry.get("entry_type") == "family_campaign" and entry.get("family_slug"):
         campaign = find_campaign(entry["family_slug"])
         if campaign is not None:
@@ -1180,14 +1224,16 @@ def run_feeder_cycle() -> int:
         else:
             append_ledger(f"Solve infrastructure failure for {entry['slug']}: the worker exited unexpectedly.")
         rotate_problem_to_end(entry["slug"])
-        write_publication_summary(entry.get("campaign_affinity"), "infra_failed")
+        if emit_summary:
+            write_publication_summary(entry.get("campaign_affinity"), "infra_failed")
         return 0
 
     normalize_candidate_pending_lean(status_path)
     if status_value(status_path, "classification") is None:
         append_ledger(f"Solve infrastructure failure for {entry['slug']}: no usable status verdict was written.")
         rotate_problem_to_end(entry["slug"])
-        write_publication_summary(entry.get("campaign_affinity"), "infra_failed")
+        if emit_summary:
+            write_publication_summary(entry.get("campaign_affinity"), "infra_failed")
         return 0
 
     rc = run_stage(
@@ -1205,7 +1251,8 @@ def run_feeder_cycle() -> int:
         else:
             append_ledger(f"Verify infrastructure failure for {entry['slug']}: the worker exited unexpectedly.")
         rotate_problem_to_end(entry["slug"])
-        write_publication_summary(entry.get("campaign_affinity"), "infra_failed")
+        if emit_summary:
+            write_publication_summary(entry.get("campaign_affinity"), "infra_failed")
         return 0
 
     ensure_publication_defaults(status_path)
@@ -1215,12 +1262,14 @@ def run_feeder_cycle() -> int:
     publication_status = status_value(status_path, "publication_status") or "NONE"
     if classification == "REDISCOVERY":
         mark_rediscovery(entry, "Prior-art audit during verify found the exact statement already covered in the literature.")
-        write_publication_summary(entry.get("campaign_affinity"), "not_used")
+        if emit_summary:
+            write_publication_summary(entry.get("campaign_affinity"), "not_used")
         return 0
     if verify_verdict is None:
         append_ledger(f"Verify infrastructure failure for {entry['slug']}: no verify verdict was written.")
         rotate_problem_to_end(entry["slug"])
-        write_publication_summary(entry.get("campaign_affinity"), "infra_failed")
+        if emit_summary:
+            write_publication_summary(entry.get("campaign_affinity"), "infra_failed")
         return 0
 
     run_affiliated_generalize(entry, status_path)
@@ -1238,7 +1287,8 @@ def run_feeder_cycle() -> int:
 
     if status_value(status_path, "lean_ready") is not True and classification not in {"CANDIDATE", "COUNTEREXAMPLE", "EXACT"}:
         mark_failed_problem(entry, str(verify_verdict), publication_status)
-        write_publication_summary(entry.get("campaign_affinity"), "not_used")
+        if emit_summary:
+            write_publication_summary(entry.get("campaign_affinity"), "not_used")
         return 0
 
     run_instance_lean(entry, status_path)
@@ -1259,8 +1309,25 @@ def run_feeder_cycle() -> int:
     if publication_stop_ready(status_path):
         STOP_MARKER.write_text("", encoding="utf-8")
         append_ledger(f"Publication-ready stop marker set after feeder result {entry['slug']} reached PAPER_READY.")
-    write_publication_summary(entry.get("campaign_affinity"), "not_used")
+    if emit_summary:
+        write_publication_summary(entry.get("campaign_affinity"), "not_used")
     return 0
+
+
+def run_feeder_cycle() -> int:
+    if STOP_MARKER.exists():
+        append_ledger("Stop marker already exists, so this cycle was skipped.")
+        return 0
+
+    if not run_curation_if_needed():
+        return 0
+
+    entry = select_queue_entry(prefer_feeders=True)
+    if entry is None:
+        append_ledger("No usable problem was available after curation checks, so this cycle ended cleanly.")
+        write_publication_summary(None, "not_used")
+        return 0
+    return run_feeder_entry(entry, emit_summary=True)
 
 
 def run_publication_cycle(explicit_campaign: str | None, allow_parallel: bool) -> int:

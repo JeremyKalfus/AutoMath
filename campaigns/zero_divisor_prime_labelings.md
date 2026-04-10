@@ -8,21 +8,24 @@ Turn the existing exact-instance cluster on prime labelings of zero-divisor grap
 ## Current Campaign Status
 
 - Primary theorem-slice statement:
-  paired support-template reduction theorems showing that `Γ(Z_p × Z_25)` and `Γ(Z_p × Z_p × Z_2)` become prime-labeling problems on tiny support graphs once the label interval is partitioned into the right classwise coprimality blocks.
+  paired support-template reduction theorems showing that `Γ(Z_p × Z_25)` and `Γ(Z_p × Z_p × Z_2)` become prime-labeling problems on tiny support graphs once the actual ring-law support partitions are bridged into the checked classwise coprimality templates.
 - Fallback theorem-slice statement:
-  a first `p = 13` arithmetic-break theorem for the current paired program: the old upper-half-prime-only `C` subtemplate already fails on the four-class line even though `Γ(Z_13 × Z_25)` stays prime after refinement, while `Γ(Z_13 × Z_13 × Z_2)` remains the first zero-slack test of the naive `{2,3}`-smooth six-class line.
+  a paired `p = 13` arithmetic theorem slice for the current program: the old upper-half-prime-only `C` subtemplate already fails on the four-class line even though `Γ(Z_13 × Z_25)` stays prime after refinement, while `Γ(Z_13 × Z_13 × Z_2)` shows that the naive `{2,3}`-smooth six-class line still survives exactly at its first zero-slack boundary.
 - Reusable support-template lemmas:
-  `support_decomposition_F25`, `classwise_template_lemma`, `pairwise_coprime_clique_lemma`, `forbidden_multiples_reservoir_lemma`, `support_decomposition_F2`, `singleton_one_lemma`, `three_interface_pack_lemma`, and the Lean wrapper theorems in [lean/AutoMath/Families/ZeroDivisorReductions.lean](/Users/jeremykalfus/CodingProjects/AutoMath/lean/AutoMath/Families/ZeroDivisorReductions.lean).
+  `support_decomposition_F25`, `support_decomposition_F2`, `classwise_template_lemma`, `pairwise_coprime_clique_lemma`, `forbidden_multiples_reservoir_lemma`, `singleton_one_lemma`, `three_interface_pack_lemma`, and the Lean wrapper theorems in [lean/AutoMath/Families/ZeroDivisorReductions.lean](/Users/jeremykalfus/CodingProjects/AutoMath/lean/AutoMath/Families/ZeroDivisorReductions.lean), now factored through the new support surface in [lean/AutoMath/Families/ZeroDivisorSupports.lean](/Users/jeremykalfus/CodingProjects/AutoMath/lean/AutoMath/Families/ZeroDivisorSupports.lean).
+- Missing support-decomposition lemmas:
+  the family still lacks ring-level bridge lemmas proving that every nonzero zero-divisor of `Z_p × Z_25` lands in exactly one of the four support classes `A,B,C,D`, that every nonzero zero-divisor of `Z_p × Z_p × Z_2` lands in exactly one of the six support classes `A,B,C,D,E,F`, and that zero product in the ring occurs exactly on the class pairs named by the abstract support lemmas.
 - Parameter-sensitive steps:
-  supply `p - 1` labels for the `C` block in `Γ(Z_p × Z_25)`, now allowing a bounded number of sub-half primes whose doubles are pushed into `D` while keeping `A ∪ B` clear of every `C`-prime factor; choose a four-label sparse barrier set for the `B` clique whose spill labels fit inside the `20` available `A` slots; count enough smooth labels for `A ∪ E` in `Γ(Z_p × Z_p × Z_2)`; choose a disjoint large-prime block for `B`; and keep the `F` block away from the prime support carried by `A`.
+  supply `p - 1` labels for the `C` block in `Γ(Z_p × Z_25)`, now allowing a bounded number of sub-half primes whose doubles are pushed into `D` while keeping `A ∪ B` clear of every `C`-prime factor; choose a four-label sparse barrier set for the `B` clique whose spill labels fit inside the `20` available `A` slots; count enough smooth labels for `A ∪ E` in `Γ(Z_p × Z_p × Z_2)`; choose a disjoint complement block for `B ∪ F`; and keep the `F` block away from the prime support carried by `A`.
 - Next decisive feeder and why:
-  `Γ(Z_13 × Z_13 × Z_2)` is now the next decisive feeder because the four-class line has already survived the first `p = 13` stress test after refining its `C` block, so the remaining first `p = 13` frontier is the six-class line where the naive `{2,3}`-smooth reservoir has exactly zero slack.
+  `Γ(Z_17 × Z_25)` is now the next decisive feeder because the paired `p = 13` frontier has already cleared on both active lines, so the next arithmetic discriminator is the smallest post-`13` test of whether the refined small-spill `C` block on the four-class line is a real family corollary or only a local repair.
 - Strongest honest current claim:
-  the paired support-template program is now backed by verified `p = 11` feeders on both active zero-divisor lines, a verified `Γ(Z_13 × Z_25)` feeder on the four-class line, checked Lean names for the paired abstract reduction theorems, and checked reusable family lemmas `singleton_one_lemma` and `three_interface_pack_lemma` on the `Γ(Z_p × Z_p × Z_2)` line; the main uncertainty has shifted from “does the four-class line survive `p = 13`?” to “can the six-class line survive the first zero-slack `p = 13` test, and can the actual support decompositions be formalized cleanly enough for a paper section?”
+  the paired support-template program is now backed by verified `p = 13` feeders on both active zero-divisor lines, checked Lean names for the paired abstract reduction theorems, and checked reusable family lemmas `support_decomposition_F25`, `support_decomposition_F2`, `singleton_one_lemma`, and `three_interface_pack_lemma`; the main uncertainty has shifted from “does the paired `p = 13` frontier survive?” to “can the actual ring-to-support bridge lemmas be formalized cleanly enough for a paper section, and does the refined four-class arithmetic keep scaling at `p = 17`?”
 - `publication_status`: `SLICE_CANDIDATE`
 - `publication_confidence`: `high`
-- `next_action`: `package_the_refined_F25_p13_C_block_lemma_connect_the_family_support_surface_to_actual_support_decompositions_then_run_z13_z13_z2`
-- `paper_title_hint`: `Support-template reductions and refined prime-block arithmetic in two zero-divisor prime-labeling families`
+- `campaign_health`: `warm`
+- `next_action`: `formalize_ring_to_support_bridge_lemmas_then_run_z17_z25`
+- `paper_title_hint`: `Support-template reductions and paired p = 13 feeders in two zero-divisor prime-labeling families`
 
 ## Why This Campaign Exists
 
@@ -43,7 +46,8 @@ Verified feeder evidence beyond [PROOFS.md](/Users/jeremykalfus/CodingProjects/A
 - [artifacts/z11-z25-prime-zero-divisor-graph/record.md](/Users/jeremykalfus/CodingProjects/AutoMath/artifacts/z11-z25-prime-zero-divisor-graph/record.md) is now a preserved `VERIFIED` feeder on the `Γ(Z_p × Z_25)` line.
 - [artifacts/z11-z11-z2-prime-zero-divisor-graph/record.md](/Users/jeremykalfus/CodingProjects/AutoMath/artifacts/z11-z11-z2-prime-zero-divisor-graph/record.md) is now a preserved `VERIFIED` feeder on the `Γ(Z_p × Z_p × Z_2)` line.
 - [artifacts/z13-z25-prime-zero-divisor-graph/record.md](/Users/jeremykalfus/CodingProjects/AutoMath/artifacts/z13-z25-prime-zero-divisor-graph/record.md) is now a preserved `VERIFIED` feeder showing that the four-class `p = 13` frontier survives after refining the `C` block.
-- They do not belong in `PROOFS.md` yet because Lean has not completed, but together they materially upgrade the family campaign because the paired theorem-slice program has now survived the campaign-designated `p = 11` checkpoint on both active lines and the four-class line has already crossed the first `p = 13` frontier.
+- [artifacts/z13-z13-z2-prime-zero-divisor-graph/record.md](/Users/jeremykalfus/CodingProjects/AutoMath/artifacts/z13-z13-z2-prime-zero-divisor-graph/record.md) is now a preserved `VERIFIED` feeder showing that the six-class line also survives the first zero-slack `p = 13` frontier with the naive `{2,3}`-smooth template intact.
+- They do not belong in `PROOFS.md` yet because Lean has not completed, but together they materially upgrade the family campaign because the paired theorem-slice program has now survived the campaign-designated `p = 11` checkpoint on both active lines and the paired `p = 13` frontier on both active lines.
 
 ## Strongest Current Publication Targets
 
@@ -194,15 +198,15 @@ Possible next step after the template theorem:
 
 - prove the slice for a nontrivial range of odd primes supported by current exacts and a supply-count lemma
 
-Candidate first breakpoint:
+Candidate next breakpoint:
 
-- `p = 13`
+- `p = 17` on the four-class line
 
 Reason:
 
 - the four-class line now survives `p = 13` after refining the `C` block
-- the six-class line is still at its first post-checkpoint zero-slack arithmetic test
-- success or honest template failure on the remaining `p = 13` line would materially sharpen the theorem-slice scope
+- the six-class line now survives its first zero-slack `p = 13` arithmetic test
+- the smallest honest next discriminator is therefore whether the refined small-spill four-class arithmetic scales even one more prime
 
 ## Chosen Campaign Target
 
@@ -227,10 +231,10 @@ Secondary target:
 ## Strongest Path Forward
 
 1. Package the paired verified `p = 11` feeders as arithmetic evidence for the existing support-template reduction program.
-2. Package the refined `F25(13)` arithmetic gain honestly: the graph stays prime, but the old upper-half-prime-only `C` subtemplate does not.
+2. Package the paired `p = 13` gains honestly: the four-class line needs the refined small-spill `C` block, while the six-class line survives the first zero-slack case without a further repair.
 3. Prove the cleanest honest theorem slice first, even if it remains a sufficient-condition theorem.
-4. Use `Γ(Z_13 × Z_13 × Z_2)` next to test whether the remaining six-class arithmetic lemma is really enough.
-5. Only after a clean slice exists, consider a stronger all-odd-prime or infinite-family claim.
+4. Formalize the ring-to-support bridge lemmas so the current Lean support surface becomes a real paper section rather than campaign prose.
+5. Use `Γ(Z_17 × Z_25)` next to test whether the refined four-class arithmetic lemma is really scalable beyond the first repaired case.
 
 ## Fallback Path
 
@@ -246,18 +250,19 @@ If the theorem slice stalls:
 
 Highest value next instance:
 
-- `Γ(Z_13 × Z_13 × Z_2)`
+- `Γ(Z_17 × Z_25)`
 
 Why this:
 
-- the four-class line has already cleared the first `p = 13` test after a refined `C` block
-- `Γ(Z_13 × Z_13 × Z_2)` is now the remaining smallest natural `p = 13` discriminator after the upgraded exact-plus-verified cluster
-- it directly tests whether the current paired support-template logic is genuinely scalable beyond the four-class refinement
+- the paired `p = 13` checkpoint is now closed on both active lines
+- `Γ(Z_17 × Z_25)` is the smallest post-`13` discriminator for the refined small-spill `C` block
+- it directly tests whether the current paired support-template logic is genuinely scalable beyond the first repaired four-class case
 
 ## Blockers
 
-- The support-graph reductions are visible, but they still need to be stated and preserved as explicit theorem slices rather than just campaign prose.
-- The Lean surface now has the checked `singleton_one_lemma`, but the repo still lacks checked support-decomposition lemmas deriving the actual `F25(p)` and `F2(p)` support graphs from zero-divisor structure.
+- The support-graph reductions are visible, but they still need family-specific bridge lemmas from the actual ring law rather than only abstract support-template statements.
+- The Lean surface now has checked support lemmas and reduction wrappers, but the repo still lacks the formal ring-to-support partition and adjacency lemmas deriving the actual `F25(p)` and `F2(p)` support graphs from zero-divisor structure.
+- The refined four-class arithmetic line still needs one honest post-`13` stress test at `Γ(Z_17 × Z_25)` before the paired theorem slice can claim more than a `p = 13` frontier package.
 - The four-class `p = 13` gain is now explicit, but it must be packaged honestly as a refined `C`-block lemma rather than as survival of the old upper-half-prime-only subtemplate.
 - The next honest publication question is now concentrated on whether the six-class arithmetic program survives the first zero-slack `p = 13` frontier without overclaiming.
 

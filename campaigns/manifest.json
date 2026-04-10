@@ -10,22 +10,22 @@
     "artifact_dir": "artifacts/families/zero_divisor_prime_labelings",
     "publication_status": "SLICE_CANDIDATE",
     "theorem_slice_target": "Paired support-template reduction theorems for Γ(Z_p × Z_25) and Γ(Z_p × Z_p × Z_2).",
-    "fallback_target": "A first p = 13 template-break theorem for the current arithmetic program: either Γ(Z_13 × Z_25) is the first tight four-class failure, or the naive {2,3}-smooth six-class template fails at Γ(Z_13 × Z_13 × Z_2).",
-    "current_blocker": "The Lean surface now contains the checked singleton-one reduction lemma and the four-class line has survived p = 13 with a refined C block, but the campaign still lacks checked support-decomposition lemmas and still needs the decisive six-class p = 13 audit at Γ(Z_13 × Z_13 × Z_2).",
-    "theorem_slice_hint": "Package the refined F25(13) C-block gain into the theorem-slice writeup, then run Γ(Z_13 × Z_13 × Z_2) as the next decisive zero-slack p = 13 pressure test.",
+    "fallback_target": "A paired p = 13 theorem slice for the current arithmetic program: Γ(Z_13 × Z_25) survives only after refining the old upper-half-prime-only C subtemplate, while Γ(Z_13 × Z_13 × Z_2) shows the naive {2,3}-smooth six-class template survives exactly at zero slack.",
+    "current_blocker": "The campaign now has verified p = 13 feeders on both active lines and checked abstract support-template lemmas, but it still lacks family-specific bridge lemmas from the ring law to the support graphs and still needs the first post-13 stress test Γ(Z_17 × Z_25) on the refined four-class arithmetic line.",
+    "theorem_slice_hint": "Package the paired p = 13 gains into the theorem-slice writeup, then run Γ(Z_17 × Z_25) as the next four-class stress test while formalizing the missing ring-to-support bridge lemmas.",
     "why_now": "The repo already has a cluster of Lean-backed exact instances with repeated support-class decompositions and reusable label roles.",
     "recommended_feeders": [
       {
-        "slug": "z13-z13-z2-prime-zero-divisor-graph",
-        "title": "Is the zero-divisor graph Γ(Z_13 × Z_13 × Z_2) prime?",
-        "question": "Does the zero-divisor graph Γ(Z_13 × Z_13 × Z_2) admit a prime labeling?",
-        "canonical_statement": "Determine whether Γ(Z_13 × Z_13 × Z_2) is prime.",
-        "intended_statement": "Use Γ(Z_13 × Z_13 × Z_2) after the verified p = 11 six-class feeder and the verified refined F25(13) checkpoint to test whether the remaining smooth-reservoir template really survives the first zero-slack p = 13 case.",
+        "slug": "z17-z25-prime-zero-divisor-graph",
+        "title": "Is the zero-divisor graph Γ(Z_17 × Z_25) prime?",
+        "question": "Does the zero-divisor graph Γ(Z_17 × Z_25) admit a prime labeling?",
+        "canonical_statement": "Determine whether Γ(Z_17 × Z_25) is prime.",
+        "intended_statement": "Use Γ(Z_17 × Z_25) after the paired verified p = 13 checkpoints to test whether the refined small-spill C-block strategy scales past the first two-exception case on the four-class line.",
         "named_conjecture": "Prime labelings of zero-divisor graph families",
-        "attack_style": "tightness feeder for a publication campaign",
-        "theorem_slice_hint": "Use next after the refined F25(13) gain to test the first zero-slack follow-up for Γ(Z_p × Z_p × Z_2).",
-        "why_still_appears_open": "No exact result for p = 13 is currently preserved on the Γ(Z_p × Z_p × Z_2) line.",
-        "why_this_could_be_publishable": "It distinguishes a reusable six-class theorem slice from a small-prime smooth-reservoir accident."
+        "attack_style": "four-class scaling feeder for a publication campaign",
+        "theorem_slice_hint": "Run next as the first post-13 arithmetic stress test on the four-class line while the Lean bridge lemmas mature.",
+        "why_still_appears_open": "No verified or Lean-backed result for Γ(Z_17 × Z_25) is currently preserved in repo memory.",
+        "why_this_could_be_publishable": "It tests whether the refined small-spill prime-block arithmetic on Γ(Z_p × Z_25) is a real family corollary rather than only a p = 13 repair."
       }
     ],
     "seed_instances": [

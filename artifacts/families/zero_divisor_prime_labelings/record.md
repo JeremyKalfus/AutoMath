@@ -60,10 +60,15 @@
     the same `C = 1` reduction survives with `A ∪ E` filled by the `21` nontrivial `{2,3}`-smooth labels up to `141`,
     leaving one spare beyond the required `20`,
     and it records that the naive `{2,3}`-smooth count becomes exactly tight at `p = 13` with `24` available labels for `24` required slots.
+  - `F2(13)` is now also a verified feeder on this line:
+    the same `C = 1` reduction survives at the first zero-slack boundary,
+    with `A ∪ E` using all `24` nontrivial `{2,3}`-smooth labels up to `193`
+    and `B ∪ F` packed into a complement block coprime to `6`.
 - Inventory conclusion:
   - both active family lines share stable support decompositions and stable proof skeletons;
   - the four-class arithmetic line already survives its first `p = 13` test, but only after a refined small-spill `C` block;
-  - the six-class arithmetic line still hinges on the first zero-slack test `F2(13)`.
+  - the six-class arithmetic line now also survives its first zero-slack test `F2(13)`;
+  - the next honest arithmetic discriminator is the first post-`13` four-class stress test `F25(17)`.
 
 ## shared_structure
 
@@ -112,7 +117,7 @@
   - the unchanged upper-half-prime-only `F25` `C` program fails at `p = 13`;
   - this is a theorem about the old arithmetic subtemplate, not about graph non-primality.
 - Smallest likely unresolved obstruction:
-  - the naive `F2` `{2,3}`-smooth program at `p = 13`, because the reservoir count is exactly zero-slack there.
+  - post-`13` scaling of the refined small-spill `F25` `C` program, because the paired `p = 13` checkpoint is now closed and the next honest question is whether the repaired four-class arithmetic is genuinely stable.
 
 ## candidate_theorem_slices
 
@@ -144,7 +149,7 @@
   - it does not pretend that the current arithmetic corollaries are closed for all odd primes.
 - Arithmetic refinement preserved alongside the chosen slice:
   - on the `F25` line, the honest theorem upgrade is that the old upper-half-prime-only `C` rule is obsolete and the right local template is a small-spill `C` block;
-  - on the `F2` line, the honest next claim is still only that the naive `{2,3}`-smooth program survives through `p = 11` and reaches its first zero-slack test at `p = 13`.
+  - on the `F2` line, the honest upgraded claim is that the naive `{2,3}`-smooth program now survives through the first zero-slack case `p = 13`, while still lacking a family-level supply lemma.
 
 ## reusable_lemmas
 
@@ -198,13 +203,9 @@
 
 ## next_best_feeder_instances
 
-- `z13-z13-z2-prime-zero-divisor-graph`
-  - first decisive feeder;
-  - it is the smallest unresolved instance on the six-class line;
-  - it cleanly distinguishes whether the naive `{2,3}`-smooth program reaches the first zero-slack case or needs immediate refinement.
 - `z17-z25-prime-zero-divisor-graph`
-  - second discriminator if a paired arithmetic follow-up is needed after the six-class `p = 13` audit;
-  - it is the next smallest four-class test of whether the refined small-spill `C` strategy scales beyond the first two-exception case seen at `p = 13`.
+  - next decisive feeder;
+  - it is the smallest post-`13` four-class test of whether the refined small-spill `C` strategy scales beyond the first two-exception case seen at `p = 13`.
 
 ## publication_value
 
@@ -212,15 +213,15 @@
   - a shared support-graph explanation on both active family lines;
   - Lean-backed exact seeds on both lines;
   - verified `p = 11` feeders on both lines;
-  - a verified `p = 13` four-class feeder showing that the right `F25` arithmetic slice is the refined small-spill version, not the obsolete upper-half-prime-only subtemplate.
+  - paired verified `p = 13` feeders showing both that the right `F25` arithmetic slice is the refined small-spill version and that the current six-class `{2,3}`-smooth template survives exactly at zero slack.
 - The strongest honest publication value right now is:
   - a paired theorem-slice program centered on support-template reductions;
-  - a concrete refined arithmetic corollary on the four-class line;
-  - a sharply localized next discriminator on the six-class line.
+  - a paired `p = 13` arithmetic package on the two active lines;
+  - a sharply localized next discriminator on the four-class line.
 - The honest publication verdict remains:
   - `publication_status = SLICE_CANDIDATE`;
-  - not `SLICE_EXACT`, because the actual support decompositions still need family-level formal packaging and `F2(13)` is still unresolved;
-  - not `PAPER_READY`, because the decisive six-class `p = 13` pressure test has not yet been absorbed into the theorem narrative.
+  - not `SLICE_EXACT`, because the actual support decompositions still need family-level formal packaging and the current Lean results are still abstract support theorems rather than ring-level family wrappers;
+  - not `PAPER_READY`, because the bridge lemmas and the first post-`13` four-class stress test have not yet been absorbed into the theorem narrative.
 
 ## publication_prior_art_audit
 
@@ -252,7 +253,8 @@
   is still too strong.
 - The faithful current statement is:
   once the actual support decompositions are written down, prime labelability of these two families reduces to tiny coprimality interface problems;
-  on the four-class line, the verified `p = 13` feeder already shows the old upper-half-prime-only `C` rule is not the right theorem statement and must be replaced by a small-spill version.
+  on the four-class line, the verified `p = 13` feeder already shows the old upper-half-prime-only `C` rule is not the right theorem statement and must be replaced by a small-spill version;
+  on the six-class line, the verified `p = 13` feeder shows the naive `{2,3}`-smooth template remains alive exactly at zero slack.
 - Because the underlying support decompositions are largely standard in the zero-divisor-graph literature, any publication claim must center on the prime-labeling reduction and the arithmetic package, not on the existence of the support classes themselves.
 
 ## publication_theorem_worthiness
@@ -261,7 +263,7 @@
   a paired reduction theorem on two infinite families plus a genuine obstruction/refinement theorem for the obsolete `F25` upper-half-prime-only `C` program.
 - The proof package is partly structural and partly unfinished.
   The support-graph/interface logic is structural;
-  the arithmetic corollaries still lean on hand-picked finite feeders and one unresolved zero-slack discriminator `F2(13)`.
+  the arithmetic corollaries still lean on hand-picked finite feeders and one unresolved post-`13` discriminator `F25(17)`.
 - A referee asking `what is the theorem?` can be answered only if the paper is stated as a reduction or sufficient-condition theorem.
   The current evidence does not yet support a closed graph-level classification or a full all-odd-prime slice.
 - The claim is still too dependent on small cases for anything stronger than `SLICE_CANDIDATE`.
@@ -277,16 +279,16 @@
   a short paired reduction paper or section whose main theorem is the support-template reduction, with the exact/feeders and the `F25(13)` refinement story as applications.
 - To survive review, the writeup still needs two missing ingredients:
   checked family support-decomposition lemmas tying the abstract Lean wrappers to the actual zero-divisor graphs;
-  and a clear decision on whether `Γ(Z_13 × Z_13 × Z_2)` extends the current arithmetic program or exposes the first honest template failure.
-- If `F2(13)` succeeds and the actual support decompositions are formalized, the status can move toward `SLICE_EXACT`.
-- If `F2(13)` fails, the campaign can still yield a publishable smaller obstruction theorem, but only if the failure is packaged as a theorem about the arithmetic template rather than about graph non-primality.
+  and a clear decision on whether the refined four-class arithmetic extends cleanly past `p = 13`.
+- If the bridge lemmas are formalized and `F25(17)` succeeds, the status can move toward `SLICE_EXACT`.
+- If `F25(17)` fails, the campaign can still yield a publishable smaller obstruction theorem, but only if the failure is packaged as a theorem about the refined arithmetic template rather than about graph non-primality.
 
 ## strongest_honest_claim
 
 - The strongest honest post-audit claim is a paired theorem-slice candidate, not a closed theorem:
   the repo has exact seeds, verified feeders, and checked abstract Lean wrapper lemmas indicating that prime labelability of `Γ(Z_p × Z_25)` and `Γ(Z_p × Z_p × Z_2)` should reduce to explicit coprimality allocations on tiny support graphs, with the second family collapsing to `A-B`, `A-F`, and `B-E` after setting `C = 1`.
-  The `F25` line also now has verified `p = 13` evidence that the old upper-half-prime-only `C` program is false as a template and must be replaced by a small-spill version.
-  But the actual support-decomposition lemmas for the families are not yet formalized, and the decisive six-class zero-slack case `F2(13)` is still unresolved, so this is not yet a proved publication theorem.
+  The `F25` line also now has verified `p = 13` evidence that the old upper-half-prime-only `C` program is false as a template and must be replaced by a small-spill version, while the `F2` line now has verified `p = 13` evidence that the naive `{2,3}`-smooth six-class template survives exactly at zero slack.
+  But the actual support-decomposition lemmas for the families are not yet formalized, and the decisive post-`13` arithmetic stress test `F25(17)` is still unresolved, so this is not yet a proved publication theorem.
 
 ## paper_title_hint
 
@@ -351,4 +353,4 @@
 - Remaining blockers after this Lean pass:
   - no checked family support-decomposition lemma yet derives the actual `F25(p)` or `F2(p)` support graphs from the zero-divisor families themselves;
   - the checked Lean surface still lives at the abstract support-template level rather than the ring-specific family-theorem level;
-  - the decisive six-class feeder `F2(13)` remains unresolved, so the arithmetic story is still not closed.
+  - the decisive post-`13` four-class feeder `F25(17)` remains unresolved, so the arithmetic story is still not closed.

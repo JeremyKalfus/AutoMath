@@ -1,13 +1,13 @@
 # AutoMath Publication Summary
 
-- Updated: `2026-04-10 08:13:54 EDT`
+- Updated: `2026-04-10 13:24:08 EDT`
 - Active campaigns: zero_divisor_prime_labelings, cnbc_quintic_nonexistence
 - Strongest current publication status: `SLICE_CANDIDATE`
-- Strongest honest claim: The zero-divisor campaign now has paired verified p = 11 feeders on both active lines, a verified p = 13 feeder on the four-class Γ(Z_p × Z_25) line, checked abstract support-template reductions `zp_z25_support_template_reduction` and `zp_zp_z2_support_template_reduction_of_singleton_one`, and checked reusable family lemmas `singleton_one_lemma` and `three_interface_pack_lemma` isolating the three parameter-sensitive interfaces A-B, A-F, and B-E after setting C = 1. This formalizes the current theorem-slice skeleton at the support-graph level, but the actual support-decomposition lemmas for Γ(Z_p × Z_25) and Γ(Z_p × Z_p × Z_2) are still missing and the decisive six-class feeder Γ(Z_13 × Z_13 × Z_2) is still unresolved, so the campaign remains a checked slice candidate rather than a proved family theorem.
-- Active theorem-slice target: Checked reusable theorem-slice reductions for the zero-divisor campaign: `zp_z25_support_template_reduction` for the four-class family and `zp_zp_z2_support_template_reduction_of_singleton_one`, factored through `three_interface_pack_lemma`, for the six-class family after setting C = 1, together with the refined p = 13 four-class arithmetic checkpoint.
-- Next blocker: The checked Lean reductions are still abstract support-template theorems rather than family-specific support decompositions from the ring law, and the six-class p = 13 feeder Γ(Z_13 × Z_13 × Z_2) still has to decide whether the current arithmetic story is a real theorem slice or only a promising scaffold.
-- Next decisive feeder instance: z13-z13-z2-prime-zero-divisor-graph
-- Next feeder instances: z13-z13-z2-prime-zero-divisor-graph, z17-z25-prime-zero-divisor-graph
+- Strongest honest claim: The zero-divisor campaign now has paired verified p = 13 feeders on both active lines: Γ(Z_13 × Z_25) survives with a refined small-spill C block, and Γ(Z_13 × Z_13 × Z_2) survives the first zero-slack six-class test with the unrefined C = 1 plus {2,3}-smooth template. The Lean surface now also contains checked abstract support assets `support_decomposition_F25`, `support_decomposition_F2`, `classwise_template_lemma`, `zp_z25_support_template_reduction`, and `zp_zp_z2_support_template_reduction_of_singleton_one`. The main remaining gap is no longer whether the paired p = 13 frontier survives, but whether the actual ring-to-support bridge lemmas can be formalized cleanly enough to turn this feeder cluster into a paper-ready family theorem slice.
+- Active theorem-slice target: Family-level bridge lemmas from the ring law into the checked support-template reductions for Γ(Z_p × Z_25) and Γ(Z_p × Z_p × Z_2), together with the paired verified p = 13 arithmetic checkpoints.
+- Next blocker: The campaign still needs the actual ring-to-support bridge lemmas that connect the new Lean support module to the family rings themselves, and it still needs one post-p = 13 stress test on the refined four-class line to see how much p-range language is honest.
+- Next decisive feeder instance: z17-z25-prime-zero-divisor-graph
+- Next feeder instances: z17-z25-prime-zero-divisor-graph
 - Any Lean family lemma or slice complete: `yes`
 - xhigh usable in this environment: `yes`
 - Isolated git worktrees feasible: `yes`
@@ -16,9 +16,9 @@
 - Summary path: `artifacts/families/summary.md`
 - Family status paths: artifacts/families/zero_divisor_prime_labelings/status.json, artifacts/families/cnbc_quintic_nonexistence/status.json
 - Ledger tail:
-  - publication mode selected active family campaign zero_divisor_prime_labelings.
-  - Parallel publication worker started for cnbc_quintic_nonexistence in isolated git worktree.
-  - Generalize stage for family campaign `zero_divisor_prime_labelings` ran on 2026-04-10 07:59:04 EDT as a bounded local-only pass. It reread the active dossier, current family record/status, `PROOFS.md`, and the six most relevant seed artifacts `z5-z25`, `z7-z25`, `z13-z25`, `z5-z5-z2`, `z7-z7-z2`, and `z11-z11-z2`. The family outputs were rewritten around the honest paired theorem slice: both zero-divisor families reduce to tiny support-graph coprimality programs, the four-class `Γ(Z_p × Z_25)` line now explicitly preserves the refined small-spill `C` block forced by `p = 13`, and the main unresolved discriminator is the six-class zero-slack feeder `Γ(Z_13 × Z_13 × Z_2)`. Status was reset to `stage = generalize`, `classification = CANDIDATE`, `publication_status = SLICE_CANDIDATE`, with next feeders `z13-z13-z2-prime-zero-divisor-graph` and `z17-z25-prime-zero-divisor-graph`.
-  - Publication audit for family campaign `zero_divisor_prime_labelings` ran on 2026-04-10 08:06:11 EDT as a bounded claim-specific web pass followed by local skeptical checking. The narrow literature pass found the closest canonical source to be Fox and Mooney, `On prime labelings of zero-divisor graphs` (2025), which proves nearby families such as `Γ(Z_p × Z_9)` and `Γ(Z_2 × Z_(p^2))` but leaves the broader lines `Γ(Z_p × Z_(q^2))` and `Γ(Z_p × Z_p × Z_q)` as conjectural/open; independent structural sources already treat zero-divisor graphs of `Z_(p^2 q)` and direct products of three finite fields, so the support decompositions themselves should be treated as standard scaffolding rather than the main novelty. The family status was updated conservatively to `stage = publication_audit`, `publication_status = SLICE_CANDIDATE`, `publication_confidence = medium-high`, `campaign_health = warm`, and `next_action = formalize_actual_support_decomposition_lemmas_and_family_reduction_statements_then_run_z13_z13_z2`.
-  - Parallel publication worker finished cleanly for cnbc_quintic_nonexistence and synced stable dossier/artifact updates back.
-  - Campaign zero_divisor_prime_labelings remains active with publication status SLICE_CANDIDATE.
+  - bounded publication run cycle 2/2 finished at 2026-04-10 08:13:54 EDT.
+  - bounded publication run completed 2/2 requested cycle(s).
+  - Queue was empty or exhausted, so it was locally reseeded from active publication campaigns before any broad web curation.
+  - Verified feeder z13-z13-z2-prime-zero-divisor-graph and preserved the zero-slack p = 13 witness for the six-class zero-divisor campaign.
+  - Zero-divisor family dossier/status now treat the paired p = 13 frontier as cleared on both active lines, list the checked support lemmas, and move the next decisive feeder to z17-z25-prime-zero-divisor-graph while ring-to-support bridge lemmas remain the main formal blocker.
+  - Queue was empty or exhausted, so it was locally reseeded from active publication campaigns before any broad web curation.

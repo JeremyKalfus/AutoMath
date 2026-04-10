@@ -6,6 +6,7 @@ Use this repo-side setup if you want Codex app automation without running the ma
 
 - Prompt file: [monitoring/publication_monitor.prompt.md](/Users/jeremykalfus/CodingProjects/AutoMath/monitoring/publication_monitor.prompt.md)
 - Runner: [scripts/run_publication_monitor.sh](/Users/jeremykalfus/CodingProjects/AutoMath/scripts/run_publication_monitor.sh)
+- Continuous manager: [run_continuous.sh](/Users/jeremykalfus/CodingProjects/AutoMath/run_continuous.sh)
 - Cycle summary: [artifacts/families/summary.md](/Users/jeremykalfus/CodingProjects/AutoMath/artifacts/families/summary.md)
 
 ## Manual Codex App Setup
@@ -23,6 +24,12 @@ Use this repo-side setup if you want Codex app automation without running the ma
 - seeds that worktree with the current publication-control surface, campaigns, family artifacts, and seed-instance evidence
 - runs one publication cycle there
 - syncs stable campaign and monitoring outputs back to the main checkout
+
+## Default Long-Horizon Mode
+
+- The repo-local default long-horizon manager is [run_continuous.sh](/Users/jeremykalfus/CodingProjects/AutoMath/run_continuous.sh).
+- It keeps cycling in publication mode until `.stop_harness` exists or a campaign honestly reaches `publication_status = PAPER_READY`.
+- Use the monitor runner only when you want a one-cycle worktree pass or a Codex app automation, not as the primary manager loop.
 
 ## What To Watch
 

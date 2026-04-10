@@ -4,34 +4,62 @@
 - slug: `family-zero_divisor_prime_labelings`
 - family_slug: `zero_divisor_prime_labelings`
 - family_name: `Prime labelings of zero-divisor graph families`
-- campaign_priority: `1`
+- canonical_source: `campaigns/zero_divisor_prime_labelings.md`
+- open_status_checked_on: `2026-04-10`
 - dossier_path: `campaigns/zero_divisor_prime_labelings.md`
 - artifact_dir: `artifacts/families/zero_divisor_prime_labelings`
+- attack_style: `family campaign`
+- curation_confidence: `high`
 - publication_status: `SLICE_CANDIDATE`
+- campaign_affinity: `zero_divisor_prime_labelings`
 
-## family_statement
-Work from the active campaign dossier at `campaigns/zero_divisor_prime_labelings.md` and the family artifact path `artifacts/families/zero_divisor_prime_labelings`.
+## question
+Advance the active publication campaign zero_divisor_prime_labelings from its current theorem-slice blocker.
+
+## canonical_statement
+Family-level bridge lemmas from the ring law into the checked support-template reductions for Γ(Z_p × Z_25) and Γ(Z_p × Z_p × Z_2), together with the paired verified p = 13 arithmetic checkpoints.
+
+## intended_statement
+The zero-divisor campaign now has paired verified p = 13 feeders on both active lines: Γ(Z_13 × Z_25) survives with a refined small-spill C block, and Γ(Z_13 × Z_13 × Z_2) survives the first zero-slack six-class test with the unrefined C = 1 plus {2,3}-smooth template. The Lean surface now also contains checked abstract support assets `support_decomposition_F25`, `support_decomposition_F2`, `classwise_template_lemma`, `zp_z25_support_template_reduction`, and `zp_zp_z2_support_template_reduction_of_singleton_one`. The main remaining gap is no longer whether the paired p = 13 frontier survives, but whether the actual ring-to-support bridge lemmas can be formalized cleanly enough to turn this feeder cluster into a paper-ready family theorem slice.
 
 ## theorem_slice_hint
-Package the refined F25(13) C-block gain into the theorem-slice writeup, then run Γ(Z_13 × Z_13 × Z_2) as the next decisive zero-slack p = 13 pressure test.
+Package the paired p = 13 gains into the theorem-slice writeup, then run Γ(Z_17 × Z_25) as the next four-class stress test while formalizing the missing ring-to-support bridge lemmas.
 
 ## theorem_slice_target
-Checked reusable theorem-slice reductions for the zero-divisor campaign: `zp_z25_support_template_reduction` for the four-class family and `zp_zp_z2_support_template_reduction_of_singleton_one`, factored through `three_interface_pack_lemma`, for the six-class family after setting C = 1.
+Family-level bridge lemmas from the ring law into the checked support-template reductions for Γ(Z_p × Z_25) and Γ(Z_p × Z_p × Z_2), together with the paired verified p = 13 arithmetic checkpoints.
 
 ## fallback_target
-If the arithmetic corollaries do not close, preserve the honest theorem-slice plus template-obstruction results: the old upper-half-prime-only C program on Γ(Z_p × Z_25) fails at p = 13, and any failure at Γ(Z_13 × Z_13 × Z_2) should be recorded as a failure of the current smooth-reservoir template rather than of graph primality itself.
+If the arithmetic corollaries do not yet close, preserve the structural slice plus the paired p = 13 arithmetic statement rather than overclaiming a full odd-prime theorem.
 
 ## next_blocker
-The checked Lean reductions are still abstract support-template theorems rather than family-specific support decompositions from the ring law, and the six-class p = 13 feeder Γ(Z_13 × Z_13 × Z_2) still has to decide whether the current arithmetic story is a real theorem slice or only a promising scaffold.
+The campaign still needs the actual ring-to-support bridge lemmas that connect the new Lean support module to the family rings themselves, and it still needs one post-p = 13 stress test on the refined four-class line to see how much p-range language is honest.
 
-## why_now
+## why_reasoning_friendly
 The repo already has a cluster of Lean-backed exact instances with repeated support-class decompositions and reusable label roles.
 
+## why_low_token
+The dossier, family record, and exact inventory already exist locally.
+
+## verifier_hint
+Use publication audit to test whether the current claim is really theorem-shaped rather than another instance.
+
+## lean_hint
+Prefer reusable family lemmas or theorem-slice reductions over another isolated exact formalization.
+
+## rediscovery_risk
+low-medium
+
+## why_still_appears_open
+The family artifact still records a live blocker rather than a closed publication-grade theorem.
+
+## why_this_could_be_publishable
+Support-template reductions and paired p = 13 feeders in two zero-divisor prime-labeling families
+
 ## strongest_honest_claim
-The zero-divisor campaign now has paired verified p = 11 feeders on both active lines, a verified p = 13 feeder on the four-class Γ(Z_p × Z_25) line, checked Lean names for the abstract support-template reductions `zp_z25_support_template_reduction` and `zp_zp_z2_support_template_reduction_of_singleton_one`, and checked reusable family lemmas `singleton_one_lemma` and `three_interface_pack_lemma` on the Γ(Z_p × Z_p × Z_2) line. The strongest honest slice is that prime labelability of Γ(Z_p × Z_25) and Γ(Z_p × Z_p × Z_2) reduces to explicit classwise coprimality partitions on tiny support graphs, that the second family's actual support graph A-B, A-C, A-F, B-C, B-E, C-D collapses to the three parameter-sensitive interfaces A-B, A-F, and B-E after setting C = 1, and that the first p = 13 four-class stress test survives once the C block is refined to allow two doubled-prime exceptions into D. What remains is to formalize the actual support decompositions from ring structure and decide the six-class zero-slack feeder Γ(Z_13 × Z_13 × Z_2).
+The zero-divisor campaign now has paired verified p = 13 feeders on both active lines: Γ(Z_13 × Z_25) survives with a refined small-spill C block, and Γ(Z_13 × Z_13 × Z_2) survives the first zero-slack six-class test with the unrefined C = 1 plus {2,3}-smooth template. The Lean surface now also contains checked abstract support assets `support_decomposition_F25`, `support_decomposition_F2`, `classwise_template_lemma`, `zp_z25_support_template_reduction`, and `zp_zp_z2_support_template_reduction_of_singleton_one`. The main remaining gap is no longer whether the paired p = 13 frontier survives, but whether the actual ring-to-support bridge lemmas can be formalized cleanly enough to turn this feeder cluster into a paper-ready family theorem slice.
 
 ## next_action
-formalize_actual_support_decomposition_lemmas_and_family_reduction_statements_then_run_z13_z13_z2
+formalize_ring_to_support_bridge_lemmas_then_run_z17_z25
 
 ## seed_instances
 - z3-z25-prime-zero-divisor-graph
@@ -43,5 +71,4 @@ formalize_actual_support_decomposition_lemmas_and_family_reduction_statements_th
 - z2-power-8-prime-zero-divisor-graph
 
 ## next_feeder_instances
-- z13-z13-z2-prime-zero-divisor-graph
 - z17-z25-prime-zero-divisor-graph
