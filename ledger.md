@@ -589,3 +589,22 @@
 - Solve and verify completed for `z13-z25-prime-zero-divisor-graph` on 2026-04-09 as the decisive four-class `p = 13` feeder. The explicit witness uses `C = {37,41,43,47,53,59,61,67,71,73,79,83}`, keeps `B = {1,19,23,29}`, absorbs the barrier spill labels `38,46,57,58,69,76` into `A`, and lets the doubles `74` and `82` of the two sub-half `C` primes land in `D`; the checker confirmed `84` vertices, `486` edges, bijection onto `{1,...,84}`, and zero coprimality violations.
 - Publication audit after `z13-z25` kept the campaign at `publication_status = SLICE_CANDIDATE` but sharpened the honest theorem-slice package: the four-class line now survives the first `p = 13` frontier, the old upper-half-prime-only `C` subtemplate is honestly obsolete, and the live decisive feeder is now `z13-z13-z2-prime-zero-divisor-graph`.
 - Queue was empty or exhausted, so it was locally reseeded from active publication campaigns before any broad web curation.
+- bounded publication run cycle 1/2 started at 2026-04-10 02:29:12 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker started for cnbc_quintic_nonexistence in isolated git worktree.
+- Generalize timed out for family campaign zero_divisor_prime_labelings.
+- Publication audit timed out for family campaign zero_divisor_prime_labelings.
+- Lean timed out on family campaign zero_divisor_prime_labelings; the family artifact remains active for later.
+- Parallel publication worker finished cleanly for cnbc_quintic_nonexistence and synced stable dossier/artifact updates back.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_CANDIDATE.
+- bounded publication run cycle 1/2 finished at 2026-04-10 07:56:52 EDT.
+- cycle sleeping for 0 seconds.
+- bounded publication run cycle 2/2 started at 2026-04-10 07:56:52 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker started for cnbc_quintic_nonexistence in isolated git worktree.
+- Generalize stage for family campaign `zero_divisor_prime_labelings` ran on 2026-04-10 07:59:04 EDT as a bounded local-only pass. It reread the active dossier, current family record/status, `PROOFS.md`, and the six most relevant seed artifacts `z5-z25`, `z7-z25`, `z13-z25`, `z5-z5-z2`, `z7-z7-z2`, and `z11-z11-z2`. The family outputs were rewritten around the honest paired theorem slice: both zero-divisor families reduce to tiny support-graph coprimality programs, the four-class `Γ(Z_p × Z_25)` line now explicitly preserves the refined small-spill `C` block forced by `p = 13`, and the main unresolved discriminator is the six-class zero-slack feeder `Γ(Z_13 × Z_13 × Z_2)`. Status was reset to `stage = generalize`, `classification = CANDIDATE`, `publication_status = SLICE_CANDIDATE`, with next feeders `z13-z13-z2-prime-zero-divisor-graph` and `z17-z25-prime-zero-divisor-graph`.
+- Publication audit for family campaign `zero_divisor_prime_labelings` ran on 2026-04-10 08:06:11 EDT as a bounded claim-specific web pass followed by local skeptical checking. The narrow literature pass found the closest canonical source to be Fox and Mooney, `On prime labelings of zero-divisor graphs` (2025), which proves nearby families such as `Γ(Z_p × Z_9)` and `Γ(Z_2 × Z_(p^2))` but leaves the broader lines `Γ(Z_p × Z_(q^2))` and `Γ(Z_p × Z_p × Z_q)` as conjectural/open; independent structural sources already treat zero-divisor graphs of `Z_(p^2 q)` and direct products of three finite fields, so the support decompositions themselves should be treated as standard scaffolding rather than the main novelty. The family status was updated conservatively to `stage = publication_audit`, `publication_status = SLICE_CANDIDATE`, `publication_confidence = medium-high`, `campaign_health = warm`, and `next_action = formalize_actual_support_decomposition_lemmas_and_family_reduction_statements_then_run_z13_z13_z2`.
+- Parallel publication worker finished cleanly for cnbc_quintic_nonexistence and synced stable dossier/artifact updates back.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_CANDIDATE.
+- bounded publication run cycle 2/2 finished at 2026-04-10 08:13:54 EDT.
+- bounded publication run completed 2/2 requested cycle(s).
