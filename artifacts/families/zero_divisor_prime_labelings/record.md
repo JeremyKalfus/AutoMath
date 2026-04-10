@@ -214,3 +214,46 @@
   - not `PAPER_READY`;
   - not merely `INSTANCE_ONLY`;
   - correctly `publication_status = SLICE_CANDIDATE`.
+
+## lean_statement
+
+- Current Lean target for this pass:
+  - a reusable family-supporting lemma, not a new exact instance.
+- Exact theorem statement added to the official Lean backend:
+  - `AutoMath.Families.ZeroDivisorReductions.singleton_one_lemma`
+  - For predicates `A,B,C,D : V → Prop` and a label map `label : V → Nat`, if every vertex in the hinge class `C` has label `1`, then every edge of type `A-C`, `B-C`, or `C-D` is automatically labeled by a coprime pair.
+- Honest scope:
+  - this formalizes the reusable "edges touching `C` are automatic" step on the `F2(p)` line;
+  - it does not yet formalize the full support decomposition from actual zero-divisors of `Z_p × Z_p × Z_2`.
+
+## lean_skeleton
+
+- Proof skeleton used:
+  1. State the six edge families touching `C`: `A-C`, `C-A`, `B-C`, `C-B`, `C-D`, `D-C`.
+  2. Case-split on that finite disjunction.
+  3. In each branch, rewrite the relevant `C`-label to `1` using `hC1`.
+  4. Discharge the coprimality goal by `simp`.
+- Reason this is the right Lean target:
+  - it is the smallest reusable lemma explicitly named by the family record;
+  - it strengthens the checked family surface without pretending the full paired slice is already formalized from ring data.
+
+## lean_result
+
+- Lean file updated:
+  - `lean/AutoMath/Families/ZeroDivisorReductions.lean`
+- Mirrored family Lean file preserved under the family artifact after the check:
+  - `artifacts/families/zero_divisor_prime_labelings/lean/AutoMath/Families/ZeroDivisorReductions.lean`
+- Check run:
+  - `lake build AutoMath.Families.ZeroDivisorReductions`
+- Result:
+  - the targeted family module checked successfully with the new `singleton_one_lemma`.
+- Honest Lean verdict for the campaign after this pass:
+  - the family now has a checked reusable singleton-one lemma on the official Lean surface;
+  - the broader paired theorem slice remains structurally correct but not yet connected all the way to formal support decompositions of the actual zero-divisor families.
+
+## lean_blockers
+
+- Remaining blockers before the paired theorem slice can honestly be marked Lean-complete:
+  - no checked support-decomposition lemma yet derives the `F25(p)` and `F2(p)` support graphs directly from the actual zero-divisor families;
+  - the current theorem-slice wrappers still live at the abstract support-template level;
+  - the next arithmetic frontier remains the paired `p = 13` audit, especially the refined `F25(13)` `C` block and the zero-slack `F2(13)` smooth-reservoir test.

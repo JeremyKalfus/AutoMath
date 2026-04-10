@@ -11,7 +11,7 @@
     "publication_status": "SLICE_CANDIDATE",
     "theorem_slice_target": "Paired support-template reduction theorems for Γ(Z_p × Z_25) and Γ(Z_p × Z_p × Z_2).",
     "fallback_target": "A first p = 13 template-break theorem for the current arithmetic program: either Γ(Z_13 × Z_25) is the first tight four-class failure, or the naive {2,3}-smooth six-class template fails at Γ(Z_13 × Z_13 × Z_2).",
-    "current_blocker": "Package the paired verified p = 11 feeders into one clean zero-divisor theorem-slice writeup, extend the Lean family surface from abstract support templates toward reusable support-decomposition lemmas, and then pressure-test the p = 13 frontier starting with Γ(Z_13 × Z_25).",
+    "current_blocker": "The Lean surface now contains the checked singleton-one reduction lemma, but the campaign still lacks checked support-decomposition lemmas deriving the actual F25(p) and F2(p) support graphs before the p = 13 arithmetic audit can be promoted cleanly.",
     "theorem_slice_hint": "Promote the paired verified p = 11 feeders into the theorem-slice writeup, then run Γ(Z_13 × Z_25) first and Γ(Z_13 × Z_13 × Z_2) as the parallel p = 13 pressure test.",
     "why_now": "The repo already has a cluster of Lean-backed exact instances with repeated support-class decompositions and reusable label roles.",
     "recommended_feeders": [

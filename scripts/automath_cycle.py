@@ -44,6 +44,8 @@ VERIFY_TIMEOUT = int(os.environ.get("AUTOMATH_VERIFY_TIMEOUT", "720"))
 GENERALIZE_TIMEOUT = int(os.environ.get("AUTOMATH_GENERALIZE_TIMEOUT", "1800"))
 PUBLICATION_AUDIT_TIMEOUT = int(os.environ.get("AUTOMATH_PUBLICATION_AUDIT_TIMEOUT", "1200"))
 LEAN_TIMEOUT = int(os.environ.get("AUTOMATH_LEAN_TIMEOUT", "1800"))
+PARALLEL_WORKER_WAIT_TIMEOUT = int(os.environ.get("AUTOMATH_PARALLEL_WORKER_WAIT_TIMEOUT", "90"))
+WORKTREE_REMOVE_TIMEOUT = int(os.environ.get("AUTOMATH_WORKTREE_REMOVE_TIMEOUT", "30"))
 
 
 def now_str() -> str:
@@ -951,7 +953,20 @@ class ParallelWorker:
     def finish(self) -> str:
         if self.proc is None:
             return "not_started"
-        returncode = self.proc.wait()
+        try:
+            returncode = self.proc.wait(timeout=PARALLEL_WORKER_WAIT_TIMEOUT)
+        except subprocess.TimeoutExpired:
+            self.proc.kill()
+            try:
+                self.proc.wait(timeout=10)
+            except subprocess.TimeoutExpired:
+                pass
+            append_ledger(
+                f"Parallel publication worker for {self.campaign['family_slug']} exceeded the cleanup wait budget; "
+                "the manager killed it, treated the worker as infrastructure-failed, and continued."
+            )
+            self._remove_worktree()
+            return "infra_failed"
         if returncode == 0:
             sync_tree(self.worktree / self.campaign["dossier_path"], ROOT / self.campaign["dossier_path"])
             sync_tree(self.worktree / self.campaign["artifact_dir"], ROOT / self.campaign["artifact_dir"])
@@ -960,8 +975,30 @@ class ParallelWorker:
         else:
             append_ledger(f"Parallel publication worker for {self.campaign['family_slug']} exited nonzero; manager kept the main worktree unchanged.")
             outcome = "infra_failed"
-        subprocess.run(["git", "worktree", "remove", "--force", str(self.worktree)], cwd=ROOT, check=False)
+        self._remove_worktree()
         return outcome
+
+    def _remove_worktree(self) -> None:
+        try:
+            result = subprocess.run(
+                ["git", "worktree", "remove", "--force", str(self.worktree)],
+                cwd=ROOT,
+                capture_output=True,
+                text=True,
+                timeout=WORKTREE_REMOVE_TIMEOUT,
+                check=False,
+            )
+        except subprocess.TimeoutExpired:
+            append_ledger(
+                f"Parallel publication worker cleanup timed out while removing the worktree for "
+                f"{self.campaign['family_slug']}; the main manager continued without blocking."
+            )
+            return
+        if result.returncode != 0:
+            append_ledger(
+                f"Parallel publication worker cleanup could not remove the worktree for "
+                f"{self.campaign['family_slug']} cleanly; a later manual cleanup may be needed."
+            )
 
 
 def maybe_start_parallel_worker(primary_slug: str, allow_parallel: bool) -> ParallelWorker | None:

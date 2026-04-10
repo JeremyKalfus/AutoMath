@@ -1,18 +1,18 @@
 # AutoMath Publication Summary
 
-- Updated: `2026-04-09 20:58:21 EDT`
+- Updated: `2026-04-09 21:20:00 EDT`
 - Active campaigns: zero_divisor_prime_labelings, cnbc_quintic_nonexistence
 - Strongest current publication status: `SLICE_CANDIDATE`
-- Strongest honest claim: The zero-divisor campaign now has paired verified p = 11 feeders on both active lines, plus Lean-backed abstract support-template reductions. The strongest honest slice is that prime labelability of Γ(Z_p × Z_25) and Γ(Z_p × Z_p × Z_2) reduces to explicit classwise coprimality partitions on tiny support graphs, and both reductions now survive the campaign-designated p = 11 checkpoint. What remains is to turn those reductions into cleaner family-level support-decomposition lemmas and decide how far the arithmetic program extends at p = 13.
+- Strongest honest claim: The zero-divisor campaign now has paired verified p = 11 feeders on both active lines, checked Lean names for the paired abstract support-template reductions, and a checked reusable singleton-one lemma on the Γ(Z_p × Z_p × Z_2) line. The strongest honest slice remains that prime labelability of Γ(Z_p × Z_25) and Γ(Z_p × Z_p × Z_2) reduces to explicit classwise coprimality partitions on tiny support graphs, with the second family collapsing to three parameter-sensitive interfaces after setting C = 1. What remains is to connect those abstractions to checked support decompositions of the actual zero-divisor families and then pressure-test the arithmetic program at p = 13.
 - Active theorem-slice target: Paired support-template reduction theorems for Γ(Z_p × Z_25) and Γ(Z_p × Z_p × Z_2), with the second theorem stated on the actual support graph A-B, A-C, A-F, B-C, B-E, C-D and reduced to three parameter-sensitive interfaces after setting C = 1.
-- Next blocker: Package the paired verified p = 11 feeders into one clean family writeup, extend the Lean family surface from abstract support templates toward reusable support-decomposition lemmas, and then pressure-test the p = 13 frontier starting with Γ(Z_13 × Z_25).
+- Next blocker: The Lean surface now contains the checked singleton-one reduction lemma, but the campaign still lacks checked support-decomposition lemmas deriving the actual F25(p) and F2(p) support graphs from zero-divisor structure before the p = 13 arithmetic audit can be promoted cleanly.
 - Next decisive feeder instance: z13-z25-prime-zero-divisor-graph
 - Next feeder instances: z13-z25-prime-zero-divisor-graph, z13-z13-z2-prime-zero-divisor-graph
 - Any Lean family lemma or slice complete: `yes`
 - xhigh usable in this environment: `yes`
 - Isolated git worktrees feasible: `yes`
 - Automatic stop condition: `publication_status = PAPER_READY` with preserved proof artifacts
-- Worker infra status this cycle: `worker_cleanup_stalled_after_stage_timeouts`
+- Worker infra status this cycle: `cleanup_timeout_guard_added_pending_retest`
 - Summary path: `artifacts/families/summary.md`
 - Family status paths: artifacts/families/zero_divisor_prime_labelings/status.json, artifacts/families/cnbc_quintic_nonexistence/status.json
 - Ledger tail:

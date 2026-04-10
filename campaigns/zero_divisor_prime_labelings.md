@@ -18,10 +18,10 @@ Turn the existing exact-instance cluster on prime labelings of zero-divisor grap
 - Next decisive feeder and why:
   `Γ(Z_13 × Z_25)` is now the next decisive feeder because both active family lines have already survived the campaign-designated `p = 11` checkpoint, so the four-class line is the next user-priority frontier and the first full `p = 13` arithmetic stress test.
 - Strongest honest current claim:
-  the paired support-template program is now backed by verified `p = 11` feeders on both active zero-divisor lines, and the Lean family surface preserves the abstract reduction theorems; the main uncertainty has shifted from “do the two lines both survive `p = 11`?” to “how far does the arithmetic program extend at `p = 13`?”
+  the paired support-template program is now backed by verified `p = 11` feeders on both active zero-divisor lines, checked Lean names for the paired abstract reduction theorems, and a checked reusable `singleton_one_lemma` on the `Γ(Z_p × Z_p × Z_2)` line; the main uncertainty has shifted from “do the two lines both survive `p = 11`?” to “how far does the arithmetic program extend at `p = 13`?”
 - `publication_status`: `SLICE_CANDIDATE`
-- `publication_confidence`: `medium-high`
-- `next_action`: `package_paired_verified_p11_feeders_then_run_z13_z25_with_parallel_p13_template_break_audit`
+- `publication_confidence`: `high`
+- `next_action`: `connect_the_checked_family_support_surface_to_actual_support_decompositions_then_run_z13_z25_with_parallel_z13_z13_z2_template_audit`
 - `paper_title_hint`: `Support-template reductions for prime labelings of two zero-divisor graph families`
 
 ## Why This Campaign Exists
@@ -89,6 +89,9 @@ Reusable coprimality lemmas visible already:
 - large-prime singleton-role lemma for the `C` class
 - residual-reservoir lemma for `D` once `B` is chosen
 - classwise template theorem: if labels satisfy the class constraints, any bijection within classes works
+- checked Lean wrapper theorem `zp_z25_support_template_reduction`
+- checked Lean wrapper theorem `zp_zp_z2_support_template_reduction_of_singleton_one`
+- checked Lean family lemma `singleton_one_lemma`, isolating the automatic `A-C`, `B-C`, and `C-D` hinge edges once `C = 1`
 
 Parameter-sensitive steps:
 
@@ -252,6 +255,7 @@ Why these:
 ## Blockers
 
 - The support-graph reductions are visible, but they still need to be stated and preserved as explicit theorem slices rather than just campaign prose.
+- The Lean surface now has the checked `singleton_one_lemma`, but the repo still lacks checked support-decomposition lemmas deriving the actual `F25(p)` and `F2(p)` support graphs from zero-divisor structure.
 - The arithmetic reservoir arguments for `C`, `B`, and the residual classes are still hand-tuned in the solved exact and verified feeder instances.
 - The next honest publication question is no longer `p = 11`; it is whether the arithmetic program survives the first `p = 13` frontier without overclaiming.
 
