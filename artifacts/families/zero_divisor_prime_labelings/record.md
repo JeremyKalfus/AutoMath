@@ -5,352 +5,332 @@
 - Active family slug: `zero_divisor_prime_labelings`.
 - Active dossier: `campaigns/zero_divisor_prime_labelings.md`.
 - Family artifact path: `artifacts/families/zero_divisor_prime_labelings`.
-- Locked family statements for this pass:
+- Locked family statements for this generalize pass:
   - `F25(p) := Γ(Z_p × Z_25)` for odd prime `p`, with support classes
-    `A,B,C,D` of sizes `20,4,p-1,4(p-1)`.
+    `A = {(0,u) : 5 ∤ u}`,
+    `B = {(0,5t) : t in {1,2,3,4}}`,
+    `C = {(a,0) : a in Z_p^×}`,
+    `D = {(a,5t) : a in Z_p^×, t in {1,2,3,4}}`,
+    of sizes `20, 4, p - 1, 4(p - 1)`.
   - `F2(p) := Γ(Z_p × Z_p × Z_2)` for odd prime `p`, with support classes
-    `A,B,C,D,E,F` of sizes `p-1,p-1,1,(p-1)^2,p-1,p-1`.
-- Locked theorem target for this generalize pass:
-  - paired support-template reduction theorems;
-  - for `F25(p)`, reduce prime labelability to classwise coprimality conditions on the four support classes `A,B,C,D`;
-  - for `F2(p)`, state the theorem on the actual support graph
-    `A-B`, `A-C`, `A-F`, `B-C`, `B-E`, `C-D`, then reduce it to the three parameter-sensitive interfaces `A-B`, `A-F`, `B-E` after setting `C = 1`.
+    `A = (*,0,0)`,
+    `B = (0,*,0)`,
+    `C = (0,0,1)`,
+    `D = (*,*,0)`,
+    `E = (*,0,1)`,
+    `F = (0,*,1)`,
+    of sizes `p - 1, p - 1, 1, (p - 1)^2, p - 1, p - 1`.
+- Locked theorem target:
+  - prove the actual ring-to-support bridge lemmas for `F25(p)` and `F2(p)`;
+  - then package the checked abstract support reductions as the main theorem slice;
+  - preserve the paired verified `p = 13` arithmetic checkpoints as corollaries/examples, not as a full odd-prime closure claim.
 - Bounded-read set used in this pass:
-  - dossier `campaigns/zero_divisor_prime_labelings.md`;
-  - current family files `artifacts/families/zero_divisor_prime_labelings/record.md` and `status.json`;
+  - `campaigns/zero_divisor_prime_labelings.md`;
+  - `artifacts/families/zero_divisor_prime_labelings/record.md`;
+  - `artifacts/families/zero_divisor_prime_labelings/status.json`;
   - `PROOFS.md`;
-  - seed artifacts `z5-z25`, `z7-z25`, `z13-z25`, `z5-z5-z2`, `z7-z7-z2`, and `z11-z11-z2`.
-- Strongest plausible theorem slice at this stage:
-  - structural reductions first;
-  - arithmetic corollaries second;
-  - no all-odd-prime closure claim yet.
+  - `artifacts/z5-z25-prime-zero-divisor-graph/record.md`;
+  - `artifacts/z13-z25-prime-zero-divisor-graph/record.md`;
+  - `artifacts/z5-z5-z2-prime-zero-divisor-graph/record.md`;
+  - `artifacts/z11-z11-z2-prime-zero-divisor-graph/record.md`;
+  - `artifacts/z13-z13-z2-prime-zero-divisor-graph/record.md`.
 
 ## existing_instance_inventory
 
-- Lean-backed exact family seeds preserved in `PROOFS.md`:
+- Lean-backed exact seeds preserved in `PROOFS.md`:
   - `F25(3)`, `F25(5)`, `F25(7)`;
   - `F2(5)`, `F2(7)`.
-- Verified feeder evidence preserved in the dossier/current family state:
-  - `F25(11)`;
-  - `F25(13)`;
-  - `F2(11)`.
-- `F25(p)` line from the opened seed artifacts:
-  - `F25(5)` already uses the full four-class template:
-    `C = {11,23,29,31}` as a large-prime block,
-    `B = {1,37,41,43}` as a pairwise-coprime barrier,
-    `A` absorbing the small forbidden set,
-    and `D` receiving the clean complement.
-  - `F25(7)` keeps the same proof shape:
-    `C` uses six primes above half the interval,
-    `B = {1,11,13,17}`,
-    and `A` absorbs the eight extra multiples forced by `B`.
-  - `F25(13)` preserves the same structural graph but forces the first arithmetic refinement:
-    the old upper-half-prime-only `C` subtemplate fails because `[43,84]` has only `10` primes for `12` `C` slots;
-    the verified repair is to use `37` and `41` below half and send their doubles `74,82` to `D`,
-    while keeping the sparse barrier `B = {1,19,23,29}` and placing its spill labels `38,46,57,58,69,76` into `A`.
-- `F2(p)` line from the opened seed artifacts:
-  - `F2(5)` already exhibits the hinge move `C = 1`, after which only `A-B`, `A-F`, and `B-E` matter;
-    its arithmetic realization uses powers of `2` on `A`, `{3,5}`-smooth odd labels on `B`, labels avoiding `3,5` on `E`, and odd labels on `F`.
-  - `F2(7)` shows the cleaner scalable template:
-    `C = 1`,
-    `A ∪ E` supported on primes `{2,3}`,
-    `B` large primes greater than `3`,
-    and `F` odd labels avoiding `3`.
-  - `F2(11)` is the decisive verified feeder on this line:
-    the same `C = 1` reduction survives with `A ∪ E` filled by the `21` nontrivial `{2,3}`-smooth labels up to `141`,
-    leaving one spare beyond the required `20`,
-    and it records that the naive `{2,3}`-smooth count becomes exactly tight at `p = 13` with `24` available labels for `24` required slots.
-  - `F2(13)` is now also a verified feeder on this line:
-    the same `C = 1` reduction survives at the first zero-slack boundary,
-    with `A ∪ E` using all `24` nontrivial `{2,3}`-smooth labels up to `193`
-    and `B ∪ F` packed into a complement block coprime to `6`.
+- Verified feeder state preserved in the dossier/current family state:
+  - `F25(11)` and `F25(13)` on the four-class line;
+  - `F2(11)` and `F2(13)` on the six-class line.
+- Opened four-class seeds:
+  - `F25(5)` already realizes the stable template:
+    `C` is a large-prime block,
+    `B` is a four-label pairwise-coprime barrier,
+    `A` absorbs the small forbidden spill,
+    and `D` takes the clean complement.
+  - `F25(13)` keeps the same support graph but forces the first honest arithmetic repair:
+    the old upper-half-prime-only `C` rule fails because `[43,84]` contains only `10` primes for `12` `C` slots;
+    the repaired witness uses the sub-half primes `37` and `41`,
+    sends their doubles `74` and `82` to `D`,
+    and keeps the sparse barrier `B = {1,19,23,29}` with spill labels `38,46,57,58,69,76` parked in `A`.
+- Opened six-class seeds:
+  - `F2(5)` already shows the hinge move `C = 1`, after which only `A-B`, `A-F`, and `B-E` remain arithmetic.
+  - `F2(11)` shows the naive `{2,3}`-smooth reservoir survives with one spare label:
+    there are `21` nontrivial `{2,3}`-smooth labels up to `141` for the required `20` slots in `A ∪ E`.
+  - `F2(13)` closes the first zero-slack boundary:
+    there are exactly `24` nontrivial `{2,3}`-smooth labels up to `193`, exactly matching `|A ∪ E| = 24`,
+    and the complement block for `B ∪ F` still fits cleanly.
 - Inventory conclusion:
-  - both active family lines share stable support decompositions and stable proof skeletons;
-  - the four-class arithmetic line already survives its first `p = 13` test, but only after a refined small-spill `C` block;
-  - the six-class arithmetic line now also survives its first zero-slack test `F2(13)`;
-  - the next honest arithmetic discriminator is the first post-`13` four-class stress test `F25(17)`.
+  - both active family lines have stable support decompositions and a repeated classwise proof template;
+  - the strongest new arithmetic information is paired and asymmetric:
+    `F25(13)` proves the old `C` subtemplate is too rigid but the graph still survives after a small-spill repair,
+    while `F2(13)` proves the naive six-class template survives exactly at zero slack;
+  - the next smallest discriminating feeder is `F25(17)`.
 
 ## shared_structure
 
 - Common decomposition / invariant:
   - in both families, adjacency depends only on coordinate support, so the full zero-divisor graph is a blowup of a tiny support graph;
-  - vertices inside a fixed support class have identical neighborhoods, so any bijection inside a class preserves adjacency and all coprimality obligations.
+  - vertices inside one support class have identical neighborhoods, so any bijection within a class preserves every adjacency obligation.
 - Common decomposition / construction:
-  - classify the nonzero zero-divisors by support type;
-  - prove the exact support-graph edge pattern from the ring law;
-  - partition the label interval by support classes;
-  - check only adjacent class pairs and any clique class.
-- `F25(p)` support graph:
+  1. classify every nonzero zero-divisor by support type;
+  2. prove the exact class-pair adjacency table from the ring law;
+  3. invoke the classwise support-template lemma on the resulting support graph;
+  4. solve only the remaining class-interface coprimality problem.
+- Four-class support graph for `F25(p)`:
   - exact edge families are `A-C`, `B-B`, `B-C`, `B-D`;
   - `B` is the unique clique class;
   - `C` only constrains `A ∪ B`;
   - `D` only constrains `B`.
-- `F2(p)` support graph:
+- Six-class support graph for `F2(p)`:
   - exact edge families are `A-B`, `A-C`, `A-F`, `B-C`, `B-E`, `C-D`;
   - `C` is the unique hinge vertex;
-  - once `C = 1`, the edges touching `C` become automatic and the whole `D` class becomes free;
+  - once `C = 1`, the edges touching `C` are automatic and the whole `D` class becomes free;
   - only `A-B`, `A-F`, and `B-E` remain parameter-sensitive.
-- Shared proof template extracted from the seeds:
-  1. prove the support decomposition;
-  2. invoke a classwise template lemma for support blowups;
-  3. isolate the tiny family-specific support graph;
-  4. solve the remaining arithmetic interface problem without search-heavy machinery.
+- Shared proof template extracted from the opened seeds:
+  - the structural part scales because it is support-theoretic, not instance-specific;
+  - the arithmetic part is a tiny interval-partition problem once the support graph is fixed.
 
 ## parameter_sensitive_steps
 
 - Steps that genuinely scale in the parameters:
-  - the support decompositions `support_decomposition_F25` and `support_decomposition_F2`;
-  - the classwise-template principle that only adjacent support classes matter once the partition is fixed;
-  - for `F25(p)`, the reduction to three interface obligations plus the `B` clique;
-  - for `F2(p)`, the `C = 1` hinge reduction and the three-interface packing problem.
+  - the support partitions themselves once the ring-to-support bridge lemmas are formalized;
+  - the classwise-template reduction from the full graph to the support graph;
+  - for `F25(p)`, the reduction to one clique condition on `B` plus interface conditions `C` against `A ∪ B` and `B` against `D`;
+  - for `F2(p)`, the hinge reduction `C = 1` and the three-interface packing problem.
 - Parameter-sensitive arithmetic burdens:
-  - choose `p - 1` `C` labels for `F25(p)` while keeping every nontrivial multiple of any `C` prime out of `A ∪ B`;
-  - choose a four-label pairwise-coprime barrier set on `B` whose extra multiples fit inside the `20` `A` slots;
+  - choose `p - 1` labels for `C` in `F25(p)` while keeping every nontrivial multiple of a `C` prime out of `A ∪ B`;
+  - choose a four-label sparse barrier set on `B` whose forbidden multiples fit inside the fixed `20` `A` slots;
   - count enough labels for `A ∪ E` in `F2(p)` supported on a fixed small prime set;
-  - choose `B ∪ F` as a sufficiently large complement block avoiding that prime support.
-- Steps that are still instance-specific in the current evidence:
-  - the exact prime lists used on `C` in the finite `F25` witnesses;
-  - the exact barrier sets used on `B` in the four-class line;
-  - the exact splits of the smooth reservoir between `A` and `E` in the six-class line;
-  - the particular doubled-prime exceptions `37,41` used in `F25(13)`.
-- Smallest honest obstruction already visible:
-  - the unchanged upper-half-prime-only `F25` `C` program fails at `p = 13`;
-  - this is a theorem about the old arithmetic subtemplate, not about graph non-primality.
+  - choose `B ∪ F` as a complement block avoiding that prime support.
+- Steps that remain instance-specific in the current evidence:
+  - the precise sub-half repair `37,41` in `F25(13)`;
+  - the exact barrier choice `B = {1,19,23,29}` in the verified `p = 13` four-class witness;
+  - the finite smooth-reservoir splits used in `F2(11)` and `F2(13)`;
+  - the exact displayed label lists in every feeder witness.
+- Smallest proven obstruction already on disk:
+  - the unchanged upper-half-prime-only `C` subtemplate for `F25(p)` fails first at `p = 13`.
 - Smallest likely unresolved obstruction:
-  - post-`13` scaling of the refined small-spill `F25` `C` program, because the paired `p = 13` checkpoint is now closed and the next honest question is whether the repaired four-class arithmetic is genuinely stable.
+  - `F25(17)` for the refined small-spill `C` program;
+  - this is the first post-`13` case that can distinguish a real four-class corollary from a local repair.
 
 ## candidate_theorem_slices
 
-- Slice A: paired structural reductions.
-  - For odd prime `p`, `F25(p)` is prime whenever `{1,...,5p+19}` can be partitioned into sets `L_A,L_B,L_C,L_D` of sizes `20,4,p-1,4(p-1)` such that:
-    `L_B` is pairwise coprime,
-    every label in `L_C` is coprime to every label in `L_A ∪ L_B`,
-    and every label in `L_D` is coprime to every label in `L_B`.
-  - For odd prime `p`, `F2(p)` is prime whenever `{1,...,p^2+2p-2}` can be partitioned into sets `L_A,L_B,{1},L_D,L_E,L_F` of sizes `p-1,p-1,1,(p-1)^2,p-1,p-1` such that every `L_A-L_B`, `L_A-L_F`, and `L_B-L_E` pair is cross-coprime.
-- Slice B: four-class refined arithmetic corollary.
-  - A sufficient-condition theorem for `F25(p)` using a size-`p-1` `C` block with bounded below-half exceptions whose nontrivial multiples are sent to `D`, together with a sparse four-label barrier set on `B`.
-- Slice C: six-class smooth-reservoir corollary.
-  - A sufficient-condition theorem for `F2(p)` saying that after `C = 1`, it is enough to place `2(p-1)` labels on `A ∪ E` supported on a fixed small prime set `S` and `2(p-1)` labels on `B ∪ F` avoiding all primes in `S`.
+- Slice A: paired ring-to-support bridge theorems.
+  - For odd prime `p`, formalize the actual support partitions and adjacency tables for `F25(p)` and `F2(p)`, then instantiate the checked abstract reductions `zp_z25_support_template_reduction` and `zp_zp_z2_support_template_reduction_of_singleton_one`.
+- Slice B: four-class sufficient-condition corollary.
+  - For odd prime `p`, if `{1,...,5p+19}` admits a partition into `L_A,L_B,L_C,L_D` of sizes `20,4,p-1,4(p-1)` with `L_B` pairwise coprime, `L_C` cross-coprime to `L_A ∪ L_B`, and `L_D` cross-coprime to `L_B`, then `F25(p)` is prime.
+  - The honest `p = 13` refinement is that `L_C` may include a bounded number of below-half primes provided their nontrivial multiples land in `L_D`.
+- Slice C: six-class sufficient-condition corollary.
+  - For odd prime `p`, after fixing `L_C = {1}`, it is enough to choose `2(p - 1)` labels for `L_A ∪ L_E` supported on a small prime set `S` and `2(p - 1)` labels for `L_B ∪ L_F` coprime to every prime in `S`.
 - Slice D: obstruction slice.
-  - The unchanged upper-half-prime-only `F25` `C` program already fails at `p = 13`, even though `F25(13)` itself remains prime after a refined `C` block.
+  - The old four-class upper-half-prime-only `C` template fails at `p = 13` even though the graph `F25(13)` itself remains prime after refinement.
 
 ## chosen_slice
 
 - Strongest honest slice for this pass:
-  - Slice A, the paired structural reductions.
-- Chosen theorem-slice statement:
-  - `Γ(Z_p × Z_25)` and `Γ(Z_p × Z_p × Z_2)` each reduce to explicit classwise coprimality allocations on tiny support graphs;
-  - on the second family, the actual support graph is
-    `A-B`, `A-C`, `A-F`, `B-C`, `B-E`, `C-D`,
-    and after fixing `C = 1` only `A-B`, `A-F`, and `B-E` remain arithmetic.
+  - Slice A, the paired ring-to-support bridge slice.
+- Proposed theorem slice:
+  - for odd prime `p`, the family graphs `Γ(Z_p × Z_25)` and `Γ(Z_p × Z_p × Z_2)` reduce from ring-level zero-product claims to explicit support-graph coprimality allocation problems;
+  - on the six-class line, the true arithmetic core after the bridge is only the three interfaces `A-B`, `A-F`, and `B-E`;
+  - on the four-class line, the honest arithmetic corollary must allow the refined small-spill `C` block already forced by `p = 13`.
 - Why this is the strongest honest slice:
-  - it is already supported by Lean-backed exact seeds and verified feeders on both active lines;
-  - it packages the reusable mechanism shared by the exact proofs;
-  - it does not pretend that the current arithmetic corollaries are closed for all odd primes.
-- Arithmetic refinement preserved alongside the chosen slice:
-  - on the `F25` line, the honest theorem upgrade is that the old upper-half-prime-only `C` rule is obsolete and the right local template is a small-spill `C` block;
-  - on the `F2` line, the honest upgraded claim is that the naive `{2,3}`-smooth program now survives through the first zero-slack case `p = 13`, while still lacking a family-level supply lemma.
+  - it is the part already supported by repeated exact seeds, verified feeders, and checked abstract Lean support assets;
+  - it cleanly separates scalable structure from finite witness tuning;
+  - it does not overclaim a closed all-odd-prime arithmetic theorem that the current evidence still does not justify.
+- Strongest plausible theorem slice right now:
+  - a paired bridge-lemma section plus paired `p = 13` arithmetic checkpoints;
+  - not yet a full odd-prime theorem on either family line.
 
 ## reusable_lemmas
 
-- Structural lemmas already worth treating as durable family assets:
+- Checked abstract support assets already aligned with the slice:
   - `support_decomposition_F25`;
+  - `support_decomposition_F2`;
   - `classwise_template_lemma`;
   - `pairwise_coprime_clique_lemma`;
   - `forbidden_multiples_reservoir_lemma`;
-  - `support_decomposition_F2`;
   - `singleton_one_lemma`;
-  - `three_interface_pack_lemma`.
-- Wrapper-level theorem names already aligned with the dossier:
+  - `three_interface_pack_lemma`;
   - `zp_z25_support_template_reduction`;
   - `zp_zp_z2_support_template_reduction_of_singleton_one`.
-- Arithmetic lemmas that should be isolated next if the slice is to strengthen:
-  - `small_spill_C_block_lemma`:
-    choose `p - 1` labels for `C` in `F25(p)` while allowing a bounded number of below-half primes whose nontrivial multiples are diverted to `D`;
-  - `sparse_barrier_set_lemma`:
-    choose four pairwise-coprime `B` labels whose extra multiples fit inside the fixed `20` `A` slots;
-  - `smooth_reservoir_count_lemma`:
-    count enough `S`-smooth labels in `{1,...,p^2+2p-2}` for `A ∪ E`;
-  - `coprime_complement_pack_lemma`:
-    fill `B ∪ F` with labels avoiding the prime support used on `A ∪ E`.
+- Next reusable bridge lemmas to formalize:
+  - `f25_ring_support_partition_lemma`;
+  - `f25_ring_support_adjacency_lemma`;
+  - `f25_family_wrapper_bridge_lemma`;
+  - `f2_ring_support_partition_lemma`;
+  - `f2_ring_support_adjacency_lemma`;
+  - `f2_family_wrapper_bridge_lemma`.
+- Arithmetic lemmas worth isolating only after the bridge closes:
+  - `small_spill_C_block_lemma`;
+  - `sparse_barrier_set_lemma`;
+  - `smooth_reservoir_count_lemma`;
+  - `coprime_complement_pack_lemma`.
 
 ## proof_plan
 
 - Main proof path:
-  1. Formalize the actual zero-divisor support decompositions for `F25(p)` and `F2(p)` from the ring law.
-  2. State one classwise template lemma for support blowups and instantiate it on the four-class and six-class support graphs.
-  3. On the `F2` line, factor the family statement through `singleton_one_lemma` and `three_interface_pack_lemma`.
-  4. On the `F25` line, preserve the refined `p = 13` witness as evidence for the small-spill `C` corollary, not as a proof of a full odd-prime range.
-  5. Promote the paired structural reductions as the main theorem slice and the finite arithmetic witness families as corollaries/examples.
+  1. Write the ring-level support partition for `F25(p)` and prove every nonzero zero-divisor lands in exactly one of `A,B,C,D`.
+  2. Prove from the ring law that zero product occurs exactly on `A-C`, `B-B`, `B-C`, and `B-D`.
+  3. Instantiate `zp_z25_support_template_reduction` to obtain the four-class bridge theorem.
+  4. Write the ring-level support partition for `F2(p)` and prove every nonzero zero-divisor lands in exactly one of `A,B,C,D,E,F`.
+  5. Prove from the ring law that zero product occurs exactly on `A-B`, `A-C`, `A-F`, `B-C`, `B-E`, and `C-D`.
+  6. Instantiate `zp_zp_z2_support_template_reduction_of_singleton_one`, then factor the arithmetic statement through `singleton_one_lemma` and `three_interface_pack_lemma`.
+  7. Present the verified `p = 13` records as arithmetic checkpoints:
+     `F25(13)` forces the refined small-spill `C` statement,
+     `F2(13)` shows the naive `{2,3}`-smooth six-class template survives at zero slack.
 - Strongest path forward:
-  - formalize the actual support-decomposition lemmas first, because once they are on disk the paired structural slice becomes a clean paper section even before the `p = 13` six-class arithmetic question is resolved.
+  - close the bridge lemmas first, because that already yields a defensible theorem slice even before any all-`p` arithmetic supply lemma is proved.
 - Fallback path:
-  - if the arithmetic corollaries still do not close, preserve the structural slice as the main theorem and package the first arithmetic failures as template-obstruction results rather than graph-level non-primality claims.
+  - if the bridge lemmas close but the arithmetic corollaries still stall, preserve the structural reduction theorems as the main slice and keep the arithmetic story at the level of the paired `p = 13` checkpoints.
 
 ## fallback_counterexample_plan
 
-- Do not claim a graph counterexample unless an actual non-prime instance is proved.
-- Strongest obstruction theorem already available:
-  - the unchanged upper-half-prime-only `C` program for `F25(p)` fails first at `p = 13`, because `[43,84]` contains only `10` primes for `12` required `C` slots.
-- Strongest likely next obstruction:
-  - the naive `F2` `{2,3}`-smooth reservoir at `p = 13`;
-  - if the explicit packing fails there, preserve the result as the first failure of that arithmetic template, not as a theorem that `Γ(Z_13 × Z_13 × Z_2)` is non-prime.
-- Minimal data to preserve if the fallback path is triggered:
+- Do not claim a graph-level counterexample unless an actual non-prime family member is proved.
+- Smallest likely counterexample or obstruction currently visible:
+  - the old upper-half-prime-only four-class `C` template already fails at `p = 13`, because `[43,84]` has only `10` primes for `12` `C` slots.
+- If the refined four-class arithmetic fails next:
+  - test `F25(17)` and preserve any failure as a counterexample to the current small-spill arithmetic corollary, not as a theorem that `Γ(Z_17 × Z_25)` is non-prime.
+- If the six-class line later fails beyond the zero-slack case:
+  - preserve the first failing parameter as an obstruction to the current smooth-reservoir template, again without upgrading it to graph non-primality unless the graph itself is disproved.
+- Minimal obstruction data to preserve:
   - the exact template statement being tested;
-  - the exact counting or divisibility obstruction;
+  - the exact counting or divisibility bottleneck;
   - the distinction between template failure and graph failure;
-  - any refined replacement template suggested by the failed feeder.
+  - the smallest repaired template suggested by the failing feeder.
 
 ## next_best_feeder_instances
 
 - `z17-z25-prime-zero-divisor-graph`
-  - next decisive feeder;
-  - it is the smallest post-`13` four-class test of whether the refined small-spill `C` strategy scales beyond the first two-exception case seen at `p = 13`.
+  - highest-value next feeder;
+  - smallest post-`13` test of whether the refined small-spill `C` program genuinely scales.
+- `z17-z17-z2-prime-zero-divisor-graph`
+  - secondary feeder only after the bridge lemmas or the four-class stress test settle cleanly;
+  - smallest next test of whether the six-class line needs a reservoir larger than the current `{2,3}`-smooth template after the exact zero-slack `p = 13` case.
 
 ## publication_value
 
-- The campaign is stronger than a stack of isolated exacts because it now preserves:
-  - a shared support-graph explanation on both active family lines;
-  - Lean-backed exact seeds on both lines;
-  - verified `p = 11` feeders on both lines;
-  - paired verified `p = 13` feeders showing both that the right `F25` arithmetic slice is the refined small-spill version and that the current six-class `{2,3}`-smooth template survives exactly at zero slack.
-- The strongest honest publication value right now is:
-  - a paired theorem-slice program centered on support-template reductions;
-  - a paired `p = 13` arithmetic package on the two active lines;
-  - a sharply localized next discriminator on the four-class line.
-- The honest publication verdict remains:
+- The proposed publication package is now clear:
+  - the main theorem slice is the paired bridge from the ring law to the checked support-template reductions;
+  - the main arithmetic evidence is the paired verified `p = 13` story:
+    four-class survival with a repaired small-spill `C` block,
+    six-class survival at the first zero-slack boundary with the naive template intact.
+- One strongest path forward:
+  - formalize the bridge lemmas and family wrapper theorems, then run `z17-z25` as the first post-`13` arithmetic discriminator.
+- One fallback path:
+  - if the arithmetic does not yet close, publish the structural slice plus the paired `p = 13` checkpoints and explicitly isolate the smallest broken subtemplate rather than overclaiming a family theorem.
+- Honest publication verdict:
   - `publication_status = SLICE_CANDIDATE`;
-  - not `SLICE_EXACT`, because the actual support decompositions still need family-level formal packaging and the current Lean results are still abstract support theorems rather than ring-level family wrappers;
-  - not `PAPER_READY`, because the bridge lemmas and the first post-`13` four-class stress test have not yet been absorbed into the theorem narrative.
+  - not `SLICE_EXACT`, because the ring-to-support bridge lemmas are still missing;
+  - not `PAPER_READY`, because the first post-`13` four-class stress test is still open and the family-level arithmetic lemmas are not closed.
 
 ## publication_prior_art_audit
 
-- Exact-statement search on the family phrases
-  `prime labeling zero-divisor graph Z_p x Z_25`
-  and
-  `prime labeling zero-divisor graph Z_p x Z_p x Z_2`
-  did not produce an existing theorem already settling the current paired claim.
-- Alternate-notation search matters on the four-class line because
-  `Z_p × Z_25 ≅ Z_(25p)` when `p ≠ 5`.
-  The closest canonical hit was Fox and Mooney, `On prime labelings of zero-divisor graphs` (Combinatorial Press, 2025), which proves nearby families such as `Γ(Z_p × Z_9)` and `Γ(Z_2 × Z_(p^2))` and leaves the broader lines `Γ(Z_p × Z_(q^2))` and `Γ(Z_p × Z_p × Z_q)` as conjectural/open rather than solved.
-- Canonical-source theorem/proposition/example/corollary/observation scan:
-  no statement in that 2025 source already settles `Γ(Z_p × Z_25)` or `Γ(Z_p × Z_p × Z_2)` as currently targeted here.
-  The closest family-level status is conjectural, not resolved.
+- Audit date: `2026-04-10`.
+- Exact statement search:
+  - bounded web searches for `Γ(Z_13 × Z_25)` with `prime labeling` and for `Γ(Z_13 × Z_13 × Z_2)` with `prime labeling` returned no hits within budget.
+  - alternate ASCII versions `Z_13 x Z_25`, `Z_13 x Z_13 x Z_2`, `Z_13 x Z_5^2`, and `Γ(Z_325)` with `zero-divisor graph` and `prime labeling` also returned no hits within budget.
+- Alternate-notation family search:
+  - the narrow family searches that did return relevant literature were on the broader forms `Γ(Z_p × Z_q^2)` and `Γ(Z_p × Z_p × Z_q)`.
+- Canonical source check:
+  - the closest canonical source remains Fox and Mooney, `On prime labelings of zero-divisor graphs` (Congressus Numerantium 236, published online 2025-11-21).
+  - inside that source, the theorem / proposition / example / corollary / observation / sufficient-condition check relevant to this campaign gave:
+    - Theorem 2.12 proves `Γ(Z_p × Z_4)` is prime for all primes `p`;
+    - Theorem 2.14 proves `Γ(Z_p × Z_9)` is prime for all primes `p`;
+    - Theorem 2.15 proves `Γ(Z_2 × Z_(p^2))` is prime for all primes `p`;
+    - Conjecture 4.3 states `Γ(Z_p × Z_p × Z_q)` is prime for all primes `p,q`;
+    - Conjecture 4.4 states `Γ(Z_p × Z_(q^2))` is prime for all primes `p,q`.
+  - therefore the canonical source does not already settle either active family line or the exact `p = 13` feeders; it explicitly frames both ambient family directions as open.
 - Outside-source status search:
-  independent structural literature already studies zero-divisor graphs of `Z_(p^2 q)` and direct products of three finite fields, so the support decompositions themselves should be treated as standard graph scaffolding rather than the main novelty of a paper claim.
-- Recent follow-up check:
-  recent adjacent labeling work on graceful labelings of `Γ(Z_(p^2 q))` shows the `p^2 q` zero-divisor family is still an active publication venue, but that follow-up does not settle prime labeling.
+  - an independent bounded search surfaced Gaded and Narayana, `On zero divisors graphs of direct product of finite fields` (Journal of Computational Mathematica, 2023), which studies structural graph invariants for `Γ(F_1 × ... × F_n)`.
+  - publication implication: for the `Γ(Z_p × Z_p × Z_2)` line, the raw support-pattern / direct-product graph structure should be treated as standard background, not as the campaign's main novelty.
+- Recent citation / discussion / follow-up check:
+  - a 180-day bounded search on the Fox-Mooney title and DOI returned only the Combinatorial Press paper itself and no independent follow-up, citation, or discussion source within budget.
 - Prior-art verdict:
-  not a rediscovery at the graph-prime-labeling level;
-  the real rediscovery risk is only if this campaign tries to sell the support decomposition alone as new.
+  - no rediscovery was established in the bounded pass.
+  - the honest novelty is not the existence of support classes by itself; it is the prime-labeling theorem slice that links the ring law to the support-template reductions and packages the paired `p = 13` arithmetic checkpoints honestly.
 
 ## publication_statement_faithfulness
 
-- The strongest honest claim is stronger than `here is an example`, because the repo now preserves a reusable family-level proof template supported by multiple exact seeds, verified feeders, and checked abstract wrapper lemmas.
-- However, the current checked Lean statements are abstract support-template wrappers, not yet the actual zero-divisor family theorems.
-  Until the family support-decomposition lemmas are formalized, the sentence
-  `we proved paired reduction theorems for Γ(Z_p × Z_25) and Γ(Z_p × Z_p × Z_2)`
-  is still too strong.
-- The faithful current statement is:
-  once the actual support decompositions are written down, prime labelability of these two families reduces to tiny coprimality interface problems;
-  on the four-class line, the verified `p = 13` feeder already shows the old upper-half-prime-only `C` rule is not the right theorem statement and must be replaced by a small-spill version;
-  on the six-class line, the verified `p = 13` feeder shows the naive `{2,3}`-smooth template remains alive exactly at zero slack.
-- Because the underlying support decompositions are largely standard in the zero-divisor-graph literature, any publication claim must center on the prime-labeling reduction and the arithmetic package, not on the existence of the support classes themselves.
+- The strongest honest claim is stronger than “here is an example,” but only if it is stated as a paired theorem-slice candidate:
+  - the real claim is that both active zero-divisor families admit reusable support-template reduction statements once the actual ring-to-support bridge lemmas are formalized.
+- There is a real parameterized theorem slice here:
+  - `Γ(Z_p × Z_25)` should reduce to a four-class coprimality allocation problem;
+  - `Γ(Z_p × Z_p × Z_2)` should reduce to a three-interface packing problem after fixing the singleton class to label `1`.
+- The current proof surface is only partly family-level:
+  - the structural reduction is parameterized and reusable;
+  - the arithmetic closure is still partly feeder-specific, especially on the four-class line where the first honest repair appears at `p = 13`.
+- This would survive a referee asking “what is the theorem?” only if the paper states the theorem as a reduction / bridge theorem slice.
+- It would not yet survive that question if phrased as “both families are prime for all odd primes.”
+- The claim is still too dependent on hand-picked small cases for a full family theorem:
+  - the paired `p = 13` feeders are valuable checkpoints, but the current arithmetic story still leans on hand-selected witness partitions and has not been closed by general supply lemmas.
+- Faithfulness verdict:
+  - keep the headline at the bridge-lemma slice plus paired `p = 13` checkpoints.
+  - do not advertise a full odd-prime theorem, a family theorem, or a paper-ready classification result.
 
 ## publication_theorem_worthiness
 
-- There is a real parameterized theorem slice here, not just isolated exacts:
-  a paired reduction theorem on two infinite families plus a genuine obstruction/refinement theorem for the obsolete `F25` upper-half-prime-only `C` program.
-- The proof package is partly structural and partly unfinished.
-  The support-graph/interface logic is structural;
-  the arithmetic corollaries still lean on hand-picked finite feeders and one unresolved post-`13` discriminator `F25(17)`.
-- A referee asking `what is the theorem?` can be answered only if the paper is stated as a reduction or sufficient-condition theorem.
-  The current evidence does not yet support a closed graph-level classification or a full all-odd-prime slice.
-- The claim is still too dependent on small cases for anything stronger than `SLICE_CANDIDATE`.
-  The exact and verified instances identify the right statement shape, but they do not by themselves close the family theorem.
-- The generalization route is still strong enough to merit campaign priority.
-  The closest known prime-labeling paper leaves neighboring lines open, and this repo now has family-specific structural and arithmetic evidence rather than unrelated one-off exacts.
+- Is the strongest honest claim stronger than “here is an example”?
+  - yes.
+  - the reusable part is the support-theoretic reduction program shared by two different zero-divisor families, not merely the existence of two more witnesses.
+- Is there a real parameterized theorem, theorem slice, or counterexample theorem here?
+  - yes, there is a real theorem slice candidate:
+    paired ring-to-support bridge theorems feeding the checked support-template reductions.
+  - there is also a real obstruction statement:
+    the old upper-half-prime-only `C` subtemplate on the four-class line fails first at `p = 13`.
+- Is the proof structural or merely instance-specific?
+  - structural on the support side;
+  - still partly instance-specific on the arithmetic side.
+- Would this survive a referee asking “what is the theorem?”
+  - yes, if the theorem is the paired reduction statement and the `p = 13` data are presented as corollaries / checkpoints.
+  - no, if the theorem is phrased as a closed family prime-labeling theorem.
+- Is the claim still too dependent on hand-picked small cases?
+  - yes for arithmetic closure;
+  - no for the support-graph reduction skeleton.
+- Is the generalization route strong enough to merit campaign priority?
+  - yes.
+  - the campaign has paired verified `p = 13` feeders, named reusable Lean support assets, and a crisp next blocker rather than diffuse exploratory work.
+- Theorem-worthiness verdict:
+  - the campaign is worthy of continued publication priority as a theorem-slice program.
+  - the strongest honest target remains `SLICE_CANDIDATE`, not `FAMILY_CANDIDATE` and not `PAPER_READY`.
 
 ## publication_publishability
 
-- Current publishability verdict:
-  not paper ready.
-- Best honest near-term paper shape:
-  a short paired reduction paper or section whose main theorem is the support-template reduction, with the exact/feeders and the `F25(13)` refinement story as applications.
-- To survive review, the writeup still needs two missing ingredients:
-  checked family support-decomposition lemmas tying the abstract Lean wrappers to the actual zero-divisor graphs;
-  and a clear decision on whether the refined four-class arithmetic extends cleanly past `p = 13`.
-- If the bridge lemmas are formalized and `F25(17)` succeeds, the status can move toward `SLICE_EXACT`.
-- If `F25(17)` fails, the campaign can still yield a publishable smaller obstruction theorem, but only if the failure is packaged as a theorem about the refined arithmetic template rather than about graph non-primality.
+- Current publication status remains `SLICE_CANDIDATE`.
+- It is not `INSTANCE_ONLY`:
+  - the campaign now contains a genuine reusable slice candidate, not just isolated examples.
+- It is not `REDISCOVERY`:
+  - the bounded literature pass did not locate an earlier theorem settling either active family line or the exact `p = 13` feeders, and the canonical source still lists the relevant families as open conjectures.
+- It is not `SLICE_EXACT`:
+  - the missing ring-to-support bridge lemmas mean the family-level slice is not yet formally closed.
+- It is not `PAPER_READY`:
+  - the arithmetic corollaries are still too dependent on feeder checkpoints;
+  - the four-class line still needs the first post-`13` stress test `Γ(Z_17 × Z_25)`;
+  - the paper-level theorem statement is not yet supported by fully closed family lemmas.
+- Proof-artifact audit:
+  - the relevant family Lean files and names are preserved on disk;
+  - the targeted family modules contain no `sorry` / `admit` markers by text scan in this pass;
+  - a fresh `lake build` could not be rerun here because this machine currently has no configured default `elan` toolchain.
+- Publishability verdict:
+  - there is enough here for a serious theorem-slice campaign, and enough structure to justify keeping this family at the front of publication mode;
+  - there is not yet enough closed mathematics to claim a paper-ready theorem package.
 
 ## strongest_honest_claim
 
-- The strongest honest post-audit claim is a paired theorem-slice candidate, not a closed theorem:
-  the repo has exact seeds, verified feeders, and checked abstract Lean wrapper lemmas indicating that prime labelability of `Γ(Z_p × Z_25)` and `Γ(Z_p × Z_p × Z_2)` should reduce to explicit coprimality allocations on tiny support graphs, with the second family collapsing to `A-B`, `A-F`, and `B-E` after setting `C = 1`.
-  The `F25` line also now has verified `p = 13` evidence that the old upper-half-prime-only `C` program is false as a template and must be replaced by a small-spill version, while the `F2` line now has verified `p = 13` evidence that the naive `{2,3}`-smooth six-class template survives exactly at zero slack.
-  But the actual support-decomposition lemmas for the families are not yet formalized, and the decisive post-`13` arithmetic stress test `F25(17)` is still unresolved, so this is not yet a proved publication theorem.
+- The strongest honest publication-facing claim is a paired theorem-slice candidate, not a full family theorem:
+  - for odd prime `p`, the two active zero-divisor families `Γ(Z_p × Z_25)` and `Γ(Z_p × Z_p × Z_2)` admit small support-graph reductions whose abstract Lean skeleton is already preserved on disk;
+  - the verified `p = 13` feeders show that this slice is mathematically nontrivial and still alive on both lines:
+    `Γ(Z_13 × Z_25)` survives only after an honest refinement of the four-class `C` block,
+    while `Γ(Z_13 × Z_13 × Z_2)` survives exactly at the first zero-slack boundary of the naive six-class template;
+  - what is still missing is the actual family bridge from ring elements to those support classes, plus the first post-`13` arithmetic stress test on the four-class line.
 
 ## paper_title_hint
 
-- `Support-template reductions for prime labelings in two zero-divisor graph families`
+- `Ring-to-support reductions and paired p = 13 checkpoints in two zero-divisor prime-labeling families`
 
 ## next_action
 
-- `formalize_actual_support_decomposition_lemmas_and_family_reduction_statements_then_run_z13_z13_z2`
-
-## lean_statement
-
-- Current Lean target for this pass:
-  - the reusable family lemma
-    `AutoMath.Families.ZeroDivisorReductions.three_interface_pack_lemma`,
-    with the campaign wrapper
-    `AutoMath.Families.ZeroDivisorReductions.zp_zp_z2_support_template_reduction_of_singleton_one`
-    now factoring through it.
-- Exact theorem statement checked in the official Lean backend:
-  - for predicates `A,B,C,D,E,F : V → Prop`, an adjacency relation `Adj`, and a label map `label : V → Nat`,
-    if every edge of `Adj` lies in one of the six actual support-graph families
-    `A-B`, `A-C`, `A-F`, `B-C`, `B-E`, `C-D`,
-    if all `A-B`, `A-F`, and `B-E` label pairs are coprime,
-    and if every vertex in the hinge class `C` has label `1`,
-    then every adjacent pair has coprime labels.
-- Honest scope:
-  - this is the right current theorem-slice skeleton for the six-class family line;
-  - it is still an abstract support-template statement, not yet the actual family theorem for
-    `Γ(Z_p × Z_p × Z_2)` derived from zero-divisor structure.
-
-## lean_skeleton
-
-- Proof skeleton used:
-  1. case-split on the twelve-way support-graph disjunction supplied by `hAdj`;
-  2. discharge the parameter-sensitive branches `A-B`, `A-F`, and `B-E` directly from `hAB`, `hAF`, and `hBE`;
-  3. discharge the hinge branches `A-C`, `B-C`, and `C-D` through `singleton_one_lemma`;
-  4. route the wrapper theorem
-     `zp_zp_z2_support_template_reduction_of_singleton_one`
-     through `three_interface_pack_lemma`.
-- Reason this is the strongest honest Lean target in the current bounded scope:
-  - it packages the actual six-class support graph named by the family dossier;
-  - it cleanly isolates the three remaining arithmetic interfaces after `C = 1`;
-  - it avoids pretending that the missing family support decompositions have already been formalized.
-
-## lean_result
-
-- Lean files carrying the checked target:
-  - `lean/AutoMath/Families/ZeroDivisorReductions.lean`
-  - `artifacts/families/zero_divisor_prime_labelings/lean/AutoMath/Families/ZeroDivisorReductions.lean`
-- Mirrored-file check:
-  - the family mirror matches the official backend file byte-for-byte.
-- Check run:
-  - `cd lean && lake build AutoMath.Families.ZeroDivisorReductions`
-- Result:
-  - the targeted family module checked successfully.
-- Honest Lean verdict for this campaign pass:
-  - the current theorem-slice skeleton is now honestly checked in Lean;
-  - the campaign does not earn `EXACT`, so `PROOFS.md` is unchanged;
-  - the publication claim still stops at `SLICE_CANDIDATE`, not `SLICE_EXACT`.
-
-## lean_blockers
-
-- Remaining blockers after this Lean pass:
-  - no checked family support-decomposition lemma yet derives the actual `F25(p)` or `F2(p)` support graphs from the zero-divisor families themselves;
-  - the checked Lean surface still lives at the abstract support-template level rather than the ring-specific family-theorem level;
-  - the decisive post-`13` four-class feeder `F25(17)` remains unresolved, so the arithmetic story is still not closed.
+- Formalize the actual ring-to-support partition and adjacency lemmas for both active family lines, then instantiate the checked abstract support reductions at the family level.
+- After those bridge lemmas are stable, run `z17-z25-prime-zero-divisor-graph` as the first post-`13` publication-pressure feeder on the refined four-class arithmetic line.
+- If the arithmetic corollary still stalls after the bridge closes, preserve the structural slice plus the paired `p = 13` checkpoints as the publication package and stop short of a family-theorem claim.

@@ -1,7 +1,5 @@
 import AutoMath.Families.PrimeSupportTemplates
-import AutoMath.Families.ZeroDivisorSupports
 import AutoMath.Families.ZeroDivisorReductions
-import AutoMath.Families.ZeroDivisorRingBridges
 import AutoMath.Families.CNBCCriteria
 import AutoMath.Z3Z25
 import AutoMath.Z5Z25
