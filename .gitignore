@@ -1,4 +1,6 @@
 .DS_Store
 .stop_harness
+.worktrees/
+scripts/__pycache__/
 artifacts/_logs/
 lean/.DS_Store

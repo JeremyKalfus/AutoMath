@@ -46,10 +46,16 @@ PUBLICATION_AUDIT_TIMEOUT = int(os.environ.get("AUTOMATH_PUBLICATION_AUDIT_TIMEO
 LEAN_TIMEOUT = int(os.environ.get("AUTOMATH_LEAN_TIMEOUT", "1800"))
 PARALLEL_WORKER_WAIT_TIMEOUT = int(os.environ.get("AUTOMATH_PARALLEL_WORKER_WAIT_TIMEOUT", "90"))
 WORKTREE_REMOVE_TIMEOUT = int(os.environ.get("AUTOMATH_WORKTREE_REMOVE_TIMEOUT", "30"))
+PARALLEL_FEEDER_WORKERS = int(os.environ.get("AUTOMATH_PARALLEL_FEEDER_WORKERS", "2"))
+PUBLICATION_AUDIT_MIN_INTERVAL = int(os.environ.get("AUTOMATH_PUBLICATION_AUDIT_MIN_INTERVAL", "1800"))
 
 
 def now_str() -> str:
     return dt.datetime.now().astimezone().strftime("%Y-%m-%d %H:%M:%S %Z")
+
+
+def now_iso() -> str:
+    return dt.datetime.now().astimezone().isoformat()
 
 
 def today_str() -> str:
@@ -181,6 +187,36 @@ def ensure_publication_defaults(path: pathlib.Path) -> None:
         write_json(path, data)
 
 
+def mark_status_timestamp(path: pathlib.Path, key: str) -> None:
+    if not path.exists():
+        return
+    data = load_json(path, {})
+    data[key] = now_iso()
+    write_json(path, data)
+
+
+def parse_status_timestamp(value: str | None) -> dt.datetime | None:
+    if not value:
+        return None
+    try:
+        return dt.datetime.fromisoformat(value)
+    except ValueError:
+        return None
+
+
+def should_run_publication_audit(path: pathlib.Path) -> bool:
+    if not path.exists():
+        return True
+    data = load_json(path, {})
+    if publication_rank(data.get("publication_status")) < publication_rank("SLICE_EXACT"):
+        return True
+    last_audit = parse_status_timestamp(data.get("last_publication_audit_on"))
+    if last_audit is None:
+        return True
+    elapsed = (dt.datetime.now().astimezone() - last_audit).total_seconds()
+    return elapsed >= PUBLICATION_AUDIT_MIN_INTERVAL
+
+
 def add_text_section(lines: list[str], heading: str, value) -> None:
     if value is None:
         return
@@ -303,6 +339,40 @@ def active_campaigns() -> list[dict]:
     return result
 
 
+def worker_required_paths() -> list[pathlib.Path]:
+    return [
+        ROOT / "AGENTS.md",
+        ROOT / "PROOFS.md",
+        ROOT / "ledger.md",
+        ROOT / "selected_problem.md",
+        ROOT / "prompts",
+        ROOT / "campaigns",
+        ROOT / "scripts",
+        ROOT / "run_publication_cycle.sh",
+        ROOT / "run_feeder_cycle.sh",
+        ROOT / "lean" / "AutoMath.lean",
+        ROOT / "lean" / "AutoMath",
+    ]
+
+
+def artifact_status_path(slug: str) -> pathlib.Path:
+    return ROOT / "artifacts" / slug / "status.json"
+
+
+def feeder_artifact_is_preserved(slug: str) -> bool:
+    path = artifact_status_path(slug)
+    if not path.exists():
+        return False
+    data = load_json(path, {})
+    verify_verdict = data.get("verify_verdict")
+    classification = data.get("classification")
+    if verify_verdict == "VERIFIED":
+        return True
+    if classification in {"EXACT", "REDISCOVERY"}:
+        return True
+    return False
+
+
 def publication_rank(status: str | None) -> int:
     if status is None:
         return -1
@@ -407,11 +477,24 @@ def feeder_queue_entry(campaign: dict, feeder: dict) -> dict:
     }
 
 
+def find_feeder_entry_by_slug(slug: str) -> dict | None:
+    queued = find_queue_entry_by_slug(slug)
+    if queued is not None:
+        return queued
+    for campaign in load_campaign_manifest():
+        for feeder in campaign.get("recommended_feeders", []):
+            if isinstance(feeder, dict) and feeder.get("slug") == slug:
+                return feeder_queue_entry(campaign, feeder)
+    return None
+
+
 def add_queue_entry(entries: list[dict], seen: set[str], failed: set[str], entry: dict | None) -> bool:
     if not entry:
         return False
     slug = entry.get("slug")
     if not slug or slug in seen or slug in failed:
+        return False
+    if entry.get("entry_type") == "feeder_instance" and feeder_artifact_is_preserved(slug):
         return False
     entries.append(entry)
     seen.add(slug)
@@ -427,24 +510,24 @@ def seed_campaign_queue() -> bool:
     seen: set[str] = set()
     primary = campaigns[0]
     secondary = campaigns[1] if len(campaigns) > 1 else None
-    primary_feeders = list(primary.get("recommended_feeders", []))
-    secondary_feeders = list(secondary.get("recommended_feeders", [])) if secondary else []
+    primary_feeders = next_campaign_feeder_entries(primary, 4)
+    secondary_feeders = next_campaign_feeder_entries(secondary, 2) if secondary else []
 
     add_queue_entry(entries, seen, failed, campaign_queue_entry(primary))
     while len(entries) < 3 and primary_feeders:
-        add_queue_entry(entries, seen, failed, feeder_queue_entry(primary, primary_feeders.pop(0)))
+        add_queue_entry(entries, seen, failed, primary_feeders.pop(0))
 
     if secondary is not None:
         add_queue_entry(entries, seen, failed, campaign_queue_entry(secondary))
         while len(entries) < 5 and secondary_feeders:
-            add_queue_entry(entries, seen, failed, feeder_queue_entry(secondary, secondary_feeders.pop(0)))
+            add_queue_entry(entries, seen, failed, secondary_feeders.pop(0))
             break
 
     while len(entries) < 5 and primary_feeders:
-        add_queue_entry(entries, seen, failed, feeder_queue_entry(primary, primary_feeders.pop(0)))
+        add_queue_entry(entries, seen, failed, primary_feeders.pop(0))
 
     while len(entries) < 5 and secondary_feeders:
-        add_queue_entry(entries, seen, failed, feeder_queue_entry(secondary, secondary_feeders.pop(0)))
+        add_queue_entry(entries, seen, failed, secondary_feeders.pop(0))
 
     if len(entries) != 5:
         return False
@@ -494,10 +577,16 @@ def select_queue_entry(prefer_feeders: bool = False) -> dict | None:
                 and item.get("slug")
                 and item["slug"] not in failed
                 and item.get("entry_type") == "feeder_instance"
+                and not feeder_artifact_is_preserved(item["slug"])
             ):
                 return item
     for item in queue:
-        if isinstance(item, dict) and item.get("slug") and item["slug"] not in failed:
+        if (
+            isinstance(item, dict)
+            and item.get("slug")
+            and item["slug"] not in failed
+            and not (item.get("entry_type") == "feeder_instance" and feeder_artifact_is_preserved(item["slug"]))
+        ):
             return item
     return None
 
@@ -810,7 +899,7 @@ def next_campaign_feeder_entry(campaign: dict) -> dict | None:
     )
     seen: set[str] = set()
     for slug in candidates:
-        if not slug or slug in seen or slug in failed:
+        if not slug or slug in seen or slug in failed or feeder_artifact_is_preserved(slug):
             continue
         seen.add(slug)
         queued = find_queue_entry_by_slug(slug)
@@ -820,6 +909,33 @@ def next_campaign_feeder_entry(campaign: dict) -> dict | None:
             if isinstance(feeder, dict) and feeder.get("slug") == slug:
                 return feeder_queue_entry(campaign, feeder)
     return None
+
+
+def next_campaign_feeder_entries(campaign: dict, limit: int) -> list[dict]:
+    status = load_campaign_status(campaign)
+    failed = failed_slug_set()
+    candidates: list[str] = []
+    decisive = status.get("next_decisive_feeder")
+    if decisive:
+        candidates.append(decisive)
+    candidates.extend(status.get("next_feeder_instances", []))
+    candidates.extend(
+        feeder.get("slug")
+        for feeder in campaign.get("recommended_feeders", [])
+        if isinstance(feeder, dict) and feeder.get("slug")
+    )
+    entries: list[dict] = []
+    seen: set[str] = set()
+    for slug in candidates:
+        if not slug or slug in seen or slug in failed or feeder_artifact_is_preserved(slug):
+            continue
+        seen.add(slug)
+        entry = find_feeder_entry_by_slug(slug)
+        if entry is not None:
+            entries.append(entry)
+        if len(entries) >= limit:
+            break
+    return entries
 
 
 def run_curation_if_needed() -> bool:
@@ -945,20 +1061,7 @@ class ParallelWorker:
         self.proc: subprocess.Popen | None = None
 
     def seed_checkout(self) -> None:
-        required_paths = [
-            ROOT / "AGENTS.md",
-            ROOT / "PROOFS.md",
-            ROOT / "ledger.md",
-            ROOT / "selected_problem.md",
-            ROOT / "prompts",
-            ROOT / "campaigns",
-            ROOT / "scripts",
-            ROOT / "run_publication_cycle.sh",
-            ROOT / "run_feeder_cycle.sh",
-            ROOT / "lean" / "AutoMath.lean",
-            ROOT / "lean" / "AutoMath",
-        ]
-        for path in required_paths:
+        for path in worker_required_paths():
             sync_tree(path, self.worktree / path.relative_to(ROOT))
 
         sync_tree(ROOT / self.campaign["artifact_dir"], self.worktree / self.campaign["artifact_dir"])
@@ -1046,6 +1149,112 @@ class ParallelWorker:
             )
 
 
+class ParallelFeederWorker:
+    def __init__(self, entry: dict):
+        self.entry = entry
+        self.slug = entry["slug"]
+        self.worktree = ROOT / ".worktrees" / f"{self.slug}-{int(time.time())}"
+        self.proc: subprocess.Popen | None = None
+
+    def seed_checkout(self) -> None:
+        for path in worker_required_paths():
+            sync_tree(path, self.worktree / path.relative_to(ROOT))
+
+        campaign = find_campaign(self.entry.get("campaign_affinity", ""))
+        if campaign is not None:
+            sync_tree(ROOT / campaign["dossier_path"], self.worktree / campaign["dossier_path"])
+            sync_tree(ROOT / campaign["artifact_dir"], self.worktree / campaign["artifact_dir"])
+            for slug in campaign.get("seed_instances", [])[:6]:
+                sync_tree(ROOT / "artifacts" / slug, self.worktree / "artifacts" / slug)
+
+        artifact_dir = ROOT / "artifacts" / self.slug
+        if artifact_dir.exists():
+            sync_tree(artifact_dir, self.worktree / artifact_dir.relative_to(ROOT))
+
+    def start(self) -> bool:
+        self.worktree.parent.mkdir(parents=True, exist_ok=True)
+        add = subprocess.run(
+            ["git", "worktree", "add", "--detach", str(self.worktree), "HEAD"],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        if add.returncode != 0:
+            append_ledger(f"Parallel feeder worker setup failed for {self.slug}; continuing without that worker.")
+            return False
+        self.seed_checkout()
+        cmd = [
+            "python3",
+            str(self.worktree / "scripts" / "automath_cycle.py"),
+            "--mode",
+            "feeder",
+            "--slug",
+            self.slug,
+            "--worker",
+            "--artifact-only-worker",
+        ]
+        self.proc = subprocess.Popen(
+            cmd,
+            cwd=self.worktree,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            text=True,
+            env={**os.environ, "AUTOMATH_MAX_PARALLEL_WORKERS": "1"},
+        )
+        append_ledger(f"Parallel feeder worker started for {self.slug} in isolated git worktree.")
+        return True
+
+    def finish(self) -> str:
+        if self.proc is None:
+            return "not_started"
+        try:
+            returncode = self.proc.wait(timeout=PARALLEL_WORKER_WAIT_TIMEOUT)
+        except subprocess.TimeoutExpired:
+            self.proc.kill()
+            try:
+                self.proc.wait(timeout=10)
+            except subprocess.TimeoutExpired:
+                pass
+            append_ledger(
+                f"Parallel feeder worker for {self.slug} exceeded the cleanup wait budget; "
+                "the manager killed it, treated the worker as infrastructure-failed, and continued."
+            )
+            self._remove_worktree()
+            return "infra_failed"
+        if returncode == 0:
+            sync_tree(self.worktree / "artifacts" / self.slug, ROOT / "artifacts" / self.slug)
+            append_ledger(f"Parallel feeder worker finished cleanly for {self.slug} and synced the artifact back.")
+            outcome = "clean"
+        else:
+            append_ledger(f"Parallel feeder worker for {self.slug} exited nonzero; manager ignored its partial outputs.")
+            outcome = "infra_failed"
+        self._remove_worktree()
+        return outcome
+
+    def _remove_worktree(self) -> None:
+        try:
+            result = subprocess.run(
+                ["git", "worktree", "remove", "--force", str(self.worktree)],
+                cwd=ROOT,
+                capture_output=True,
+                text=True,
+                timeout=WORKTREE_REMOVE_TIMEOUT,
+                check=False,
+            )
+        except subprocess.TimeoutExpired:
+            append_ledger(
+                f"Parallel feeder worker cleanup timed out while removing the worktree for "
+                f"{self.slug}; the main manager continued without blocking."
+            )
+            return
+        if result.returncode != 0:
+            append_ledger(
+                f"Parallel feeder worker cleanup could not remove the worktree for "
+                f"{self.slug} cleanly; a later manual cleanup may be needed."
+            )
+
+
 def maybe_start_parallel_worker(primary_slug: str, allow_parallel: bool) -> ParallelWorker | None:
     if not allow_parallel or not git_worktree_supported():
         return None
@@ -1056,6 +1265,56 @@ def maybe_start_parallel_worker(primary_slug: str, allow_parallel: bool) -> Para
     if worker.start():
         return worker
     return None
+
+
+def maybe_start_parallel_feeder_workers(campaign: dict, allow_parallel: bool, reserved_slots: int) -> list[ParallelFeederWorker]:
+    if not allow_parallel or not git_worktree_supported():
+        return []
+    if publication_stop_ready(campaign_status_path(campaign)):
+        return []
+    max_parallel = int(os.environ.get("AUTOMATH_MAX_PARALLEL_WORKERS", "3"))
+    available_slots = max(0, max_parallel - 1 - reserved_slots)
+    feeder_budget = min(PARALLEL_FEEDER_WORKERS, available_slots)
+    if feeder_budget <= 0:
+        return []
+    workers: list[ParallelFeederWorker] = []
+    for entry in next_campaign_feeder_entries(campaign, feeder_budget):
+        worker = ParallelFeederWorker(entry)
+        if worker.start():
+            workers.append(worker)
+    return workers
+
+
+def absorb_parallel_feeder_result(entry: dict) -> bool:
+    status_path = artifact_status_path(entry["slug"])
+    if not status_path.exists():
+        return False
+    ensure_publication_defaults(status_path)
+    data = load_json(status_path, {})
+    classification = data.get("classification")
+    verify_verdict = data.get("verify_verdict")
+    publication_status = data.get("publication_status") or entry.get("publication_status", "NONE")
+    if classification == "REDISCOVERY":
+        mark_rediscovery(entry, "Prior-art audit during verify found the exact statement already covered in the literature.")
+        return True
+    if verify_verdict == "VERIFIED" and classification in {"CANDIDATE", "COUNTEREXAMPLE"}:
+        archive_attempted_problem(
+            entry,
+            classification,
+            "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+            publication_status,
+        )
+        append_ledger(f"Archived verified feeder evidence for {entry['slug']} after the parallel feeder worker finished.")
+        return True
+    if classification == "EXACT" and data.get("lean_complete") is True:
+        archive_exact_instance(
+            entry,
+            "Lean verified the exact intended statement in the AutoMath backend; archived to avoid rerunning this solved instance while publication campaigns continue.",
+            publication_status,
+        )
+        append_ledger(f"Lean verified the exact intended statement for {entry['slug']} in a parallel feeder worker; archived as feeder evidence.")
+        return True
+    return False
 
 
 def maybe_run_campaign_lean(campaign: dict) -> None:
@@ -1084,6 +1343,8 @@ def run_campaign_flow(campaign: dict, allow_parallel: bool) -> int:
     append_ledger(f"publication mode selected active family campaign {campaign['family_slug']}.")
     worker = maybe_start_parallel_worker(campaign["family_slug"], allow_parallel)
     worker_status = "not_used" if worker is None else "running"
+    feeder_workers = maybe_start_parallel_feeder_workers(campaign, allow_parallel, reserved_slots=1 if worker is not None else 0)
+    new_feeder_signal = False
 
     rc = run_stage(
         ROOT,
@@ -1099,19 +1360,26 @@ def run_campaign_flow(campaign: dict, allow_parallel: bool) -> int:
     elif rc != 0:
         append_ledger(f"Generalize exited unexpectedly for family campaign {campaign['family_slug']}.")
 
-    rc = run_stage(
-        ROOT,
-        "publication_audit",
-        PROMPTS / "publication_audit.prompt.md",
-        "on",
-        PUBLICATION_AUDIT_TIMEOUT,
-        preferred_effort("xhigh"),
-        "tuned_openai",
-    )
-    if rc == 124:
-        append_ledger(f"Publication audit timed out for family campaign {campaign['family_slug']}.")
-    elif rc != 0:
-        append_ledger(f"Publication audit exited unexpectedly for family campaign {campaign['family_slug']}.")
+    if should_run_publication_audit(status_path):
+        rc = run_stage(
+            ROOT,
+            "publication_audit",
+            PROMPTS / "publication_audit.prompt.md",
+            "on",
+            PUBLICATION_AUDIT_TIMEOUT,
+            preferred_effort("xhigh"),
+            "tuned_openai",
+        )
+        if rc == 124:
+            append_ledger(f"Publication audit timed out for family campaign {campaign['family_slug']}.")
+        elif rc != 0:
+            append_ledger(f"Publication audit exited unexpectedly for family campaign {campaign['family_slug']}.")
+        else:
+            mark_status_timestamp(status_path, "last_publication_audit_on")
+    else:
+        append_ledger(
+            f"Publication audit was skipped for family campaign {campaign['family_slug']} because the current slice is stable and the last audit is still fresh."
+        )
 
     maybe_run_campaign_lean(campaign)
 
@@ -1126,6 +1394,40 @@ def run_campaign_flow(campaign: dict, allow_parallel: bool) -> int:
                 f"Publication mode is advancing {campaign['family_slug']} through its decisive feeder {feeder_entry['slug']}."
             )
             run_feeder_entry(feeder_entry, emit_summary=False)
+
+    for feeder_worker in feeder_workers:
+        outcome = feeder_worker.finish()
+        if outcome == "clean":
+            if absorb_parallel_feeder_result(feeder_worker.entry):
+                new_feeder_signal = True
+        else:
+            worker_status = "infra_failed" if worker_status == "not_used" else worker_status
+
+    if new_feeder_signal:
+        append_ledger(
+            f"Parallel feeder results changed the campaign input for {campaign['family_slug']}, so the family generalize/audit pass is rerunning once to absorb them."
+        )
+        render_campaign_selection(campaign)
+        run_stage(
+            ROOT,
+            f"generalize_{campaign['family_slug']}",
+            PROMPTS / "generalize_family.prompt.md",
+            "off",
+            GENERALIZE_TIMEOUT,
+            preferred_effort("xhigh"),
+            "tuned_openai",
+        )
+        rc = run_stage(
+            ROOT,
+            "publication_audit",
+            PROMPTS / "publication_audit.prompt.md",
+            "on",
+            PUBLICATION_AUDIT_TIMEOUT,
+            preferred_effort("xhigh"),
+            "tuned_openai",
+        )
+        if rc == 0:
+            mark_status_timestamp(status_path, "last_publication_audit_on")
 
     if worker is not None:
         worker_status = worker.finish()
@@ -1188,7 +1490,7 @@ def run_affiliated_generalize(entry: dict, status_path: pathlib.Path) -> None:
         preferred_effort("xhigh"),
         "tuned_openai",
     )
-    run_stage(
+    rc = run_stage(
         ROOT,
         "publication_audit",
         PROMPTS / "publication_audit.prompt.md",
@@ -1197,10 +1499,12 @@ def run_affiliated_generalize(entry: dict, status_path: pathlib.Path) -> None:
         preferred_effort("xhigh"),
         "tuned_openai",
     )
+    if rc == 0:
+        mark_status_timestamp(campaign_status_path(campaign), "last_publication_audit_on")
     maybe_run_campaign_lean(campaign)
 
 
-def run_feeder_entry(entry: dict, emit_summary: bool = True) -> int:
+def run_feeder_entry(entry: dict, emit_summary: bool = True, artifact_only_worker: bool = False) -> int:
     if entry.get("entry_type") == "family_campaign" and entry.get("family_slug"):
         campaign = find_campaign(entry["family_slug"])
         if campaign is not None:
@@ -1272,9 +1576,14 @@ def run_feeder_entry(entry: dict, emit_summary: bool = True) -> int:
             write_publication_summary(entry.get("campaign_affinity"), "infra_failed")
         return 0
 
+    if artifact_only_worker:
+        if emit_summary:
+            write_publication_summary(entry.get("campaign_affinity"), "not_used")
+        return 0
+
     run_affiliated_generalize(entry, status_path)
     render_queue_selection(entry)
-    run_stage(
+    rc = run_stage(
         ROOT,
         "publication_audit",
         PROMPTS / "publication_audit.prompt.md",
@@ -1283,6 +1592,8 @@ def run_feeder_entry(entry: dict, emit_summary: bool = True) -> int:
         preferred_effort("xhigh"),
         "tuned_openai",
     )
+    if rc == 0:
+        mark_status_timestamp(status_path, "last_publication_audit_on")
     ensure_publication_defaults(status_path)
 
     if status_value(status_path, "lean_ready") is not True and classification not in {"CANDIDATE", "COUNTEREXAMPLE", "EXACT"}:
@@ -1354,6 +1665,8 @@ def main() -> int:
     parser.add_argument("--mode", choices=["publication", "feeder"], default="publication")
     parser.add_argument("--campaign")
     parser.add_argument("--worker", action="store_true")
+    parser.add_argument("--slug")
+    parser.add_argument("--artifact-only-worker", action="store_true")
     args = parser.parse_args()
 
     ensure_state()
@@ -1363,6 +1676,12 @@ def main() -> int:
             max_parallel = int(os.environ.get("AUTOMATH_MAX_PARALLEL_WORKERS", "3"))
             allow_parallel = (not args.worker) and max_parallel > 1
             return run_publication_cycle(args.campaign, allow_parallel)
+        if args.slug:
+            entry = find_feeder_entry_by_slug(args.slug)
+            if entry is None:
+                append_ledger(f"Requested feeder {args.slug} was not found, so this feeder cycle ended cleanly.")
+                return 0
+            return run_feeder_entry(entry, emit_summary=not args.worker, artifact_only_worker=args.artifact_only_worker)
         return run_feeder_cycle()
     finally:
         append_cycle_log(f"[automath_cycle] {args.mode} cycle finished at {now_str()}.")

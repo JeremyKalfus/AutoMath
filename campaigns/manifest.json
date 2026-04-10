@@ -16,16 +16,28 @@
     "why_now": "The repo already has a cluster of Lean-backed exact instances with repeated support-class decompositions and reusable label roles.",
     "recommended_feeders": [
       {
-        "slug": "z17-z25-prime-zero-divisor-graph",
-        "title": "Is the zero-divisor graph Γ(Z_17 × Z_25) prime?",
-        "question": "Does the zero-divisor graph Γ(Z_17 × Z_25) admit a prime labeling?",
-        "canonical_statement": "Determine whether Γ(Z_17 × Z_25) is prime.",
-        "intended_statement": "Use Γ(Z_17 × Z_25) after the paired verified p = 13 checkpoints to test whether the refined small-spill C-block strategy scales past the first two-exception case on the four-class line.",
+        "slug": "z19-z25-prime-zero-divisor-graph",
+        "title": "Is the zero-divisor graph Γ(Z_19 × Z_25) prime?",
+        "question": "Does the zero-divisor graph Γ(Z_19 × Z_25) admit a prime labeling?",
+        "canonical_statement": "Determine whether Γ(Z_19 × Z_25) is prime.",
+        "intended_statement": "Use Γ(Z_19 × Z_25) after the verified p = 17 four-class feeder to test whether the refined bounded-spill C-block strategy keeps scaling on the Γ(Z_p × Z_25) line.",
         "named_conjecture": "Prime labelings of zero-divisor graph families",
         "attack_style": "four-class scaling feeder for a publication campaign",
-        "theorem_slice_hint": "Run next as the first post-13 arithmetic stress test on the four-class line while the Lean bridge lemmas mature.",
-        "why_still_appears_open": "No verified or Lean-backed result for Γ(Z_17 × Z_25) is currently preserved in repo memory.",
-        "why_this_could_be_publishable": "It tests whether the refined small-spill prime-block arithmetic on Γ(Z_p × Z_25) is a real family corollary rather than only a p = 13 repair."
+        "theorem_slice_hint": "Run next as the first feeder beyond the verified p = 17 structural checkpoint while the bounded-spill theorem is still open.",
+        "why_still_appears_open": "No verified or Lean-backed result for Γ(Z_19 × Z_25) is currently preserved in repo memory.",
+        "why_this_could_be_publishable": "It tests whether the refined bounded-spill prime-block arithmetic on Γ(Z_p × Z_25) remains viable beyond the p = 17 feeder."
+      },
+      {
+        "slug": "z17-z17-z2-prime-zero-divisor-graph",
+        "title": "Is the zero-divisor graph Γ(Z_17 × Z_17 × Z_2) prime?",
+        "question": "Does the zero-divisor graph Γ(Z_17 × Z_17 × Z_2) admit a prime labeling?",
+        "canonical_statement": "Determine whether Γ(Z_17 × Z_17 × Z_2) is prime.",
+        "intended_statement": "Use Γ(Z_17 × Z_17 × Z_2) as the next six-class feeder after the exact ring-level reduction slice to test whether the current arithmetic template on Γ(Z_p × Z_p × Z_2) supports a nontrivial corollary beyond the p = 13 zero-slack checkpoint.",
+        "named_conjecture": "Prime labelings of zero-divisor graph families",
+        "attack_style": "six-class arithmetic feeder for a publication campaign",
+        "theorem_slice_hint": "Run as the next discriminating feeder on the exact six-class reduction side if the paper needs an arithmetic corollary rather than only a structural theorem slice.",
+        "why_still_appears_open": "No verified or Lean-backed result for Γ(Z_17 × Z_17 × Z_2) is currently preserved in repo memory.",
+        "why_this_could_be_publishable": "It tests whether the exact six-class reduction on Γ(Z_p × Z_p × Z_2) can be turned into a stronger arithmetic theorem rather than remaining only structural."
       }
     ],
     "seed_instances": [

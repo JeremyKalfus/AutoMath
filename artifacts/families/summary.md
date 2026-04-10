@@ -1,24 +1,24 @@
 # AutoMath Publication Summary
 
-- Updated: `2026-04-10 13:24:08 EDT`
+- Updated: `2026-04-10 19:31:56 EDT`
 - Active campaigns: zero_divisor_prime_labelings, cnbc_quintic_nonexistence
-- Strongest current publication status: `SLICE_CANDIDATE`
-- Strongest honest claim: The zero-divisor campaign now has paired verified p = 13 feeders on both active lines: Γ(Z_13 × Z_25) survives with a refined small-spill C block, and Γ(Z_13 × Z_13 × Z_2) survives the first zero-slack six-class test with the unrefined C = 1 plus {2,3}-smooth template. The Lean surface now also contains checked abstract support assets `support_decomposition_F25`, `support_decomposition_F2`, `classwise_template_lemma`, `zp_z25_support_template_reduction`, and `zp_zp_z2_support_template_reduction_of_singleton_one`. The main remaining gap is no longer whether the paired p = 13 frontier survives, but whether the actual ring-to-support bridge lemmas can be formalized cleanly enough to turn this feeder cluster into a paper-ready family theorem slice.
-- Active theorem-slice target: Family-level bridge lemmas from the ring law into the checked support-template reductions for Γ(Z_p × Z_25) and Γ(Z_p × Z_p × Z_2), together with the paired verified p = 13 arithmetic checkpoints.
-- Next blocker: The campaign still needs the actual ring-to-support bridge lemmas that connect the new Lean support module to the family rings themselves, and it still needs one post-p = 13 stress test on the refined four-class line to see how much p-range language is honest.
-- Next decisive feeder instance: z17-z25-prime-zero-divisor-graph
-- Next feeder instances: z17-z25-prime-zero-divisor-graph
+- Strongest current publication status: `SLICE_EXACT`
+- Strongest honest claim: For odd prime p, the campaign has one exact Lean-backed ring-level theorem slice on Γ(Z_p × Z_p × Z_2): `f2_ring_support_partition_lemma`, `f2_ring_support_adjacency_lemma`, `f2_ring_nonhinge_edge_reduction`, `f2_ring_three_interface_reduction`, and `zp_zp_z2_three_interface_lead_theorem` show that every non-hinge zero-product edge already lies on A-B, A-F, or B-E, and that once the singleton support class C is fixed to label 1, every zero-product edge between nonzero zero-divisor vertices is discharged by those three interfaces. On the companion family Γ(Z_p × Z_25), the ring-level bridge is exact via `f25_ring_support_partition_lemma` and `f25_ring_support_adjacency_lemma`, but the quantified bounded-spill arithmetic theorem needed to promote that line to a second honest slice is still open.
+- Active theorem-slice target: Keep `zp_zp_z2_three_interface_lead_theorem` as the one-sided exact publication spine on the actual ring family `Γ(Z_p × Z_p × Z_2)`, and treat `Γ(Z_p × Z_25)` as companion structural evidence until a quantified bounded-spill theorem and ring-level wrapper promote it to a second honest slice.
+- Next blocker: No blocker remains on the exact `Γ(Z_p × Z_p × Z_2)` slice. The campaign is blocked on the companion `Γ(Z_p × Z_25)` line: close a quantified bounded-spill `C` lemma, close the barrier-reservoir lemma showing the spill still fits inside `A`, and then package those arithmetic hypotheses into a ring-level wrapper theorem.
+- Next decisive feeder instance: z19-z25-prime-zero-divisor-graph
+- Next feeder instances: z19-z25-prime-zero-divisor-graph, z17-z17-z2-prime-zero-divisor-graph
 - Any Lean family lemma or slice complete: `yes`
 - xhigh usable in this environment: `yes`
 - Isolated git worktrees feasible: `yes`
 - Automatic stop condition: `publication_status = PAPER_READY` with preserved proof artifacts
-- Worker infra status this cycle: `clean`
+- Worker infra status this cycle: `not_used`
 - Summary path: `artifacts/families/summary.md`
 - Family status paths: artifacts/families/zero_divisor_prime_labelings/status.json, artifacts/families/cnbc_quintic_nonexistence/status.json
 - Ledger tail:
-  - bounded publication run cycle 2/2 finished at 2026-04-10 08:13:54 EDT.
-  - bounded publication run completed 2/2 requested cycle(s).
+  - publication cycle started at 2026-04-10 19:21:37 EDT.
+  - publication mode selected active family campaign zero_divisor_prime_labelings.
+  - Parallel publication worker started for cnbc_quintic_nonexistence in isolated git worktree.
+  - Generalize stage for family campaign `zero_divisor_prime_labelings` ran locally on 2026-04-10 19:26:33 EDT with bounded reads and no web use. The family record and status were rewritten around the strongest honest closed slice, namely the Lean-backed ring-level theorem `zp_zp_z2_three_interface_lead_theorem` on `Γ(Z_p × Z_p × Z_2)`; the companion `Γ(Z_p × Z_25)` line remains exact structural evidence via `f25_ring_support_partition_lemma` and `f25_ring_support_adjacency_lemma`, but still needs quantified bounded-spill arithmetic and a ring-level wrapper theorem before it becomes a second honest slice. The next discriminating feeders remain `z19-z25-prime-zero-divisor-graph` and `z17-z17-z2-prime-zero-divisor-graph`.
   - Queue was empty or exhausted, so it was locally reseeded from active publication campaigns before any broad web curation.
-  - Verified feeder z13-z13-z2-prime-zero-divisor-graph and preserved the zero-slack p = 13 witness for the six-class zero-divisor campaign.
-  - Zero-divisor family dossier/status now treat the paired p = 13 frontier as cleared on both active lines, list the checked support lemmas, and move the next decisive feeder to z17-z25-prime-zero-divisor-graph while ring-to-support bridge lemmas remain the main formal blocker.
   - Queue was empty or exhausted, so it was locally reseeded from active publication campaigns before any broad web curation.
