@@ -41,7 +41,9 @@ theorem zp_zp_z2_support_template_reduction_of_singleton_one
     (hAdj :
       ∀ x y, Adj x y →
         ((A x ∧ B y) ∨ (B x ∧ A y) ∨
+         (A x ∧ C y) ∨ (C x ∧ A y) ∨
          (A x ∧ F y) ∨ (F x ∧ A y) ∨
+         (B x ∧ C y) ∨ (C x ∧ B y) ∨
          (B x ∧ E y) ∨ (E x ∧ B y) ∨
          (C x ∧ D y) ∨ (D x ∧ C y)))
     (hAB : ∀ x y, A x → B y → Nat.Coprime (label x) (label y))

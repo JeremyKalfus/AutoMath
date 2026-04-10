@@ -6,36 +6,45 @@
 - Active dossier: [campaigns/zero_divisor_prime_labelings.md](/Users/jeremykalfus/CodingProjects/AutoMath/campaigns/zero_divisor_prime_labelings.md).
 - Family artifact path: [artifacts/families/zero_divisor_prime_labelings](/Users/jeremykalfus/CodingProjects/AutoMath/artifacts/families/zero_divisor_prime_labelings).
 - Locked family statements for this pass:
-  - `F25(p) := Γ(Z_p × Z_25)` for odd prime `p`.
-  - `F2(p) := Γ(Z_p × Z_p × Z_2)` for odd prime `p`.
+  - `F25(p) := Γ(Z_p × Z_25)` for odd prime `p`, with vertex count `5p + 19`.
+  - `F2(p) := Γ(Z_p × Z_p × Z_2)` for odd prime `p`, with vertex count `p^2 + 2p - 2`.
 - Locked theorem target for this generalize pass:
-  - not an all-odd-prime theorem;
-  - not another isolated exact witness;
-  - instead, paired support-template reduction theorems that turn each family into a small classwise coprimality allocation problem.
+  - paired support-template reduction theorems, not an all-odd-prime closure;
+  - `F25(p)` reduced to four classwise label blocks `A,B,C,D`;
+  - `F2(p)` reduced on the actual support graph `A-B`, `A-C`, `A-F`, `B-C`, `B-E`, `C-D`, with the edges touching `C` discharged automatically once the singleton class gets label `1`.
 - The strongest honest current theorem target is therefore:
-  - a reduction theorem for `F25(p)` on four support classes `A,B,C,D`;
-  - a reduction theorem for `F2(p)` on six support classes `A,B,C,D,E,F`, with the singleton class `C` fixed to label `1`.
+  - a reduction theorem for `F25(p)` on a four-class support blowup with one clique class `B`;
+  - a reduction theorem for `F2(p)` on a six-class support blowup where only `A-B`, `A-F`, and `B-E` remain parameter-sensitive after setting `C = 1`.
 
 ## existing_instance_inventory
 
 - Lean-backed exact seeds preserved in [PROOFS.md](/Users/jeremykalfus/CodingProjects/AutoMath/PROOFS.md):
-  - `z3-z25-prime-zero-divisor-graph`: exact `F25(3)` on `34` vertices.
-  - `z5-z25-prime-zero-divisor-graph`: exact `F25(5)` on `44` vertices.
-  - `z7-z25-prime-zero-divisor-graph`: exact `F25(7)` on `54` vertices.
-  - `z5-z5-z2-prime-zero-divisor-graph`: exact `F2(5)` on `33` vertices.
-  - `z7-z7-z2-prime-zero-divisor-graph`: exact `F2(7)` on `61` vertices.
+  - `z3-z25-prime-zero-divisor-graph`: exact `F25(3)`.
+  - `z5-z25-prime-zero-divisor-graph`: exact `F25(5)`.
+  - `z7-z25-prime-zero-divisor-graph`: exact `F25(7)`.
+  - `z5-z5-z2-prime-zero-divisor-graph`: exact `F2(5)`.
+  - `z7-z7-z2-prime-zero-divisor-graph`: exact `F2(7)`.
+- Verified non-Lean feeder evidence beyond `PROOFS.md`:
+  - `z11-z25-prime-zero-divisor-graph`: verified `F25(11)`.
+  - `z11-z11-z2-prime-zero-divisor-graph`: verified `F2(11)`.
 - Exact inventory for `F25(p)`:
-  - every seed uses the same four support classes
-    `A = {(0,u) : u ∈ Z_25^x, 5 ∤ u}`, `|A| = 20`,
+  - every seed uses the same four support roles
+    `A = {(0,u) : u ∈ Z_25^× and 5 ∤ u}`, `|A| = 20`,
     `B = {(0,5),(0,10),(0,15),(0,20)}`, `|B| = 4`,
-    `C = {(a,0) : a ∈ Z_p^x}`, `|C| = p - 1`,
-    `D = {(a,5t) : a ∈ Z_p^x, t ∈ {1,2,3,4}}`, `|D| = 4(p - 1)`.
-  - every seed uses the same edge pattern:
+    `C = {(a,0) : a ∈ Z_p^×}`, `|C| = p - 1`,
+    `D = {(a,5t) : a ∈ Z_p^×, t ∈ {1,2,3,4}}`, `|D| = 4(p - 1)`.
+  - the `p = 3` record uses the names `N,M,U,W`, but it is the same template with `N = A`, `M = B`, `U = C`, `W = D`.
+  - every seed has the same exact edge pattern:
     `A-C`, `B-B`, `B-C`, `B-D`, and no other edges.
-  - witness arithmetic across the solved exacts:
-    `F25(3)` uses a two-vertex high-prime block on `C` and absorbs the forbidden multiples into the nonadjacent classes;
-    `F25(5)` uses `C = {11,23,29,31}` and `B = {1,37,41,43}`;
-    `F25(7)` uses six upper-half primes on `C` and `B = {1,11,13,17}`.
+  - repeated arithmetic pattern across `p = 5,7,11`:
+    `C` gets a large-prime block,
+    `B` gets a four-label pairwise-coprime barrier set,
+    the bad multiples forced by `B` are dumped into `A`,
+    and `D` gets the residual complement.
+  - the verified `p = 11` feeder is the first decisive unsolved odd prime on this line and preserves the same proof shape with
+    `C = {37,41,43,47,53,59,61,67,71,73}`,
+    `B = {1,19,23,29}`,
+    and the five extra barrier multiples `{38,46,57,58,69}` absorbed into `A`.
 - Exact inventory for `F2(p)`:
   - every seed uses the same six support classes
     `A = (*,0,0)`,
@@ -48,161 +57,160 @@
     `|A| = |B| = |E| = |F| = p - 1`,
     `|C| = 1`,
     `|D| = (p - 1)^2`.
-  - every seed uses the same edge pattern:
+  - every seed has the same exact edge pattern:
     `A-B`, `A-C`, `A-F`, `B-C`, `B-E`, `C-D`, and no other edges.
-  - witness arithmetic across the solved exacts:
-    `F2(5)` uses `C = 1`, powers of `2` on `A`, odd `3,5`-smooth labels on `B`, `3,5`-avoiding even labels on `E`, and odd labels on `F`;
-    `F2(7)` uses `C = 1`, a `{2,3}`-smooth block on `A`, large primes on `B`, another `{2,3}`-smooth block on `E`, and labels avoiding `2,3` on `F`.
-- The exact inventory already settles one major point:
-  - the repeated proof burden is structural and classwise, not vertex-by-vertex.
+  - `F2(5)` uses `C = 1`, powers of `2` on `A`, odd `{3,5}`-smooth labels on `B`, labels avoiding `3,5` on `E`, and odd labels on `F`.
+  - `F2(7)` and verified `F2(11)` use the cleaner shared pattern:
+    `C = 1`,
+    a `{2,3}`-smooth reservoir for `A ∪ E`,
+    and labels coprime to `6` for `B ∪ F`.
+- Inventory conclusion:
+  - both active family lines have now survived the campaign-designated `p = 11` feeder;
+  - the structural burden is settled enough for a family theorem slice;
+  - the live uncertainty has moved to the first `p = 13` arithmetic redesign, not to the support decompositions themselves.
 
 ## shared_structure
 
 - Common decomposition / invariant:
-  - in both families, adjacency is determined entirely by support type, so the zero-divisor graph is a blowup of a tiny support graph with parameter-dependent class sizes;
-  - vertices inside a fixed support class have identical neighborhoods, so any bijection within a class preserves adjacency and coprimality requirements.
+  - in both families, adjacency depends only on support type, so the zero-divisor graph is a blowup of a tiny support graph with parameter-dependent class sizes;
+  - vertices inside one support class have identical neighborhoods, so any bijection within a class preserves adjacency and all coprimality obligations.
 - Common decomposition / construction:
-  - first prove the support-class partition from coordinatewise zero product;
-  - then replace the full graph by a partition of `{1,...,N}` into class label blocks of the right sizes;
-  - then check only the adjacent class pairs and any clique classes.
+  - first classify the nonzero zero-divisors by coordinate support;
+  - then replace the graph by a partition of the label interval into classwise blocks of the correct sizes;
+  - then check only adjacent class pairs and any clique classes.
 - `F25(p)` support graph:
-  - `A` and `D` are independent and only interface indirectly;
-  - `B` is the unique internal clique class;
+  - `A` and `D` are independent;
+  - `B` is the unique clique class;
   - `C` only sees `A ∪ B`;
   - `D` only sees `B`.
 - `F2(p)` support graph:
+  - actual edges are `A-B`, `A-C`, `A-F`, `B-C`, `B-E`, `C-D`;
   - `C` is the unique hinge vertex;
-  - once `C` gets label `1`, the entire `D` block becomes free;
-  - only three nontrivial cross-class interfaces remain: `A-B`, `A-F`, `B-E`.
-- The shared proof template is therefore:
+  - once `C` gets label `1`, the edges `A-C`, `B-C`, and `C-D` are automatic, `D` becomes completely free, and only the three genuinely constrained interfaces `A-B`, `A-F`, and `B-E` remain.
+- Shared proof template:
   - support blowup lemma;
   - classwise partition lemma;
-  - family-specific adjacency check on a tiny support graph.
+  - family-specific reduction to a tiny support graph;
+  - arithmetic only after the structural reduction is fixed.
+- Formal note preserved in this pass:
+  - the local Lean singleton-one reduction theorem for `F2(p)` was corrected so the theorem statement now includes the actual `A-C` and `B-C` edge families instead of silently dropping them.
 
 ## parameter_sensitive_steps
 
 - Steps that genuinely scale in the parameter:
   - the support decompositions for `F25(p)` and `F2(p)`;
-  - the fact that classwise label blocks are enough once support classes are fixed;
-  - the `F25(p)` observation that the only internal constraint is the `K_4` on `B`;
-  - the `F2(p)` observation that `C = 1` frees the whole `D` class;
-  - the reduction of both families to finitely many cross-coprimality interfaces independent of the full graph size.
-- Steps that are still instance-specific in the current exact proofs:
-  - the concrete upper-half prime lists used for the `C` block in the solved `F25(p)` instances;
-  - the exact barrier sets chosen for the `B` clique in the solved `F25(p)` instances;
-  - the precise smooth-number reservoirs used for `A` and `E` in `F2(5)` and `F2(7)`;
-  - the leftover label assignments into `D`, which are free only after the support reduction is established.
-- The real parameter bottlenecks are arithmetic, not structural:
-  - `F25(p)`: the `C` block has size `p - 1`, but `A ∪ B` has fixed size `24`, so the set of prime factors carried by `C` must stay sparse enough that `24` labels remain available for `A ∪ B`;
-  - `F25(p)`: the clique labels on `B` must stay pairwise coprime while forbidding as few labels as possible from the large `D` reservoir;
-  - `F2(p)`: after `C = 1`, one must still supply `2(p - 1)` labels for `A ∪ E` and `p - 1` labels for `F` with the right prime-support separation.
-- Smallest likely obstructions if the current arithmetic templates break:
-  - `F25(11)` is the first natural breakpoint for the current upper-half-prime plus sparse-barrier pattern;
-  - `F2(11)` is the first place the smooth-reservoir heuristic must be counted rather than guessed;
-  - if `F2(11)` survives, `F2(13)` is the first visibly tight smooth-reservoir test.
+  - the classwise-template principle that only support classes matter once the partition is fixed;
+  - the `F25(p)` reduction to the obligations `B-B`, `A-C`, `B-C`, and `B-D`;
+  - the `F2(p)` hinge reduction `C = 1`, after which only `A-B`, `A-F`, and `B-E` remain arithmetic.
+- Steps that are still instance-specific in the current seeds:
+  - the exact prime lists used for the `C` block in `F25(5)`, `F25(7)`, and `F25(11)`;
+  - the exact four-label barrier sets used on `B` in those `F25` seeds;
+  - the precise partitions of the smooth reservoir between `A` and `E` in the `F2` seeds;
+  - the exact coprime-to-`6` lists used on `B ∪ F` in `F2(7)` and `F2(11)`.
+- Parameter-sensitive arithmetic facts now visible from the seeds:
+  - `F25(11)` closes with the strict upper-half-prime strategy on `C`, because `|C| = 10` and the interval `[37,74]` already supplies `10` primes.
+  - `F25(13)` is the first guaranteed obstruction to that unchanged subtemplate: `|C| = 12`, but `[43,84]` contains only `10` primes, so the pure "all `C` labels above half the interval" trick cannot survive unchanged.
+  - `F2(11)` closes with a `{2,3}`-smooth reservoir because there are `21` nontrivial `{2,3}`-smooth labels up to `141`, while `|A ∪ E| = 20`.
+  - `F2(13)` is the first tight smooth-reservoir test, not a proved failure: there are exactly `24` nontrivial `{2,3}`-smooth labels up to `193`, matching the required `|A ∪ E| = 24`.
+- Smallest likely obstruction:
+  - not an actual graph counterexample yet;
+  - instead, the first honest obstruction is the failure of the unchanged `F25` upper-half-prime `C` subtemplate at `p = 13`;
+  - on the `F2` side, `p = 13` is the first zero-slack arithmetic test for the naive `{2,3}`-smooth program.
 
 ## candidate_theorem_slices
 
-- Slice 1: `F25(p)` support-template reduction theorem.
-  - For odd prime `p`, let `{1,...,5p+19}` be partitioned into `L_A,L_B,L_C,L_D` with sizes `20,4,p-1,4(p-1)`.
-  - If `L_B` is pairwise coprime, every label in `L_C` is coprime to every label in `L_A ∪ L_B`, and every label in `L_D` is coprime to every label in `L_B`, then `Γ(Z_p × Z_25)` has a prime labeling.
-- Slice 2: `F2(p)` support-template reduction theorem.
-  - For odd prime `p`, let `{1,...,p^2 + 2p - 2}` be partitioned into `L_A,L_B,L_C,L_D,L_E,L_F` with sizes
-    `p-1,p-1,1,(p-1)^2,p-1,p-1`.
-  - If `L_C = {1}` and the only required cross-coprimality conditions
-    `gcd(L_A,L_B) = 1`,
-    `gcd(L_A,L_F) = 1`,
-    `gcd(L_B,L_E) = 1`
-    hold classwise, then `Γ(Z_p × Z_p × Z_2)` has a prime labeling.
-- Slice 3: arithmetic corollary candidate for `F25(11)`.
-  - Reuse Slice 1 with an upper-half prime block on `C`, a sparse pairwise-coprime clique block on `B`, and absorb all extra forbidden multiples into `A`.
-  - This is plausible from the exact cluster, but not yet closed from current evidence.
-- Slice 4: arithmetic corollary candidate for `F2(11)`.
-  - Reuse Slice 2 with `C = 1`, a smooth block for `A ∪ E`, a prime block for `B`, and a residue class for `F` avoiding the prime support of `A`.
-  - This matches the `p = 5,7` exacts but still needs a clean count argument.
-- Slice 5: smallest-template-failure obstruction theorem.
-  - If the structural reduction remains correct but the current arithmetic template first fails at `p = 11` or `p = 13`, preserve that as a theorem about the first failure of the naive reservoir pattern rather than as a claim that the graph itself is non-prime.
+- Slice 1: paired structural reduction theorems.
+  - For odd prime `p`, `F25(p)` is prime whenever `{1,...,5p+19}` can be partitioned into `L_A,L_B,L_C,L_D` of sizes `20,4,p-1,4(p-1)` such that `L_B` is pairwise coprime, every element of `L_C` is coprime to every element of `L_A ∪ L_B`, and every element of `L_D` is coprime to every element of `L_B`.
+  - For odd prime `p`, `F2(p)` is prime whenever `{1,...,p^2+2p-2}` can be partitioned into `L_A,L_B,{1},L_D,L_E,L_F` of sizes `p-1,p-1,1,(p-1)^2,p-1,p-1` such that every `L_A-L_B`, `L_A-L_F`, and `L_B-L_E` pair is coprime.
+- Slice 2: `F25(p)` arithmetic sufficient-condition theorem.
+  - If one can choose a `C` block of size `p - 1` with very small spill into `A ∪ B`, and a four-label pairwise-coprime barrier set `B` whose extra multiples occupy at most the `20` `A` slots, then `F25(p)` is prime.
+  - This mechanism is now verified at `p = 11`.
+- Slice 3: `F2(p)` arithmetic sufficient-condition theorem.
+  - If one can choose a fixed small prime-support set `S`, place `2(p - 1)` nontrivial `S`-smooth labels on `A ∪ E`, place `2(p - 1)` labels coprime to every prime in `S` on `B ∪ F`, and set `C = 1`, then `F2(p)` is prime.
+  - This mechanism is realized by `S = {2,3}` at `p = 7` and `p = 11`.
+- Slice 4: smallest-template-obstruction theorem.
+  - The unchanged `F25` upper-half-prime `C` strategy cannot extend to `p = 13`, because the interval `[43,84]` has only `10` primes while `|C| = 12`.
+  - This would be a theorem about the current arithmetic subtemplate, not about non-primality of `Γ(Z_13 × Z_25)`.
 
 ## chosen_slice
 
 - Strongest honest slice for this pass:
-  - the paired support-template reduction theorems in Slice 1 and Slice 2.
+  - the paired structural reduction theorems in Slice 1.
 - Why this is the right choice:
-  - the proof is structural and visible in all five Lean-backed exact seeds;
-  - it is stronger than a pile of isolated exacts because it packages the reusable family mechanism;
-  - it does not rely on any unproved prime-counting or smooth-counting claim.
-- Explicit theorem target for `F25(p)`:
-  - prime labelability reduces exactly to finding a classwise partition satisfying one clique constraint on `B`, one `C` versus `A ∪ B` coprimality condition, and one `D` versus `B` coprimality condition.
-- Explicit theorem target for `F2(p)`:
-  - prime labelability reduces exactly to fixing `C = 1`, after which only three cross-class interfaces remain: `A-B`, `A-F`, and `B-E`.
-- Strongest plausible arithmetic upgrade after the chosen slice:
-  - the verified feeder `F25(11)` now shows the current `Γ(Z_p × Z_25)` reservoir template survives the first decisive breakpoint;
-  - the next best paired arithmetic upgrades are `F2(11)` on the six-class line and `F25(13)` on the four-class line;
-  - `p = 13` is therefore the first tight follow-up on the `Z_p × Z_25` side, not just a speculative reserve.
+  - the proof is structural and now supported by five Lean-backed exact seeds plus verified `p = 11` feeders on both family lines;
+  - it is stronger than a pile of exact examples because it packages the reusable family mechanism;
+  - it does not require an unproved prime-counting theorem or an unproved smooth-counting asymptotic.
+- Strongest arithmetic upgrade now honestly supported:
+  - `F25(11)` shows the four-class arithmetic template survives its first decisive odd prime;
+  - `F2(11)` shows the six-class smooth-reservoir template also survives its decisive odd prime;
+  - the next real campaign frontier is therefore the paired `p = 13` step, where `F25` needs a refined `C` block and `F2` becomes exactly tight.
+- Honest publication verdict:
+  - stronger than `INSTANCE_ONLY`;
+  - not yet a closed family theorem;
+  - still `publication_status = SLICE_CANDIDATE`.
 
 ## reusable_lemmas
 
-- `support_decomposition_F25`:
-  classify the nonzero zero-divisors of `Z_p × Z_25` into `A,B,C,D` and prove the exact edge pattern `A-C`, `B-B`, `B-C`, `B-D`.
-- `support_decomposition_F2`:
-  classify the nonzero zero-divisors of `Z_p × Z_p × Z_2` into `A,B,C,D,E,F` and prove the exact edge pattern `A-B`, `A-C`, `A-F`, `B-C`, `B-E`, `C-D`.
-- `classwise_template_lemma`:
-  for a support blowup graph, any partition of the label interval by support classes works once every adjacent class pair is cross-coprime and every clique class is internally pairwise coprime.
-- `pairwise_coprime_clique_lemma`:
-  the `B` class in `F25(p)` only needs four pairwise-coprime labels, independent of `p`.
-- `singleton_one_lemma`:
-  if a singleton support class is adjacent to a large residual class, assigning label `1` to that singleton frees the entire residual class.
-- `forbidden_multiples_reservoir_lemma`:
-  once the prime support carried by a constrained class is fixed, the adjacent residual class only needs enough labels avoiding those prime factors, not a vertex-by-vertex witness.
-- `three_interface_pack_lemma`:
-  after `C = 1` in `F2(p)`, the family reduces to simultaneously satisfying exactly three cross-coprimality interfaces and no others.
+- Preserved structural lemmas:
+  - `support_decomposition_F25`: classify `F25(p)` into `A,B,C,D` and prove the exact edge pattern `A-C`, `B-B`, `B-C`, `B-D`.
+  - `classwise_template_lemma`: for a support blowup graph, any partition by classes works once every adjacent class pair is cross-coprime and every clique class is internally pairwise coprime.
+  - `pairwise_coprime_clique_lemma`: the `B` class in `F25(p)` only needs four pairwise-coprime labels, independent of `p`.
+  - `support_decomposition_F2`: classify `F2(p)` into `A,B,C,D,E,F` and prove the exact edge pattern `A-B`, `A-C`, `A-F`, `B-C`, `B-E`, `C-D`.
+  - `singleton_one_lemma`: if the hinge class `C` gets label `1`, then every edge touching `C` is automatic and the entire `D` class becomes free.
+  - `three_interface_pack_lemma`: after `C = 1` in `F2(p)`, only `A-B`, `A-F`, and `B-E` remain arithmetic.
+- Next arithmetic lemmas worth isolating:
+  - `large_prime_block_with_small_spill_lemma`: choose `p - 1` `C` labels for `F25(p)` while leaving enough labels for `A ∪ B`.
+  - `sparse_barrier_set_lemma`: choose four pairwise-coprime `B` labels whose nontrivial multiples spill into at most `20` `A` slots.
+  - `smooth_reservoir_count_lemma`: count `S`-smooth labels in `{1,...,p^2+2p-2}` sharply enough for `F2(p)`.
+  - `coprime_complement_pack_lemma`: choose `B ∪ F` from labels avoiding the prime support used on `A ∪ E`.
 
 ## proof_plan
 
 - Main proof path:
-  1. Prove `support_decomposition_F25` and `support_decomposition_F2` directly from coordinatewise zero product.
-  2. Prove `classwise_template_lemma` once for support-blowup graphs.
-  3. Deduce Slice 1 by checking only the edge families `A-C`, `B-B`, `B-C`, `B-D`.
-  4. Deduce Slice 2 by fixing `C = 1`, freeing `D`, and checking only `A-B`, `A-F`, `B-E`.
-  5. Preserve the solved exact seeds only as evidence that the arithmetic side is plausible, not as part of the structural proof.
+  1. Preserve the corrected structural reduction theorems for `F25(p)` and `F2(p)` as the family-level backbone.
+  2. Package the classwise-template lemma once, then instantiate it separately for the four-class and six-class support graphs.
+  3. Promote `z11-z25` and `z11-z11-z2` only as arithmetic witness instantiations of those reduction theorems, not as the theorem proof itself.
+  4. Isolate two arithmetic corollaries, one for the `F25` large-prime-plus-barrier program and one for the `F2` smooth-reservoir-plus-coprime-complement program.
+  5. Pressure-test both arithmetic corollaries at `p = 13`.
 - One strongest path forward:
-  - formalize the two reduction theorems first and only then test `p = 11` as a pure interval-partition feeder.
+  - formalize the paired structural slice in Lean first, then test `z13-z25-prime-zero-divisor-graph` and `z13-z13-z2-prime-zero-divisor-graph` as the first post-`p = 11` arithmetic discriminators.
 - One fallback path:
-  - if the arithmetic closure does not scale at `p = 11`, keep the structural reduction theorems and reframe the result as the first honest failure of the current reservoir template.
+  - if the arithmetic side still does not close at `p = 13`, preserve the first exact failure of the current subtemplate as a theorem about the arithmetic program rather than claiming graph non-primality.
 
 ## fallback_counterexample_plan
 
-- The likely fallback theorem is not "non-prime graph" but "first failure of the naive arithmetic template."
-- Smallest likely obstruction for `F25(p)`:
-  - no longer `F25(11)`: the verified feeder now shows the current upper-half-prime `C` block and sparse `B` barrier survive there.
-  - `F25(13)` is now the next tight arithmetic stress test for the same pattern.
-- Smallest likely obstruction for `F2(p)`:
-  - `F2(11)` if the current smooth-reservoir heuristic already under-supplies one of `A,E,F`;
-  - `F2(13)` if `p = 11` survives, because the smooth-reservoir count becomes visibly tight there.
+- The likely fallback theorem is not "the graph is not prime."
+- `F25` fallback:
+  - preserve the first-template-obstruction theorem that the unchanged upper-half-prime `C` program already fails at `p = 13`;
+  - if a refined `C` block with a few doubled primes rescues `F25(13)`, preserve that refinement explicitly rather than pretending the original subtemplate survived.
+- `F2` fallback:
+  - test whether the naive `{2,3}`-smooth program can be packed exactly at `p = 13`;
+  - if it fails, preserve that as the smallest failure of the naive smooth-reservoir template, not as a non-primality claim for `Γ(Z_13 × Z_13 × Z_2)`.
 - What to preserve if a feeder fails:
-  - the exact structural reduction theorem;
-  - the explicit arithmetic template that was being tested;
+  - the corrected structural reduction theorem;
+  - the exact arithmetic subtemplate being tested;
   - the minimal counting or divisibility obstruction;
-  - the distinction between template failure and actual non-primality of the graph family.
+  - the distinction between template failure and graph failure.
 
 ## next_best_feeder_instances
 
-- `z11-z11-z2-prime-zero-divisor-graph`
-  - first discriminator for whether the `F2(p)` smooth-reservoir and prime-block split really satisfies Slice 2 beyond `p = 5,7`.
 - `z13-z25-prime-zero-divisor-graph`
-  - next tight follow-up now that the verified `p = 11` feeder has removed the first `F25` breakpoint.
+  - first arithmetic discriminator because the old upper-half-prime `C` block cannot survive unchanged there.
 - `z13-z13-z2-prime-zero-divisor-graph`
-  - first visibly tight follow-up for the smooth-reservoir side if `p = 11` survives.
+  - first tight six-class discriminator because the naive `{2,3}`-smooth reservoir has zero slack there.
 
 ## publication_value
 
-- The campaign is already stronger than `INSTANCE_ONLY` because five Lean-backed exacts now share two family-level support templates.
-- The strongest honest present publication value is:
-  - paired reduction theorems that package the structural heart of the exact proofs;
-  - a verified `F25(11)` feeder showing that the four-class template survives its first decisive unsolved odd prime;
-  - a sharpened arithmetic feeder program with `F2(11)` and `F25(13)` as the next tight discriminators;
-  - reusable family lemmas that are Lean-ready even though the family theorems are not yet Lean-complete.
+- The campaign is now materially stronger than a loose family slogan:
+  - five Lean-backed exact seeds already preserve the structural backbone;
+  - verified `F25(11)` and verified `F2(11)` show both active family lines survive the first decisive unsolved odd prime;
+  - the next theorem-slice question is sharply localized at `p = 13`.
+- The strongest honest publication value is:
+  - a corrected paired support-template reduction program;
+  - two verified `p = 11` campaign feeders, one on each family line;
+  - an explicit first arithmetic obstruction for the unchanged `F25` subtemplate;
+  - an explicit first zero-slack arithmetic test for the naive `F2` subtemplate.
 - Honest current publication verdict:
-  - the campaign is not `PAPER_READY`;
-  - the campaign is stronger than a conjectural family slogan;
-  - the right present label remains `publication_status = SLICE_CANDIDATE`.
+  - not `PAPER_READY`;
+  - not merely `INSTANCE_ONLY`;
+  - correctly `publication_status = SLICE_CANDIDATE`.

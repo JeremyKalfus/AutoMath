@@ -13,25 +13,25 @@
 Work from the active campaign dossier at `campaigns/zero_divisor_prime_labelings.md` and the family artifact path `artifacts/families/zero_divisor_prime_labelings`.
 
 ## theorem_slice_hint
-Start with a support-template theorem for Γ(Z_p × Z_25) and Γ(Z_p × Z_p × Z_2), then pressure-test p = 11 as the next feeder.
+Promote the paired verified p = 11 feeders into the theorem-slice writeup, then run Γ(Z_13 × Z_25) first and Γ(Z_13 × Z_13 × Z_2) as the parallel p = 13 pressure test.
 
 ## theorem_slice_target
-Paired support-template reduction theorems for Γ(Z_p × Z_25) and Γ(Z_p × Z_p × Z_2), with the second family reduced to three coprimality interfaces after fixing the singleton class to label 1.
+Paired support-template reduction theorems for Γ(Z_p × Z_25) and Γ(Z_p × Z_p × Z_2), with the second theorem stated on the actual support graph A-B, A-C, A-F, B-C, B-E, C-D and reduced to three parameter-sensitive interfaces after setting C = 1.
 
 ## fallback_target
-A smallest-template-failure obstruction: most likely at Γ(Z_11 × Z_11 × Z_2) for the current F2 smooth-reservoir pattern, or at Γ(Z_13 × Z_25) if the verified F25 template first becomes tight one prime later.
+If the arithmetic corollaries do not close, preserve a template-obstruction theorem at p = 13: the unchanged F25 upper-half-prime C program already fails there, and the naive F2 {2,3}-smooth program becomes the first zero-slack test on the parallel line.
 
 ## next_blocker
-Package the verified Γ(Z_11 × Z_25) feeder into the family writeup, preserve the completed Lean reduction skeletons, and then test the parallel F2(11) line or the next tight F25(13) line.
+Package the paired verified p = 11 feeders into one clean family writeup, extend the Lean family surface from abstract support templates toward reusable support-decomposition lemmas, and then pressure-test the p = 13 frontier starting with Γ(Z_13 × Z_25).
 
 ## why_now
 The repo already has a cluster of Lean-backed exact instances with repeated support-class decompositions and reusable label roles.
 
 ## strongest_honest_claim
-The strongest honest slice is now a paired support-template reduction program backed by a verified new feeder: for odd prime p, prime labelability of Γ(Z_p × Z_25) and Γ(Z_p × Z_p × Z_2) reduces to explicit classwise coprimality partitions on tiny support graphs, and the Γ(Z_p × Z_25) template has now survived the decisive p = 11 test. The structural reductions are clear from the Lean-backed exact seeds and the verified p = 11 witness; the remaining uncertainty is arithmetic closure for the parallel Γ(Z_p × Z_p × Z_2) line and the next tight Γ(Z_p × Z_25) follow-up at p = 13.
+The zero-divisor campaign now has paired verified p = 11 feeders on both active lines, plus Lean-backed abstract support-template reductions. The strongest honest slice is that prime labelability of Γ(Z_p × Z_25) and Γ(Z_p × Z_p × Z_2) reduces to explicit classwise coprimality partitions on tiny support graphs, and both reductions now survive the campaign-designated p = 11 checkpoint. What remains is to turn those reductions into cleaner family-level support-decomposition lemmas and decide how far the arithmetic program extends at p = 13.
 
 ## next_action
-promote_verified_f25_p11_into_theorem_slice_writeup_then_run_f2_p11_or_f25_p13
+package_paired_verified_p11_feeders_then_run_z13_z25_with_parallel_p13_template_break_audit
 
 ## seed_instances
 - z3-z25-prime-zero-divisor-graph
@@ -43,6 +43,5 @@ promote_verified_f25_p11_into_theorem_slice_writeup_then_run_f2_p11_or_f25_p13
 - z2-power-8-prime-zero-divisor-graph
 
 ## next_feeder_instances
-- z11-z11-z2-prime-zero-divisor-graph
 - z13-z25-prime-zero-divisor-graph
 - z13-z13-z2-prime-zero-divisor-graph

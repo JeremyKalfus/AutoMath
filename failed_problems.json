@@ -147,8 +147,16 @@
   {
     "slug": "z11-z25-prime-zero-divisor-graph",
     "reason": "CANDIDATE",
-    "title": "Is the zero-divisor graph Γ(Z_11 × Z_25) prime?",
+    "title": "Is the zero-divisor graph \u0393(Z_11 \u00d7 Z_25) prime?",
     "notes": "Verified feeder evidence archived so the p = 11 witness remains campaign input for the zero-divisor theorem slice without reentering the live queue as a fresh target.",
+    "publication_status": "SLICE_CANDIDATE",
+    "checked_on": "2026-04-09"
+  },
+  {
+    "slug": "z11-z11-z2-prime-zero-divisor-graph",
+    "reason": "CANDIDATE",
+    "title": "Is the zero-divisor graph \u0393(Z_11 \u00d7 Z_11 \u00d7 Z_2) prime?",
+    "notes": "Verified feeder evidence archived after skeptical verify so the paired p = 11 zero-divisor campaign can move to the p = 13 frontier without rerunning this preserved instance.",
     "publication_status": "SLICE_CANDIDATE",
     "checked_on": "2026-04-09"
   }

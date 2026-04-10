@@ -73,7 +73,9 @@ theorem edgeCoprime_of_zp_zp_z2_template_of_singleton_one
     (hAdj :
       ∀ x y, Adj x y →
         ((A x ∧ B y) ∨ (B x ∧ A y) ∨
+         (A x ∧ C y) ∨ (C x ∧ A y) ∨
          (A x ∧ F y) ∨ (F x ∧ A y) ∨
+         (B x ∧ C y) ∨ (C x ∧ B y) ∨
          (B x ∧ E y) ∨ (E x ∧ B y) ∨
          (C x ∧ D y) ∨ (D x ∧ C y)))
     (hAB : ∀ x y, A x → B y → Nat.Coprime (label x) (label y))
@@ -81,10 +83,26 @@ theorem edgeCoprime_of_zp_zp_z2_template_of_singleton_one
     (hBE : ∀ x y, B x → E y → Nat.Coprime (label x) (label y))
     (hC1 : ∀ x, C x → label x = 1) :
     ∀ x y, Adj x y → Nat.Coprime (label x) (label y) := by
-  apply edgeCoprime_of_zp_zp_z2_template Adj A B C D E F label hAdj hAB hAF hBE
-  intro x y hx hy
-  rw [hC1 x hx]
-  simp
+  intro x y hxy
+  rcases hAdj x y hxy with h | h | h | h | h | h | h | h | h | h | h | h
+  · exact hAB x y h.1 h.2
+  · simpa [Nat.coprime_comm] using hAB y x h.2 h.1
+  · rw [hC1 y h.2]
+    simp
+  · rw [hC1 x h.1]
+    simp
+  · exact hAF x y h.1 h.2
+  · simpa [Nat.coprime_comm] using hAF y x h.2 h.1
+  · rw [hC1 y h.2]
+    simp
+  · rw [hC1 x h.1]
+    simp
+  · exact hBE x y h.1 h.2
+  · simpa [Nat.coprime_comm] using hBE y x h.2 h.1
+  · rw [hC1 x h.1]
+    simp
+  · rw [hC1 y h.2]
+    simp
 
 end PrimeSupportTemplates
 end Families

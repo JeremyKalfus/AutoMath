@@ -1,24 +1,24 @@
 # AutoMath Publication Summary
 
-- Updated: `2026-04-09 18:49:04 EDT`
+- Updated: `2026-04-09 20:58:21 EDT`
 - Active campaigns: zero_divisor_prime_labelings, cnbc_quintic_nonexistence
 - Strongest current publication status: `SLICE_CANDIDATE`
-- Strongest honest claim: The strongest honest slice is now a paired support-template reduction program backed by a verified new feeder: for odd prime p, prime labelability of Γ(Z_p × Z_25) and Γ(Z_p × Z_p × Z_2) reduces to explicit classwise coprimality partitions on tiny support graphs, and the Γ(Z_p × Z_25) template has now survived the decisive p = 11 test. The structural reductions are clear from the Lean-backed exact seeds and the verified p = 11 witness; the remaining uncertainty is arithmetic closure for the parallel Γ(Z_p × Z_p × Z_2) line and the next tight Γ(Z_p × Z_25) follow-up at p = 13.
-- Active theorem-slice target: Paired support-template reduction theorems for Γ(Z_p × Z_25) and Γ(Z_p × Z_p × Z_2), with the second family reduced to three coprimality interfaces after fixing the singleton class to label 1.
-- Next blocker: Package the verified Γ(Z_11 × Z_25) feeder into the family writeup, preserve the completed Lean reduction skeletons, and then test the parallel F2(11) line or the next tight F25(13) line.
-- Next decisive feeder instance: z11-z11-z2-prime-zero-divisor-graph
-- Next feeder instances: z11-z11-z2-prime-zero-divisor-graph, z13-z25-prime-zero-divisor-graph, z13-z13-z2-prime-zero-divisor-graph
+- Strongest honest claim: The zero-divisor campaign now has paired verified p = 11 feeders on both active lines, plus Lean-backed abstract support-template reductions. The strongest honest slice is that prime labelability of Γ(Z_p × Z_25) and Γ(Z_p × Z_p × Z_2) reduces to explicit classwise coprimality partitions on tiny support graphs, and both reductions now survive the campaign-designated p = 11 checkpoint. What remains is to turn those reductions into cleaner family-level support-decomposition lemmas and decide how far the arithmetic program extends at p = 13.
+- Active theorem-slice target: Paired support-template reduction theorems for Γ(Z_p × Z_25) and Γ(Z_p × Z_p × Z_2), with the second theorem stated on the actual support graph A-B, A-C, A-F, B-C, B-E, C-D and reduced to three parameter-sensitive interfaces after setting C = 1.
+- Next blocker: Package the paired verified p = 11 feeders into one clean family writeup, extend the Lean family surface from abstract support templates toward reusable support-decomposition lemmas, and then pressure-test the p = 13 frontier starting with Γ(Z_13 × Z_25).
+- Next decisive feeder instance: z13-z25-prime-zero-divisor-graph
+- Next feeder instances: z13-z25-prime-zero-divisor-graph, z13-z13-z2-prime-zero-divisor-graph
 - Any Lean family lemma or slice complete: `yes`
 - xhigh usable in this environment: `yes`
 - Isolated git worktrees feasible: `yes`
 - Automatic stop condition: `publication_status = PAPER_READY` with preserved proof artifacts
-- Worker infra status this cycle: `bounded_stop_after_state_preserved`
+- Worker infra status this cycle: `worker_cleanup_stalled_after_stage_timeouts`
 - Summary path: `artifacts/families/summary.md`
 - Family status paths: artifacts/families/zero_divisor_prime_labelings/status.json, artifacts/families/cnbc_quintic_nonexistence/status.json
 - Ledger tail:
-  - The bounded `p = 11` feeder manager was intentionally stopped after the verified witness was preserved, so publication effort could return to the family campaign instead of spending more time on instance-only follow-through.
-  - The zero-divisor family status was promoted manually from that verified feeder: `Γ(Z_11 × Z_25)` now counts as preserved campaign evidence, the live theorem-slice blocker moved to packaging that feeder plus the existing Lean reduction skeletons, and the next decisive feeders are now `Γ(Z_11 × Z_11 × Z_2)` and `Γ(Z_13 × Z_25)`.
   - publication mode selected active family campaign zero_divisor_prime_labelings.
   - Parallel publication worker started for cnbc_quintic_nonexistence in isolated git worktree.
   - Generalize timed out for family campaign zero_divisor_prime_labelings.
   - Publication audit timed out for family campaign zero_divisor_prime_labelings.
+  - A bounded manager continuation was attempted twice after the p = 11 reconciliation. In both attempts, zero-divisor stayed the primary campaign and CNBC stayed in its isolated worktree, but the family generalize and publication-audit stages only returned bounded timeouts and the manager then stalled after worker exit instead of finishing the cycle cleanly.
+  - No new stable dossier or status changes were produced by those bounded continuation attempts, so the manager stopped them manually, removed the orphaned CNBC worktrees, and preserved the live frontier exactly where the verified paired p = 11 checkpoint left it: `Γ(Z_13 × Z_25)` first, then `Γ(Z_13 × Z_13 × Z_2)`, with `publication_status = SLICE_CANDIDATE`.

@@ -10,46 +10,34 @@
     "artifact_dir": "artifacts/families/zero_divisor_prime_labelings",
     "publication_status": "SLICE_CANDIDATE",
     "theorem_slice_target": "Paired support-template reduction theorems for Γ(Z_p × Z_25) and Γ(Z_p × Z_p × Z_2).",
-    "fallback_target": "A smallest-template-failure obstruction if the current arithmetic reservoir pattern breaks first at p = 11 or p = 13.",
-    "current_blocker": "The support reductions are visible but not yet formalized as explicit theorem slices, and the arithmetic reservoir arguments past the solved cluster are still unproved.",
-    "theorem_slice_hint": "Start with a support-template theorem for Γ(Z_p × Z_25) and Γ(Z_p × Z_p × Z_2), then pressure-test p = 11 as the next feeder.",
+    "fallback_target": "A first p = 13 template-break theorem for the current arithmetic program: either Γ(Z_13 × Z_25) is the first tight four-class failure, or the naive {2,3}-smooth six-class template fails at Γ(Z_13 × Z_13 × Z_2).",
+    "current_blocker": "Package the paired verified p = 11 feeders into one clean zero-divisor theorem-slice writeup, extend the Lean family surface from abstract support templates toward reusable support-decomposition lemmas, and then pressure-test the p = 13 frontier starting with Γ(Z_13 × Z_25).",
+    "theorem_slice_hint": "Promote the paired verified p = 11 feeders into the theorem-slice writeup, then run Γ(Z_13 × Z_25) first and Γ(Z_13 × Z_13 × Z_2) as the parallel p = 13 pressure test.",
     "why_now": "The repo already has a cluster of Lean-backed exact instances with repeated support-class decompositions and reusable label roles.",
     "recommended_feeders": [
-      {
-        "slug": "z11-z25-prime-zero-divisor-graph",
-        "title": "Is the zero-divisor graph Γ(Z_11 × Z_25) prime?",
-        "question": "Does the zero-divisor graph Γ(Z_11 × Z_25) admit a prime labeling?",
-        "canonical_statement": "Determine whether Γ(Z_11 × Z_25) is prime.",
-        "intended_statement": "The exact feeder target is the instance Γ(Z_11 × Z_25), used to pressure-test the current Γ(Z_p × Z_25) support-template theorem slice at the first decisive unsolved odd prime.",
-        "named_conjecture": "Prime labelings of zero-divisor graph families",
-        "attack_style": "support-template feeder for a publication campaign",
-        "theorem_slice_hint": "Pressure-test the Γ(Z_p × Z_25) support-template reduction at p = 11.",
-        "why_still_appears_open": "The repo has Lean-backed exacts at p = 3,5,7 but no preserved exact result at p = 11.",
-        "why_this_could_be_publishable": "Success or failure at p = 11 directly sharpens the current theorem-slice campaign rather than adding another isolated example."
-      },
-      {
-        "slug": "z11-z11-z2-prime-zero-divisor-graph",
-        "title": "Is the zero-divisor graph Γ(Z_11 × Z_11 × Z_2) prime?",
-        "question": "Does the zero-divisor graph Γ(Z_11 × Z_11 × Z_2) admit a prime labeling?",
-        "canonical_statement": "Determine whether Γ(Z_11 × Z_11 × Z_2) is prime.",
-        "intended_statement": "The exact feeder target is the instance Γ(Z_11 × Z_11 × Z_2), used to pressure-test the current Γ(Z_p × Z_p × Z_2) support-template theorem slice at the first decisive unsolved odd prime.",
-        "named_conjecture": "Prime labelings of zero-divisor graph families",
-        "attack_style": "support-template feeder for a publication campaign",
-        "theorem_slice_hint": "Pressure-test the Γ(Z_p × Z_p × Z_2) support-template reduction at p = 11.",
-        "why_still_appears_open": "The repo has Lean-backed exacts at p = 5,7 but no preserved exact result at p = 11.",
-        "why_this_could_be_publishable": "This is the smallest clean discriminator for whether the current six-class template is really scalable."
-      },
       {
         "slug": "z13-z25-prime-zero-divisor-graph",
         "title": "Is the zero-divisor graph Γ(Z_13 × Z_25) prime?",
         "question": "Does the zero-divisor graph Γ(Z_13 × Z_25) admit a prime labeling?",
         "canonical_statement": "Determine whether Γ(Z_13 × Z_25) is prime.",
-        "intended_statement": "Use Γ(Z_13 × Z_25) only after p = 11 to test whether the current Γ(Z_p × Z_25) template still has arithmetic room when the feeder becomes tight.",
+        "intended_statement": "Use Γ(Z_13 × Z_25) after the paired verified p = 11 checkpoint to test whether the four-class Γ(Z_p × Z_25) template still has arithmetic room at the first real p = 13 frontier.",
         "named_conjecture": "Prime labelings of zero-divisor graph families",
         "attack_style": "tightness feeder for a publication campaign",
-        "theorem_slice_hint": "Use only after p = 11 to test the edge of the arithmetic reservoir.",
+        "theorem_slice_hint": "Use first after the paired p = 11 feeders to test the edge of the four-class arithmetic reservoir.",
         "why_still_appears_open": "No exact result for p = 13 is currently preserved in the repo.",
         "why_this_could_be_publishable": "It distinguishes genuine theorem-slice scalability from a fragile small-prime phenomenon."
+      },
+      {
+        "slug": "z13-z13-z2-prime-zero-divisor-graph",
+        "title": "Is the zero-divisor graph Γ(Z_13 × Z_13 × Z_2) prime?",
+        "question": "Does the zero-divisor graph Γ(Z_13 × Z_13 × Z_2) admit a prime labeling?",
+        "canonical_statement": "Determine whether Γ(Z_13 × Z_13 × Z_2) is prime.",
+        "intended_statement": "Use Γ(Z_13 × Z_13 × Z_2) after the verified p = 11 six-class feeder to test whether the current smooth-reservoir template really survives the first zero-slack p = 13 case.",
+        "named_conjecture": "Prime labelings of zero-divisor graph families",
+        "attack_style": "tightness feeder for a publication campaign",
+        "theorem_slice_hint": "Use after the verified p = 11 six-class feeder to test the first zero-slack follow-up for Γ(Z_p × Z_p × Z_2).",
+        "why_still_appears_open": "No exact result for p = 13 is currently preserved on the Γ(Z_p × Z_p × Z_2) line.",
+        "why_this_could_be_publishable": "It distinguishes a reusable six-class theorem slice from a small-prime smooth-reservoir accident."
       }
     ],
     "seed_instances": [

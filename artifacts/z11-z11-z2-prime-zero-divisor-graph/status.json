@@ -1,0 +1,18 @@
+{
+  "slug": "z11-z11-z2-prime-zero-divisor-graph",
+  "title": "Is the zero-divisor graph \u0393(Z_11 \u00d7 Z_11 \u00d7 Z_2) prime?",
+  "stage": "verify",
+  "verify_verdict": "VERIFIED",
+  "classification": "CANDIDATE",
+  "confidence": "high",
+  "code_used": true,
+  "lean_ready": true,
+  "lean_complete": false,
+  "publication_status": "SLICE_CANDIDATE",
+  "publication_confidence": "medium-high",
+  "family_affinity": "zero_divisor_prime_labelings",
+  "generalization_signal": "The six-class support-template for \u0393(Z_p \u00d7 Z_p \u00d7 Z_2) survives the decisive feeder p = 11 with a clean C = 1 reduction and a {2,3}-smooth reservoir for A \u222a E; the same naive reservoir becomes exactly tight at p = 13, so the next honest question is refined arithmetic closure rather than more structural proof.",
+  "strongest_honest_claim": "An explicit prime-labeling witness for \u0393(Z_11 \u00d7 Z_11 \u00d7 Z_2) survives skeptical verification and materially strengthens the active support-template campaign for \u0393(Z_p \u00d7 Z_p \u00d7 Z_2), but it remains an unformalized feeder result rather than an exact Lean-backed theorem.",
+  "candidate_theorem_slice": "A sufficient-condition support-template theorem for odd primes p: after fixing C = 1, if {1,...,p^2+2p-2} contains 2(p-1) labels supported on a fixed small prime set S and another 2(p-1) labels coprime to every prime in S, then \u0393(Z_p \u00d7 Z_p \u00d7 Z_2) is prime.",
+  "next_action": "Run generalize on the \u0393(Z_p \u00d7 Z_p \u00d7 Z_2) campaign using the verified p = 11 feeder, then choose between a p = 13 tight-packing pressure test and a family-level support-template writeup before any Lean work on this instance."
+}
