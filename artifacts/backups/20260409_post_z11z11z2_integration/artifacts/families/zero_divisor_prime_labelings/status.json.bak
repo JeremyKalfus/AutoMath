@@ -1,0 +1,28 @@
+{
+  "entry_type": "family_campaign",
+  "family_slug": "zero_divisor_prime_labelings",
+  "family_name": "Prime labelings of zero-divisor graph families",
+  "stage": "generalize",
+  "classification": "CANDIDATE",
+  "publication_status": "SLICE_CANDIDATE",
+  "publication_confidence": "high",
+  "strongest_honest_claim": "The strongest honest claim is now a paired structural theorem-slice program backed by verified p = 11 feeders on both active lines: for odd prime p, prime labelability of Γ(Z_p × Z_25) and Γ(Z_p × Z_p × Z_2) reduces to explicit classwise coprimality partitions on tiny support graphs. The remaining uncertainty is arithmetic at p = 13: the unchanged F25 upper-half-prime C block already fails there, while the naive F2 {2,3}-smooth reservoir becomes exactly tight.",
+  "paper_title_hint": "Support-template reductions and first arithmetic obstructions in two zero-divisor prime-labeling families",
+  "theorem_slice_target": "Paired support-template reduction theorems for Γ(Z_p × Z_25) and Γ(Z_p × Z_p × Z_2), with the second theorem stated on the actual support graph A-B, A-C, A-F, B-C, B-E, C-D and reduced to three parameter-sensitive interfaces after setting C = 1.",
+  "fallback_target": "If the arithmetic corollaries do not close, preserve a template-obstruction theorem at p = 13: the unchanged F25 upper-half-prime C program already fails there, and the naive F2 {2,3}-smooth program becomes the first zero-slack test on the parallel line.",
+  "next_blocker": "Turn the corrected paired reduction theorems into stable Lean-level family lemmas, then resolve the first p = 13 arithmetic step by either refining the F25 C block beyond the upper-half-prime regime or preserving that p = 13 obstruction while pressure-testing the zero-slack F2(13) line.",
+  "next_feeder_instances": [
+    "z13-z25-prime-zero-divisor-graph",
+    "z13-z13-z2-prime-zero-divisor-graph"
+  ],
+  "campaign_health": "hot",
+  "lean_ready": true,
+  "lean_complete": false,
+  "next_action": "formalize_corrected_paired_reductions_then_test_f25_p13_and_f2_p13",
+  "proof_artifacts_preserved": true,
+  "verified_campaign_feeders": [
+    "z11-z25-prime-zero-divisor-graph",
+    "z11-z11-z2-prime-zero-divisor-graph"
+  ],
+  "lean_family_module": "lean/AutoMath/Families/ZeroDivisorReductions.lean"
+}
