@@ -2,15 +2,16 @@
   "entry_type": "family_campaign",
   "family_slug": "zero_divisor_prime_labelings",
   "family_name": "Prime labelings of zero-divisor graph families",
-  "stage": "publication_audit",
+  "stage": "lean",
   "classification": "CANDIDATE",
+  "confidence": "medium-high",
   "publication_status": "SLICE_CANDIDATE",
   "publication_confidence": "medium-high",
-  "strongest_honest_claim": "The strongest honest publication-facing claim is a paired theorem-slice candidate, not a full family theorem: once the actual ring-to-support partition and adjacency lemmas are formalized, the preserved abstract support reductions on disk turn Γ(Z_p × Z_25) and Γ(Z_p × Z_p × Z_2) into tiny coprimality allocation problems. The paired verified p = 13 feeders show the slice is still alive on both lines, but they also show the arithmetic is not fully closed: Γ(Z_13 × Z_25) needs the refined small-spill C block, while Γ(Z_13 × Z_13 × Z_2) survives exactly at the first zero-slack boundary of the naive six-class template.",
+  "strongest_honest_claim": "The strongest honest claim after this Lean pass is no longer purely prospective: for odd prime p, the F2 line now has a checked ring-level support partition bridge, namely that the genuine nonzero zero-divisor vertices of Z_p × Z_p × Z_2 land exactly in the six support classes A,B,C,D,E,F already used by the abstract reduction surface. The paired family slice is still only a candidate, not exact, because the F2 adjacency table and the full F25 partition/adjacency bridge are still missing in Lean, and the four-class arithmetic has not yet cleared the first post-p = 13 stress test at Γ(Z_17 × Z_25).",
   "paper_title_hint": "Ring-to-support reductions and paired p = 13 checkpoints in two zero-divisor prime-labeling families",
-  "theorem_slice_target": "Formalize the actual ring-level support partition and adjacency lemmas for Γ(Z_p × Z_25) and Γ(Z_p × Z_p × Z_2), then package the preserved abstract support-template reductions as the main theorem slice and present the paired verified p = 13 feeders as arithmetic checkpoints rather than a closed all-primes theorem.",
-  "fallback_target": "If the bridge lemmas close but the arithmetic still does not scale cleanly, preserve the structural reduction slice together with the paired p = 13 checkpoints and isolate the smallest broken arithmetic subtemplate instead of claiming a full family theorem.",
-  "next_blocker": "The main blocker is still the missing family-specific ring-to-support bridge lemmas; after that, the next publication-pressure arithmetic blocker is whether the refined four-class small-spill C program survives the first post-p = 13 stress test at Γ(Z_17 × Z_25).",
+  "theorem_slice_target": "Extend the checked F2 ring-level support partition lemma to the exact F2 adjacency bridge, then formalize the matching F25 partition/adjacency bridge so the preserved abstract support-template reductions become honest family wrapper theorems rather than campaign prose.",
+  "fallback_target": "If the remaining adjacency bridge or the F25 bridge does not close cleanly, preserve the checked F2 partition bridge together with the abstract reductions and the paired p = 13 checkpoints, and isolate the smallest still-unformalized ring-to-support step instead of claiming a full paired family slice.",
+  "next_blocker": "The immediate Lean blocker is the missing F2 ring-level adjacency table for the exact edge families A-B, A-C, A-F, B-C, B-E, and C-D. After that, the four-class F25 partition/adjacency bridge is still missing, and only then does the next arithmetic pressure point return to Γ(Z_17 × Z_25).",
   "next_feeder_instances": [
     "z17-z25-prime-zero-divisor-graph",
     "z17-z17-z2-prime-zero-divisor-graph"
@@ -18,6 +19,6 @@
   "campaign_health": "warm",
   "lean_ready": true,
   "lean_complete": false,
-  "next_action": "formalize_f25_and_f2_ring_to_support_bridge_lemmas_then_run_z17_z25",
+  "next_action": "formalize_f2_ring_support_adjacency_then_f25_ring_support_partition_and_adjacency",
   "proof_artifacts_preserved": true
 }

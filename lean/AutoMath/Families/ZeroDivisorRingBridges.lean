@@ -1,3 +1,4 @@
+import Mathlib.Algebra.Field.ZMod
 import Mathlib.Data.ZMod.Units
 import AutoMath.Families.ZeroDivisorSupports
 
@@ -31,7 +32,10 @@ lemma f2SupportPredicate_ne_zero
     {p : ℕ} {s : F2Support} {x : F2RingElem p}
     (hx : f2SupportPredicate s x) :
     x ≠ 0 := by
-  rcases s with _ <;> rcases hx with ⟨h1, h2, h3⟩ <;> intro hx0
+  cases s <;> simp [f2SupportPredicate] at hx
+  all_goals
+    rcases hx with ⟨h1, h2, h3⟩
+    intro hx0
   · exact h1 <| by simpa using congrArg Prod.fst hx0
   · exact h2 <| by simpa using congrArg (fun z => z.2.1) hx0
   · exact h3 <| by simpa using congrArg (fun z => z.2.2) hx0
@@ -44,7 +48,8 @@ lemma f2ZeroDivisorVertex_of_supportPredicate
     (hx : f2SupportPredicate s x) :
     f2ZeroDivisorVertex x := by
   refine ⟨f2SupportPredicate_ne_zero hx, ?_⟩
-  rcases s with _ <;> rcases hx with ⟨h1, h2, h3⟩
+  cases s <;> simp [f2SupportPredicate] at hx
+  all_goals rcases hx with ⟨h1, h2, h3⟩
   · refine ⟨(0, 0, 1), by simp, ?_⟩
     ext <;> simp [h2, h3]
   · refine ⟨(0, 0, 1), by simp, ?_⟩
@@ -76,6 +81,7 @@ lemma f2SupportPredicate_of_vertex
     simpa using congrArg (fun z => z.2.2) hxy
   have hnotAllNonzero : ¬ (x.1 ≠ 0 ∧ x.2.1 ≠ 0 ∧ x.2.2 ≠ 0) := by
     intro hall
+    letI : Fact (Nat.Prime 2) := ⟨by decide⟩
     have hy1 : y.1 = 0 := (mul_eq_zero.mp hxy1).resolve_left hall.1
     have hy2 : y.2.1 = 0 := (mul_eq_zero.mp hxy2).resolve_left hall.2.1
     have hy3 : y.2.2 = 0 := (mul_eq_zero.mp hxy3).resolve_left hall.2.2

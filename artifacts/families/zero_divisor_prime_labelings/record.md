@@ -311,7 +311,7 @@
 - Proof-artifact audit:
   - the relevant family Lean files and names are preserved on disk;
   - the targeted family modules contain no `sorry` / `admit` markers by text scan in this pass;
-  - a fresh `lake build` could not be rerun here because this machine currently has no configured default `elan` toolchain.
+  - this Lean pass reran targeted checks successfully inside `lean/`, including `lake build AutoMath.Families.ZeroDivisorRingBridges` and `lake build AutoMath`.
 - Publishability verdict:
   - there is enough here for a serious theorem-slice campaign, and enough structure to justify keeping this family at the front of publication mode;
   - there is not yet enough closed mathematics to claim a paper-ready theorem package.
@@ -334,3 +334,57 @@
 - Formalize the actual ring-to-support partition and adjacency lemmas for both active family lines, then instantiate the checked abstract support reductions at the family level.
 - After those bridge lemmas are stable, run `z17-z25-prime-zero-divisor-graph` as the first post-`13` publication-pressure feeder on the refined four-class arithmetic line.
 - If the arithmetic corollary still stalls after the bridge closes, preserve the structural slice plus the paired `p = 13` checkpoints as the publication package and stop short of a family-theorem claim.
+
+## lean_statement
+
+- Lean date: `2026-04-10`.
+- Targeted reusable family lemma:
+  `AutoMath.Families.ZeroDivisorRingBridges.f2_ring_support_partition_lemma`.
+- Exact Lean target for this bounded pass:
+  for odd prime `p` and `x : ZMod p × ZMod p × ZMod 2`,
+  `x` is a genuine nonzero zero-divisor vertex if and only if it lies in one of the six support classes `A,B,C,D,E,F` already named by `ZeroDivisorSupports.F2Support`.
+- Honest scope choice:
+  formalize the `F2(p)` ring-level support partition first, because it is a real family bridge lemma and it is materially simpler than the still-missing `F25(p)` bridge.
+
+## lean_skeleton
+
+- Add a bounded family bridge module under `lean/AutoMath/Families/ZeroDivisorRingBridges.lean`, mirrored under
+  `artifacts/families/zero_divisor_prime_labelings/lean/AutoMath/Families/ZeroDivisorRingBridges.lean`.
+- Define:
+  `F2RingElem`,
+  `f2SupportPredicate`,
+  `f2ZeroDivisorVertex`.
+- Prove the reverse bridge first:
+  each support class gives a genuine vertex by an explicit annihilating witness.
+- Prove the forward bridge second:
+  if `x * y = 0` for a nonzero mate `y`, then `x` cannot have all three coordinates nonzero; combine that with `x ≠ 0` and dispatch the six zero/nonzero coordinate patterns.
+- Put the checked lemma on the publication-safe root import path through `lean/AutoMath/Publications.lean`.
+
+## lean_result
+
+- Added backend Lean file:
+  `lean/AutoMath/Families/ZeroDivisorRingBridges.lean`.
+- Added mirrored family artifact Lean file:
+  `artifacts/families/zero_divisor_prime_labelings/lean/AutoMath/Families/ZeroDivisorRingBridges.lean`.
+- Added publication-safe import:
+  `lean/AutoMath/Publications.lean`.
+- Checked commands in this pass:
+  - `cd lean && lake build AutoMath.Families.ZeroDivisorRingBridges`
+  - `cd lean && lake env lean ../artifacts/families/zero_divisor_prime_labelings/lean/AutoMath/Families/ZeroDivisorRingBridges.lean`
+  - `cd lean && lake build AutoMath`
+- Honest Lean outcome:
+  the `F2(p)` ring-level support partition bridge now checks inside the official backend and on the mirrored artifact copy.
+- Honest classification impact:
+  this is real theorem-slice progress, but it does not close the paired family slice.
+  The run does **not** justify `classification = EXACT`,
+  does **not** justify `publication_status = SLICE_EXACT`,
+  and does **not** justify `PAPER_READY`.
+
+## lean_blockers
+
+- Missing `F2` bridge half:
+  the exact ring-level adjacency table for `Γ(Z_p × Z_p × Z_2)` is still not formalized, so the checked partition lemma does not yet instantiate the full six-class wrapper theorem.
+- Missing `F25` bridge:
+  the four-class `Γ(Z_p × Z_25)` partition and adjacency lemmas remain open in Lean.
+- Missing publication-pressure arithmetic closure:
+  even after the bridge work, the first post-`13` four-class stress test `Γ(Z_17 × Z_25)` is still the next arithmetic discriminator.

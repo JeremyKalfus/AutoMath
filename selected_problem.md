@@ -1,47 +1,44 @@
-# Zero-divisor prime labelings family campaign
+# Is the zero-divisor graph Γ(Z_17 × Z_25) prime?
 
-- entry_type: `family_campaign`
-- slug: `family-zero_divisor_prime_labelings`
-- family_slug: `zero_divisor_prime_labelings`
+- entry_type: `feeder_instance`
+- slug: `z17-z25-prime-zero-divisor-graph`
 - family_name: `Prime labelings of zero-divisor graph families`
-- campaign_priority: `1`
-- dossier_path: `campaigns/zero_divisor_prime_labelings.md`
-- artifact_dir: `artifacts/families/zero_divisor_prime_labelings`
-- publication_status: `SLICE_CANDIDATE`
+- canonical_source: `campaigns/zero_divisor_prime_labelings.md`
+- open_status_checked_on: `2026-04-10`
+- attack_style: `four-class scaling feeder for a publication campaign`
+- curation_confidence: `medium-high`
+- publication_status: `NONE`
+- campaign_affinity: `zero_divisor_prime_labelings`
 
-## family_statement
-Work from the active campaign dossier at `campaigns/zero_divisor_prime_labelings.md` and the family artifact path `artifacts/families/zero_divisor_prime_labelings`.
+## question
+Does the zero-divisor graph Γ(Z_17 × Z_25) admit a prime labeling?
+
+## canonical_statement
+Determine whether Γ(Z_17 × Z_25) is prime.
+
+## intended_statement
+Use Γ(Z_17 × Z_25) after the paired verified p = 13 checkpoints to test whether the refined small-spill C-block strategy scales past the first two-exception case on the four-class line.
 
 ## theorem_slice_hint
-Package the paired p = 13 gains into the theorem-slice writeup, then run Γ(Z_17 × Z_25) as the next four-class stress test while formalizing the missing ring-to-support bridge lemmas.
+Run next as the first post-13 arithmetic stress test on the four-class line while the Lean bridge lemmas mature.
 
-## theorem_slice_target
-Formalize the actual ring-level support partition and adjacency lemmas for Γ(Z_p × Z_25) and Γ(Z_p × Z_p × Z_2), then package the preserved abstract support-template reductions as the main theorem slice and present the paired verified p = 13 feeders as arithmetic checkpoints rather than a closed all-primes theorem.
+## why_reasoning_friendly
+This is the next smallest parameter shift against an active theorem slice rather than a random fresh family.
 
-## fallback_target
-If the bridge lemmas close but the arithmetic still does not scale cleanly, preserve the structural reduction slice together with the paired p = 13 checkpoints and isolate the smallest broken arithmetic subtemplate instead of claiming a full family theorem.
+## why_low_token
+The campaign dossier and existing exact/partial cluster already provide the notation, proof template, and likely checks.
 
-## next_blocker
-The main blocker is still the missing family-specific ring-to-support bridge lemmas; after that, the next publication-pressure arithmetic blocker is whether the refined four-class small-spill C program survives the first post-p = 13 stress test at Γ(Z_17 × Z_25).
+## verifier_hint
+Audit the instance against the active campaign theorem slice, not just the standalone exact claim.
 
-## why_now
-The repo already has a cluster of Lean-backed exact instances with repeated support-class decompositions and reusable label roles.
+## lean_hint
+Prefer Lean only if the feeder either closes exactly or materially strengthens a family theorem slice.
 
-## strongest_honest_claim
-The strongest honest publication-facing claim is a paired theorem-slice candidate, not a full family theorem: once the actual ring-to-support partition and adjacency lemmas are formalized, the preserved abstract support reductions on disk turn Γ(Z_p × Z_25) and Γ(Z_p × Z_p × Z_2) into tiny coprimality allocation problems. The paired verified p = 13 feeders show the slice is still alive on both lines, but they also show the arithmetic is not fully closed: Γ(Z_13 × Z_25) needs the refined small-spill C block, while Γ(Z_13 × Z_13 × Z_2) survives exactly at the first zero-slack boundary of the naive six-class template.
+## rediscovery_risk
+medium
 
-## next_action
-formalize_f25_and_f2_ring_to_support_bridge_lemmas_then_run_z17_z25
+## why_still_appears_open
+No verified or Lean-backed result for Γ(Z_17 × Z_25) is currently preserved in repo memory.
 
-## seed_instances
-- z3-z25-prime-zero-divisor-graph
-- z5-z25-prime-zero-divisor-graph
-- z7-z25-prime-zero-divisor-graph
-- z5-z5-z2-prime-zero-divisor-graph
-- z5-z5-z3-prime-zero-divisor-graph
-- z7-z7-z2-prime-zero-divisor-graph
-- z2-power-8-prime-zero-divisor-graph
-
-## next_feeder_instances
-- z17-z25-prime-zero-divisor-graph
-- z17-z17-z2-prime-zero-divisor-graph
+## why_this_could_be_publishable
+It tests whether the refined small-spill prime-block arithmetic on Γ(Z_p × Z_25) is a real family corollary rather than only a p = 13 repair.
