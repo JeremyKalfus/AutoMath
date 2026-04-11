@@ -98,7 +98,7 @@ seed_monitor_checkout
 
 (
   cd "$WORKTREE"
-  AUTOMATH_MAX_PARALLEL_WORKERS="${AUTOMATH_MAX_PARALLEL_WORKERS:-3}" ./run_publication_cycle.sh
+  AUTOMATH_MAX_PARALLEL_WORKERS="${AUTOMATH_MAX_PARALLEL_WORKERS:-5}" ./run_publication_cycle.sh
 )
 
 sync_monitor_results_back

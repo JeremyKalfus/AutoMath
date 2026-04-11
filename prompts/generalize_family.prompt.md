@@ -17,6 +17,10 @@ Before doing anything substantial:
 2. Read the campaign dossier first.
 3. Read the relevant exact-instance or partial artifacts named there.
 4. Read `PROOFS.md` if the dossier uses Lean-backed exact seeds.
+5. If `selected_problem.md` includes `attempt_kind`, `attempt_output_markdown`, and `attempt_output_json`, treat this as a sidecar proof attempt:
+   - read the canonical family dossier, record, and status as inputs only;
+   - write the durable output to those attempt paths instead of the canonical family `record.md` and `status.json`;
+   - do not mutate the canonical family dossier, canonical family `record.md`, or canonical family `status.json` in this sidecar mode.
 
 Bounded-read policy:
 
@@ -50,6 +54,11 @@ Write durable outputs under:
 
 - `artifacts/families/<family_slug>/record.md`
 - `artifacts/families/<family_slug>/status.json`
+
+Sidecar proof-attempt mode:
+
+- if `selected_problem.md` specifies attempt output paths, write the same durable content to those paths instead;
+- keep the output self-contained so the canonical family generalize/audit pass can later absorb it as evidence.
 
 Required sections in `record.md`:
 

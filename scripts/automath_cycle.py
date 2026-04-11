@@ -48,12 +48,17 @@ VERIFY_TIMEOUT = int(os.environ.get("AUTOMATH_VERIFY_TIMEOUT", "720"))
 GENERALIZE_TIMEOUT = int(os.environ.get("AUTOMATH_GENERALIZE_TIMEOUT", "1800"))
 PUBLICATION_AUDIT_TIMEOUT = int(os.environ.get("AUTOMATH_PUBLICATION_AUDIT_TIMEOUT", "1200"))
 LEAN_TIMEOUT = int(os.environ.get("AUTOMATH_LEAN_TIMEOUT", "1800"))
+PROOF_ATTEMPT_TIMEOUT = int(os.environ.get("AUTOMATH_PROOF_ATTEMPT_TIMEOUT", "1800"))
 PARALLEL_WORKER_WAIT_TIMEOUT = int(os.environ.get("AUTOMATH_PARALLEL_WORKER_WAIT_TIMEOUT", "90"))
 WORKTREE_REMOVE_TIMEOUT = int(os.environ.get("AUTOMATH_WORKTREE_REMOVE_TIMEOUT", "30"))
 PARALLEL_FEEDER_WORKERS = int(os.environ.get("AUTOMATH_PARALLEL_FEEDER_WORKERS", "3"))
+PARALLEL_PROOF_ATTEMPTS = int(os.environ.get("AUTOMATH_PARALLEL_PROOF_ATTEMPTS", "2"))
 PUBLICATION_AUDIT_MIN_INTERVAL = int(os.environ.get("AUTOMATH_PUBLICATION_AUDIT_MIN_INTERVAL", "1800"))
+FRONTIER_REFRESH_MIN_INTERVAL = int(os.environ.get("AUTOMATH_FRONTIER_REFRESH_MIN_INTERVAL", "1800"))
+PROOF_ATTEMPT_MIN_INTERVAL = int(os.environ.get("AUTOMATH_PROOF_ATTEMPT_MIN_INTERVAL", "3600"))
 SECONDARY_WORKER_MIN_INTERVAL = int(os.environ.get("AUTOMATH_SECONDARY_WORKER_MIN_INTERVAL", "1800"))
 SECONDARY_WORKER_FAILURE_BACKOFF = int(os.environ.get("AUTOMATH_SECONDARY_WORKER_FAILURE_BACKOFF", "3600"))
+RECENT_AFFILIATED_ARTIFACT_LIMIT = int(os.environ.get("AUTOMATH_RECENT_AFFILIATED_ARTIFACT_LIMIT", "12"))
 
 CAMPAIGN_LEAN_SURFACE_HINTS = {
     "zero_divisor_prime_labelings": [
@@ -398,6 +403,7 @@ def render_selected_problem(entry: dict) -> None:
         "open_status_checked_on",
         "dossier_path",
         "artifact_dir",
+        "attempt_kind",
         "attack_style",
         "curation_confidence",
         "publication_status",
@@ -431,6 +437,9 @@ def render_selected_problem(entry: dict) -> None:
         "why_still_appears_open",
         "why_this_could_be_publishable",
         "strongest_honest_claim",
+        "attempt_goal",
+        "attempt_output_markdown",
+        "attempt_output_json",
         "next_action",
     ]:
         add_text_section(lines, key, entry.get(key))
@@ -460,15 +469,100 @@ def campaign_record_path(campaign: dict) -> pathlib.Path:
     return ROOT / campaign["artifact_dir"] / "record.md"
 
 
+def campaign_attempt_dir(campaign: dict) -> pathlib.Path:
+    return ROOT / campaign["artifact_dir"] / "attempts"
+
+
+def campaign_attempt_paths(campaign: dict, attempt_kind: str) -> tuple[pathlib.Path, pathlib.Path]:
+    attempt_dir = campaign_attempt_dir(campaign)
+    return attempt_dir / f"{attempt_kind}.md", attempt_dir / f"{attempt_kind}.json"
+
+
 def load_campaign_status(campaign: dict) -> dict:
     path = campaign_status_path(campaign)
     ensure_publication_defaults(path)
     return load_json(path, {})
 
 
-def campaign_input_paths(campaign: dict) -> list[pathlib.Path]:
+def affiliated_artifact_slugs(campaign: dict, limit: int = RECENT_AFFILIATED_ARTIFACT_LIMIT) -> list[str]:
+    scored: list[tuple[float, str]] = []
+    for status_path in ARTIFACTS.glob("*/status.json"):
+        if status_path.parent.parent.name == "families":
+            continue
+        data = load_json(status_path, {})
+        if data.get("family_affinity") != campaign["family_slug"]:
+            continue
+        if not (
+            data.get("verify_verdict") == "VERIFIED"
+            or data.get("classification") in {"EXACT", "COUNTEREXAMPLE", "REDISCOVERY"}
+        ):
+            continue
+        record_path = status_path.parent / "record.md"
+        mtime = status_path.stat().st_mtime
+        if record_path.exists():
+            mtime = max(mtime, record_path.stat().st_mtime)
+        scored.append((mtime, status_path.parent.name))
+    scored.sort(reverse=True)
+    seen: set[str] = set()
+    slugs: list[str] = []
+    for _, slug in scored:
+        if slug in seen:
+            continue
+        seen.add(slug)
+        slugs.append(slug)
+        if len(slugs) >= limit:
+            break
+    return slugs
+
+
+def campaign_frontier_slugs(campaign: dict) -> list[str]:
     status = load_campaign_status(campaign)
-    paths: list[pathlib.Path] = [CAMPAIGN_MANIFEST, PROOFS, ROOT / campaign["dossier_path"]]
+    slugs: list[str] = []
+    decisive = status.get("next_decisive_feeder")
+    if isinstance(decisive, str) and decisive:
+        slugs.append(decisive)
+    for slug in status.get("next_feeder_instances", []):
+        if isinstance(slug, str) and slug:
+            slugs.append(slug)
+    deduped: list[str] = []
+    seen: set[str] = set()
+    for slug in slugs:
+        if slug in seen:
+            continue
+        seen.add(slug)
+        deduped.append(slug)
+    return deduped
+
+
+def attempt_output_files(campaign: dict, exclude_attempt_kind: str | None = None) -> list[pathlib.Path]:
+    attempt_dir = campaign_attempt_dir(campaign)
+    if not attempt_dir.exists():
+        return []
+    excluded: set[pathlib.Path] = set()
+    if exclude_attempt_kind:
+        excluded.update(campaign_attempt_paths(campaign, exclude_attempt_kind))
+    files: list[pathlib.Path] = []
+    for candidate in sorted(attempt_dir.glob("*")):
+        if candidate.is_file() and candidate not in excluded:
+            files.append(candidate)
+    return files
+
+
+def campaign_input_paths(campaign: dict, include_attempts: bool = True, exclude_attempt_kind: str | None = None) -> list[pathlib.Path]:
+    status = load_campaign_status(campaign)
+    paths: list[pathlib.Path] = [
+        CAMPAIGN_MANIFEST,
+        PROOFS,
+        FAILED,
+        ROOT / campaign["dossier_path"],
+        campaign_record_path(campaign),
+        campaign_status_path(campaign),
+    ]
+    if include_attempts:
+        if exclude_attempt_kind is None:
+            paths.append(campaign_attempt_dir(campaign))
+        else:
+            paths.extend(attempt_output_files(campaign, exclude_attempt_kind))
     paths.extend(CAMPAIGN_LEAN_SURFACE_HINTS.get(campaign["family_slug"], []))
     feeder_slugs: list[str] = []
     decisive = status.get("next_decisive_feeder")
@@ -480,8 +574,9 @@ def campaign_input_paths(campaign: dict) -> list[pathlib.Path]:
     for slug in campaign.get("seed_instances", []):
         if isinstance(slug, str) and slug:
             feeder_slugs.append(slug)
+    feeder_slugs.extend(affiliated_artifact_slugs(campaign))
     seen: set[str] = set()
-    for slug in feeder_slugs[:10]:
+    for slug in feeder_slugs[: max(10, RECENT_AFFILIATED_ARTIFACT_LIMIT)]:
         if slug in seen:
             continue
         seen.add(slug)
@@ -492,6 +587,10 @@ def campaign_input_paths(campaign: dict) -> list[pathlib.Path]:
 
 def campaign_input_signature(campaign: dict) -> str:
     return path_signature(campaign_input_paths(campaign))
+
+
+def proof_attempt_input_signature(campaign: dict, attempt_kind: str) -> str:
+    return path_signature(campaign_input_paths(campaign, include_attempts=True, exclude_attempt_kind=attempt_kind))
 
 
 def should_run_campaign_generalize(campaign: dict, signature: str) -> tuple[bool, str]:
@@ -553,6 +652,116 @@ def should_start_secondary_worker(campaign: dict) -> tuple[bool, str]:
     if elapsed >= SECONDARY_WORKER_MIN_INTERVAL:
         return True, "secondary worker interval expired"
     return False, "secondary campaign inputs are unchanged and still within its throttle window"
+
+
+def frontier_is_exhausted(campaign: dict) -> bool:
+    frontier = campaign_frontier_slugs(campaign)
+    if frontier and all(feeder_artifact_is_preserved(slug) for slug in frontier):
+        return True
+    return next_campaign_feeder_entry(campaign) is None
+
+
+def should_run_frontier_refresh(campaign: dict, signature: str) -> tuple[bool, str]:
+    if not frontier_is_exhausted(campaign):
+        return False, "the campaign still has an unpreserved live feeder frontier"
+    runtime = runtime_campaign_state(campaign["family_slug"])
+    if runtime.get("last_frontier_refresh_signature") != signature:
+        return True, "the frontier is exhausted and campaign inputs changed"
+    last_refresh = parse_status_timestamp(runtime.get("last_frontier_refresh_on"))
+    if last_refresh is None:
+        return True, "the frontier is exhausted and no prior frontier refresh was preserved"
+    elapsed = (dt.datetime.now().astimezone() - last_refresh).total_seconds()
+    if elapsed >= FRONTIER_REFRESH_MIN_INTERVAL:
+        return True, "the frontier is exhausted and the refresh window expired"
+    return False, "the frontier is exhausted but no new family input has appeared since the last refresh"
+
+
+def proof_attempt_specs(campaign: dict) -> list[dict]:
+    status = load_campaign_status(campaign)
+    configured = status.get("proof_attempt_portfolio")
+    if isinstance(configured, list):
+        specs: list[dict] = []
+        for item in configured:
+            if not isinstance(item, dict):
+                continue
+            kind = item.get("kind")
+            if not isinstance(kind, str) or not kind.strip():
+                continue
+            specs.append(
+                {
+                    "kind": kind,
+                    "title": item.get("title") or f"{kind.replace('_', ' ').title()} for {campaign['family_slug']}",
+                    "question": item.get("question") or item.get("attempt_goal") or f"Advance the {campaign['family_slug']} family campaign on the current frontier.",
+                    "attempt_goal": item.get("attempt_goal")
+                    or "push the strongest current family claim forward without mutating the canonical family dossier directly",
+                }
+            )
+        if specs:
+            return specs
+    theorem_target = status.get("theorem_slice_target") or campaign.get("theorem_slice_target")
+    blocker = status.get("next_blocker") or status.get("next_action") or campaign.get("current_blocker")
+    fallback = status.get("fallback_target") or campaign.get("fallback_target")
+    specs = [
+        {
+            "kind": "direct_family_proof",
+            "title": f"Direct proof attempt for {campaign['family_slug']}",
+            "question": f"Try to close the current family theorem target directly: {theorem_target or blocker}",
+            "attempt_goal": "prove the strongest currently plausible quantified family statement or theorem slice directly from the preserved campaign evidence",
+        }
+    ]
+    if fallback:
+        specs.append(
+            {
+                "kind": "obstruction_boundary",
+                "title": f"Boundary/obstruction attempt for {campaign['family_slug']}",
+                "question": f"If the direct family theorem is too strong, isolate the first sharp obstruction or boundary theorem: {fallback}",
+                "attempt_goal": "find the first sharp obstruction theorem, boundary case, or overclaim boundary if the direct family proof does not close cleanly",
+            }
+        )
+    return specs
+
+
+def should_run_proof_attempt(campaign: dict, attempt_kind: str, signature: str) -> tuple[bool, str]:
+    runtime = runtime_campaign_state(campaign["family_slug"])
+    signature_key = f"attempt_{attempt_kind}_signature"
+    time_key = f"attempt_{attempt_kind}_on"
+    if runtime.get(signature_key) != signature:
+        return True, "campaign inputs changed for this proof attempt"
+    last_attempt = parse_status_timestamp(runtime.get(time_key))
+    if last_attempt is None:
+        return True, "this proof attempt has not run yet"
+    elapsed = (dt.datetime.now().astimezone() - last_attempt).total_seconds()
+    if elapsed >= PROOF_ATTEMPT_MIN_INTERVAL:
+        return True, "this proof attempt exceeded its backoff window"
+    return False, "this proof attempt already ran on the current inputs"
+
+
+def mark_generalize_success(campaign: dict, signature: str, frontier_refresh: bool = False) -> None:
+    timestamp = now_iso()
+    updates = {
+        "last_generalize_signature": signature,
+        "last_generalize_on": timestamp,
+    }
+    if frontier_refresh:
+        updates["last_frontier_refresh_signature"] = signature
+        updates["last_frontier_refresh_on"] = timestamp
+    update_runtime_campaign_state(campaign["family_slug"], **updates)
+
+
+def proof_attempt_budget(campaign: dict, allow_parallel: bool, reserved_slots: int) -> int:
+    if not allow_parallel or not git_worktree_supported():
+        return 0
+    if publication_stop_ready(campaign_status_path(campaign)):
+        return 0
+    status = load_campaign_status(campaign)
+    if not (
+        frontier_is_exhausted(campaign)
+        or publication_rank(status.get("publication_status")) >= publication_rank("SLICE_EXACT")
+    ):
+        return 0
+    max_parallel = int(os.environ.get("AUTOMATH_MAX_PARALLEL_WORKERS", "5"))
+    available_slots = max(0, max_parallel - 1 - reserved_slots)
+    return min(PARALLEL_PROOF_ATTEMPTS, available_slots)
 
 
 def find_campaign(family_slug: str) -> dict | None:
@@ -877,6 +1086,78 @@ def render_campaign_selection(campaign: dict) -> pathlib.Path:
     }
     render_selected_problem(entry)
     return ROOT / campaign["artifact_dir"] / "status.json"
+
+
+def render_family_attempt_selection(campaign: dict, attempt: dict) -> None:
+    status = load_campaign_status(campaign)
+    output_markdown, output_json = campaign_attempt_paths(campaign, attempt["kind"])
+    entry = {
+        "title": attempt["title"],
+        "entry_type": "family_campaign",
+        "slug": f"family-{campaign['family_slug']}-{attempt['kind']}",
+        "family_slug": campaign["family_slug"],
+        "family_name": campaign["family_name"],
+        "campaign_priority": campaign.get("priority", 999),
+        "dossier_path": campaign["dossier_path"],
+        "artifact_dir": campaign["artifact_dir"],
+        "attempt_kind": attempt["kind"],
+        "publication_status": status.get("publication_status", campaign.get("publication_status", "NONE")),
+        "question": attempt["question"],
+        "attempt_goal": attempt["attempt_goal"],
+        "theorem_slice_target": status.get("theorem_slice_target", campaign.get("theorem_slice_target")),
+        "fallback_target": status.get("fallback_target", campaign.get("fallback_target")),
+        "next_blocker": status.get("next_blocker", campaign.get("current_blocker")),
+        "next_feeder_instances": status.get("next_feeder_instances", []),
+        "seed_instances": campaign.get("seed_instances", []),
+        "strongest_honest_claim": status.get("strongest_honest_claim"),
+        "attempt_output_markdown": str(output_markdown.relative_to(ROOT)),
+        "attempt_output_json": str(output_json.relative_to(ROOT)),
+        "next_action": status.get("next_action"),
+    }
+    render_selected_problem(entry)
+
+
+def find_proof_attempt(campaign: dict, attempt_kind: str) -> dict | None:
+    for attempt in proof_attempt_specs(campaign):
+        if attempt.get("kind") == attempt_kind:
+            return attempt
+    return None
+
+
+def run_family_proof_attempt(campaign: dict, attempt_kind: str) -> int:
+    attempt = find_proof_attempt(campaign, attempt_kind)
+    if attempt is None:
+        append_ledger(
+            f"Requested proof attempt {attempt_kind} for family campaign {campaign['family_slug']} was not recognized, so the attempt ended cleanly."
+        )
+        return 0
+    render_family_attempt_selection(campaign, attempt)
+    signature = proof_attempt_input_signature(campaign, attempt_kind)
+    update_runtime_campaign_state(
+        campaign["family_slug"],
+        **{
+            f"attempt_{attempt_kind}_signature": signature,
+            f"attempt_{attempt_kind}_on": now_iso(),
+        },
+    )
+    rc = run_stage(
+        ROOT,
+        f"generalize_attempt_{campaign['family_slug']}_{attempt_kind}",
+        PROMPTS / "generalize_family.prompt.md",
+        "off",
+        PROOF_ATTEMPT_TIMEOUT,
+        preferred_effort("xhigh"),
+        "tuned_openai",
+    )
+    if rc == 124:
+        append_ledger(
+            f"Family proof attempt {attempt_kind} for {campaign['family_slug']} hit its time budget and was left as a sidecar attempt artifact."
+        )
+    elif rc != 0:
+        append_ledger(
+            f"Family proof attempt {attempt_kind} for {campaign['family_slug']} exited unexpectedly and was left out of the canonical dossier."
+        )
+    return rc
 
 
 def select_queue_entry(prefer_feeders: bool = False) -> dict | None:
@@ -1589,6 +1870,140 @@ class ParallelFeederWorker:
             )
 
 
+class ParallelProofAttemptWorker:
+    def __init__(self, campaign: dict, attempt: dict):
+        self.campaign = campaign
+        self.attempt = attempt
+        self.attempt_kind = attempt["kind"]
+        self.worktree = ROOT / ".worktrees" / f"{campaign['family_slug']}-{self.attempt_kind}-{int(time.time())}"
+        self.proc: subprocess.Popen | None = None
+        self.started_signature: str | None = None
+
+    def seed_checkout(self) -> None:
+        for path in worker_required_paths():
+            sync_tree(path, self.worktree / path.relative_to(ROOT))
+        sync_tree(ROOT / self.campaign["dossier_path"], self.worktree / self.campaign["dossier_path"])
+        sync_tree(ROOT / self.campaign["artifact_dir"], self.worktree / self.campaign["artifact_dir"])
+        for slug in self.campaign.get("seed_instances", [])[:8]:
+            sync_tree(ROOT / "artifacts" / slug, self.worktree / "artifacts" / slug)
+
+    def start(self) -> bool:
+        self.worktree.parent.mkdir(parents=True, exist_ok=True)
+        add = subprocess.run(
+            ["git", "worktree", "add", "--detach", str(self.worktree), "HEAD"],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        if add.returncode != 0:
+            append_ledger(
+                f"Parallel proof attempt worker setup failed for {self.campaign['family_slug']}::{self.attempt_kind}; continuing without that worker."
+            )
+            return False
+        self.seed_checkout()
+        self.started_signature = proof_attempt_input_signature(self.campaign, self.attempt_kind)
+        update_runtime_campaign_state(
+            self.campaign["family_slug"],
+            **{
+                f"attempt_{self.attempt_kind}_signature": self.started_signature,
+                f"attempt_{self.attempt_kind}_on": now_iso(),
+            },
+        )
+        cmd = [
+            "python3",
+            str(self.worktree / "scripts" / "automath_cycle.py"),
+            "--mode",
+            "family_attempt",
+            "--campaign",
+            self.campaign["family_slug"],
+            "--attempt-kind",
+            self.attempt_kind,
+            "--worker",
+        ]
+        self.proc = subprocess.Popen(
+            cmd,
+            cwd=self.worktree,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            text=True,
+            env={**os.environ, "AUTOMATH_MAX_PARALLEL_WORKERS": "1"},
+            start_new_session=True,
+        )
+        append_ledger(
+            f"Parallel proof attempt worker started for {self.campaign['family_slug']}::{self.attempt_kind} in isolated git worktree."
+        )
+        return True
+
+    def finish(self) -> str:
+        if self.proc is None:
+            return "not_started"
+        try:
+            returncode = self.proc.wait(timeout=PARALLEL_WORKER_WAIT_TIMEOUT)
+        except subprocess.TimeoutExpired:
+            kill_process_group(self.proc, signal.SIGKILL)
+            try:
+                self.proc.wait(timeout=10)
+            except subprocess.TimeoutExpired:
+                pass
+            append_ledger(
+                f"Parallel proof attempt worker for {self.campaign['family_slug']}::{self.attempt_kind} exceeded the cleanup wait budget; "
+                "the manager killed it and continued without syncing sidecar attempt outputs."
+            )
+            self._remove_worktree()
+            return "infra_failed"
+        if returncode == 0:
+            output_markdown, output_json = campaign_attempt_paths(self.campaign, self.attempt_kind)
+            synced = False
+            worktree_markdown = self.worktree / output_markdown.relative_to(ROOT)
+            worktree_json = self.worktree / output_json.relative_to(ROOT)
+            if worktree_markdown.exists():
+                sync_tree(worktree_markdown, output_markdown)
+                synced = True
+            if worktree_json.exists():
+                sync_tree(worktree_json, output_json)
+                synced = True
+            if synced:
+                append_ledger(
+                    f"Parallel proof attempt worker finished cleanly for {self.campaign['family_slug']}::{self.attempt_kind} and synced sidecar attempt outputs back."
+                )
+                outcome = "clean"
+            else:
+                append_ledger(
+                    f"Parallel proof attempt worker for {self.campaign['family_slug']}::{self.attempt_kind} exited cleanly but produced no sidecar attempt outputs, so the manager ignored it."
+                )
+                outcome = "infra_failed"
+        else:
+            append_ledger(
+                f"Parallel proof attempt worker for {self.campaign['family_slug']}::{self.attempt_kind} exited nonzero; manager ignored its partial outputs."
+            )
+            outcome = "infra_failed"
+        self._remove_worktree()
+        return outcome
+
+    def _remove_worktree(self) -> None:
+        try:
+            result = subprocess.run(
+                ["git", "worktree", "remove", "--force", str(self.worktree)],
+                cwd=ROOT,
+                capture_output=True,
+                text=True,
+                timeout=WORKTREE_REMOVE_TIMEOUT,
+                check=False,
+            )
+        except subprocess.TimeoutExpired:
+            append_ledger(
+                f"Parallel proof attempt worker cleanup timed out while removing the worktree for "
+                f"{self.campaign['family_slug']}::{self.attempt_kind}; the main manager continued without blocking."
+            )
+            return
+        if result.returncode != 0:
+            append_ledger(
+                f"Parallel proof attempt worker cleanup could not remove the worktree for "
+                f"{self.campaign['family_slug']}::{self.attempt_kind} cleanly; a later manual cleanup may be needed."
+            )
+
+
 def maybe_start_parallel_worker(primary_slug: str, allow_parallel: bool) -> ParallelWorker | None:
     if not allow_parallel or not git_worktree_supported():
         return None
@@ -1608,19 +2023,49 @@ def maybe_start_parallel_worker(primary_slug: str, allow_parallel: bool) -> Para
     return None
 
 
-def maybe_start_parallel_feeder_workers(campaign: dict, allow_parallel: bool, reserved_slots: int) -> list[ParallelFeederWorker]:
+def maybe_start_parallel_feeder_workers(
+    campaign: dict,
+    allow_parallel: bool,
+    reserved_slots: int,
+    proof_reserve: int = 0,
+) -> list[ParallelFeederWorker]:
     if not allow_parallel or not git_worktree_supported():
         return []
     if publication_stop_ready(campaign_status_path(campaign)):
         return []
-    max_parallel = int(os.environ.get("AUTOMATH_MAX_PARALLEL_WORKERS", "3"))
-    available_slots = max(0, max_parallel - 1 - reserved_slots)
+    max_parallel = int(os.environ.get("AUTOMATH_MAX_PARALLEL_WORKERS", "5"))
+    available_slots = max(0, max_parallel - 1 - reserved_slots - proof_reserve)
     feeder_budget = min(PARALLEL_FEEDER_WORKERS, available_slots)
     if feeder_budget <= 0:
         return []
     workers: list[ParallelFeederWorker] = []
     for entry in next_campaign_feeder_entries(campaign, feeder_budget):
         worker = ParallelFeederWorker(entry)
+        if worker.start():
+            workers.append(worker)
+    return workers
+
+
+def maybe_start_parallel_proof_attempt_workers(
+    campaign: dict,
+    allow_parallel: bool,
+    reserved_slots: int,
+) -> list[ParallelProofAttemptWorker]:
+    budget = proof_attempt_budget(campaign, allow_parallel, reserved_slots)
+    if budget <= 0:
+        return []
+    workers: list[ParallelProofAttemptWorker] = []
+    for attempt in proof_attempt_specs(campaign):
+        if len(workers) >= budget:
+            break
+        signature = proof_attempt_input_signature(campaign, attempt["kind"])
+        should_run, reason = should_run_proof_attempt(campaign, attempt["kind"], signature)
+        if not should_run:
+            append_ledger(
+                f"Parallel proof attempt {campaign['family_slug']}::{attempt['kind']} was skipped because {reason}."
+            )
+            continue
+        worker = ParallelProofAttemptWorker(campaign, attempt)
         if worker.start():
             workers.append(worker)
     return workers
@@ -1688,11 +2133,48 @@ def maybe_run_campaign_lean(campaign: dict, signature: str) -> None:
 def run_campaign_flow(campaign: dict, allow_parallel: bool) -> int:
     status_path = render_campaign_selection(campaign)
     append_ledger(f"publication mode selected active family campaign {campaign['family_slug']}.")
-    worker = maybe_start_parallel_worker(campaign["family_slug"], allow_parallel)
-    worker_status = "not_used" if worker is None else "running"
-    feeder_workers = maybe_start_parallel_feeder_workers(campaign, allow_parallel, reserved_slots=1 if worker is not None else 0)
-    new_feeder_signal = False
     input_signature = campaign_input_signature(campaign)
+    should_refresh, refresh_reason = should_run_frontier_refresh(campaign, input_signature)
+    if should_refresh:
+        rc = run_stage(
+            ROOT,
+            f"generalize_{campaign['family_slug']}",
+            PROMPTS / "generalize_family.prompt.md",
+            "off",
+            GENERALIZE_TIMEOUT,
+            preferred_effort("xhigh"),
+            "tuned_openai",
+        )
+        if rc == 124:
+            append_ledger(f"Frontier refresh timed out for family campaign {campaign['family_slug']}.")
+        elif rc != 0:
+            append_ledger(f"Frontier refresh exited unexpectedly for family campaign {campaign['family_slug']}.")
+        else:
+            input_signature = campaign_input_signature(campaign)
+            mark_generalize_success(campaign, input_signature, frontier_refresh=True)
+    else:
+        append_ledger(
+            f"Frontier refresh was skipped for family campaign {campaign['family_slug']} because {refresh_reason}."
+        )
+
+    worker = maybe_start_parallel_worker(campaign["family_slug"], allow_parallel)
+    feeder_reserve = 1 if worker is not None else 0
+    proof_reserve = proof_attempt_budget(campaign, allow_parallel, feeder_reserve)
+    feeder_workers = maybe_start_parallel_feeder_workers(
+        campaign,
+        allow_parallel,
+        reserved_slots=feeder_reserve,
+        proof_reserve=proof_reserve,
+    )
+    proof_workers = maybe_start_parallel_proof_attempt_workers(
+        campaign,
+        allow_parallel,
+        reserved_slots=feeder_reserve + len(feeder_workers),
+    )
+    new_feeder_signal = False
+    new_attempt_signal = False
+    infra_failed = False
+
     should_generalize, generalize_reason = should_run_campaign_generalize(campaign, input_signature)
     if should_generalize:
         rc = run_stage(
@@ -1709,11 +2191,8 @@ def run_campaign_flow(campaign: dict, allow_parallel: bool) -> int:
         elif rc != 0:
             append_ledger(f"Generalize exited unexpectedly for family campaign {campaign['family_slug']}.")
         else:
-            update_runtime_campaign_state(
-                campaign["family_slug"],
-                last_generalize_signature=input_signature,
-                last_generalize_on=now_iso(),
-            )
+            input_signature = campaign_input_signature(campaign)
+            mark_generalize_success(campaign, input_signature)
     else:
         append_ledger(
             f"Generalize was skipped for family campaign {campaign['family_slug']} because {generalize_reason}."
@@ -1752,12 +2231,17 @@ def run_campaign_flow(campaign: dict, allow_parallel: bool) -> int:
         campaign.get("family_slug") == "zero_divisor_prime_labelings"
         and not publication_stop_ready(status_path)
     ):
-        feeder_entry = next_campaign_feeder_entry(campaign, {worker.slug for worker in feeder_workers})
-        if feeder_entry is not None:
+        if feeder_workers or proof_workers:
             append_ledger(
-                f"Publication mode is advancing {campaign['family_slug']} through its decisive feeder {feeder_entry['slug']}."
+                f"Sequential decisive feeder work was skipped for {campaign['family_slug']} because isolated feeder/proof attempt workers already used the active math budget this cycle."
             )
-            run_feeder_entry(feeder_entry, emit_summary=False)
+        else:
+            feeder_entry = next_campaign_feeder_entry(campaign, {worker.slug for worker in feeder_workers})
+            if feeder_entry is not None:
+                append_ledger(
+                    f"Publication mode is advancing {campaign['family_slug']} through its decisive feeder {feeder_entry['slug']}."
+                )
+                run_feeder_entry(feeder_entry, emit_summary=False)
 
     for feeder_worker in feeder_workers:
         outcome = feeder_worker.finish()
@@ -1765,12 +2249,28 @@ def run_campaign_flow(campaign: dict, allow_parallel: bool) -> int:
             if absorb_parallel_feeder_result(feeder_worker.entry):
                 new_feeder_signal = True
         else:
-            worker_status = "infra_failed" if worker_status == "not_used" else worker_status
+            infra_failed = True
 
-    if new_feeder_signal:
-        append_ledger(
-            f"Parallel feeder results changed the campaign input for {campaign['family_slug']}, so the family generalize/audit pass is rerunning once to absorb them."
-        )
+    for proof_worker in proof_workers:
+        outcome = proof_worker.finish()
+        if outcome == "clean":
+            new_attempt_signal = True
+        else:
+            infra_failed = True
+
+    if new_feeder_signal or new_attempt_signal:
+        if new_feeder_signal and new_attempt_signal:
+            append_ledger(
+                f"Parallel feeder and proof-attempt results changed the campaign input for {campaign['family_slug']}, so the canonical family generalize/audit pass is rerunning once to absorb them."
+            )
+        elif new_feeder_signal:
+            append_ledger(
+                f"Parallel feeder results changed the campaign input for {campaign['family_slug']}, so the family generalize/audit pass is rerunning once to absorb them."
+            )
+        else:
+            append_ledger(
+                f"Parallel proof-attempt results changed the campaign input for {campaign['family_slug']}, so the canonical family generalize/audit pass is rerunning once to absorb them."
+            )
         render_campaign_selection(campaign)
         input_signature = campaign_input_signature(campaign)
         rc = run_stage(
@@ -1783,11 +2283,8 @@ def run_campaign_flow(campaign: dict, allow_parallel: bool) -> int:
             "tuned_openai",
         )
         if rc == 0:
-            update_runtime_campaign_state(
-                campaign["family_slug"],
-                last_generalize_signature=input_signature,
-                last_generalize_on=now_iso(),
-            )
+            input_signature = campaign_input_signature(campaign)
+            mark_generalize_success(campaign, input_signature)
         rc = run_stage(
             ROOT,
             "publication_audit",
@@ -1804,8 +2301,13 @@ def run_campaign_flow(campaign: dict, allow_parallel: bool) -> int:
                 last_publication_audit_signature=input_signature,
             )
 
+    secondary_outcome = "not_used"
     if worker is not None:
-        worker_status = worker.finish()
+        secondary_outcome = worker.finish()
+        if secondary_outcome == "infra_failed":
+            infra_failed = True
+
+    worker_status = "infra_failed" if infra_failed else ("clean" if secondary_outcome == "clean" else "not_used")
 
     ensure_publication_defaults(status_path)
     if publication_stop_ready(status_path):
@@ -1856,6 +2358,25 @@ def run_affiliated_generalize(entry: dict, status_path: pathlib.Path) -> None:
     if campaign is None:
         return
     input_signature = campaign_input_signature(campaign)
+    should_refresh, refresh_reason = should_run_frontier_refresh(campaign, input_signature)
+    if should_refresh:
+        render_campaign_selection(campaign)
+        rc = run_stage(
+            ROOT,
+            f"generalize_{campaign['family_slug']}",
+            PROMPTS / "generalize_family.prompt.md",
+            "off",
+            GENERALIZE_TIMEOUT,
+            preferred_effort("xhigh"),
+            "tuned_openai",
+        )
+        if rc == 0:
+            input_signature = campaign_input_signature(campaign)
+            mark_generalize_success(campaign, input_signature, frontier_refresh=True)
+    else:
+        append_ledger(
+            f"Affiliated frontier refresh was skipped for family campaign {campaign['family_slug']} because {refresh_reason}."
+        )
     render_campaign_selection(campaign)
     should_generalize, generalize_reason = should_run_campaign_generalize(campaign, input_signature)
     if should_generalize:
@@ -1869,11 +2390,8 @@ def run_affiliated_generalize(entry: dict, status_path: pathlib.Path) -> None:
             "tuned_openai",
         )
         if rc == 0:
-            update_runtime_campaign_state(
-                campaign["family_slug"],
-                last_generalize_signature=input_signature,
-                last_generalize_on=now_iso(),
-            )
+            input_signature = campaign_input_signature(campaign)
+            mark_generalize_success(campaign, input_signature)
     else:
         append_ledger(
             f"Affiliated generalize was skipped for family campaign {campaign['family_slug']} because {generalize_reason}."
@@ -2058,10 +2576,11 @@ def run_publication_cycle(explicit_campaign: str | None, allow_parallel: bool) -
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="AutoMath cycle manager")
-    parser.add_argument("--mode", choices=["publication", "feeder"], default="publication")
+    parser.add_argument("--mode", choices=["publication", "feeder", "family_attempt"], default="publication")
     parser.add_argument("--campaign")
     parser.add_argument("--worker", action="store_true")
     parser.add_argument("--slug")
+    parser.add_argument("--attempt-kind")
     parser.add_argument("--artifact-only-worker", action="store_true")
     args = parser.parse_args()
 
@@ -2069,9 +2588,18 @@ def main() -> int:
     append_cycle_log(f"[automath_cycle] {args.mode} cycle started at {now_str()}.")
     try:
         if args.mode == "publication":
-            max_parallel = int(os.environ.get("AUTOMATH_MAX_PARALLEL_WORKERS", "3"))
+            max_parallel = int(os.environ.get("AUTOMATH_MAX_PARALLEL_WORKERS", "5"))
             allow_parallel = (not args.worker) and max_parallel > 1
             return run_publication_cycle(args.campaign, allow_parallel)
+        if args.mode == "family_attempt":
+            if not args.campaign or not args.attempt_kind:
+                append_ledger("Family proof attempt mode requires both --campaign and --attempt-kind, so this attempt ended cleanly.")
+                return 0
+            campaign = find_campaign(args.campaign)
+            if campaign is None:
+                append_ledger(f"Requested campaign {args.campaign} was not found, so this family proof attempt ended cleanly.")
+                return 0
+            return run_family_proof_attempt(campaign, args.attempt_kind)
         if args.slug:
             entry = find_feeder_entry_by_slug(args.slug)
             if entry is None:

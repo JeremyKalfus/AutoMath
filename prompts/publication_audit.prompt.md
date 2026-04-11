@@ -17,6 +17,11 @@ First detect whether the selected entry is:
 - a `feeder_instance`, in which case work under `artifacts/<slug>/`
 
 Read the relevant `record.md`, `status.json`, and the campaign dossier if one exists.
+If `selected_problem.md` includes `attempt_kind`, `attempt_output_markdown`, and `attempt_output_json`, treat this as a sidecar proof-attempt audit:
+
+- read the canonical family dossier, record, and status as inputs only;
+- write the audited markdown/json outputs to those attempt paths instead of the canonical family files;
+- do not mutate the canonical family dossier, canonical family `record.md`, or canonical family `status.json` in this sidecar mode.
 
 Bounded-audit policy:
 
@@ -24,6 +29,7 @@ Bounded-audit policy:
 - Prefer the exact family statement, theorem slice wording, canonical source, and one independent status source over broad wandering.
 - Use only the minimum web needed to answer the prior-art and publication-worthiness questions honestly.
 - Update `record.md` and `status.json` before any closing message.
+- In sidecar proof-attempt mode, update only the attempt output markdown/json files before any closing message.
 
 Run these passes in order:
 

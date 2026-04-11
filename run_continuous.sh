@@ -6,7 +6,7 @@ ROOT="$SCRIPT_DIR"
 cd "$ROOT"
 
 CYCLE_LOG_PATH="$ROOT/artifacts/_logs/cycle.log"
-SLEEP_SECONDS="${AUTOMATH_SLEEP_SECONDS:-300}"
+SLEEP_SECONDS="${AUTOMATH_SLEEP_SECONDS:-60}"
 
 mkdir -p "$ROOT/artifacts" "$ROOT/artifacts/_logs"
 [[ -f "$ROOT/ledger.md" ]] || printf '# Ledger\n' >"$ROOT/ledger.md"

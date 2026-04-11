@@ -5,7 +5,7 @@ SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 ROOT="$SCRIPT_DIR"
 cd "$ROOT"
 
-SLEEP_SECONDS="${AUTOMATH_SLEEP_SECONDS:-300}"
+SLEEP_SECONDS="${AUTOMATH_SLEEP_SECONDS:-60}"
 CYCLE_LOG_PATH="$ROOT/artifacts/_logs/cycle.log"
 
 usage() {
@@ -15,7 +15,7 @@ Usage: ./run_n_cycles.sh <positive-integer>
 Runs AutoMath for a fixed number of publication-first cycles.
 `run_once.sh` now defaults to publication mode; exact-instance feeder mode remains available via `./run_feeder_cycle.sh`.
 Any `.stop_harness` marker is deferred until the requested cycle count completes.
-Set AUTOMATH_SLEEP_SECONDS to override the default 300-second pause between cycles.
+Set AUTOMATH_SLEEP_SECONDS to override the default 60-second pause between cycles.
 EOF
 }
 
