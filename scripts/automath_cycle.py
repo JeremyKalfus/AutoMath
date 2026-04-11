@@ -7,6 +7,7 @@ import hashlib
 import json
 import os
 import pathlib
+import re
 import shutil
 import signal
 import subprocess
@@ -97,6 +98,7 @@ def ensure_state() -> None:
         )
     except Exception:
         pass
+    cleanup_stale_worker_processes()
     if not LEDGER.exists():
         LEDGER.write_text("# Ledger\n", encoding="utf-8")
     if not QUEUE.exists():
@@ -223,6 +225,79 @@ def kill_process_group(proc: subprocess.Popen, sig: signal.Signals = signal.SIGK
         os.killpg(proc.pid, sig)
     except ProcessLookupError:
         pass
+
+
+def listed_worktree_paths() -> set[pathlib.Path]:
+    try:
+        result = subprocess.run(
+            ["git", "worktree", "list", "--porcelain"],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            timeout=10,
+            check=False,
+        )
+    except Exception:
+        return set()
+    if result.returncode != 0:
+        return set()
+    worktrees: set[pathlib.Path] = set()
+    for line in result.stdout.splitlines():
+        if line.startswith("worktree "):
+            worktrees.add(pathlib.Path(line.removeprefix("worktree ")).resolve())
+    return worktrees
+
+
+def cleanup_stale_worker_processes() -> None:
+    worktrees_root = (ROOT / ".worktrees").resolve()
+    active_worktrees = listed_worktree_paths()
+    try:
+        result = subprocess.run(
+            ["ps", "-axo", "pid=,command="],
+            capture_output=True,
+            text=True,
+            timeout=10,
+            check=False,
+        )
+    except Exception:
+        return
+    if result.returncode != 0:
+        return
+    worktree_pattern = re.escape(str(worktrees_root)) + r"/([^/\s]+)"
+    killed: list[int] = []
+    for line in result.stdout.splitlines():
+        stripped = line.strip()
+        if not stripped:
+            continue
+        parts = stripped.split(maxsplit=1)
+        if len(parts) != 2:
+            continue
+        pid_text, command = parts
+        if str(worktrees_root) not in command:
+            continue
+        match = re.search(worktree_pattern, command)
+        if match is None:
+            continue
+        worktree_path = (worktrees_root / match.group(1)).resolve()
+        if worktree_path in active_worktrees:
+            continue
+        try:
+            pid = int(pid_text)
+        except ValueError:
+            continue
+        if pid == os.getpid():
+            continue
+        try:
+            os.kill(pid, signal.SIGKILL)
+            killed.append(pid)
+        except ProcessLookupError:
+            continue
+        except PermissionError:
+            continue
+    if killed:
+        append_ledger(
+            f"Cleaned up {len(killed)} stale worker process(es) from removed git worktrees before starting the next cycle."
+        )
 
 
 def failed_slug_set() -> set[str]:
