@@ -2,22 +2,24 @@
   "entry_type": "family_campaign",
   "family_slug": "zero_divisor_prime_labelings",
   "family_name": "Prime labelings of zero-divisor graph families",
-  "stage": "generalize",
-  "classification": "EXACT",
+  "stage": "lean",
+  "classification": "CANDIDATE",
+  "confidence": "high",
   "publication_status": "SLICE_EXACT",
-  "publication_confidence": "medium-high",
-  "strongest_honest_claim": "For odd prime p, the campaign has one exact Lean-backed ring-level theorem slice on Γ(Z_p × Z_p × Z_2): `f2_ring_support_partition_lemma`, `f2_ring_support_adjacency_lemma`, `f2_ring_nonhinge_edge_reduction`, `f2_ring_three_interface_reduction`, and `zp_zp_z2_three_interface_lead_theorem` show that every non-hinge zero-product edge already lies on A-B, A-F, or B-E, and that once the singleton support class C is fixed to label 1, every zero-product edge between nonzero zero-divisor vertices is discharged by those three interfaces. On the companion family Γ(Z_p × Z_25), the ring-level bridge is exact via `f25_ring_support_partition_lemma` and `f25_ring_support_adjacency_lemma`, but the quantified bounded-spill arithmetic theorem needed to promote that line to a second honest slice is still open.",
-  "paper_title_hint": "A Three-Interface Reduction for Prime Labelings of Γ(Z_p × Z_p × Z_2), with Structural Companion Evidence for Γ(Z_p × Z_25)",
-  "theorem_slice_target": "Keep `zp_zp_z2_three_interface_lead_theorem` as the one-sided exact publication spine on the actual ring family `Γ(Z_p × Z_p × Z_2)`, and treat `Γ(Z_p × Z_25)` as companion structural evidence until a quantified bounded-spill theorem and ring-level wrapper promote it to a second honest slice.",
-  "fallback_target": "If the four-class companion arithmetic does not close quickly, publish strictly on the exact six-class reduction and use the `Γ(Z_p × Z_25)` side as companion evidence consisting of the exact structural bridge, the first failure of the upper-half-only `C` rule at `p = 13`, and the refined spill continuation at `p = 17`.",
-  "next_blocker": "No blocker remains on the exact `Γ(Z_p × Z_p × Z_2)` slice. The campaign is blocked on the companion `Γ(Z_p × Z_25)` line: close a quantified bounded-spill `C` lemma, close the barrier-reservoir lemma showing the spill still fits inside `A`, and then package those arithmetic hypotheses into a ring-level wrapper theorem.",
+  "publication_confidence": "medium",
+  "strongest_honest_claim": "The strongest honest current family claim is the exact Lean-backed theorem slice `AutoMath.Families.ZeroDivisorRingBridges.zp_zp_z2_three_interface_lead_theorem`: for every odd prime `p`, if the singleton support class `C` in `\u0393(Z_p \u00d7 Z_p \u00d7 Z_2)` receives label `1` and the three live interfaces `A-B`, `A-F`, and `B-E` are pairwise coprime, then every zero-product edge between nonzero zero-divisor vertices is automatically labeled by coprime integers. This is a real parameterized reduction theorem, but it is not yet a theorem that `\u0393(Z_p \u00d7 Z_p \u00d7 Z_2)` is prime for all odd `p`.",
+  "paper_title_hint": "A Three-Interface Reduction Theorem for Prime Labelings of \u0393(Z_p \u00d7 Z_p \u00d7 Z_2)",
+  "theorem_slice_target": "Keep `zp_zp_z2_three_interface_lead_theorem` fixed as the exact lead slice and present it only as a ring-level reduction theorem for `\u0393(Z_p \u00d7 Z_p \u00d7 Z_2)`, with support partition and adjacency reduction as setup and the singleton hinge plus three live interfaces as the theorem.",
+  "fallback_target": "Add paper-scale theorem mass on `\u0393(Z_p \u00d7 Z_25)` by closing the quantified bounded-spill plus barrier-reservoir wrapper if possible; otherwise package the first sharp repaired-wrapper obstruction theorem, with `p = 19` as the next discriminator and `p = 23` next if `p = 19` survives.",
+  "next_blocker": "The exact `F2` slice is real but not paper-ready on its own. The live blocker is still the four-class `\u0393(Z_p \u00d7 Z_25)` line: despite the preserved bridge lemmas `f25_ring_support_partition_lemma` and `f25_ring_support_adjacency_lemma`, the repo still needs either a quantified small-spill / barrier-reservoir theorem or a first sharp repaired-wrapper obstruction theorem.",
   "next_feeder_instances": [
     "z19-z25-prime-zero-divisor-graph",
-    "z17-z17-z2-prime-zero-divisor-graph"
+    "z23-z25-prime-zero-divisor-graph"
   ],
   "campaign_health": "warm",
   "lean_ready": true,
   "lean_complete": true,
-  "next_action": "Use `f2_ring_nonhinge_edge_reduction` plus `singleton_one_lemma` as the paper-facing proof spine for `zp_zp_z2_three_interface_lead_theorem`, then close the quantified bounded-spill `Γ(Z_p × Z_25)` theorem and its ring-level wrapper; use `z19-z25-prime-zero-divisor-graph` and `z17-z17-z2-prime-zero-divisor-graph` only as discriminating feeders.",
-  "proof_artifacts_preserved": true
+  "next_action": "Keep `zp_zp_z2_three_interface_lead_theorem` fixed as the exact publication anchor and do not broaden the headline claim beyond that slice. Move the next family cycle to the `\u0393(Z_p \u00d7 Z_25)` arithmetic wrapper on top of the preserved bridge; if the quantified spill route still does not close cleanly, run `z19-z25-prime-zero-divisor-graph` as the first sharp repaired-wrapper discriminator, then `z23-z25-prime-zero-divisor-graph` if needed.",
+  "proof_artifacts_preserved": true,
+  "last_publication_audit_on": "2026-04-11T02:57:03.100451-04:00"
 }

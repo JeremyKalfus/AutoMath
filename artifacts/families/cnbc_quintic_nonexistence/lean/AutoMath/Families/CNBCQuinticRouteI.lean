@@ -52,6 +52,26 @@ theorem quintic_signed_sum_zero_of_cnb
   exact signed_sum_zero_of_half_red color (quinticClosedNeighborhood n a b m v) 3
     (by simpa using hcard v) (hcolor v)
 
+/-- A quintic CNBC coloring produces a nonzero integer kernel witness for the six-term
+closed-neighborhood operator. This is the reusable family lemma that the Route I skeleton consumes
+before the Fourier-side invertibility argument is plugged in. -/
+theorem kernel_witness_of_intendedStatement
+    {n a b m : Nat}
+    (hn : 0 < n)
+    (hcard : ∀ v, (quinticClosedNeighborhood n a b m v).card = 6)
+    (hExists : intendedStatement n a b m) :
+    ∃ x : Vertex n → Int,
+        x ≠ 0 ∧
+          ∀ v, (quinticClosedNeighborhood n a b m v).sum (fun w => x w) = 0 := by
+  rcases hExists with ⟨color, hcolor⟩
+  refine ⟨fun v => signed color v, ?_, ?_⟩
+  · intro hzero
+    let v0 : Vertex n := ⟨0, hn⟩
+    have hv0 : signed color v0 = 0 := by
+      exact congrArg (fun f => f v0) hzero
+    exact signed_ne_zero color v0 hv0
+  · exact quintic_signed_sum_zero_of_cnb color hcolor hcard
+
 /-- The Route I theorem slice reduces to ruling out nonzero integer-valued kernel vectors for the
 six-term closed-neighborhood operator. In the intended publication proof, that kernel obstruction
 will come from Fourier diagonalization plus the nowhere-zero symbol hypothesis. -/
@@ -65,15 +85,8 @@ theorem routeI_spectral_obstruction_skeleton
             ∀ v, (quinticClosedNeighborhood n a b m v).sum (fun w => x w) = 0) :
     ¬ intendedStatement n a b m := by
   intro hExists
-  rcases hExists with ⟨color, hcolor⟩
   apply hkernel
-  refine ⟨fun v => signed color v, ?_, ?_⟩
-  · intro hzero
-    let v0 : Vertex n := ⟨0, hn⟩
-    have hv0 : signed color v0 = 0 := by
-      exact congrArg (fun f => f v0) hzero
-    exact signed_ne_zero color v0 hv0
-  · exact quintic_signed_sum_zero_of_cnb color hcolor hcard
+  exact kernel_witness_of_intendedStatement hn hcard hExists
 
 end CNBCQuinticRouteI
 end Families

@@ -1,0 +1,18 @@
+{
+  "slug": "z19-z25-prime-zero-divisor-graph",
+  "title": "Is the zero-divisor graph \u0393(Z_19 \u00d7 Z_25) prime?",
+  "stage": "verify",
+  "verify_verdict": "VERIFIED",
+  "classification": "CANDIDATE",
+  "confidence": "high",
+  "code_used": true,
+  "lean_ready": false,
+  "lean_complete": false,
+  "publication_status": "SLICE_CANDIDATE",
+  "publication_confidence": "medium-high",
+  "family_affinity": "zero_divisor_prime_labelings",
+  "generalization_signal": "At p = 19 the same sparse barrier set B = {1,19,23,29} still works, and the same four spill primes 37, 41, 43, 47 still complete the C block; the only new wrinkle is that 37 now contributes two nontrivial multiples inside the interval, 74 and 111, yet the witness still survives because those spill multiples only need to stay out of A \u222a B.",
+  "strongest_honest_claim": "An explicit prime-labeling witness for \u0393(Z_19 \u00d7 Z_25) survives skeptical verification. This is still only an instance result, but it materially strengthens the active bounded-spill \u0393(Z_p \u00d7 Z_25) campaign because the same barrier set B = {1,19,23,29} and the same four spill primes 37, 41, 43, 47 still work at p = 19 even though 37 now contributes both 74 and 111 inside the label interval.",
+  "candidate_theorem_slice": "A refined four-class sufficient-condition theorem for \u0393(Z_p \u00d7 Z_25) allowing a bounded below-half spill subset in C, provided all nontrivial multiples of C stay out of A \u222a B and the fixed four-label barrier spill from B still fits inside the 20 A slots.",
+  "next_action": "promote the verified p = 19 four-spill witness into the family bounded-spill dossier, then run generalize before testing z23-z25; do not escalate this instance alone to Lean yet"
+}

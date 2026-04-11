@@ -2,23 +2,24 @@
   "entry_type": "family_campaign",
   "family_slug": "cnbc_quintic_nonexistence",
   "family_name": "Closed-neighborhood balanced colorings of quintic circulants",
-  "stage": "lean",
+  "stage": "publication_audit",
   "classification": "CANDIDATE",
   "confidence": "medium",
   "publication_status": "SLICE_CANDIDATE",
   "publication_confidence": "medium",
-  "strongest_honest_claim": "For the open n ≡ 0 (mod 4) quintic CNBC regime left outside the 2025 canonical paper, the strongest honest claim remains a theorem-slice candidate rather than a classification result: the family Lean backend now preserves the CNB-to-kernel translation for the six-term mask together with the Route I obstruction skeleton reducing nonexistence to the absence of a nonzero integer kernel vector, but the six-term distinctness, Fourier diagonalization, and nowhere-zero-symbol lemmas are not yet repo-locally checked in this worktree because Lake cannot bootstrap mathlib here.",
-  "paper_title_hint": "A spectral obstruction for open quintic CNBC circulants with an antipodal generator",
-  "theorem_slice_target": "Preserve and check the Route I family package in Lean: the CNB-to-kernel translation for the six-term quintic mask and the theorem-slice skeleton reducing nonexistence to the absence of a nonzero integer kernel vector; after repo-local Lake bootstrap, extend this to the six-term distinctness, Fourier diagonalization, and nowhere-zero-symbol lemmas and then repackage C_16(4,5,8) and C_20(2,3,10) as direct applications.",
-  "fallback_target": "If Route I still cannot absorb C_20 cleanly, publish a narrower spectral-obstruction slice with C_16(4,5,8) as the clean direct application, keep the opposite-pair reduction as a reusable lemma for C_20(2,3,10), and treat C_24(4,5,12) only as a separate cube-root periodicity corollary/program rather than a co-headline theorem.",
-  "next_blocker": "Repo-local Lake bootstrap is still blocking honest checking in this worktree: lean/.lake/packages is empty, and both `lake env lean` and `lake build` immediately try to clone mathlib4 and fail under network-disabled execution. After bootstrap, the next proof blockers are the six-term distinctness/cardinality lemma, the family Fourier diagonalization lemma, the nowhere-zero-symbol-to-trivial-kernel implication, and the clean Route I repackaging of C_20(2,3,10).",
+  "strongest_honest_claim": "For the open quintic CNBC line left unresolved by Question 1 in the 2025 canonical source, there is a real Route I theorem slice: if n = 2m, 1 <= a < b < m, and sigma_{n,a,b}(k) = 1 + 2 cos(2*pi*a*k/n) + 2 cos(2*pi*b*k/n) + (-1)^k is nonzero for every k in Z/nZ, then C_n(a,b,m) is not CNBC. c16-4-5-8-cnbc is the lead direct corollary; c20-2-3-10-cnbc and c24-4-5-12-cnbc are supporting evidence rather than additional headline corollaries.",
+  "paper_title_hint": "A spectral obstruction theorem slice for open quintic closed-neighborhood balanced circulants",
+  "theorem_slice_target": "Close only the open-case Route I slice: if n = 2m, 1 <= a < b < m, and sigma_{n,a,b}(k) != 0 for every k in Z/nZ, then C_n(a,b,m) is not CNBC, with c16-4-5-8-cnbc as the lead direct application and C_22(2,3,11) kept explicit as the overclaim boundary.",
+  "fallback_target": "If Route I still does not close statement-faithfully, freeze the campaign at a short spectral-obstruction note with c16-4-5-8-cnbc as the lead corollary, c20-2-3-10-cnbc as supporting Route I infrastructure, c24-4-5-12-cnbc as the periodicity companion, and C_22(2,3,11) as the explicit boundary against wider family rhetoric.",
+  "next_blocker": "The reusable Route I family proof is still not closed end to end: the buildable root file lean/AutoMath/Families/CNBCQuinticRouteI.lean is absent in this worktree, lean/.lake/packages is absent, and the remaining mathematical closure steps are six-term distinctness plus the family Fourier diagonalization / nowhere-zero-symbol-implies-trivial-kernel argument.",
   "next_feeder_instances": [
     "c28-2-3-14-cnbc",
     "c28-4-5-14-cnbc"
   ],
   "campaign_health": "warm",
-  "lean_ready": true,
+  "lean_ready": false,
   "lean_complete": false,
-  "next_action": "Materialize the repo-local Lake and mathlib dependencies in `lean/.lake/packages`, then run `cd lean && lake build AutoMath.Families.CNBCQuinticRouteI`; only after that honest check should the campaign close the six-term distinctness/cardinality lemma and the Fourier/nowhere-zero-symbol obstruction before spending the next feeder on c28-2-3-14-cnbc.",
-  "proof_artifacts_preserved": true
+  "next_action": "Restore a buildable root Route I family module, restore Lean dependencies, and formalize six-term distinctness plus the family Fourier diagonalization / nowhere-zero-symbol obstruction. Keep the paper statement fixed at the narrow Route I slice while that closes; only then use c28-2-3-14-cnbc and c28-4-5-14-cnbc as discriminating feeders for Route II.",
+  "proof_artifacts_preserved": true,
+  "last_publication_audit_on": "2026-04-11T02:38:49.217115-04:00"
 }
