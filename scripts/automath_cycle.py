@@ -726,14 +726,77 @@ def feeder_queue_entry(campaign: dict, feeder: dict) -> dict:
     }
 
 
-def find_feeder_entry_by_slug(slug: str) -> dict | None:
+def synthetic_feeder_entry(campaign: dict, slug: str) -> dict | None:
+    zero_divisor = re.fullmatch(r"z(\d+)-z(\d+)(?:-z(\d+))?-prime-zero-divisor-graph", slug)
+    if campaign["family_slug"] == "zero_divisor_prime_labelings" and zero_divisor:
+        factors = [f"Z_{zero_divisor.group(1)}", f"Z_{zero_divisor.group(2)}"]
+        if zero_divisor.group(3):
+            factors.append(f"Z_{zero_divisor.group(3)}")
+        ring = " x ".join(factors)
+        feeder = {
+            "slug": slug,
+            "title": f"Is the zero-divisor graph Gamma({ring}) prime?",
+            "question": f"Does the zero-divisor graph Gamma({ring}) admit a prime labeling?",
+            "canonical_statement": f"Determine whether Gamma({ring}) is prime.",
+            "intended_statement": (
+                f"Use Gamma({ring}) as the next campaign-directed feeder on the live "
+                f"{campaign['family_name']} line."
+            ),
+            "named_conjecture": campaign["family_name"],
+            "attack_style": "campaign feeder synthesized from the active family status",
+            "theorem_slice_hint": status_or_manifest(campaign, "theorem_slice_target"),
+            "why_still_appears_open": "This feeder was promoted by the active family status, but no preserved queue entry exists yet.",
+            "why_this_could_be_publishable": "It is the current discriminator named by the live family campaign rather than a broad exploratory one-off.",
+        }
+        return feeder_queue_entry(campaign, feeder)
+
+    cnbc = re.fullmatch(r"c(\d+)-(\d+)-(\d+)-(\d+)-cnbc", slug)
+    if campaign["family_slug"] == "cnbc_quintic_nonexistence" and cnbc:
+        n, a, b, c = cnbc.groups()
+        feeder = {
+            "slug": slug,
+            "title": f"Is the quintic circulant C_{n}({a},{b},{c}) a CNBC graph?",
+            "question": f"Does the quintic circulant C_{n}({a},{b},{c}) admit a closed-neighborhood balanced coloring?",
+            "canonical_statement": f"Determine whether C_{n}({a},{b},{c}) is CNBC.",
+            "intended_statement": (
+                f"Use C_{n}({a},{b},{c}) as the next family-directed discriminator for "
+                f"{campaign['family_name']}."
+            ),
+            "named_conjecture": campaign["family_name"],
+            "attack_style": "campaign feeder synthesized from the active family status",
+            "theorem_slice_hint": status_or_manifest(campaign, "theorem_slice_target"),
+            "why_still_appears_open": "This feeder was promoted by the active family status, but no preserved queue entry exists yet.",
+            "why_this_could_be_publishable": "It is the current discriminator named by the live family campaign rather than a broad exploratory one-off.",
+        }
+        return feeder_queue_entry(campaign, feeder)
+
+    return None
+
+
+def find_feeder_entry_by_slug(slug: str, campaign: dict | None = None) -> dict | None:
     queued = find_queue_entry_by_slug(slug)
     if queued is not None:
         return queued
-    for campaign in load_campaign_manifest():
-        for feeder in campaign.get("recommended_feeders", []):
+    search_campaigns = [campaign] if campaign is not None else load_campaign_manifest()
+    for candidate_campaign in search_campaigns:
+        for feeder in candidate_campaign.get("recommended_feeders", []):
             if isinstance(feeder, dict) and feeder.get("slug") == slug:
-                return feeder_queue_entry(campaign, feeder)
+                return feeder_queue_entry(candidate_campaign, feeder)
+        synthesized = synthetic_feeder_entry(candidate_campaign, slug)
+        if synthesized is not None:
+            return synthesized
+    if campaign is None:
+        for candidate_campaign in load_campaign_manifest():
+            status = load_campaign_status(candidate_campaign)
+            slugs = []
+            decisive = status.get("next_decisive_feeder")
+            if decisive:
+                slugs.append(decisive)
+            slugs.extend(status.get("next_feeder_instances", []))
+            if slug in slugs:
+                synthesized = synthetic_feeder_entry(candidate_campaign, slug)
+                if synthesized is not None:
+                    return synthesized
     return None
 
 
@@ -1146,12 +1209,9 @@ def next_campaign_feeder_entry(campaign: dict, excluded_slugs: set[str] | None =
         if not slug or slug in seen or slug in failed or slug in excluded or feeder_artifact_is_preserved(slug):
             continue
         seen.add(slug)
-        queued = find_queue_entry_by_slug(slug)
-        if queued is not None:
-            return queued
-        for feeder in campaign.get("recommended_feeders", []):
-            if isinstance(feeder, dict) and feeder.get("slug") == slug:
-                return feeder_queue_entry(campaign, feeder)
+        entry = find_feeder_entry_by_slug(slug, campaign)
+        if entry is not None:
+            return entry
     return None
 
 
@@ -1174,7 +1234,7 @@ def next_campaign_feeder_entries(campaign: dict, limit: int) -> list[dict]:
         if not slug or slug in seen or slug in failed or feeder_artifact_is_preserved(slug):
             continue
         seen.add(slug)
-        entry = find_feeder_entry_by_slug(slug)
+        entry = find_feeder_entry_by_slug(slug, campaign)
         if entry is not None:
             entries.append(entry)
         if len(entries) >= limit:
