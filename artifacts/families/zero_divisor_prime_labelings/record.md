@@ -269,7 +269,7 @@
 ## publication_prior_art_audit
 
 - Audit date:
-  - `2026-04-11T13:39:20-04:00`.
+  - `2026-04-11T15:03:19-04:00`.
 - Claim locked for this bounded audit:
   - the exact publication anchor is the ring-level theorem
     `AutoMath.Families.ZeroDivisorRingBridges.zp_zp_z2_three_interface_lead_theorem`;
@@ -278,17 +278,17 @@
   - I searched the direct family statements
     `prime labeling zero-divisor graph Γ(Z_p × Z_p × Z_2)` and
     `prime labeling zero-divisor graph Γ(Z_p × Z_25)`,
-    together with the exact feeder notations `Γ(Z_13 × Z_13 × Z_2)`, `Γ(Z_13 × Z_25)`, and `Γ(Z_17 × Z_25)`;
-  - within the bounded pass, those searches surfaced Fox-Mooney as the controlling prime-labeling source plus structural zero-divisor-graph background, but no earlier paper or preprint stating the repo's exact three-interface reduction theorem and no published sufficient-condition theorem obviously subsuming it.
+    together with the exact feeder notations `Γ(Z_13 × Z_13 × Z_2)`, `Γ(Z_13 × Z_25)`, and `Γ(Z_17 × Z_25)`.
+  - Within the bounded pass, those searches surfaced Fox-Mooney as the controlling prime-labeling source plus structural zero-divisor-graph background, but no earlier paper or preprint stating the repo's exact three-interface reduction theorem and no published sufficient-condition theorem obviously subsuming it.
 - Alternate-notation search:
   - I also searched the common alternate forms
     `Γ(Z_2 × Z_p × Z_p)`,
     `Γ(F_p × F_p × F_2)`,
     `Γ(Z_p × Z_p × Z_q)`,
     `Γ(Z_p × Z_(q^2))`,
-    and `Z_17 × Z_5^2`;
-  - this was enough to catch the ambient conjectural lines and the common `q^2` notation for the four-class family;
-  - within budget, these searches again led back to Fox-Mooney or to structural direct-product papers rather than to an exact-match theorem slice.
+    and `Z_p × Z_5^2`.
+  - This was enough to catch the ambient conjectural lines and the common `q^2` notation for the four-class family.
+  - Within budget, these searches again led back to Fox-Mooney or to structural direct-product papers rather than to an exact-match theorem slice.
 - Canonical source search:
   - the controlling canonical source remains Fox-Mooney,
     `On Prime Labelings of Zero-Divisor Graphs`, published online `2025-11-21`;
@@ -305,13 +305,13 @@
 - Outside-source status search:
   - I checked Axtell-Stickles-Warfel,
     `Zero-divisor graphs of direct products of commutative rings` (`2006`),
-    as the structural outside source most likely to collapse the support decomposition to standard folklore;
-  - it supplies direct-product zero-divisor-graph structure, but not prime-labeling results that settle either the exact `F2` reduction theorem or the current `Γ(Z_p × Z_25)` wrapper program.
+    as the structural outside source most likely to collapse the support decomposition to standard folklore.
+  - It supplies direct-product zero-divisor-graph structure, but not prime-labeling results that settle either the exact `F2` reduction theorem or the current `Γ(Z_p × Z_25)` wrapper program.
 - Recent citation / discussion / follow-up check:
   - I ran one recent follow-up search and found the `2026` structural paper
-    `On properties and topological indices of the zero divisor graph for direct product of some commutative rings`,
-    which studies `Γ(Z_(p^m) × Z_(q^n))` structurally rather than via prime labelings;
-  - within budget, that follow-up check did not reveal a later public paper closing Fox-Mooney `Conjecture 4.3` or `Conjecture 4.4`, and it did not state the repo's exact reduction theorem.
+    `On properties and topological indices of the zero divisor graph for direct product of some commutative rings`, posted `2026-01-19`.
+  - The bounded page check showed a structural and topological study of `Γ(Z_(p^m) × Z_(q^n))`, not a prime-labeling closure, and it did not reveal a later public paper closing Fox-Mooney `Conjecture 4.3` or `Conjecture 4.4`.
+  - I did not find the repo's exact reduction theorem stated there or in any recent follow-up surfaced within budget.
 - Prior-art verdict:
   - bounded audit does not establish rediscovery;
   - bounded audit also does not prove absolute novelty, but the exact `F2` slice still looks live rather than already absorbed by the canonical literature.
@@ -325,6 +325,9 @@
   - Yes.
   - The real theorem slice is the exact ring-level reduction theorem
     `zp_zp_z2_three_interface_lead_theorem`.
+- Is the proof structural or merely instance-specific?
+  - Structural on the locked `F2` line.
+  - The theorem runs through support partition, adjacency reduction, the singleton hinge class, and the three live interfaces, not through hand-picked labels for each `p`.
 - What the claim is not:
   - it is not a theorem that `Γ(Z_p × Z_p × Z_2)` is prime for all odd primes;
   - it is not a theorem on the full ambient family `Γ(Z_p × Z_p × Z_q)`;
@@ -386,7 +389,7 @@
 
 ## strongest_honest_claim
 
-- As of `2026-04-11T13:39:20-04:00`, the strongest honest family claim is still the preserved exact Lean theorem
+- As of `2026-04-11T15:03:19-04:00`, the strongest honest family claim is still the preserved exact Lean theorem
   `AutoMath.Families.ZeroDivisorRingBridges.zp_zp_z2_three_interface_lead_theorem`,
   mirrored by
   `AutoMath.Families.ZeroDivisorPrimeLabelings.family_zero_divisor_prime_labelings_f2_slice`:
@@ -406,6 +409,7 @@
 
 - Keep `zp_zp_z2_three_interface_lead_theorem` fixed as the exact publication anchor and do not broaden the headline claim beyond that reduction theorem.
 - Do not spend the next cycle reopening the `F2` bridge: the preserved exact slice is already the right anchor.
+- Treat the `Γ(Z_17 × Z_25)` hint in `selected_problem.md` as stale relative to the preserved artifacts: that feeder is already on disk and already part of the family evidence.
 - Move the next family cycle to the four-class `Γ(Z_p × Z_25)` arithmetic wrapper above the already-preserved ring-support bridge.
 - Either prove the quantified small-spill plus barrier-reservoir theorem from the preserved `p = 13` and `p = 17` feeders, or run `z19-z25-prime-zero-divisor-graph` as the first sharp repaired-wrapper discriminator, with `z23-z25-prime-zero-divisor-graph` next if `p = 19` survives.
 - If the wrapper closes, package that theorem beside the exact `F2` slice.

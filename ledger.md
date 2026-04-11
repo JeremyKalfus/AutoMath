@@ -11465,3 +11465,2354 @@
 - Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
 - publication cycle finished at 2026-04-11 13:56:47 EDT.
 - publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 13:57:02 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 13:57:02 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 13:57:17 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 13:57:18 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 13:57:33 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 13:57:33 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 13:57:48 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 13:57:48 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 13:58:03 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 13:58:03 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 13:58:18 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 13:58:18 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 13:58:33 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 13:58:34 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 13:58:49 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 13:58:49 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 13:59:04 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 13:59:04 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 13:59:19 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 13:59:19 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 13:59:34 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 13:59:34 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 13:59:49 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 13:59:49 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:00:04 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:00:05 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:00:20 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:00:20 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:00:35 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:00:35 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:00:50 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:00:50 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:01:05 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:01:05 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:01:20 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:01:20 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:01:35 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:01:36 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:01:51 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:01:51 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:02:06 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:02:06 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:02:21 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:02:21 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:02:36 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:02:36 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:02:51 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:02:51 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:03:06 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:03:07 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:03:22 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:03:22 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:03:37 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:03:37 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:03:52 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:03:52 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:04:07 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:04:07 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:04:22 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:04:22 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:04:37 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:04:38 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:04:53 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:04:53 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:05:08 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:05:08 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:05:23 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:05:23 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:05:38 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:05:38 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:05:53 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:05:53 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:06:08 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:06:09 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:06:24 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:06:24 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:06:39 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:06:39 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:06:54 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:06:54 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:07:09 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:07:09 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:07:24 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:07:24 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:07:39 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:07:40 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:07:55 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:07:55 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:08:10 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:08:10 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:08:25 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:08:25 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:08:40 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:08:40 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:08:55 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:08:55 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:09:10 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:09:11 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:09:26 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:09:26 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:09:41 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:09:41 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:09:56 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:09:56 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:10:11 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:10:11 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:10:26 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:10:26 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:10:41 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:10:42 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:10:57 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:10:57 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:11:12 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:11:12 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:11:27 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:11:27 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:11:42 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:11:42 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:11:57 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:11:58 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:12:13 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:12:13 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:12:28 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:12:28 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:12:43 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:12:43 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:12:58 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:12:58 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:13:13 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:13:13 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:13:29 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:13:29 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:13:44 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:13:44 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:13:59 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:13:59 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:14:14 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:14:14 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:14:29 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:14:29 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:14:44 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:14:45 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:15:00 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:15:00 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:15:15 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:15:15 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:15:30 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:15:30 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:15:45 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:15:45 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:16:00 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:16:00 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:16:15 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:16:16 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:16:31 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:16:31 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:16:46 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:16:46 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:17:01 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:17:01 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:17:16 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:17:16 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:17:31 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:17:31 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:17:46 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:17:47 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:18:02 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:18:02 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:18:17 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:18:17 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:18:32 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:18:32 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:18:47 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:18:47 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:19:02 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:19:02 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:19:17 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:19:18 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:19:33 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:19:33 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:19:48 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:19:48 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:20:03 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:20:03 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:20:18 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:20:18 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:20:33 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:20:33 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:20:48 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:20:49 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:21:04 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:21:04 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:21:19 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:21:19 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:21:34 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:21:34 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:21:49 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:21:49 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:22:04 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:22:04 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:22:19 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:22:20 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:22:35 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:22:35 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:22:50 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:22:50 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:23:05 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:23:05 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:23:20 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:23:20 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:23:35 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:23:35 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:23:50 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:23:51 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:24:06 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:24:06 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:24:21 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:24:21 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:24:36 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:24:36 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:24:51 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:24:51 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:25:06 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:25:06 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:25:21 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:25:22 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:25:37 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:25:37 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:25:52 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:25:52 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:26:07 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:26:07 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:26:22 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:26:22 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:26:37 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:26:37 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:26:52 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:26:52 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:27:07 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:27:08 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:27:23 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:27:23 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:27:38 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:27:38 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:27:53 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:27:53 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:28:08 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:28:08 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:28:23 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:28:23 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:28:38 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:28:39 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:28:54 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:28:54 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:29:09 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:29:09 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:29:24 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:29:24 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:29:39 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:29:39 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:29:54 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:29:54 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:30:09 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:30:10 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:30:25 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:30:25 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:30:40 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:30:40 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:30:55 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:30:55 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:31:10 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:31:10 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:31:25 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:31:25 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:31:40 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:31:41 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:31:56 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:31:56 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:32:11 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:32:11 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:32:26 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:32:26 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:32:41 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:32:41 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:32:56 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:32:57 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:33:12 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:33:12 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:33:27 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:33:27 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:33:42 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:33:42 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:33:57 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:33:57 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:34:12 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:34:12 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:34:27 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:34:28 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:34:43 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:34:43 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:34:58 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:34:58 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:35:13 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:35:13 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:35:28 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:35:28 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:35:43 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:35:43 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:35:58 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:35:59 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:36:14 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:36:14 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:36:29 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:36:29 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:36:44 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:36:44 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:36:59 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:36:59 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:37:14 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:37:14 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:37:29 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:37:30 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:37:45 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:37:45 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:38:00 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:38:00 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:38:15 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:38:15 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:38:30 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:38:30 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:38:45 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:38:46 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:39:01 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:39:01 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:39:16 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:39:16 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:39:31 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:39:31 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:39:46 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:39:46 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:40:01 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:40:01 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:40:16 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:40:17 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:40:32 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:40:32 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:40:47 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:40:47 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:41:02 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:41:02 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:41:17 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:41:17 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:41:32 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:41:32 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:41:47 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:41:48 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:42:03 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:42:03 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:42:18 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 14:42:18 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 14:42:33 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit reran for family campaign zero_divisor_prime_labelings at 2026-04-11 15:03:19 EDT with a bounded prior-art pass.
+- The audit kept publication status SLICE_EXACT: the preserved `Γ(Z_p × Z_p × Z_2)` three-interface reduction theorem remains the strongest honest claim and was not shown to be a rediscovery within budget.
+- The audit confirmed that `Γ(Z_17 × Z_25)` is already a preserved feeder, so the live blocker is now the open four-class `Γ(Z_p × Z_25)` arithmetic wrapper with `z19-z25-prime-zero-divisor-graph` next and `z23-z25-prime-zero-divisor-graph` after that if needed.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:07:32 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:07:47 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:07:47 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:08:02 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:08:02 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:08:17 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:08:18 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:08:33 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:08:33 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:08:48 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:08:48 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:09:03 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:09:03 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:09:18 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:09:18 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:09:33 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:09:34 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:09:49 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:09:49 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:10:04 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:10:04 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:10:19 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:10:19 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:10:34 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:10:34 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:10:49 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:10:49 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:11:04 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:11:05 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:11:20 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:11:20 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:11:35 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:11:35 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:11:50 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:11:50 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:12:05 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:12:05 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:12:20 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:12:21 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:12:36 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:12:36 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:12:51 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:12:51 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:13:06 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:13:06 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:13:21 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:13:21 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:13:36 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:13:36 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:13:51 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:13:51 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:14:06 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:14:07 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:14:22 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:14:22 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:14:37 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:14:37 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:14:52 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:14:52 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:15:07 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:15:07 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:15:22 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:15:22 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:15:37 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:15:38 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:15:53 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:15:53 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:16:08 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:16:08 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:16:23 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:16:23 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:16:38 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:16:38 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:16:53 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:16:53 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:17:08 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:17:09 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:17:24 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:17:24 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:17:39 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:17:39 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:17:54 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:17:54 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:18:09 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:18:09 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:18:24 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:18:25 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:18:40 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:18:40 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:18:55 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:18:55 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:19:10 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:19:10 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:19:25 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:19:25 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:19:40 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:19:40 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:19:55 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:19:56 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:20:11 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:20:11 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:20:26 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:20:26 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:20:41 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:20:41 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:20:56 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:20:56 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:21:11 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:21:11 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:21:26 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:21:27 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:21:42 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:21:42 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:21:57 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:21:57 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:22:12 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:22:12 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:22:27 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:22:27 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:22:42 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:22:42 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:22:57 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:22:58 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:23:13 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:23:13 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:23:28 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:23:28 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:23:43 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:23:43 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:23:58 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:23:58 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:24:13 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:24:14 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:24:29 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:24:29 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:24:44 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:24:44 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:24:59 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:24:59 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:25:14 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:25:14 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:25:29 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:25:29 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:25:44 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:25:45 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:26:00 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:26:00 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:26:15 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:26:15 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:26:30 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:26:30 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:26:45 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:26:45 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:27:00 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:27:00 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:27:16 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:27:16 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:27:31 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:27:31 EDT.
+- publication cycle sleeping for 15 seconds.
+- publication cycle started at 2026-04-11 15:27:46 EDT.
+- publication mode selected active family campaign zero_divisor_prime_labelings.
+- Parallel publication worker was skipped for cnbc_quintic_nonexistence because secondary worker is still in backoff after an infrastructure failure.
+- Generalize was skipped for family campaign zero_divisor_prime_labelings because campaign inputs are unchanged and the slice is already stable.
+- Publication audit was skipped for family campaign zero_divisor_prime_labelings because the current slice is stable and the last publication audit is still fresh.
+- Lean was skipped for family campaign zero_divisor_prime_labelings because family Lean inputs are unchanged and the slice is already checked.
+- Campaign zero_divisor_prime_labelings remains active with publication status SLICE_EXACT.
+- publication cycle finished at 2026-04-11 15:27:46 EDT.
+- publication cycle sleeping for 15 seconds.
