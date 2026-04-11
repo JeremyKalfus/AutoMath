@@ -191,5 +191,13 @@
     "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
     "publication_status": "SLICE_CANDIDATE",
     "checked_on": "2026-04-10"
+  },
+  {
+    "slug": "z23-z25-prime-zero-divisor-graph",
+    "reason": "CANDIDATE",
+    "title": "Is the zero-divisor graph Gamma(Z_23 x Z_25) prime?",
+    "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+    "publication_status": "SLICE_CANDIDATE",
+    "checked_on": "2026-04-11"
   }
 ]

@@ -4,14 +4,13 @@
   "family_name": "Closed-neighborhood balanced colorings of quintic circulants",
   "stage": "publication_audit",
   "classification": "CANDIDATE",
-  "confidence": "medium",
   "publication_status": "SLICE_CANDIDATE",
   "publication_confidence": "medium",
-  "strongest_honest_claim": "For the open quintic CNBC line left unresolved by Question 1 in the 2025 canonical source, there is a real Route I theorem slice: if n = 2m, 1 <= a < b < m, and sigma_{n,a,b}(k) = 1 + 2 cos(2*pi*a*k/n) + 2 cos(2*pi*b*k/n) + (-1)^k is nonzero for every k in Z/nZ, then C_n(a,b,m) is not CNBC. c16-4-5-8-cnbc is the lead direct corollary; c20-2-3-10-cnbc and c24-4-5-12-cnbc are supporting evidence rather than additional headline corollaries.",
+  "strongest_honest_claim": "For the open quintic CNBC line left unresolved by Question 1 in the 2025 canonical source, the strongest honest claim is the narrow Route I theorem slice: if n = 2m, 1 <= a < b < m, and sigma_{n,a,b}(k) = 1 + 2 cos(2*pi*a*k/n) + 2 cos(2*pi*b*k/n) + (-1)^k is nonzero for every k in Z/nZ, then C_n(a,b,m) is not CNBC. c16-4-5-8-cnbc is the lead direct corollary; c20-2-3-10-cnbc and c24-4-5-12-cnbc are supporting structural evidence rather than additional headline corollaries.",
   "paper_title_hint": "A spectral obstruction theorem slice for open quintic closed-neighborhood balanced circulants",
-  "theorem_slice_target": "Close only the open-case Route I slice: if n = 2m, 1 <= a < b < m, and sigma_{n,a,b}(k) != 0 for every k in Z/nZ, then C_n(a,b,m) is not CNBC, with c16-4-5-8-cnbc as the lead direct application and C_22(2,3,11) kept explicit as the overclaim boundary.",
-  "fallback_target": "If Route I still does not close statement-faithfully, freeze the campaign at a short spectral-obstruction note with c16-4-5-8-cnbc as the lead corollary, c20-2-3-10-cnbc as supporting Route I infrastructure, c24-4-5-12-cnbc as the periodicity companion, and C_22(2,3,11) as the explicit boundary against wider family rhetoric.",
-  "next_blocker": "The reusable Route I family proof is still not closed end to end: the buildable root file lean/AutoMath/Families/CNBCQuinticRouteI.lean is absent in this worktree, lean/.lake/packages is absent, and the remaining mathematical closure steps are six-term distinctness plus the family Fourier diagonalization / nowhere-zero-symbol-implies-trivial-kernel argument.",
+  "theorem_slice_target": "Close only the open Route I slice left by Question 1: if n = 2m, 1 <= a < b < m, and sigma_{n,a,b}(k) is nonzero for every k in Z/nZ, then C_n(a,b,m) is not CNBC, with c16-4-5-8-cnbc as the lead direct application and C_22(2,3,11) kept explicit as the overclaim boundary.",
+  "fallback_target": "If Route I still does not close statement-faithfully, freeze the campaign at a short spectral-obstruction note with c16-4-5-8-cnbc as the lead corollary, c20-2-3-10-cnbc as supporting opposite-pair infrastructure, c24-4-5-12-cnbc as the periodicity companion, and C_22(2,3,11) as the explicit overclaim boundary.",
+  "next_blocker": "The Route I claim is real, but the preserved proof stack is still not publication-closed: lean/AutoMath/Families/CNBCQuinticRouteI.lean is absent, lean/.lake/packages is absent, and the current exact Lean files for c16, c20, and c24 are instance-level proofs rather than one reusable formalization of six-term distinctness, family Fourier diagonalization, and nowhere-zero-symbol implies trivial kernel.",
   "next_feeder_instances": [
     "c28-2-3-14-cnbc",
     "c28-4-5-14-cnbc"
@@ -19,7 +18,7 @@
   "campaign_health": "warm",
   "lean_ready": false,
   "lean_complete": false,
-  "next_action": "Restore a buildable root Route I family module, restore Lean dependencies, and formalize six-term distinctness plus the family Fourier diagonalization / nowhere-zero-symbol obstruction. Keep the paper statement fixed at the narrow Route I slice while that closes; only then use c28-2-3-14-cnbc and c28-4-5-14-cnbc as discriminating feeders for Route II.",
+  "next_action": "Restore the root Route I family module from the mirrored artifact, restore Lean dependencies, and formalize the reusable Route I lemmas before spending new effort on c28-2-3-14-cnbc and c28-4-5-14-cnbc as Route II discriminators.",
   "proof_artifacts_preserved": true,
-  "last_publication_audit_on": "2026-04-11T02:38:49.217115-04:00"
+  "last_publication_audit_on": "2026-04-11T03:27:32-04:00"
 }

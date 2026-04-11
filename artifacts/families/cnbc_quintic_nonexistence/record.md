@@ -5,236 +5,288 @@
 - Active `family_slug`: `cnbc_quintic_nonexistence`.
 - Dossier path: `campaigns/cnbc_quintic_nonexistence.md`.
 - Family artifact path: `artifacts/families/cnbc_quintic_nonexistence`.
-- GENERALIZE target for this pass: close the narrow Route I slice only.
-- Locked family statement: let `G = C_n(a,b,m)` with `n = 2m` and `1 <= a < b < m`; then the closed-neighborhood operator is
-  `B_{n,a,b} = I + S^a + S^(-a) + S^b + S^(-b) + S^m`
-  and its Fourier symbol is
+- Locked family statement: let `G = C_n(a,b,m)` with `n = 2m` and `1 <= a < b < m`. The closed-neighborhood operator is
+  `B_{n,a,b} = I + S^a + S^(-a) + S^b + S^(-b) + S^m`,
+  with Fourier symbol
   `sigma_{n,a,b}(k) = 1 + 2 cos(2*pi*a*k/n) + 2 cos(2*pi*b*k/n) + (-1)^k`.
-- Locked theorem target: if `sigma_{n,a,b}(k) != 0` for every `k in Z/nZ`, then `C_n(a,b,m)` is not CNBC.
+- Locked theorem target for this pass: Route I only.
+  If `sigma_{n,a,b}(k) != 0` for every `k in Z/nZ`, then `C_n(a,b,m)` is not CNBC.
 - Bounded local read set used in this pass:
   `selected_problem.md`,
   `campaigns/cnbc_quintic_nonexistence.md`,
-  the current family `record.md`,
-  the current family `status.json`,
+  `artifacts/families/cnbc_quintic_nonexistence/record.md`,
+  `artifacts/families/cnbc_quintic_nonexistence/status.json`,
   `PROOFS.md`,
-  and exactly the three dossier-named seed records
   `artifacts/c16-4-5-8-cnbc/record.md`,
   `artifacts/c20-2-3-10-cnbc/record.md`,
   `artifacts/c24-4-5-12-cnbc/record.md`.
-- `PROOFS.md` was relevant only as a negative check: it has no exact solved sections for these CNBC seeds, only build-note mentions of legacy instance Lean files such as `lean/AutoMath/C16458CNBC.lean` and `lean/AutoMath/C244512CNBC.lean`.
-- One bounded discriminator search was used locally after the seed read: `lean/AutoMath/Families/CNBCQuinticRouteI.lean` is absent in this repo state, while the mirrored family Lean artifact still exists under `artifacts/families/cnbc_quintic_nonexistence/lean/AutoMath/Families/CNBCQuinticRouteI.lean`.
-- No web was used. The dossier and local artifacts were sufficient to lock the family statement honestly.
+- `PROOFS.md` mattered only as a repository-state check. It does not preserve these seeds as completed Lean exacts; it only notes legacy CNBC Lean build failures such as `lean/AutoMath/C16458CNBC.lean` and `lean/AutoMath/C244512CNBC.lean`.
+- No web was used. The local dossier and seed artifacts were sufficient to preserve the family statement cleanly.
 
 ## existing_instance_inventory
 
-- `c16-4-5-8-cnbc`: `classification = COUNTEREXAMPLE`, `verify_verdict = VERIFIED`, `lean_ready = true`. This is the lead direct Route I seed. Its preserved proof diagonalizes the full six-term circulant operator directly, shows the symbol is nonzero at every frequency, and verification also preserved full rank `16`.
-- `c20-2-3-10-cnbc`: `classification = COUNTEREXAMPLE`, `verify_verdict = VERIFIED`, `lean_ready = true`. This is supporting Route I-compatible evidence. The preserved proof uses opposite-pair sums `y_i = x_i + x_{i+10}` to reduce to a length-`10` circulant obstruction and then a finite sign contradiction; verification also reports full rank `20` for the original `20 x 20` operator, so the instance is compatible with the headline Route I story even though its narrative is reduction-first.
-- `c24-4-5-12-cnbc`: `classification = COUNTEREXAMPLE`, `verify_verdict = VERIFIED`, `lean_ready = true`. This is the periodicity companion. Its preserved proof finds that the six-term operator has kernel only at frequencies `8` and `16`, so every real kernel vector lies in the primitive cube-root subspace, hence is `3`-periodic, which is incompatible with `+/-1` signs.
-- Exact inventory summary: one clean direct spectral corollary (`c16`), one antipodal-reduction support case (`c20`), and one clean low-order-kernel periodicity case (`c24`).
-- Explicit overclaim boundary in scope: `C_22(2,3,11)`, already identified in `selected_problem.md`, remains the smallest campaign-relevant obstruction to any broader mixed-parity nonexistence rhetoric.
+- `c16-4-5-8-cnbc`: `classification = COUNTEREXAMPLE`, `verify_verdict = VERIFIED`, `lean_ready = true`. This is the lead direct Route I seed. Its proof uses the full six-term circulant operator, computes the family symbol exactly, and shows the symbol is nowhere zero, so the operator has trivial real kernel.
+- `c20-2-3-10-cnbc`: `classification = COUNTEREXAMPLE`, `verify_verdict = VERIFIED`, `lean_ready = true`. This is the strongest infrastructure seed. Its preserved argument uses the same CNB-to-circulant setup, then an opposite-pair reduction `y_i = x_i + x_{i+10}` to force `x_{i+10} = -x_i`, followed by a finite contradiction on `Z/10Z`. Verification also records full rank `20` for the original operator, so the seed is Route I compatible even though its written proof is reduction-first.
+- `c24-4-5-12-cnbc`: `classification = COUNTEREXAMPLE`, `verify_verdict = VERIFIED`, `lean_ready = true`. This is the periodicity companion seed. Its proof finds that the only zero frequencies are `k = 8,16`, so every real kernel vector lies in the primitive cube-root subspace and is therefore `3`-periodic, which no `{+1,-1}` pattern can satisfy.
+- Inventory summary:
+  `c16` is the clean direct corollary,
+  `c20` is the reusable antipodal-reduction support case,
+  `c24` is the clean low-order-kernel periodicity case.
+- Explicit overclaim boundary already fixed by the campaign: `C_22(2,3,11)`.
 
 ## shared_structure
 
-- Common decomposition / invariant / construction: encode a red/blue coloring by a sign vector `x in {+1,-1}^n`; then CNBC is equivalent to the kernel equation `B_{n,a,b} x = 0`.
-- Common operator: `B_{n,a,b}` is the six-term circulant operator with mask `{0, +/-a, +/-b, m}`.
-- Common Fourier invariant: for the character `chi_k(j) = exp(2*pi*i*k*j/n)`, the eigenvalue is exactly `sigma_{n,a,b}(k)`.
-- Common proof template: `CNB coloring -> nonzero sign vector in ker(B_{n,a,b}) -> Fourier control of ker(B_{n,a,b}) -> contradiction`.
-- Route I structure already realized by `c16` and compatible with `c20`: if `sigma_{n,a,b}` is nowhere zero, then the operator is invertible and no CNBC coloring exists.
-- Route II structure already realized by `c24`: if the zero set is tiny and supported on low-order modes, then every kernel vector has a forced short period that can be incompatible with `+/-1` signs.
-- `c20` adds one more genuinely reusable invariant: because `m = n/2`, opposite-pair sums `y_i = x_i + x_{i+m}` always collapse the CNBC equations to a half-length circulant system. That mechanism scales, but the contradiction presently preserved after the reduction is still specific to the `(2,3,10)` seed.
+- Common decomposition / invariant / construction:
+  encode a red/blue coloring by a sign vector `x in {+1,-1}^n`;
+  then CNBC is equivalent to the kernel equation `B_{n,a,b} x = 0`.
+- Common operator:
+  `B_{n,a,b}` is the six-term circulant operator with mask `{0, +/-a, +/-b, m}`.
+- Common spectral invariant:
+  the Fourier characters of `Z/nZ` diagonalize `B_{n,a,b}` with eigenvalues `sigma_{n,a,b}(k)`.
+- Common proof template:
+  `CNB coloring -> nonzero sign vector in ker(B_{n,a,b}) -> spectral control of ker(B_{n,a,b}) -> contradiction`.
+- Shared Route I mechanism:
+  if the symbol is nowhere zero, then `B_{n,a,b}` is invertible and CNBC is impossible.
+- Shared Route II mechanism:
+  if the zero set is small and lies on low-order characters, then every kernel vector has forced short period, and the sign constraints can become impossible.
+- Shared reduction mechanism from the antipodal generator:
+  because `m = n/2`, opposite-pair sums `y_i = x_i + x_{i+m}` always collapse the CNB equations to a half-length circulant system. This is genuinely reusable, even though only the `(2,3,10)` seed currently carries the full contradiction through.
 
 ## parameter_sensitive_steps
 
-- Genuinely scalable step: under `1 <= a < b < m`, the six residues `0, +/-a, +/-b, m` are pairwise distinct in `Z/nZ`, so every closed neighborhood has size `6`.
-- Genuinely scalable step: CNBC is equivalent to the existence of a nonzero sign vector `x in {+1,-1}^n` with `B_{n,a,b} x = 0`.
-- Genuinely scalable step: Fourier characters diagonalize `B_{n,a,b}` with eigenvalues `sigma_{n,a,b}(k)`.
-- Genuinely scalable step: `sigma_{n,a,b}(k) != 0` for every `k` implies `ker(B_{n,a,b}) = {0}`, which immediately rules out CNBC.
-- Genuinely scalable step: if the kernel is supported only on characters of order `d`, then every real kernel vector is `d`-periodic.
-- Genuinely scalable step: because `m = n/2`, opposite-pair summation always yields a half-length circulant reduction, even though the post-reduction contradiction may depend on the parameter line.
-- Instance-specific step in `c16`: the odd/even trigonometric split proving that the concrete symbol `1 + 2 cos(k*pi/2) + 2 cos(5k*pi/8) + (-1)^k` never vanishes.
-- Instance-specific step in `c20`: the complement identity on `Z/10Z`, the constant pair-sum reduction `b_i = a_i + a_{i+5}`, and the forced recurrence `a_{i+2} = -a_i`.
-- Instance-specific step in `c24`: the exact zero set `{8,16}`, the primitive cube-root subspace description, and the final `3`-periodic sign contradiction.
-- Smallest likely counterexample or obstruction: if `m` is odd and `a,b` have opposite parity, then the alternating vector `x_i = (-1)^i` satisfies
+- Genuinely scalable steps:
+  for `1 <= a < b < m`, the residues `0, +/-a, +/-b, m` are pairwise distinct in `Z/nZ`, so each closed neighborhood has size `6`;
+  CNBC translates exactly to `B_{n,a,b} x = 0` for a nonzero sign vector;
+  Fourier characters diagonalize the family operator with eigenvalues `sigma_{n,a,b}(k)`;
+  the nowhere-zero condition on `sigma_{n,a,b}` forces `ker(B_{n,a,b}) = {0}`;
+  kernel support on characters of order `d` forces every real kernel vector to be `d`-periodic;
+  opposite-pair summation always produces a half-length circulant reduction when `n = 2m`.
+- Instance-specific steps:
+  `c16` uses an exact odd/even trigonometric split to show the concrete symbol never vanishes;
+  `c20` uses the exact complement identity on `Z/10Z`, the constant-pair-sum step `b_i = a_i + a_{i+5}`, and the seed-specific recurrence `a_{i+2} = -a_i`;
+  `c24` uses the exact zero set `{8,16}`, the primitive cube-root kernel description, and the final `3`-periodic sign contradiction.
+- Which steps genuinely scale in the parameters:
+  the CNB-to-kernel translation,
+  six-term distinctness,
+  the family Fourier diagonalization,
+  the nowhere-zero-symbol obstruction,
+  and the general periodicity-from-kernel-support lemma.
+- Which steps do not yet scale honestly:
+  the seed-level trigonometric nonvanishing check for the `(4,5,8)` tuple,
+  the `Z/10Z` complement trick in the `(2,3,10)` seed,
+  and the exact cube-root identification in the `(4,5,12)` seed.
+- Smallest likely counterexample or obstruction:
+  if `m` is odd and `a,b` have opposite parity, then the alternating vector `x_i = (-1)^i` satisfies
   `B_{n,a,b} x = [1 + 2(-1)^a + 2(-1)^b + (-1)^m] x = 0`.
-  The first campaign-relevant witness is `C_22(2,3,11)`.
+  The smallest campaign-relevant example is `C_22(2,3,11)`.
 
 ## candidate_theorem_slices
 
-- Slice A, Route I spectral obstruction theorem:
-  if `sigma_{n,a,b}(k) != 0` for every `k in Z/nZ`, then `C_n(a,b,m)` is not CNBC.
-- Slice B, low-order-kernel periodicity theorem:
-  if `ker(B_{n,a,b})` is supported only on characters of order `d`, and the induced `d`-periodic sign system has no `+/-1` solution, then `C_n(a,b,m)` is not CNBC.
-- Slice C, opposite-pair reduction lemma:
-  for `n = 2m`, the sums `y_i = x_i + x_{i+m}` turn the CNBC equations into a half-length circulant obstruction.
-- Slice D, mixed-parity odd-`m` counterexample boundary:
-  if `m` is odd and `a,b` have opposite parity, then the alternating coloring `x_i = (-1)^i` is a CNBC witness. `C_22(2,3,11)` is the first explicit boundary instance.
-- Strongest plausible medium-term package: a two-route spectral/periodicity theorem supported by Slice C as infrastructure and Slice D as the explicit boundary. The current preserved seed proofs do not yet justify promoting that wider package to the headline claim.
+- Slice A: Route I spectral obstruction.
+  If `sigma_{n,a,b}(k) != 0` for every `k in Z/nZ`, then `C_n(a,b,m)` is not CNBC.
+- Slice B: low-order-kernel periodicity obstruction.
+  If `ker(B_{n,a,b})` is supported only on characters of order `d`, and the induced `d`-periodic sign system has no `{+1,-1}` solution, then `C_n(a,b,m)` is not CNBC.
+- Slice C: opposite-pair reduction infrastructure.
+  For `n = 2m`, the quantities `y_i = x_i + x_{i+m}` satisfy a half-length circulant system; invertibility there can force `x_{i+m} = -x_i`.
+- Slice D: alternating-witness counterexample boundary.
+  If `m` is odd and `a,b` have opposite parity, then `x_i = (-1)^i` is a CNBC witness.
+- Strongest plausible theorem slice:
+  Slice A is the cleanest theorem statement now,
+  Slice B is the strongest next theorem candidate,
+  and Slice D is the smallest honest obstruction boundary that blocks wider rhetoric.
 
 ## chosen_slice
 
-- Strongest honest slice now: Slice A, the narrow Route I spectral obstruction theorem.
+- Chosen slice: Slice A, the narrow Route I spectral obstruction theorem.
 - Proposed theorem slice:
-  `Let n = 2m and G = C_n(a,b,m) with 1 <= a < b < m. If sigma_{n,a,b}(k) != 0 for every k in Z/nZ, then G admits no closed-neighborhood balanced coloring.`
+  let `n = 2m` and `G = C_n(a,b,m)` with `1 <= a < b < m`.
+  If `sigma_{n,a,b}(k) != 0` for every `k in Z/nZ`, then `G` admits no closed-neighborhood balanced coloring.
 - Why this is the strongest honest slice:
-  `c16-4-5-8-cnbc` is already a direct corollary;
-  `c20-2-3-10-cnbc` supports the same family operator but still relies on a seed-specific reduction narrative;
-  `c24-4-5-12-cnbc` is a clean companion for a future Route II theorem, not a direct corollary of the headline Route I statement;
-  and `C_22(2,3,11)` blocks any careless attempt to widen the claim to a blanket mixed-parity nonexistence theorem.
-- Strongest path forward: close Route I statement-faithfully first, then reuse `c20` and `c24` to justify a later two-route expansion if the family proof stack survives.
-- Strongest likely obstruction if the theorem is widened too early: the odd-`m`, mixed-parity alternating witness line, with `C_22(2,3,11)` as the smallest explicit example currently in scope.
+  `c16-4-5-8-cnbc` is already a direct application;
+  `c20-2-3-10-cnbc` supports the same family mechanism but still reaches contradiction through a seed-specific reduction narrative;
+  `c24-4-5-12-cnbc` is genuine evidence for a later periodicity theorem, not a direct Route I corollary;
+  and `C_22(2,3,11)` blocks any blanket mixed-parity nonexistence claim.
+- Strongest plausible theorem slice beyond this pass:
+  a two-route spectral/periodicity theorem with Slice C as infrastructure and Slice D as an explicit boundary.
+  That is not yet the strongest honest claim.
 
 ## reusable_lemmas
 
-- Six-term distinctness lemma: for `n = 2m` and `1 <= a < b < m`, the residues `0, +/-a, +/-b, m` are pairwise distinct in `Z/nZ`.
-- CNB-to-kernel lemma: `C_n(a,b,m)` is CNBC if and only if there exists a nonzero sign vector `x in {+1,-1}^n` with `B_{n,a,b} x = 0`.
-- Family Fourier diagonalization lemma: the Fourier characters of `Z/nZ` diagonalize `B_{n,a,b}` with eigenvalues `sigma_{n,a,b}(k)`.
-- Nowhere-zero symbol lemma: if `sigma_{n,a,b}(k) != 0` for every `k`, then `B_{n,a,b}` has trivial real kernel.
-- Opposite-pair reduction lemma: for `m = n/2`, adding the CNBC equations at `i` and `i + m` yields a half-length circulant system for `y_i = x_i + x_{i+m}`.
-- Kernel-support periodicity lemma: if the real kernel is supported only on characters of order `d`, then every real kernel vector is `d`-periodic.
-- Low-period sign obstruction lemma: if the induced `d`-periodic sign equations have no `+/-1` solution, then no CNBC coloring exists.
-- Alternating boundary lemma: if `m` is odd and `a,b` have opposite parity, then `x_i = (-1)^i` is a nonzero kernel vector and hence a CNBC witness.
+- Six-term distinctness lemma:
+  for `n = 2m` and `1 <= a < b < m`, the residues `0, +/-a, +/-b, m` are pairwise distinct in `Z/nZ`.
+- CNB-to-kernel lemma:
+  `C_n(a,b,m)` is CNBC if and only if there exists a nonzero sign vector `x in {+1,-1}^n` with `B_{n,a,b} x = 0`.
+- Family Fourier diagonalization lemma:
+  every Fourier character of `Z/nZ` is an eigenvector of `B_{n,a,b}` with eigenvalue `sigma_{n,a,b}(k)`.
+- Nowhere-zero symbol lemma:
+  if `sigma_{n,a,b}(k) != 0` for every `k`, then `B_{n,a,b}` has trivial complex, hence real, kernel.
+- Opposite-pair reduction lemma:
+  for `n = 2m`, adding the CNB equations at `i` and `i+m` yields a half-length circulant system for `y_i = x_i + x_{i+m}`.
+- Kernel-support periodicity lemma:
+  if the real kernel is supported only on characters of order `d`, then every real kernel vector is `d`-periodic.
+- Low-period sign obstruction lemma:
+  if the induced `d`-periodic sign system has no `{+1,-1}` solution, then no CNBC coloring exists.
+- Alternating boundary lemma:
+  if `m` is odd and `a,b` have opposite parity, then `x_i = (-1)^i` is a nonzero kernel vector.
 
 ## proof_plan
 
-- Main proof path: prove six-term distinctness, translate a hypothetical CNBC coloring into `B_{n,a,b} x = 0`, diagonalize `B_{n,a,b}` by Fourier characters, compute the family symbol `sigma_{n,a,b}(k)`, invoke the nowhere-zero hypothesis to get `ker(B_{n,a,b}) = {0}`, and contradict the existence of a nonzero sign vector. Present `c16-4-5-8-cnbc` as the lead direct corollary.
-- Fallback proof path: if the family Fourier closure stalls, keep the headline theorem unchanged but publish the method shape honestly: Route I spectral obstruction theorem slice led by `c16`, `c20` as a reusable opposite-pair reduction support case, and `c24` as the periodicity companion that motivates a later Route II theorem rather than expanding the flagship claim now.
-- Immediate repo-state blocker on the formal side: the mirrored family Lean file exists, but the buildable root path `lean/AutoMath/Families/CNBCQuinticRouteI.lean` is absent in this worktree, so even after dependencies are restored the Route I module must be reinstated at root before the theorem slice can be closed in Lean.
+- Main proof path:
+  prove six-term distinctness;
+  translate a hypothetical CNBC coloring into `B_{n,a,b} x = 0`;
+  diagonalize `B_{n,a,b}` by Fourier characters;
+  compute the family symbol `sigma_{n,a,b}(k)`;
+  invoke the nowhere-zero hypothesis to force `ker(B_{n,a,b}) = {0}`;
+  contradict the existence of a nonzero sign vector.
+- Lead direct application:
+  present `c16-4-5-8-cnbc` as the flagship corollary of the Route I theorem.
+- Supporting application path:
+  keep `c20-2-3-10-cnbc` as evidence that the same operator backbone also yields a reusable opposite-pair reduction lemma, even before the full family theorem package is formalized.
+- Fallback path:
+  if the family proof still does not close statement-faithfully, freeze the claim at a short Route I spectral-obstruction note with `c16` as the lead corollary, `c20` as infrastructure, `c24` as the periodicity companion, and `C_22(2,3,11)` as the explicit boundary.
 
 ## fallback_counterexample_plan
 
-- Do not weaken the Route I hypothesis. The mixed-parity odd-`m` alternating witness line is a genuine structural obstruction to stronger blanket rhetoric.
-- Preserve `C_22(2,3,11)` as the explicit overclaim boundary every time a broader theorem is proposed.
-- If the campaign later pivots from a nonexistence slice to a counterexample slice, the strongest honest counterexample template already visible is:
-  odd `m` plus opposite parity of `a` and `b` gives a CNBC witness via `x_i = (-1)^i`.
-- If Route I still does not close statement-faithfully, freeze the campaign at the honest note:
-  one narrow spectral obstruction theorem slice,
-  one supporting antipodal-reduction seed (`c20`),
-  one periodicity companion (`c24`),
-  and one explicit obstruction boundary (`C_22(2,3,11)`).
-- If a future feeder has a nontrivial zero set that is neither nowhere-zero nor low-order-periodic, treat that as evidence against the current theorem template rather than forcing a family claim.
+- Do not weaken the Route I hypothesis.
+  The odd-`m`, opposite-parity alternating witness line is a genuine obstruction to broader blanket statements.
+- Strongest fallback counterexample template:
+  if `m` is odd and `a,b` have opposite parity, then the alternating coloring `x_i = (-1)^i` is a CNBC witness.
+- Smallest likely counterexample:
+  `C_22(2,3,11)`.
+- If Route I stalls, keep two claims separate:
+  the Route I spectral nonexistence slice on the one hand,
+  and the alternating-witness counterexample boundary on the other.
+- If a future feeder has a nontrivial zero set that is neither nowhere-zero nor low-order periodic, treat it as evidence against the current theorem template rather than forcing family-level rhetoric.
 
 ## next_best_feeder_instances
 
-- `c28-2-3-14-cnbc`: smallest even-`m` continuation of the `(2,3,m)` line after `c20`; it maximally discriminates whether that line is genuinely Route I spectral at the full operator level or merely a reduction-first phenomenon.
-- `c28-4-5-14-cnbc`: smallest even-`m` continuation of the `(4,5,m)` line after `c16` and `c24`; it maximally discriminates whether the line stays in the nowhere-zero-symbol regime or flips again into the low-order-kernel periodicity regime.
-- Boundary note: `c22-2-3-11-cnbc` should remain tagged as the obstruction line, not as a feeder for the flagship theorem.
+- `c28-2-3-14-cnbc`:
+  smallest even-`m` continuation of the `(2,3,m)` line after `c20`;
+  best discriminator for whether that line is genuinely Route I spectral at the full-operator level or remains reduction-first.
+- `c28-4-5-14-cnbc`:
+  smallest even-`m` continuation of the `(4,5,m)` line after `c16` and `c24`;
+  best discriminator for whether the line stays in the nowhere-zero-symbol regime or flips back into the low-order-kernel periodicity regime.
+- Boundary note:
+  `c22-2-3-11-cnbc` is not a feeder for the flagship theorem.
+  It is the obstruction boundary that keeps the theorem statement honest.
 
 ## publication_value
 
-- The campaign supports a real theorem slice, not just three isolated exact disproofs: the CNB-to-kernel translation and the circulant/Fourier obstruction are genuinely parameterized over an infinite class of quintic circulants.
-- The strongest honest publication shape is still narrow:
+- Publication value is real because the campaign already supports a parameterized structural theorem slice, not just three isolated exact disproofs.
+- The common backbone is reusable:
+  CNB-to-kernel translation,
+  a six-term circulant operator,
+  Fourier diagonalization,
+  and either invertibility or forced short-period kernel structure.
+- The strongest honest publication package remains narrow:
   the Route I spectral obstruction theorem as the headline,
-  `c16-4-5-8-cnbc` as the direct corollary,
-  `c20-2-3-10-cnbc` as supporting antipodal infrastructure,
-  `c24-4-5-12-cnbc` as the periodicity companion,
-  and `C_22(2,3,11)` as the explicit boundary against overclaiming.
-- Honest publication status remains `SLICE_CANDIDATE`, not `SLICE_EXACT` or `PAPER_READY`, because the reusable family proof stack is not yet closed end to end and the buildable root Lean family module is currently missing in this repo state.
+  `c16` as the direct corollary,
+  `c20` as reusable infrastructure,
+  `c24` as the periodicity companion,
+  and `C_22(2,3,11)` as the explicit counterexample boundary.
+- Honest publication status is still `SLICE_CANDIDATE`, not `SLICE_EXACT` or `PAPER_READY`, because the family proof stack is not yet closed end to end in one reusable theorem package.
 
 ## publication_prior_art_audit
 
-- Bounded live-web audit on `2026-04-11` focused only on the Route I claim and the quintic `C_n(d_1,d_2,n/2)` line.
-- Exact-statement search used the claim-specific phrases
+- Bounded live-web audit on `2026-04-11` focused only on the narrow Route I slice, the three preserved seeds `c16`, `c20`, `c24`, and the explicit boundary `C_22(2,3,11)`.
+- Exact-statement search used the claim-facing phrases
   `"closed neighborhood balanced" "quintic circulant"`,
-  `"closed neighborhood balanced" "C_n(d_1,d_2,n/2)"`,
-  `"closed neighborhood balanced" "quintic circulants"`,
+  `"closed-neighborhood balanced" "C_n(d_1,d_2,n/2)"`,
+  `"closed-neighborhood balanced" "Question 1" quintic`,
   and the exact seed notations `C_16(4,5,8)`, `C_20(2,3,10)`, and `C_24(4,5,12)`.
 - Alternate-notation search used
   `"CNB-coloring" circulant`,
-  `"closed-neighborhood balanced" circulant`,
-  and family-style `C_n(a,b,m)` / `C_n(S)` notation.
+  `"closed-neighborhood balanced coloring of graphs" circulant`,
+  family-style `C_n(a,b,m)` wording,
+  and `C_n(S)`-style quintic circulant wording.
 - Canonical source identified by the bounded pass:
   Collins, Bowie, Fox, Freyberg, Hauenstein, Marr, Minnich, Snyder, Trent, and Twombly,
   *Closed Neighborhood Balanced Coloring of Graphs*,
   Graphs and Combinatorics `41` (`2025`), article `107`,
   published online `2025-07-02` and corrected `2025-07-12`.
-- Canonical-source check:
-  Theorems `15` to `17` supply positive CNBC families for some quintic circulants;
+- Canonical-source theorem / proposition / example / corollary / observation / sufficient-condition check:
+  Theorem `16` and Theorem `17` give CNBC existence families for some quintic circulants but not the present open mixed-parity `n ≡ 0 (mod 4)` line;
   Theorem `19` handles the `n ≡ 2 (mod 4)` opposite-parity line and matches the alternating-witness boundary already visible here;
-  and `Question 1` explicitly leaves open the `n ≡ 0 (mod 4)` quintic cases containing the campaign seeds.
-  No theorem, proposition, example, corollary, observation, or sufficient-condition statement located in that source gives the present Route I spectral obstruction slice or settles `c16`, `c20`, or `c24`.
+  Question `1` explicitly asks the remaining `n ≡ 0 (mod 4)` cases, including the campaign line with `d_1 ≡ 0 (mod 4)` and `d_2` odd.
+  Within that source I did not find a theorem, proposition, example, observation, corollary, or sufficient-condition statement giving the Route I spectral obstruction slice or settling `c16`, `c20`, or `c24`.
 - Outside-source status search:
-  DBLP indexes the `2025` paper, but the bounded outside-source pass did not surface a separate paper or proceedings item closing `Question 1` or announcing the current spectral theorem slice.
-- Recent follow-up check:
-  a `2026-03-09` arXiv preprint by Collins et al.,
-  *Color 2-switches and neighborhood λ-balanced graphs with k colors*,
-  shows active follow-up in the neighborhood-balanced line, but within this bounded pass it did not advertise a resolution of the open quintic `n ≡ 0 (mod 4)` cases or of the Route I statement.
+  DBLP indexes the `2025` paper, but the bounded outside-source pass did not surface a separate later paper, proceedings item, or thesis chapter closing Question `1` or stating the present Route I slice.
+- Recent citation / discussion / follow-up check:
+  the Springer article page showed `1` citation at access time, and the bounded follow-up / discussion pass only surfaced the project-level AWM abstract rather than a later public resolution of the open quintic `n ≡ 0 (mod 4)` line.
 - Prior-art verdict:
-  within this bounded audit, the Route I slice does not read as a rediscovery, and the seed instances remain consistent with an open-family advance rather than a known corollary.
+  rediscovery is not established in this bounded audit.
 
 ## publication_statement_faithfulness
 
 - Is the strongest honest claim stronger than `here is an example`:
   yes.
-  It is a quantified theorem slice over all `n = 2m`, `1 <= a < b < m` satisfying the nowhere-zero symbol hypothesis.
+  It is a quantified theorem slice over an infinite class of `C_n(a,b,m)`, not a report about one hand-picked seed.
 - Is there a real parameterized theorem, theorem slice, or counterexample theorem here:
-  yes, but only as the narrow Route I spectral obstruction theorem.
-  The current materials do not honestly support selling a full two-route theorem or a broader family classification.
+  yes.
+  The real claim is the narrow Route I statement: nowhere-zero family symbol implies nonexistence of a CNBC coloring.
 - Is the proof structural or merely instance-specific:
-  structural in mechanism.
-  The core route is `CNB coloring -> kernel witness -> circulant Fourier diagonalization -> trivial kernel`.
-  However, the reusable family writeup is still incomplete:
-  `c16` is already a direct corollary,
-  while `c20` and `c24` are still supporting structural evidence rather than headline corollaries.
+  the intended mechanism is structural, but the preserved proof stack is mixed.
+  Exact Lean artifacts exist at `lean/AutoMath/C16458CNBC.lean`, `lean/AutoMath/C202310CNBC.lean`, and `lean/AutoMath/C244512CNBC.lean`;
+  however `c16` and `c20` are formalized by `native_decide`, `c24` is formalized by an exact instance-specific linear-combination argument, and the reusable family file exists only as a mirror under `artifacts/families/cnbc_quintic_nonexistence/lean/AutoMath/Families/CNBCQuinticRouteI.lean`, not at the root build path.
 - Would this survive a referee asking `what is the theorem?`:
-  yes, if the paper states exactly the Route I spectral obstruction slice and labels `c20` as supporting infrastructure and `c24` as the periodicity companion.
-  No, if the paper tries to claim a blanket nonexistence theorem for quintic circulants.
+  yes, if the paper states exactly the Route I spectral slice and treats `c20` and `c24` as supporting structure and boundary evidence.
+  No, if it claims a finished two-route theorem or a broad classification of quintic circulants.
 - Is the claim still too dependent on hand-picked small cases:
-  not for the narrow Route I statement once the family proof closes,
-  but yes for any broader rhetoric.
-  `C_22(2,3,11)` remains the explicit boundary against that overclaim.
+  less so at the statement level than at the preserved-proof level.
+  The theorem statement itself is not instance-only, but the current written and formal support still leans on three small exact instances, with only `c16` being a direct Route I corollary in its preserved narrative.
+- Is the generalization route strong enough to merit campaign priority:
+  yes.
+  The canonical source leaves the line open, the theorem statement is clean, and `C_22(2,3,11)` gives an honest boundary that prevents overclaim.
 - Faithfulness verdict:
-  the theorem statement is clean and referee-facing, but the campaign narrative must stay narrower than the three-seed dossier alone might tempt us to say.
+  the theorem statement is real and referee-facing, but the campaign must stay pinned to the narrow Route I slice.
 
 ## publication_theorem_worthiness
 
-- This is not just a curiosity example.
-  It isolates a reusable obstruction criterion on an infinite parameter family that the canonical `2025` source leaves open.
-- The theorem is worth campaign priority because it converts three exact nonexistence proofs into one spectral statement with a clean lead corollary (`c16`) and a clear structural boundary (`C_22(2,3,11)`).
-- The best honest package right now is still a theorem slice, not a finished family theorem:
-  Route I is coherent,
-  Route II is promising,
-  and the combined two-route story is premature.
-- The proof direction is structural rather than computational:
-  no search-heavy core,
-  no brute-force dependence,
-  and the central ingredients are standard circulant/Fourier facts plus the CNB-to-kernel translation.
-- Is the generalization route strong enough to merit campaign priority:
-  yes, but only with disciplined scope.
-  Finish Route I first; use new feeders only to test whether Route II deserves later theorem-slice promotion.
+- This is stronger than an example because it isolates a reusable obstruction mechanism on an open parameter line, not just three isolated counterexamples.
+- There is a real referee-facing theorem here:
+  if the six-term circulant symbol is nowhere zero, then the CNBC equation has only the zero kernel vector, so the graph is not CNBC.
+- The theorem is worth campaign priority because it converts the seed wins into one structural statement with a clean lead corollary (`c16`) and an explicit overclaim boundary (`C_22(2,3,11)`).
+- The proof direction is mathematical and structural rather than search-heavy, but the preserved package is not yet publication-closed because the reusable family proof is not written once in a single statement-faithful module.
+- The best honest medium-term claim is still a theorem slice, not a finished family theorem:
+  Route I is coherent;
+  Route II remains promising but unclosed;
+  the combined two-route package is not ready for the headline.
+- Theorem-worthiness verdict:
+  real theorem slice,
+  real campaign priority,
+  not yet a finished paper claim.
 
 ## publication_publishability
 
 - Conservative publication verdict: `SLICE_CANDIDATE`.
 - Why not `INSTANCE_ONLY`:
-  the strongest honest claim is genuinely parameterized and stronger than the exact seeds.
+  the strongest honest claim is parameterized and stronger than any single seed.
 - Why not `REDISCOVERY`:
-  the bounded prior-art pass found the ambient quintic line still posed as open in the canonical `2025` paper, and no later public closure surfaced within budget.
+  bounded prior-art checking still points to Question `1` in the `2025` canonical source as open, and no later public closure surfaced within budget.
 - Why not `SLICE_EXACT`:
-  the reusable family proof stack is not yet closed end to end.
-  The mirrored Lean skeleton exists, but `lean/AutoMath/Families/CNBCQuinticRouteI.lean` is absent in this worktree,
+  the family proof stack is not yet preserved end to end.
+  `lean/AutoMath/Families/CNBCQuinticRouteI.lean` is absent in this worktree,
   `lean/.lake/packages` is absent,
-  and the six-term distinctness plus family Fourier / invertibility lemmas are not yet formalized in one buildable module.
+  and the current exact Lean files are instance-level proofs rather than a reusable formalization of the Route I theorem slice.
 - Why not `PAPER_READY`:
-  a referee could still ask for the actual closed family proof rather than three strong dossiers plus a skeleton.
-  The paper shape is visible, but the theorem slice is not yet expositionally or formally finished.
+  a referee could still ask for the actual family proof, not just the right statement plus three good dossiers and a mirror skeleton.
 - Publishable shape if closed:
-  a short spectral-obstruction note or theorem-slice paper anchored by the open-case status from `Question 1`,
-  with `c16` as the flagship corollary and `c20` / `c24` as supporting mechanism and boundary evidence.
+  a short spectral-obstruction note or slice paper centered on the open quintic line from Question `1`,
+  with `c16` as the lead corollary,
+  `c20` as opposite-pair infrastructure,
+  `c24` as the periodicity companion,
+  and `C_22(2,3,11)` as the explicit boundary.
 - Campaign priority verdict:
-  keep this family active.
-  Route I closure is publication-worthy enough to outrank unrelated fresh curation, but it does not justify automatic stop or `PAPER_READY`.
+  keep this family active and ahead of unrelated fresh curation until the Route I closure either lands or fails honestly.
 
 ## strongest_honest_claim
 
-- The strongest honest claim is the narrow Route I theorem slice:
+- For the open quintic CNBC line left unresolved by Question `1` in the `2025` canonical source, the strongest honest claim is the narrow Route I theorem slice:
   if `n = 2m`, `1 <= a < b < m`, and
   `sigma_{n,a,b}(k) = 1 + 2 cos(2*pi*a*k/n) + 2 cos(2*pi*b*k/n) + (-1)^k`
   is nonzero for every `k in Z/nZ`, then `C_n(a,b,m)` is not CNBC.
-- Publication-facing caveat:
-  this is stronger than a single example and is structurally motivated,
-  but today it is still a slice candidate rather than a closed paper theorem.
-  `c16-4-5-8-cnbc` is the lead direct corollary;
-  `c20-2-3-10-cnbc` and `c24-4-5-12-cnbc` remain supporting evidence rather than additional headline corollaries.
+- `c16-4-5-8-cnbc` is the lead direct corollary.
+- `c20-2-3-10-cnbc` and `c24-4-5-12-cnbc` are supporting structural evidence, not additional headline corollaries.
 
 ## paper_title_hint
 
@@ -242,6 +294,12 @@
 
 ## next_action
 
-- Restore a buildable Route I family module at `lean/AutoMath/Families/CNBCQuinticRouteI.lean`, restore Lean dependencies, and formalize six-term distinctness plus the family Fourier diagonalization / nowhere-zero-symbol implies trivial-kernel lemmas.
-- Keep the paper statement fixed at the narrow Route I slice while that work closes.
-- Only after the Route I module builds cleanly should the campaign spend new effort on `c28-2-3-14-cnbc` and `c28-4-5-14-cnbc` as discriminating feeders for whether Route II deserves theorem-slice promotion.
+- Restore a buildable root family module at `lean/AutoMath/Families/CNBCQuinticRouteI.lean` from the mirrored family artifact.
+- Restore Lean dependencies so the family path can actually be built again.
+- Replace the current instance-level dependence with reusable Route I lemmas:
+  six-term distinctness,
+  CNB-to-kernel,
+  family Fourier diagonalization,
+  and nowhere-zero-symbol implies trivial kernel.
+- Keep the paper statement fixed at the narrow Route I slice while that closes.
+- Only after that closure should the campaign spend new effort on `c28-2-3-14-cnbc` and `c28-4-5-14-cnbc` as discriminating feeders for Route II.

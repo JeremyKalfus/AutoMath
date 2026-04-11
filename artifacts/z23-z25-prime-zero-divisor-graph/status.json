@@ -1,0 +1,18 @@
+{
+  "slug": "z23-z25-prime-zero-divisor-graph",
+  "title": "Is the zero-divisor graph \u0393(Z_23 \u00d7 Z_25) prime?",
+  "stage": "verify",
+  "verify_verdict": "VERIFIED",
+  "classification": "CANDIDATE",
+  "confidence": "high",
+  "code_used": true,
+  "lean_ready": false,
+  "lean_complete": false,
+  "publication_status": "SLICE_CANDIDATE",
+  "publication_confidence": "medium-high",
+  "family_affinity": "zero_divisor_prime_labelings",
+  "generalization_signal": "At p = 23 the four-class witness no longer needs the earlier half-interval spill language: C can be exactly the 22 primes greater than 29 in {1,...,134}, while A absorbs all nontrivial multiples of 19, 23, and 29. This suggests a cleaner barrier-threshold slice for \u0393(Z_p \u00d7 Z_25).",
+  "strongest_honest_claim": "An explicit prime-labeling witness for \u0393(Z_23 \u00d7 Z_25) survives skeptical verification. The campaign-relevant gain is that this feeder closes with the cleaner barrier-threshold package B = {1,19,23,29}, A absorbing all nontrivial barrier multiples, and C taken exactly as the 22 primes greater than 29 in {1,...,134}. That is still feeder evidence rather than a proved family theorem, but it points to a real \u0393(Z_p \u00d7 Z_25) slice.",
+  "candidate_theorem_slice": "A barrier-threshold sufficient-condition slice for \u0393(Z_p \u00d7 Z_25): if {1,...,5p+19} contains p - 1 usable primes greater than 29 for C and the nontrivial multiples of the fixed pairwise-coprime barrier set B = {1,19,23,29} fit inside the 20 A-slots, then taking A as the barrier-multiple reservoir, C from those primes, and D as the complement yields a prime labeling.",
+  "next_action": "promote the verified p = 23 barrier-threshold witness into the family dossier, then run generalize before testing z29-z25-prime-zero-divisor-graph; do not escalate this instance alone to Lean yet"
+}

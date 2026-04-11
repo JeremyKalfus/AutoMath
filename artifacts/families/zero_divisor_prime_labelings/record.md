@@ -5,11 +5,11 @@
 - Active `family_slug`: `zero_divisor_prime_labelings`.
 - Dossier path: `campaigns/zero_divisor_prime_labelings.md`.
 - Family artifact path: `artifacts/families/zero_divisor_prime_labelings`.
-- Locked family statements for this GENERALIZE pass:
+- Locked family statements for this PUBLICATION_AUDIT pass:
   - `F2(p) := Γ(Z_p × Z_p × Z_2)` for odd primes `p`;
   - `F25(p) := Γ(Z_p × Z_25)` for odd primes `p`.
 - Locked theorem target from `selected_problem.md`:
-  - keep `AutoMath.Families.ZeroDivisorRingBridges.zp_zp_z2_three_interface_lead_theorem` as the exact lead slice.
+  - keep `AutoMath.Families.ZeroDivisorRingBridges.zp_zp_z2_three_interface_lead_theorem` fixed as the exact lead slice.
 - Locked fallback target from `selected_problem.md`:
   - close a quantified bounded-spill plus barrier-reservoir wrapper on `Γ(Z_p × Z_25)`, or else package the first sharp repaired-wrapper obstruction theorem.
 - Bounded local read log for this pass:
@@ -18,46 +18,46 @@
   - `campaigns/zero_divisor_prime_labelings.md`;
   - `artifacts/families/zero_divisor_prime_labelings/record.md`;
   - `artifacts/families/zero_divisor_prime_labelings/status.json`;
-  - `PROOFS.md` at the exact sections for `z3-z25`, `z5-z25`, `z7-z25`, `z5-z5-z2`, and `z7-z7-z2`;
-  - `lean/AutoMath/Families/ZeroDivisorRingBridges.lean` at the exact sections for
-    `f25_ring_support_partition_lemma`,
-    `f25_ring_support_adjacency_lemma`,
-    `f2_ring_three_interface_reduction`,
-    and
-    `zp_zp_z2_three_interface_lead_theorem`;
-  - exactly six seed records:
+  - `PROOFS.md` at the exact sections for `z3-z25-prime-zero-divisor-graph`, `z5-z25-prime-zero-divisor-graph`, `z7-z25-prime-zero-divisor-graph`, `z5-z5-z2-prime-zero-divisor-graph`, and `z7-z7-z2-prime-zero-divisor-graph`;
+  - `lean/AutoMath/Families/ZeroDivisorReductions.lean` at the exact sections for `singleton_one_lemma`, `three_interface_pack_lemma`, and `zp_zp_z2_support_template_reduction_of_singleton_one`;
+  - `lean/AutoMath/Families/ZeroDivisorRingBridges.lean` at the exact sections for `f25_ring_support_partition_lemma`, `f25_ring_support_adjacency_lemma`, `f2_ring_support_partition_lemma`, `f2_ring_support_adjacency_lemma`, `f2_ring_nonhinge_edge_reduction`, `f2_ring_three_interface_reduction`, and `zp_zp_z2_three_interface_lead_theorem`;
+  - exactly four seed artifacts:
     - `artifacts/z13-z25-prime-zero-divisor-graph/record.md`;
     - `artifacts/z17-z25-prime-zero-divisor-graph/record.md`;
-    - `artifacts/z5-z5-z2-prime-zero-divisor-graph/record.md`;
-    - `artifacts/z7-z7-z2-prime-zero-divisor-graph/record.md`;
     - `artifacts/z11-z11-z2-prime-zero-divisor-graph/record.md`;
     - `artifacts/z13-z13-z2-prime-zero-divisor-graph/record.md`.
-- Web use in this pass: none.
-- Statement lock conclusion:
+- Deliberately not opened in this bounded pass:
+  - `artifacts/z5-z5-z3-prime-zero-divisor-graph/record.md`;
+  - `artifacts/z2-power-8-prime-zero-divisor-graph/record.md`.
+  Reason: they support the campaign background but do not discriminate between the locked `F2` lead slice and the live `F25` wrapper question.
+- Web use in this pass:
+  - bounded and claim-specific only;
+  - Fox-Mooney, `On Prime Labelings of Zero-Divisor Graphs`, as the canonical source check;
+  - Axtell-Stickles-Warfel, `Zero-divisor graphs of direct products of commutative rings`, as the outside structural status check;
+  - the `2026` follow-up paper `On properties and topological indices of the zero divisor graph for direct product of some commutative rings` as the recent status check.
+- Statement-lock conclusion:
   - the lead `F2` slice is already closed exactly at ring level in Lean;
-  - the live generalization problem is now purely on the four-class `F25` arithmetic wrapper, not on the ring-to-support bridge.
+  - the `F25` ring-to-support bridge is also already preserved in Lean;
+  - the remaining open campaign question is therefore not the structural bridge but the quantified arithmetic wrapper on the four-class `F25` line;
+  - the `selected_problem.md` hint that `Γ(Z_17 × Z_25)` is the next unread stress test is stale relative to the preserved artifacts, because `z17-z25-prime-zero-divisor-graph` is already on disk as a verified feeder;
+  - the smallest live four-class discriminator is now `z19-z25-prime-zero-divisor-graph`.
 
 ## existing_instance_inventory
 
 - Lean-backed exact baseline from `PROOFS.md`:
   - `F25(3)`, `F25(5)`, `F25(7)`;
   - `F2(5)`, `F2(7)`.
-- `F2` seed chain read in this pass:
-  - `F2(5)`:
-    - fixes the six support classes `A,B,C,D,E,F`;
-    - shows the hinge move `C = 1`;
-    - reduces the graph to the three live interfaces `A-B`, `A-F`, and `B-E`.
-  - `F2(7)`:
-    - keeps the same six-class decomposition and same interface list;
-    - realizes the template with `A ∪ E` using only `{2,3}`-smooth labels and `B ∪ F` avoiding `2` and `3`.
+- What the baseline exacts already lock in:
+  - the four-class `F25` support geometry `A,B,C,D` with edge pattern `A-C`, `B-B`, `B-C`, `B-D`;
+  - the six-class `F2` support geometry `A,B,C,D,E,F` with hinge class `C` and live interfaces `A-B`, `A-F`, `B-E` after setting `C = 1`.
+- `F2` feeder chain read in this pass:
   - `F2(11)`:
     - gives the first clean count-based feeder for the naive `{2,3}`-smooth reservoir;
     - there are `21` nontrivial `{2,3}`-smooth labels up to `141`, one spare beyond the `20` labels needed for `A ∪ E`.
   - `F2(13)`:
     - closes the first zero-slack boundary of the same template;
     - there are exactly `24` nontrivial `{2,3}`-smooth labels up to `193`, exactly matching `|A ∪ E| = 24`.
-- `F25` seed chain visible from `PROOFS.md` plus the read seed records:
-  - `F25(3)`, `F25(5)`, and `F25(7)` already sit on the same four support classes `A,B,C,D` with edge pattern `A-C`, `B-B`, `B-C`, `B-D`.
+- `F25` feeder chain read in this pass:
   - `F25(13)`:
     - the old upper-half-only `C` rule fails for the first time;
     - the repaired witness uses below-half `C` primes `37` and `41`;
@@ -69,16 +69,16 @@
     - their only interval spill labels are `74,82,86,94`, again pushed into `D`;
     - the same barrier `B = {1,19,23,29}` now creates nine spill labels into `A`.
 - Inventory conclusion:
-  - the `F2` line now supports a closed exact theorem slice, not merely a feeder pattern;
-  - the `F25` line supports a stable repaired template through `p = 17`, but still lacks a quantified family theorem or a sharp obstruction theorem.
+  - the `F2` line now supports a real exact theorem slice, not merely a feeder pattern;
+  - the `F25` line now has repaired-wrapper feeder evidence through `p = 17`, but it still lacks a quantified theorem or a first sharp repaired-wrapper obstruction theorem.
 
 ## shared_structure
 
-- Common decomposition / invariant / construction across the campaign:
+- Common decomposition / invariant / construction:
   - partition nonzero zero-divisors by coordinate-support type;
   - translate ring-level zero product into adjacency on a tiny support graph;
   - use classwise interchangeability, since vertices inside one support class have identical neighborhoods;
-  - reduce the exact graph-labeling problem to coprimality on a short list of support interfaces.
+  - reduce the full graph-labeling problem to coprimality on a short list of support interfaces.
 - Shared structure on `F2(p)`:
   - support classes and sizes:
     - `A = (*,0,0)`, size `p - 1`;
@@ -88,7 +88,12 @@
     - `E = (*,0,1)`, size `p - 1`;
     - `F = (0,*,1)`, size `p - 1`.
   - exact edge families:
-    - `A-B`, `A-C`, `A-F`, `B-C`, `B-E`, `C-D`.
+    - `A-B`;
+    - `A-C`;
+    - `A-F`;
+    - `B-C`;
+    - `B-E`;
+    - `C-D`.
   - common invariant:
     - `C` is the singleton hinge;
     - once `C` gets label `1`, the edges `A-C`, `B-C`, and `C-D` are automatic;
@@ -101,7 +106,10 @@
     - `C = {(a,0) : a in Z_p^x}`, size `p - 1`;
     - `D = {(a,5t) : a in Z_p^x, t in {1,2,3,4}}`, size `4(p - 1)`.
   - exact edge families:
-    - `A-C`, `B-B`, `B-C`, `B-D`.
+    - `A-C`;
+    - `B-B`;
+    - `B-C`;
+    - `B-D`.
   - common invariant:
     - `B` is a sparse pairwise-coprime barrier clique;
     - `C` is the prime-carrying block;
@@ -111,21 +119,21 @@
 ## parameter_sensitive_steps
 
 - Steps that genuinely scale in the parameters:
-  - the support partitions for `F2(p)` and `F25(p)`;
-  - the ring-to-support adjacency reductions already preserved in `ZeroDivisorRingBridges.lean`;
+  - the ring-to-support partition lemmas for `F2(p)` and `F25(p)`;
+  - the ring-to-support adjacency lemmas for `F2(p)` and `F25(p)`;
   - classwise interchangeability inside each support class;
   - on `F2`, the hinge move `C = 1` and the reduction to the three live interfaces `A-B`, `A-F`, and `B-E`;
   - on `F25`, the fixed barrier-versus-reservoir skeleton with `|A| = 20` and `|B| = 4`.
 - Steps that are still parameter-sensitive and not yet closed as family theorems:
-  - on `F2`, any attempt to go beyond the exact reduction theorem to a full all-odd-prime prime-labeling theorem;
   - on `F25`, a quantified supply law for `p - 1` prime labels on `C` allowing bounded below-half spill into `D`;
-  - on `F25`, a compatibility lemma showing that barrier spill from `B` plus spill avoidance for `C` still fits inside the fixed `20` slots of `A`.
+  - on `F25`, a compatibility lemma showing that barrier spill from `B` plus spill avoidance for `C` still fits inside the fixed `20` slots of `A`;
+  - on `F2`, any attempt to go beyond the exact reduction theorem to a full all-odd-prime prime-labeling theorem.
 - Steps that are instance-specific:
-  - the explicit `{2,3}`-smooth witness lists in `F2(5)`, `F2(7)`, `F2(11)`, and `F2(13)`;
+  - the explicit `{2,3}`-smooth witness lists in `F2(11)` and `F2(13)`;
   - the concrete prime choices on `C` in `F25(13)` and `F25(17)`;
   - the current barrier choice `B = {1,19,23,29}` on the four-class line.
 - Strongest plausible theorem slice:
-  - the exact ring-level three-interface theorem
+  - the exact ring-level theorem
     `AutoMath.Families.ZeroDivisorRingBridges.zp_zp_z2_three_interface_lead_theorem`.
 - Smallest likely counterexample or obstruction:
   - already proved template obstruction:
@@ -150,7 +158,7 @@
   - sharp obstruction theorem on `F25` for the discarded old wrapper:
     the upper-half-only `C` subtemplate fails first at `p = 13`, even though the graph itself remains prime after repair.
 - Slice E:
-  - repaired-wrapper obstruction theorem on `F25`:
+  - sharp obstruction theorem on `F25` for the repaired wrapper:
     if the bounded-spill picture fails next, the first honest place to package that failure is `p = 19`, not a vague "small primes only" statement.
 
 ## chosen_slice
@@ -173,11 +181,11 @@
 ## reusable_lemmas
 
 - Reusable lemmas already supporting the chosen slice:
-  - `f2_ring_support_partition_lemma`;
-  - `f2_ring_support_adjacency_lemma`;
   - `support_decomposition_F2`;
   - `singleton_one_lemma`;
   - `three_interface_pack_lemma`;
+  - `f2_ring_support_partition_lemma`;
+  - `f2_ring_support_adjacency_lemma`;
   - `f2_ring_nonhinge_edge_reduction`;
   - `f2_ring_three_interface_reduction`;
   - `zp_zp_z2_three_interface_lead_theorem`.
@@ -185,15 +193,10 @@
   - `support_decomposition_F25`;
   - `f25_ring_support_partition_lemma`;
   - `f25_ring_support_adjacency_lemma`;
-  - `zp_z25_support_template_reduction`;
-  - the dossier-level arithmetic templates
-    `pairwise_coprime_clique_lemma`,
-    `classwise_template_lemma`,
-    and
-    `forbidden_multiples_reservoir_lemma`.
+  - `zp_z25_support_template_reduction`.
 - Next reusable lemma targets still needed for the open `F25` line:
   - a quantified small-spill lemma for choosing the `C` block;
-  - a barrier-reservoir compatibility lemma showing the total spill still fits inside the fixed `20`-slot `A` buffer;
+  - a barrier-reservoir compatibility lemma showing that barrier spill plus `C`-spill avoidance still fits inside the fixed `20`-slot `A` buffer;
   - a wrapper theorem combining those arithmetic lemmas with the already-preserved ring-support bridge.
 
 ## proof_plan
@@ -202,9 +205,10 @@
   1. classify each nonzero zero-divisor of `Γ(Z_p × Z_p × Z_2)` into the six support classes `A,B,C,D,E,F`;
   2. reduce any ring-level zero-product edge to one of `A-B`, `A-C`, `A-F`, `B-C`, `B-E`, or `C-D`;
   3. assign label `1` to the singleton class `C`;
-  4. discharge `A-C`, `B-C`, and `C-D` automatically;
+  4. discharge `A-C`, `B-C`, and `C-D` automatically via `singleton_one_lemma`;
   5. keep only the three nontrivial interfaces `A-B`, `A-F`, and `B-E`;
-  6. conclude by `zp_zp_z2_three_interface_lead_theorem`.
+  6. conclude by `three_interface_pack_lemma` and
+     `zp_zp_z2_three_interface_lead_theorem`.
 - One strongest path forward:
   - keep the exact `F2` slice fixed as the publication anchor;
   - use `F2(5)`, `F2(7)`, `F2(11)`, and `F2(13)` only as feeder evidence that the same mechanism is stable from loose to zero-slack arithmetic;
@@ -247,7 +251,10 @@
   - `AutoMath.Families.ZeroDivisorRingBridges.zp_zp_z2_three_interface_lead_theorem`.
 - Proof plan:
   - package the `F2` family section as support partition plus adjacency bridge plus singleton hinge plus three-interface theorem;
-  - then add the `F25` program only as the next open arithmetic wrapper problem, with preserved exact feeders at `p = 13` and `p = 17`.
+  - then add the `F25` program only as the next open arithmetic wrapper problem, with preserved repaired feeders at `p = 13` and `p = 17`.
+- Reusable lemmas:
+  - the `F2` slice already has a paper-shaped lemma chain;
+  - the `F25` side already has the ring-support bridge but still needs the quantified arithmetic lemmas.
 - One strongest path forward:
   - publish around the exact `F2` slice now, then thicken the campaign by either closing the quantified `F25` bounded-spill theorem or sharply breaking it.
 - One fallback path:
@@ -256,90 +263,140 @@
   - the campaign is beyond `INSTANCE_ONLY` because one real parameterized slice is exact and preserved;
   - the campaign is not `PAPER_READY` because the companion `F25` line still needs either a quantified bounded-spill theorem or a first sharp repaired-wrapper obstruction theorem.
 - Current publication stance:
-  - `publication_status = SLICE_EXACT` is honest for this family after the current GENERALIZE pass;
+  - `publication_status = SLICE_EXACT` is honest for this family after the current PUBLICATION_AUDIT pass;
   - `proof_artifacts_preserved = true` is honest because the exact `F2` slice, the local seed chain, the `F25` bridge, and the live fallback targets are all preserved in-repo.
 
 ## publication_prior_art_audit
 
+- Audit date:
+  - `2026-04-11T13:39:20-04:00`.
+- Claim locked for this bounded audit:
+  - the exact publication anchor is the ring-level theorem
+    `AutoMath.Families.ZeroDivisorRingBridges.zp_zp_z2_three_interface_lead_theorem`;
+  - the live companion line is the still-open four-class wrapper program on `Γ(Z_p × Z_25)`.
 - Exact-statement search:
-  - searched the exact family line `Γ(Z_p × Z_p × Z_2)` with `prime labeling`, `zero-divisor graph`, and the repo's three-interface wording;
-  - searched the companion four-class line `Γ(Z_p × Z_25)` and alternate square notation `Γ(Z_p × Z_(5^2))` with `prime labeling`;
-  - within budget, no earlier primary-source statement matching the repo's exact ring-level three-interface theorem or a quantified `F25` wrapper surfaced.
+  - I searched the direct family statements
+    `prime labeling zero-divisor graph Γ(Z_p × Z_p × Z_2)` and
+    `prime labeling zero-divisor graph Γ(Z_p × Z_25)`,
+    together with the exact feeder notations `Γ(Z_13 × Z_13 × Z_2)`, `Γ(Z_13 × Z_25)`, and `Γ(Z_17 × Z_25)`;
+  - within the bounded pass, those searches surfaced Fox-Mooney as the controlling prime-labeling source plus structural zero-divisor-graph background, but no earlier paper or preprint stating the repo's exact three-interface reduction theorem and no published sufficient-condition theorem obviously subsuming it.
 - Alternate-notation search:
-  - searched `Γ(Z_2 × Z_p × Z_p)` and `Γ(F_p × F_p × F_2)` with `prime labeling`;
-  - within budget, no public statement of the exact `F2` slice surfaced.
+  - I also searched the common alternate forms
+    `Γ(Z_2 × Z_p × Z_p)`,
+    `Γ(F_p × F_p × F_2)`,
+    `Γ(Z_p × Z_p × Z_q)`,
+    `Γ(Z_p × Z_(q^2))`,
+    and `Z_17 × Z_5^2`;
+  - this was enough to catch the ambient conjectural lines and the common `q^2` notation for the four-class family;
+  - within budget, these searches again led back to Fox-Mooney or to structural direct-product papers rather than to an exact-match theorem slice.
 - Canonical source search:
-  - the controlling source remains Fox and Mooney, `On Prime Labelings of Zero-Divisor Graphs`, published online `2025-11-21`;
-  - inside that source, nearby families are solved, but the ambient lines `Γ(Z_p × Z_p × Z_q)` and `Γ(Z_p × Z_(q^2))` are still posed as Conjectures `4.3` and `4.4`;
-  - within the canonical source, no theorem / proposition / example / corollary / observation / sufficient-condition statement already settles the repo's exact `F2` slice or the open `F25` wrapper.
+  - the controlling canonical source remains Fox-Mooney,
+    `On Prime Labelings of Zero-Divisor Graphs`, published online `2025-11-21`;
+  - inside that source, I checked the nearby theorem and open-problem entries most likely to subsume the current claims:
+    - `Theorem 2.9` for `Γ(Z_2 × Z_2 × Z_p)`;
+    - `Theorem 2.11` for `Γ(Z_3 × Z_3 × Z_p)`;
+    - `Theorem 2.14` for `Γ(Z_p × Z_9)`;
+    - `Theorem 2.15` for `Γ(Z_2 × Z_(p^2))`;
+    - `Conjecture 4.3` for `Γ(Z_p × Z_p × Z_q)`;
+    - `Conjecture 4.4` for `Γ(Z_p × Z_(q^2))`.
+- Canonical-source implication check:
+  - I did not find a theorem, proposition, example, corollary, observation, or sufficient-condition statement in Fox-Mooney that already implies the repo's exact ring-level three-interface theorem on `Γ(Z_p × Z_p × Z_2)`;
+  - the same source still treats the ambient `Γ(Z_p × Z_p × Z_q)` and `Γ(Z_p × Z_(q^2))` lines as open, so the repo's lead claim remains a reduction theorem inside those open families rather than a repackaged published corollary.
 - Outside-source status search:
-  - checked the older direct-product structural literature through Axtell, Stickles, and Warfel, `Zero-divisor graphs of direct products of commutative rings` (`2006`);
-  - that source treats background zero-divisor-graph structure for direct products, not prime labelings, so the support-partition / adjacency bridge should be treated as setup rather than as the novelty claim.
-- Recent discussion / follow-up check:
-  - checked the AMS Special Session abstract `On Prime Labelings of Zero-Divisor Graphs`, dated `2025-03-09`;
-  - within budget, no later public citation / discussion / follow-up closing Conjectures `4.3` or `4.4` surfaced.
+  - I checked Axtell-Stickles-Warfel,
+    `Zero-divisor graphs of direct products of commutative rings` (`2006`),
+    as the structural outside source most likely to collapse the support decomposition to standard folklore;
+  - it supplies direct-product zero-divisor-graph structure, but not prime-labeling results that settle either the exact `F2` reduction theorem or the current `Γ(Z_p × Z_25)` wrapper program.
+- Recent citation / discussion / follow-up check:
+  - I ran one recent follow-up search and found the `2026` structural paper
+    `On properties and topological indices of the zero divisor graph for direct product of some commutative rings`,
+    which studies `Γ(Z_(p^m) × Z_(q^n))` structurally rather than via prime labelings;
+  - within budget, that follow-up check did not reveal a later public paper closing Fox-Mooney `Conjecture 4.3` or `Conjecture 4.4`, and it did not state the repo's exact reduction theorem.
 - Prior-art verdict:
-  - no rediscovery is established within the bounded audit;
-  - novelty confidence is only `medium`, because the literature pass was intentionally narrow and claim-specific.
+  - bounded audit does not establish rediscovery;
+  - bounded audit also does not prove absolute novelty, but the exact `F2` slice still looks live rather than already absorbed by the canonical literature.
 
 ## publication_statement_faithfulness
 
-- The strongest honest claim is not `Γ(Z_p × Z_p × Z_2)` is prime for all odd primes `p`.
-- The strongest honest claim is the exact ring-level reduction theorem
-  `AutoMath.Families.ZeroDivisorRingBridges.zp_zp_z2_three_interface_lead_theorem`:
-  once the singleton support class `C` gets label `1`, the only live arithmetic obligations are the three interfaces `A-B`, `A-F`, and `B-E`, and those suffice to discharge every zero-product edge.
-- This is faithful to the intended graph-level object:
-  - the theorem is still about the full zero-divisor graph on nonzero zero-divisor vertices;
-  - the support classes are proof scaffolding, not a substitute quotient graph.
-- The companion `Γ(Z_p × Z_25)` line remains outside the strongest claim:
-  - it has real feeder evidence and a preserved ring-support bridge;
-  - it does not yet have a closed quantified theorem or sharp obstruction theorem.
-- Referee-facing statement check:
-  - this would survive the question `what is the theorem?` only when presented as a reduction theorem slice, not as a full closure of the ambient family.
+- Is the strongest honest claim stronger than “here is an example”?
+  - Yes.
+  - The locked `F2` claim is a uniform theorem in the odd prime parameter `p`, not a finite list of examples.
+- Is there a real parameterized theorem, theorem slice, or counterexample theorem here?
+  - Yes.
+  - The real theorem slice is the exact ring-level reduction theorem
+    `zp_zp_z2_three_interface_lead_theorem`.
+- What the claim is not:
+  - it is not a theorem that `Γ(Z_p × Z_p × Z_2)` is prime for all odd primes;
+  - it is not a theorem on the full ambient family `Γ(Z_p × Z_p × Z_q)`;
+  - it is not a quantified positive theorem yet on `Γ(Z_p × Z_25)`.
+- Faithfulness check:
+  - the theorem statement in Lean matches the honest paper-facing wording: once the singleton support class `C` is fixed to label `1`, only the three interfaces `A-B`, `A-F`, and `B-E` remain live;
+  - the mirror theorem
+    `AutoMath.Families.ZeroDivisorPrimeLabelings.family_zero_divisor_prime_labelings_f2_slice`
+    is preserved locally in the family artifact;
+  - the feeder records `F2(11)`, `F2(13)`, `F25(13)`, and `F25(17)` are used only as evidence about scaling pressure, not as substitutes for the theorem.
+- Dependence on hand-picked cases:
+  - the exact `F2` theorem slice itself is not dependent on hand-picked small cases;
+  - the broader publication package still partly is, because the `F25` side remains backed by repaired feeders rather than a closed quantified theorem.
 
 ## publication_theorem_worthiness
 
-- Is the strongest honest claim stronger than `here is an example`?
-  - Yes. It is uniform in the parameter `p` and is not tied to any one witness instance.
+- Is the strongest honest claim stronger than “here is an example”?
+  - Yes.
+  - It compresses the full ring graph into a structural three-interface theorem slice valid for every odd prime `p`.
 - Is there a real parameterized theorem, theorem slice, or counterexample theorem here?
-  - Yes. There is a real exact theorem slice on `F2(p) = Γ(Z_p × Z_p × Z_2)`.
-  - Not yet on `F25(p) = Γ(Z_p × Z_25)`: that line is still feeder-backed and theorem-candidate only.
+  - Yes.
+  - The honest unit is a parameterized theorem slice, not a full family theorem.
 - Is the proof structural or merely instance-specific?
-  - On the `F2` slice, the proof is structural: support partition, ring-to-support adjacency reduction, singleton hinge, and three live interfaces.
-  - On the `F25` line, the current arithmetic evidence is still too instance-dependent.
-- Would this survive a referee asking `what is the theorem?`
-  - Yes for the exact `F2` reduction theorem.
-  - No for any broader combined-family claim beyond that exact slice.
+  - Structural on the lead `F2` line.
+  - The proof runs through support partition, adjacency reduction, singleton hinge, and a three-interface pack lemma, not through a hand-crafted witness for each `p`.
+- Would this survive a referee asking “what is the theorem?”
+  - Yes, provided the headline theorem is kept exactly at the reduction-theorem level.
+  - No, if the paper tries to advertise a stronger all-odd-prime prime-labeling theorem that the repo does not yet prove.
 - Is the claim still too dependent on hand-picked small cases?
   - The exact `F2` slice is not.
-  - The live `F25` route still is, because its current strength comes from feeders at `p = 13` and `p = 17` plus an unclosed wrapper conjecture.
+  - The overall campaign narrative still is, because the companion `F25` story is presently a feeder-supported open wrapper program rather than a theorem.
 - Is the generalization route strong enough to merit campaign priority?
-  - Yes. The `F25` line now has preserved bridge lemmas, a known first break of the old wrapper at `p = 13`, and a repaired feeder surviving at `p = 17`, so it is still the correct next publication target.
+  - Yes.
+  - The `F25` line already has preserved ring-to-support bridge lemmas and repaired feeders through `p = 17`, so the next test `p = 19` is a genuine theorem-mass discriminator rather than another random exact.
+- Theorem-worthiness verdict:
+  - `SLICE_EXACT` is justified;
+  - `FAMILY_CANDIDATE` would overstate what is actually closed today;
+  - `PAPER_READY` would be premature.
 
 ## publication_publishability
 
-- Conservative verdict:
-  - `publication_status = SLICE_EXACT` remains honest.
-  - `publication_status = PAPER_READY` would be an overclaim.
-- Why it is not `INSTANCE_ONLY`:
-  - the family now contains a real exact parameterized theorem slice, not merely isolated exact examples.
-- Why it is not `PAPER_READY`:
-  - the current exact slice is substantial enough for a theorem section, but still thin as a standalone publication claim;
-  - the campaign still needs paper-scale mass on the four-class `Γ(Z_p × Z_25)` line, either as a quantified bounded-spill theorem or as a first sharp repaired-wrapper obstruction theorem;
-  - bounded prior-art checking did not prove novelty beyond doubt, so publication confidence should be kept at `medium`.
-- Honest publication reading:
-  - this is structural and theorem-worthy;
-  - it is not yet a complete paper package.
-- Campaign priority reading:
-  - keep the campaign hot, because the open `F25` line is now the only live blocker between a real slice result and a paper-shaped family story.
+- Publication reading:
+  - the lead `F2` result is theorem-worthy and likely non-rediscovered within the bounded audit;
+  - it is also stronger than an instance note because it is an exact uniform reduction theorem.
+- Why it is not `PAPER_READY` yet:
+  - on its own, the `F2` theorem still reads like a sharp reduction lemma unless the paper frames it against a larger closed theorem, a stronger corollary, or a companion obstruction / wrapper result;
+  - the natural companion line `Γ(Z_p × Z_25)` is still missing either a quantified bounded-spill / barrier-reservoir theorem or a first sharp repaired-wrapper obstruction theorem.
+- Referee test:
+  - a referee asking “what is the theorem?” can be answered cleanly for the `F2` slice;
+  - a referee asking “why is this enough for a paper rather than a strong lemma?” still has a live objection until the `F25` side closes positively or obstructively.
+- Honest publication outcome:
+  - the family is beyond `INSTANCE_ONLY`;
+  - the family is not a rediscovery on the current bounded evidence;
+  - the family is not yet `PAPER_READY`;
+  - the strongest honest status remains `SLICE_EXACT`.
+- Best publishable shape now:
+  - either a short-note paper centered on the exact `F2` reduction theorem plus a persuasive open-program section, or preferably;
+  - a thicker paper package that pairs the exact `F2` slice with a closed positive or obstruction theorem on the four-class `F25` line.
 
 ## strongest_honest_claim
 
-- The strongest honest current family claim is the exact Lean-backed theorem slice
-  `AutoMath.Families.ZeroDivisorRingBridges.zp_zp_z2_three_interface_lead_theorem`:
+- As of `2026-04-11T13:39:20-04:00`, the strongest honest family claim is still the preserved exact Lean theorem
+  `AutoMath.Families.ZeroDivisorRingBridges.zp_zp_z2_three_interface_lead_theorem`,
+  mirrored by
+  `AutoMath.Families.ZeroDivisorPrimeLabelings.family_zero_divisor_prime_labelings_f2_slice`:
   for every odd prime `p`, if the singleton support class `C` in `Γ(Z_p × Z_p × Z_2)` receives label `1` and the three live interfaces `A-B`, `A-F`, and `B-E` are pairwise coprime, then every zero-product edge between nonzero zero-divisor vertices is automatically labeled by coprime integers.
-- This is a real parameterized reduction theorem.
-- It is not yet a theorem that `Γ(Z_p × Z_p × Z_2)` is prime for all odd primes `p`.
+- Publication reading:
+  - this is a genuine parameterized theorem slice and is stronger than “here is an example”;
+  - it is not yet a theorem that `Γ(Z_p × Z_p × Z_2)` itself is prime for all odd `p`;
+  - it sits naturally inside Fox-Mooney `Conjecture 4.3` rather than closing it;
+  - the refreshed bounded prior-art pass did not reveal an earlier source already stating this exact reduction theorem;
+  - this audit confirms preserved source artifacts in-repo, but it did not freshly re-run `lake` in this pass.
 
 ## paper_title_hint
 
@@ -347,52 +404,62 @@
 
 ## next_action
 
-- Keep `zp_zp_z2_three_interface_lead_theorem` fixed as the exact publication anchor.
-- Do not broaden the headline claim beyond that exact slice.
-- Spend the next family cycle on the four-class `Γ(Z_p × Z_25)` wrapper:
-  - try to close the quantified bounded-spill / barrier-reservoir theorem;
-  - if it still will not close cleanly, run `z19-z25-prime-zero-divisor-graph` as the first sharp repaired-wrapper discriminator, then `z23-z25-prime-zero-divisor-graph` if needed.
+- Keep `zp_zp_z2_three_interface_lead_theorem` fixed as the exact publication anchor and do not broaden the headline claim beyond that reduction theorem.
+- Do not spend the next cycle reopening the `F2` bridge: the preserved exact slice is already the right anchor.
+- Move the next family cycle to the four-class `Γ(Z_p × Z_25)` arithmetic wrapper above the already-preserved ring-support bridge.
+- Either prove the quantified small-spill plus barrier-reservoir theorem from the preserved `p = 13` and `p = 17` feeders, or run `z19-z25-prime-zero-divisor-graph` as the first sharp repaired-wrapper discriminator, with `z23-z25-prime-zero-divisor-graph` next if `p = 19` survives.
+- If the wrapper closes, package that theorem beside the exact `F2` slice.
+- If the wrapper breaks, package the first sharp repaired-wrapper obstruction theorem instead of stretching to an all-`p` claim.
 
 ## lean_statement
 
-- Selected Lean target:
-  - `AutoMath.Families.ZeroDivisorRingBridges.zp_zp_z2_three_interface_lead_theorem`.
-- Exact family-facing statement formalized in this stage:
-  - for every odd prime `p`, if a labeling on the nonzero zero-divisor vertices of `Γ(Z_p × Z_p × Z_2)` assigns label `1` to the singleton support class `C` and is coprime on the three live interfaces `A-B`, `A-F`, and `B-E`, then every zero-product edge is automatically labeled by coprime integers.
-- Artifact-local mirror preserved for the family dossier:
-  - `AutoMath.Families.ZeroDivisorPrimeLabelings.family_zero_divisor_prime_labelings_f2_slice`
-    in `artifacts/families/zero_divisor_prime_labelings/lean/ZeroDivisorF2Slice.lean`.
-- Overclaim boundary:
-  - this is not a theorem that `Γ(Z_p × Z_p × Z_2)` is prime for all odd primes `p`;
-  - this Lean pass does not claim a quantified positive theorem on `Γ(Z_p × Z_25)`.
+- Lean target kept fixed for this pass:
+  `AutoMath.Families.ZeroDivisorRingBridges.zp_zp_z2_three_interface_lead_theorem`.
+- Exact statement formalized and preserved:
+  for every odd prime `p`, if a labeling on `F2RingElem p` assigns label `1` to every vertex in the singleton support class `C`, and is coprime across the three live interfaces `A-B`, `A-F`, and `B-E`, then every zero-product edge between nonzero zero-divisor vertices of `Γ(Z_p × Z_p × Z_2)` receives coprime labels.
+- Artifact-local mirror kept fixed:
+  `artifacts/families/zero_divisor_prime_labelings/lean/ZeroDivisorF2Slice.lean`
+  under theorem
+  `AutoMath.Families.ZeroDivisorPrimeLabelings.family_zero_divisor_prime_labelings_f2_slice`.
 
 ## lean_skeleton
 
-- The proof skeleton for the closed `F2` slice is:
-  1. use `f2_ring_support_partition_lemma` to place each endpoint of a zero-product edge into one of the six support classes `A,B,C,D,E,F`;
-  2. use `f2_ring_support_adjacency_lemma` and `support_decomposition_F2` to reduce ring-level adjacency to the finite support-edge list;
-  3. use the singleton hinge hypothesis `hC1` to discharge every edge touching `C`, namely `A-C`, `B-C`, and `C-D`;
-  4. use `f2_ring_nonhinge_edge_reduction` to show that every remaining zero-product edge lies on one of the three live interfaces `A-B`, `A-F`, or `B-E`, together with reversals;
-  5. finish by the abstract support-template wrapper
-     `ZeroDivisorReductions.zp_zp_z2_support_template_reduction_of_singleton_one`.
-- The artifact-local mirror theorem keeps the same statement and closes by a direct invocation of
-  `zp_zp_z2_three_interface_lead_theorem`.
+- Proof skeleton kept fixed rather than broadened:
+  1. `f2_ring_support_partition_lemma` classifies every nonzero zero-divisor into one of `A,B,C,D,E,F`;
+  2. `f2_ring_support_adjacency_lemma` converts ring multiplication-zero into the abstract support adjacency relation;
+  3. `f2_support_edge_cases` enumerates the only possible support-interface edge shapes;
+  4. `f2_ring_nonhinge_edge_reduction` shows that once neither endpoint lies in `C`, only the three live interfaces remain;
+  5. `ZeroDivisorReductions.zp_zp_z2_support_template_reduction_of_singleton_one` discharges the `C`-touching edges automatically from `label = 1` on `C`;
+  6. `f2_ring_three_interface_reduction` packages the ring-level reduction;
+  7. `zp_zp_z2_three_interface_lead_theorem` is the publication-facing exact slice.
+- Conservative Lean choice for this pass:
+  no new broader theorem was introduced, because the strongest honest family target was already the checked three-interface slice and the open blocker is on the `F25` arithmetic wrapper, not on the `F2` ring bridge.
 
 ## lean_result
 
-- Backend check:
-  - `cd lean && lake build AutoMath.Families.ZeroDivisorRingBridges` succeeded in the current repo state.
-- Artifact-local mirror check:
-  - `cd lean && lake env lean ../artifacts/families/zero_divisor_prime_labelings/lean/ZeroDivisorF2Slice.lean` succeeded in the current repo state.
-- Honest Lean-stage verdict:
-  - the current family Lean target is already fully formalized and checked;
-  - no new axioms, `sorry`, `admit`, or placeholders were introduced in this pass;
-  - the strongest honest family claim stays the exact theorem slice `zp_zp_z2_three_interface_lead_theorem`;
-  - `classification = CANDIDATE` remains conservative and `publication_status = SLICE_EXACT` remains the honest publication-facing status.
+- Fresh local rerun attempt in this audit:
+  - `cd lean && lake build AutoMath.Families.ZeroDivisorRingBridges`
+  - result on `2026-04-11`: failed before proof checking because the local Lean toolchain attempted network dependency resolution and could not resolve `github.com` in this environment.
+- Preserved formal evidence still present in-repo:
+  - source theorem chain at `lean/AutoMath/Families/ZeroDivisorRingBridges.lean` with the named bridge and lead theorems intact;
+  - compiled backend artifacts already present at
+    `lean/.lake/build/lib/lean/AutoMath/Families/ZeroDivisorRingBridges.olean` and
+    `lean/.lake/build/lib/lean/AutoMath/Families/ZeroDivisorRingBridges.ilean`;
+  - artifact-local mirror theorem preserved at
+    `artifacts/families/zero_divisor_prime_labelings/lean/ZeroDivisorF2Slice.lean`.
+- Outcome:
+  - this pass confirms preservation of the exact `F2` slice and its formal artifact chain, not a fresh clean-room rerun;
+  - no new axioms, `sorry`, `admit`, or placeholders were introduced in this pass.
+- Classification consequence:
+  - keep family `classification = CANDIDATE`;
+  - keep `publication_status = SLICE_EXACT`;
+  - do not touch `PROOFS.md`, because this run did not earn a new exact-instance `EXACT` result.
 
 ## lean_blockers
 
-- No Lean blocker remains on the closed `F2` theorem slice itself.
-- The live blocker is unchanged and belongs to the four-class `Γ(Z_p × Z_25)` line:
-  - the repo still lacks either a quantified small-spill / barrier-reservoir family theorem or a first sharp repaired-wrapper obstruction theorem on the repaired wrapper.
-- Because that `F25` line is still open, this campaign is not yet `PAPER_READY`.
+- No Lean blocker remains on the locked `F2` theorem slice itself.
+- The live campaign blocker is unchanged:
+  the four-class `Γ(Z_p × Z_25)` line still lacks either
+  - a quantified small-spill / barrier-reservoir wrapper theorem, or
+  - a first sharp repaired-wrapper obstruction theorem.
+- Because that blocker is outside the currently checked `F2` slice, this LEAN pass stops after preserving the checked theorem and mirror.
