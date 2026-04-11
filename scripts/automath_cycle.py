@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import hashlib
 import json
 import os
 import pathlib
@@ -20,7 +21,9 @@ ARTIFACTS = ROOT / "artifacts"
 LOGS = ARTIFACTS / "_logs"
 FAMILY_ARTIFACTS = ARTIFACTS / "families"
 FAMILY_SUMMARY = FAMILY_ARTIFACTS / "summary.md"
+RUNTIME_STATE = LOGS / "runtime_state.json"
 LEDGER = ROOT / "ledger.md"
+PROOFS = ROOT / "PROOFS.md"
 QUEUE = ROOT / "queue.json"
 FAILED = ROOT / "failed_problems.json"
 SELECTED = ROOT / "selected_problem.md"
@@ -46,8 +49,23 @@ PUBLICATION_AUDIT_TIMEOUT = int(os.environ.get("AUTOMATH_PUBLICATION_AUDIT_TIMEO
 LEAN_TIMEOUT = int(os.environ.get("AUTOMATH_LEAN_TIMEOUT", "1800"))
 PARALLEL_WORKER_WAIT_TIMEOUT = int(os.environ.get("AUTOMATH_PARALLEL_WORKER_WAIT_TIMEOUT", "90"))
 WORKTREE_REMOVE_TIMEOUT = int(os.environ.get("AUTOMATH_WORKTREE_REMOVE_TIMEOUT", "30"))
-PARALLEL_FEEDER_WORKERS = int(os.environ.get("AUTOMATH_PARALLEL_FEEDER_WORKERS", "2"))
+PARALLEL_FEEDER_WORKERS = int(os.environ.get("AUTOMATH_PARALLEL_FEEDER_WORKERS", "3"))
 PUBLICATION_AUDIT_MIN_INTERVAL = int(os.environ.get("AUTOMATH_PUBLICATION_AUDIT_MIN_INTERVAL", "1800"))
+SECONDARY_WORKER_MIN_INTERVAL = int(os.environ.get("AUTOMATH_SECONDARY_WORKER_MIN_INTERVAL", "1800"))
+SECONDARY_WORKER_FAILURE_BACKOFF = int(os.environ.get("AUTOMATH_SECONDARY_WORKER_FAILURE_BACKOFF", "3600"))
+
+CAMPAIGN_LEAN_SURFACE_HINTS = {
+    "zero_divisor_prime_labelings": [
+        ROOT / "lean" / "AutoMath" / "Families" / "ZeroDivisorSupports.lean",
+        ROOT / "lean" / "AutoMath" / "Families" / "ZeroDivisorReductions.lean",
+        ROOT / "lean" / "AutoMath" / "Families" / "ZeroDivisorRingBridges.lean",
+        ROOT / "artifacts" / "families" / "zero_divisor_prime_labelings" / "lean",
+    ],
+    "cnbc_quintic_nonexistence": [
+        ROOT / "lean" / "AutoMath" / "Families" / "CNBCQuinticRouteI.lean",
+        ROOT / "artifacts" / "families" / "cnbc_quintic_nonexistence" / "lean",
+    ],
+}
 
 
 def now_str() -> str:
@@ -66,6 +84,19 @@ def ensure_state() -> None:
     LOGS.mkdir(parents=True, exist_ok=True)
     ARTIFACTS.mkdir(parents=True, exist_ok=True)
     FAMILY_ARTIFACTS.mkdir(parents=True, exist_ok=True)
+    if not RUNTIME_STATE.exists():
+        RUNTIME_STATE.write_text("{}\n", encoding="utf-8")
+    try:
+        subprocess.run(
+            ["git", "worktree", "prune"],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            timeout=10,
+            check=False,
+        )
+    except Exception:
+        pass
     if not LEDGER.exists():
         LEDGER.write_text("# Ledger\n", encoding="utf-8")
     if not QUEUE.exists():
@@ -99,6 +130,30 @@ def write_json(path: pathlib.Path, data) -> None:
     path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
 
 
+def load_runtime_state() -> dict:
+    data = load_json(RUNTIME_STATE, {})
+    return data if isinstance(data, dict) else {}
+
+
+def update_runtime_campaign_state(family_slug: str, **updates) -> None:
+    state = load_runtime_state()
+    campaigns = state.setdefault("campaigns", {})
+    campaign_state = campaigns.setdefault(family_slug, {})
+    for key, value in updates.items():
+        if value is None:
+            campaign_state.pop(key, None)
+        else:
+            campaign_state[key] = value
+    write_json(RUNTIME_STATE, state)
+
+
+def runtime_campaign_state(family_slug: str) -> dict:
+    state = load_runtime_state()
+    campaigns = state.get("campaigns", {})
+    campaign_state = campaigns.get(family_slug, {})
+    return campaign_state if isinstance(campaign_state, dict) else {}
+
+
 def ledger_tail(lines: int = 6) -> list[str]:
     if not LEDGER.exists():
         return []
@@ -117,6 +172,57 @@ def slug_of(item) -> str | None:
     if isinstance(item, dict):
         return item.get("slug")
     return None
+
+
+def within_root(path: pathlib.Path) -> bool:
+    try:
+        path.resolve().relative_to(ROOT)
+        return True
+    except ValueError:
+        return False
+
+
+def iter_signature_files(path: pathlib.Path) -> list[pathlib.Path]:
+    if path.is_file():
+        return [path]
+    if not path.exists():
+        return []
+    files: list[pathlib.Path] = []
+    for candidate in sorted(path.rglob("*")):
+        if candidate.is_file() and ".git" not in candidate.parts:
+            files.append(candidate)
+    return files
+
+
+def path_signature(paths: list[pathlib.Path]) -> str:
+    digest = hashlib.sha256()
+    seen: set[str] = set()
+    for original in paths:
+        path = original.resolve() if original.exists() else original
+        key = str(path)
+        if key in seen:
+            continue
+        seen.add(key)
+        label = path.relative_to(ROOT) if within_root(path) else path
+        if not path.exists():
+            digest.update(f"MISSING:{label}\n".encode("utf-8"))
+            continue
+        files = iter_signature_files(path)
+        if not files:
+            digest.update(f"EMPTY:{label}\n".encode("utf-8"))
+            continue
+        for file_path in files:
+            rel = file_path.relative_to(ROOT) if within_root(file_path) else file_path
+            digest.update(f"FILE:{rel}\n".encode("utf-8"))
+            digest.update(hashlib.sha256(file_path.read_bytes()).digest())
+    return digest.hexdigest()
+
+
+def kill_process_group(proc: subprocess.Popen, sig: signal.Signals = signal.SIGKILL) -> None:
+    try:
+        os.killpg(proc.pid, sig)
+    except ProcessLookupError:
+        pass
 
 
 def failed_slug_set() -> set[str]:
@@ -187,14 +293,6 @@ def ensure_publication_defaults(path: pathlib.Path) -> None:
         write_json(path, data)
 
 
-def mark_status_timestamp(path: pathlib.Path, key: str) -> None:
-    if not path.exists():
-        return
-    data = load_json(path, {})
-    data[key] = now_iso()
-    write_json(path, data)
-
-
 def parse_status_timestamp(value: str | None) -> dt.datetime | None:
     if not value:
         return None
@@ -202,19 +300,6 @@ def parse_status_timestamp(value: str | None) -> dt.datetime | None:
         return dt.datetime.fromisoformat(value)
     except ValueError:
         return None
-
-
-def should_run_publication_audit(path: pathlib.Path) -> bool:
-    if not path.exists():
-        return True
-    data = load_json(path, {})
-    if publication_rank(data.get("publication_status")) < publication_rank("SLICE_EXACT"):
-        return True
-    last_audit = parse_status_timestamp(data.get("last_publication_audit_on"))
-    if last_audit is None:
-        return True
-    elapsed = (dt.datetime.now().astimezone() - last_audit).total_seconds()
-    return elapsed >= PUBLICATION_AUDIT_MIN_INTERVAL
 
 
 def add_text_section(lines: list[str], heading: str, value) -> None:
@@ -304,6 +389,95 @@ def load_campaign_status(campaign: dict) -> dict:
     path = campaign_status_path(campaign)
     ensure_publication_defaults(path)
     return load_json(path, {})
+
+
+def campaign_input_paths(campaign: dict) -> list[pathlib.Path]:
+    status = load_campaign_status(campaign)
+    paths: list[pathlib.Path] = [CAMPAIGN_MANIFEST, PROOFS, ROOT / campaign["dossier_path"]]
+    paths.extend(CAMPAIGN_LEAN_SURFACE_HINTS.get(campaign["family_slug"], []))
+    feeder_slugs: list[str] = []
+    decisive = status.get("next_decisive_feeder")
+    if isinstance(decisive, str) and decisive:
+        feeder_slugs.append(decisive)
+    for slug in status.get("next_feeder_instances", []):
+        if isinstance(slug, str) and slug:
+            feeder_slugs.append(slug)
+    for slug in campaign.get("seed_instances", []):
+        if isinstance(slug, str) and slug:
+            feeder_slugs.append(slug)
+    seen: set[str] = set()
+    for slug in feeder_slugs[:10]:
+        if slug in seen:
+            continue
+        seen.add(slug)
+        artifact_dir = ROOT / "artifacts" / slug
+        paths.extend([artifact_dir / "record.md", artifact_dir / "status.json"])
+    return paths
+
+
+def campaign_input_signature(campaign: dict) -> str:
+    return path_signature(campaign_input_paths(campaign))
+
+
+def should_run_campaign_generalize(campaign: dict, signature: str) -> tuple[bool, str]:
+    status = load_campaign_status(campaign)
+    runtime = runtime_campaign_state(campaign["family_slug"])
+    if publication_rank(status.get("publication_status")) < publication_rank("SLICE_EXACT"):
+        return True, "campaign is below SLICE_EXACT"
+    if not status.get("strongest_honest_claim"):
+        return True, "campaign has no preserved strongest_honest_claim yet"
+    if runtime.get("last_generalize_signature") != signature:
+        return True, "campaign inputs changed"
+    return False, "campaign inputs are unchanged and the slice is already stable"
+
+
+def should_run_publication_audit(campaign: dict, signature: str) -> tuple[bool, str]:
+    status = load_campaign_status(campaign)
+    runtime = runtime_campaign_state(campaign["family_slug"])
+    if publication_rank(status.get("publication_status")) < publication_rank("SLICE_EXACT"):
+        return True, "campaign is below SLICE_EXACT"
+    if runtime.get("last_publication_audit_signature") != signature:
+        return True, "campaign inputs changed since the last publication audit"
+    last_audit = parse_status_timestamp(runtime.get("last_publication_audit_on"))
+    if last_audit is None:
+        return True, "no prior publication audit timestamp was preserved"
+    elapsed = (dt.datetime.now().astimezone() - last_audit).total_seconds()
+    if elapsed >= PUBLICATION_AUDIT_MIN_INTERVAL:
+        return True, "the publication audit freshness window expired"
+    return False, "the current slice is stable and the last publication audit is still fresh"
+
+
+def should_run_campaign_lean(campaign: dict, signature: str) -> tuple[bool, str]:
+    status = load_campaign_status(campaign)
+    if status.get("lean_ready") is not True:
+        return False, "Lean is not ready for this family campaign"
+    runtime = runtime_campaign_state(campaign["family_slug"])
+    if status.get("lean_complete") is not True:
+        return True, "Lean is not complete yet"
+    if runtime.get("last_lean_signature") != signature:
+        return True, "family Lean inputs changed"
+    return False, "family Lean inputs are unchanged and the slice is already checked"
+
+
+def should_start_secondary_worker(campaign: dict) -> tuple[bool, str]:
+    runtime = runtime_campaign_state(campaign["family_slug"])
+    backoff_until = parse_status_timestamp(runtime.get("secondary_worker_backoff_until"))
+    now = dt.datetime.now().astimezone()
+    if backoff_until is not None and now < backoff_until:
+        return False, "secondary worker is still in backoff after an infrastructure failure"
+    status = load_campaign_status(campaign)
+    if publication_rank(status.get("publication_status")) < publication_rank("SLICE_EXACT"):
+        return True, "secondary campaign is not yet slice-stable"
+    signature = campaign_input_signature(campaign)
+    if runtime.get("last_secondary_worker_signature") != signature:
+        return True, "secondary campaign inputs changed"
+    last_attempt = parse_status_timestamp(runtime.get("last_secondary_worker_attempt_on"))
+    if last_attempt is None:
+        return True, "secondary campaign has not run yet"
+    elapsed = (now - last_attempt).total_seconds()
+    if elapsed >= SECONDARY_WORKER_MIN_INTERVAL:
+        return True, "secondary worker interval expired"
+    return False, "secondary campaign inputs are unchanged and still within its throttle window"
 
 
 def find_campaign(family_slug: str) -> dict | None:
@@ -788,12 +962,6 @@ def run_stage(root: pathlib.Path, stage_name: str, prompt_file: pathlib.Path, se
     timed_out = False
     returncode = 0
 
-    def terminate_process_group(proc: subprocess.Popen, sig: signal.Signals) -> None:
-        try:
-            os.killpg(proc.pid, sig)
-        except ProcessLookupError:
-            pass
-
     with stdout_log.open("w", encoding="utf-8") as out:
         proc = subprocess.Popen(
             cmd,
@@ -816,7 +984,7 @@ def run_stage(root: pathlib.Path, stage_name: str, prompt_file: pathlib.Path, se
                 break
             if time.monotonic() >= deadline:
                 timed_out = True
-                terminate_process_group(proc, signal.SIGKILL)
+                kill_process_group(proc, signal.SIGKILL)
                 proc.wait()
                 out.write(f"\n[run_stage timeout after {timeout_secs} seconds]\n")
                 returncode = 124
@@ -884,9 +1052,10 @@ def find_queue_entry_by_slug(slug: str) -> dict | None:
     return None
 
 
-def next_campaign_feeder_entry(campaign: dict) -> dict | None:
+def next_campaign_feeder_entry(campaign: dict, excluded_slugs: set[str] | None = None) -> dict | None:
     status = load_campaign_status(campaign)
     failed = failed_slug_set()
+    excluded = excluded_slugs or set()
     candidates: list[str] = []
     decisive = status.get("next_decisive_feeder")
     if decisive:
@@ -899,7 +1068,7 @@ def next_campaign_feeder_entry(campaign: dict) -> dict | None:
     )
     seen: set[str] = set()
     for slug in candidates:
-        if not slug or slug in seen or slug in failed or feeder_artifact_is_preserved(slug):
+        if not slug or slug in seen or slug in failed or slug in excluded or feeder_artifact_is_preserved(slug):
             continue
         seen.add(slug)
         queued = find_queue_entry_by_slug(slug)
@@ -1059,6 +1228,7 @@ class ParallelWorker:
         self.campaign = campaign
         self.worktree = ROOT / ".worktrees" / f"{campaign['family_slug']}-{int(time.time())}"
         self.proc: subprocess.Popen | None = None
+        self.started_signature: str | None = None
 
     def seed_checkout(self) -> None:
         for path in worker_required_paths():
@@ -1081,6 +1251,11 @@ class ParallelWorker:
             append_ledger(f"Parallel worker setup failed for {self.campaign['family_slug']}; continuing sequentially.")
             return False
         self.seed_checkout()
+        self.started_signature = campaign_input_signature(self.campaign)
+        update_runtime_campaign_state(
+            self.campaign["family_slug"],
+            last_secondary_worker_attempt_on=now_iso(),
+        )
         cmd = [
             str(self.worktree / "run_publication_cycle.sh"),
             "--campaign",
@@ -1094,6 +1269,7 @@ class ParallelWorker:
             stderr=subprocess.DEVNULL,
             text=True,
             env={**os.environ, "AUTOMATH_MAX_PARALLEL_WORKERS": "1"},
+            start_new_session=True,
         )
         append_ledger(f"Parallel publication worker started for {self.campaign['family_slug']} in isolated git worktree.")
         return True
@@ -1104,11 +1280,19 @@ class ParallelWorker:
         try:
             returncode = self.proc.wait(timeout=PARALLEL_WORKER_WAIT_TIMEOUT)
         except subprocess.TimeoutExpired:
-            self.proc.kill()
+            kill_process_group(self.proc, signal.SIGKILL)
             try:
                 self.proc.wait(timeout=10)
             except subprocess.TimeoutExpired:
                 pass
+            failure_count = int(runtime_campaign_state(self.campaign["family_slug"]).get("secondary_worker_failures", 0)) + 1
+            backoff_seconds = SECONDARY_WORKER_FAILURE_BACKOFF * min(failure_count, 3)
+            backoff_until = (dt.datetime.now().astimezone() + dt.timedelta(seconds=backoff_seconds)).isoformat()
+            update_runtime_campaign_state(
+                self.campaign["family_slug"],
+                secondary_worker_failures=failure_count,
+                secondary_worker_backoff_until=backoff_until,
+            )
             append_ledger(
                 f"Parallel publication worker for {self.campaign['family_slug']} exceeded the cleanup wait budget; "
                 "the manager killed it, treated the worker as infrastructure-failed, and continued."
@@ -1118,9 +1302,23 @@ class ParallelWorker:
         if returncode == 0:
             sync_tree(self.worktree / self.campaign["dossier_path"], ROOT / self.campaign["dossier_path"])
             sync_tree(self.worktree / self.campaign["artifact_dir"], ROOT / self.campaign["artifact_dir"])
+            update_runtime_campaign_state(
+                self.campaign["family_slug"],
+                last_secondary_worker_signature=self.started_signature,
+                secondary_worker_failures=0,
+                secondary_worker_backoff_until=None,
+            )
             append_ledger(f"Parallel publication worker finished cleanly for {self.campaign['family_slug']} and synced stable dossier/artifact updates back.")
             outcome = "clean"
         else:
+            failure_count = int(runtime_campaign_state(self.campaign["family_slug"]).get("secondary_worker_failures", 0)) + 1
+            backoff_seconds = SECONDARY_WORKER_FAILURE_BACKOFF * min(failure_count, 3)
+            backoff_until = (dt.datetime.now().astimezone() + dt.timedelta(seconds=backoff_seconds)).isoformat()
+            update_runtime_campaign_state(
+                self.campaign["family_slug"],
+                secondary_worker_failures=failure_count,
+                secondary_worker_backoff_until=backoff_until,
+            )
             append_ledger(f"Parallel publication worker for {self.campaign['family_slug']} exited nonzero; manager kept the main worktree unchanged.")
             outcome = "infra_failed"
         self._remove_worktree()
@@ -1201,6 +1399,7 @@ class ParallelFeederWorker:
             stderr=subprocess.DEVNULL,
             text=True,
             env={**os.environ, "AUTOMATH_MAX_PARALLEL_WORKERS": "1"},
+            start_new_session=True,
         )
         append_ledger(f"Parallel feeder worker started for {self.slug} in isolated git worktree.")
         return True
@@ -1211,7 +1410,7 @@ class ParallelFeederWorker:
         try:
             returncode = self.proc.wait(timeout=PARALLEL_WORKER_WAIT_TIMEOUT)
         except subprocess.TimeoutExpired:
-            self.proc.kill()
+            kill_process_group(self.proc, signal.SIGKILL)
             try:
                 self.proc.wait(timeout=10)
             except subprocess.TimeoutExpired:
@@ -1261,7 +1460,14 @@ def maybe_start_parallel_worker(primary_slug: str, allow_parallel: bool) -> Para
     campaigns = [c for c in active_campaigns() if c["family_slug"] != primary_slug]
     if not campaigns:
         return None
-    worker = ParallelWorker(campaigns[0])
+    secondary = campaigns[0]
+    should_start, reason = should_start_secondary_worker(secondary)
+    if not should_start:
+        append_ledger(
+            f"Parallel publication worker was skipped for {secondary['family_slug']} because {reason}."
+        )
+        return None
+    worker = ParallelWorker(secondary)
     if worker.start():
         return worker
     return None
@@ -1317,10 +1523,10 @@ def absorb_parallel_feeder_result(entry: dict) -> bool:
     return False
 
 
-def maybe_run_campaign_lean(campaign: dict) -> None:
-    status_path = campaign_status_path(campaign)
-    ensure_publication_defaults(status_path)
-    if status_value(status_path, "lean_ready") is not True:
+def maybe_run_campaign_lean(campaign: dict, signature: str) -> None:
+    should_run, reason = should_run_campaign_lean(campaign, signature)
+    if not should_run:
+        append_ledger(f"Lean was skipped for family campaign {campaign['family_slug']} because {reason}.")
         return
     render_campaign_selection(campaign)
     rc = run_stage(
@@ -1336,6 +1542,12 @@ def maybe_run_campaign_lean(campaign: dict) -> None:
         append_ledger(f"Lean timed out on family campaign {campaign['family_slug']}; the family artifact remains active for later.")
     elif rc != 0:
         append_ledger(f"Lean exited unexpectedly on family campaign {campaign['family_slug']}; the family artifact remains active for later.")
+    else:
+        update_runtime_campaign_state(
+            campaign["family_slug"],
+            last_lean_signature=signature,
+            last_lean_on=now_iso(),
+        )
 
 
 def run_campaign_flow(campaign: dict, allow_parallel: bool) -> int:
@@ -1345,22 +1557,35 @@ def run_campaign_flow(campaign: dict, allow_parallel: bool) -> int:
     worker_status = "not_used" if worker is None else "running"
     feeder_workers = maybe_start_parallel_feeder_workers(campaign, allow_parallel, reserved_slots=1 if worker is not None else 0)
     new_feeder_signal = False
+    input_signature = campaign_input_signature(campaign)
+    should_generalize, generalize_reason = should_run_campaign_generalize(campaign, input_signature)
+    if should_generalize:
+        rc = run_stage(
+            ROOT,
+            f"generalize_{campaign['family_slug']}",
+            PROMPTS / "generalize_family.prompt.md",
+            "off",
+            GENERALIZE_TIMEOUT,
+            preferred_effort("xhigh"),
+            "tuned_openai",
+        )
+        if rc == 124:
+            append_ledger(f"Generalize timed out for family campaign {campaign['family_slug']}.")
+        elif rc != 0:
+            append_ledger(f"Generalize exited unexpectedly for family campaign {campaign['family_slug']}.")
+        else:
+            update_runtime_campaign_state(
+                campaign["family_slug"],
+                last_generalize_signature=input_signature,
+                last_generalize_on=now_iso(),
+            )
+    else:
+        append_ledger(
+            f"Generalize was skipped for family campaign {campaign['family_slug']} because {generalize_reason}."
+        )
 
-    rc = run_stage(
-        ROOT,
-        f"generalize_{campaign['family_slug']}",
-        PROMPTS / "generalize_family.prompt.md",
-        "off",
-        GENERALIZE_TIMEOUT,
-        preferred_effort("xhigh"),
-        "tuned_openai",
-    )
-    if rc == 124:
-        append_ledger(f"Generalize timed out for family campaign {campaign['family_slug']}.")
-    elif rc != 0:
-        append_ledger(f"Generalize exited unexpectedly for family campaign {campaign['family_slug']}.")
-
-    if should_run_publication_audit(status_path):
+    should_audit, audit_reason = should_run_publication_audit(campaign, input_signature)
+    if should_audit:
         rc = run_stage(
             ROOT,
             "publication_audit",
@@ -1375,20 +1600,24 @@ def run_campaign_flow(campaign: dict, allow_parallel: bool) -> int:
         elif rc != 0:
             append_ledger(f"Publication audit exited unexpectedly for family campaign {campaign['family_slug']}.")
         else:
-            mark_status_timestamp(status_path, "last_publication_audit_on")
+            update_runtime_campaign_state(
+                campaign["family_slug"],
+                last_publication_audit_on=now_iso(),
+                last_publication_audit_signature=input_signature,
+            )
     else:
         append_ledger(
-            f"Publication audit was skipped for family campaign {campaign['family_slug']} because the current slice is stable and the last audit is still fresh."
+            f"Publication audit was skipped for family campaign {campaign['family_slug']} because {audit_reason}."
         )
 
-    maybe_run_campaign_lean(campaign)
+    maybe_run_campaign_lean(campaign, input_signature)
 
     ensure_publication_defaults(status_path)
     if (
         campaign.get("family_slug") == "zero_divisor_prime_labelings"
         and not publication_stop_ready(status_path)
     ):
-        feeder_entry = next_campaign_feeder_entry(campaign)
+        feeder_entry = next_campaign_feeder_entry(campaign, {worker.slug for worker in feeder_workers})
         if feeder_entry is not None:
             append_ledger(
                 f"Publication mode is advancing {campaign['family_slug']} through its decisive feeder {feeder_entry['slug']}."
@@ -1408,7 +1637,8 @@ def run_campaign_flow(campaign: dict, allow_parallel: bool) -> int:
             f"Parallel feeder results changed the campaign input for {campaign['family_slug']}, so the family generalize/audit pass is rerunning once to absorb them."
         )
         render_campaign_selection(campaign)
-        run_stage(
+        input_signature = campaign_input_signature(campaign)
+        rc = run_stage(
             ROOT,
             f"generalize_{campaign['family_slug']}",
             PROMPTS / "generalize_family.prompt.md",
@@ -1417,6 +1647,12 @@ def run_campaign_flow(campaign: dict, allow_parallel: bool) -> int:
             preferred_effort("xhigh"),
             "tuned_openai",
         )
+        if rc == 0:
+            update_runtime_campaign_state(
+                campaign["family_slug"],
+                last_generalize_signature=input_signature,
+                last_generalize_on=now_iso(),
+            )
         rc = run_stage(
             ROOT,
             "publication_audit",
@@ -1427,7 +1663,11 @@ def run_campaign_flow(campaign: dict, allow_parallel: bool) -> int:
             "tuned_openai",
         )
         if rc == 0:
-            mark_status_timestamp(status_path, "last_publication_audit_on")
+            update_runtime_campaign_state(
+                campaign["family_slug"],
+                last_publication_audit_on=now_iso(),
+                last_publication_audit_signature=input_signature,
+            )
 
     if worker is not None:
         worker_status = worker.finish()
@@ -1480,28 +1720,51 @@ def run_affiliated_generalize(entry: dict, status_path: pathlib.Path) -> None:
     campaign = find_campaign(str(family_slug))
     if campaign is None:
         return
+    input_signature = campaign_input_signature(campaign)
     render_campaign_selection(campaign)
-    run_stage(
-        ROOT,
-        f"generalize_{campaign['family_slug']}",
-        PROMPTS / "generalize_family.prompt.md",
-        "off",
-        GENERALIZE_TIMEOUT,
-        preferred_effort("xhigh"),
-        "tuned_openai",
-    )
-    rc = run_stage(
-        ROOT,
-        "publication_audit",
-        PROMPTS / "publication_audit.prompt.md",
-        "on",
-        PUBLICATION_AUDIT_TIMEOUT,
-        preferred_effort("xhigh"),
-        "tuned_openai",
-    )
-    if rc == 0:
-        mark_status_timestamp(campaign_status_path(campaign), "last_publication_audit_on")
-    maybe_run_campaign_lean(campaign)
+    should_generalize, generalize_reason = should_run_campaign_generalize(campaign, input_signature)
+    if should_generalize:
+        rc = run_stage(
+            ROOT,
+            f"generalize_{campaign['family_slug']}",
+            PROMPTS / "generalize_family.prompt.md",
+            "off",
+            GENERALIZE_TIMEOUT,
+            preferred_effort("xhigh"),
+            "tuned_openai",
+        )
+        if rc == 0:
+            update_runtime_campaign_state(
+                campaign["family_slug"],
+                last_generalize_signature=input_signature,
+                last_generalize_on=now_iso(),
+            )
+    else:
+        append_ledger(
+            f"Affiliated generalize was skipped for family campaign {campaign['family_slug']} because {generalize_reason}."
+        )
+    should_audit, audit_reason = should_run_publication_audit(campaign, input_signature)
+    if should_audit:
+        rc = run_stage(
+            ROOT,
+            "publication_audit",
+            PROMPTS / "publication_audit.prompt.md",
+            "on",
+            PUBLICATION_AUDIT_TIMEOUT,
+            preferred_effort("xhigh"),
+            "tuned_openai",
+        )
+        if rc == 0:
+            update_runtime_campaign_state(
+                campaign["family_slug"],
+                last_publication_audit_on=now_iso(),
+                last_publication_audit_signature=input_signature,
+            )
+    else:
+        append_ledger(
+            f"Affiliated publication audit was skipped for family campaign {campaign['family_slug']} because {audit_reason}."
+        )
+    maybe_run_campaign_lean(campaign, input_signature)
 
 
 def run_feeder_entry(entry: dict, emit_summary: bool = True, artifact_only_worker: bool = False) -> int:
@@ -1592,8 +1855,6 @@ def run_feeder_entry(entry: dict, emit_summary: bool = True, artifact_only_worke
         preferred_effort("xhigh"),
         "tuned_openai",
     )
-    if rc == 0:
-        mark_status_timestamp(status_path, "last_publication_audit_on")
     ensure_publication_defaults(status_path)
 
     if status_value(status_path, "lean_ready") is not True and classification not in {"CANDIDATE", "COUNTEREXAMPLE", "EXACT"}:
