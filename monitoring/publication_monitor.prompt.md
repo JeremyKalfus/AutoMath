@@ -5,9 +5,9 @@ After the run:
 - read `artifacts/families/summary.md`
 - report only if one of these is true:
   - the strongest honest `publication_status` changed
-  - the active theorem-slice target changed
+  - the active one-shot candidate or active theorem-slice target changed
   - the next blocker changed materially
   - a worker infrastructure failure occurred
-  - the campaign looks stalled and needs a different feeder
+  - the current one-shot lane looks stalled and needs a different candidate or discriminator
 
 If none of those happened, give a very short status note using the current summary file instead of a long replay of the cycle.

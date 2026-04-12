@@ -117,4 +117,4 @@ Publication-status guidance:
 - use `PAPER_READY` only if the strongest honest claim now looks genuinely publishable
 
 Do not overclaim.
-Generalization is the default next step once a family campaign is active.
+Generalization is not the default global lane anymore. Use it only when a family campaign has been explicitly selected because the theorem slice is already close enough to justify campaign-mode work.

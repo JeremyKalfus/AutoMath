@@ -309,15 +309,21 @@ def failed_slug_set() -> set[str]:
     return {slug for slug in (slug_of(item) for item in load_json(FAILED, [])) if slug}
 
 
-def queue_has_usable() -> bool:
+def queue_has_usable(required_entry_type: str | None = None) -> bool:
     failed = failed_slug_set()
     queue = load_json(QUEUE, [])
-    return any(isinstance(item, dict) and item.get("slug") and item["slug"] not in failed for item in queue)
+    return any(
+        isinstance(item, dict)
+        and item.get("slug")
+        and item["slug"] not in failed
+        and (required_entry_type is None or item.get("entry_type") == required_entry_type)
+        for item in queue
+    )
 
 
-def wait_for_usable_queue(attempts: int = 5, sleep_seconds: int = 2) -> bool:
+def wait_for_usable_queue(required_entry_type: str | None = None, attempts: int = 5, sleep_seconds: int = 2) -> bool:
     for _ in range(attempts):
-        if queue_has_usable():
+        if queue_has_usable(required_entry_type=required_entry_type):
             return True
         time.sleep(sleep_seconds)
     return False
@@ -1580,23 +1586,41 @@ def next_campaign_feeder_entries(campaign: dict, limit: int) -> list[dict]:
     return entries
 
 
-def run_curation_if_needed() -> bool:
-    if queue_has_usable():
+def run_curation_if_needed(required_entry_type: str | None = None) -> bool:
+    if queue_has_usable(required_entry_type=required_entry_type):
         return True
-    append_ledger("Queue was empty or exhausted, so one-shot publication curation started.")
+    if required_entry_type == "paper_candidate":
+        append_ledger("Queue had no usable `paper_candidate`, so one-shot publication curation started.")
+    else:
+        append_ledger("Queue was empty or exhausted, so one-shot publication curation started.")
     rc = run_stage(ROOT, "curate", PROMPTS / "curate_batch.prompt.md", "on", CURATION_TIMEOUT, preferred_effort("high"), "default")
-    if wait_for_usable_queue():
+    if wait_for_usable_queue(required_entry_type=required_entry_type):
         if rc == 124:
-            append_ledger("Curation hit its time budget but still produced a usable queue.")
+            if required_entry_type == "paper_candidate":
+                append_ledger("Curation hit its time budget but still produced a usable `paper_candidate` queue.")
+            else:
+                append_ledger("Curation hit its time budget but still produced a usable queue.")
         elif rc != 0:
-            append_ledger("Curation ended oddly but still produced a usable queue.")
+            if required_entry_type == "paper_candidate":
+                append_ledger("Curation ended oddly but still produced a usable `paper_candidate` queue.")
+            else:
+                append_ledger("Curation ended oddly but still produced a usable queue.")
         return True
     if rc == 124:
-        append_ledger("Curation timed out before producing a usable queue, so this cycle ended cleanly.")
+        if required_entry_type == "paper_candidate":
+            append_ledger("Curation timed out before producing a usable `paper_candidate` queue, so this cycle ended cleanly.")
+        else:
+            append_ledger("Curation timed out before producing a usable queue, so this cycle ended cleanly.")
     elif rc != 0:
-        append_ledger("Curation had an infrastructure failure before producing a usable queue, so this cycle ended cleanly.")
+        if required_entry_type == "paper_candidate":
+            append_ledger("Curation had an infrastructure failure before producing a usable `paper_candidate` queue, so this cycle ended cleanly.")
+        else:
+            append_ledger("Curation had an infrastructure failure before producing a usable queue, so this cycle ended cleanly.")
     else:
-        append_ledger("Curation finished without producing a usable queue, so this cycle ended cleanly.")
+        if required_entry_type == "paper_candidate":
+            append_ledger("Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.")
+        else:
+            append_ledger("Curation finished without producing a usable queue, so this cycle ended cleanly.")
     return False
 
 
@@ -1628,12 +1652,16 @@ def write_publication_summary(active_campaign_slug: str | None, worker_status: s
     primary = find_campaign(active_campaign_slug) if active_campaign_slug else None
     if primary is None and campaigns:
         primary = campaigns[0]
+    paper_candidate = select_paper_candidate_entry()
     strongest_status = strongest_publication_status(campaigns) if campaigns else "NONE"
     strongest_claim = status_or_manifest(primary, "strongest_honest_claim") if primary else "(none)"
     theorem_target = status_or_manifest(primary, "theorem_slice_target") if primary else "(none)"
     next_blocker = status_or_manifest(primary, "next_blocker", status_or_manifest(primary, "next_action")) if primary else "(none)"
     next_feeders = status_or_manifest(primary, "next_feeder_instances", []) if primary else []
     next_decisive_feeder = next_feeders[0] if next_feeders else "(none listed)"
+    candidate_slug = paper_candidate["slug"] if paper_candidate else "(none queued)"
+    candidate_title = paper_candidate["title"] if paper_candidate else "(none queued)"
+    candidate_publication_if_solved = paper_candidate.get("publication_if_solved", "(not recorded)") if paper_candidate else "(none queued)"
     lean_family_complete = any(
         bool(load_campaign_status(campaign).get("lean_complete"))
         or bool(load_campaign_status(campaign).get("lean_family_lemma_complete"))
@@ -1644,6 +1672,9 @@ def write_publication_summary(active_campaign_slug: str | None, worker_status: s
         "# AutoMath Publication Summary",
         "",
         f"- Updated: `{now_str()}`",
+        f"- Queued one-shot paper candidate: {candidate_slug}",
+        f"- Candidate title: {candidate_title}",
+        f"- Candidate publication if solved: {candidate_publication_if_solved}",
         f"- Active campaigns: {', '.join(c['family_slug'] for c in campaigns) if campaigns else '(none)'}",
         f"- Strongest current publication status: `{strongest_status}`",
         f"- Strongest honest claim: {strongest_claim}",
@@ -1664,6 +1695,9 @@ def write_publication_summary(active_campaign_slug: str | None, worker_status: s
     FAMILY_SUMMARY.write_text("\n".join(summary_lines).rstrip() + "\n", encoding="utf-8")
 
     report_lines = [
+        f"[publication_summary] queued paper candidate: {candidate_slug}",
+        f"[publication_summary] candidate title: {candidate_title}",
+        f"[publication_summary] candidate publication if solved: {candidate_publication_if_solved}",
         f"[publication_summary] active campaign: {primary['family_slug'] if primary else '(none)'}",
         f"[publication_summary] strongest publication_status: {strongest_status}",
         f"[publication_summary] strongest honest claim: {strongest_claim}",
@@ -2622,7 +2656,7 @@ def run_publication_cycle(explicit_campaign: str | None, allow_parallel: bool) -
             write_publication_summary(None, "not_used")
             return 0
         return run_campaign_flow(campaign, allow_parallel=allow_parallel)
-    if not run_curation_if_needed():
+    if not run_curation_if_needed(required_entry_type="paper_candidate"):
         write_publication_summary(None, "not_used")
         return 0
     entry = select_paper_candidate_entry()

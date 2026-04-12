@@ -14,7 +14,7 @@ This stage may run after:
 First detect whether the selected entry is:
 
 - a `family_campaign`, in which case work under `artifacts/families/<family_slug>/`
-- a `feeder_instance`, in which case work under `artifacts/<slug>/`
+- a `paper_candidate` or `feeder_instance`, in which case work under `artifacts/<slug>/`
 
 Read the relevant `record.md`, `status.json`, and the campaign dossier if one exists.
 If `selected_problem.md` includes `attempt_kind`, `attempt_output_markdown`, and `attempt_output_json`, treat this as a sidecar proof-attempt audit:
@@ -41,11 +41,12 @@ Run these passes in order:
 Questions you must answer explicitly:
 
 - Is the strongest honest claim stronger than “here is an example”?
+- If this is a `paper_candidate`, would solving it already be 70-90% of a paper?
 - Is there a real parameterized theorem, theorem slice, or counterexample theorem here?
 - Is the proof structural or merely instance-specific?
 - Would this survive a referee asking “what is the theorem?”
 - Is the claim still too dependent on hand-picked small cases?
-- Is the generalization route strong enough to merit campaign priority?
+- If this is not yet paper-ready, is the remaining gap genuinely small or did the candidate only look attractive before audit?
 
 Prior-art / rediscovery audit requirements:
 
@@ -94,6 +95,7 @@ Publication status taxonomy:
 Interpretation rules:
 
 - Lean-backed exact instance but still just an example: `INSTANCE_ONLY`
+- one-shot candidate with a clear theorem/result packet but light remaining writeup or formal sealing: usually `SLICE_CANDIDATE`
 - rediscovery: `REDISCOVERY`
 - strong but not fully closed theorem slice: `SLICE_CANDIDATE`
 - fully proved nontrivial slice: `SLICE_EXACT`

@@ -6,7 +6,7 @@ Do NOT browse the internet.
 First detect whether the selected entry is:
 
 - a `family_campaign`, in which case work under `artifacts/families/<family_slug>/`
-- a `feeder_instance`, in which case work under `artifacts/<slug>/`
+- a `paper_candidate` or `feeder_instance`, in which case work under `artifacts/<slug>/`
 
 Only continue if the verified or generalized result is strong enough to formalize and the current classification is not `REDISCOVERY`.
 
@@ -29,6 +29,7 @@ Rules:
 - then write a proof skeleton
 - then try a full proof only if feasible
 - for family campaigns, prefer one reusable lemma or one theorem-slice skeleton over a broad multi-file excursion
+- for one-shot `paper_candidate` work, use Lean only if it is the shortest path from "solved claim" to "publication packet sealed"
 - do not introduce new axioms
 - do not use `sorry`, `admit`, or placeholders in the final claimed proof
 - if Lean is available, run the build/check commands needed to confirm the file really checks

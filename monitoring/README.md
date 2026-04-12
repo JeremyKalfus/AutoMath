@@ -28,7 +28,8 @@ Use this repo-side setup if you want Codex app automation without running the ma
 ## Default Long-Horizon Mode
 
 - The repo-local default long-horizon manager is [run_continuous.sh](/Users/jeremykalfus/CodingProjects/AutoMath/run_continuous.sh).
-- It keeps cycling in publication mode until `.stop_harness` exists or a campaign honestly reaches `publication_status = PAPER_READY`.
+- It keeps cycling in one-shot publication mode until `.stop_harness` exists or the strongest honest claim reaches `publication_status = PAPER_READY`.
+- In the default lane, it should keep curating for `paper_candidate` entries whose solve would already be most of a paper; it should not silently fall back to campaign-first behavior.
 - Use the monitor runner only when you want a one-cycle worktree pass or a Codex app automation, not as the primary manager loop.
 
 ## What To Watch

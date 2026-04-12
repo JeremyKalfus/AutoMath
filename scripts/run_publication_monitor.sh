@@ -21,9 +21,75 @@ sync_item() {
   fi
 }
 
+monitor_artifact_slugs() {
+  local base="$1"
+  python3 - "$base" <<'PY'
+import json
+import re
+import sys
+from pathlib import Path
+
+base = Path(sys.argv[1])
+seen = set()
+
+
+def emit(slug):
+    if not slug or slug in seen:
+        return
+    seen.add(slug)
+    print(slug)
+
+
+manifest = base / "campaigns" / "manifest.json"
+if manifest.exists():
+    try:
+        data = json.loads(manifest.read_text())
+    except Exception:
+        data = []
+    if isinstance(data, list):
+        for campaign in data:
+            if not isinstance(campaign, dict):
+                continue
+            for slug in campaign.get("seed_instances", []):
+                emit(slug)
+
+queue_path = base / "queue.json"
+if queue_path.exists():
+    try:
+        queue = json.loads(queue_path.read_text())
+    except Exception:
+        queue = []
+    if isinstance(queue, list):
+        for item in queue:
+            if not isinstance(item, dict):
+                continue
+            if item.get("entry_type") in {"paper_candidate", "feeder_instance"}:
+                emit(item.get("slug"))
+            for key in ["seed_instances", "next_feeder_instances"]:
+                for slug in item.get(key, []):
+                    emit(slug)
+
+selected = base / "selected_problem.md"
+if selected.exists():
+    text = selected.read_text()
+    match = re.search(r"^- slug: `([^`]+)`", text, flags=re.M)
+    if match:
+        slug = match.group(1)
+        if not slug.startswith("family-"):
+            emit(slug)
+    for block_key in ["seed_instances", "next_feeder_instances"]:
+        block = re.search(rf"^## {re.escape(block_key)}\n((?:- .+\n)*)", text, flags=re.M)
+        if block:
+            for line in block.group(1).splitlines():
+                if line.startswith("- "):
+                    emit(line[2:].strip())
+PY
+}
+
 seed_monitor_checkout() {
   local items=(
     AGENTS.md
+    ONE_SHOT_PUBLICATION_REDESIGN_PLAN.md
     PROOFS.md
     ledger.md
     queue.json
@@ -49,22 +115,7 @@ seed_monitor_checkout() {
   while IFS= read -r slug; do
     [[ -n "$slug" ]] || continue
     sync_item "$ROOT/artifacts/$slug" "$WORKTREE/artifacts/$slug"
-  done < <(
-    python3 - <<'PY'
-import json
-from pathlib import Path
-
-manifest = Path("campaigns/manifest.json")
-if manifest.exists():
-    data = json.loads(manifest.read_text())
-    seen = set()
-    for campaign in data:
-        for slug in campaign.get("seed_instances", []):
-            if slug not in seen:
-                print(slug)
-                seen.add(slug)
-PY
-  )
+  done < <(monitor_artifact_slugs "$ROOT")
 }
 
 sync_monitor_results_back() {
@@ -82,6 +133,11 @@ sync_monitor_results_back() {
   for item in "${items[@]}"; do
     sync_item "$WORKTREE/$item" "$ROOT/$item"
   done
+
+  while IFS= read -r slug; do
+    [[ -n "$slug" ]] || continue
+    sync_item "$WORKTREE/artifacts/$slug" "$ROOT/artifacts/$slug"
+  done < <(monitor_artifact_slugs "$WORKTREE")
 }
 
 if ! git -C "$ROOT" rev-parse --is-inside-work-tree >/dev/null 2>&1; then

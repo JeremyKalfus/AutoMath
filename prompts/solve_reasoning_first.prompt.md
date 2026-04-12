@@ -4,7 +4,10 @@ This is the SOLVE stage.
 Do NOT browse the internet.
 
 Goal:
-Produce the best reasoning-first attempt on the active feeder instance, with minimal code, while also extracting reusable structure for publication-mode generalization.
+Produce the best reasoning-first attempt on the active selected candidate, with minimal code, while keeping the main publication objective in view.
+
+- If this is a `paper_candidate`, try to close the smallest frontier claim that is already most of a paper if solved.
+- If this is a `feeder_instance`, try to extract only the family signal that materially shortens the path to publication.
 
 First determine the active slug and title from `selected_problem.md`.
 Create `artifacts/<slug>/` if missing.
@@ -69,6 +72,12 @@ Mandatory publication-aware outputs:
 - `candidate_theorem_slice`
 - `smallest_param_shift_to_test`
 - `why_this_is_or_is_not_publishable`
+
+If this is a `paper_candidate`, also make explicit:
+
+- whether a successful solve would already be 70-90% of a paper
+- what the exact paper claim would be
+- what the minimal remaining packaging work would be
 
 After any strong exact or counterexample result, you must say:
 
