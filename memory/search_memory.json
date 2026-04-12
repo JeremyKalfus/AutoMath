@@ -1,0 +1,326 @@
+{
+  "generated_on": "2026-04-12T18:41:44.367830-04:00",
+  "count": 88,
+  "recent_attempts": [
+    {
+      "slug": "dsrg-54-11-4-3-2",
+      "reason": "ATTEMPTED",
+      "title": "dsrg-54-11-4-3-2",
+      "notes": "Legacy archived attempt preserved before thin search memory existed.",
+      "checked_on": null,
+      "publication_status": null
+    },
+    {
+      "slug": "b26-munchhausen-matrix",
+      "reason": "ATTEMPTED",
+      "title": "b26-munchhausen-matrix",
+      "notes": "Legacy archived attempt preserved before thin search memory existed.",
+      "checked_on": null,
+      "publication_status": null
+    },
+    {
+      "slug": "dsrg-51-15-10-5-4",
+      "reason": "ATTEMPTED",
+      "title": "dsrg-51-15-10-5-4",
+      "notes": "Legacy archived attempt preserved before thin search memory existed.",
+      "checked_on": null,
+      "publication_status": null
+    },
+    {
+      "slug": "dsrg-28-6-3-2-1",
+      "reason": "ATTEMPTED",
+      "title": "dsrg-28-6-3-2-1",
+      "notes": "Legacy archived attempt preserved before thin search memory existed.",
+      "checked_on": null,
+      "publication_status": null
+    },
+    {
+      "slug": "powers-of-two-pairs-23",
+      "reason": "ATTEMPTED",
+      "title": "powers-of-two-pairs-23",
+      "notes": "Legacy archived attempt preserved before thin search memory existed.",
+      "checked_on": null,
+      "publication_status": null
+    },
+    {
+      "slug": "d5-balanced-equi-30-square",
+      "reason": "ATTEMPTED",
+      "title": "d5-balanced-equi-30-square",
+      "notes": "Legacy archived attempt preserved before thin search memory existed.",
+      "checked_on": null,
+      "publication_status": null
+    },
+    {
+      "slug": "dsrg-24-10-5-3-5",
+      "reason": "ATTEMPTED",
+      "title": "dsrg-24-10-5-3-5",
+      "notes": "Legacy archived attempt preserved before thin search memory existed.",
+      "checked_on": null,
+      "publication_status": null
+    },
+    {
+      "slug": "dsrg-27-7-4-1-2",
+      "reason": "ATTEMPTED",
+      "title": "dsrg-27-7-4-1-2",
+      "notes": "Legacy archived attempt preserved before thin search memory existed.",
+      "checked_on": null,
+      "publication_status": null
+    },
+    {
+      "slug": "dsrg-40-18-9-7-9",
+      "reason": "ATTEMPTED",
+      "title": "dsrg-40-18-9-7-9",
+      "notes": "Legacy archived attempt preserved before thin search memory existed.",
+      "checked_on": null,
+      "publication_status": null
+    },
+    {
+      "slug": "dsrg-48-22-11-9-11",
+      "reason": "ATTEMPTED",
+      "title": "dsrg-48-22-11-9-11",
+      "notes": "Legacy archived attempt preserved before thin search memory existed.",
+      "checked_on": null,
+      "publication_status": null
+    },
+    {
+      "slug": "dsrg-56-12-3-1-3",
+      "reason": "ATTEMPTED",
+      "title": "dsrg-56-12-3-1-3",
+      "notes": "Legacy archived attempt preserved before thin search memory existed.",
+      "checked_on": null,
+      "publication_status": null
+    },
+    {
+      "slug": "dsrg-48-9-5-0-2",
+      "reason": "ATTEMPTED",
+      "title": "dsrg-48-9-5-0-2",
+      "notes": "Legacy archived attempt preserved before thin search memory existed.",
+      "checked_on": null,
+      "publication_status": null
+    },
+    {
+      "slug": "dsrg-30-11-9-2-5",
+      "reason": "ATTEMPTED",
+      "title": "dsrg-30-11-9-2-5",
+      "notes": "Legacy archived attempt preserved before thin search memory existed.",
+      "checked_on": null,
+      "publication_status": null
+    },
+    {
+      "slug": "z11-z25-prime-zero-divisor-graph",
+      "reason": "CANDIDATE",
+      "title": "Is the zero-divisor graph \u0393(Z_11 \u00d7 Z_25) prime?",
+      "notes": "Verified feeder evidence archived so the p = 11 witness remains campaign input for the zero-divisor theorem slice without reentering the live queue as a fresh target.",
+      "checked_on": "2026-04-09",
+      "publication_status": "SLICE_CANDIDATE"
+    },
+    {
+      "slug": "z11-z11-z2-prime-zero-divisor-graph",
+      "reason": "CANDIDATE",
+      "title": "Is the zero-divisor graph \u0393(Z_11 \u00d7 Z_11 \u00d7 Z_2) prime?",
+      "notes": "Verified feeder evidence archived after skeptical verify so the paired p = 11 zero-divisor campaign can move to the p = 13 frontier without rerunning this preserved instance.",
+      "checked_on": "2026-04-09",
+      "publication_status": "SLICE_CANDIDATE"
+    },
+    {
+      "slug": "z13-z25-prime-zero-divisor-graph",
+      "reason": "CANDIDATE",
+      "title": "Is the zero-divisor graph \u0393(Z_13 \u00d7 Z_25) prime?",
+      "notes": "Verified feeder evidence archived so the refined F25(13) witness remains campaign input without reentering the live queue; the next decisive zero-divisor frontier is now z13-z13-z2-prime-zero-divisor-graph.",
+      "checked_on": "2026-04-09",
+      "publication_status": "SLICE_CANDIDATE"
+    },
+    {
+      "slug": "z17-z25-prime-zero-divisor-graph",
+      "reason": "CANDIDATE",
+      "title": "Is the zero-divisor graph \u0393(Z_17 \u00d7 Z_25) prime?",
+      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+      "checked_on": "2026-04-10",
+      "publication_status": "INSTANCE_ONLY"
+    },
+    {
+      "slug": "z19-z25-prime-zero-divisor-graph",
+      "reason": "CANDIDATE",
+      "title": "Is the zero-divisor graph \u0393(Z_19 \u00d7 Z_25) prime?",
+      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+      "checked_on": "2026-04-10",
+      "publication_status": "INSTANCE_ONLY"
+    },
+    {
+      "slug": "z17-z17-z2-prime-zero-divisor-graph",
+      "reason": "CANDIDATE",
+      "title": "Is the zero-divisor graph \u0393(Z_17 \u00d7 Z_17 \u00d7 Z_2) prime?",
+      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+      "checked_on": "2026-04-10",
+      "publication_status": "SLICE_CANDIDATE"
+    },
+    {
+      "slug": "z23-z25-prime-zero-divisor-graph",
+      "reason": "CANDIDATE",
+      "title": "Is the zero-divisor graph Gamma(Z_23 x Z_25) prime?",
+      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+      "checked_on": "2026-04-11",
+      "publication_status": "SLICE_CANDIDATE"
+    },
+    {
+      "slug": "z29-z25-prime-zero-divisor-graph",
+      "reason": "CANDIDATE",
+      "title": "Is the zero-divisor graph Gamma(Z_29 x Z_25) prime?",
+      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+      "checked_on": "2026-04-11",
+      "publication_status": "SLICE_CANDIDATE"
+    },
+    {
+      "slug": "z31-z25-prime-zero-divisor-graph",
+      "reason": "CANDIDATE",
+      "title": "Is the zero-divisor graph Gamma(Z_31 x Z_25) prime?",
+      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+      "checked_on": "2026-04-11",
+      "publication_status": "SLICE_CANDIDATE"
+    },
+    {
+      "slug": "z37-z25-prime-zero-divisor-graph",
+      "reason": "CANDIDATE",
+      "title": "Is the zero-divisor graph Gamma(Z_37 x Z_25) prime?",
+      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+      "checked_on": "2026-04-11",
+      "publication_status": "SLICE_CANDIDATE"
+    },
+    {
+      "slug": "z41-z25-prime-zero-divisor-graph",
+      "reason": "CANDIDATE",
+      "title": "Is the zero-divisor graph Gamma(Z_41 x Z_25) prime?",
+      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+      "checked_on": "2026-04-11",
+      "publication_status": "SLICE_CANDIDATE"
+    },
+    {
+      "slug": "z43-z25-prime-zero-divisor-graph",
+      "reason": "CANDIDATE",
+      "title": "Is the zero-divisor graph Gamma(Z_43 x Z_25) prime?",
+      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+      "checked_on": "2026-04-11",
+      "publication_status": "SLICE_CANDIDATE"
+    },
+    {
+      "slug": "z47-z25-prime-zero-divisor-graph",
+      "reason": "CANDIDATE",
+      "title": "Is the zero-divisor graph Gamma(Z_47 x Z_25) prime?",
+      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+      "checked_on": "2026-04-11",
+      "publication_status": "SLICE_CANDIDATE"
+    },
+    {
+      "slug": "z53-z25-prime-zero-divisor-graph",
+      "reason": "CANDIDATE",
+      "title": "Is the zero-divisor graph Gamma(Z_53 x Z_25) prime?",
+      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+      "checked_on": "2026-04-11",
+      "publication_status": "SLICE_CANDIDATE"
+    },
+    {
+      "slug": "z59-z25-prime-zero-divisor-graph",
+      "reason": "CANDIDATE",
+      "title": "Is the zero-divisor graph Gamma(Z_59 x Z_25) prime?",
+      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+      "checked_on": "2026-04-11",
+      "publication_status": "SLICE_CANDIDATE"
+    },
+    {
+      "slug": "z61-z25-prime-zero-divisor-graph",
+      "reason": "CANDIDATE",
+      "title": "Is the zero-divisor graph Gamma(Z_61 x Z_25) prime?",
+      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+      "checked_on": "2026-04-11",
+      "publication_status": "SLICE_CANDIDATE"
+    },
+    {
+      "slug": "z67-z25-prime-zero-divisor-graph",
+      "reason": "CANDIDATE",
+      "title": "Is the zero-divisor graph Gamma(Z_67 x Z_25) prime?",
+      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+      "checked_on": "2026-04-11",
+      "publication_status": "SLICE_CANDIDATE"
+    },
+    {
+      "slug": "z71-z25-prime-zero-divisor-graph",
+      "reason": "CANDIDATE",
+      "title": "Is the zero-divisor graph Gamma(Z_71 x Z_25) prime?",
+      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+      "checked_on": "2026-04-11",
+      "publication_status": "SLICE_CANDIDATE"
+    },
+    {
+      "slug": "z73-z25-prime-zero-divisor-graph",
+      "reason": "CANDIDATE",
+      "title": "Is the zero-divisor graph Gamma(Z_73 x Z_25) prime?",
+      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+      "checked_on": "2026-04-11",
+      "publication_status": "SLICE_CANDIDATE"
+    },
+    {
+      "slug": "z79-z25-prime-zero-divisor-graph",
+      "reason": "CANDIDATE",
+      "title": "Is the zero-divisor graph Gamma(Z_79 x Z_25) prime?",
+      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+      "checked_on": "2026-04-11",
+      "publication_status": "SLICE_CANDIDATE"
+    },
+    {
+      "slug": "z83-z25-prime-zero-divisor-graph",
+      "reason": "CANDIDATE",
+      "title": "Is the zero-divisor graph Gamma(Z_83 x Z_25) prime?",
+      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+      "checked_on": "2026-04-12",
+      "publication_status": "SLICE_CANDIDATE"
+    },
+    {
+      "slug": "z89-z25-prime-zero-divisor-graph",
+      "reason": "CANDIDATE",
+      "title": "Is the zero-divisor graph Gamma(Z_89 x Z_25) prime?",
+      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+      "checked_on": "2026-04-12",
+      "publication_status": "SLICE_CANDIDATE"
+    },
+    {
+      "slug": "z97-z25-prime-zero-divisor-graph",
+      "reason": "CANDIDATE",
+      "title": "Is the zero-divisor graph Gamma(Z_97 x Z_25) prime?",
+      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+      "checked_on": "2026-04-12",
+      "publication_status": "SLICE_CANDIDATE"
+    },
+    {
+      "slug": "z101-z25-prime-zero-divisor-graph",
+      "reason": "CANDIDATE",
+      "title": "Is the zero-divisor graph Gamma(Z_101 x Z_25) prime?",
+      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+      "checked_on": "2026-04-12",
+      "publication_status": "INSTANCE_ONLY"
+    },
+    {
+      "slug": "z103-z25-prime-zero-divisor-graph",
+      "reason": "CANDIDATE",
+      "title": "Is the zero-divisor graph Gamma(Z_103 x Z_25) prime?",
+      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+      "checked_on": "2026-04-12",
+      "publication_status": "SLICE_CANDIDATE"
+    },
+    {
+      "slug": "z107-z25-prime-zero-divisor-graph",
+      "reason": "CANDIDATE",
+      "title": "Is the zero-divisor graph Gamma(Z_107 x Z_25) prime?",
+      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+      "checked_on": "2026-04-12",
+      "publication_status": "SLICE_CANDIDATE"
+    },
+    {
+      "slug": "forbidden-outdegree-orientation-d7",
+      "reason": "REDISCOVERY",
+      "title": "Settle the d = 7 slice of the forbidden out-degree orientation conjecture",
+      "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
+      "checked_on": "2026-04-12",
+      "publication_status": "REDISCOVERY"
+    }
+  ]
+}

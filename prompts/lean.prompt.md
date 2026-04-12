@@ -1,5 +1,6 @@
 Read `AGENTS.md`, `selected_problem.md`, the relevant `record.md`, the relevant `status.json`, and `PROOFS.md` if it exists.
 If `selected_problem.md` includes `handoff_memo_path`, read that memo immediately after `selected_problem.md` and treat it as the binding scope authority for allowed files, stop condition, and output path.
+If `selected_problem.md` includes `working_packet_path`, read that file immediately after `selected_problem.md`.
 
 This is the LEAN stage.
 Do NOT browse the internet.
@@ -19,6 +20,13 @@ Sidecar attempt mode:
 - if the sidecar output files already exist, continue from them instead of restarting from scratch
 - write the durable Lean record/status to those sidecar output paths instead of the canonical artifact files
 - do not mutate canonical artifact files in this sidecar mode
+
+Read budget:
+
+- target 3 to 6 local files total after `selected_problem.md`
+- hard cap 8 local files unless one exact theorem dependency must be opened explicitly
+- prefer the working packet, local record/status, and only the minimal Lean modules needed for the current target
+- do not reopen broad artifact history during Lean
 
 Goal:
 Formalize the strongest honest target, not a proxy.

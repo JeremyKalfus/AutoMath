@@ -1,5 +1,6 @@
 Read `AGENTS.md`, `selected_problem.md`, `artifacts/<slug>/record.md`, and `artifacts/<slug>/status.json` first.
 If `selected_problem.md` includes `handoff_memo_path`, read that memo immediately after `selected_problem.md` and treat it as the binding scope authority for allowed files, stop condition, and output path.
+If `selected_problem.md` includes `working_packet_path`, read that file immediately after `selected_problem.md`.
 
 This is the VERIFY stage.
 Use LIMITED web only for PASS 1.
@@ -15,6 +16,13 @@ Sidecar attempt mode:
 - if the sidecar output files already exist, read them first and keep writing there
 - write the durable verification record and status to those sidecar output paths instead of the canonical artifact files
 - do not mutate canonical artifact files in this sidecar mode
+
+Read budget:
+
+- target 3 to 6 local files total after `selected_problem.md`
+- hard cap 8 local files unless one exact faithfulness check forces one more supporting source
+- prefer the working packet, local artifact record/status, and one canonical source anchor over broad repo rereads
+- do not roam through broad logs or unrelated artifacts during verify
 
 Run 5 passes in this exact order:
 

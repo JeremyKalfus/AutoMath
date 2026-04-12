@@ -29,6 +29,9 @@ QUEUE = ROOT / "queue.json"
 FAILED = ROOT / "failed_problems.json"
 SELECTED = ROOT / "selected_problem.md"
 AGENTS_FILE = ROOT / "AGENTS.md"
+MEMORY_DIR = ROOT / "memory"
+PAPER_MEMORY = MEMORY_DIR / "paper_memory.json"
+SEARCH_MEMORY = MEMORY_DIR / "search_memory.json"
 CAMPAIGN_MANIFEST = ROOT / "campaigns" / "manifest.json"
 STOP_MARKER = ROOT / ".stop_harness"
 CAPABILITIES_CACHE = LOGS / "codex_capabilities.json"
@@ -91,6 +94,7 @@ def ensure_state() -> None:
     LOGS.mkdir(parents=True, exist_ok=True)
     ARTIFACTS.mkdir(parents=True, exist_ok=True)
     FAMILY_ARTIFACTS.mkdir(parents=True, exist_ok=True)
+    MEMORY_DIR.mkdir(parents=True, exist_ok=True)
     if not RUNTIME_STATE.exists():
         RUNTIME_STATE.write_text("{}\n", encoding="utf-8")
     try:
@@ -113,6 +117,10 @@ def ensure_state() -> None:
         FAILED.write_text("[]\n", encoding="utf-8")
     if not SELECTED.exists():
         SELECTED.write_text("# Selected Problem\n\nNo problem selected yet.\n", encoding="utf-8")
+    if not PAPER_MEMORY.exists():
+        PAPER_MEMORY.write_text("{}\n", encoding="utf-8")
+    if not SEARCH_MEMORY.exists():
+        SEARCH_MEMORY.write_text("{}\n", encoding="utf-8")
 
 
 def append_ledger(message: str) -> None:
@@ -135,7 +143,28 @@ def load_json(path: pathlib.Path, default):
 
 def write_json(path: pathlib.Path, data) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+    text = json.dumps(data, indent=2) + "\n"
+    if path.exists() and path.read_text(encoding="utf-8") == text:
+        return
+    path.write_text(text, encoding="utf-8")
+
+
+def write_stable_memory_json(path: pathlib.Path, data: dict) -> None:
+    existing = load_json(path, {})
+    if isinstance(existing, dict):
+        existing_core = {k: v for k, v in existing.items() if k != "generated_on"}
+        new_core = {k: v for k, v in data.items() if k != "generated_on"}
+        if existing_core == new_core and existing.get("generated_on"):
+            data = dict(data)
+            data["generated_on"] = existing["generated_on"]
+    write_json(path, data)
+
+
+def compact_text(value, limit: int = 220) -> str:
+    text = re.sub(r"\s+", " ", str(value or "")).strip()
+    if len(text) <= limit:
+        return text
+    return text[: max(0, limit - 3)].rstrip() + "..."
 
 
 def load_runtime_state() -> dict:
@@ -430,6 +459,7 @@ def render_selected_problem(entry: dict) -> None:
         "pre_solve_gate",
         "publication_packet_quality",
         "handoff_memo_path",
+        "working_packet_path",
         "paper_shape",
     ]:
         value = entry.get(key)
@@ -608,6 +638,175 @@ def relative_display(path: pathlib.Path) -> str:
         return str(path)
 
 
+def candidate_working_packet_path(slug: str) -> pathlib.Path:
+    return ROOT / "artifacts" / slug / "working_packet.md"
+
+
+def build_candidate_working_packet(entry: dict) -> str:
+    slug = entry["slug"]
+    packet_title = entry.get("publication_packet_title") or entry.get("title") or slug
+    bounded_sources = [
+        entry.get("canonical_source"),
+        entry.get("publication_packet_literature_scope"),
+        relative_display(ROOT / "artifacts" / slug / "record.md"),
+        relative_display(ROOT / "artifacts" / slug / "status.json"),
+    ]
+    if isinstance(entry.get("campaign_affinity"), str) and entry.get("campaign_affinity"):
+        campaign = find_campaign(entry["campaign_affinity"])
+        if campaign is not None:
+            bounded_sources.extend(
+                [
+                    relative_display(ROOT / campaign["dossier_path"]),
+                    relative_display(campaign_status_path(campaign)),
+                ]
+            )
+    deduped_sources = [item for item in dict.fromkeys(str(x) for x in bounded_sources if x)]
+    lines = [
+        f"# Working Packet: {packet_title}",
+        "",
+        f"- slug: `{slug}`",
+        f"- title: {entry.get('title', slug)}",
+        f"- publication status: `{entry.get('publication_status', 'NONE')}`",
+        f"- packet quality: `{entry.get('publication_packet_quality', 'unknown')}`",
+        "",
+        "## statement",
+        str(entry.get("intended_statement") or entry.get("canonical_statement") or entry.get("question") or ""),
+        "",
+        "## novelty_notes",
+        f"- frontier basis: {entry.get('publication_packet_frontier_basis', '(not recorded)')}",
+        f"- why still open: {entry.get('why_still_appears_open', '(not recorded)')}",
+        f"- attempted conflict check: {entry.get('attempted_conflict_check', '(not recorded)')}",
+        f"- rediscovery risk: {entry.get('rediscovery_risk', '(not recorded)')}",
+        "",
+        "## proof_sketch",
+        f"- attack style: {entry.get('attack_style', '(not recorded)')}",
+        f"- likely route: {entry.get('publication_packet_near_paper_reason', '(not recorded)')}",
+        f"- verifier focus: {entry.get('verifier_hint', '(not recorded)')}",
+        "",
+        "## likely_paper_shape",
+        f"- note title: {packet_title}",
+        f"- paper shape: {entry.get('paper_shape', '(not recorded)')}",
+        f"- publication if solved: {entry.get('publication_if_solved', '(not recorded)')}",
+        f"- minimal artifact requirements: {entry.get('publication_packet_artifact_requirements', '(not recorded)')}",
+        "",
+        "## bounded_source_list",
+    ]
+    lines.extend([f"- {item}" for item in deduped_sources])
+    lines.append("")
+    return "\n".join(lines)
+
+
+def ensure_candidate_working_packet(entry: dict) -> pathlib.Path:
+    path = candidate_working_packet_path(entry["slug"])
+    text = build_candidate_working_packet(entry)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    if not path.exists() or path.read_text(encoding="utf-8") != text:
+        path.write_text(text, encoding="utf-8")
+    return path
+
+
+def entry_with_working_packet(entry: dict) -> dict:
+    if entry.get("entry_type") != "paper_candidate" or not entry.get("slug"):
+        return entry
+    enriched = dict(entry)
+    enriched["working_packet_path"] = relative_display(ensure_candidate_working_packet(entry))
+    return enriched
+
+
+def thin_failed_entry(item) -> dict:
+    if isinstance(item, str):
+        return {
+            "slug": item,
+            "reason": "ATTEMPTED",
+            "title": item,
+            "notes": "Legacy archived attempt preserved before thin search memory existed.",
+            "checked_on": None,
+            "publication_status": None,
+        }
+    if not isinstance(item, dict):
+        return {
+            "slug": str(item),
+            "reason": "ATTEMPTED",
+            "title": str(item),
+            "notes": "Unstructured archived attempt.",
+            "checked_on": None,
+            "publication_status": None,
+        }
+    return {
+        "slug": item.get("slug") or "(missing slug)",
+        "reason": item.get("reason") or "ATTEMPTED",
+        "title": item.get("title") or item.get("slug") or "(untitled)",
+        "notes": compact_text(item.get("notes") or item.get("reason") or "Archived attempt."),
+        "checked_on": item.get("checked_on"),
+        "publication_status": item.get("publication_status"),
+    }
+
+
+def refresh_search_memory() -> None:
+    failed = load_json(FAILED, [])
+    normalized = [thin_failed_entry(item) for item in failed]
+    summary = {
+        "generated_on": now_iso(),
+        "count": len(normalized),
+        "recent_attempts": normalized[-40:],
+    }
+    write_stable_memory_json(SEARCH_MEMORY, summary)
+
+
+def refresh_paper_memory(queue_entries: list[dict] | None = None) -> None:
+    entries = queue_entries if queue_entries is not None else load_json(QUEUE, [])
+    packets: list[dict] = []
+    for entry in entries:
+        if not isinstance(entry, dict) or entry.get("entry_type") != "paper_candidate":
+            continue
+        packet_path = ensure_candidate_working_packet(entry)
+        packets.append(
+            {
+                "slug": entry.get("slug"),
+                "title": entry.get("title"),
+                "publication_status": entry.get("publication_status", "NONE"),
+                "publication_packet_title": entry.get("publication_packet_title"),
+                "publication_packet_quality": entry.get("publication_packet_quality"),
+                "publication_if_solved": compact_text(entry.get("publication_if_solved"), 180),
+                "why_this_could_be_publishable": compact_text(entry.get("why_this_could_be_publishable"), 180),
+                "canonical_source": entry.get("canonical_source"),
+                "working_packet_path": relative_display(packet_path),
+            }
+        )
+    campaign_summaries: list[dict] = []
+    for campaign in active_campaigns()[:3]:
+        status = load_campaign_status(campaign)
+        campaign_summaries.append(
+            {
+                "family_slug": campaign["family_slug"],
+                "publication_status": status.get("publication_status", campaign.get("publication_status", "NONE")),
+                "strongest_honest_claim": compact_text(status.get("strongest_honest_claim") or campaign.get("theorem_slice_hint"), 220),
+                "next_blocker": compact_text(status.get("next_blocker") or status.get("next_action") or "", 180),
+            }
+        )
+    exact_wins = [
+        item
+        for item in (thin_failed_entry(entry) for entry in load_json(FAILED, []))
+        if item.get("reason") == "EXACT"
+    ]
+    summary = {
+        "generated_on": now_iso(),
+        "queued_publication_packets": packets,
+        "near_paper_campaigns": campaign_summaries,
+        "exact_wins": exact_wins[-20:],
+    }
+    write_stable_memory_json(PAPER_MEMORY, summary)
+
+
+def refresh_context_hygiene_surfaces(queue_entries: list[dict] | None = None) -> None:
+    entries = queue_entries if queue_entries is not None else load_json(QUEUE, [])
+    for entry in entries:
+        if isinstance(entry, dict) and entry.get("entry_type") == "paper_candidate" and entry.get("slug"):
+            ensure_candidate_working_packet(entry)
+    refresh_search_memory()
+    refresh_paper_memory(entries)
+
+
 def candidate_attempt_dir(slug: str) -> pathlib.Path:
     return ROOT / "artifacts" / slug / "attempts"
 
@@ -627,8 +826,12 @@ def family_attempt_handoff_path(campaign: dict, attempt_kind: str) -> pathlib.Pa
 
 def candidate_allowed_paths(entry: dict) -> list[pathlib.Path]:
     slug = entry["slug"]
+    working_packet = ensure_candidate_working_packet(entry)
     paths: list[pathlib.Path] = [
         AGENTS_FILE,
+        PAPER_MEMORY,
+        SEARCH_MEMORY,
+        working_packet,
         ROOT / "artifacts" / slug / "record.md",
         ROOT / "artifacts" / slug / "status.json",
     ]
@@ -643,14 +846,14 @@ def candidate_allowed_paths(entry: dict) -> list[pathlib.Path]:
                     campaign_status_path(campaign),
                 ]
             )
-    if PROOFS.exists() and len(paths) < 6:
-        paths.append(PROOFS)
     return dedupe_paths(paths)[:6]
 
 
 def family_attempt_allowed_paths(campaign: dict) -> list[pathlib.Path]:
     paths: list[pathlib.Path] = [
         AGENTS_FILE,
+        PAPER_MEMORY,
+        SEARCH_MEMORY,
         ROOT / campaign["dossier_path"],
         campaign_record_path(campaign),
         campaign_status_path(campaign),
@@ -757,8 +960,9 @@ def normalize_queue_for_scheduler() -> list[dict]:
     normalized = valid_papers + invalid_papers + others
     if normalized != queue:
         write_json(QUEUE, normalized)
+    refresh_context_hygiene_surfaces(normalized)
     if valid_papers:
-        render_selected_problem(valid_papers[0])
+        render_selected_problem(entry_with_working_packet(valid_papers[0]))
     return normalized
 
 
@@ -1127,6 +1331,7 @@ def active_campaigns() -> list[dict]:
 def worker_required_paths() -> list[pathlib.Path]:
     return [
         AGENTS_FILE,
+        MEMORY_DIR,
         ROOT / "PROOFS.md",
         ROOT / "ledger.md",
         ROOT / "selected_problem.md",
@@ -1380,7 +1585,8 @@ def seed_campaign_queue() -> bool:
     if len(entries) != 5:
         return False
     write_json(QUEUE, entries)
-    render_selected_problem(entries[0])
+    refresh_context_hygiene_surfaces(entries)
+    render_selected_problem(entry_with_working_packet(entries[0]))
     append_ledger("Queue was empty or exhausted, so it was locally reseeded from active publication campaigns before any broad web curation.")
     return True
 
@@ -1435,6 +1641,7 @@ def render_campaign_selection(campaign: dict) -> pathlib.Path:
 
 
 def render_candidate_attempt_selection(entry: dict, worker_role: str) -> pathlib.Path:
+    entry = entry_with_working_packet(entry)
     output_markdown, output_json = candidate_attempt_paths(entry["slug"], worker_role)
     handoff_path = candidate_handoff_path(entry["slug"], worker_role)
     allowed_paths = candidate_allowed_paths(entry)
@@ -1599,11 +1806,14 @@ def rotate_problem_to_end(slug: str) -> None:
     if picked is not None:
         rest.append(picked)
     write_json(QUEUE, rest)
+    refresh_context_hygiene_surfaces(rest)
 
 
 def remove_problem_from_queue(slug: str) -> None:
     queue = load_json(QUEUE, [])
-    write_json(QUEUE, [item for item in queue if not (isinstance(item, dict) and item.get("slug") == slug)])
+    updated = [item for item in queue if not (isinstance(item, dict) and item.get("slug") == slug)]
+    write_json(QUEUE, updated)
+    refresh_context_hygiene_surfaces(updated)
 
 
 def mark_failed_problem(entry: dict, reason: str, publication_status: str | None = None) -> None:
@@ -1621,6 +1831,7 @@ def mark_failed_problem(entry: dict, reason: str, publication_status: str | None
             }
         )
     write_json(FAILED, failed)
+    refresh_search_memory()
     remove_problem_from_queue(slug)
 
 
@@ -1640,6 +1851,7 @@ def mark_rediscovery(entry: dict, notes: str) -> None:
             }
         )
     write_json(FAILED, failed)
+    refresh_search_memory()
     remove_problem_from_queue(slug)
 
 
@@ -1658,6 +1870,7 @@ def archive_exact_instance(entry: dict, notes: str, publication_status: str = "I
             }
         )
     write_json(FAILED, failed)
+    refresh_search_memory()
     remove_problem_from_queue(slug)
 
 
@@ -1676,6 +1889,7 @@ def archive_attempted_problem(entry: dict, reason: str, notes: str, publication_
             }
         )
     write_json(FAILED, failed)
+    refresh_search_memory()
     remove_problem_from_queue(slug)
 
 
@@ -1865,6 +2079,7 @@ def preferred_effort(level: str) -> str:
 def render_queue_selection(entry: dict, worker_role: str | None = None, sidecar: bool = False) -> pathlib.Path:
     if sidecar and worker_role:
         return render_candidate_attempt_selection(entry, worker_role)
+    entry = entry_with_working_packet(entry)
     render_selected_problem(entry)
     status_path = ROOT / "artifacts" / entry["slug"] / "status.json"
     ensure_publication_defaults(status_path)
@@ -1994,6 +2209,7 @@ def strongest_publication_status(campaigns: list[dict]) -> str:
 
 
 def write_publication_summary(active_campaign_slug: str | None, worker_status: str) -> None:
+    refresh_context_hygiene_surfaces()
     campaigns = active_campaigns()
     primary = find_campaign(active_campaign_slug) if active_campaign_slug else None
     if primary is None and campaigns:

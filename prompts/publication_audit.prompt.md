@@ -1,5 +1,6 @@
 Read `AGENTS.md` and `selected_problem.md` first.
 If `selected_problem.md` includes `handoff_memo_path`, read that memo immediately after `selected_problem.md` and treat it as the binding scope authority for allowed files, stop condition, and output path.
+If `selected_problem.md` includes `working_packet_path`, read that file immediately after `selected_problem.md`.
 
 This is the PUBLICATION_AUDIT stage.
 Limited web is allowed.
@@ -24,6 +25,13 @@ If `selected_problem.md` includes `attempt_output_markdown` and `attempt_output_
 - if the sidecar output files already exist, continue from them instead of restarting from scratch;
 - write the audited markdown/json outputs to those sidecar paths instead of the canonical files;
 - do not mutate canonical dossier or canonical `record.md` / `status.json` in this sidecar mode.
+
+Read budget:
+
+- target 3 to 6 local files total after `selected_problem.md`
+- hard cap 8 local files unless the canonical source itself forces one extra pinpoint check
+- prefer the working packet, local artifact record/status, and one canonical source anchor over broad repo rereads
+- do not replay long ledger history during publication audit
 
 Bounded-audit policy:
 

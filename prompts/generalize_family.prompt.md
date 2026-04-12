@@ -26,6 +26,7 @@ Before doing anything substantial:
 Bounded-read policy:
 
 - Stay local unless the dossier itself is insufficient to reconstruct the family statement.
+- Prefer `memory/paper_memory.json` and `memory/search_memory.json` over replaying broad repo history when they are enough.
 - Read the dossier, the current family record/status, `PROOFS.md`, and only the most relevant seed artifacts.
 - Target 4 to 6 seed artifacts; hard cap 10 opened artifacts unless you are forced to inspect one more discriminator.
 - Use `rg` or equivalent local search to jump to exact sections instead of roaming through whole files.

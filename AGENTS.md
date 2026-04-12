@@ -19,6 +19,7 @@ Campaign mode is secondary and should be used only when a family theorem is alre
 - `queue.json`: current batch of exactly 5 curated dossiers. Entries may now be `paper_candidate`, `family_campaign`, or `feeder_instance`.
 - `failed_problems.json`: problems that failed, rediscoveries, archived exacts, and other do-not-recur memory.
 - `selected_problem.md`: the currently active queue entry or family campaign brief.
+- `memory/`: thin canonical memory surfaces, especially `paper_memory.json` for near-paper packets and `search_memory.json` for attempted/rejected targets.
 - `campaigns/`: active campaign dossiers plus campaign manifest/state.
 - `prompts/`: stage prompts for `curate`, `solve`, `verify`, `generalize`, `publication_audit`, and `lean`.
 - `artifacts/<slug>/`: per-instance work files.
@@ -131,3 +132,4 @@ Parallel policy:
 - Be conservative about claim types and theorem scope.
 - Keep the ledger updated in plain English.
 - Discard worker outputs that do not honestly shorten solve-to-publication distance.
+- Prefer thin memory surfaces over replaying large ledgers when orienting future runs.

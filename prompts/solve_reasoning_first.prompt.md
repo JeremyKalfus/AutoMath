@@ -1,5 +1,6 @@
 Read `AGENTS.md` and `selected_problem.md` first.
 If `selected_problem.md` includes `handoff_memo_path`, read that memo immediately after `selected_problem.md` and treat it as the binding scope authority for allowed files, stop condition, and output path.
+If `selected_problem.md` includes `working_packet_path`, read that file immediately after `selected_problem.md`.
 
 This is the SOLVE stage.
 Do NOT browse the internet.
@@ -18,6 +19,13 @@ Use these files:
 - `artifacts/<slug>/record.md`
 - `artifacts/<slug>/status.json`
 - `artifacts/<slug>/lean/` only if needed later
+
+Read budget:
+
+- target 3 to 6 local files total after `selected_problem.md`
+- hard cap 8 local files unless an exact blocker makes one more file unavoidable
+- prefer the working packet, the local artifact record/status, and at most one or two supporting files
+- do not reopen broad ledger history or unrelated artifact directories during solve
 
 Sidecar attempt mode:
 

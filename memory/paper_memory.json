@@ -1,0 +1,148 @@
+{
+  "generated_on": "2026-04-12T18:37:06.361479-04:00",
+  "queued_publication_packets": [
+    {
+      "slug": "cocktail-party-two-monochromatic-diameter-2-cover",
+      "title": "Does every 2-colored cocktail party graph admit a cover by two monochromatic diameter-2 subsets?",
+      "publication_status": "SLICE_CANDIDATE",
+      "publication_packet_title": "Two monochromatic diameter-2 covers in 2-colored cocktail party graphs",
+      "publication_packet_quality": "excellent",
+      "publication_if_solved": "Solving the original diameter-2 cocktail-party conjecture would read as a direct short follow-up to the 2026 relaxed theorem.",
+      "why_this_could_be_publishable": "It is a direct upgrade from a very recent paper's main relaxed theorem to the original exact conjecture.",
+      "canonical_source": "Andras Gyarfas and Gabor N. Sarkozy, \"2-Reachable Subsets in Two-Colored Graphs\" (Graphs and Combinatorics 42, 2026), which states and relaxes the English-McCourt-Mattes-Phillips conjecture.",
+      "working_packet_path": "artifacts/cocktail-party-two-monochromatic-diameter-2-cover/working_packet.md"
+    },
+    {
+      "slug": "ladder-4-rungs-edge-erdos-posa",
+      "title": "Does the ladder with 4 rungs have the edge-Erdos-Posa property?",
+      "publication_status": "SLICE_CANDIDATE",
+      "publication_packet_title": "The edge-Erdos-Posa property for the 4-rung ladder",
+      "publication_packet_quality": "excellent",
+      "publication_if_solved": "A resolution of the 4-rung ladder case is already a standalone note because the 2024 paper leaves ladders with 4 to 13 rungs explicitly open.",
+      "why_this_could_be_publishable": "It is a smallest-open-case yes/no theorem with immediate context from the 3-rung positive result and the 14-rung negative barrier.",
+      "canonical_source": "Raphael Steck and Arthur Ulmer, \"On the Edge-Erdos-Posa Property of Ladders\" (Graphs and Combinatorics 40, 2024).",
+      "working_packet_path": "artifacts/ladder-4-rungs-edge-erdos-posa/working_packet.md"
+    },
+    {
+      "slug": "order-12-9-regular-one-factorization",
+      "title": "Is every 9-regular graph on 12 vertices one-factorizable?",
+      "publication_status": "SLICE_CANDIDATE",
+      "publication_packet_title": "One-factorizations of 9-regular graphs of order 12",
+      "publication_packet_quality": "strong",
+      "publication_if_solved": "A complete degree-9 classification on order 12 is already a short exact-classification paper because the source explicitly leaves that slice open.",
+      "why_this_could_be_publishable": "It is an exact unresolved finite classification with a tiny verifier and essentially zero post-solve packaging tax.",
+      "canonical_source": "Petteri Kaski and Patric R. J. Ostergard, \"One-Factorizations of Regular Graphs of Order 12\" (Electronic Journal of Combinatorics 12, 2005).",
+      "working_packet_path": "artifacts/order-12-9-regular-one-factorization/working_packet.md"
+    },
+    {
+      "slug": "eight-regular-forbidden-outdegree-three-set",
+      "title": "Does every 8-regular graph admit an F-avoiding orientation for every 3-element forbidden set?",
+      "publication_status": "SLICE_CANDIDATE",
+      "publication_packet_title": "The d = 8 slice of the forbidden out-degree orientation conjecture",
+      "publication_packet_quality": "strong",
+      "publication_if_solved": "A clean d=8 theorem or counterexample would already be a short follow-up paper to the 2026 d<=6 result.",
+      "why_this_could_be_publishable": "It is the exact next even-degree slice after a fresh 2026 advance, with a ready-made paper narrative and tiny verification footprint.",
+      "canonical_source": "Owen Henderschedt and Jessica McDonald, \"On orientations with forbidden out-degrees\" (Discrete Applied Mathematics 387, 2026).",
+      "working_packet_path": "artifacts/eight-regular-forbidden-outdegree-three-set/working_packet.md"
+    },
+    {
+      "slug": "all-9-vertex-graphs-1-11-representable",
+      "title": "Are all graphs on 9 vertices 1-11-representable?",
+      "publication_status": "SLICE_CANDIDATE",
+      "publication_packet_title": "1-11-representability of graphs on 9 vertices",
+      "publication_packet_quality": "strong",
+      "publication_if_solved": "Settling the 9-vertex slice would already be a finite-classification note, either as a complete positive census or as a first minimal counterexample paper.",
+      "why_this_could_be_publishable": "It is exactly the kind of smallest unresolved finite slice that can become a clean note or a minimal-counterexample paper with low novelty-check cost.",
+      "canonical_source": "Mohammed Alshammari, Sergey Kitaev, Chaoliang Tang, Tianyi Tao, and Junchi Zhang, \"On 1-11-representability and multi-1-11-representability of graphs\" (Utilitas Mathematica 122, 2025), together with Futorny-Kitaev-Pyatkin, \"New Tools to Study 1-11-Representation of Graphs\" (Graphs and Combinatorics 40, 2024).",
+      "working_packet_path": "artifacts/all-9-vertex-graphs-1-11-representable/working_packet.md"
+    }
+  ],
+  "near_paper_campaigns": [
+    {
+      "family_slug": "zero_divisor_prime_labelings",
+      "publication_status": "SLICE_EXACT",
+      "strongest_honest_claim": "As of 2026-04-12T03:55:30-0400, the strongest honest family claim remains the Lean-checked paired structural theorem `AutoMath.Families.ZeroDivisorPublicationSlice.zero_divisor_prime_labelings_paired_exact_slice`. The...",
+      "next_blocker": "The only live blocker to a referee-facing direct `F25` theorem is to package a chosen `(p - 1)`-element subset of `fixedC0Finset` as an injective `C`-class labeling and extend i..."
+    },
+    {
+      "family_slug": "cnbc_quintic_nonexistence",
+      "publication_status": "SLICE_CANDIDATE",
+      "strongest_honest_claim": "As of 2026-04-12T03:20:51-0400, the strongest honest publication-facing claim is still a Route I theorem-slice candidate: for G = C_n(a,b,m) with n = 2m and 1 <= a < b < m, if sigma_{n,a,b}(k) = 1 + 2 cos(2*pi*a*k/n)...",
+      "next_blocker": "The live blocker is now only the missing family Fourier diagonalization of the six-term circulant operator B_{n,a,b} together with the reusable lemma sigma_{n,a,b}(k) != 0 for a..."
+    }
+  ],
+  "exact_wins": [
+    {
+      "slug": "z3-z25-prime-zero-divisor-graph",
+      "reason": "EXACT",
+      "title": "Is the zero-divisor graph \u0393(Z_3 \u00d7 Z_25) prime?",
+      "notes": "Lean verified the exact instance in the AutoMath backend; the artifact is being preserved while external novelty review proceeds separately.",
+      "checked_on": "2026-04-08",
+      "publication_status": null
+    },
+    {
+      "slug": "z5-z5-z3-prime-zero-divisor-graph",
+      "reason": "EXACT",
+      "title": "Is the zero-divisor graph \u0393(Z_5 \u00d7 Z_5 \u00d7 Z_3) prime?",
+      "notes": "Lean verified the exact intended statement in the AutoMath backend; archived to avoid rerunning this solved instance.",
+      "checked_on": "2026-04-08",
+      "publication_status": null
+    },
+    {
+      "slug": "z5-z25-prime-zero-divisor-graph",
+      "reason": "EXACT",
+      "title": "Is the zero-divisor graph \u0393(Z_5 \u00d7 Z_25) prime?",
+      "notes": "Lean verified the exact intended statement in the AutoMath backend; archived to avoid rerunning this solved instance.",
+      "checked_on": "2026-04-08",
+      "publication_status": null
+    },
+    {
+      "slug": "z2-power-8-prime-zero-divisor-graph",
+      "reason": "EXACT",
+      "title": "Is the zero-divisor graph \u0393(Z_2^8) prime?",
+      "notes": "Lean verified the exact intended statement in the AutoMath backend; archived to avoid rerunning this solved instance.",
+      "checked_on": "2026-04-08",
+      "publication_status": null
+    },
+    {
+      "slug": "z5-z5-z2-prime-zero-divisor-graph",
+      "reason": "EXACT",
+      "title": "Is the zero-divisor graph \u0393(Z_5 \u00d7 Z_5 \u00d7 Z_2) prime?",
+      "notes": "Lean verified the exact intended statement in the AutoMath backend; archived to avoid rerunning this solved instance.",
+      "checked_on": "2026-04-08",
+      "publication_status": null
+    },
+    {
+      "slug": "z7-z25-prime-zero-divisor-graph",
+      "reason": "EXACT",
+      "title": "Is the zero-divisor graph Gamma(Z_7 x Z_25) prime?",
+      "notes": "Lean verified the exact intended statement in the AutoMath backend; archived to avoid rerunning this solved instance.",
+      "checked_on": "2026-04-08",
+      "publication_status": null
+    },
+    {
+      "slug": "z7-z7-z2-prime-zero-divisor-graph",
+      "reason": "EXACT",
+      "title": "Is the zero-divisor graph Gamma(Z_7 x Z_7 x Z_2) prime?",
+      "notes": "Lean verified the exact intended statement in the AutoMath backend; archived to avoid rerunning this solved instance.",
+      "checked_on": "2026-04-08",
+      "publication_status": null
+    },
+    {
+      "slug": "p7-square-prime-labeling",
+      "reason": "EXACT",
+      "title": "Does the square of the 7-vertex path P_7^2 admit a prime labeling?",
+      "notes": "Lean verified the exact intended statement in the AutoMath backend; archived to avoid rerunning this solved instance.",
+      "checked_on": "2026-04-08",
+      "publication_status": null
+    },
+    {
+      "slug": "p4x-p4-grid-prime-labeling",
+      "reason": "EXACT",
+      "title": "Does the 4x4 grid P_4 \u00d7 P_4 admit a prime labeling?",
+      "notes": "Lean verified the exact intended statement in the AutoMath backend; archived to avoid rerunning this solved instance.",
+      "checked_on": "2026-04-08",
+      "publication_status": null
+    }
+  ]
+}

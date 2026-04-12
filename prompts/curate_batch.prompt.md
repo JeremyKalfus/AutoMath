@@ -1,4 +1,5 @@
 Read `AGENTS.md` first.
+Prefer `memory/paper_memory.json` and `memory/search_memory.json` over replaying broad repo history when they exist.
 
 This is the CURATION stage.
 Use web search.
@@ -54,15 +55,17 @@ Pre-search exclusion sweep:
 Before any web search, build an exclusion set from cheap local memory.
 Check, if present and inexpensive to read:
 
+- `memory/search_memory.json`
+- `memory/paper_memory.json`
 - `failed_problems.json`
 - `queue.json`
 - `selected_problem.md`
-- `ledger.md`
 - `PROOFS.md`
 - `campaigns/`
 - `campaigns/manifest.json`
 - artifact directory names and cheap status summaries if available
 - any `attempted_problems.json`, `rediscoveries.json`, `candidate_problems.json`, or similar memory file
+- `ledger.md` only if a conflict or ambiguity remains after the thin memory files
 
 Treat a problem as ALREADY ATTEMPTED if it appears under any prior non-`NEW` status, including:
 
@@ -84,6 +87,12 @@ Near-duplicate means any of:
 - same intended statement up to trivial rewording, reordered tuple, or notation change
 
 When uncertain whether a candidate is just a rephrasing of an earlier attempt, skip it.
+
+Local-read budget before web:
+
+- target 4 to 6 local memory files
+- hard cap 8 local files before the first web search
+- do not roam through broad artifact history or large log files during curation
 
 Default policy:
 

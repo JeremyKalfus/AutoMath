@@ -19,6 +19,7 @@
 - needs_feeder_ladder: `no`
 - pre_solve_gate: `pass`
 - publication_packet_quality: `excellent`
+- working_packet_path: `artifacts/cocktail-party-two-monochromatic-diameter-2-cover/working_packet.md`
 - paper_shape: `One conjecture-resolution note: statement, structural proof or counterexample, and a short discussion of Ryser-style diameter bounds.`
 
 ## question
