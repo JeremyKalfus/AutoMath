@@ -1259,16 +1259,15 @@ def seed_campaign_queue() -> bool:
     return True
 
 
-def paper_candidate_priority(entry: dict) -> tuple[int, int, int, int, int, int, int, int, str]:
+def paper_candidate_priority(entry: dict) -> tuple[int, int, int, int, int, int, int, str]:
     publication_if_solved = normalized_rank(entry.get("publication_if_solved_score"), PUBLICATION_IF_SOLVED_SCORE_RANK, 99)
     distance = normalized_rank(entry.get("solve_to_publication_distance"), PAPER_DISTANCE_RANK, 5)
     packet_quality = normalized_rank(entry.get("publication_packet_quality"), PACKET_QUALITY_RANK, 99)
     plausibility = normalized_rank(entry.get("single_pass_proof_plausibility"), PLAUDIBILITY_RANK, 5)
     novelty_cost = normalized_rank(entry.get("novelty_check_cost"), COST_RANK, 99)
-    formalization = normalized_rank(entry.get("formalization_overhead"), COST_RANK, 99)
     packaging = normalized_rank(entry.get("packaging_risk"), COST_RANK, 99)
     feeder_penalty = 1 if normalized_flag(entry.get("needs_feeder_ladder")) is True else 0
-    return (distance, publication_if_solved, packet_quality, plausibility, novelty_cost, packaging, formalization, feeder_penalty, entry.get("slug", ""))
+    return (distance, publication_if_solved, packet_quality, plausibility, novelty_cost, packaging, feeder_penalty, entry.get("slug", ""))
 
 
 def select_paper_candidate_entry() -> dict | None:
@@ -2589,6 +2588,11 @@ def should_run_instance_lean(entry: dict, status_path: pathlib.Path) -> tuple[bo
         return False, "Lean is not marked ready"
     if entry.get("entry_type") != "paper_candidate":
         return True, "non-paper candidate Lean remains allowed"
+    if status_value(status_path, "lean_packet_seal") is not True:
+        reason = status_value(status_path, "lean_gate_reason")
+        if isinstance(reason, str) and reason.strip():
+            return False, reason.strip()
+        return False, "Lean is not marked as the direct packet-sealing step"
     gate_ok, gate_reason = paper_candidate_gate(entry)
     if not gate_ok:
         return False, gate_reason
@@ -2596,7 +2600,7 @@ def should_run_instance_lean(entry: dict, status_path: pathlib.Path) -> tuple[bo
     classification = status_value(status_path, "classification")
     if classification not in {"CANDIDATE", "COUNTEREXAMPLE", "EXACT"}:
         return False, f"classification={classification or 'NONE'} is not a Lean-sealable one-shot result"
-    if publication_status in {"NONE", "REDISCOVERY"}:
+    if publication_rank(publication_status) < publication_rank("SLICE_CANDIDATE"):
         return False, f"publication_status={publication_status} is not a paper-sealing state"
     distance = normalized_rank(entry.get("solve_to_publication_distance"), PAPER_DISTANCE_RANK, 99)
     if distance > PAPER_DISTANCE_RANK["short"] and publication_rank(publication_status) < publication_rank("SLICE_EXACT"):

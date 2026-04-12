@@ -9,6 +9,7 @@ First detect whether the selected entry is:
 - a `paper_candidate` or `feeder_instance`, in which case work under `artifacts/<slug>/`
 
 Only continue if the verified or generalized result is strong enough to formalize and the current classification is not `REDISCOVERY`.
+For one-shot `paper_candidate` work, only continue when the current `status.json` makes it explicit that Lean is the direct packet-sealing step rather than optional polish.
 
 Goal:
 Formalize the strongest honest target, not a proxy.
@@ -30,6 +31,7 @@ Rules:
 - then try a full proof only if feasible
 - for family campaigns, prefer one reusable lemma or one theorem-slice skeleton over a broad multi-file excursion
 - for one-shot `paper_candidate` work, use Lean only if it is the shortest path from "solved claim" to "publication packet sealed"
+- if a one-shot `paper_candidate` does not have `lean_packet_seal = true`, stop cleanly after recording that Lean was not the direct packet-sealing step
 - do not introduce new axioms
 - do not use `sorry`, `admit`, or placeholders in the final claimed proof
 - if Lean is available, run the build/check commands needed to confirm the file really checks
@@ -46,6 +48,8 @@ Update the relevant `status.json` with:
 
 - `stage = "lean"`
 - `lean_ready`
+- `lean_packet_seal`
+- `lean_gate_reason`
 - `lean_complete`
 - `classification`
 - `confidence`

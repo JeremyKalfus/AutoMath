@@ -73,6 +73,8 @@ Update `artifacts/<slug>/status.json` with:
 - `classification`
 - `confidence`
 - `lean_ready`
+- `lean_packet_seal`
+- `lean_gate_reason`
 - `publication_status`
 - `publication_confidence`
 - `strongest_honest_claim`
@@ -86,6 +88,8 @@ Rules:
 - if the solver proved a nearby but different statement, classification must be `VARIANT`
 - if only a tiny repair is needed, you may patch it conservatively
 - if the candidate still looks real and is not a rediscovery, set `lean_ready = true` only when the result is strong enough to formalize
+- for a `paper_candidate`, set `lean_packet_seal = true` only when Lean is the shortest remaining path from the verified claim to a sealed publication packet
+- if Lean would be optional polish, archival formalization, or a detour from the real remaining publication work, set `lean_ready = false`, `lean_packet_seal = false`, and explain that in `lean_gate_reason`
 - keep a result at `CANDIDATE` unless Lean completes and publication criteria justify stronger publication status
 
 Publication-status guidance:

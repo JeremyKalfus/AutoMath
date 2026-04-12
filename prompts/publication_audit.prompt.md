@@ -53,6 +53,7 @@ Questions you must answer explicitly:
 - Would this survive a referee asking “what is the theorem?”
 - Is the claim still too dependent on hand-picked small cases?
 - If this is not yet paper-ready, is the remaining gap genuinely small or did the candidate only look attractive before audit?
+- For a `paper_candidate`, would Lean directly seal the packet, or would it only be optional polish / later archival formalization?
 
 Prior-art / rediscovery audit requirements:
 
@@ -88,6 +89,8 @@ Update the relevant `status.json` with:
 - `next_feeder_instances`
 - `campaign_health`
 - `publication_packet_quality`
+- `lean_packet_seal`
+- `lean_gate_reason`
 - `next_action`
 - `proof_artifacts_preserved`
 - `lean_ready`
@@ -115,3 +118,4 @@ Interpretation rules:
 Be conservative.
 Do not confuse “mathematically correct” with “publishable theorem”.
 For one-shot candidates, do not let the audit sprawl into a mini-survey; the goal is a cheap honest packet check, not broad literature accumulation.
+For one-shot candidates, set `lean_ready = true` only when Lean is the shortest remaining path to a sealed publication packet; otherwise keep Lean off and explain why in `lean_gate_reason`.

@@ -24,6 +24,12 @@ Optimize for:
 - rediscovery resistance
 - tiny proof object size
 
+Lean policy during curation:
+
+- Do not up-rank a candidate merely because it looks easy to formalize.
+- Low `formalization_overhead` matters only when Lean would directly seal the publication packet after a successful solve.
+- If Lean would be optional polish, a later archival seal, or a detour from the actual proof/writeup, do not treat Lean-friendliness as a primary advantage.
+
 Phase 2 rubric requirement:
 
 - Do not leave the publication-distance rubric implicit.
@@ -207,6 +213,11 @@ Normalized rubric values for `paper_candidate` entries:
   - and the result is already close to a standalone theorem, obstruction, minimal counterexample, or tiny structural note.
 - If that test is not clearly met, mark `fail` and downrank or exclude the candidate.
 
+`formalization_overhead` rule:
+
+- Score the likely final sealing cost honestly, but do not use low formalization cost as a reason by itself to prefer a candidate.
+- Only let low `formalization_overhead` materially help a candidate when Lean would directly finish the packet after solve/verify/audit.
+
 Publication-packet rules:
 
 - `publication_packet_title`:
@@ -327,6 +338,7 @@ Queue-writing requirements:
 - `queue.json` must contain exactly 5 entries
 - at least 4 entries should be `paper_candidate` entries with `pre_solve_gate = "pass"` unless the web evidence honestly fails to support that many
 - the highest-ranked entry should usually have `publication_packet_quality` in `{excellent,strong}`
+- the highest-ranked entry should not owe its rank mainly to low `formalization_overhead`; the main reason should still be solve-to-publication distance and packet clarity
 - no placeholder prose
 - write `selected_problem.md` for the highest-priority first entry
 - preserve bounded behavior
