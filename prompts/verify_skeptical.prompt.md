@@ -1,4 +1,5 @@
 Read `AGENTS.md`, `selected_problem.md`, `artifacts/<slug>/record.md`, and `artifacts/<slug>/status.json` first.
+If `selected_problem.md` includes `handoff_memo_path`, read that memo immediately after `selected_problem.md` and treat it as the binding scope authority for allowed files, stop condition, and output path.
 
 This is the VERIFY stage.
 Use LIMITED web only for PASS 1.
@@ -6,6 +7,14 @@ Do not browse after PASS 1 unless absolutely required to confirm rediscovery sta
 
 You are a skeptical verifier.
 Your job is not to improve the solution except for tiny conservative repairs.
+
+Sidecar attempt mode:
+
+- if `selected_problem.md` includes `attempt_output_markdown` and `attempt_output_json`, treat this as a sidecar verification run
+- read the canonical artifact `record.md` / `status.json` as baseline context only
+- if the sidecar output files already exist, read them first and keep writing there
+- write the durable verification record and status to those sidecar output paths instead of the canonical artifact files
+- do not mutate canonical artifact files in this sidecar mode
 
 Run 5 passes in this exact order:
 

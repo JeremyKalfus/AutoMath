@@ -28,6 +28,7 @@ PROOFS = ROOT / "PROOFS.md"
 QUEUE = ROOT / "queue.json"
 FAILED = ROOT / "failed_problems.json"
 SELECTED = ROOT / "selected_problem.md"
+AGENTS_FILE = ROOT / "AGENTS.md"
 CAMPAIGN_MANIFEST = ROOT / "campaigns" / "manifest.json"
 STOP_MARKER = ROOT / ".stop_harness"
 CAPABILITIES_CACHE = LOGS / "codex_capabilities.json"
@@ -404,6 +405,7 @@ def render_selected_problem(entry: dict) -> None:
     for key in [
         "entry_type",
         "slug",
+        "worker_role",
         "family_slug",
         "family_name",
         "campaign_priority",
@@ -422,10 +424,12 @@ def render_selected_problem(entry: dict) -> None:
         "single_pass_proof_plausibility",
         "novelty_check_cost",
         "formalization_overhead",
+        "write_scope",
         "packaging_risk",
         "needs_feeder_ladder",
         "pre_solve_gate",
         "publication_packet_quality",
+        "handoff_memo_path",
         "paper_shape",
     ]:
         value = entry.get(key)
@@ -461,16 +465,18 @@ def render_selected_problem(entry: dict) -> None:
         "publication_packet_near_paper_reason",
         "publication_packet_literature_scope",
         "publication_packet_artifact_requirements",
+        "context_budget",
         "paper_shape",
         "strongest_honest_claim",
         "attempt_goal",
         "attempt_output_markdown",
         "attempt_output_json",
+        "stop_condition",
         "next_action",
     ]:
         add_text_section(lines, key, entry.get(key))
 
-    for list_key in ["definitions", "seed_instances", "publication_targets", "next_feeder_instances", "red_flags", "publication_red_flags"]:
+    for list_key in ["definitions", "seed_instances", "publication_targets", "next_feeder_instances", "red_flags", "publication_red_flags", "allowed_files"]:
         values = entry.get(list_key) or []
         if not values:
             continue
@@ -548,6 +554,13 @@ PAPER_CANDIDATE_REQUIRED_FIELDS = [
 TRUE_VALUES = {"yes", "true", "pass", "1"}
 FALSE_VALUES = {"no", "false", "fail", "0"}
 
+SUBAGENT_CONTEXT_BUDGET = "1 candidate or campaign, at most 1 dossier, target 3-6 source files, and 1 explicit output file pair."
+SOLVER_SIDECAR_ROLES = {"solver-A", "solver-B"}
+FAMILY_ATTEMPT_ROLES = {
+    "direct_family_proof": "solver-A",
+    "obstruction_boundary": "solver-B",
+}
+
 
 def normalized_rank(value, mapping: dict[str, int], default: int) -> int:
     if value is None:
@@ -574,6 +587,119 @@ def missing_fields(entry: dict, fields: list[str]) -> list[str]:
         if value in (None, "", []):
             missing.append(field)
     return missing
+
+
+def dedupe_paths(paths: list[pathlib.Path]) -> list[pathlib.Path]:
+    seen: set[str] = set()
+    deduped: list[pathlib.Path] = []
+    for path in paths:
+        key = str(path)
+        if key in seen:
+            continue
+        seen.add(key)
+        deduped.append(path)
+    return deduped
+
+
+def relative_display(path: pathlib.Path) -> str:
+    try:
+        return str(path.relative_to(ROOT))
+    except ValueError:
+        return str(path)
+
+
+def candidate_attempt_dir(slug: str) -> pathlib.Path:
+    return ROOT / "artifacts" / slug / "attempts"
+
+
+def candidate_attempt_paths(slug: str, worker_role: str) -> tuple[pathlib.Path, pathlib.Path]:
+    attempt_dir = candidate_attempt_dir(slug)
+    return attempt_dir / f"{worker_role}.md", attempt_dir / f"{worker_role}.json"
+
+
+def candidate_handoff_path(slug: str, worker_role: str) -> pathlib.Path:
+    return candidate_attempt_dir(slug) / f"{worker_role}.handoff.md"
+
+
+def family_attempt_handoff_path(campaign: dict, attempt_kind: str) -> pathlib.Path:
+    return campaign_attempt_dir(campaign) / f"{attempt_kind}.handoff.md"
+
+
+def candidate_allowed_paths(entry: dict) -> list[pathlib.Path]:
+    slug = entry["slug"]
+    paths: list[pathlib.Path] = [
+        AGENTS_FILE,
+        ROOT / "artifacts" / slug / "record.md",
+        ROOT / "artifacts" / slug / "status.json",
+    ]
+    family_slug = entry.get("campaign_affinity")
+    if isinstance(family_slug, str) and family_slug:
+        campaign = find_campaign(family_slug)
+        if campaign is not None:
+            paths.extend(
+                [
+                    ROOT / campaign["dossier_path"],
+                    campaign_record_path(campaign),
+                    campaign_status_path(campaign),
+                ]
+            )
+    if PROOFS.exists() and len(paths) < 6:
+        paths.append(PROOFS)
+    return dedupe_paths(paths)[:6]
+
+
+def family_attempt_allowed_paths(campaign: dict) -> list[pathlib.Path]:
+    paths: list[pathlib.Path] = [
+        AGENTS_FILE,
+        ROOT / campaign["dossier_path"],
+        campaign_record_path(campaign),
+        campaign_status_path(campaign),
+    ]
+    if PROOFS.exists():
+        paths.append(PROOFS)
+    for slug in campaign.get("seed_instances", [])[:1]:
+        paths.extend(
+            [
+                ROOT / "artifacts" / slug / "record.md",
+                ROOT / "artifacts" / slug / "status.json",
+            ]
+        )
+    return dedupe_paths(paths)[:6]
+
+
+def write_handoff_memo(
+    path: pathlib.Path,
+    *,
+    worker_role: str,
+    exact_statement: str,
+    why_publishable: str,
+    allowed_files: list[pathlib.Path],
+    stop_condition: str,
+    output_path: str,
+) -> None:
+    lines = [
+        f"# {worker_role} handoff",
+        "",
+        f"- role: `{worker_role}`",
+        f"- exact statement: {exact_statement}",
+        f"- why publishable if solved: {why_publishable}",
+        f"- stop condition: {stop_condition}",
+        f"- output path: `{output_path}`",
+        "- allowed files:",
+    ]
+    for allowed in allowed_files:
+        lines.append(f"  - `{relative_display(allowed)}`")
+    lines.extend(
+        [
+            "",
+            f"- context budget: {SUBAGENT_CONTEXT_BUDGET}",
+            "",
+            "Do not broaden scope beyond these files unless the stated stop condition would otherwise be impossible to satisfy honestly.",
+            "",
+        ]
+    )
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text("\n".join(lines), encoding="utf-8")
 
 
 def paper_candidate_gate(entry: dict) -> tuple[bool, str]:
@@ -1000,7 +1126,7 @@ def active_campaigns() -> list[dict]:
 
 def worker_required_paths() -> list[pathlib.Path]:
     return [
-        ROOT / "AGENTS.md",
+        AGENTS_FILE,
         ROOT / "PROOFS.md",
         ROOT / "ledger.md",
         ROOT / "selected_problem.md",
@@ -1308,13 +1434,65 @@ def render_campaign_selection(campaign: dict) -> pathlib.Path:
     return ROOT / campaign["artifact_dir"] / "status.json"
 
 
+def render_candidate_attempt_selection(entry: dict, worker_role: str) -> pathlib.Path:
+    output_markdown, output_json = candidate_attempt_paths(entry["slug"], worker_role)
+    handoff_path = candidate_handoff_path(entry["slug"], worker_role)
+    allowed_paths = candidate_allowed_paths(entry)
+    stop_condition = (
+        "Write only the sidecar attempt outputs and stop once you have a decisive solve/verify result "
+        "or a clear blocker that does not shorten solve-to-publication distance."
+    )
+    write_handoff_memo(
+        handoff_path,
+        worker_role=worker_role,
+        exact_statement=str(entry.get("intended_statement") or entry.get("canonical_statement") or entry.get("question") or entry.get("title")),
+        why_publishable=str(entry.get("publication_if_solved") or entry.get("why_this_could_be_publishable") or "A strong solve would already be near-publication."),
+        allowed_files=allowed_paths,
+        stop_condition=stop_condition,
+        output_path=f"{relative_display(output_markdown)}, {relative_display(output_json)}",
+    )
+    attempt_entry = dict(entry)
+    attempt_entry.update(
+        {
+            "worker_role": worker_role,
+            "attempt_kind": worker_role,
+            "attempt_output_markdown": str(output_markdown.relative_to(ROOT)),
+            "attempt_output_json": str(output_json.relative_to(ROOT)),
+            "handoff_memo_path": str(handoff_path.relative_to(ROOT)),
+            "write_scope": "attempt_sidecar_only",
+            "stop_condition": stop_condition,
+            "context_budget": SUBAGENT_CONTEXT_BUDGET,
+            "allowed_files": [relative_display(path) for path in allowed_paths],
+        }
+    )
+    render_selected_problem(attempt_entry)
+    return output_json
+
+
 def render_family_attempt_selection(campaign: dict, attempt: dict) -> None:
     status = load_campaign_status(campaign)
     output_markdown, output_json = campaign_attempt_paths(campaign, attempt["kind"])
+    worker_role = FAMILY_ATTEMPT_ROLES.get(attempt["kind"], "solver-A")
+    handoff_path = family_attempt_handoff_path(campaign, attempt["kind"])
+    allowed_paths = family_attempt_allowed_paths(campaign)
+    stop_condition = (
+        "Write only the sidecar proof-attempt outputs and stop once you either sharpen the family theorem slice "
+        "or identify a blocker that does not shorten solve-to-publication distance."
+    )
+    write_handoff_memo(
+        handoff_path,
+        worker_role=worker_role,
+        exact_statement=str(status.get("theorem_slice_target", campaign.get("theorem_slice_target")) or campaign.get("theorem_slice_hint") or campaign["title"]),
+        why_publishable=str(status.get("strongest_honest_claim") or campaign.get("theorem_slice_hint") or campaign["title"]),
+        allowed_files=allowed_paths,
+        stop_condition=stop_condition,
+        output_path=f"{relative_display(output_markdown)}, {relative_display(output_json)}",
+    )
     entry = {
         "title": attempt["title"],
         "entry_type": "family_campaign",
         "slug": f"family-{campaign['family_slug']}-{attempt['kind']}",
+        "worker_role": worker_role,
         "family_slug": campaign["family_slug"],
         "family_name": campaign["family_name"],
         "campaign_priority": campaign.get("priority", 999),
@@ -1332,6 +1510,11 @@ def render_family_attempt_selection(campaign: dict, attempt: dict) -> None:
         "strongest_honest_claim": status.get("strongest_honest_claim"),
         "attempt_output_markdown": str(output_markdown.relative_to(ROOT)),
         "attempt_output_json": str(output_json.relative_to(ROOT)),
+        "handoff_memo_path": str(handoff_path.relative_to(ROOT)),
+        "write_scope": "attempt_sidecar_only",
+        "stop_condition": stop_condition,
+        "context_budget": SUBAGENT_CONTEXT_BUDGET,
+        "allowed_files": [relative_display(path) for path in allowed_paths],
         "next_action": status.get("next_action"),
     }
     render_selected_problem(entry)
@@ -1541,7 +1724,9 @@ def run_stage(root: pathlib.Path, stage_name: str, prompt_file: pathlib.Path, se
     last_message = LOGS / f"{stamp}_{stage_name}.last.txt"
     preface = (
         "Work only inside this repository. Do not use skills, MCP, cloud tasks, "
-        "or JSON output schemas. Follow the prompt below exactly."
+        "or JSON output schemas. Follow the prompt below exactly. "
+        "If selected_problem.md specifies a handoff memo path, read that memo immediately after selected_problem.md "
+        "and treat its allowed files, stop condition, output path, and context budget as the binding scope for this run."
     )
     if stage_name == "curate":
         preface += (
@@ -1677,7 +1862,9 @@ def preferred_effort(level: str) -> str:
     return level
 
 
-def render_queue_selection(entry: dict) -> pathlib.Path:
+def render_queue_selection(entry: dict, worker_role: str | None = None, sidecar: bool = False) -> pathlib.Path:
+    if sidecar and worker_role:
+        return render_candidate_attempt_selection(entry, worker_role)
     render_selected_problem(entry)
     status_path = ROOT / "artifacts" / entry["slug"] / "status.json"
     ensure_publication_defaults(status_path)
@@ -2024,6 +2211,7 @@ class ParallelFeederWorker:
     def __init__(self, entry: dict):
         self.entry = entry
         self.slug = entry["slug"]
+        self.worker_role = "solver-A"
         self.worktree = ROOT / ".worktrees" / f"{self.slug}-{int(time.time())}"
         self.proc: subprocess.Popen | None = None
 
@@ -2041,6 +2229,9 @@ class ParallelFeederWorker:
         artifact_dir = ROOT / "artifacts" / self.slug
         if artifact_dir.exists():
             sync_tree(artifact_dir, self.worktree / artifact_dir.relative_to(ROOT))
+        attempt_dir = candidate_attempt_dir(self.slug)
+        if attempt_dir.exists():
+            sync_tree(attempt_dir, self.worktree / attempt_dir.relative_to(ROOT))
 
     def start(self) -> bool:
         self.worktree.parent.mkdir(parents=True, exist_ok=True)
@@ -2063,6 +2254,8 @@ class ParallelFeederWorker:
             "--slug",
             self.slug,
             "--worker",
+            "--worker-role",
+            self.worker_role,
             "--artifact-only-worker",
         ]
         self.proc = subprocess.Popen(
@@ -2095,9 +2288,30 @@ class ParallelFeederWorker:
             self._remove_worktree()
             return "infra_failed"
         if returncode == 0:
-            sync_tree(self.worktree / "artifacts" / self.slug, ROOT / "artifacts" / self.slug)
-            append_ledger(f"Parallel feeder worker finished cleanly for {self.slug} and synced the artifact back.")
-            outcome = "clean"
+            output_markdown, output_json = candidate_attempt_paths(self.slug, self.worker_role)
+            handoff_path = candidate_handoff_path(self.slug, self.worker_role)
+            synced = False
+            worktree_markdown = self.worktree / output_markdown.relative_to(ROOT)
+            worktree_json = self.worktree / output_json.relative_to(ROOT)
+            worktree_handoff = self.worktree / handoff_path.relative_to(ROOT)
+            if worktree_markdown.exists():
+                sync_tree(worktree_markdown, output_markdown)
+                synced = True
+            if worktree_json.exists():
+                sync_tree(worktree_json, output_json)
+                synced = True
+            if worktree_handoff.exists():
+                sync_tree(worktree_handoff, handoff_path)
+            if synced:
+                append_ledger(
+                    f"Parallel feeder worker finished cleanly for {self.slug} and synced only the sidecar solver outputs back."
+                )
+                outcome = "clean"
+            else:
+                append_ledger(
+                    f"Parallel feeder worker for {self.slug} exited cleanly but produced no sidecar solver outputs, so the manager ignored it."
+                )
+                outcome = "infra_failed"
         else:
             append_ledger(f"Parallel feeder worker for {self.slug} exited nonzero; manager ignored its partial outputs.")
             outcome = "infra_failed"
@@ -2132,6 +2346,7 @@ class ParallelProofAttemptWorker:
         self.campaign = campaign
         self.attempt = attempt
         self.attempt_kind = attempt["kind"]
+        self.worker_role = FAMILY_ATTEMPT_ROLES.get(self.attempt_kind, "solver-A")
         self.worktree = ROOT / ".worktrees" / f"{campaign['family_slug']}-{self.attempt_kind}-{int(time.time())}"
         self.proc: subprocess.Popen | None = None
         self.started_signature: str | None = None
@@ -2211,15 +2426,19 @@ class ParallelProofAttemptWorker:
             return "infra_failed"
         if returncode == 0:
             output_markdown, output_json = campaign_attempt_paths(self.campaign, self.attempt_kind)
+            handoff_path = family_attempt_handoff_path(self.campaign, self.attempt_kind)
             synced = False
             worktree_markdown = self.worktree / output_markdown.relative_to(ROOT)
             worktree_json = self.worktree / output_json.relative_to(ROOT)
+            worktree_handoff = self.worktree / handoff_path.relative_to(ROOT)
             if worktree_markdown.exists():
                 sync_tree(worktree_markdown, output_markdown)
                 synced = True
             if worktree_json.exists():
                 sync_tree(worktree_json, output_json)
                 synced = True
+            if worktree_handoff.exists():
+                sync_tree(worktree_handoff, handoff_path)
             if synced:
                 append_ledger(
                     f"Parallel proof attempt worker finished cleanly for {self.campaign['family_slug']}::{self.attempt_kind} and synced sidecar attempt outputs back."
@@ -2328,8 +2547,8 @@ def maybe_start_parallel_proof_attempt_workers(
     return workers
 
 
-def absorb_parallel_feeder_result(entry: dict) -> bool:
-    status_path = artifact_status_path(entry["slug"])
+def absorb_parallel_feeder_result(entry: dict, worker_role: str = "solver-A") -> bool:
+    _, status_path = candidate_attempt_paths(entry["slug"], worker_role)
     if not status_path.exists():
         return False
     ensure_publication_defaults(status_path)
@@ -2344,10 +2563,10 @@ def absorb_parallel_feeder_result(entry: dict) -> bool:
         archive_attempted_problem(
             entry,
             classification,
-            "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+            f"Verified feeder evidence from sidecar {worker_role} was archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
             publication_status,
         )
-        append_ledger(f"Archived verified feeder evidence for {entry['slug']} after the parallel feeder worker finished.")
+        append_ledger(f"Archived verified feeder evidence for {entry['slug']} after sidecar {worker_role} finished.")
         return True
     if classification == "EXACT" and data.get("lean_complete") is True:
         archive_exact_instance(
@@ -2355,8 +2574,11 @@ def absorb_parallel_feeder_result(entry: dict) -> bool:
             "Lean verified the exact intended statement in the AutoMath backend; archived to avoid rerunning this solved instance while publication campaigns continue.",
             publication_status,
         )
-        append_ledger(f"Lean verified the exact intended statement for {entry['slug']} in a parallel feeder worker; archived as feeder evidence.")
+        append_ledger(f"Lean verified the exact intended statement for {entry['slug']} in sidecar {worker_role}; archived as feeder evidence.")
         return True
+    append_ledger(
+        f"Manager discarded sidecar {worker_role} output for {entry['slug']} because it did not honestly shorten solve-to-publication distance."
+    )
     return False
 
 
@@ -2510,7 +2732,7 @@ def run_campaign_flow(campaign: dict, allow_parallel: bool) -> int:
     for feeder_worker in feeder_workers:
         outcome = feeder_worker.finish()
         if outcome == "clean":
-            if absorb_parallel_feeder_result(feeder_worker.entry):
+            if absorb_parallel_feeder_result(feeder_worker.entry, feeder_worker.worker_role):
                 new_feeder_signal = True
         else:
             infra_failed = True
@@ -2719,13 +2941,22 @@ def run_affiliated_generalize(entry: dict, status_path: pathlib.Path) -> None:
     maybe_run_campaign_lean(campaign, input_signature)
 
 
-def run_feeder_entry(entry: dict, emit_summary: bool = True, artifact_only_worker: bool = False) -> int:
+def run_feeder_entry(
+    entry: dict,
+    emit_summary: bool = True,
+    artifact_only_worker: bool = False,
+    worker_role: str | None = None,
+) -> int:
     if entry.get("entry_type") == "family_campaign" and entry.get("family_slug"):
         campaign = find_campaign(entry["family_slug"])
         if campaign is not None:
             return run_campaign_flow(campaign, allow_parallel=False)
 
-    status_path = render_queue_selection(entry)
+    status_path = render_queue_selection(
+        entry,
+        worker_role=worker_role,
+        sidecar=artifact_only_worker and bool(worker_role),
+    )
     append_ledger(f"started solving {entry['slug']}")
 
     rc = run_stage(
@@ -2891,6 +3122,7 @@ def main() -> int:
     parser.add_argument("--slug")
     parser.add_argument("--attempt-kind")
     parser.add_argument("--artifact-only-worker", action="store_true")
+    parser.add_argument("--worker-role")
     args = parser.parse_args()
 
     ensure_state()
@@ -2914,7 +3146,12 @@ def main() -> int:
             if entry is None:
                 append_ledger(f"Requested feeder {args.slug} was not found, so this feeder cycle ended cleanly.")
                 return 0
-            return run_feeder_entry(entry, emit_summary=not args.worker, artifact_only_worker=args.artifact_only_worker)
+            return run_feeder_entry(
+                entry,
+                emit_summary=not args.worker,
+                artifact_only_worker=args.artifact_only_worker,
+                worker_role=args.worker_role,
+            )
         return run_feeder_cycle()
     finally:
         append_cycle_log(f"[automath_cycle] {args.mode} cycle finished at {now_str()}.")

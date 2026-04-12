@@ -1,4 +1,5 @@
 Read `AGENTS.md` and `selected_problem.md` first.
+If `selected_problem.md` includes `handoff_memo_path`, read that memo immediately after `selected_problem.md` and treat it as the binding scope authority for allowed files, stop condition, and output path.
 
 This is the PUBLICATION_AUDIT stage.
 Limited web is allowed.
@@ -17,11 +18,12 @@ First detect whether the selected entry is:
 - a `paper_candidate` or `feeder_instance`, in which case work under `artifacts/<slug>/`
 
 Read the relevant `record.md`, `status.json`, and the campaign dossier if one exists.
-If `selected_problem.md` includes `attempt_kind`, `attempt_output_markdown`, and `attempt_output_json`, treat this as a sidecar proof-attempt audit:
+If `selected_problem.md` includes `attempt_output_markdown` and `attempt_output_json`, treat this as a sidecar audit:
 
-- read the canonical family dossier, record, and status as inputs only;
-- write the audited markdown/json outputs to those attempt paths instead of the canonical family files;
-- do not mutate the canonical family dossier, canonical family `record.md`, or canonical family `status.json` in this sidecar mode.
+- read the canonical dossier / artifact record / status as inputs only;
+- if the sidecar output files already exist, continue from them instead of restarting from scratch;
+- write the audited markdown/json outputs to those sidecar paths instead of the canonical files;
+- do not mutate canonical dossier or canonical `record.md` / `status.json` in this sidecar mode.
 
 Bounded-audit policy:
 
@@ -35,7 +37,7 @@ Bounded-audit policy:
   - one outside-source status pass
   - stop there unless one of those checks creates a concrete ambiguity that must be resolved
 - Update `record.md` and `status.json` before any closing message.
-- In sidecar proof-attempt mode, update only the attempt output markdown/json files before any closing message.
+- In sidecar mode, update only the sidecar output markdown/json files before any closing message.
 
 Run these passes in order:
 

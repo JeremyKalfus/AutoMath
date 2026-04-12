@@ -1,4 +1,5 @@
 Read `AGENTS.md`, `selected_problem.md`, the relevant `record.md`, the relevant `status.json`, and `PROOFS.md` if it exists.
+If `selected_problem.md` includes `handoff_memo_path`, read that memo immediately after `selected_problem.md` and treat it as the binding scope authority for allowed files, stop condition, and output path.
 
 This is the LEAN stage.
 Do NOT browse the internet.
@@ -10,6 +11,14 @@ First detect whether the selected entry is:
 
 Only continue if the verified or generalized result is strong enough to formalize and the current classification is not `REDISCOVERY`.
 For one-shot `paper_candidate` work, only continue when the current `status.json` makes it explicit that Lean is the direct packet-sealing step rather than optional polish.
+
+Sidecar attempt mode:
+
+- if `selected_problem.md` includes `attempt_output_markdown` and `attempt_output_json`, treat this as a sidecar Lean attempt
+- read the canonical record/status as baseline context only
+- if the sidecar output files already exist, continue from them instead of restarting from scratch
+- write the durable Lean record/status to those sidecar output paths instead of the canonical artifact files
+- do not mutate canonical artifact files in this sidecar mode
 
 Goal:
 Formalize the strongest honest target, not a proxy.

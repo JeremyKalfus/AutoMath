@@ -58,6 +58,29 @@ Parallel policy:
 - If the repo is under Git, isolated workers may run in dedicated worktrees.
 - Use subagents or isolated workers only for narrowly scoped tasks with strict context budgets and clear write ownership.
 - Merge back only stable dossier and artifact updates.
+- Allowed narrow worker roles are:
+  - `curation-scout`
+  - `novelty-scout`
+  - `solver-A`
+  - `solver-B`
+  - `packet-auditor`
+- Do not ask a worker to absorb the whole repo or wander across unrelated campaigns.
+- Every worker should receive a short handoff memo containing:
+  - exact statement
+  - why publishable if solved
+  - allowed files
+  - stop condition
+  - output path
+- Default worker context budget:
+  - 1 candidate or campaign
+  - at most 1 dossier
+  - target 3 to 6 source files
+  - 1 explicit output file pair
+- Write ownership:
+  - the manager owns canonical queue files and canonical `record.md` / `status.json`
+  - solver workers write only candidate-local sidecar attempt artifacts
+  - packet-auditor workers write only publication-packet sidecar artifacts
+  - the manager alone decides whether a sidecar output is strong enough to absorb
 
 # Core rules
 
@@ -107,3 +130,4 @@ Parallel policy:
 - Solve and most family generalization must run with web disabled. Verification may use limited web for the bounded rediscovery pass. Publication audit may use limited web.
 - Be conservative about claim types and theorem scope.
 - Keep the ledger updated in plain English.
+- Discard worker outputs that do not honestly shorten solve-to-publication distance.

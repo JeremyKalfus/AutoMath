@@ -1,4 +1,5 @@
 Read `AGENTS.md` and `selected_problem.md` first.
+If `selected_problem.md` includes `handoff_memo_path`, read that memo immediately after `selected_problem.md` and treat it as the binding scope authority for allowed files, stop condition, and output path.
 
 This is the SOLVE stage.
 Do NOT browse the internet.
@@ -17,6 +18,14 @@ Use these files:
 - `artifacts/<slug>/record.md`
 - `artifacts/<slug>/status.json`
 - `artifacts/<slug>/lean/` only if needed later
+
+Sidecar attempt mode:
+
+- if `selected_problem.md` includes `attempt_output_markdown` and `attempt_output_json`, treat this as a sidecar solver run
+- read the canonical artifact `record.md` / `status.json` as inputs only
+- if the sidecar output files already exist, continue from them instead of restarting from scratch
+- write the durable solve record and solve status to those sidecar output paths instead of the canonical artifact files
+- do not mutate canonical artifact files in this sidecar mode
 
 Work in this order:
 

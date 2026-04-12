@@ -1,4 +1,5 @@
 Read `AGENTS.md` and `selected_problem.md` first.
+If `selected_problem.md` includes `handoff_memo_path`, read that memo immediately after `selected_problem.md` and treat it as the binding scope authority for allowed files, stop condition, and output path.
 
 This is the GENERALIZE stage.
 Default: do NOT browse the internet.
@@ -17,7 +18,7 @@ Before doing anything substantial:
 2. Read the campaign dossier first.
 3. Read the relevant exact-instance or partial artifacts named there.
 4. Read `PROOFS.md` if the dossier uses Lean-backed exact seeds.
-5. If `selected_problem.md` includes `attempt_kind`, `attempt_output_markdown`, and `attempt_output_json`, treat this as a sidecar proof attempt:
+5. If `selected_problem.md` includes `attempt_output_markdown` and `attempt_output_json`, treat this as a sidecar proof attempt:
    - read the canonical family dossier, record, and status as inputs only;
    - write the durable output to those attempt paths instead of the canonical family `record.md` and `status.json`;
    - do not mutate the canonical family dossier, canonical family `record.md`, or canonical family `status.json` in this sidecar mode.
