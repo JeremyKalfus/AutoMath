@@ -1,0 +1,18 @@
+{
+  "slug": "z107-z25-prime-zero-divisor-graph",
+  "title": "Is the zero-divisor graph \u0393(Z_107 \u00d7 Z_25) prime?",
+  "stage": "verify",
+  "verify_verdict": "VERIFIED",
+  "classification": "CANDIDATE",
+  "confidence": "high",
+  "code_used": true,
+  "lean_ready": true,
+  "lean_complete": false,
+  "publication_status": "SLICE_CANDIDATE",
+  "publication_confidence": "medium-high",
+  "family_affinity": "zero_divisor_prime_labelings",
+  "generalization_signal": "Skeptical verification supports the post-97 complementary-support direction on the four-class \u0393(Z_p \u00d7 Z_25) line: for p = 107, the fixed A0 reservoir and the high barrier {1,293,307,311} still work once C is defined by support avoidance rather than a rigid prime-only block. The structural support-template story scales, but the exact C cutoff and the longevity of this barrier set remain finite-instance arithmetic choices.",
+  "strongest_honest_claim": "An explicit prime-labeling witness for \u0393(Z_107 \u00d7 Z_25) survives skeptical verification. The campaign-relevant gain is not a Lean-closed exact theorem, but verified feeder evidence that the active F25 line continues beyond the preserved p <= 97 window under a complementary-support C-block construction with the existing high barrier.",
+  "candidate_theorem_slice": "A post-97 high-barrier complementary-support slice for \u0393(Z_p \u00d7 Z_25): fix A on the A0 reservoir, choose B as pairwise-coprime barrier labels above half the active interval, choose C from labels whose prime support avoids A \u222a B, and let D absorb the complement.",
+  "next_action": "Run generalize on the post-97 complementary-support pattern and test the next feeder p = 109 before attempting any instance-level Lean packaging."
+}

@@ -218,6 +218,253 @@ theorem f25_ring_support_adjacency_lemma
       z25_nonzeroFive_mul_nonzeroFive_eq_zero,
       z25_unitSupport_mul_eq_zero_iff, z25_mul_unitSupport_eq_zero_iff]
 
+lemma f25_support_of_vertex
+    {p : ℕ} [Fact p.Prime] {x : F25RingElem p}
+    (hx : f25ZeroDivisorVertex x) :
+    ∃ s : F25Support, f25SupportPredicate s x := by
+  rcases (f25_ring_support_partition_lemma x).mp hx with hA | hB | hC | hD
+  · exact ⟨.A, hA⟩
+  · exact ⟨.B, hB⟩
+  · exact ⟨.C, hC⟩
+  · exact ⟨.D, hD⟩
+
+lemma f25_support_edge_cases
+    {p : ℕ} [Fact p.Prime] {x y : F25RingElem p}
+    (hx : f25ZeroDivisorVertex x)
+    (hy : f25ZeroDivisorVertex y)
+    (hxy : x * y = 0) :
+    ((f25SupportPredicate .A x ∧ f25SupportPredicate .C y) ∨
+     (f25SupportPredicate .C x ∧ f25SupportPredicate .A y) ∨
+     (f25SupportPredicate .B x ∧ f25SupportPredicate .B y) ∨
+     (f25SupportPredicate .B x ∧ f25SupportPredicate .C y) ∨
+     (f25SupportPredicate .C x ∧ f25SupportPredicate .B y) ∨
+     (f25SupportPredicate .B x ∧ f25SupportPredicate .D y) ∨
+     (f25SupportPredicate .D x ∧ f25SupportPredicate .B y)) := by
+  obtain ⟨sx, hsx⟩ := f25_support_of_vertex hx
+  obtain ⟨sy, hsy⟩ := f25_support_of_vertex hy
+  have hsupport : f25SupportAdj sx sy := (f25_ring_support_adjacency_lemma hsx hsy).mp hxy
+  rcases (support_decomposition_F25 sx sy).mp hsupport with
+    hAC | hCA | hBB | hBC | hCB | hBD | hDB
+  · rcases hAC with ⟨rfl, rfl⟩
+    exact Or.inl ⟨hsx, hsy⟩
+  · rcases hCA with ⟨rfl, rfl⟩
+    exact Or.inr <| Or.inl ⟨hsx, hsy⟩
+  · rcases hBB with ⟨rfl, rfl⟩
+    exact Or.inr <| Or.inr <| Or.inl ⟨hsx, hsy⟩
+  · rcases hBC with ⟨rfl, rfl⟩
+    exact Or.inr <| Or.inr <| Or.inr <| Or.inl ⟨hsx, hsy⟩
+  · rcases hCB with ⟨rfl, rfl⟩
+    exact Or.inr <| Or.inr <| Or.inr <| Or.inr <| Or.inl ⟨hsx, hsy⟩
+  · rcases hBD with ⟨rfl, rfl⟩
+    exact Or.inr <| Or.inr <| Or.inr <| Or.inr <| Or.inr <| Or.inl ⟨hsx, hsy⟩
+  · rcases hDB with ⟨rfl, rfl⟩
+    exact Or.inr <| Or.inr <| Or.inr <| Or.inr <| Or.inr <| Or.inr ⟨hsx, hsy⟩
+
+/--
+Reusable structural corollary for the `Γ(Z_p × Z_25)` companion slice.
+If neither endpoint of a zero-product edge lies in the barrier class `B`, then
+the edge is forced onto the residual `A-C` interface, together with its
+reversal. This isolates the exact place where the barrier arithmetic lives.
+-/
+theorem f25_ring_off_barrier_edge_reduction
+    {p : ℕ} [Fact p.Prime] {x y : F25RingElem p}
+    (hx : f25ZeroDivisorVertex x)
+    (hy : f25ZeroDivisorVertex y)
+    (hxy : x * y = 0)
+    (hxB : ¬ f25SupportPredicate .B x)
+    (hyB : ¬ f25SupportPredicate .B y) :
+    ((f25SupportPredicate .A x ∧ f25SupportPredicate .C y) ∨
+     (f25SupportPredicate .C x ∧ f25SupportPredicate .A y)) := by
+  rcases f25_support_edge_cases hx hy hxy with hAC | hCA | hBB | hBC | hCB | hBD | hDB
+  · exact Or.inl hAC
+  · exact Or.inr hCA
+  · exfalso
+    exact hxB hBB.1
+  · exfalso
+    exact hxB hBC.1
+  · exfalso
+    exact hyB hCB.2
+  · exfalso
+    exact hxB hBD.1
+  · exfalso
+    exact hyB hDB.2
+
+/--
+Ring-level wrapper theorem for the `Γ(Z_p × Z_25)` companion slice.
+Once every zero-product edge is reduced to the four support interfaces
+`A-C`, `B-B`, `B-C`, and `B-D`, only those classwise coprimality checks remain.
+-/
+theorem f25_ring_four_interface_reduction
+    {p : ℕ} [Fact p.Prime]
+    (label : F25RingElem p → Nat)
+    (hAC :
+      ∀ x y, f25SupportPredicate .A x → f25SupportPredicate .C y →
+        Nat.Coprime (label x) (label y))
+    (hBB :
+      ∀ x y, f25SupportPredicate .B x → f25SupportPredicate .B y →
+        Nat.Coprime (label x) (label y))
+    (hBC :
+      ∀ x y, f25SupportPredicate .B x → f25SupportPredicate .C y →
+        Nat.Coprime (label x) (label y))
+    (hBD :
+      ∀ x y, f25SupportPredicate .B x → f25SupportPredicate .D y →
+        Nat.Coprime (label x) (label y)) :
+    ∀ x y,
+      f25ZeroDivisorVertex x → f25ZeroDivisorVertex y → x * y = 0 →
+      Nat.Coprime (label x) (label y) := by
+  let Adj : F25RingElem p → F25RingElem p → Prop := fun x y =>
+    f25ZeroDivisorVertex x ∧ f25ZeroDivisorVertex y ∧ x * y = 0
+  have hAdj :
+      ∀ x y, Adj x y →
+        ((f25SupportPredicate .A x ∧ f25SupportPredicate .C y) ∨
+         (f25SupportPredicate .C x ∧ f25SupportPredicate .A y) ∨
+         (f25SupportPredicate .B x ∧ f25SupportPredicate .B y) ∨
+         (f25SupportPredicate .B x ∧ f25SupportPredicate .C y) ∨
+         (f25SupportPredicate .C x ∧ f25SupportPredicate .B y) ∨
+         (f25SupportPredicate .B x ∧ f25SupportPredicate .D y) ∨
+         (f25SupportPredicate .D x ∧ f25SupportPredicate .B y)) := by
+    intro x y hxy
+    rcases hxy with ⟨hxv, hyv, hmul⟩
+    exact f25_support_edge_cases hxv hyv hmul
+  intro x y hx hy hxy
+  exact ZeroDivisorReductions.zp_z25_support_template_reduction
+    Adj
+    (f25SupportPredicate .A)
+    (f25SupportPredicate .B)
+    (f25SupportPredicate .C)
+    (f25SupportPredicate .D)
+    label
+    hAdj
+    hAC
+    hBB
+    hBC
+    hBD
+    x
+    y
+    ⟨hx, hy, hxy⟩
+
+/--
+Publication-facing companion theorem for the current `Γ(Z_p × Z_25)` campaign.
+It keeps the statement structural: any labeling that is classwise coprime on the
+four support interfaces already handles every ring edge between nonzero
+zero-divisor vertices.
+-/
+theorem zp_z25_four_interface_companion_theorem
+    {p : ℕ} [Fact p.Prime]
+    (label : F25RingElem p → Nat)
+    (hAC :
+      ∀ x y, f25SupportPredicate .A x → f25SupportPredicate .C y →
+        Nat.Coprime (label x) (label y))
+    (hBB :
+      ∀ x y, f25SupportPredicate .B x → f25SupportPredicate .B y →
+        Nat.Coprime (label x) (label y))
+    (hBC :
+      ∀ x y, f25SupportPredicate .B x → f25SupportPredicate .C y →
+        Nat.Coprime (label x) (label y))
+    (hBD :
+      ∀ x y, f25SupportPredicate .B x → f25SupportPredicate .D y →
+        Nat.Coprime (label x) (label y)) :
+    ∀ x y,
+      f25ZeroDivisorVertex x → f25ZeroDivisorVertex y → x * y = 0 →
+      Nat.Coprime (label x) (label y) :=
+  f25_ring_four_interface_reduction label hAC hBB hBC hBD
+
+/--
+Paper-facing packaging of the current `Γ(Z_p × Z_25)` companion slice.
+Instead of asking for coprimality interface-by-interface on individual
+vertices, it is enough to place each support class inside a designated label
+set and assume the needed cross-set coprimality relations.
+-/
+theorem zp_z25_four_interface_companion_theorem_of_label_sets
+    {p : ℕ} [Fact p.Prime]
+    (label : F25RingElem p → Nat)
+    (A_lab B_lab C_lab D_lab : Set Nat)
+    (hA_mem : ∀ x, f25SupportPredicate .A x → label x ∈ A_lab)
+    (hB_mem : ∀ x, f25SupportPredicate .B x → label x ∈ B_lab)
+    (hC_mem : ∀ x, f25SupportPredicate .C x → label x ∈ C_lab)
+    (hD_mem : ∀ x, f25SupportPredicate .D x → label x ∈ D_lab)
+    (hAC_lab :
+      ∀ a c, a ∈ A_lab → c ∈ C_lab → Nat.Coprime a c)
+    (hBB_lab :
+      ∀ b₁ b₂, b₁ ∈ B_lab → b₂ ∈ B_lab → Nat.Coprime b₁ b₂)
+    (hBC_lab :
+      ∀ b c, b ∈ B_lab → c ∈ C_lab → Nat.Coprime b c)
+    (hBD_lab :
+      ∀ b d, b ∈ B_lab → d ∈ D_lab → Nat.Coprime b d) :
+    ∀ x y,
+      f25ZeroDivisorVertex x → f25ZeroDivisorVertex y → x * y = 0 →
+      Nat.Coprime (label x) (label y) := by
+  refine zp_z25_four_interface_companion_theorem label ?_ ?_ ?_ ?_
+  · intro x y hx hy
+    exact hAC_lab (label x) (label y) (hA_mem x hx) (hC_mem y hy)
+  · intro x y hx hy
+    exact hBB_lab (label x) (label y) (hB_mem x hx) (hB_mem y hy)
+  · intro x y hx hy
+    exact hBC_lab (label x) (label y) (hB_mem x hx) (hC_mem y hy)
+  · intro x y hx hy
+    exact hBD_lab (label x) (label y) (hB_mem x hx) (hD_mem y hy)
+
+/--
+Graph-faithful ring-level wrapper theorem for the `Γ(Z_p × Z_25)` companion
+slice. The only `B-B` edges in the zero-divisor graph come from distinct
+vertices in the barrier class `B`, so the barrier coprimality premise only
+needs to cover distinct `B` vertices.
+-/
+theorem f25_ring_four_interface_reduction_on_distinct_vertices
+    {p : ℕ} [Fact p.Prime]
+    (label : F25RingElem p → Nat)
+    (hAC :
+      ∀ x y, f25SupportPredicate .A x → f25SupportPredicate .C y →
+        Nat.Coprime (label x) (label y))
+    (hBB :
+      ∀ x y, f25SupportPredicate .B x → f25SupportPredicate .B y →
+        x ≠ y → Nat.Coprime (label x) (label y))
+    (hBC :
+      ∀ x y, f25SupportPredicate .B x → f25SupportPredicate .C y →
+        Nat.Coprime (label x) (label y))
+    (hBD :
+      ∀ x y, f25SupportPredicate .B x → f25SupportPredicate .D y →
+        Nat.Coprime (label x) (label y)) :
+    ∀ x y,
+      f25ZeroDivisorVertex x → f25ZeroDivisorVertex y → x ≠ y → x * y = 0 →
+      Nat.Coprime (label x) (label y) := by
+  intro x y hx hy hxy_ne hxy_zero
+  rcases f25_support_edge_cases hx hy hxy_zero with
+    hAC_case | hCA_case | hBB_case | hBC_case | hCB_case | hBD_case | hDB_case
+  · exact hAC x y hAC_case.1 hAC_case.2
+  · simpa [Nat.coprime_comm] using hAC y x hCA_case.2 hCA_case.1
+  · exact hBB x y hBB_case.1 hBB_case.2 hxy_ne
+  · exact hBC x y hBC_case.1 hBC_case.2
+  · simpa [Nat.coprime_comm] using hBC y x hCB_case.2 hCB_case.1
+  · exact hBD x y hBD_case.1 hBD_case.2
+  · simpa [Nat.coprime_comm] using hBD y x hDB_case.2 hDB_case.1
+
+/--
+Publication-facing graph theorem for the current `Γ(Z_p × Z_25)` campaign.
+It is the graph-faithful form of the four-interface companion slice: the
+conclusion only concerns distinct zero-divisor vertices, and the `B-B`
+obligation is weakened accordingly.
+-/
+theorem zp_z25_four_interface_companion_theorem_on_distinct_vertices
+    {p : ℕ} [Fact p.Prime]
+    (label : F25RingElem p → Nat)
+    (hAC :
+      ∀ x y, f25SupportPredicate .A x → f25SupportPredicate .C y →
+        Nat.Coprime (label x) (label y))
+    (hBB :
+      ∀ x y, f25SupportPredicate .B x → f25SupportPredicate .B y →
+        x ≠ y → Nat.Coprime (label x) (label y))
+    (hBC :
+      ∀ x y, f25SupportPredicate .B x → f25SupportPredicate .C y →
+        Nat.Coprime (label x) (label y))
+    (hBD :
+      ∀ x y, f25SupportPredicate .B x → f25SupportPredicate .D y →
+        Nat.Coprime (label x) (label y)) :
+    ∀ x y,
+      f25ZeroDivisorVertex x → f25ZeroDivisorVertex y → x ≠ y → x * y = 0 →
+      Nat.Coprime (label x) (label y) :=
+  f25_ring_four_interface_reduction_on_distinct_vertices label hAC hBB hBC hBD
+
 /--
 The ring-level carrier for the `Γ(Z_p × Z_p × Z_2)` family campaign.
 The six support classes from `ZeroDivisorSupports.F2Support` are the six mixed

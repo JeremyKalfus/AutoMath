@@ -199,5 +199,157 @@
     "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
     "publication_status": "SLICE_CANDIDATE",
     "checked_on": "2026-04-11"
+  },
+  {
+    "slug": "z29-z25-prime-zero-divisor-graph",
+    "reason": "CANDIDATE",
+    "title": "Is the zero-divisor graph Gamma(Z_29 x Z_25) prime?",
+    "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+    "publication_status": "SLICE_CANDIDATE",
+    "checked_on": "2026-04-11"
+  },
+  {
+    "slug": "z31-z25-prime-zero-divisor-graph",
+    "reason": "CANDIDATE",
+    "title": "Is the zero-divisor graph Gamma(Z_31 x Z_25) prime?",
+    "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+    "publication_status": "SLICE_CANDIDATE",
+    "checked_on": "2026-04-11"
+  },
+  {
+    "slug": "z37-z25-prime-zero-divisor-graph",
+    "reason": "CANDIDATE",
+    "title": "Is the zero-divisor graph Gamma(Z_37 x Z_25) prime?",
+    "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+    "publication_status": "SLICE_CANDIDATE",
+    "checked_on": "2026-04-11"
+  },
+  {
+    "slug": "z41-z25-prime-zero-divisor-graph",
+    "reason": "CANDIDATE",
+    "title": "Is the zero-divisor graph Gamma(Z_41 x Z_25) prime?",
+    "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+    "publication_status": "SLICE_CANDIDATE",
+    "checked_on": "2026-04-11"
+  },
+  {
+    "slug": "z43-z25-prime-zero-divisor-graph",
+    "reason": "CANDIDATE",
+    "title": "Is the zero-divisor graph Gamma(Z_43 x Z_25) prime?",
+    "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+    "publication_status": "SLICE_CANDIDATE",
+    "checked_on": "2026-04-11"
+  },
+  {
+    "slug": "z47-z25-prime-zero-divisor-graph",
+    "reason": "CANDIDATE",
+    "title": "Is the zero-divisor graph Gamma(Z_47 x Z_25) prime?",
+    "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+    "publication_status": "SLICE_CANDIDATE",
+    "checked_on": "2026-04-11"
+  },
+  {
+    "slug": "z53-z25-prime-zero-divisor-graph",
+    "reason": "CANDIDATE",
+    "title": "Is the zero-divisor graph Gamma(Z_53 x Z_25) prime?",
+    "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+    "publication_status": "SLICE_CANDIDATE",
+    "checked_on": "2026-04-11"
+  },
+  {
+    "slug": "z59-z25-prime-zero-divisor-graph",
+    "reason": "CANDIDATE",
+    "title": "Is the zero-divisor graph Gamma(Z_59 x Z_25) prime?",
+    "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+    "publication_status": "SLICE_CANDIDATE",
+    "checked_on": "2026-04-11"
+  },
+  {
+    "slug": "z61-z25-prime-zero-divisor-graph",
+    "reason": "CANDIDATE",
+    "title": "Is the zero-divisor graph Gamma(Z_61 x Z_25) prime?",
+    "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+    "publication_status": "SLICE_CANDIDATE",
+    "checked_on": "2026-04-11"
+  },
+  {
+    "slug": "z67-z25-prime-zero-divisor-graph",
+    "reason": "CANDIDATE",
+    "title": "Is the zero-divisor graph Gamma(Z_67 x Z_25) prime?",
+    "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+    "publication_status": "SLICE_CANDIDATE",
+    "checked_on": "2026-04-11"
+  },
+  {
+    "slug": "z71-z25-prime-zero-divisor-graph",
+    "reason": "CANDIDATE",
+    "title": "Is the zero-divisor graph Gamma(Z_71 x Z_25) prime?",
+    "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+    "publication_status": "SLICE_CANDIDATE",
+    "checked_on": "2026-04-11"
+  },
+  {
+    "slug": "z73-z25-prime-zero-divisor-graph",
+    "reason": "CANDIDATE",
+    "title": "Is the zero-divisor graph Gamma(Z_73 x Z_25) prime?",
+    "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+    "publication_status": "SLICE_CANDIDATE",
+    "checked_on": "2026-04-11"
+  },
+  {
+    "slug": "z79-z25-prime-zero-divisor-graph",
+    "reason": "CANDIDATE",
+    "title": "Is the zero-divisor graph Gamma(Z_79 x Z_25) prime?",
+    "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+    "publication_status": "SLICE_CANDIDATE",
+    "checked_on": "2026-04-11"
+  },
+  {
+    "slug": "z83-z25-prime-zero-divisor-graph",
+    "reason": "CANDIDATE",
+    "title": "Is the zero-divisor graph Gamma(Z_83 x Z_25) prime?",
+    "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+    "publication_status": "SLICE_CANDIDATE",
+    "checked_on": "2026-04-12"
+  },
+  {
+    "slug": "z89-z25-prime-zero-divisor-graph",
+    "reason": "CANDIDATE",
+    "title": "Is the zero-divisor graph Gamma(Z_89 x Z_25) prime?",
+    "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+    "publication_status": "SLICE_CANDIDATE",
+    "checked_on": "2026-04-12"
+  },
+  {
+    "slug": "z97-z25-prime-zero-divisor-graph",
+    "reason": "CANDIDATE",
+    "title": "Is the zero-divisor graph Gamma(Z_97 x Z_25) prime?",
+    "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+    "publication_status": "SLICE_CANDIDATE",
+    "checked_on": "2026-04-12"
+  },
+  {
+    "slug": "z101-z25-prime-zero-divisor-graph",
+    "reason": "CANDIDATE",
+    "title": "Is the zero-divisor graph Gamma(Z_101 x Z_25) prime?",
+    "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+    "publication_status": "INSTANCE_ONLY",
+    "checked_on": "2026-04-12"
+  },
+  {
+    "slug": "z103-z25-prime-zero-divisor-graph",
+    "reason": "CANDIDATE",
+    "title": "Is the zero-divisor graph Gamma(Z_103 x Z_25) prime?",
+    "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+    "publication_status": "SLICE_CANDIDATE",
+    "checked_on": "2026-04-12"
+  },
+  {
+    "slug": "z107-z25-prime-zero-divisor-graph",
+    "reason": "CANDIDATE",
+    "title": "Is the zero-divisor graph Gamma(Z_107 x Z_25) prime?",
+    "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
+    "publication_status": "SLICE_CANDIDATE",
+    "checked_on": "2026-04-12"
   }
 ]

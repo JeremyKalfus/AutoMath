@@ -3,25 +3,21 @@
   "family_slug": "zero_divisor_prime_labelings",
   "family_name": "Prime labelings of zero-divisor graph families",
   "stage": "publication_audit",
-  "classification": "CANDIDATE",
-  "confidence": "high",
+  "classification": "EXACT",
   "publication_status": "SLICE_EXACT",
-  "publication_confidence": "medium",
-  "strongest_honest_claim": "As of 2026-04-11T15:03:19-04:00, the strongest honest family claim remains the preserved exact Lean theorem `AutoMath.Families.ZeroDivisorRingBridges.zp_zp_z2_three_interface_lead_theorem`, mirrored by `AutoMath.Families.ZeroDivisorPrimeLabelings.family_zero_divisor_prime_labelings_f2_slice`: for every odd prime `p`, if the singleton support class `C` in `Γ(Z_p × Z_p × Z_2)` receives label `1` and the three live interfaces `A-B`, `A-F`, and `B-E` are pairwise coprime, then every zero-product edge between nonzero zero-divisor vertices is automatically labeled by coprime integers. This is a genuine parameterized theorem slice and is stronger than an example, and the refreshed bounded prior-art pass did not reveal an earlier published statement of this exact reduction theorem. It is not yet a theorem that `Γ(Z_p × Z_p × Z_2)` is prime for all odd `p`, and it is not by itself enough to make the campaign `PAPER_READY`.",
-  "paper_title_hint": "A Three-Interface Reduction Theorem for Prime Labelings of Γ(Z_p × Z_p × Z_2)",
-  "theorem_slice_target": "Keep `zp_zp_z2_three_interface_lead_theorem` fixed as the exact lead slice and present it only as a ring-level reduction theorem for `Γ(Z_p × Z_p × Z_2)`, with support partition and adjacency reduction as setup and the singleton hinge plus three live interfaces as the theorem inside the broader open `Γ(Z_p × Z_p × Z_q)` program.",
-  "fallback_target": "Close a quantified bounded-spill plus barrier-reservoir wrapper on `Γ(Z_p × Z_25)` if possible; otherwise package the first sharp repaired-wrapper obstruction theorem, with `p = 19` as the next discriminator and `p = 23` next if `p = 19` survives.",
-  "next_blocker": "The exact `F2` slice is theorem-worthy and still looks non-rediscovered within this bounded 2026-04-11 audit, but it is still too thin to make the campaign `PAPER_READY` on its own. The preserved `F25` ring-to-support bridge means the live blocker is now only the quantified four-class arithmetic wrapper on `Γ(Z_p × Z_25)`; the `Γ(Z_17 × Z_25)` hint in `selected_problem.md` is stale because that feeder is already preserved, so `p = 19` is now the first live repaired-wrapper discriminator and `p = 23` is next if `p = 19` survives.",
+  "publication_confidence": "high",
+  "strongest_honest_claim": "As of 2026-04-12T03:55:30-0400, the strongest honest family claim remains the Lean-checked paired structural theorem `AutoMath.Families.ZeroDivisorPublicationSlice.zero_divisor_prime_labelings_paired_exact_slice`. The bounded prior-art audit did not establish rediscovery: Fox-Mooney's 2025 canonical source still leaves the ambient families `Γ(Z_p × Z_p × Z_q)` and `Γ(Z_p × Z_(q^2))` open as Conjectures 4.3 and 4.4, and the bounded outside-source sweep did not surface an independent closure of the active q = 2 or q = 5 subfamilies. What is exact here is the reduction slice, not a direct all-primes `F25` existence theorem; the first direct `Γ(Z_p × Z_25)` publication upgrade remains the finite-range `59 <= p <= 97` corollary, still blocked only by the `C`-class injection / extension packaging from `fixedC0Finset`.",
+  "paper_title_hint": "Paired Support-Reduction Theorems for Prime Labelings of Two Zero-Divisor Graph Families",
+  "theorem_slice_target": "Prove the direct fixed-window `Γ(Z_p × Z_25)` corollary for odd primes `59 <= p <= 97` by combining `AutoMath.Families.ZeroDivisorF25FrozenWrapper.exists_fixedC0_subset_card_eq_C_size_of_p_le_97` with an injection / extension theorem into `AutoMath.Families.ZeroDivisorF25FrozenWrapper.zp_z25_fixed_C0_high_barrier_wrapper_graph_skeleton_of_p_le_97`, while keeping `AutoMath.Families.ZeroDivisorPublicationSlice.zero_divisor_prime_labelings_paired_exact_slice` as the closed paper core.",
+  "fallback_target": "If that finite-range `F25` corollary does not close, freeze the claim at the exact paired slice plus the exact `F2` lead theorem, the checked fixed-window `F25` supply/subset lemmas, and the template boundaries `p = 71` (strict prime-only wording fails) and `p = 101` (the frozen `C0` window ends), without claiming any graph-level counterexample.",
+  "next_blocker": "The only live blocker to a referee-facing direct `F25` theorem is to package a chosen `(p - 1)`-element subset of `fixedC0Finset` as an injective `C`-class labeling and extend it to a total label function whose residual image supplies the `D` class inside `AutoMath.Families.ZeroDivisorF25FrozenWrapper.zp_z25_fixed_C0_high_barrier_wrapper_graph_skeleton_of_p_le_97`.",
   "next_feeder_instances": [
-    "z19-z25-prime-zero-divisor-graph",
-    "z23-z25-prime-zero-divisor-graph"
+    "z109-z25-prime-zero-divisor-graph",
+    "z113-z25-prime-zero-divisor-graph"
   ],
   "campaign_health": "warm",
   "lean_ready": true,
   "lean_complete": true,
-  "next_action": "Keep `zp_zp_z2_three_interface_lead_theorem` fixed as the exact publication anchor and do not broaden the headline claim beyond that reduction theorem. Do not reopen the `F2` bridge, and do not rerun `Γ(Z_17 × Z_25)` because that feeder is already preserved. Push the next family cycle onto the four-class `Γ(Z_p × Z_25)` wrapper line above the preserved ring-support bridge: either prove the quantified small-spill plus barrier-reservoir theorem using the preserved `p = 13` and `p = 17` feeders, or run `z19-z25-prime-zero-divisor-graph` as the first sharp repaired-wrapper discriminator; if it survives, run `z23-z25-prime-zero-divisor-graph` next.",
-  "proof_artifacts_preserved": true,
-  "last_lean_on": "2026-04-11T04:41:49-0400",
-  "last_generalize_on": "2026-04-11T03:34:44-0400",
-  "last_publication_audit_on": "2026-04-11T15:03:19-04:00"
+  "next_action": "Keep the paper headline fixed at the paired support-reduction slice. Formalize the `C`-class injection / extension package for the fixed-window `F25` corollary, then rerun `publication_audit`; only if that packaging still stalls should feeder work resume at `z109-z25-prime-zero-divisor-graph` and `z113-z25-prime-zero-divisor-graph` as post-97 continuation tests.",
+  "proof_artifacts_preserved": true
 }

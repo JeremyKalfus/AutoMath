@@ -1,0 +1,18 @@
+{
+  "slug": "z53-z25-prime-zero-divisor-graph",
+  "title": "Is the zero-divisor graph \u0393(Z_53 \u00d7 Z_25) prime?",
+  "stage": "verify",
+  "verify_verdict": "VERIFIED",
+  "classification": "CANDIDATE",
+  "confidence": "high",
+  "code_used": true,
+  "lean_ready": true,
+  "lean_complete": false,
+  "publication_status": "SLICE_CANDIDATE",
+  "publication_confidence": "medium-high",
+  "family_affinity": "zero_divisor_prime_labelings",
+  "generalization_signal": "At p = 53 the old frozen wrapper is decisively dead, but the preserved moved barrier B = {1,43,47,53} still works: its spill uses only a small factor palette {2,3,5,43,47,53}, leaving exactly 52 complementary primes for C. This points directly to the live movable sparse-barrier / complementary prime-pool theorem shape on the F25 line.",
+  "strongest_honest_claim": "An explicit prime-labeling witness for \u0393(Z_53 \u00d7 Z_25) survives bounded rediscovery audit and skeptical local verification, and it materially strengthens the active movable sparse-barrier / complementary prime-pool campaign on the \u0393(Z_p \u00d7 Z_25) line, but it remains an unformalized feeder result rather than an exact Lean-backed theorem.",
+  "candidate_theorem_slice": "A movable sparse-barrier / complementary prime-pool slice for \u0393(Z_p \u00d7 Z_25): if one can choose B = {1,q_1,q_2,q_3} with pairwise-coprime barrier primes whose in-interval multiples fit inside the 20 A-slots, and still leave p - 1 primes outside the induced A \u222a B factor palette, then the four-interface bridge theorem yields a prime labeling.",
+  "next_action": "Run generalize on the active \u0393(Z_p \u00d7 Z_25) campaign using the verified p = 53 feeder, then pressure the same moved-barrier / complementary prime-pool package at z59-z25-prime-zero-divisor-graph before any instance-level Lean step."
+}

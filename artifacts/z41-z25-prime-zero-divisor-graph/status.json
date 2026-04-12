@@ -1,0 +1,18 @@
+{
+  "slug": "z41-z25-prime-zero-divisor-graph",
+  "title": "Is the zero-divisor graph \u0393(Z_41 \u00d7 Z_25) prime?",
+  "stage": "verify",
+  "verify_verdict": "VERIFIED",
+  "classification": "CANDIDATE",
+  "confidence": "high",
+  "code_used": true,
+  "lean_ready": true,
+  "lean_complete": false,
+  "publication_status": "SLICE_CANDIDATE",
+  "publication_confidence": "medium-high",
+  "family_affinity": "zero_divisor_prime_labelings",
+  "generalization_signal": "At p = 41 the old fixed barrier B = {1,19,23,29} fails by spill count 24 > 20, but the graph still admits a clean classwise candidate witness after moving the barrier to B = {1,43,47,53}. This strengthens the campaign's movable sparse-barrier reading of the \u0393(Z_p \u00d7 Z_25) line.",
+  "strongest_honest_claim": "An explicit prime-labeling witness for \u0393(Z_41 \u00d7 Z_25) survives skeptical verification, and the bounded rediscovery audit did not establish that this exact instance is already settled in prior art. The campaign-relevant gain is not a family theorem but a stronger feeder: after the fixed wrapper B = {1,19,23,29} has already failed by spill count, the graph still survives at p = 41 via a moved sparse barrier B = {1,43,47,53}, which materially strengthens the live companion theorem candidate on the \u0393(Z_p \u00d7 Z_25) line.",
+  "candidate_theorem_slice": "A movable sparse-barrier sufficient-condition slice for \u0393(Z_p \u00d7 Z_25): if {1,...,5p+19} contains a pairwise-coprime barrier B = {1,q_1,q_2,q_3} whose nontrivial multiples occupy at most the 20 labels of A, and if one can choose p - 1 primes for C outside the factor palette used by A \u222a B, then assigning A as the barrier-multiple reservoir, C from that complementary prime pool, and D as the complement yields a prime labeling.",
+  "next_action": "generalize the moved sparse-barrier companion on the \u0393(Z_p \u00d7 Z_25) line and pressure-test p = 43 before spending Lean effort on this exact instance"
+}

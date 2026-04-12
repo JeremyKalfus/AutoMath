@@ -1,0 +1,18 @@
+{
+  "slug": "z103-z25-prime-zero-divisor-graph",
+  "title": "Is the zero-divisor graph \u0393(Z_103 \u00d7 Z_25) prime?",
+  "stage": "verify",
+  "verify_verdict": "VERIFIED",
+  "classification": "CANDIDATE",
+  "confidence": "high",
+  "code_used": false,
+  "lean_ready": false,
+  "lean_complete": false,
+  "publication_status": "SLICE_CANDIDATE",
+  "publication_confidence": "medium",
+  "family_affinity": "zero_divisor_prime_labelings",
+  "generalization_signal": "At p = 103 the late high-barrier F25 wrapper still survives beyond the preserved p <= 97 window: keep A at the fixed A0 reservoir, keep B = {1,293,307,311}, retain the 96-label complementary-support window C0, and add exactly six extra support-safe labels 295,301,305,313,317,319 to reach |C| = 102.",
+  "strongest_honest_claim": "An explicit prime-labeling witness for \u0393(Z_103 \u00d7 Z_25) survives skeptical verification. Its real campaign value is not a proved new family theorem but a verified post-97 feeder: the late high-barrier F25 wrapper still works at p = 103 once one supplies six extra complementary-support C-labels beyond the fixed C0 window.",
+  "candidate_theorem_slice": "Post-97 complementary-support extension slice for \u0393(Z_p \u00d7 Z_25): if one can supply p - 97 extra labels in (291, 5p + 19] whose prime support avoids {2,3,293,307,311}, then the fixed-data high-barrier wrapper with A = A0, B = {1,293,307,311}, C = C0 plus those extras, and D the complement yields a prime labeling.",
+  "next_action": "Run generalize on the post-97 complementary-support supply question before any Lean work, with \u0393(Z_107 \u00d7 Z_25) as the next smallest discriminator if the counted supply statement still stalls."
+}

@@ -1,0 +1,18 @@
+{
+  "slug": "z83-z25-prime-zero-divisor-graph",
+  "title": "Is the zero-divisor graph \u0393(Z_83 \u00d7 Z_25) prime?",
+  "stage": "verify",
+  "verify_verdict": "VERIFIED",
+  "classification": "CANDIDATE",
+  "confidence": "high",
+  "code_used": true,
+  "lean_ready": true,
+  "lean_complete": false,
+  "publication_status": "SLICE_CANDIDATE",
+  "publication_confidence": "medium-high",
+  "family_affinity": "zero_divisor_prime_labelings",
+  "generalization_signal": "Skeptical verification confirms that at p = 83 the live high-barrier complementary-support wrapper still has wide arithmetic slack: after fixing A = A0 and B = {1,223,227,229}, the interval {1,...,434} still contains 141 admissible complementary-support labels for C, well above the 82 needed. The blocker on the F25 line remains theorem packaging, especially the distinct-vertex B-B bridge and a quantified C-supply statement, not failure of this feeder arithmetic.",
+  "strongest_honest_claim": "An explicit prime-labeling witness for \u0393(Z_83 \u00d7 Z_25) survives skeptical verification and the bounded rediscovery audit did not establish prior-art settlement of the exact instance. The campaign-relevant gain is that the first post-z79 pressure test still closes inside the live fixed-A0, high-barrier, complementary-support regime, so this is real feeder evidence for the F25 wrapper theorem slice, but it is still only a verified feeder and not a Lean-closed theorem.",
+  "candidate_theorem_slice": "For odd prime p with N = 5p + 19, fix A = A0 and choose B = {1,b1,b2,b3} with distinct primes b1,b2,b3 > N/2. If there is a set C of size p - 1 inside {1,...,N} \\ (A0 \\cup B) such that every prime divisor of every c in C avoids {2,3,b1,b2,b3}, then with D the residual complement the nontrivial interfaces A-C, B-C, and B-D are automatic; after correcting the bridge so B-B quantifies only distinct B vertices, this becomes a referee-facing sufficient-condition slice for \u0393(Z_p \u00d7 Z_25).",
+  "next_action": "Run generalize on the fixed-A0, high-barrier, complementary-support wrapper with the graph-faithful distinct-vertex B-B clause, and use \u0393(Z_89 \u00d7 Z_25) only if theorem packaging still needs another feeder."
+}

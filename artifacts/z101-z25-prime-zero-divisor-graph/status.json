@@ -1,0 +1,18 @@
+{
+  "slug": "z101-z25-prime-zero-divisor-graph",
+  "title": "Is the zero-divisor graph \u0393(Z_101 \u00d7 Z_25) prime?",
+  "stage": "verify",
+  "verify_verdict": "VERIFIED",
+  "classification": "CANDIDATE",
+  "confidence": "high",
+  "code_used": true,
+  "lean_ready": false,
+  "lean_complete": false,
+  "publication_status": "INSTANCE_ONLY",
+  "publication_confidence": "high",
+  "family_affinity": "zero_divisor_prime_labelings",
+  "generalization_signal": "At p = 101 the four-class \u0393(Z_p \u00d7 Z_25) line still closes in the campaign's high-barrier complementary-support language: A is the fixed A0 reservoir, B = {1,263,269,271} is a zero-spill barrier set above half the interval, and C can be chosen as a size-100 support-avoiding block.",
+  "strongest_honest_claim": "An explicit prime-labeling witness for \u0393(Z_101 \u00d7 Z_25) survives skeptical verification. The instance is strong feeder evidence that the active high-barrier complementary-support package still works at the first reopened post-97 boundary, but this artifact by itself is still only instance-level evidence rather than a proved new theorem slice.",
+  "candidate_theorem_slice": "A wrapper-language complementary-support corollary for \u0393(Z_p \u00d7 Z_25): if the interval {1, ..., 5p + 19} contains a size p - 1 block C whose prime support avoids {2,3,b1,b2,b3} for distinct barrier primes b1,b2,b3 above half the interval, then with A = A0, B = {1,b1,b2,b3}, and D the complement, the full graph \u0393(Z_p \u00d7 Z_25) is prime.",
+  "next_action": "Promote the verified p = 101 feeder into the family dossier, then test z103-z25-prime-zero-divisor-graph while prioritizing a wrapper-language complementary-support C-supply corollary over exact-instance Lean."
+}

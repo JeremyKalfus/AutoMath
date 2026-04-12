@@ -1,0 +1,23 @@
+{
+  "entry_type": "family_campaign",
+  "family_slug": "zero_divisor_prime_labelings",
+  "family_name": "Prime labelings of zero-divisor graph families",
+  "stage": "generalize",
+  "classification": "EXACT",
+  "publication_status": "SLICE_EXACT",
+  "publication_confidence": "high",
+  "strongest_honest_claim": "As of 2026-04-12, the strongest honest family claim remains the Lean-checked paired structural reduction theorem `AutoMath.Families.ZeroDivisorPublicationSlice.zero_divisor_prime_labelings_paired_exact_slice`. The active `F25` upgrade target is the finite-range `Gamma(Z_p x Z_25)` complementary-support corollary for odd primes `59 <= p <= 97`, but that corollary is not yet preserved as a closed theorem in repo state because the subset-selection / injection bridge from `fixedC0Finset` into the `C`-class input of `AutoMath.Families.ZeroDivisorF25FrozenWrapper.zp_z25_fixed_C0_high_barrier_wrapper_graph_skeleton_of_p_le_97` is still open.",
+  "paper_title_hint": "Paired Support-Reduction Theorems for Two Zero-Divisor Prime-Labeling Families",
+  "theorem_slice_target": "Keep `AutoMath.Families.ZeroDivisorPublicationSlice.zero_divisor_prime_labelings_paired_exact_slice` as the closed paper core and present it honestly as a paired reduction theorem. The active upgrade target is then the finite-range `Gamma(Z_p x Z_25)` complementary-support corollary for odd primes `59 <= p <= 97`, obtained by combining `AutoMath.Families.ZeroDivisorF25FrozenWrapper.fixedC0_card_ge_C_size_of_p_le_97` with `AutoMath.Families.ZeroDivisorF25FrozenWrapper.zp_z25_fixed_C0_high_barrier_wrapper_graph_skeleton_of_p_le_97` through an explicit subset-selection / injection theorem.",
+  "fallback_target": "If that finite-range `F25` corollary still does not close, freeze the publication claim at the exact paired support-reduction theorem together with the checked fixed-window `F25` supply lemmas and wrapper skeleton. Use `p = 71` only as the smallest obstruction to strict prime-only `F25` language, and use `p = 101` only as evidence that the fixed `C0` window stops at `97` without implying any graph-level failure beyond it.",
+  "next_blocker": "The current blocker is no longer whether there is a theorem slice; that slice is already exact. The live blocker is turning the fixed-window `F25` count `p - 1 <= |C0|` into one referee-facing direct corollary by formalizing the subset-selection / injection step from `ZeroDivisorF25FrozenWrapper.fixedC0Finset` into `AutoMath.Families.ZeroDivisorF25FrozenWrapper.zp_z25_fixed_C0_high_barrier_wrapper_graph_skeleton_of_p_le_97`.",
+  "next_feeder_instances": [
+    "z103-z25-prime-zero-divisor-graph",
+    "z107-z25-prime-zero-divisor-graph"
+  ],
+  "campaign_health": "warm",
+  "lean_ready": true,
+  "lean_complete": true,
+  "next_action": "Keep `AutoMath.Families.ZeroDivisorPublicationSlice.zero_divisor_prime_labelings_paired_exact_slice` fixed as the closed paper core and do not widen the headline to a family prime-labelability theorem yet. Formalize the missing subset-selection / injection lemma feeding `zp_z25_fixed_C0_high_barrier_wrapper_graph_skeleton_of_p_le_97`, then re-audit the campaign at the finite-range `59 <= p <= 97` `F25` corollary level. Only if that packaging still stalls should feeder work reopen at `z103-z25-prime-zero-divisor-graph` and then `z107-z25-prime-zero-divisor-graph`.",
+  "proof_artifacts_preserved": true
+}

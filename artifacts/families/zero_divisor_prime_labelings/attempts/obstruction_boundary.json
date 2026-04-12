@@ -1,0 +1,23 @@
+{
+  "entry_type": "family_campaign",
+  "family_slug": "zero_divisor_prime_labelings",
+  "family_name": "Prime labelings of zero-divisor graph families",
+  "stage": "generalize",
+  "classification": "EXACT",
+  "publication_status": "SLICE_EXACT",
+  "publication_confidence": "high",
+  "strongest_honest_claim": "The strongest honest closed claim for this obstruction-boundary sidecar is the exact paired slice `AutoMath.Families.ZeroDivisorPublicationSlice.zero_divisor_prime_labelings_paired_exact_slice` together with the exact local obstruction theorem `AutoMath.Families.ZeroDivisorPrimeLabelings.family_zero_divisor_prime_labelings_f25_frozen_wrapper_boundary`, mirroring `AutoMath.Families.ZeroDivisorF25FrozenWrapper.frozen_wrapper_boundary_31_37`. The paired slice gives the closed structural core on both active family lines, and the boundary theorem shows that the stricter frozen `F25` front still fits at `p = 31` but already overflows the `20`-slot `A` reservoir at `p = 37`. The strongest plausible upgrade remains the fixed-data complementary-support corollary through `59 <= p <= 97`, but that still depends on the missing subset-selection / injection packaging from `fixedC0Finset` into the actual `C` block. Preserved `p = 71` and `p = 101` evidence are therefore used only as overclaim boundaries, not as graph-level counterexamples.",
+  "paper_title_hint": "Paired Support-Reduction Theorems and a 31/37 Boundary for Zero-Divisor Prime Labelings",
+  "theorem_slice_target": "Keep `AutoMath.Families.ZeroDivisorPublicationSlice.zero_divisor_prime_labelings_paired_exact_slice` as the closed paper core and, for this obstruction-boundary sidecar, pair it with `AutoMath.Families.ZeroDivisorPrimeLabelings.family_zero_divisor_prime_labelings_f25_frozen_wrapper_boundary` as the first sharp exact overclaim boundary. Treat the finite-range `59 <= p <= 97` complementary-support `F25` corollary only as the strongest plausible upgrade pending the subset-selection / injection lemma.",
+  "fallback_target": "If the finite-range complementary-support `F25` corollary still does not package cleanly, stop at the exact paired slice plus the exact `31/37` obstruction theorem and the checked fixed-data wrapper scaffold `AutoMath.Families.ZeroDivisorF25FrozenWrapper.zp_z25_fixed_C0_high_barrier_wrapper_graph_skeleton_of_p_le_97`. Use preserved `p = 71` only as failure of stricter prime-only wording and preserved `p = 101` only as the end of the fixed `C0` window.",
+  "next_blocker": "Turn the checked fixed-data `F25` scaffold into one referee-facing theorem: prove the subset-selection / injection packaging that turns `p - 1 <= |fixedC0Finset|` into an actual `C`-class input for `AutoMath.Families.ZeroDivisorF25FrozenWrapper.zp_z25_fixed_C0_high_barrier_wrapper_graph_skeleton_of_p_le_97`, thereby closing the finite-range corollary through `59 <= p <= 97`.",
+  "next_feeder_instances": [
+    "z103-z25-prime-zero-divisor-graph",
+    "z107-z25-prime-zero-divisor-graph"
+  ],
+  "campaign_health": "warm",
+  "lean_ready": true,
+  "lean_complete": true,
+  "next_action": "Preserve this sidecar as the exact obstruction-boundary option. In the canonical publication line, either prove the missing `fixedC0` subset-selection / injection lemma and upgrade to the finite-range `59 <= p <= 97` corollary, or stop at the exact paired slice plus the exact `31/37` boundary theorem and keep `p = 71` and `p = 101` only as overclaim boundaries. Reopen feeder work only at `z103-z25-prime-zero-divisor-graph` and then `z107-z25-prime-zero-divisor-graph` if the wrapper-language corollary still stalls.",
+  "proof_artifacts_preserved": true
+}

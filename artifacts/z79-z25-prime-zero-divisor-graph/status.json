@@ -1,0 +1,18 @@
+{
+  "slug": "z79-z25-prime-zero-divisor-graph",
+  "title": "Is the zero-divisor graph \u0393(Z_79 \u00d7 Z_25) prime?",
+  "stage": "verify",
+  "verify_verdict": "VERIFIED",
+  "classification": "CANDIDATE",
+  "confidence": "high",
+  "code_used": true,
+  "lean_ready": true,
+  "lean_complete": false,
+  "publication_status": "SLICE_CANDIDATE",
+  "publication_confidence": "high",
+  "family_affinity": "zero_divisor_prime_labelings",
+  "generalization_signal": "At p = 79 the active four-class witness can be written directly in the live theorem language: A = A0, B = {1,211,223,227} above half the interval, and C as a size-78 complementary-support block {n <= 245 : gcd(n,6)=1} with the barrier labels removed. This shifts the feeder away from the old prime-only front and toward the fixed-A0 / high-barrier / support-avoidance slice the campaign is trying to freeze.",
+  "strongest_honest_claim": "The explicit labeling for \u0393(Z_79 \u00d7 Z_25) survives bounded prior-art audit and direct recomputation, so the instance is a verified feeder for the fixed-A0 / high-barrier / complementary-support \u0393(Z_p \u00d7 Z_25) slice. It is still only an instance-level result until later family packaging and any Lean closure are completed.",
+  "candidate_theorem_slice": "A fixed-A0 / high-barrier / complementary-support slice for \u0393(Z_p \u00d7 Z_25): if A = A0, B = {1,b1,b2,b3} with distinct prime barriers above half the interval, and C has size p - 1 with prime support avoiding {2,3,b1,b2,b3}, then the support-reduction theorem discharges all graph edges classwise.",
+  "next_action": "Absorb z79-z25 into generalize as verified feeder evidence for the complementary-support slice, with p = 83 as the first pressure test for a new C-reservoir argument; only then decide whether to spend Lean effort on the isolated instance."
+}

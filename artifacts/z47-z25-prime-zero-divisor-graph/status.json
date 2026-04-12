@@ -1,0 +1,18 @@
+{
+  "slug": "z47-z25-prime-zero-divisor-graph",
+  "title": "Is the zero-divisor graph Gamma(Z_47 x Z_25) prime?",
+  "stage": "verify",
+  "verify_verdict": "VERIFIED",
+  "classification": "CANDIDATE",
+  "confidence": "high",
+  "code_used": true,
+  "lean_ready": false,
+  "lean_complete": false,
+  "publication_status": "SLICE_CANDIDATE",
+  "publication_confidence": "medium-high",
+  "family_affinity": "high",
+  "generalization_signal": "strong moved-barrier continuation: the same B={1,43,47,53} used beyond the frozen-wrapper boundary still works at p=47 and leaves a complementary prime pool with slack 2",
+  "strongest_honest_claim": "An explicit prime-labeling witness for \u0393(Z_47 \u00d7 Z_25) survives skeptical verification. This is still an instance result, but it materially strengthens the active \u0393(Z_p \u00d7 Z_25) campaign because the same moved sparse barrier B = {1,43,47,53} already preserved at p = 37, 41, 43 still works at p = 47 and leaves a complementary prime pool with slack 2.",
+  "candidate_theorem_slice": "If {1,...,5p+19} admits a pairwise-coprime moved barrier B = {1,q1,q2,q3} whose nontrivial multiples fit inside the 20 labels of A and A union B can be kept inside a controlled excluded factor palette that still leaves at least p - 1 primes for C, then \u0393(Z_p \u00d7 Z_25) is prime.",
+  "next_action": "promote the verified p = 47 moved-barrier witness into the family dossier, run generalize before any Lean work on the exact instance, and then test z53-z25-prime-zero-divisor-graph"
+}

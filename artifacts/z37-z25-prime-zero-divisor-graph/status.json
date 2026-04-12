@@ -1,0 +1,18 @@
+{
+  "slug": "z37-z25-prime-zero-divisor-graph",
+  "title": "Is the zero-divisor graph \u0393(Z_37 \u00d7 Z_25) prime?",
+  "stage": "verify",
+  "verify_verdict": "VERIFIED",
+  "classification": "CANDIDATE",
+  "confidence": "high",
+  "code_used": true,
+  "lean_ready": false,
+  "lean_complete": false,
+  "publication_status": "SLICE_CANDIDATE",
+  "publication_confidence": "medium-high",
+  "family_affinity": "zero_divisor_prime_labelings",
+  "generalization_signal": "At p = 37 the old fixed barrier B = {1,19,23,29} fails only as a wrapper by spill count, while a moved sparse barrier B = {1,43,47,53} still supports an explicit verified witness. This points toward a movable-barrier slice for \u0393(Z_p \u00d7 Z_25) rather than a graph-level breakpoint at p = 37.",
+  "strongest_honest_claim": "An explicit prime-labeling witness for \u0393(Z_37 \u00d7 Z_25) survives skeptical verification. The campaign-relevant gain is that p = 37 currently looks like the first failure of one fixed wrapper, not the first failure of the graph family itself: moving the barrier clique up to B = {1,43,47,53} still closes the instance. This is feeder evidence for a movable sparse-barrier slice on \u0393(Z_p \u00d7 Z_25), not yet a proved family theorem.",
+  "candidate_theorem_slice": "A movable sparse-barrier sufficient-condition slice for \u0393(Z_p \u00d7 Z_25): if N = 5p + 19 admits a pairwise-coprime barrier B = {1,q1,q2,q3} whose nontrivial multiples in {1,...,N} occupy at most the 20 A-slots, and if there are p - 1 primes disjoint from the factor palette used by A \u222a B for C, then assigning those barrier multiples to A, those primes to C, and the complement to D yields a prime labeling.",
+  "next_action": "promote the verified p = 37 movable-barrier feeder into the family generalization dossier, then test z41-z25-prime-zero-divisor-graph next; keep z43-z25-prime-zero-divisor-graph as the next pressure point and do not run Lean on this isolated instance yet"
+}

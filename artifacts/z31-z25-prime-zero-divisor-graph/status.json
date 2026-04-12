@@ -1,0 +1,18 @@
+{
+  "slug": "z31-z25-prime-zero-divisor-graph",
+  "title": "Is the zero-divisor graph \u0393(Z_31 \u00d7 Z_25) prime?",
+  "stage": "verify",
+  "verify_verdict": "VERIFIED",
+  "classification": "CANDIDATE",
+  "confidence": "high",
+  "code_used": true,
+  "lean_ready": false,
+  "lean_complete": false,
+  "publication_status": "SLICE_CANDIDATE",
+  "publication_confidence": "medium-high",
+  "family_affinity": "zero_divisor_prime_labelings",
+  "generalization_signal": "At p = 31 the fixed four-class barrier-threshold package survives almost exactly at its arithmetic boundary: the interval (29,174] contains exactly 30 = p - 1 usable primes for C, and the nontrivial multiples of 19, 23, and 29 occupy exactly 19 of the 20 A-slots. This makes the feeder strong evidence for a threshold-style slice or breakpoint theorem on \u0393(Z_p \u00d7 Z_25).",
+  "strongest_honest_claim": "An explicit prime-labeling witness for \u0393(Z_31 \u00d7 Z_25) survives skeptical verification. The campaign-relevant gain is that this feeder closes at a near-sharp arithmetic boundary for the fixed barrier B = {1,19,23,29}: A absorbs all 19 nontrivial barrier multiples up to 174 with one slot to spare, and C can be taken exactly as the 30 primes greater than 29 in {1,...,174}. This is still feeder evidence rather than a proved family theorem, but it points to a real \u0393(Z_p \u00d7 Z_25) slice.",
+  "candidate_theorem_slice": "A fixed-barrier sufficient-condition slice for \u0393(Z_p \u00d7 Z_25): if {1,...,5p+19} contains at least p - 1 primes greater than 29 and at most 20 nontrivial multiples of 19, 23, and 29, then taking B = {1,19,23,29}, A as the barrier-multiple reservoir, C from those primes, and D as the complement yields a prime labeling.",
+  "next_action": "promote the verified p = 31 feeder into the family dossier, then run generalize before any Lean work and test whether z37-z25 is the first sharp obstruction to the current fixed-barrier wrapper"
+}

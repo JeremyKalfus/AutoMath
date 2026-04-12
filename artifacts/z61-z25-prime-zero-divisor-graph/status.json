@@ -1,0 +1,18 @@
+{
+  "slug": "z61-z25-prime-zero-divisor-graph",
+  "title": "Is the zero-divisor graph \u0393(Z_61 \u00d7 Z_25) prime?",
+  "stage": "verify",
+  "verify_verdict": "VERIFIED",
+  "classification": "CANDIDATE",
+  "confidence": "high",
+  "code_used": true,
+  "lean_ready": false,
+  "lean_complete": false,
+  "publication_status": "SLICE_CANDIDATE",
+  "publication_confidence": "medium-high",
+  "family_affinity": "zero_divisor_prime_labelings",
+  "generalization_signal": "At p = 61 the old low barrier B = {1,19,23,29} is no longer viable because its forced spill count is 39 > 20, while a zero-spill high barrier B = {1,163,167,173} works cleanly. The pure complementary prime pool is exactly one label short for C, but a single harmless supplement 121 closes the gap. This points toward a complementary-support slice rather than a pure-prime C-block slice.",
+  "candidate_theorem_slice": "A four-class sufficient-condition slice for \u0393(Z_p \u00d7 Z_25): choose B = {1,b1,b2,b3} with each nontrivial bi > (5p + 19)/2, choose A from a fixed small smooth palette, and choose C from p - 1 labels whose prime factors avoid both the A-support and the barrier primes, allowing a tiny composite supplement when the pure prime pool is short.",
+  "strongest_honest_claim": "An explicit prime-labeling witness for \u0393(Z_61 \u00d7 Z_25) survives skeptical verification on the full 324-vertex ring graph. This is still only an instance result, but it materially sharpens the active F25 campaign because it isolates the first clean zero-spill high-barrier case where the pure complementary prime pool is one label short and a single composite supplement 121 closes the gap.",
+  "next_action": "Promote the verified p = 61 zero-spill / one-supplement witness into the family dossier, then run generalize before testing z59-z25 as the nearest backward comparison or z67-z25 as the next forward continuation; do not escalate this instance alone to Lean yet."
+}
