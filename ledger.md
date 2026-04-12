@@ -11,6 +11,9 @@
 - Queue was empty or exhausted, so curation started.
 - Queued slugs on 2026-04-07: c12-1-3-6-cnbc, c16-4-5-8-cnbc, z5-z5-z2-prime-zero-divisor-graph, z3-z25-prime-zero-divisor-graph, z2-power-8-prime-zero-divisor-graph
 - started solving c12-1-3-6-cnbc
+- Curation on 2026-04-12 rebuilt the queue in one-shot publication mode after a local exclusion sweep over failed_problems.json, queue.json, selected_problem.md, ledger.md, PROOFS.md, campaigns/, campaign manifests, and artifact slugs.
+- Queued slugs on 2026-04-12: ladder-4-rungs-edge-erdos-posa, cocktail-party-two-monochromatic-diameter-2-cover, eight-regular-forbidden-outdegree-three-set, order-12-9-regular-one-factorization, all-9-vertex-graphs-1-11-representable
+- selected_problem.md was refreshed to ladder-4-rungs-edge-erdos-posa.
 - Solve stage for c12-1-3-6-cnbc produced a no-code candidate proof: the closed-neighborhood operator has kernel only at Fourier frequencies 3 and 9, forcing a 4-periodic witness; one CNB-coloring is red on {0,1,4,5,8,9} and blue on {2,3,6,7,10,11}.
 - Lean is unavailable on this machine, so Lean was skipped for c12-1-3-6-cnbc.
 - c12-1-3-6-cnbc was reclassified as REDISCOVERY after a targeted prior-art audit and was moved aside.
@@ -14416,3 +14419,12 @@
 - PUBLICATION_AUDIT reran for family campaign zero_divisor_prime_labelings at 2026-04-12 03:55:30 EDT using the canonical dossier/record/status, exact Lean theorem windows, and a bounded live-web pass on the exact family statements, alternate notation, Fox-Mooney's canonical source, one outside-source status sweep, and one recent discussion / follow-up check.
 - The bounded prior-art audit again did not establish rediscovery: the canonical source still leaves `Γ(Z_p × Z_p × Z_q)` and `Γ(Z_p × Z_(q^2))` open as Conjectures `4.3` and `4.4`, and the bounded outside-source sweep did not surface an independent prime-labeling closure of the active `Γ(Z_p × Z_25)` or `Γ(Z_p × Z_p × Z_2)` subfamilies.
 - Canonical family `record.md` now contains the required publication-audit sections, and `status.json` was updated before closeout to `stage = publication_audit` with conservative values `publication_status = SLICE_EXACT`, `publication_confidence = high`, `lean_ready = true`, and `proof_artifacts_preserved = true`; the paired exact slice is theorem-worthy and stronger than an example, but the campaign is still not `PAPER_READY` until the missing `F25` injection / extension package yields the direct finite-range corollary through `59 <= p <= 97`.
+- Stop marker already exists, so this cycle was skipped.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Publication mode selected one-shot paper candidate forbidden-outdegree-orientation-d7 instead of silently preferring a warm family campaign.
+- started solving forbidden-outdegree-orientation-d7
+- Solve pass for forbidden-outdegree-orientation-d7 proved two conservative slices without using code: every 7-regular graph has a strong `{3,4}`-orientation, so all forbidden sets disjoint from `{3,4}` are solved, and the full conjecture holds for bipartite 7-regular graphs by orienting a 1-factorization along a complementary pair `{k,7-k}` missed by `F`.
+- The full `d = 7` paper candidate remains open in this pass; the explicit blocker recorded in the solve artifact is the missing global repair lemma for nonbipartite center-hitting forbidden sets, with the next normalized targets `F = {3,4}` and `F = {2,3,4}`.
+- VERIFY reran for forbidden-outdegree-orientation-d7 at 2026-04-12 using a bounded live-web rediscovery pass followed by skeptical local proof checking. The full `d = 7` slice was not established as solved in prior art, but the surviving bipartite slice is already known from earlier work cited by the canonical source, and the claimed arbitrary-graph `{3,4}`-disjoint slice fails at the false bridge argument in the quotient step.
+- The forbidden-outdegree-orientation-d7 artifact was updated before closeout to `stage = verify` with `verify_verdict = REDISCOVERY`, `classification = REDISCOVERY`, `publication_status = REDISCOVERY`, `lean_ready = false`, and `next_action = archive_as_rediscovery`.
+- forbidden-outdegree-orientation-d7 was reclassified as REDISCOVERY after the prior-art audit and was moved aside.

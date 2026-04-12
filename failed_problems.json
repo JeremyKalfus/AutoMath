@@ -351,5 +351,13 @@
     "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
     "publication_status": "SLICE_CANDIDATE",
     "checked_on": "2026-04-12"
+  },
+  {
+    "slug": "forbidden-outdegree-orientation-d7",
+    "reason": "REDISCOVERY",
+    "title": "Settle the d = 7 slice of the forbidden out-degree orientation conjecture",
+    "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
+    "publication_status": "REDISCOVERY",
+    "checked_on": "2026-04-12"
   }
 ]

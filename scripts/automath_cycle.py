@@ -588,6 +588,46 @@ def usable_paper_candidates() -> list[dict]:
     return candidates
 
 
+def normalize_queue_for_scheduler() -> list[dict]:
+    queue = load_json(QUEUE, [])
+    if not isinstance(queue, list):
+        return []
+    valid_papers: list[dict] = []
+    invalid_papers: list[dict] = []
+    others: list[dict] = []
+    for item in queue:
+        if not isinstance(item, dict):
+            continue
+        if item.get("entry_type") != "paper_candidate":
+            others.append(item)
+            continue
+        gate_ok, _ = paper_candidate_gate(item)
+        if gate_ok:
+            valid_papers.append(item)
+        else:
+            invalid_papers.append(item)
+    valid_papers.sort(key=paper_candidate_priority)
+    normalized = valid_papers + invalid_papers + others
+    if normalized != queue:
+        write_json(QUEUE, normalized)
+    if valid_papers:
+        render_selected_problem(valid_papers[0])
+    return normalized
+
+
+def campaign_is_near_closure(campaign: dict) -> tuple[bool, str]:
+    status = load_campaign_status(campaign)
+    if normalized_flag(status.get("near_closure")) is True:
+        return True, "campaign explicitly marks itself near closure"
+    publication_status = status.get("publication_status", campaign.get("publication_status", "NONE"))
+    if publication_rank(publication_status) < publication_rank("SLICE_EXACT"):
+        return False, f"campaign publication_status={publication_status} is still below SLICE_EXACT"
+    blocker = str(status.get("next_blocker") or status.get("next_action") or "").strip()
+    if not blocker:
+        return True, "campaign is slice-exact and has no blocker text recorded"
+    return True, "campaign is already slice-exact or better, so campaign mode is still justified"
+
+
 def load_campaign_manifest() -> list[dict]:
     data = load_json(CAMPAIGN_MANIFEST, [])
     return data if isinstance(data, list) else []
@@ -766,6 +806,9 @@ def should_run_campaign_lean(campaign: dict, signature: str) -> tuple[bool, str]
 
 
 def should_start_secondary_worker(campaign: dict) -> tuple[bool, str]:
+    near_closure, closure_reason = campaign_is_near_closure(campaign)
+    if not near_closure:
+        return False, closure_reason
     runtime = runtime_campaign_state(campaign["family_slug"])
     backoff_until = parse_status_timestamp(runtime.get("secondary_worker_backoff_until"))
     now = dt.datetime.now().astimezone()
@@ -1676,6 +1719,7 @@ def next_campaign_feeder_entries(campaign: dict, limit: int) -> list[dict]:
 
 def run_curation_if_needed(required_entry_type: str | None = None) -> bool:
     if queue_has_usable(required_entry_type=required_entry_type):
+        normalize_queue_for_scheduler()
         return True
     if required_entry_type == "paper_candidate":
         append_ledger("Queue had no usable `paper_candidate`, so one-shot publication curation started.")
@@ -1683,6 +1727,7 @@ def run_curation_if_needed(required_entry_type: str | None = None) -> bool:
         append_ledger("Queue was empty or exhausted, so one-shot publication curation started.")
     rc = run_stage(ROOT, "curate", PROMPTS / "curate_batch.prompt.md", "on", CURATION_TIMEOUT, preferred_effort("high"), "default")
     if wait_for_usable_queue(required_entry_type=required_entry_type):
+        normalize_queue_for_scheduler()
         if rc == 124:
             if required_entry_type == "paper_candidate":
                 append_ledger("Curation hit its time budget but still produced a usable `paper_candidate` queue.")
@@ -2314,6 +2359,13 @@ def maybe_run_campaign_lean(campaign: dict, signature: str) -> None:
 
 
 def run_campaign_flow(campaign: dict, allow_parallel: bool) -> int:
+    near_closure, closure_reason = campaign_is_near_closure(campaign)
+    if not near_closure:
+        append_ledger(
+            f"Campaign mode did not start for {campaign['family_slug']} because {closure_reason}."
+        )
+        write_publication_summary(campaign["family_slug"], "not_used")
+        return 0
     status_path = render_campaign_selection(campaign)
     append_ledger(f"publication mode selected active family campaign {campaign['family_slug']}.")
     input_signature = campaign_input_signature(campaign)
@@ -2502,8 +2554,30 @@ def run_campaign_flow(campaign: dict, allow_parallel: bool) -> int:
     return 0
 
 
-def run_instance_lean(entry: dict, status_path: pathlib.Path) -> None:
+def should_run_instance_lean(entry: dict, status_path: pathlib.Path) -> tuple[bool, str]:
     if status_value(status_path, "lean_ready") is not True:
+        return False, "Lean is not marked ready"
+    if entry.get("entry_type") != "paper_candidate":
+        return True, "non-paper candidate Lean remains allowed"
+    gate_ok, gate_reason = paper_candidate_gate(entry)
+    if not gate_ok:
+        return False, gate_reason
+    publication_status = status_value(status_path, "publication_status") or entry.get("publication_status") or "NONE"
+    classification = status_value(status_path, "classification")
+    if classification not in {"CANDIDATE", "COUNTEREXAMPLE", "EXACT"}:
+        return False, f"classification={classification or 'NONE'} is not a Lean-sealable one-shot result"
+    if publication_status in {"NONE", "REDISCOVERY"}:
+        return False, f"publication_status={publication_status} is not a paper-sealing state"
+    distance = normalized_rank(entry.get("solve_to_publication_distance"), PAPER_DISTANCE_RANK, 99)
+    if distance > PAPER_DISTANCE_RANK["short"] and publication_rank(publication_status) < publication_rank("SLICE_EXACT"):
+        return False, "one-shot Lean is reserved for tiny/short packets unless the result is already slice-exact"
+    return True, "Lean can directly help seal this one-shot packet"
+
+
+def run_instance_lean(entry: dict, status_path: pathlib.Path) -> None:
+    should_run, reason = should_run_instance_lean(entry, status_path)
+    if not should_run:
+        append_ledger(f"Lean was skipped for {entry['slug']} because {reason}.")
         return
     render_queue_selection(entry)
     rc = run_stage(
@@ -2534,11 +2608,19 @@ def run_instance_lean(entry: dict, status_path: pathlib.Path) -> None:
 
 
 def run_affiliated_generalize(entry: dict, status_path: pathlib.Path) -> None:
+    if entry.get("entry_type") == "paper_candidate":
+        return
     family_slug = status_value(status_path, "family_affinity") or entry.get("campaign_affinity")
     if not family_slug:
         return
     campaign = find_campaign(str(family_slug))
     if campaign is None:
+        return
+    near_closure, closure_reason = campaign_is_near_closure(campaign)
+    if not near_closure:
+        append_ledger(
+            f"Affiliated campaign work was skipped for {campaign['family_slug']} because {closure_reason}."
+        )
         return
     input_signature = campaign_input_signature(campaign)
     should_refresh, refresh_reason = should_run_frontier_refresh(campaign, input_signature)
@@ -2753,6 +2835,7 @@ def run_publication_cycle(explicit_campaign: str | None, allow_parallel: bool) -
     if not run_curation_if_needed(required_entry_type="paper_candidate"):
         write_publication_summary(None, "not_used")
         return 0
+    normalize_queue_for_scheduler()
     entry = select_paper_candidate_entry()
     if entry is None:
         append_ledger(
