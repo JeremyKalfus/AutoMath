@@ -30,6 +30,12 @@ Phase 2 rubric requirement:
 - Every `paper_candidate` must carry explicit normalized rubric fields so the manager can rank it without guessing from prose.
 - If a candidate does not clearly pass the pre-solve paper test, do not smuggle it in as a paper candidate.
 
+Phase 4 publication-packet requirement:
+
+- Before a `paper_candidate` is allowed to consume real solve budget, it must already contain a minimal publication packet.
+- Do not treat "this seems paper-shaped" as enough by itself.
+- The packet must make the near-paper case explicit and cheap to audit.
+
 Hard limits:
 
 - max 20 searches total
@@ -136,6 +142,12 @@ Required publication audit for each final queued candidate:
 - explicit `paper_shape`
 - explicit `pre_solve_gate`
 - explicit `pre_solve_gate_reason`
+- explicit `publication_packet_title`
+- explicit `publication_packet_frontier_basis`
+- explicit `publication_packet_near_paper_reason`
+- explicit `publication_packet_literature_scope`
+- explicit `publication_packet_artifact_requirements`
+- explicit `publication_packet_quality`
 
 Normalized rubric values for `paper_candidate` entries:
 
@@ -180,6 +192,11 @@ Normalized rubric values for `paper_candidate` entries:
 - `pre_solve_gate`:
   - `pass`
   - `fail`
+- `publication_packet_quality`:
+  - `excellent`
+  - `strong`
+  - `adequate`
+  - `weak`
 
 `pre_solve_gate` rule:
 
@@ -189,6 +206,29 @@ Normalized rubric values for `paper_candidate` entries:
   - the remaining publication distance is at worst `short-medium`,
   - and the result is already close to a standalone theorem, obstruction, minimal counterexample, or tiny structural note.
 - If that test is not clearly met, mark `fail` and downrank or exclude the candidate.
+
+Publication-packet rules:
+
+- `publication_packet_title`:
+  - one plausible paper title or theorem-note title
+- `publication_packet_frontier_basis`:
+  - one short explanation of exactly why the claim is still frontier, not just interesting
+- `publication_packet_near_paper_reason`:
+  - one short explanation of why solving it would already be close to publication
+- `publication_packet_literature_scope`:
+  - the minimal literature surface needed for the packet, ideally canonical source plus one outside check
+- `publication_packet_artifact_requirements`:
+  - the minimal artifacts needed to call the packet real, e.g. proof writeup, witness, checker, or small formal seal
+- `publication_packet_quality`:
+  - `excellent` only when the packet is already crisp enough that a referee could understand the paper shape immediately
+  - `strong` when the packet is clearly paper-shaped but still needs modest refinement
+  - `adequate` when the solve could still publish, but the packet is not yet sharp
+  - `weak` when the packet is too vague and the candidate should usually be excluded
+
+Packet-quality rule:
+
+- Do not queue a `paper_candidate` with `publication_packet_quality = weak`.
+- Prefer `excellent` and `strong` packets even over mathematically comparable problems, because referee path and packaging clarity now matter directly.
 
 Hard rediscovery rule:
 
@@ -259,6 +299,12 @@ Every final queue entry must include:
 - `paper_shape`
 - `pre_solve_gate`
 - `pre_solve_gate_reason`
+- `publication_packet_title`
+- `publication_packet_frontier_basis`
+- `publication_packet_near_paper_reason`
+- `publication_packet_literature_scope`
+- `publication_packet_artifact_requirements`
+- `publication_packet_quality`
 - `why_reasoning_friendly`
 - `why_low_token`
 - `verifier_hint`
@@ -280,6 +326,7 @@ Queue-writing requirements:
 
 - `queue.json` must contain exactly 5 entries
 - at least 4 entries should be `paper_candidate` entries with `pre_solve_gate = "pass"` unless the web evidence honestly fails to support that many
+- the highest-ranked entry should usually have `publication_packet_quality` in `{excellent,strong}`
 - no placeholder prose
 - write `selected_problem.md` for the highest-priority first entry
 - preserve bounded behavior

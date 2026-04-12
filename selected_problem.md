@@ -18,6 +18,7 @@
 - packaging_risk: `low`
 - needs_feeder_ladder: `no`
 - pre_solve_gate: `pass`
+- publication_packet_quality: `excellent`
 - paper_shape: `One conjecture-resolution note: statement, structural proof or counterexample, and a short discussion of Ryser-style diameter bounds.`
 
 ## question
@@ -55,6 +56,21 @@ It is a direct upgrade from a very recent paper's main relaxed theorem to the or
 
 ## pre_solve_gate_reason
 The 2026 source already isolates the exact open conjecture and proves a nearby relaxation, so one strong solve would already be most of a standalone paper.
+
+## publication_packet_title
+Two monochromatic diameter-2 covers in 2-colored cocktail party graphs
+
+## publication_packet_frontier_basis
+The canonical 2026 source states the exact diameter-2 cocktail-party conjecture and proves only the relaxed 2-reachable version, so the diameter-2 claim itself remains the frontier object.
+
+## publication_packet_near_paper_reason
+A proof or counterexample would directly resolve the named conjecture left open by the 2026 relaxation paper, so the theorem statement, motivation, and comparison section are already essentially fixed.
+
+## publication_packet_literature_scope
+Canonical 2026 cocktail-party/2-reachable paper plus one bounded outside-status check for a later diameter-2 resolution.
+
+## publication_packet_artifact_requirements
+One rigorous proof or explicit colored counterexample family, a short skeptical verification note, and a direct diameter-2 cover checker for any positive witness.
 
 ## paper_shape
 One conjecture-resolution note: statement, structural proof or counterexample, and a short discussion of Ryser-style diameter bounds.

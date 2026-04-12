@@ -28,6 +28,12 @@ Bounded-audit policy:
 - Keep the literature pass narrow and claim-specific.
 - Prefer the exact family statement, theorem slice wording, canonical source, and one independent status source over broad wandering.
 - Use only the minimum web needed to answer the prior-art and publication-worthiness questions honestly.
+- For a `paper_candidate`, use the narrow one-shot audit by default:
+  - exact statement search
+  - alternate notation search
+  - canonical source check
+  - one outside-source status pass
+  - stop there unless one of those checks creates a concrete ambiguity that must be resolved
 - Update `record.md` and `status.json` before any closing message.
 - In sidecar proof-attempt mode, update only the attempt output markdown/json files before any closing message.
 
@@ -50,12 +56,14 @@ Questions you must answer explicitly:
 
 Prior-art / rediscovery audit requirements:
 
-- exact statement search
-- alternate notation search
-- canonical source search
-- theorem / proposition / example / corollary / observation / sufficient-condition check inside the canonical source
-- one outside-source status search
-- one recent citation / discussion / follow-up check when appropriate
+- `paper_candidate` narrow audit:
+  - exact statement search
+  - alternate notation search
+  - canonical source search
+  - theorem / proposition / example / corollary / observation / sufficient-condition check inside the canonical source
+  - one outside-source status search
+- broader audit only when needed:
+  - one recent citation / discussion / follow-up check when appropriate
 
 Then update the relevant `record.md` with these sections:
 
@@ -63,6 +71,7 @@ Then update the relevant `record.md` with these sections:
 - `publication_statement_faithfulness`
 - `publication_theorem_worthiness`
 - `publication_publishability`
+- `publication_packet_audit`
 - `strongest_honest_claim`
 - `paper_title_hint`
 - `next_action`
@@ -78,6 +87,7 @@ Update the relevant `status.json` with:
 - `next_blocker`
 - `next_feeder_instances`
 - `campaign_health`
+- `publication_packet_quality`
 - `next_action`
 - `proof_artifacts_preserved`
 - `lean_ready`
@@ -104,3 +114,4 @@ Interpretation rules:
 
 Be conservative.
 Do not confuse “mathematically correct” with “publishable theorem”.
+For one-shot candidates, do not let the audit sprawl into a mini-survey; the goal is a cheap honest packet check, not broad literature accumulation.
