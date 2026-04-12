@@ -310,6 +310,8 @@ def failed_slug_set() -> set[str]:
 
 
 def queue_has_usable(required_entry_type: str | None = None) -> bool:
+    if required_entry_type == "paper_candidate":
+        return bool(usable_paper_candidates())
     failed = failed_slug_set()
     queue = load_json(QUEUE, [])
     return any(
@@ -415,10 +417,14 @@ def render_selected_problem(entry: dict) -> None:
         "publication_status",
         "campaign_affinity",
         "publication_if_solved",
+        "publication_if_solved_score",
         "solve_to_publication_distance",
         "single_pass_proof_plausibility",
+        "novelty_check_cost",
         "formalization_overhead",
+        "packaging_risk",
         "needs_feeder_ladder",
+        "pre_solve_gate",
         "paper_shape",
     ]:
         value = entry.get(key)
@@ -448,6 +454,7 @@ def render_selected_problem(entry: dict) -> None:
         "rediscovery_risk",
         "why_still_appears_open",
         "why_this_could_be_publishable",
+        "pre_solve_gate_reason",
         "paper_shape",
         "strongest_honest_claim",
         "attempt_goal",
@@ -472,9 +479,10 @@ def render_selected_problem(entry: dict) -> None:
 PAPER_DISTANCE_RANK = {
     "tiny": 0,
     "short": 1,
-    "medium": 2,
-    "long": 3,
-    "very_long": 4,
+    "short-medium": 2,
+    "medium": 3,
+    "long": 4,
+    "very_long": 5,
 }
 
 PLAUDIBILITY_RANK = {
@@ -482,8 +490,44 @@ PLAUDIBILITY_RANK = {
     "high": 1,
     "medium-high": 2,
     "medium": 3,
-    "low": 4,
+    "medium-low": 4,
+    "low": 5,
 }
+
+PUBLICATION_IF_SOLVED_SCORE_RANK = {
+    "instant_paper": 0,
+    "standalone_short_paper": 1,
+    "paper_with_light_packaging": 2,
+    "paper_with_moderate_packaging": 3,
+    "paper_with_heavy_packaging": 4,
+}
+
+COST_RANK = {
+    "very_low": 0,
+    "low": 1,
+    "low-medium": 2,
+    "medium": 3,
+    "medium-high": 4,
+    "high": 5,
+    "very_high": 6,
+}
+
+PAPER_CANDIDATE_REQUIRED_FIELDS = [
+    "publication_if_solved",
+    "publication_if_solved_score",
+    "solve_to_publication_distance",
+    "single_pass_proof_plausibility",
+    "novelty_check_cost",
+    "formalization_overhead",
+    "packaging_risk",
+    "needs_feeder_ladder",
+    "paper_shape",
+    "pre_solve_gate",
+    "pre_solve_gate_reason",
+]
+
+TRUE_VALUES = {"yes", "true", "pass", "1"}
+FALSE_VALUES = {"no", "false", "fail", "0"}
 
 
 def normalized_rank(value, mapping: dict[str, int], default: int) -> int:
@@ -491,6 +535,57 @@ def normalized_rank(value, mapping: dict[str, int], default: int) -> int:
         return default
     text = str(value).strip().lower().replace(" ", "_")
     return mapping.get(text, default)
+
+
+def normalized_flag(value) -> bool | None:
+    if value is None:
+        return None
+    text = str(value).strip().lower().replace(" ", "_")
+    if text in TRUE_VALUES:
+        return True
+    if text in FALSE_VALUES:
+        return False
+    return None
+
+
+def missing_fields(entry: dict, fields: list[str]) -> list[str]:
+    missing: list[str] = []
+    for field in fields:
+        value = entry.get(field)
+        if value in (None, "", []):
+            missing.append(field)
+    return missing
+
+
+def paper_candidate_gate(entry: dict) -> tuple[bool, str]:
+    missing = missing_fields(entry, PAPER_CANDIDATE_REQUIRED_FIELDS)
+    if missing:
+        return False, f"missing required paper-candidate fields: {', '.join(missing)}"
+    if normalized_flag(entry.get("pre_solve_gate")) is not True:
+        reason = str(entry.get("pre_solve_gate_reason") or "").strip()
+        return False, reason or "pre_solve_gate is not an explicit pass"
+    if normalized_flag(entry.get("needs_feeder_ladder")) is True:
+        return False, "paper candidate still requires a feeder ladder"
+    if normalized_rank(entry.get("publication_if_solved_score"), PUBLICATION_IF_SOLVED_SCORE_RANK, 99) > PUBLICATION_IF_SOLVED_SCORE_RANK["paper_with_light_packaging"]:
+        return False, "publication_if_solved_score says the result is still too far from a paper"
+    if normalized_rank(entry.get("solve_to_publication_distance"), PAPER_DISTANCE_RANK, 99) > PAPER_DISTANCE_RANK["short-medium"]:
+        return False, "solve_to_publication_distance is too long for the one-shot gate"
+    return True, "pass"
+
+
+def usable_paper_candidates() -> list[dict]:
+    failed = failed_slug_set()
+    candidates: list[dict] = []
+    for item in load_json(QUEUE, []):
+        if not isinstance(item, dict):
+            continue
+        slug = item.get("slug")
+        if not slug or slug in failed or item.get("entry_type") != "paper_candidate":
+            continue
+        gate_ok, _ = paper_candidate_gate(item)
+        if gate_ok:
+            candidates.append(item)
+    return candidates
 
 
 def load_campaign_manifest() -> list[dict]:
@@ -1095,26 +1190,19 @@ def seed_campaign_queue() -> bool:
     return True
 
 
-def paper_candidate_priority(entry: dict) -> tuple[int, int, int, int, str]:
-    publication_if_solved = publication_rank(entry.get("publication_if_solved") or entry.get("publication_status"))
+def paper_candidate_priority(entry: dict) -> tuple[int, int, int, int, int, int, int, str]:
+    publication_if_solved = normalized_rank(entry.get("publication_if_solved_score"), PUBLICATION_IF_SOLVED_SCORE_RANK, 99)
     distance = normalized_rank(entry.get("solve_to_publication_distance"), PAPER_DISTANCE_RANK, 5)
     plausibility = normalized_rank(entry.get("single_pass_proof_plausibility"), PLAUDIBILITY_RANK, 5)
-    feeder_penalty = 1 if str(entry.get("needs_feeder_ladder", "")).strip().lower() in {"yes", "true", "high"} else 0
-    return (-publication_if_solved, distance, plausibility, feeder_penalty, entry.get("slug", ""))
+    novelty_cost = normalized_rank(entry.get("novelty_check_cost"), COST_RANK, 99)
+    formalization = normalized_rank(entry.get("formalization_overhead"), COST_RANK, 99)
+    packaging = normalized_rank(entry.get("packaging_risk"), COST_RANK, 99)
+    feeder_penalty = 1 if normalized_flag(entry.get("needs_feeder_ladder")) is True else 0
+    return (distance, publication_if_solved, plausibility, novelty_cost, packaging, formalization, feeder_penalty, entry.get("slug", ""))
 
 
 def select_paper_candidate_entry() -> dict | None:
-    failed = failed_slug_set()
-    candidates: list[dict] = []
-    for item in load_json(QUEUE, []):
-        if not isinstance(item, dict):
-            continue
-        slug = item.get("slug")
-        if not slug or slug in failed:
-            continue
-        if item.get("entry_type") != "paper_candidate":
-            continue
-        candidates.append(item)
+    candidates = usable_paper_candidates()
     if not candidates:
         return None
     candidates.sort(key=paper_candidate_priority)
@@ -1662,6 +1750,8 @@ def write_publication_summary(active_campaign_slug: str | None, worker_status: s
     candidate_slug = paper_candidate["slug"] if paper_candidate else "(none queued)"
     candidate_title = paper_candidate["title"] if paper_candidate else "(none queued)"
     candidate_publication_if_solved = paper_candidate.get("publication_if_solved", "(not recorded)") if paper_candidate else "(none queued)"
+    candidate_publication_score = paper_candidate.get("publication_if_solved_score", "(not recorded)") if paper_candidate else "(none queued)"
+    candidate_pre_solve_gate = paper_candidate.get("pre_solve_gate", "(not recorded)") if paper_candidate else "(none queued)"
     lean_family_complete = any(
         bool(load_campaign_status(campaign).get("lean_complete"))
         or bool(load_campaign_status(campaign).get("lean_family_lemma_complete"))
@@ -1675,6 +1765,8 @@ def write_publication_summary(active_campaign_slug: str | None, worker_status: s
         f"- Queued one-shot paper candidate: {candidate_slug}",
         f"- Candidate title: {candidate_title}",
         f"- Candidate publication if solved: {candidate_publication_if_solved}",
+        f"- Candidate publication score: {candidate_publication_score}",
+        f"- Candidate pre-solve gate: {candidate_pre_solve_gate}",
         f"- Active campaigns: {', '.join(c['family_slug'] for c in campaigns) if campaigns else '(none)'}",
         f"- Strongest current publication status: `{strongest_status}`",
         f"- Strongest honest claim: {strongest_claim}",
@@ -1698,6 +1790,8 @@ def write_publication_summary(active_campaign_slug: str | None, worker_status: s
         f"[publication_summary] queued paper candidate: {candidate_slug}",
         f"[publication_summary] candidate title: {candidate_title}",
         f"[publication_summary] candidate publication if solved: {candidate_publication_if_solved}",
+        f"[publication_summary] candidate publication score: {candidate_publication_score}",
+        f"[publication_summary] candidate pre-solve gate: {candidate_pre_solve_gate}",
         f"[publication_summary] active campaign: {primary['family_slug'] if primary else '(none)'}",
         f"[publication_summary] strongest publication_status: {strongest_status}",
         f"[publication_summary] strongest honest claim: {strongest_claim}",

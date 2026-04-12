@@ -24,6 +24,12 @@ Optimize for:
 - rediscovery resistance
 - tiny proof object size
 
+Phase 2 rubric requirement:
+
+- Do not leave the publication-distance rubric implicit.
+- Every `paper_candidate` must carry explicit normalized rubric fields so the manager can rank it without guessing from prose.
+- If a candidate does not clearly pass the pre-solve paper test, do not smuggle it in as a paper candidate.
+
 Hard limits:
 
 - max 20 searches total
@@ -120,11 +126,69 @@ Required publication audit for each final queued candidate:
 - explicit `why_still_appears_open`
 - explicit `why_this_could_be_publishable`
 - explicit `publication_if_solved`
+- explicit `publication_if_solved_score`
 - explicit `solve_to_publication_distance`
 - explicit `single_pass_proof_plausibility`
+- explicit `novelty_check_cost`
 - explicit `formalization_overhead`
+- explicit `packaging_risk`
 - explicit `needs_feeder_ladder`
 - explicit `paper_shape`
+- explicit `pre_solve_gate`
+- explicit `pre_solve_gate_reason`
+
+Normalized rubric values for `paper_candidate` entries:
+
+- `publication_if_solved_score`:
+  - `instant_paper`
+  - `standalone_short_paper`
+  - `paper_with_light_packaging`
+  - `paper_with_moderate_packaging`
+  - `paper_with_heavy_packaging`
+- `solve_to_publication_distance`:
+  - `tiny`
+  - `short`
+  - `short-medium`
+  - `medium`
+  - `long`
+- `single_pass_proof_plausibility`:
+  - `very_high`
+  - `high`
+  - `medium-high`
+  - `medium`
+  - `medium-low`
+  - `low`
+- `novelty_check_cost`:
+  - `very_low`
+  - `low`
+  - `medium`
+  - `high`
+- `formalization_overhead`:
+  - `very_low`
+  - `low`
+  - `low-medium`
+  - `medium`
+  - `high`
+- `packaging_risk`:
+  - `very_low`
+  - `low`
+  - `medium`
+  - `high`
+- `needs_feeder_ladder`:
+  - `yes`
+  - `no`
+- `pre_solve_gate`:
+  - `pass`
+  - `fail`
+
+`pre_solve_gate` rule:
+
+- Mark `pass` only if solving the candidate would already be 70-90% of a paper.
+- That means:
+  - no feeder ladder is required,
+  - the remaining publication distance is at worst `short-medium`,
+  - and the result is already close to a standalone theorem, obstruction, minimal counterexample, or tiny structural note.
+- If that test is not clearly met, mark `fail` and downrank or exclude the candidate.
 
 Hard rediscovery rule:
 
@@ -185,11 +249,16 @@ Every final queue entry must include:
 - `campaign_affinity`
 - `publication_red_flags`
 - `publication_if_solved`
+- `publication_if_solved_score`
 - `solve_to_publication_distance`
 - `single_pass_proof_plausibility`
+- `novelty_check_cost`
 - `formalization_overhead`
+- `packaging_risk`
 - `needs_feeder_ladder`
 - `paper_shape`
+- `pre_solve_gate`
+- `pre_solve_gate_reason`
 - `why_reasoning_friendly`
 - `why_low_token`
 - `verifier_hint`
@@ -210,6 +279,7 @@ Status guidance at curation time:
 Queue-writing requirements:
 
 - `queue.json` must contain exactly 5 entries
+- at least 4 entries should be `paper_candidate` entries with `pre_solve_gate = "pass"` unless the web evidence honestly fails to support that many
 - no placeholder prose
 - write `selected_problem.md` for the highest-priority first entry
 - preserve bounded behavior
