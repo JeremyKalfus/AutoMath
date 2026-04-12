@@ -518,6 +518,16 @@ def render_selected_problem(entry: dict) -> None:
     SELECTED.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
 
 
+def sync_selected_problem_to_queue(queue_entries: list[dict] | None = None) -> None:
+    entries = queue_entries if queue_entries is not None else load_json(QUEUE, [])
+    for entry in entries:
+        if not isinstance(entry, dict) or not entry.get("slug"):
+            continue
+        render_selected_problem(entry_with_working_packet(entry))
+        return
+    SELECTED.write_text("# Selected Problem\n\nNo problem selected yet.\n", encoding="utf-8")
+
+
 PAPER_DISTANCE_RANK = {
     "tiny": 0,
     "short": 1,
@@ -1807,6 +1817,7 @@ def rotate_problem_to_end(slug: str) -> None:
         rest.append(picked)
     write_json(QUEUE, rest)
     refresh_context_hygiene_surfaces(rest)
+    sync_selected_problem_to_queue(rest)
 
 
 def remove_problem_from_queue(slug: str) -> None:
@@ -1814,6 +1825,7 @@ def remove_problem_from_queue(slug: str) -> None:
     updated = [item for item in queue if not (isinstance(item, dict) and item.get("slug") == slug)]
     write_json(QUEUE, updated)
     refresh_context_hygiene_surfaces(updated)
+    sync_selected_problem_to_queue(updated)
 
 
 def mark_failed_problem(entry: dict, reason: str, publication_status: str | None = None) -> None:
@@ -3255,6 +3267,9 @@ def run_feeder_entry(
         "tuned_openai",
     )
     ensure_publication_defaults(status_path)
+    classification = status_value(status_path, "classification")
+    verify_verdict = status_value(status_path, "verify_verdict")
+    publication_status = status_value(status_path, "publication_status") or "NONE"
 
     if status_value(status_path, "lean_ready") is not True and classification not in {"CANDIDATE", "COUNTEREXAMPLE", "EXACT"}:
         mark_failed_problem(entry, str(verify_verdict), publication_status)

@@ -1,15 +1,7 @@
 {
-  "generated_on": "2026-04-12T18:41:44.367830-04:00",
-  "count": 88,
+  "generated_on": "2026-04-12T19:23:33.300837-04:00",
+  "count": 89,
   "recent_attempts": [
-    {
-      "slug": "dsrg-54-11-4-3-2",
-      "reason": "ATTEMPTED",
-      "title": "dsrg-54-11-4-3-2",
-      "notes": "Legacy archived attempt preserved before thin search memory existed.",
-      "checked_on": null,
-      "publication_status": null
-    },
     {
       "slug": "b26-munchhausen-matrix",
       "reason": "ATTEMPTED",
@@ -321,6 +313,14 @@
       "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
       "checked_on": "2026-04-12",
       "publication_status": "REDISCOVERY"
+    },
+    {
+      "slug": "cocktail-party-two-monochromatic-diameter-2-cover",
+      "reason": "VARIANT",
+      "title": "Does every 2-colored cocktail party graph admit a cover by two monochromatic diameter-2 subsets?",
+      "notes": "Publication audit preserved an exact fallback packet: the empty-signature-class slice plus the exact 6-vertex case under the source-faithful reading.",
+      "checked_on": "2026-04-12",
+      "publication_status": "SLICE_EXACT"
     }
   ]
 }

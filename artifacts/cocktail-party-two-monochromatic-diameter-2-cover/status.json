@@ -1,0 +1,31 @@
+{
+  "slug": "cocktail-party-two-monochromatic-diameter-2-cover",
+  "title": "Does every 2-colored cocktail party graph admit a cover by two monochromatic diameter-2 subsets?",
+  "stage": "publication_audit",
+  "verify_verdict": "VARIANT",
+  "classification": "VARIANT",
+  "confidence": 0.83,
+  "code_used": true,
+  "lean_ready": false,
+  "lean_packet_seal": false,
+  "lean_gate_reason": "Lean would only archive the already closed empty-signature-class slice. The shortest remaining path is still a combinatorial closure of the locally saturated case, so formalization is not the gate to a sealed publication packet.",
+  "lean_complete": false,
+  "publication_status": "SLICE_EXACT",
+  "publication_confidence": 0.61,
+  "family_affinity": "moderate; critical-pair signature analysis may transfer only to alpha=2 hosts with rigid nonedge structure",
+  "generalization_signal": "Fix a deleted pair, partition vertices by the four endpoint color signatures, and force covers unless a locally saturated critical pattern survives.",
+  "strongest_honest_claim": "In every red-blue coloring of a cocktail-party graph, if some deleted matching pair has an empty signature class among RR, RB, BR, BB, then the vertex set is covered by two monochromatic diameter-2 subsets, in fact by two monochromatic stars. In addition, exhaustive search shows the 6-vertex cocktail-party graph satisfies the full conjecture under the faithful source reading that the two covering colors may coincide.",
+  "candidate_theorem_slice": "Empty signature class around a deleted pair forces a two-star cover; the full conjecture is additionally verified for the 6-vertex cocktail-party graph under the source-faithful same-or-different-color reading.",
+  "paper_title_hint": "Empty signature classes and the six-vertex case for two monochromatic diameter-2 covers in cocktail-party graphs",
+  "theorem_slice_target": "Prove the singleton-residual strengthening: if some deleted matching pair has a signature class of size at most 1, then the graph is already coverable by two monochromatic diameter-2 subsets; equivalently, reduce the full conjecture to a clean locally saturated critical-pair theorem.",
+  "fallback_target": "Preserve the exact empty-signature-class theorem slice together with the exact 6-vertex verification under the faithful same-or-different-color reading, without claiming progress on the full locally saturated case.",
+  "next_blocker": "There is still no rigorous absorption lemma for locally saturated deleted pairs: the cross-edges between X_RB and X_BR do not yet force internal diameter-2 witnesses inside one of the two covering sets.",
+  "next_feeder_instances": [
+    "Prove or refute the singleton-residual lemma for one deleted pair.",
+    "Classify locally saturated colorings of the 8-vertex cocktail-party graph."
+  ],
+  "campaign_health": "warm",
+  "publication_packet_quality": "promising but unsealed",
+  "next_action": "Target the singleton-residual lemma first; if it stalls, classify locally saturated 8-vertex colorings and keep the current exact slice as fallback rather than overstating the full conjecture.",
+  "proof_artifacts_preserved": true
+}

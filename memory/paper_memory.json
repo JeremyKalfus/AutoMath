@@ -1,17 +1,6 @@
 {
-  "generated_on": "2026-04-12T18:37:06.361479-04:00",
+  "generated_on": "2026-04-12T19:18:08.322527-04:00",
   "queued_publication_packets": [
-    {
-      "slug": "cocktail-party-two-monochromatic-diameter-2-cover",
-      "title": "Does every 2-colored cocktail party graph admit a cover by two monochromatic diameter-2 subsets?",
-      "publication_status": "SLICE_CANDIDATE",
-      "publication_packet_title": "Two monochromatic diameter-2 covers in 2-colored cocktail party graphs",
-      "publication_packet_quality": "excellent",
-      "publication_if_solved": "Solving the original diameter-2 cocktail-party conjecture would read as a direct short follow-up to the 2026 relaxed theorem.",
-      "why_this_could_be_publishable": "It is a direct upgrade from a very recent paper's main relaxed theorem to the original exact conjecture.",
-      "canonical_source": "Andras Gyarfas and Gabor N. Sarkozy, \"2-Reachable Subsets in Two-Colored Graphs\" (Graphs and Combinatorics 42, 2026), which states and relaxes the English-McCourt-Mattes-Phillips conjecture.",
-      "working_packet_path": "artifacts/cocktail-party-two-monochromatic-diameter-2-cover/working_packet.md"
-    },
     {
       "slug": "ladder-4-rungs-edge-erdos-posa",
       "title": "Does the ladder with 4 rungs have the edge-Erdos-Posa property?",

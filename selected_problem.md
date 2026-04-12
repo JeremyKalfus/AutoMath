@@ -1,15 +1,15 @@
-# Does every 2-colored cocktail party graph admit a cover by two monochromatic diameter-2 subsets?
+# Does the ladder with 4 rungs have the edge-Erdos-Posa property?
 
 - entry_type: `paper_candidate`
-- slug: `cocktail-party-two-monochromatic-diameter-2-cover`
-- family_name: `Low-diameter monochromatic covers in edge-colored graphs`
-- canonical_source: `Andras Gyarfas and Gabor N. Sarkozy, "2-Reachable Subsets in Two-Colored Graphs" (Graphs and Combinatorics 42, 2026), which states and relaxes the English-McCourt-Mattes-Phillips conjecture.`
+- slug: `ladder-4-rungs-edge-erdos-posa`
+- family_name: `Edge-Erdos-Posa property for fixed planar graphs`
+- canonical_source: `Raphael Steck and Arthur Ulmer, "On the Edge-Erdos-Posa Property of Ladders" (Graphs and Combinatorics 40, 2024).`
 - open_status_checked_on: `2026-04-12`
-- attack_style: `tighten the 2-reachable argument to internal diameter 2 via critical-pair analysis and blow-up-of-C5 obstruction control`
+- attack_style: `extend the 3-rung positive proof and isolate the first extra obstruction pattern, or build the first non-condensed-wall counterexample`
 - curation_confidence: `high`
 - publication_status: `SLICE_CANDIDATE`
 - campaign_affinity: `none`
-- publication_if_solved: `Solving the original diameter-2 cocktail-party conjecture would read as a direct short follow-up to the 2026 relaxed theorem.`
+- publication_if_solved: `A resolution of the 4-rung ladder case is already a standalone note because the 2024 paper leaves ladders with 4 to 13 rungs explicitly open.`
 - publication_if_solved_score: `standalone_short_paper`
 - solve_to_publication_distance: `tiny`
 - single_pass_proof_plausibility: `medium-high`
@@ -19,68 +19,68 @@
 - needs_feeder_ladder: `no`
 - pre_solve_gate: `pass`
 - publication_packet_quality: `excellent`
-- working_packet_path: `artifacts/cocktail-party-two-monochromatic-diameter-2-cover/working_packet.md`
-- paper_shape: `One conjecture-resolution note: statement, structural proof or counterexample, and a short discussion of Ryser-style diameter bounds.`
+- working_packet_path: `artifacts/ladder-4-rungs-edge-erdos-posa/working_packet.md`
+- paper_shape: `A smallest-open-case theorem or counterexample note for a fixed pattern H, with one structural section and one consequence section.`
 
 ## question
-In every red-blue coloring of the cocktail party graph on an even number of vertices, can the vertex set be covered by two monochromatic diameter-2 subsets?
+If H is the ladder with 4 rungs, must every graph either contain k edge-disjoint H-subdivisions or admit an edge set of size f(k) hitting all H-subdivisions?
 
 ## canonical_statement
-In every 2-coloring of the edges of the cocktail party graph G^c, there exist A,B covering V(G^c) such that A and B are monochromatic diameter-2 subsets.
+Determine whether the ladder with 4 rungs has the edge-Erdos-Posa property.
 
 ## intended_statement
-Upgrade the 2026 relaxed 2-reachable cover theorem to the original diameter-2 conjecture, or exhibit a minimal colored cocktail-party counterexample.
+Settle the smallest unresolved ladder case by proving that the 4-rung ladder has the edge-Erdos-Posa property, or by constructing a genuine counterexample graph not ruled out by the condensed-wall barrier.
 
 ## theorem_slice_hint
-Treat the exact cocktail-party conjecture as the main theorem, not as a stepping stone to full f(2,2)=3 for all alpha=2 graphs.
+Treat the 4-rung ladder as the smallest unresolved rung count, not as a broad ladder campaign; the whole note should pivot on one yes-or-no theorem.
 
 ## why_reasoning_friendly
-The host graph is rigid, the color structure is binary, and the gap from 2-reachable to diameter 2 is conceptually narrow rather than campaign-sized.
+The target graph H is tiny, the positive and negative sides are both crisp, and the canonical source already isolates the ladder-range gap rather than a sprawling family program.
 
 ## why_low_token
-The object definition is short, certificates are simple vertex covers in two colors, and the conjecture has a tight yes-or-no endpoint.
+The statement is short, certificates are compact, and the proof surface is concentrated on one fixed pattern instead of a large parameter family.
 
 ## verifier_hint
-A positive witness is a pair of color classes with direct internal diameter checks; a negative result needs a fully specified 2-coloring family with provable failure of every two-set cover.
+For a positive solve, verify the hitting/packing theorem against the exact 4-rung ladder definition; for a negative solve, preserve an explicit host graph family together with a checked obstruction argument.
 
 ## lean_hint
-If solved positively, only formalize the fixed graph family and diameter-2 cover predicate after the combinatorial proof stabilizes.
+Lean only after the combinatorial core is stable; formalization would mostly be finite graph bookkeeping around the exact ladder pattern and edge-hit definition.
 
 ## rediscovery_risk
 low-medium
 
 ## why_still_appears_open
-The canonical 2026 paper states the diameter-2 cocktail-party conjecture explicitly, proves only the relaxed 2-reachable version, and the bounded recent-status search surfaced no later diameter-2 resolution.
+The canonical 2024 paper explicitly asks whether ladders with 4 to 13 rungs have the edge-Erdos-Posa property, and the bounded later-status search surfaced no follow-up resolution for the 4-rung case.
 
 ## why_this_could_be_publishable
-It is a direct upgrade from a very recent paper's main relaxed theorem to the original exact conjecture.
+It is a smallest-open-case yes/no theorem with immediate context from the 3-rung positive result and the 14-rung negative barrier.
 
 ## pre_solve_gate_reason
-The 2026 source already isolates the exact open conjecture and proves a nearby relaxation, so one strong solve would already be most of a standalone paper.
+This is already the smallest unresolved exact ladder case left open in the canonical 2024 source, so one clean resolution is itself most of a paper with no feeder ladder.
 
 ## publication_packet_title
-Two monochromatic diameter-2 covers in 2-colored cocktail party graphs
+The edge-Erdos-Posa property for the 4-rung ladder
 
 ## publication_packet_frontier_basis
-The canonical 2026 source states the exact diameter-2 cocktail-party conjecture and proves only the relaxed 2-reachable version, so the diameter-2 claim itself remains the frontier object.
+The canonical 2024 ladder paper proves the 3-rung positive case and the 14-rung negative barrier, while explicitly leaving the 4-rung case open as the smallest unresolved ladder instance.
 
 ## publication_packet_near_paper_reason
-A proof or counterexample would directly resolve the named conjecture left open by the 2026 relaxation paper, so the theorem statement, motivation, and comparison section are already essentially fixed.
+A yes-or-no resolution of the 4-rung case is already a complete smallest-open-case note with built-in context from the 3-rung theorem and the 14-rung obstruction.
 
 ## publication_packet_literature_scope
-Canonical 2026 cocktail-party/2-reachable paper plus one bounded outside-status check for a later diameter-2 resolution.
+Canonical 2024 ladder paper plus one bounded later-status search for a follow-up on the 4-rung case.
 
 ## publication_packet_artifact_requirements
-One rigorous proof or explicit colored counterexample family, a short skeptical verification note, and a direct diameter-2 cover checker for any positive witness.
+Either a proof that the 4-rung ladder has the edge-Erdos-Posa property or an explicit counterexample family, together with a compact packing/hitting verification writeup.
 
 ## paper_shape
-One conjecture-resolution note: statement, structural proof or counterexample, and a short discussion of Ryser-style diameter bounds.
+A smallest-open-case theorem or counterexample note for a fixed pattern H, with one structural section and one consequence section.
 
 ## definitions
-- The cocktail party graph is obtained from a complete graph on an even number of vertices by deleting a perfect matching.
-- A diameter-2 subset in color i is a vertex set whose induced color-i subgraph has distance at most 2 between every pair of its vertices.
-- The 2026 source proves the relaxed version where the distance-2 witness may pass through vertices outside the subset.
+- A ladder with t rungs is the graph formed by two parallel paths with t matching edges between corresponding vertices.
+- A graph H has the edge-Erdos-Posa property if there is a function f such that every graph G either contains k edge-disjoint subdivisions of H or an edge set of size at most f(k) meeting every subdivision of H.
+- The 2024 source proves the property for the 3-rung ladder and shows that ladders with 14 or more rungs do not have it.
 
 ## publication_red_flags
-- The gap between external 2-reachability and internal diameter 2 can hide subtle obstruction configurations.
-- A negative answer would need a very explicit coloring family, not an isolated small example.
+- A negative answer would need a clean counterexample mechanism, not just an ad hoc gadget.
+- If the positive proof merely replays the 3-rung argument with long case splits, packaging quality could slip.

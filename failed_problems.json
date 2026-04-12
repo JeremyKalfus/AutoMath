@@ -359,5 +359,13 @@
     "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
     "publication_status": "REDISCOVERY",
     "checked_on": "2026-04-12"
+  },
+  {
+    "slug": "cocktail-party-two-monochromatic-diameter-2-cover",
+    "reason": "VARIANT",
+    "title": "Does every 2-colored cocktail party graph admit a cover by two monochromatic diameter-2 subsets?",
+    "publication_status": "SLICE_EXACT",
+    "checked_on": "2026-04-12",
+    "notes": "Publication audit preserved an exact fallback packet: the empty-signature-class slice plus the exact 6-vertex case under the source-faithful reading."
   }
 ]

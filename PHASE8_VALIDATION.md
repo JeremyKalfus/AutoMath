@@ -11,17 +11,20 @@ paper win exists.
 
 ## Baseline
 
-- Verified repo state before validation:
-  - `git status --short` clean
-  - `HEAD == origin/main`
-  - current redesign landing includes Phase 7 commit `dad1fc5`
-- Active selected candidate:
-  - `cocktail-party-two-monochromatic-diameter-2-cover`
-- Current queue shape:
-  - 5 of 5 entries are `paper_candidate`
+- Verified checkpoint before continuation:
+  - `HEAD == origin/main == 227b517`
+  - the repo was clean before the continuation run
+  - the redesign landing already included the Phase 7 context-hygiene work
+- Actual redesigned dry run now executed:
+  - `scripts/automath_cycle.py --mode publication`
+  - selected candidate: `cocktail-party-two-monochromatic-diameter-2-cover`
+  - end state: candidate archived honestly as `VARIANT` with candidate-local `publication_status = SLICE_EXACT`
+- Current queue shape after that dry run:
+  - 4 of 4 remaining entries are `paper_candidate`
+  - next queued candidate is `ladder-4-rungs-edge-erdos-posa`
 - Current strongest publication status in the repo summary:
   - `SLICE_EXACT`
-  - this still comes from the legacy warm family campaign `zero_divisor_prime_labelings`, not from a new one-shot paper win
+  - this still comes from the legacy warm family campaign `zero_divisor_prime_labelings`, not from a new redesigned one-shot `PAPER_READY` win
 
 ## Check 27: A/B Calibration On Existing Repo History
 
@@ -72,15 +75,11 @@ Status: `PASS`
 
 Evidence:
 - `queue.json` currently contains:
-  - 5 `paper_candidate`
+  - 4 `paper_candidate`
   - 0 `family_campaign`
   - 0 `feeder_instance`
 
 Current queued scores:
-- `cocktail-party-two-monochromatic-diameter-2-cover`
-  - `publication_if_solved_score = standalone_short_paper`
-  - `solve_to_publication_distance = tiny`
-  - `publication_packet_quality = excellent`
 - `ladder-4-rungs-edge-erdos-posa`
   - `publication_if_solved_score = standalone_short_paper`
   - `solve_to_publication_distance = tiny`
@@ -101,6 +100,7 @@ Current queued scores:
 Validation conclusion:
 - the queue is now dominated by one-shot publication candidates exactly as intended
 - feeder ladders and warm campaigns are not occupying the top slots by default
+- the first queued cocktail-party packet was consumed by a real redesigned run and then removed honestly instead of lingering as fake active progress
 
 ## Check 29: Runtime Behavior Changes In The Expected Direction
 
@@ -110,23 +110,31 @@ Evidence from `ledger.md`:
 - the redesigned runtime explicitly recorded:
   - `Queue had no usable paper_candidate, so one-shot publication curation started.`
   - `Publication mode selected one-shot paper candidate forbidden-outdegree-orientation-d7 instead of silently preferring a warm family campaign.`
+  - `Publication mode selected one-shot paper candidate cocktail-party-two-monochromatic-diameter-2-cover instead of silently preferring a warm family campaign.`
+  - the cocktail-party candidate then ran through solve, verify, and publication audit before being moved aside as `VARIANT`
 
 What this shows:
 - the manager now prefers the one-shot lane when usable paper candidates are available
 - it does not silently default back to the old warm-campaign behavior
 - when the first redesigned paper candidate failed verification, it was honestly reclassified as `REDISCOVERY` rather than being padded into a fake publication win
+- when the second redesigned paper candidate failed to close the full theorem, the system still preserved the strongest honest publication packet it actually earned instead of overstating the result
 
 Important limitation:
 - the repo still contains strong legacy family infrastructure and family summaries
 - the strongest current publication status in `artifacts/families/summary.md` still comes from the old zero-divisor campaign
 - so the redesign has changed queueing and selection behavior more strongly than it has changed the top-line “strongest claim in repo” headline
 
+Runtime coherence fix applied during validation:
+- the cocktail-party dry run exposed that archiving or rotating a queue entry could leave `selected_problem.md` pointing at the retired packet even after `queue.json` moved on
+- it also exposed that `failed_problems.json` could preserve the pre-audit publication status instead of the final audited publication status
+- `scripts/automath_cycle.py` is now patched so queue rotations/removals resync `selected_problem.md`, and post-audit archival records the final audited `publication_status`
+
 ## Check 30: Before Solving, The Top Candidate Already Looks Like Most Of A Paper
 
 Status: `PASS`
 
-Evidence in the current selection surfaces:
-- `selected_problem.md` for `cocktail-party-two-monochromatic-diameter-2-cover` already records:
+Evidence from the first redesigned dry run:
+- before solving, `selected_problem.md` for `cocktail-party-two-monochromatic-diameter-2-cover` already recorded:
   - `publication_if_solved`
   - `solve_to_publication_distance`
   - `pre_solve_gate = pass`
@@ -144,6 +152,7 @@ Evidence in the current selection surfaces:
 Validation conclusion:
 - the current top candidate can already explain, before solving, why a solve would be most of a paper
 - that is exactly the behavior Phase 8 wanted from the redesigned front end
+- the next queued candidate, `ladder-4-rungs-edge-erdos-posa`, is now selected with the same packetized structure rather than reverting to campaign prose
 
 ## Check 31: First End-To-End Win Really Looks Like A Paper Packet
 
@@ -156,14 +165,22 @@ Honest state:
   - the bipartite slice was already known
   - the claimed nonbipartite slice failed on a false bridge argument
   - final artifact status became `REDISCOVERY`
+- the next redesigned dry run, `cocktail-party-two-monochromatic-diameter-2-cover`, also did not close the full conjecture
+- however, unlike the `d = 7` case, it did leave a real publication-shaped fallback packet:
+  - `stage = publication_audit`
+  - `classification = VARIANT`
+  - `publication_status = SLICE_EXACT`
+  - `proof_artifacts_preserved = true`
+  - strongest honest claim = exact empty-signature-class slice plus exact 6-vertex verification under the source-faithful reading
 
 Why this is still useful:
 - this is evidence that the redesigned harness can reject an attractive-looking candidate honestly
+- it is also evidence that the redesigned harness can preserve a small exact publication slice produced during a failed one-shot attack, rather than collapsing everything into “attempt failed”
 - but it is not yet evidence that the redesign has produced its first true paper packet
 
 What remains to validate Check 31:
 - one redesigned `paper_candidate` must complete solve, verify, and publication audit in a way that leaves only writeup or direct packet sealing
-- until that happens, Phase 8 is only partially complete overall
+- the cocktail-party result still leaves major new mathematics on the locally saturated critical-pair case, so it is not yet close enough to count as that closing example
 
 ## Overall Judgment
 
@@ -173,6 +190,8 @@ What is validated:
 - the queue now strongly prefers one-shot paper candidates
 - the runtime has demonstrated one-shot selection behavior
 - the new packet surfaces explain the publication case before solving
+- the first redesigned full dry run produced an honest exact slice rather than an inflated theorem claim
+- runtime coherence bugs surfaced by the dry run were small, concrete, and patched locally
 - exact instances and feeder-heavy history are no longer dominating active selection
 
 What is not yet validated:
@@ -183,5 +202,5 @@ What is not yet validated:
 The smallest honest next move after this validation is:
 
 1. keep the redesigned one-shot queue active
-2. continue solving from the current top packetized candidate
+2. continue solving from the current top packetized candidate `ladder-4-rungs-edge-erdos-posa`
 3. treat the first genuine one-shot `PAPER_READY` result as the closing evidence for Check 31

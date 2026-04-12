@@ -1,9 +1,9 @@
 # AutoMath Publication Summary
 
-- Updated: `2026-04-12 18:37:06 EDT`
-- Queued one-shot paper candidate: cocktail-party-two-monochromatic-diameter-2-cover
-- Candidate title: Does every 2-colored cocktail party graph admit a cover by two monochromatic diameter-2 subsets?
-- Candidate publication if solved: Solving the original diameter-2 cocktail-party conjecture would read as a direct short follow-up to the 2026 relaxed theorem.
+- Updated: `2026-04-12 19:18:08 EDT`
+- Queued one-shot paper candidate: ladder-4-rungs-edge-erdos-posa
+- Candidate title: Does the ladder with 4 rungs have the edge-Erdos-Posa property?
+- Candidate publication if solved: A resolution of the 4-rung ladder case is already a standalone note because the 2024 paper leaves ladders with 4 to 13 rungs explicitly open.
 - Candidate publication score: standalone_short_paper
 - Candidate packet quality: excellent
 - Candidate pre-solve gate: pass
@@ -22,9 +22,9 @@
 - Summary path: `artifacts/families/summary.md`
 - Family status paths: artifacts/families/zero_divisor_prime_labelings/status.json, artifacts/families/cnbc_quintic_nonexistence/status.json
 - Ledger tail:
-  - started solving forbidden-outdegree-orientation-d7
-  - Solve pass for forbidden-outdegree-orientation-d7 proved two conservative slices without using code: every 7-regular graph has a strong `{3,4}`-orientation, so all forbidden sets disjoint from `{3,4}` are solved, and the full conjecture holds for bipartite 7-regular graphs by orienting a 1-factorization along a complementary pair `{k,7-k}` missed by `F`.
-  - The full `d = 7` paper candidate remains open in this pass; the explicit blocker recorded in the solve artifact is the missing global repair lemma for nonbipartite center-hitting forbidden sets, with the next normalized targets `F = {3,4}` and `F = {2,3,4}`.
-  - VERIFY reran for forbidden-outdegree-orientation-d7 at 2026-04-12 using a bounded live-web rediscovery pass followed by skeptical local proof checking. The full `d = 7` slice was not established as solved in prior art, but the surviving bipartite slice is already known from earlier work cited by the canonical source, and the claimed arbitrary-graph `{3,4}`-disjoint slice fails at the false bridge argument in the quotient step.
-  - The forbidden-outdegree-orientation-d7 artifact was updated before closeout to `stage = verify` with `verify_verdict = REDISCOVERY`, `classification = REDISCOVERY`, `publication_status = REDISCOVERY`, `lean_ready = false`, and `next_action = archive_as_rediscovery`.
-  - forbidden-outdegree-orientation-d7 was reclassified as REDISCOVERY after the prior-art audit and was moved aside.
+  - Publication mode selected one-shot paper candidate cocktail-party-two-monochromatic-diameter-2-cover instead of silently preferring a warm family campaign.
+  - started solving cocktail-party-two-monochromatic-diameter-2-cover
+  - PUBLICATION_AUDIT ran for cocktail-party-two-monochromatic-diameter-2-cover at 2026-04-12 19:15:48 EDT using the selected packet, canonical artifact `record.md` / `status.json`, and a bounded live-web pass on the exact statement, alternate notation, the March 25, 2026 canonical source `2-Reachable Subsets in Two-Colored Graphs`, and one outside-source status sweep.
+  - The bounded prior-art audit did not establish rediscovery: the canonical source still states the diameter-2 cocktail-party claim as `Conjecture 2` and proves only the relaxed `2`-reachable theorem, while the outside-source sweep surfaced only adjacent broader-diameter discussion and no later explicit closure of the selected conjecture.
+  - The canonical artifact was updated before closeout to `stage = publication_audit` with conservative values `publication_status = SLICE_EXACT`, `publication_confidence = 0.61`, `lean_ready = false`, and `proof_artifacts_preserved = true`; the strongest honest packet is now recorded as an exact structural slice plus the exact six-vertex case, not a resolution of the full paper candidate.
+  - cocktail-party-two-monochromatic-diameter-2-cover failed and was moved aside: VARIANT
