@@ -1,20 +1,22 @@
 # Project context
-You are working in AutoMath, an automated method for finding niche open math problems and turning exact-instance discoveries into publishable theorem slices, family theorems, or publishable counterexample theorems.
+You are working in AutoMath, an automated method for finding niche open math problems and turning the smallest frontier claims into publishable papers.
 
 # Goal
 
-The exact-instance engine is still alive, but it is now feeder mode.
-The main objective is publication mode:
+The main objective is now one-shot publication mode:
 
-- harvest exact wins, partials, and verified counterexamples
-- turn them into active family campaigns
-- push those campaigns toward theorem slices, reusable lemmas, family theorems, or paper-grade counterexample theorems
+- find the smallest frontier claim where a single strong solve is already 70-90% of a paper
+- prefer exact theorem/result pairs, sharp obstructions, minimal counterexamples, and tiny structural lemmas with immediate applications
+- heavily downrank any target that needs a feeder ladder, broad campaign buildup, or expensive post-solve packaging before becoming paper-shaped
 - stop automatically only when the strongest honest claim reaches `publication_status = PAPER_READY`
+
+The exact-instance engine is still available, but only when the exact solve itself is already near-publication.
+Campaign mode is secondary and should be used only when a family theorem is already very close to closure.
 
 # Repo layout
 
 - `ledger.md`: append-only human-readable log of what the harness did.
-- `queue.json`: current batch of exactly 5 curated dossiers. Entries may now be `family_campaign` or `feeder_instance`.
+- `queue.json`: current batch of exactly 5 curated dossiers. Entries may now be `paper_candidate`, `family_campaign`, or `feeder_instance`.
 - `failed_problems.json`: problems that failed, rediscoveries, archived exacts, and other do-not-recur memory.
 - `selected_problem.md`: the currently active queue entry or family campaign brief.
 - `campaigns/`: active campaign dossiers plus campaign manifest/state.
@@ -37,27 +39,31 @@ AutoMath now has 6 conceptual stages:
 5. `publication_audit`
 6. `lean`
 
-Publication mode rules:
+One-shot publication rules:
 
-1. Prefer an active family campaign before broad fresh curation.
-2. Use exact instances as feeder evidence, templates, and discriminating tests for campaigns.
-3. After a strong feeder result, run `generalize` before `lean`.
-4. Use `publication_audit` to decide whether the strongest honest claim is instance-only, slice-level, family-level, rediscovered, or genuinely paper-ready.
-5. Use Lean for reusable lemmas, theorem slices, and family-supporting facts, not only isolated exact instances.
-6. `EXACT` alone is not a stop condition.
-7. Stop automatically only when `publication_status = PAPER_READY` and the relevant proof/formal artifacts are preserved.
-8. If verification finds rediscovery, archive it and do not treat it as a frontier success.
-9. If a campaign stalls, use feeder curation to strengthen that campaign before wandering to unrelated one-offs.
+1. Prefer a `paper_candidate` whose solve would already be most of a paper before considering any family campaign.
+2. Curation must optimize for `solve -> publication distance`, not just solve difficulty.
+3. Any target that needs a feeder ladder before becoming paper-shaped should be downranked hard.
+4. Any campaign that keeps producing solved feeders without shrinking the publication gap should be deprioritized.
+5. Use `publication_audit` to decide whether the strongest honest claim is instance-only, slice-level, family-level, rediscovered, or genuinely paper-ready.
+6. Use Lean only when it directly seals a near-publication packet; do not let formalization overhead dominate early selection.
+7. `EXACT` alone is not a stop condition.
+8. Stop automatically only when `publication_status = PAPER_READY` and the relevant proof/formal artifacts are preserved.
+9. If verification finds rediscovery, archive it and do not treat it as a frontier success.
+10. If a chosen one-shot path fails, do not silently fall back to campaign-first behavior or broad curation; record the blocker clearly and wait for the next explicit selection step.
 
 Parallel policy:
 
 - One manager thread/worktree orchestrates the run.
-- If the repo is under Git, isolated publication workers may run in dedicated worktrees.
+- If the repo is under Git, isolated workers may run in dedicated worktrees.
+- Use subagents or isolated workers only for narrowly scoped tasks with strict context budgets and clear write ownership.
 - Merge back only stable dossier and artifact updates.
 
 # Core rules
 
 - Reasoning first, code second.
+- No silent fallbacks. If the intended path fails, stop that path, record the blocker, preserve useful artifacts, and do not automatically switch to a conceptually different mode.
+- No unapproved concept drift. Do not make large objective-changing decisions beyond the user-specified one-shot-publication redesign without explicitly informing the user first.
 - Harness classifications:
   - `NEW`
   - `UNSUITED`
@@ -76,6 +82,17 @@ Parallel policy:
   - `SLICE_EXACT`
   - `FAMILY_CANDIDATE`
   - `PAPER_READY`
+- Candidate selection should strongly prefer:
+  - exact theorem/result pairs,
+  - sharp obstruction theorems,
+  - minimal counterexamples,
+  - tiny structural lemmas with immediate applications,
+  - narrow claims with cheap rediscovery surfaces.
+- Candidate selection should strongly penalize:
+  - feeder ladders,
+  - broad family programs with expensive packaging,
+  - mathematically easy instances that are still far from publication after the solve,
+  - targets with high novelty-check cost or high formalization overhead.
 - `EXACT` is reserved for an exact intended statement or exact intended disproof fully checked in Lean.
 - Before Lean completes, the strongest positive proof classification is `CANDIDATE`.
 - A non-Lean explicit disproof may still be labeled `COUNTEREXAMPLE`, but it does not stop the harness on its own.
@@ -85,7 +102,7 @@ Parallel policy:
 - Before any nontrivial code, write the reasoning section in the relevant `record.md`.
 - Minimal code only: checker, falsifier, tiny experiment, witness verification, or later exact search justified by the reasoning stage.
 - Verification begins with a bounded rediscovery / prior-art search before proof checking.
-- Curation must explicitly downrank likely rediscoveries, search-heavy targets, and isolated one-offs that do not strengthen an active campaign.
+- Curation must explicitly downrank likely rediscoveries, search-heavy targets, feeder-ladder targets, and any target whose solve still leaves a long path to publication.
 - If a specific instance is extracted from a broader open family, curation must check whether an earlier theorem, proposition, example, observation, corollary, or sufficient condition already settles that exact instance.
 - Solve and most family generalization must run with web disabled. Verification may use limited web for the bounded rediscovery pass. Publication audit may use limited web.
 - Be conservative about claim types and theorem scope.

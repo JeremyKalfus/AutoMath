@@ -4,23 +4,25 @@ This is the CURATION stage.
 Use web search.
 
 Goal:
-Write `queue.json` as a publication-oriented mixed queue of exactly 5 dossiers.
+Write `queue.json` as a one-shot-publication queue of exactly 5 dossiers.
 The queue may contain both:
 
+- `entry_type = "paper_candidate"`
 - `entry_type = "family_campaign"`
 - `entry_type = "feeder_instance"`
 
-The harness is no longer optimizing for isolated one-off wins.
+The harness is no longer optimizing for mathematically interesting slow-burn families by default.
 Optimize for:
 
-- publication potential
-- named family / named conjecture alignment
-- theorem-slice plausibility
-- generalization potential
-- reusable proof-template potential
-- verifier and Lean tractability
+- `solve -> publication distance`
+- probability that one strong solve is already 70-90% of a paper
+- exact theorem/result-pair plausibility
+- sharp obstruction / minimal-counterexample plausibility
+- low novelty-check cost
+- low formalization overhead
+- verifier tractability
 - rediscovery resistance
-- diversity across families
+- tiny proof object size
 
 Hard limits:
 
@@ -65,30 +67,27 @@ Near-duplicate means any of:
 
 When uncertain whether a candidate is just a rephrasing of an earlier attempt, skip it.
 
-Campaign-first policy:
+Default policy:
 
-- Up to 2 queue entries may be `family_campaign`.
-- Remaining entries may be `feeder_instance`.
-- Prefer feeder instances that strengthen an active campaign rather than random unrelated one-offs.
-- If there is at least one active campaign with an unresolved theorem-slice blocker, at least 4 of the 5 queue entries must support active campaigns.
-- In that case, at most 1 queue entry may be a broad unrelated candidate.
-- If two family-campaign entries are queued, fill the remaining three slots with campaign feeders before considering unrelated problems.
-- If a named family already has either:
-  - 2 or more exact instances in repo memory, or
-  - 1 exact instance plus 2 strong verified near-results,
-  then prefer opening or extending a campaign instead of queueing yet another isolated instance from that family.
+- Prefer `paper_candidate` entries.
+- Use `family_campaign` only when the family theorem is already very close to closure.
+- Use `feeder_instance` only when solving that feeder would directly shorten the path to a paper rather than build a long campaign ladder.
+- Up to 1 queue entry may be `family_campaign` unless the user explicitly restores campaign-first behavior.
+- At least 4 of the 5 queue entries should be `paper_candidate` or feeder/problem entries whose solve would be nearly paper-shaped immediately.
+- Reject or heavily downrank any target that visibly needs multiple feeder wins before publication.
 
 Priority order:
 
-1. active publication campaigns already seeded from repo memory
-2. feeder instances that discriminate between campaign theorem templates
-3. only then fresh unrelated curation
+1. `paper_candidate` targets where one solve is already most of a paper
+2. exact theorem/result pairs, sharp obstructions, minimal counterexamples, and tiny structural lemmas with immediate applications
+3. only then near-paper family campaigns
+4. feeder instances only if they directly collapse the publication gap
 
 Diversity control:
 
-- Do not let all 5 queued items collapse into one paper or one narrow literature vein unless it is overwhelmingly stronger than the alternatives.
-- At most 2 queued items may come from the same narrow source family unless that family is an active campaign.
-- Sample at least 3 distinct source families or literature veins during discovery unless the campaign-first evidence is overwhelmingly stronger.
+- Do not let all 5 queued items collapse into one literature vein unless that vein clearly dominates on solve-to-publication distance.
+- At most 2 queued items may come from the same narrow source family unless each is independently paper-shaped if solved.
+- Sample at least 3 distinct literature veins during discovery unless one-shot publication evidence is overwhelmingly stronger in a smaller set.
 
 Search protocol under the 20-search cap:
 
@@ -120,6 +119,12 @@ Required publication audit for each final queued candidate:
 - attempted-problem conflict check against repo memory
 - explicit `why_still_appears_open`
 - explicit `why_this_could_be_publishable`
+- explicit `publication_if_solved`
+- explicit `solve_to_publication_distance`
+- explicit `single_pass_proof_plausibility`
+- explicit `formalization_overhead`
+- explicit `needs_feeder_ladder`
+- explicit `paper_shape`
 
 Hard rediscovery rule:
 
@@ -134,14 +139,14 @@ Hard rediscovery rule:
 Strong preferences:
 
 - crisp exact statements
-- publication-worthy theorem targets
-- theorem-slice plausibility
-- structural or family-level leverage
+- publication-worthy exact theorem/result targets
+- sharp obstructions and minimal counterexamples
+- tiny structural lemmas with immediate applications
 - low prerequisite depth
 - verifier-friendly problems
 - reasoning-friendly problems
 - no huge brute-force-first path
-- plausible Lean formalization
+- plausible low-overhead formal sealing
 - diversity across the queue
 
 Hard reject if any of these hold:
@@ -155,6 +160,9 @@ Hard reject if any of these hold:
 - intended statement is ambiguous
 - clearly already attempted in this repo
 - duplicate / near-duplicate of any queued, selected, solved, rediscovered, candidate, variant, partial, counterexample, or failed problem
+- solving it still leaves a long path to publication
+- it needs a feeder ladder before becoming paper-shaped
+- it is easy to solve but expensive to package into a paper
 
 Every final queue entry must include:
 
@@ -176,6 +184,12 @@ Every final queue entry must include:
 - `theorem_slice_hint`
 - `campaign_affinity`
 - `publication_red_flags`
+- `publication_if_solved`
+- `solve_to_publication_distance`
+- `single_pass_proof_plausibility`
+- `formalization_overhead`
+- `needs_feeder_ladder`
+- `paper_shape`
 - `why_reasoning_friendly`
 - `why_low_token`
 - `verifier_hint`
@@ -189,8 +203,8 @@ Every final queue entry must include:
 
 Status guidance at curation time:
 
-- new family campaign target with real theorem-slice traction: `SLICE_CANDIDATE`
-- exact feeder instance with no family closure yet: `NONE` or `INSTANCE_ONLY`
+- direct paper candidate with a real theorem/result shape: `SLICE_CANDIDATE`
+- near-paper exact feeder or obstruction with immediate packaging value: `NONE` or `INSTANCE_ONLY`
 - suspected rediscovery: do not queue it
 
 Queue-writing requirements:
@@ -199,3 +213,4 @@ Queue-writing requirements:
 - no placeholder prose
 - write `selected_problem.md` for the highest-priority first entry
 - preserve bounded behavior
+- do not silently fall back to campaign-first choices if one-shot paper candidates are weak; instead prefer honest rejection and a thinner queueing rationale within the 5-entry constraint

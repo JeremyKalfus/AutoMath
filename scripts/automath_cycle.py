@@ -408,6 +408,12 @@ def render_selected_problem(entry: dict) -> None:
         "curation_confidence",
         "publication_status",
         "campaign_affinity",
+        "publication_if_solved",
+        "solve_to_publication_distance",
+        "single_pass_proof_plausibility",
+        "formalization_overhead",
+        "needs_feeder_ladder",
+        "paper_shape",
     ]:
         value = entry.get(key)
         if value is None:
@@ -436,6 +442,7 @@ def render_selected_problem(entry: dict) -> None:
         "rediscovery_risk",
         "why_still_appears_open",
         "why_this_could_be_publishable",
+        "paper_shape",
         "strongest_honest_claim",
         "attempt_goal",
         "attempt_output_markdown",
@@ -454,6 +461,30 @@ def render_selected_problem(entry: dict) -> None:
         lines.append("")
 
     SELECTED.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
+
+
+PAPER_DISTANCE_RANK = {
+    "tiny": 0,
+    "short": 1,
+    "medium": 2,
+    "long": 3,
+    "very_long": 4,
+}
+
+PLAUDIBILITY_RANK = {
+    "very_high": 0,
+    "high": 1,
+    "medium-high": 2,
+    "medium": 3,
+    "low": 4,
+}
+
+
+def normalized_rank(value, mapping: dict[str, int], default: int) -> int:
+    if value is None:
+        return default
+    text = str(value).strip().lower().replace(" ", "_")
+    return mapping.get(text, default)
 
 
 def load_campaign_manifest() -> list[dict]:
@@ -1058,6 +1089,32 @@ def seed_campaign_queue() -> bool:
     return True
 
 
+def paper_candidate_priority(entry: dict) -> tuple[int, int, int, int, str]:
+    publication_if_solved = publication_rank(entry.get("publication_if_solved") or entry.get("publication_status"))
+    distance = normalized_rank(entry.get("solve_to_publication_distance"), PAPER_DISTANCE_RANK, 5)
+    plausibility = normalized_rank(entry.get("single_pass_proof_plausibility"), PLAUDIBILITY_RANK, 5)
+    feeder_penalty = 1 if str(entry.get("needs_feeder_ladder", "")).strip().lower() in {"yes", "true", "high"} else 0
+    return (-publication_if_solved, distance, plausibility, feeder_penalty, entry.get("slug", ""))
+
+
+def select_paper_candidate_entry() -> dict | None:
+    failed = failed_slug_set()
+    candidates: list[dict] = []
+    for item in load_json(QUEUE, []):
+        if not isinstance(item, dict):
+            continue
+        slug = item.get("slug")
+        if not slug or slug in failed:
+            continue
+        if item.get("entry_type") != "paper_candidate":
+            continue
+        candidates.append(item)
+    if not candidates:
+        return None
+    candidates.sort(key=paper_candidate_priority)
+    return candidates[0]
+
+
 def render_campaign_selection(campaign: dict) -> pathlib.Path:
     status = load_campaign_status(campaign)
     entry = {
@@ -1526,9 +1583,7 @@ def next_campaign_feeder_entries(campaign: dict, limit: int) -> list[dict]:
 def run_curation_if_needed() -> bool:
     if queue_has_usable():
         return True
-    if seed_campaign_queue():
-        return True
-    append_ledger("Queue was empty or exhausted, so web curation started.")
+    append_ledger("Queue was empty or exhausted, so one-shot publication curation started.")
     rc = run_stage(ROOT, "curate", PROMPTS / "curate_batch.prompt.md", "on", CURATION_TIMEOUT, preferred_effort("high"), "default")
     if wait_for_usable_queue():
         if rc == 124:
@@ -2567,11 +2622,20 @@ def run_publication_cycle(explicit_campaign: str | None, allow_parallel: bool) -
             write_publication_summary(None, "not_used")
             return 0
         return run_campaign_flow(campaign, allow_parallel=allow_parallel)
-    campaigns = active_campaigns()
-    if campaigns:
-        return run_campaign_flow(campaigns[0], allow_parallel=allow_parallel)
-    append_ledger("No active family campaign was available, so publication mode fell back to feeder curation.")
-    return run_feeder_cycle()
+    if not run_curation_if_needed():
+        write_publication_summary(None, "not_used")
+        return 0
+    entry = select_paper_candidate_entry()
+    if entry is None:
+        append_ledger(
+            "Publication mode found no queued `paper_candidate`, so it ended cleanly without silently falling back to campaign-first or feeder-first behavior."
+        )
+        write_publication_summary(None, "not_used")
+        return 0
+    append_ledger(
+        f"Publication mode selected one-shot paper candidate {entry['slug']} instead of silently preferring a warm family campaign."
+    )
+    return run_feeder_entry(entry, emit_summary=True)
 
 
 def main() -> int:
