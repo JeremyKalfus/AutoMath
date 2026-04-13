@@ -2,6 +2,7 @@
 
 - entry_type: `paper_candidate`
 - slug: `paley-graph-internal-partition`
+- worker_role: `solver-A`
 - canonical_source: `Pál Bärnkopf, Zoltán Lóránt Nagy, and Zoltán Paulovics, "A Note on Internal Partitions: The 5-Regular Case and Beyond" (Graphs and Combinatorics, 2024), Problem 7.`
 - open_status_checked_on: `2026-04-12`
 - attack_style: `quadratic-residue symmetry plus cohesive-set and near-bisection arguments specialized to Paley graphs`

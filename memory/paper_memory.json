@@ -1,20 +1,6 @@
 {
-  "generated_on": "2026-04-13T01:10:00.587270-04:00",
+  "generated_on": "2026-04-13T02:07:05.240654-04:00",
   "queued_publication_packets": [
-    {
-      "slug": "all-9-vertex-graphs-1-11-representable",
-      "title": "Are all graphs on 9 vertices 1-11-representable?",
-      "publication_status": "SLICE_CANDIDATE",
-      "publication_packet_title": "1-11-Representability of Graphs on 9 Vertices",
-      "publication_packet_quality": "strong",
-      "paper_leverage_score": 86,
-      "single_solve_to_paper_fraction": 0.76,
-      "micro_paper_lane_eligible": true,
-      "publication_if_solved": "Settling the 9-vertex slice would already be a finite-classification note, either as a complete positive census or as a first minimal counterexample paper.",
-      "why_this_could_be_publishable": "It is exactly the kind of smallest unresolved finite slice that can become a clean note or a minimal-counterexample paper with low novelty-check cost.",
-      "canonical_source": "Mohammed Alshammari, Sergey Kitaev, Chaoliang Tang, Tianyi Tao, and Junchi Zhang, \"On 1-11-representability and multi-1-11-representability of graphs\" (Utilitas Mathematica 122, 2025), together with Futorny-Kitaev-Pyatkin, \"New Tools to Study 1-11-Representation of Graphs\" (Graphs and Combinatorics 40, 2024).",
-      "working_packet_path": "artifacts/all-9-vertex-graphs-1-11-representable/working_packet.md"
-    },
     {
       "slug": "paley-graph-internal-partition",
       "title": "Does every Paley graph have an internal partition?",

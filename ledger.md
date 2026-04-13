@@ -14474,3 +14474,9 @@
 - five-regular-pseudograph-4-1-factor hit an infrastructure failure during solve_five-regular-pseudograph-4-1-factor; canonical salvage was written to artifacts/five-regular-pseudograph-4-1-factor/salvage/solve_five-regular-pseudograph-4-1-factor_last_failure.json and the slug is cooled down until 2026-04-13T06:35:01.807299-04:00 instead of being archived as a mathematical failure.
 - Publication mode selected one-shot paper candidate all-9-vertex-graphs-1-11-representable.
 - started solving all-9-vertex-graphs-1-11-representable
+- Publication mode resumed one-shot paper candidate all-9-vertex-graphs-1-11-representable from preserved solve artifacts.
+- Resuming all-9-vertex-graphs-1-11-representable from preserved solve artifacts instead of rerunning solve.
+- all-9-vertex-graphs-1-11-representable failed and was moved aside: VARIANT
+- Publication mode selected one-shot paper candidate paley-graph-internal-partition.
+- Parallel solve launch: solver-A started paley-graph-internal-partition with a 2700-second budget.
+- started solving paley-graph-internal-partition

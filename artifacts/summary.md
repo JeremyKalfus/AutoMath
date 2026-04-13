@@ -1,14 +1,14 @@
 # AutoMath Publication Summary
 
-- Updated: `2026-04-13 01:46:48 EDT`
-- Queued one-shot paper candidate: all-9-vertex-graphs-1-11-representable
-- Candidate title: Are all graphs on 9 vertices 1-11-representable?
-- Candidate publication if solved: Settling the 9-vertex slice would already be a finite-classification note, either as a complete positive census or as a first minimal counterexample paper.
-- Candidate publication score: paper_with_light_packaging
+- Updated: `2026-04-13 02:07:05 EDT`
+- Queued one-shot paper candidate: paley-graph-internal-partition
+- Candidate title: Does every Paley graph have an internal partition?
+- Candidate publication if solved: A complete Paley-family theorem is immediately paper-ready because the family is classical and the statement is already singled out as a named open problem.
+- Candidate publication score: standalone_short_paper
 - Candidate packet quality: strong
 - Candidate pre-solve gate: pass
-- Candidate paper leverage score: 86
-- Candidate single-solve paper fraction: 0.76
+- Candidate paper leverage score: 74
+- Candidate single-solve paper fraction: 0.78
 - Candidate micro-paper lane: True
 - Solve timeout: `2700` seconds
 - Concurrent solve slots: `2`
@@ -16,11 +16,11 @@
 - Automatic stop condition: `publication_status = PAPER_READY`, `classification = EXACT`, and `lean_complete = true`
 - Worker infra status this cycle: `not_used`
 - Summary path: `artifacts/summary.md`
-- Candidate status path: `artifacts/all-9-vertex-graphs-1-11-representable/status.json`
+- Candidate status path: `artifacts/paley-graph-internal-partition/status.json`
 - Ledger tail:
-  - eight-regular-forbidden-outdegree-three-set was moved aside after a tightened-budget solve timeout; no canonical one-shot result was absorbed within budget.
-  - started solving five-regular-pseudograph-4-1-factor
-  - Solve infrastructure failure for five-regular-pseudograph-4-1-factor: the worker timed out before a real verdict.
   - five-regular-pseudograph-4-1-factor hit an infrastructure failure during solve_five-regular-pseudograph-4-1-factor; canonical salvage was written to artifacts/five-regular-pseudograph-4-1-factor/salvage/solve_five-regular-pseudograph-4-1-factor_last_failure.json and the slug is cooled down until 2026-04-13T06:35:01.807299-04:00 instead of being archived as a mathematical failure.
   - Publication mode selected one-shot paper candidate all-9-vertex-graphs-1-11-representable.
   - started solving all-9-vertex-graphs-1-11-representable
+  - Publication mode resumed one-shot paper candidate all-9-vertex-graphs-1-11-representable from preserved solve artifacts.
+  - Resuming all-9-vertex-graphs-1-11-representable from preserved solve artifacts instead of rerunning solve.
+  - all-9-vertex-graphs-1-11-representable failed and was moved aside: VARIANT

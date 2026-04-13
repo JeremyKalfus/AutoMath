@@ -1,15 +1,7 @@
 {
-  "generated_on": "2026-04-12T22:30:23.037876-04:00",
-  "count": 90,
+  "generated_on": "2026-04-13T02:07:05.238000-04:00",
+  "count": 91,
   "recent_attempts": [
-    {
-      "slug": "dsrg-51-15-10-5-4",
-      "reason": "ATTEMPTED",
-      "title": "dsrg-51-15-10-5-4",
-      "notes": "Legacy archived attempt preserved before thin search memory existed.",
-      "checked_on": null,
-      "publication_status": null
-    },
     {
       "slug": "dsrg-28-6-3-2-1",
       "reason": "ATTEMPTED",
@@ -321,6 +313,14 @@
       "notes": "PARTIAL",
       "checked_on": "2026-04-12",
       "publication_status": "NONE"
+    },
+    {
+      "slug": "all-9-vertex-graphs-1-11-representable",
+      "reason": "VARIANT",
+      "title": "Are all graphs on 9 vertices 1-11-representable?",
+      "notes": "VARIANT",
+      "checked_on": "2026-04-13",
+      "publication_status": "REDISCOVERY"
     }
   ]
 }

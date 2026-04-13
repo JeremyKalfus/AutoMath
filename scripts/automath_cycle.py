@@ -44,6 +44,10 @@ PUBLICATION_STATUS_RANK = {
     "PAPER_READY": 5,
 }
 
+RESUMABLE_POST_SOLVE_CLASSIFICATIONS = {"CANDIDATE", "COUNTEREXAMPLE", "EXACT"}
+TERMINAL_QUEUE_CLASSIFICATIONS = {"FAILED", "PARTIAL", "UNSUITED", "VARIANT", "REDISCOVERY"}
+NON_RESUMABLE_VERIFY_VERDICTS = {"VARIANT", "REDISCOVERY"}
+
 CURATION_TIMEOUT = int(os.environ.get("AUTOMATH_CURATION_TIMEOUT", "660"))
 SOLVE_TIMEOUT = int(os.environ.get("AUTOMATH_SOLVE_TIMEOUT", "2700"))
 VERIFY_TIMEOUT = int(os.environ.get("AUTOMATH_VERIFY_TIMEOUT", "720"))
@@ -314,6 +318,35 @@ def publication_stop_ready(path: pathlib.Path) -> bool:
     if data.get("lean_complete") is not True:
         return False
     return bool(data.get("proof_artifacts_preserved") or data.get("lean_complete"))
+
+
+def candidate_status_snapshot(slug: str) -> dict | None:
+    status_path = candidate_status_path(slug)
+    if not status_path.exists():
+        return None
+    ensure_publication_defaults(status_path)
+    normalize_candidate_pending_lean(status_path)
+    data = load_json(status_path, {})
+    if not isinstance(data, dict):
+        return None
+    return data
+
+
+def candidate_terminal_reason(slug: str) -> str | None:
+    data = candidate_status_snapshot(slug)
+    if data is None:
+        return None
+    classification = data.get("classification")
+    if classification in TERMINAL_QUEUE_CLASSIFICATIONS:
+        return f"local status classification={classification} is terminal for queue scheduling"
+    verify_verdict = data.get("verify_verdict")
+    if verify_verdict in NON_RESUMABLE_VERIFY_VERDICTS:
+        return f"local status verify_verdict={verify_verdict} is terminal for queue scheduling"
+    if data.get("publication_status") == "REDISCOVERY":
+        return "local status publication_status=REDISCOVERY is terminal for queue scheduling"
+    if data.get("lean_complete") is True and classification == "EXACT":
+        return "local status is already Lean-complete EXACT and should not be re-queued"
+    return None
 
 
 @dataclass(frozen=True)
@@ -1059,6 +1092,9 @@ def paper_candidate_available(entry: dict) -> tuple[bool, str]:
     slug = entry.get("slug")
     if not slug:
         return False, "paper candidate is missing a slug"
+    terminal_reason = candidate_terminal_reason(slug)
+    if terminal_reason is not None:
+        return False, terminal_reason
     cooldown_reason = candidate_cooldown_reason(slug)
     if cooldown_reason is not None:
         return False, cooldown_reason
@@ -1290,12 +1326,14 @@ def archive_attempted_problem(entry: dict, reason: str, notes: str, publication_
 
 
 def candidate_has_usable_solve_status(slug: str) -> bool:
-    status_path = candidate_status_path(slug)
-    if not status_path.exists():
+    data = candidate_status_snapshot(slug)
+    if data is None:
         return False
-    ensure_publication_defaults(status_path)
-    normalize_candidate_pending_lean(status_path)
-    return status_value(status_path, "classification") is not None
+    if candidate_terminal_reason(slug) is not None:
+        return False
+    if data.get("verify_verdict") in NON_RESUMABLE_VERIFY_VERDICTS:
+        return False
+    return data.get("classification") in RESUMABLE_POST_SOLVE_CLASSIFICATIONS
 
 
 def transport_env(profile: str) -> tuple[dict, tempfile.TemporaryDirectory | None]:

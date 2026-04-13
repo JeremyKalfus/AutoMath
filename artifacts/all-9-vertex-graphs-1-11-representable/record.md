@@ -183,10 +183,11 @@ Whether the current package is still just an instance or already closer to a pap
 - If stronger insertion lemmas exist, update the residue description before any bounded computational step.
 
 ## verify_rediscovery
-- PASS 1 used a bounded web check against the canonical 2025 paper, the 2024 toolbox paper, and direct 9-vertex-status searches.
-- The exact intended statement for this dossier remains the full 9-vertex slice: settle whether every graph on 9 vertices is 1-11-representable, or produce a 9-vertex obstruction. Within the bounded search budget, I found no later paper or preprint settling that exact statement.
-- However, the actual theorem slice claimed in the solve record is not frontier-novel. The canonical 2025 paper explicitly includes Lemma 2.3(a): if `G_1` and `G_2` are 1-11-representable, then their disjoint union is 1-11-representable. Combining that with Theorem 3.5 from the same paper (all graphs on at most 8 vertices are 1-11-representable) immediately implies that every 9-vertex graph with an isolated vertex is 1-11-representable.
-- Therefore: no rediscovery found for the exact intended 9-vertex classification, but the solver's delivered slice is already implied by prior art.
+- PASS 1 stayed within a bounded web audit: exact-instance searches on `1-11-representable` plus `9 vertices`, alternate-notation searches on `1-11-representability` plus `9 vertices`, a direct canonical-source lookup, an internal theorem check inside that source for `Lemma 2.3` and `Theorem 3.5`, and one later-status sweep for a post-2025 9-vertex settlement.
+- The exact intended statement for this dossier remains the full 9-vertex slice: settle whether every graph on 9 vertices is 1-11-representable, or produce a 9-vertex obstruction. Within that bounded search budget, I found no later paper or preprint settling that exact statement.
+- The canonical 2025 paper still treats the frontier as open: it proves `Theorem 3.5` (`all graphs on at most 8 vertices are 1-11-representable`) and in its concluding remarks says stronger techniques could help establish the 9-vertex case `if they are indeed 1-11-representable`.
+- However, the actual theorem slice claimed in the solve record is not frontier-novel. The same canonical paper explicitly includes `Lemma 2.3(a)`: disjoint unions of 1-11-representable graphs are 1-11-representable. Together with `Theorem 3.5` and the one-vertex graph, this already implies that every 9-vertex graph with an isolated vertex is 1-11-representable.
+- Therefore: no rediscovery found for the exact intended 9-vertex classification on this bounded audit, but the solver's delivered slice is already implied by prior art.
 
 ## verify_faithfulness
 - The solve artifact is not faithful to the intended statement. The intended statement is the full 9-vertex classification; the solve record proves only the isolated-vertex subcase.
@@ -219,7 +220,7 @@ Whether the current package is still just an instance or already closer to a pap
 
 ## verify_verdict
 - `VARIANT`
-- Rationale: the solver proved a nearby but different statement from the intended one, and that nearby statement is already implied by the canonical source.
+- Rationale: the solver proved a nearby but different statement from the intended one, and that nearby statement is already implied by the canonical source. So the run is a `VARIANT` at the classification level, with a rediscovered strongest claim at the publication level.
 
 ## minimal_repair_if_any
 - Minimal conservative repair: keep the isolated-vertex argument only as a checked corollary, explicitly cite canonical Lemma 2.3(a) and Theorem 3.5, and remove any implication that this slice is new progress toward a publishable frontier claim.
@@ -227,12 +228,12 @@ Whether the current package is still just an instance or already closer to a pap
 
 ## publication_prior_art_audit
 - Audit date: `2026-04-13`.
-- Exact-statement search: bounded web queries for `1-11-representable` plus `9 vertices` found the canonical 2025 article and mirrors, but no later paper or preprint settling whether every 9-vertex graph is 1-11-representable and no 9-vertex obstruction announcement.
-- Alternate-notation search: bounded queries using `11-representable`, `1-11-representation`, and `graphs on 9 vertices` produced the same literature surface rather than a separate follow-up line.
-- Canonical-source check: the 2025 paper states Theorem 3.5, `All graphs on at most 8 vertices are 1-11-representable`, and in its concluding remarks explicitly says that better techniques could help establish the 9-vertex case `if they are indeed 1-11-representable`, which confirms that the 9-vertex slice was still open there.
-- Canonical-source implication check: Lemma 2.3(a) in the same 2025 paper states that disjoint unions of 1-11-representable graphs are 1-11-representable. Combined with Theorem 3.5 and the one-vertex graph, this already implies the packet's isolated-vertex slice.
-- Outside-status check: a bounded outside search on `2025-2026` surfaces found repository mirrors of the canonical paper, but no independent later source reporting a 9-vertex classification or a first obstruction theorem.
-- Prior-art verdict: the intended full 9-vertex statement still appears open on this bounded audit, but the strongest local proved slice is already implied by published prior art, so the current packet is a `REDISCOVERY`.
+- Exact-statement search: reran a bounded live web pass on `"1-11-representable" "9 vertices"` and `"every graph on 9 vertices" "1-11-representable"`. The results surfaced the canonical 2025 article and mirrors, but no later paper, preprint, or announcement settling the full 9-vertex slice.
+- Alternate-notation search: reran bounded queries on `"1-11-representability" "9 vertices"` and `"11-representable" graphs "9 vertices"`. These returned the same literature surface rather than a distinct post-2025 resolution line.
+- Canonical-source check: the Combinatorial Press page for the 2025 paper still presents Theorem 3.5, `All graphs on at most 8 vertices are 1-11-representable`, and the paper's concluding discussion still treats the 9-vertex case as open.
+- Canonical-source implication check: the same source includes Lemma 2.3(a), that disjoint unions of 1-11-representable graphs are 1-11-representable. Together with Theorem 3.5 and the one-vertex graph, this already settles the isolated-vertex slice proved in the local packet.
+- Outside-status check: a bounded independent pass over general web results and the Springer page for the adjacent 2024 toolbox paper found no later source claiming a 9-vertex classification, first 9-vertex obstruction, or `<= 9` census theorem.
+- Prior-art verdict: the intended full 9-vertex statement still appears open on this bounded audit, but the strongest local proved slice is already implied by the canonical source, so the current packet remains a `REDISCOVERY`.
 
 ## publication_statement_faithfulness
 - The dossier's intended statement is the full 9-vertex classification or first 9-vertex obstruction.
@@ -245,6 +246,7 @@ Whether the current package is still just an instance or already closer to a pap
 - Is there a real theorem slice here? Yes: every 9-vertex graph with an isolated vertex is 1-11-representable.
 - Is the proof structural or merely instance-specific? Structural. The argument uses a general closure move, not hand-picked small cases.
 - Would this survive a referee asking `what is the theorem`? The theorem statement is clear, but the referee would immediately ask for novelty, and the packet fails there because the slice is already implied by the canonical source.
+- Is the claim still too dependent on hand-picked small cases? No. The weakness is not overfitting to tiny cases; it is that the packet never reaches the isolate-free residue where the actual frontier begins.
 - Theorem-worthiness verdict: theorem-shaped but not standalone-worthy for publication, because it does not contribute new frontier content.
 
 ## publication_publishability
@@ -254,6 +256,7 @@ Whether the current package is still just an instance or already closer to a pap
 - Is the claim still too dependent on hand-picked small cases? The proof itself is not hand-picked, but the packet is still too dependent on the published up-to-8-vertex frontier and gives no new control of the actual 9-vertex residue.
 - If this is not yet paper-ready, is the remaining gap genuinely small or did the candidate only look attractive before audit? The candidate as a full target still looks attractive, but the current packet only looked attractive before audit. From the current packet to a paper, the remaining gap is still large.
 - If this is not yet paper-ready, should it be moved aside rather than expanded into a larger theorem program? Yes. The current packet should be moved aside rather than inflated into a broader program around a known slice.
+- Publication verdict: not paper-ready, not close to paper-ready, and not worth packaging as a standalone note in its present form.
 
 ## publication_packet_audit
 - Packet coherence: good as an internal proof note.
@@ -261,6 +264,7 @@ Whether the current package is still just an instance or already closer to a pap
 - Publication packet quality: weak, because the packet does not contain a new title theorem, new theorem slice, or new obstruction certificate.
 - Would Lean directly seal the packet? No. Lean would only formalize a known corollary rather than seal a publication-ready frontier result.
 - Proof artifacts preserved: yes. The reasoning artifact is preserved in this record even though there is no checker or witness table yet.
+- Lean gate: Lean is optional archival polish here, not the decisive final step for a near-paper packet.
 
 ## micro_paper_audit
 - Micro-paper lane verdict for the current packet: fail.
