@@ -6,7 +6,7 @@ This is the PUBLICATION_AUDIT stage.
 Limited web is allowed.
 
 Purpose:
-Judge theorem-worthiness and publication-worthiness, not just correctness.
+Judge theorem-worthiness, publication-worthiness, and MICRO-PAPER leverage, not just correctness.
 
 This stage may run after:
 
@@ -21,10 +21,10 @@ First detect whether the selected entry is:
 Read the relevant `record.md`, `status.json`, and the campaign dossier if one exists.
 If `selected_problem.md` includes `attempt_output_markdown` and `attempt_output_json`, treat this as a sidecar audit:
 
-- read the canonical dossier / artifact record / status as inputs only;
-- if the sidecar output files already exist, continue from them instead of restarting from scratch;
-- write the audited markdown/json outputs to those sidecar paths instead of the canonical files;
-- do not mutate canonical dossier or canonical `record.md` / `status.json` in this sidecar mode.
+- read the canonical dossier / artifact record / status as inputs only
+- if the sidecar output files already exist, continue from them instead of restarting from scratch
+- write the audited markdown/json outputs to those sidecar paths instead of the canonical files
+- do not mutate canonical dossier or canonical `record.md` / `status.json` in this sidecar mode
 
 Read budget:
 
@@ -36,7 +36,7 @@ Read budget:
 Bounded-audit policy:
 
 - Keep the literature pass narrow and claim-specific.
-- Prefer the exact family statement, theorem slice wording, canonical source, and one independent status source over broad wandering.
+- Prefer the exact family statement, theorem-slice wording, canonical source, and one independent status source over broad wandering.
 - Use only the minimum web needed to answer the prior-art and publication-worthiness questions honestly.
 - For a `paper_candidate`, use the narrow one-shot audit by default:
   - exact statement search
@@ -53,12 +53,14 @@ Run these passes in order:
 2. `statement_faithfulness_audit`
 3. `theorem_worthiness_audit`
 4. `publishability_audit`
+5. `micro_paper_audit`
 
 Questions you must answer explicitly:
 
 - Is the strongest honest claim stronger than “here is an example”?
-- If this is a `paper_candidate`, would solving it already be 70-90% of a paper?
-- Is there a real parameterized theorem, theorem slice, or counterexample theorem here?
+- Would this result, if correct and Lean-sealed, already constitute most of a publishable note?
+- What percentage of the paper would one solve already provide?
+- Is there a real title theorem, theorem slice, or counterexample theorem here?
 - Is the proof structural or merely instance-specific?
 - Would this survive a referee asking “what is the theorem?”
 - Is the claim still too dependent on hand-picked small cases?
@@ -83,6 +85,7 @@ Then update the relevant `record.md` with these sections:
 - `publication_theorem_worthiness`
 - `publication_publishability`
 - `publication_packet_audit`
+- `micro_paper_audit`
 - `strongest_honest_claim`
 - `paper_title_hint`
 - `next_action`
@@ -91,6 +94,10 @@ Update the relevant `status.json` with:
 
 - `publication_status`
 - `publication_confidence`
+- `single_solve_to_paper_fraction`
+- `title_theorem_strength`
+- `publication_narrative_strength`
+- `micro_paper_assessment`
 - `strongest_honest_claim`
 - `paper_title_hint`
 - `theorem_slice_target`
@@ -125,7 +132,11 @@ Interpretation rules:
 - plausible family theorem not yet closed: `FAMILY_CANDIDATE`
 - strongest honest claim looks genuinely publishable: `PAPER_READY`
 
+Stop-condition rule:
+
+- do not treat `PAPER_READY` as honest unless the intended statement is exact and Lean-ready for sealing
+- automatic stop still requires a Lean-complete exact result plus the paper-ready audit
+
 Be conservative.
 Do not confuse “mathematically correct” with “publishable theorem”.
 For one-shot candidates, do not let the audit sprawl into a mini-survey; the goal is a cheap honest packet check, not broad literature accumulation.
-For one-shot candidates, set `lean_ready = true` only when Lean is the shortest remaining path to a sealed publication packet; otherwise keep Lean off and explain why in `lean_gate_reason`.

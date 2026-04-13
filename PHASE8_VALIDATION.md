@@ -9,6 +9,18 @@ It is intentionally conservative. The goal is to record what the repo state alre
 supports, not to claim that the redesign is fully vindicated before a real one-shot
 paper win exists.
 
+Micro-paper update:
+
+- this validation memo predates the stricter MICRO-PAPER lane patch
+- after the current patch, the live queue and gating logic should be interpreted through the stronger test:
+  - one solve must already look like roughly 70-90% of a short publishable note
+  - tiny exact curiosities, search-heavy dumps, and unresolved broader-theorem-risk packets should not remain in the strict lane
+- a legitimate success now means:
+  - frontier-novel
+  - exact intended statement
+  - Lean-complete
+  - and paper-shaped enough to audit as `PAPER_READY`
+
 ## Baseline
 
 - Verified checkpoint before continuation:

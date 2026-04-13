@@ -14,6 +14,7 @@ import subprocess
 import sys
 import tempfile
 import time
+from dataclasses import dataclass
 
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -63,6 +64,8 @@ PROOF_ATTEMPT_MIN_INTERVAL = int(os.environ.get("AUTOMATH_PROOF_ATTEMPT_MIN_INTE
 SECONDARY_WORKER_MIN_INTERVAL = int(os.environ.get("AUTOMATH_SECONDARY_WORKER_MIN_INTERVAL", "1800"))
 SECONDARY_WORKER_FAILURE_BACKOFF = int(os.environ.get("AUTOMATH_SECONDARY_WORKER_FAILURE_BACKOFF", "3600"))
 RECENT_AFFILIATED_ARTIFACT_LIMIT = int(os.environ.get("AUTOMATH_RECENT_AFFILIATED_ARTIFACT_LIMIT", "12"))
+CANDIDATE_INFRA_COOLDOWN = int(os.environ.get("AUTOMATH_CANDIDATE_INFRA_COOLDOWN", "21600"))
+SALVAGE_TAIL_LINES = int(os.environ.get("AUTOMATH_SALVAGE_TAIL_LINES", "80"))
 
 CAMPAIGN_LEAN_SURFACE_HINTS = {
     "zero_divisor_prime_labelings": [
@@ -189,6 +192,25 @@ def runtime_campaign_state(family_slug: str) -> dict:
     campaigns = state.get("campaigns", {})
     campaign_state = campaigns.get(family_slug, {})
     return campaign_state if isinstance(campaign_state, dict) else {}
+
+
+def update_runtime_candidate_state(slug: str, **updates) -> None:
+    state = load_runtime_state()
+    candidates = state.setdefault("candidates", {})
+    candidate_state = candidates.setdefault(slug, {})
+    for key, value in updates.items():
+        if value is None:
+            candidate_state.pop(key, None)
+        else:
+            candidate_state[key] = value
+    write_json(RUNTIME_STATE, state)
+
+
+def runtime_candidate_state(slug: str) -> dict:
+    state = load_runtime_state()
+    candidates = state.get("candidates", {})
+    candidate_state = candidates.get(slug, {})
+    return candidate_state if isinstance(candidate_state, dict) else {}
 
 
 def ledger_tail(lines: int = 6) -> list[str]:
@@ -336,7 +358,16 @@ def cleanup_stale_worker_processes() -> None:
 
 
 def failed_slug_set() -> set[str]:
-    return {slug for slug in (slug_of(item) for item in load_json(FAILED, [])) if slug}
+    blocked: set[str] = set()
+    for item in load_json(FAILED, []):
+        if isinstance(item, dict):
+            reason = str(item.get("reason") or "").upper()
+            if reason.startswith("INFRA_"):
+                continue
+        slug = slug_of(item)
+        if slug:
+            blocked.add(slug)
+    return blocked
 
 
 def queue_has_usable(required_entry_type: str | None = None) -> bool:
@@ -387,7 +418,21 @@ def publication_stop_ready(path: pathlib.Path) -> bool:
     data = load_json(path, {})
     if data.get("publication_status") != "PAPER_READY":
         return False
+    if data.get("classification") != "EXACT":
+        return False
+    if data.get("lean_complete") is not True:
+        return False
     return bool(data.get("proof_artifacts_preserved") or data.get("lean_complete"))
+
+
+@dataclass(frozen=True)
+class StageRunResult:
+    stage_name: str
+    returncode: int
+    stdout_log: pathlib.Path
+    last_message: pathlib.Path
+    timed_out: bool
+    timeout_secs: int
 
 
 def ensure_publication_defaults(path: pathlib.Path) -> None:
@@ -429,6 +474,32 @@ def add_text_section(lines: list[str], heading: str, value) -> None:
     lines.extend([f"## {heading}", text, ""])
 
 
+def add_transfer_kit_section(lines: list[str], transfer_kit) -> None:
+    if not isinstance(transfer_kit, dict):
+        return
+    if not any(value for value in transfer_kit.values()):
+        return
+    lines.extend(["## transfer_kit", ""])
+    lemma_items = transfer_kit.get("lemmas") if isinstance(transfer_kit.get("lemmas"), list) else []
+    if lemma_items:
+        lines.append("### usable_lemmas")
+        for item in lemma_items:
+            lines.append(f"- {item}")
+        lines.append("")
+    for key in [
+        "toy_example",
+        "known_obstruction",
+        "prior_work_stop_sentence",
+        "recommended_first_attack",
+        "paper_if_solved",
+    ]:
+        value = transfer_kit.get(key)
+        if value:
+            lines.append(f"### {key}")
+            lines.append(str(value).strip())
+            lines.append("")
+
+
 def render_selected_problem(entry: dict) -> None:
     lines = [f"# {entry.get('title', 'Untitled Entry')}", ""]
     for key in [
@@ -451,6 +522,20 @@ def render_selected_problem(entry: dict) -> None:
         "publication_if_solved_score",
         "solve_to_publication_distance",
         "single_pass_proof_plausibility",
+        "paper_leverage_score",
+        "single_solve_to_paper_fraction",
+        "title_theorem_strength",
+        "family_anchor_strength",
+        "publication_narrative_strength",
+        "editorial_overhead",
+        "immediate_corollary_headroom",
+        "isolated_exact_case_risk",
+        "broader_theorem_implication_risk",
+        "search_heavy",
+        "certificate_compactness",
+        "transfer_kit_present",
+        "exact_gap_from_source",
+        "micro_paper_lane_eligible",
         "novelty_check_cost",
         "formalization_overhead",
         "write_scope",
@@ -490,6 +575,12 @@ def render_selected_problem(entry: dict) -> None:
         "why_still_appears_open",
         "why_this_could_be_publishable",
         "pre_solve_gate_reason",
+        "micro_paper_assessment",
+        "hypothetical_title",
+        "hypothetical_abstract",
+        "single_solve_paper_explanation",
+        "broader_theorem_nonimplication_note",
+        "literature_gap",
         "publication_packet_title",
         "publication_packet_frontier_basis",
         "publication_packet_near_paper_reason",
@@ -505,6 +596,8 @@ def render_selected_problem(entry: dict) -> None:
         "next_action",
     ]:
         add_text_section(lines, key, entry.get(key))
+
+    add_transfer_kit_section(lines, entry.get("transfer_kit"))
 
     for list_key in ["definitions", "seed_instances", "publication_targets", "next_feeder_instances", "red_flags", "publication_red_flags", "allowed_files"]:
         values = entry.get(list_key) or []
@@ -571,11 +664,64 @@ PACKET_QUALITY_RANK = {
     "weak": 3,
 }
 
+THEOREM_STRENGTH_RANK = {
+    "strong": 0,
+    "moderate": 1,
+    "weak": 2,
+}
+
+OVERHEAD_RANK = {
+    "low": 0,
+    "moderate": 1,
+    "high": 2,
+}
+
+HEADROOM_RANK = {
+    "high": 0,
+    "moderate": 1,
+    "low": 2,
+    "none": 3,
+}
+
+RISK_RANK = {
+    "low": 0,
+    "moderate": 1,
+    "high": 2,
+    "unresolved": 3,
+}
+
+COMPACTNESS_RANK = {
+    "high": 0,
+    "moderate": 1,
+    "low": 2,
+}
+
+EXACT_GAP_RANK = {
+    "tiny": 0,
+    "small": 1,
+    "moderate": 2,
+    "broad": 3,
+}
+
 PAPER_CANDIDATE_REQUIRED_FIELDS = [
     "publication_if_solved",
     "publication_if_solved_score",
     "solve_to_publication_distance",
     "single_pass_proof_plausibility",
+    "paper_leverage_score",
+    "single_solve_to_paper_fraction",
+    "title_theorem_strength",
+    "family_anchor_strength",
+    "publication_narrative_strength",
+    "editorial_overhead",
+    "immediate_corollary_headroom",
+    "isolated_exact_case_risk",
+    "broader_theorem_implication_risk",
+    "search_heavy",
+    "certificate_compactness",
+    "transfer_kit_present",
+    "exact_gap_from_source",
+    "micro_paper_lane_eligible",
     "novelty_check_cost",
     "formalization_overhead",
     "packaging_risk",
@@ -589,6 +735,12 @@ PAPER_CANDIDATE_REQUIRED_FIELDS = [
     "publication_packet_literature_scope",
     "publication_packet_artifact_requirements",
     "publication_packet_quality",
+    "hypothetical_title",
+    "hypothetical_abstract",
+    "single_solve_paper_explanation",
+    "broader_theorem_nonimplication_note",
+    "literature_gap",
+    "transfer_kit",
 ]
 
 TRUE_VALUES = {"yes", "true", "pass", "1"}
@@ -609,6 +761,24 @@ def normalized_rank(value, mapping: dict[str, int], default: int) -> int:
     return mapping.get(text, default)
 
 
+def normalized_float(value) -> float | None:
+    if value is None:
+        return None
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def normalized_int(value) -> int | None:
+    if value is None:
+        return None
+    try:
+        return int(float(value))
+    except (TypeError, ValueError):
+        return None
+
+
 def normalized_flag(value) -> bool | None:
     if value is None:
         return None
@@ -618,6 +788,40 @@ def normalized_flag(value) -> bool | None:
     if text in FALSE_VALUES:
         return False
     return None
+
+
+def transfer_kit_complete(transfer_kit) -> bool:
+    if not isinstance(transfer_kit, dict):
+        return False
+    lemmas = transfer_kit.get("lemmas")
+    if not isinstance(lemmas, list):
+        return False
+    lemma_items = [str(item).strip() for item in lemmas if str(item).strip()]
+    if len(lemma_items) < 2:
+        return False
+    for key in [
+        "toy_example",
+        "known_obstruction",
+        "prior_work_stop_sentence",
+        "recommended_first_attack",
+        "paper_if_solved",
+    ]:
+        value = transfer_kit.get(key)
+        if not isinstance(value, str) or not value.strip():
+            return False
+    return True
+
+
+def candidate_cooldown_reason(slug: str) -> str | None:
+    state = runtime_candidate_state(slug)
+    cooldown_until = parse_status_timestamp(state.get("cooldown_until"))
+    if cooldown_until is None:
+        return None
+    now = dt.datetime.now().astimezone()
+    if now >= cooldown_until:
+        return None
+    failure_stage = state.get("last_infra_failure_stage") or "recent infrastructure failure"
+    return f"{slug} is cooling down until {cooldown_until.isoformat()} after {failure_stage}"
 
 
 def missing_fields(entry: dict, fields: list[str]) -> list[str]:
@@ -654,7 +858,7 @@ def candidate_working_packet_path(slug: str) -> pathlib.Path:
 
 def build_candidate_working_packet(entry: dict) -> str:
     slug = entry["slug"]
-    packet_title = entry.get("publication_packet_title") or entry.get("title") or slug
+    packet_title = entry.get("publication_packet_title") or entry.get("hypothetical_title") or entry.get("title") or slug
     bounded_sources = [
         entry.get("canonical_source"),
         entry.get("publication_packet_literature_scope"),
@@ -678,6 +882,9 @@ def build_candidate_working_packet(entry: dict) -> str:
         f"- title: {entry.get('title', slug)}",
         f"- publication status: `{entry.get('publication_status', 'NONE')}`",
         f"- packet quality: `{entry.get('publication_packet_quality', 'unknown')}`",
+        f"- micro-paper eligible: `{entry.get('micro_paper_lane_eligible', 'unknown')}`",
+        f"- paper leverage score: `{entry.get('paper_leverage_score', 'unknown')}`",
+        f"- single-solve-to-paper fraction: `{entry.get('single_solve_to_paper_fraction', 'unknown')}`",
         "",
         "## statement",
         str(entry.get("intended_statement") or entry.get("canonical_statement") or entry.get("question") or ""),
@@ -693,14 +900,60 @@ def build_candidate_working_packet(entry: dict) -> str:
         f"- likely route: {entry.get('publication_packet_near_paper_reason', '(not recorded)')}",
         f"- verifier focus: {entry.get('verifier_hint', '(not recorded)')}",
         "",
+        "## micro_paper_test",
+        f"- title theorem strength: {entry.get('title_theorem_strength', '(not recorded)')}",
+        f"- family anchor strength: {entry.get('family_anchor_strength', '(not recorded)')}",
+        f"- publication narrative strength: {entry.get('publication_narrative_strength', '(not recorded)')}",
+        f"- editorial overhead: {entry.get('editorial_overhead', '(not recorded)')}",
+        f"- immediate corollary headroom: {entry.get('immediate_corollary_headroom', '(not recorded)')}",
+        f"- isolated exact-case risk: {entry.get('isolated_exact_case_risk', '(not recorded)')}",
+        f"- broader-theorem implication risk: {entry.get('broader_theorem_implication_risk', '(not recorded)')}",
+        f"- search-heavy: {entry.get('search_heavy', '(not recorded)')}",
+        f"- certificate compactness: {entry.get('certificate_compactness', '(not recorded)')}",
+        f"- exact gap from source: {entry.get('exact_gap_from_source', '(not recorded)')}",
+        f"- assessment: {entry.get('micro_paper_assessment', '(not recorded)')}",
+        "",
         "## likely_paper_shape",
         f"- note title: {packet_title}",
+        f"- hypothetical title: {entry.get('hypothetical_title', packet_title)}",
         f"- paper shape: {entry.get('paper_shape', '(not recorded)')}",
         f"- publication if solved: {entry.get('publication_if_solved', '(not recorded)')}",
         f"- minimal artifact requirements: {entry.get('publication_packet_artifact_requirements', '(not recorded)')}",
         "",
-        "## bounded_source_list",
+        "## hypothetical_abstract",
+        str(entry.get("hypothetical_abstract") or "(not recorded)"),
+        "",
+        "## single_solve_explanation",
+        str(entry.get("single_solve_paper_explanation") or "(not recorded)"),
+        "",
+        "## broader_theorem_nonimplication",
+        str(entry.get("broader_theorem_nonimplication_note") or "(not recorded)"),
+        "",
+        "## literature_gap",
+        str(entry.get("literature_gap") or "(not recorded)"),
+        "",
+        "## transfer_kit",
     ]
+    transfer_kit = entry.get("transfer_kit")
+    if transfer_kit_complete(transfer_kit):
+        lines.extend([f"- lemma: {item}" for item in transfer_kit.get("lemmas", []) if str(item).strip()])
+        lines.extend(
+            [
+                f"- toy example: {transfer_kit.get('toy_example')}",
+                f"- known obstruction: {transfer_kit.get('known_obstruction')}",
+                f"- prior-work stop sentence: {transfer_kit.get('prior_work_stop_sentence')}",
+                f"- recommended first attack: {transfer_kit.get('recommended_first_attack')}",
+                f"- paper if solved: {transfer_kit.get('paper_if_solved')}",
+                "",
+            ]
+        )
+    else:
+        lines.extend(["- transfer kit is incomplete", ""])
+    lines.extend(
+        [
+        "## bounded_source_list",
+        ]
+    )
     lines.extend([f"- {item}" for item in deduped_sources])
     lines.append("")
     return "\n".join(lines)
@@ -777,6 +1030,9 @@ def refresh_paper_memory(queue_entries: list[dict] | None = None) -> None:
                 "publication_status": entry.get("publication_status", "NONE"),
                 "publication_packet_title": entry.get("publication_packet_title"),
                 "publication_packet_quality": entry.get("publication_packet_quality"),
+                "paper_leverage_score": entry.get("paper_leverage_score"),
+                "single_solve_to_paper_fraction": entry.get("single_solve_to_paper_fraction"),
+                "micro_paper_lane_eligible": entry.get("micro_paper_lane_eligible"),
                 "publication_if_solved": compact_text(entry.get("publication_if_solved"), 180),
                 "why_this_could_be_publishable": compact_text(entry.get("why_this_could_be_publishable"), 180),
                 "canonical_source": entry.get("canonical_source"),
@@ -919,17 +1175,58 @@ def paper_candidate_gate(entry: dict) -> tuple[bool, str]:
     missing = missing_fields(entry, PAPER_CANDIDATE_REQUIRED_FIELDS)
     if missing:
         return False, f"missing required paper-candidate fields: {', '.join(missing)}"
+    if not transfer_kit_complete(entry.get("transfer_kit")):
+        return False, "transfer kit is missing required lemmas/examples/attack material"
     if normalized_flag(entry.get("pre_solve_gate")) is not True:
         reason = str(entry.get("pre_solve_gate_reason") or "").strip()
         return False, reason or "pre_solve_gate is not an explicit pass"
+    if normalized_flag(entry.get("micro_paper_lane_eligible")) is not True:
+        return False, "micro_paper_lane_eligible is not an explicit pass"
     if normalized_flag(entry.get("needs_feeder_ladder")) is True:
         return False, "paper candidate still requires a feeder ladder"
+    single_fraction = normalized_float(entry.get("single_solve_to_paper_fraction"))
+    if single_fraction is None or single_fraction < 0.70:
+        return False, "single_solve_to_paper_fraction is below the micro-paper threshold"
+    if normalized_rank(entry.get("title_theorem_strength"), THEOREM_STRENGTH_RANK, 99) > THEOREM_STRENGTH_RANK["moderate"]:
+        return False, "title_theorem_strength is too weak for the micro-paper lane"
+    if normalized_rank(entry.get("family_anchor_strength"), THEOREM_STRENGTH_RANK, 99) > THEOREM_STRENGTH_RANK["moderate"]:
+        return False, "family_anchor_strength is too weak for the micro-paper lane"
+    if normalized_rank(entry.get("publication_narrative_strength"), THEOREM_STRENGTH_RANK, 99) > THEOREM_STRENGTH_RANK["moderate"]:
+        return False, "publication_narrative_strength is too weak for the micro-paper lane"
+    if normalized_rank(entry.get("editorial_overhead"), OVERHEAD_RANK, 99) > OVERHEAD_RANK["moderate"]:
+        return False, "editorial_overhead is too high for a micro-paper packet"
+    if normalized_rank(entry.get("isolated_exact_case_risk"), RISK_RANK, 99) > RISK_RANK["moderate"]:
+        return False, "isolated_exact_case_risk is too high for the micro-paper lane"
+    if normalized_rank(entry.get("broader_theorem_implication_risk"), RISK_RANK, 99) > RISK_RANK["moderate"]:
+        return False, "broader_theorem_implication_risk is still too high or unresolved"
+    if normalized_rank(entry.get("certificate_compactness"), COMPACTNESS_RANK, 99) > COMPACTNESS_RANK["moderate"]:
+        return False, "certificate_compactness is too weak for a compact note"
+    search_heavy = normalized_flag(entry.get("search_heavy"))
+    exact_gap_rank = normalized_rank(entry.get("exact_gap_from_source"), EXACT_GAP_RANK, 99)
+    compactness_rank = normalized_rank(entry.get("certificate_compactness"), COMPACTNESS_RANK, 99)
+    if search_heavy is True and not (
+        exact_gap_rank <= EXACT_GAP_RANK["tiny"] and compactness_rank <= COMPACTNESS_RANK["high"]
+    ):
+        return False, "search-heavy targets are parked unless only a tiny human-readable residue remains"
     if normalized_rank(entry.get("publication_if_solved_score"), PUBLICATION_IF_SOLVED_SCORE_RANK, 99) > PUBLICATION_IF_SOLVED_SCORE_RANK["paper_with_light_packaging"]:
         return False, "publication_if_solved_score says the result is still too far from a paper"
     if normalized_rank(entry.get("solve_to_publication_distance"), PAPER_DISTANCE_RANK, 99) > PAPER_DISTANCE_RANK["short-medium"]:
         return False, "solve_to_publication_distance is too long for the one-shot gate"
     if normalized_rank(entry.get("publication_packet_quality"), PACKET_QUALITY_RANK, 99) > PACKET_QUALITY_RANK["strong"]:
         return False, "publication packet is not yet sharp enough for one-shot solve budget"
+    return True, "pass"
+
+
+def paper_candidate_available(entry: dict) -> tuple[bool, str]:
+    gate_ok, gate_reason = paper_candidate_gate(entry)
+    if not gate_ok:
+        return False, gate_reason
+    slug = entry.get("slug")
+    if not slug:
+        return False, "paper candidate is missing a slug"
+    cooldown_reason = candidate_cooldown_reason(slug)
+    if cooldown_reason is not None:
+        return False, cooldown_reason
     return True, "pass"
 
 
@@ -942,8 +1239,8 @@ def usable_paper_candidates() -> list[dict]:
         slug = item.get("slug")
         if not slug or slug in failed or item.get("entry_type") != "paper_candidate":
             continue
-        gate_ok, _ = paper_candidate_gate(item)
-        if gate_ok:
+        available, _ = paper_candidate_available(item)
+        if available:
             candidates.append(item)
     return candidates
 
@@ -953,6 +1250,7 @@ def normalize_queue_for_scheduler() -> list[dict]:
     if not isinstance(queue, list):
         return []
     valid_papers: list[dict] = []
+    cooled_papers: list[dict] = []
     invalid_papers: list[dict] = []
     others: list[dict] = []
     for item in queue:
@@ -961,18 +1259,23 @@ def normalize_queue_for_scheduler() -> list[dict]:
         if item.get("entry_type") != "paper_candidate":
             others.append(item)
             continue
-        gate_ok, _ = paper_candidate_gate(item)
-        if gate_ok:
+        available, reason = paper_candidate_available(item)
+        if available:
             valid_papers.append(item)
+        elif candidate_cooldown_reason(item.get("slug", "")) is not None:
+            parked = dict(item)
+            parked.setdefault("publication_lane_note", reason)
+            cooled_papers.append(parked)
         else:
             invalid_papers.append(item)
     valid_papers.sort(key=paper_candidate_priority)
-    normalized = valid_papers + invalid_papers + others
+    cooled_papers.sort(key=paper_candidate_priority)
+    normalized = valid_papers + cooled_papers + invalid_papers + others
     if normalized != queue:
         write_json(QUEUE, normalized)
     refresh_context_hygiene_surfaces(normalized)
-    if valid_papers:
-        render_selected_problem(entry_with_working_packet(valid_papers[0]))
+    if normalized:
+        sync_selected_problem_to_queue(normalized)
     return normalized
 
 
@@ -1601,15 +1904,30 @@ def seed_campaign_queue() -> bool:
     return True
 
 
-def paper_candidate_priority(entry: dict) -> tuple[int, int, int, int, int, int, int, str]:
-    publication_if_solved = normalized_rank(entry.get("publication_if_solved_score"), PUBLICATION_IF_SOLVED_SCORE_RANK, 99)
+def paper_candidate_priority(entry: dict) -> tuple[int, int, int, int, int, int, int, int, int, str]:
+    leverage_score = -(normalized_int(entry.get("paper_leverage_score")) or 0)
+    single_fraction = -(int(round((normalized_float(entry.get("single_solve_to_paper_fraction")) or 0.0) * 100)))
+    title_strength = normalized_rank(entry.get("title_theorem_strength"), THEOREM_STRENGTH_RANK, 99)
+    family_anchor = normalized_rank(entry.get("family_anchor_strength"), THEOREM_STRENGTH_RANK, 99)
+    narrative_strength = normalized_rank(entry.get("publication_narrative_strength"), THEOREM_STRENGTH_RANK, 99)
+    exact_gap = normalized_rank(entry.get("exact_gap_from_source"), EXACT_GAP_RANK, 99)
     distance = normalized_rank(entry.get("solve_to_publication_distance"), PAPER_DISTANCE_RANK, 5)
     packet_quality = normalized_rank(entry.get("publication_packet_quality"), PACKET_QUALITY_RANK, 99)
     plausibility = normalized_rank(entry.get("single_pass_proof_plausibility"), PLAUDIBILITY_RANK, 5)
-    novelty_cost = normalized_rank(entry.get("novelty_check_cost"), COST_RANK, 99)
-    packaging = normalized_rank(entry.get("packaging_risk"), COST_RANK, 99)
-    feeder_penalty = 1 if normalized_flag(entry.get("needs_feeder_ladder")) is True else 0
-    return (distance, publication_if_solved, packet_quality, plausibility, novelty_cost, packaging, feeder_penalty, entry.get("slug", ""))
+    editorial_overhead = normalized_rank(entry.get("editorial_overhead"), OVERHEAD_RANK, 99)
+    search_penalty = 1 if normalized_flag(entry.get("search_heavy")) is True else 0
+    return (
+        leverage_score,
+        single_fraction,
+        title_strength,
+        family_anchor,
+        narrative_strength,
+        exact_gap,
+        distance,
+        packet_quality,
+        plausibility + editorial_overhead + search_penalty,
+        entry.get("slug", ""),
+    )
 
 
 def select_paper_candidate_entry() -> dict | None:
@@ -1760,7 +2078,7 @@ def run_family_proof_attempt(campaign: dict, attempt_kind: str) -> int:
             f"attempt_{attempt_kind}_on": now_iso(),
         },
     )
-    rc = run_stage(
+    result = run_stage(
         ROOT,
         f"generalize_attempt_{campaign['family_slug']}_{attempt_kind}",
         PROMPTS / "generalize_family.prompt.md",
@@ -1769,15 +2087,15 @@ def run_family_proof_attempt(campaign: dict, attempt_kind: str) -> int:
         preferred_effort("xhigh"),
         "tuned_openai",
     )
-    if rc == 124:
+    if result.returncode == 124:
         append_ledger(
             f"Family proof attempt {attempt_kind} for {campaign['family_slug']} hit its time budget and was left as a sidecar attempt artifact."
         )
-    elif rc != 0:
+    elif result.returncode != 0:
         append_ledger(
             f"Family proof attempt {attempt_kind} for {campaign['family_slug']} exited unexpectedly and was left out of the canonical dossier."
         )
-    return rc
+    return result.returncode
 
 
 def select_queue_entry(prefer_feeders: bool = False) -> dict | None:
@@ -1798,6 +2116,10 @@ def select_queue_entry(prefer_feeders: bool = False) -> dict | None:
             isinstance(item, dict)
             and item.get("slug")
             and item["slug"] not in failed
+            and not (
+                item.get("entry_type") == "paper_candidate"
+                and candidate_cooldown_reason(item["slug"]) is not None
+            )
             and not (item.get("entry_type") == "feeder_instance" and feeder_artifact_is_preserved(item["slug"]))
         ):
             return item
@@ -1943,8 +2265,134 @@ def transport_env(profile: str) -> tuple[dict, tempfile.TemporaryDirectory | Non
     return env, temp_home
 
 
+def read_tail_lines(path: pathlib.Path, lines: int = SALVAGE_TAIL_LINES) -> list[str]:
+    if not path.exists():
+        return []
+    return path.read_text(encoding="utf-8", errors="ignore").splitlines()[-lines:]
+
+
+def artifact_partial_files(slug: str) -> list[str]:
+    artifact_dir = ROOT / "artifacts" / slug
+    if not artifact_dir.exists():
+        return []
+    files: list[str] = []
+    for candidate in sorted(artifact_dir.rglob("*")):
+        if not candidate.is_file():
+            continue
+        if "salvage" in candidate.parts:
+            continue
+        files.append(relative_display(candidate))
+    return files[:60]
+
+
+def strongest_recoverable_status(status_path: pathlib.Path) -> dict:
+    if not status_path.exists():
+        return {}
+    ensure_publication_defaults(status_path)
+    data = load_json(status_path, {})
+    if not isinstance(data, dict):
+        return {}
+    return {
+        key: data.get(key)
+        for key in [
+            "stage",
+            "classification",
+            "verify_verdict",
+            "publication_status",
+            "publication_confidence",
+            "lean_ready",
+            "lean_complete",
+            "next_action",
+        ]
+        if data.get(key) is not None
+    }
+
+
+def salvage_candidate_failure(
+    entry: dict,
+    status_path: pathlib.Path,
+    result: StageRunResult,
+    *,
+    failure_reason: str,
+) -> pathlib.Path:
+    slug = entry["slug"]
+    salvage_dir = ROOT / "artifacts" / slug / "salvage"
+    salvage_dir.mkdir(parents=True, exist_ok=True)
+    payload = {
+        "slug": slug,
+        "title": entry.get("title"),
+        "stage": result.stage_name,
+        "failure_reason": failure_reason,
+        "timed_out": result.timed_out,
+        "timeout_secs": result.timeout_secs,
+        "salvaged_on": now_iso(),
+        "stdout_log": relative_display(result.stdout_log),
+        "last_message_path": relative_display(result.last_message),
+        "stdout_tail": read_tail_lines(result.stdout_log),
+        "last_message": result.last_message.read_text(encoding="utf-8", errors="ignore").strip()
+        if result.last_message.exists()
+        else "",
+        "strongest_recoverable_status": strongest_recoverable_status(status_path),
+        "partial_artifacts": artifact_partial_files(slug),
+    }
+    json_path = salvage_dir / f"{result.stage_name}_last_failure.json"
+    write_json(json_path, payload)
+    lines = [
+        f"# Salvage: {slug}",
+        "",
+        f"- stage: `{result.stage_name}`",
+        f"- failure_reason: `{failure_reason}`",
+        f"- timed_out: `{result.timed_out}`",
+        f"- timeout_secs: `{result.timeout_secs}`",
+        f"- salvaged_on: `{payload['salvaged_on']}`",
+        f"- stdout_log: `{payload['stdout_log']}`",
+        f"- last_message_path: `{payload['last_message_path']}`",
+        "",
+        "## strongest_recoverable_status",
+        json.dumps(payload["strongest_recoverable_status"], indent=2) if payload["strongest_recoverable_status"] else "{}",
+        "",
+        "## partial_artifacts",
+    ]
+    lines.extend([f"- {item}" for item in payload["partial_artifacts"]])
+    lines.extend(["", "## stdout_tail"])
+    lines.extend(payload["stdout_tail"] or ["(no stdout tail captured)"])
+    md_path = salvage_dir / f"{result.stage_name}_last_failure.md"
+    md_path.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
+    return json_path
+
+
+def record_candidate_infra_failure(
+    entry: dict,
+    status_path: pathlib.Path,
+    result: StageRunResult,
+    *,
+    failure_reason: str,
+    rotate_queue: bool = True,
+) -> None:
+    slug = entry["slug"]
+    failure_count = int(runtime_candidate_state(slug).get("infra_failure_count", 0)) + 1
+    cooldown_seconds = CANDIDATE_INFRA_COOLDOWN * min(failure_count, 3)
+    cooldown_until = (dt.datetime.now().astimezone() + dt.timedelta(seconds=cooldown_seconds)).isoformat()
+    salvage_path = salvage_candidate_failure(entry, status_path, result, failure_reason=failure_reason)
+    update_runtime_candidate_state(
+        slug,
+        infra_failure_count=failure_count,
+        last_infra_failure_on=now_iso(),
+        last_infra_failure_stage=result.stage_name,
+        cooldown_until=cooldown_until,
+        last_salvage_path=relative_display(salvage_path),
+        last_failure_reason=failure_reason,
+    )
+    append_ledger(
+        f"{slug} hit an infrastructure failure during {result.stage_name}; canonical salvage was written to "
+        f"{relative_display(salvage_path)} and the slug is cooled down until {cooldown_until} instead of being archived as a mathematical failure."
+    )
+    if rotate_queue:
+        rotate_problem_to_end(slug)
+
+
 def run_stage(root: pathlib.Path, stage_name: str, prompt_file: pathlib.Path, search_mode: str, timeout_secs: int,
-              reasoning_effort: str | None = None, transport_profile: str = "default") -> int:
+              reasoning_effort: str | None = None, transport_profile: str = "default") -> StageRunResult:
     stamp = dt.datetime.now().strftime("%Y%m%dT%H%M%S")
     stdout_log = LOGS / f"{stamp}_{stage_name}.stdout.log"
     last_message = LOGS / f"{stamp}_{stage_name}.last.txt"
@@ -2043,7 +2491,14 @@ def run_stage(root: pathlib.Path, stage_name: str, prompt_file: pathlib.Path, se
 
     if temp_home is not None:
         temp_home.cleanup()
-    return returncode if not timed_out else 124
+    return StageRunResult(
+        stage_name=stage_name,
+        returncode=returncode if not timed_out else 124,
+        stdout_log=stdout_log,
+        last_message=last_message,
+        timed_out=timed_out,
+        timeout_secs=timeout_secs,
+    )
 
 
 def supports_xhigh() -> bool:
@@ -2165,26 +2620,26 @@ def run_curation_if_needed(required_entry_type: str | None = None) -> bool:
         append_ledger("Queue had no usable `paper_candidate`, so one-shot publication curation started.")
     else:
         append_ledger("Queue was empty or exhausted, so one-shot publication curation started.")
-    rc = run_stage(ROOT, "curate", PROMPTS / "curate_batch.prompt.md", "on", CURATION_TIMEOUT, preferred_effort("high"), "default")
+    result = run_stage(ROOT, "curate", PROMPTS / "curate_batch.prompt.md", "on", CURATION_TIMEOUT, preferred_effort("high"), "default")
     if wait_for_usable_queue(required_entry_type=required_entry_type):
         normalize_queue_for_scheduler()
-        if rc == 124:
+        if result.returncode == 124:
             if required_entry_type == "paper_candidate":
                 append_ledger("Curation hit its time budget but still produced a usable `paper_candidate` queue.")
             else:
                 append_ledger("Curation hit its time budget but still produced a usable queue.")
-        elif rc != 0:
+        elif result.returncode != 0:
             if required_entry_type == "paper_candidate":
                 append_ledger("Curation ended oddly but still produced a usable `paper_candidate` queue.")
             else:
                 append_ledger("Curation ended oddly but still produced a usable queue.")
         return True
-    if rc == 124:
+    if result.returncode == 124:
         if required_entry_type == "paper_candidate":
             append_ledger("Curation timed out before producing a usable `paper_candidate` queue, so this cycle ended cleanly.")
         else:
             append_ledger("Curation timed out before producing a usable queue, so this cycle ended cleanly.")
-    elif rc != 0:
+    elif result.returncode != 0:
         if required_entry_type == "paper_candidate":
             append_ledger("Curation had an infrastructure failure before producing a usable `paper_candidate` queue, so this cycle ended cleanly.")
         else:
@@ -2239,6 +2694,9 @@ def write_publication_summary(active_campaign_slug: str | None, worker_status: s
     candidate_publication_score = paper_candidate.get("publication_if_solved_score", "(not recorded)") if paper_candidate else "(none queued)"
     candidate_pre_solve_gate = paper_candidate.get("pre_solve_gate", "(not recorded)") if paper_candidate else "(none queued)"
     candidate_packet_quality = paper_candidate.get("publication_packet_quality", "(not recorded)") if paper_candidate else "(none queued)"
+    candidate_paper_leverage = paper_candidate.get("paper_leverage_score", "(not recorded)") if paper_candidate else "(none queued)"
+    candidate_single_fraction = paper_candidate.get("single_solve_to_paper_fraction", "(not recorded)") if paper_candidate else "(none queued)"
+    candidate_micro_lane = paper_candidate.get("micro_paper_lane_eligible", "(not recorded)") if paper_candidate else "(none queued)"
     lean_family_complete = any(
         bool(load_campaign_status(campaign).get("lean_complete"))
         or bool(load_campaign_status(campaign).get("lean_family_lemma_complete"))
@@ -2255,6 +2713,9 @@ def write_publication_summary(active_campaign_slug: str | None, worker_status: s
         f"- Candidate publication score: {candidate_publication_score}",
         f"- Candidate packet quality: {candidate_packet_quality}",
         f"- Candidate pre-solve gate: {candidate_pre_solve_gate}",
+        f"- Candidate paper leverage score: {candidate_paper_leverage}",
+        f"- Candidate single-solve paper fraction: {candidate_single_fraction}",
+        f"- Candidate micro-paper lane: {candidate_micro_lane}",
         f"- Active campaigns: {', '.join(c['family_slug'] for c in campaigns) if campaigns else '(none)'}",
         f"- Strongest current publication status: `{strongest_status}`",
         f"- Strongest honest claim: {strongest_claim}",
@@ -2281,6 +2742,9 @@ def write_publication_summary(active_campaign_slug: str | None, worker_status: s
         f"[publication_summary] candidate publication score: {candidate_publication_score}",
         f"[publication_summary] candidate packet quality: {candidate_packet_quality}",
         f"[publication_summary] candidate pre-solve gate: {candidate_pre_solve_gate}",
+        f"[publication_summary] candidate paper leverage score: {candidate_paper_leverage}",
+        f"[publication_summary] candidate single-solve paper fraction: {candidate_single_fraction}",
+        f"[publication_summary] candidate micro-paper lane: {candidate_micro_lane}",
         f"[publication_summary] active campaign: {primary['family_slug'] if primary else '(none)'}",
         f"[publication_summary] strongest publication_status: {strongest_status}",
         f"[publication_summary] strongest honest claim: {strongest_claim}",
@@ -2816,7 +3280,7 @@ def maybe_run_campaign_lean(campaign: dict, signature: str) -> None:
         append_ledger(f"Lean was skipped for family campaign {campaign['family_slug']} because {reason}.")
         return
     render_campaign_selection(campaign)
-    rc = run_stage(
+    result = run_stage(
         ROOT,
         f"lean_family_{campaign['family_slug']}",
         PROMPTS / "lean.prompt.md",
@@ -2825,9 +3289,9 @@ def maybe_run_campaign_lean(campaign: dict, signature: str) -> None:
         preferred_effort("xhigh"),
         "default",
     )
-    if rc == 124:
+    if result.returncode == 124:
         append_ledger(f"Lean timed out on family campaign {campaign['family_slug']}; the family artifact remains active for later.")
-    elif rc != 0:
+    elif result.returncode != 0:
         append_ledger(f"Lean exited unexpectedly on family campaign {campaign['family_slug']}; the family artifact remains active for later.")
     else:
         update_runtime_campaign_state(
@@ -2850,7 +3314,7 @@ def run_campaign_flow(campaign: dict, allow_parallel: bool) -> int:
     input_signature = campaign_input_signature(campaign)
     should_refresh, refresh_reason = should_run_frontier_refresh(campaign, input_signature)
     if should_refresh:
-        rc = run_stage(
+        result = run_stage(
             ROOT,
             f"generalize_{campaign['family_slug']}",
             PROMPTS / "generalize_family.prompt.md",
@@ -2859,9 +3323,9 @@ def run_campaign_flow(campaign: dict, allow_parallel: bool) -> int:
             preferred_effort("xhigh"),
             "tuned_openai",
         )
-        if rc == 124:
+        if result.returncode == 124:
             append_ledger(f"Frontier refresh timed out for family campaign {campaign['family_slug']}.")
-        elif rc != 0:
+        elif result.returncode != 0:
             append_ledger(f"Frontier refresh exited unexpectedly for family campaign {campaign['family_slug']}.")
         else:
             input_signature = campaign_input_signature(campaign)
@@ -2891,7 +3355,7 @@ def run_campaign_flow(campaign: dict, allow_parallel: bool) -> int:
 
     should_generalize, generalize_reason = should_run_campaign_generalize(campaign, input_signature)
     if should_generalize:
-        rc = run_stage(
+        result = run_stage(
             ROOT,
             f"generalize_{campaign['family_slug']}",
             PROMPTS / "generalize_family.prompt.md",
@@ -2900,9 +3364,9 @@ def run_campaign_flow(campaign: dict, allow_parallel: bool) -> int:
             preferred_effort("xhigh"),
             "tuned_openai",
         )
-        if rc == 124:
+        if result.returncode == 124:
             append_ledger(f"Generalize timed out for family campaign {campaign['family_slug']}.")
-        elif rc != 0:
+        elif result.returncode != 0:
             append_ledger(f"Generalize exited unexpectedly for family campaign {campaign['family_slug']}.")
         else:
             input_signature = campaign_input_signature(campaign)
@@ -2914,7 +3378,7 @@ def run_campaign_flow(campaign: dict, allow_parallel: bool) -> int:
 
     should_audit, audit_reason = should_run_publication_audit(campaign, input_signature)
     if should_audit:
-        rc = run_stage(
+        result = run_stage(
             ROOT,
             "publication_audit",
             PROMPTS / "publication_audit.prompt.md",
@@ -2923,9 +3387,9 @@ def run_campaign_flow(campaign: dict, allow_parallel: bool) -> int:
             preferred_effort("xhigh"),
             "tuned_openai",
         )
-        if rc == 124:
+        if result.returncode == 124:
             append_ledger(f"Publication audit timed out for family campaign {campaign['family_slug']}.")
-        elif rc != 0:
+        elif result.returncode != 0:
             append_ledger(f"Publication audit exited unexpectedly for family campaign {campaign['family_slug']}.")
         else:
             update_runtime_campaign_state(
@@ -2987,7 +3451,7 @@ def run_campaign_flow(campaign: dict, allow_parallel: bool) -> int:
             )
         render_campaign_selection(campaign)
         input_signature = campaign_input_signature(campaign)
-        rc = run_stage(
+        result = run_stage(
             ROOT,
             f"generalize_{campaign['family_slug']}",
             PROMPTS / "generalize_family.prompt.md",
@@ -2996,10 +3460,10 @@ def run_campaign_flow(campaign: dict, allow_parallel: bool) -> int:
             preferred_effort("xhigh"),
             "tuned_openai",
         )
-        if rc == 0:
+        if result.returncode == 0:
             input_signature = campaign_input_signature(campaign)
             mark_generalize_success(campaign, input_signature)
-        rc = run_stage(
+        result = run_stage(
             ROOT,
             "publication_audit",
             PROMPTS / "publication_audit.prompt.md",
@@ -3008,7 +3472,7 @@ def run_campaign_flow(campaign: dict, allow_parallel: bool) -> int:
             preferred_effort("xhigh"),
             "tuned_openai",
         )
-        if rc == 0:
+        if result.returncode == 0:
             update_runtime_campaign_state(
                 campaign["family_slug"],
                 last_publication_audit_on=now_iso(),
@@ -3064,7 +3528,7 @@ def run_instance_lean(entry: dict, status_path: pathlib.Path) -> None:
         append_ledger(f"Lean was skipped for {entry['slug']} because {reason}.")
         return
     render_queue_selection(entry)
-    rc = run_stage(
+    result = run_stage(
         ROOT,
         f"lean_{entry['slug']}",
         PROMPTS / "lean.prompt.md",
@@ -3085,9 +3549,9 @@ def run_instance_lean(entry: dict, status_path: pathlib.Path) -> None:
         )
         append_ledger(f"Lean verified the exact intended statement for {entry['slug']}; archived as feeder evidence without stopping the harness.")
         return
-    if rc == 124:
+    if result.returncode == 124:
         append_ledger(f"Lean infrastructure timeout for {entry['slug']}; the instance stays archived only if later runs finish the exact proof.")
-    elif rc != 0:
+    elif result.returncode != 0:
         append_ledger(f"Lean infrastructure failure for {entry['slug']}; the instance remains pending or failed depending on later campaign use.")
 
 
@@ -3110,7 +3574,7 @@ def run_affiliated_generalize(entry: dict, status_path: pathlib.Path) -> None:
     should_refresh, refresh_reason = should_run_frontier_refresh(campaign, input_signature)
     if should_refresh:
         render_campaign_selection(campaign)
-        rc = run_stage(
+        result = run_stage(
             ROOT,
             f"generalize_{campaign['family_slug']}",
             PROMPTS / "generalize_family.prompt.md",
@@ -3119,7 +3583,7 @@ def run_affiliated_generalize(entry: dict, status_path: pathlib.Path) -> None:
             preferred_effort("xhigh"),
             "tuned_openai",
         )
-        if rc == 0:
+        if result.returncode == 0:
             input_signature = campaign_input_signature(campaign)
             mark_generalize_success(campaign, input_signature, frontier_refresh=True)
     else:
@@ -3129,7 +3593,7 @@ def run_affiliated_generalize(entry: dict, status_path: pathlib.Path) -> None:
     render_campaign_selection(campaign)
     should_generalize, generalize_reason = should_run_campaign_generalize(campaign, input_signature)
     if should_generalize:
-        rc = run_stage(
+        result = run_stage(
             ROOT,
             f"generalize_{campaign['family_slug']}",
             PROMPTS / "generalize_family.prompt.md",
@@ -3138,7 +3602,7 @@ def run_affiliated_generalize(entry: dict, status_path: pathlib.Path) -> None:
             preferred_effort("xhigh"),
             "tuned_openai",
         )
-        if rc == 0:
+        if result.returncode == 0:
             input_signature = campaign_input_signature(campaign)
             mark_generalize_success(campaign, input_signature)
     else:
@@ -3147,7 +3611,7 @@ def run_affiliated_generalize(entry: dict, status_path: pathlib.Path) -> None:
         )
     should_audit, audit_reason = should_run_publication_audit(campaign, input_signature)
     if should_audit:
-        rc = run_stage(
+        result = run_stage(
             ROOT,
             "publication_audit",
             PROMPTS / "publication_audit.prompt.md",
@@ -3156,7 +3620,7 @@ def run_affiliated_generalize(entry: dict, status_path: pathlib.Path) -> None:
             preferred_effort("xhigh"),
             "tuned_openai",
         )
-        if rc == 0:
+        if result.returncode == 0:
             update_runtime_campaign_state(
                 campaign["family_slug"],
                 last_publication_audit_on=now_iso(),
@@ -3187,7 +3651,7 @@ def run_feeder_entry(
     )
     append_ledger(f"started solving {entry['slug']}")
 
-    rc = run_stage(
+    result = run_stage(
         ROOT,
         f"solve_{entry['slug']}",
         PROMPTS / "solve_reasoning_first.prompt.md",
@@ -3196,12 +3660,19 @@ def run_feeder_entry(
         preferred_effort("high"),
         "tuned_openai",
     )
-    if rc != 0:
-        if rc == 124:
+    if result.returncode != 0:
+        if result.returncode == 124:
             append_ledger(f"Solve infrastructure failure for {entry['slug']}: the worker timed out before a real verdict.")
         else:
             append_ledger(f"Solve infrastructure failure for {entry['slug']}: the worker exited unexpectedly.")
-        rotate_problem_to_end(entry["slug"])
+        if not artifact_only_worker:
+            record_candidate_infra_failure(
+                entry,
+                status_path,
+                result,
+                failure_reason="solve_timeout" if result.returncode == 124 else "solve_nonzero_exit",
+                rotate_queue=True,
+            )
         if emit_summary:
             write_publication_summary(entry.get("campaign_affinity"), "infra_failed")
         return 0
@@ -3209,12 +3680,19 @@ def run_feeder_entry(
     normalize_candidate_pending_lean(status_path)
     if status_value(status_path, "classification") is None:
         append_ledger(f"Solve infrastructure failure for {entry['slug']}: no usable status verdict was written.")
-        rotate_problem_to_end(entry["slug"])
+        if not artifact_only_worker:
+            record_candidate_infra_failure(
+                entry,
+                status_path,
+                result,
+                failure_reason="solve_missing_status",
+                rotate_queue=True,
+            )
         if emit_summary:
             write_publication_summary(entry.get("campaign_affinity"), "infra_failed")
         return 0
 
-    rc = run_stage(
+    result = run_stage(
         ROOT,
         f"verify_{entry['slug']}",
         PROMPTS / "verify_skeptical.prompt.md",
@@ -3223,12 +3701,19 @@ def run_feeder_entry(
         preferred_effort("high"),
         "tuned_openai",
     )
-    if rc != 0:
-        if rc == 124:
+    if result.returncode != 0:
+        if result.returncode == 124:
             append_ledger(f"Verify infrastructure failure for {entry['slug']}: the worker timed out before a real verdict.")
         else:
             append_ledger(f"Verify infrastructure failure for {entry['slug']}: the worker exited unexpectedly.")
-        rotate_problem_to_end(entry["slug"])
+        if not artifact_only_worker:
+            record_candidate_infra_failure(
+                entry,
+                status_path,
+                result,
+                failure_reason="verify_timeout" if result.returncode == 124 else "verify_nonzero_exit",
+                rotate_queue=True,
+            )
         if emit_summary:
             write_publication_summary(entry.get("campaign_affinity"), "infra_failed")
         return 0
@@ -3245,7 +3730,14 @@ def run_feeder_entry(
         return 0
     if verify_verdict is None:
         append_ledger(f"Verify infrastructure failure for {entry['slug']}: no verify verdict was written.")
-        rotate_problem_to_end(entry["slug"])
+        if not artifact_only_worker:
+            record_candidate_infra_failure(
+                entry,
+                status_path,
+                result,
+                failure_reason="verify_missing_status",
+                rotate_queue=True,
+            )
         if emit_summary:
             write_publication_summary(entry.get("campaign_affinity"), "infra_failed")
         return 0
@@ -3257,7 +3749,7 @@ def run_feeder_entry(
 
     run_affiliated_generalize(entry, status_path)
     render_queue_selection(entry)
-    rc = run_stage(
+    result = run_stage(
         ROOT,
         "publication_audit",
         PROMPTS / "publication_audit.prompt.md",
@@ -3266,6 +3758,21 @@ def run_feeder_entry(
         preferred_effort("xhigh"),
         "tuned_openai",
     )
+    if result.returncode != 0:
+        if result.returncode == 124:
+            append_ledger(f"Publication audit infrastructure failure for {entry['slug']}: the worker timed out before a real verdict.")
+        else:
+            append_ledger(f"Publication audit infrastructure failure for {entry['slug']}: the worker exited unexpectedly.")
+        record_candidate_infra_failure(
+            entry,
+            status_path,
+            result,
+            failure_reason="publication_audit_timeout" if result.returncode == 124 else "publication_audit_nonzero_exit",
+            rotate_queue=True,
+        )
+        if emit_summary:
+            write_publication_summary(entry.get("campaign_affinity"), "infra_failed")
+        return 0
     ensure_publication_defaults(status_path)
     classification = status_value(status_path, "classification")
     verify_verdict = status_value(status_path, "verify_verdict")

@@ -14,10 +14,16 @@ This is not the same as:
 
 The new default target is:
 
-- super niche,
-- super easy,
+- as small as possible without becoming trivia-shaped,
 - frontier enough to matter,
+- exact enough to verify and Lean-seal honestly,
 - and immediately paper-shaped if solved.
+
+Call this the MICRO-PAPER objective:
+
+- one clean solve should already look like the title theorem of a short note
+- the remaining work should mostly be framing, writeup polish, Lean sealing, and maybe one or two immediate corollaries
+- the system should reject tiny exact curiosities that still need a second research program before they become paper-worthy
 
 ## Hard Guardrails
 
@@ -121,6 +127,20 @@ Anything that requires a long feeder ladder before becoming paper-shaped should 
    - `paper_shape`
    - `needs_feeder_ladder`
    - `packaging_risk`
+   - `paper_leverage_score`
+   - `single_solve_to_paper_fraction`
+   - `title_theorem_strength`
+   - `family_anchor_strength`
+   - `publication_narrative_strength`
+   - `editorial_overhead`
+   - `immediate_corollary_headroom`
+   - `isolated_exact_case_risk`
+   - `broader_theorem_implication_risk`
+   - `search_heavy`
+   - `certificate_compactness`
+   - `transfer_kit_present`
+   - `exact_gap_from_source`
+   - `micro_paper_lane_eligible`
    Success check: the top-ranked queue entries are obviously "paper if solved" rather than "interesting if extended."
 
 7. Introduce a new top-level candidate type: `paper_candidate`.
@@ -134,6 +154,16 @@ Anything that requires a long feeder ladder before becoming paper-shaped should 
 8. Add a strict pre-solve gate:
    "If solved, would this already be 70-90% of a paper?"
    Success check: candidates that fail this gate are rejected or heavily downranked before solve starts.
+
+9. Add a transfer-kit requirement for every micro-paper candidate.
+   Each packet must already contain:
+   - 2 to 4 usable lemmas / proof ingredients
+   - 1 toy worked example
+   - 1 known obstruction or failure mode
+   - 1 exact sentence saying where prior work stops
+   - 1 recommended first attack
+   - 1 sentence saying what the paper would look like if solved
+   Success check: the solver starts with a paper-shaped packet, not just a bare statement.
 
 ### Phase 3: Scheduler Redesign
 

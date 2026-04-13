@@ -1,16 +1,75 @@
 {
-  "generated_on": "2026-04-12T19:58:33.929830-04:00",
+  "generated_on": "2026-04-12T22:30:23.039812-04:00",
   "queued_publication_packets": [
+    {
+      "slug": "five-regular-pseudograph-4-1-factor",
+      "title": "Does every 5-regular pseudograph contain a {4,1}-factor?",
+      "publication_status": "SLICE_CANDIDATE",
+      "publication_packet_title": "The {4,1}-Factor Problem for 5-Regular Pseudographs",
+      "publication_packet_quality": "excellent",
+      "paper_leverage_score": 91,
+      "single_solve_to_paper_fraction": 0.86,
+      "micro_paper_lane_eligible": true,
+      "publication_if_solved": "A full resolution of the smallest unresolved Akbari-Kano-type odd-degree case would already read like a short standalone paper.",
+      "why_this_could_be_publishable": "It is a named-conjecture residue with a clean yes-or-no endpoint, tiny verifier, and immediate title theorem if solved.",
+      "canonical_source": "Maria Axenovich and Jonathan Rollin, \"Brooks type results for conflict-free colorings and {a,b}-factors in graphs\" (Discrete Mathematics 338, 2015), plus Douglas West's regular-subgraph problem summary.",
+      "working_packet_path": "artifacts/five-regular-pseudograph-4-1-factor/working_packet.md"
+    },
     {
       "slug": "all-9-vertex-graphs-1-11-representable",
       "title": "Are all graphs on 9 vertices 1-11-representable?",
       "publication_status": "SLICE_CANDIDATE",
-      "publication_packet_title": "1-11-representability of graphs on 9 vertices",
+      "publication_packet_title": "1-11-Representability of Graphs on 9 Vertices",
       "publication_packet_quality": "strong",
+      "paper_leverage_score": 86,
+      "single_solve_to_paper_fraction": 0.76,
+      "micro_paper_lane_eligible": true,
       "publication_if_solved": "Settling the 9-vertex slice would already be a finite-classification note, either as a complete positive census or as a first minimal counterexample paper.",
       "why_this_could_be_publishable": "It is exactly the kind of smallest unresolved finite slice that can become a clean note or a minimal-counterexample paper with low novelty-check cost.",
       "canonical_source": "Mohammed Alshammari, Sergey Kitaev, Chaoliang Tang, Tianyi Tao, and Junchi Zhang, \"On 1-11-representability and multi-1-11-representability of graphs\" (Utilitas Mathematica 122, 2025), together with Futorny-Kitaev-Pyatkin, \"New Tools to Study 1-11-Representation of Graphs\" (Graphs and Combinatorics 40, 2024).",
       "working_packet_path": "artifacts/all-9-vertex-graphs-1-11-representable/working_packet.md"
+    },
+    {
+      "slug": "paley-graph-internal-partition",
+      "title": "Does every Paley graph have an internal partition?",
+      "publication_status": "SLICE_CANDIDATE",
+      "publication_packet_title": "Internal Partitions in Paley Graphs",
+      "publication_packet_quality": "strong",
+      "paper_leverage_score": 74,
+      "single_solve_to_paper_fraction": 0.78,
+      "micro_paper_lane_eligible": true,
+      "publication_if_solved": "A complete Paley-family theorem is immediately paper-ready because the family is classical and the statement is already singled out as a named open problem.",
+      "why_this_could_be_publishable": "It is already phrased as a standalone open theorem on a famous graph family, so one strong solve is essentially the paper.",
+      "canonical_source": "P\u00e1l B\u00e4rnkopf, Zolt\u00e1n L\u00f3r\u00e1nt Nagy, and Zolt\u00e1n Paulovics, \"A Note on Internal Partitions: The 5-Regular Case and Beyond\" (Graphs and Combinatorics, 2024), Problem 7.",
+      "working_packet_path": "artifacts/paley-graph-internal-partition/working_packet.md"
+    },
+    {
+      "slug": "four-regular-pseudograph-three-regular-subgraph",
+      "title": "Does every 4-regular pseudograph contain a 3-regular subgraph?",
+      "publication_status": "NONE",
+      "publication_packet_title": "3-Regular Subgraphs of 4-Regular Pseudographs",
+      "publication_packet_quality": "adequate",
+      "paper_leverage_score": 67,
+      "single_solve_to_paper_fraction": 0.74,
+      "micro_paper_lane_eligible": false,
+      "publication_if_solved": "The pseudograph extension of a classical 4-regular theorem is already paper-shaped as a standalone yes/no result.",
+      "why_this_could_be_publishable": "It is an exact extension problem with a clean theorem statement and a short route from proof to paper headline once the statement boundary is refreshed.",
+      "canonical_source": "Fields Institute talk page \"(3,1)-colorings of 4-regular graphs\" (2016), summarizing Bernshteyn's 2014 reformulation and the remaining ordered-(3,1)-coloring gap.",
+      "working_packet_path": "artifacts/four-regular-pseudograph-three-regular-subgraph/working_packet.md"
+    },
+    {
+      "slug": "conference-graph-order-85",
+      "title": "Does a conference graph of order 85 exist?",
+      "publication_status": "NONE",
+      "publication_packet_title": "The Conference Graph of Order 85",
+      "publication_packet_quality": "strong",
+      "paper_leverage_score": 62,
+      "single_solve_to_paper_fraction": 0.88,
+      "micro_paper_lane_eligible": false,
+      "publication_if_solved": "An exact existence or nonexistence result for the smallest open conference case is automatically a paper.",
+      "why_this_could_be_publishable": "It is a canonical exact existence question with essentially zero post-solve packaging overhead.",
+      "canonical_source": "Makhnev et al., \"Strongly regular graphs with non-trivial automorphisms\" (Discrete Mathematics 311, 2011), cross-checked against recent conference-graph reference summaries.",
+      "working_packet_path": "artifacts/conference-graph-order-85/working_packet.md"
     }
   ],
   "near_paper_campaigns": [

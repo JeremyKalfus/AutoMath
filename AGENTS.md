@@ -1,14 +1,15 @@
 # Project context
-You are working in AutoMath, an automated method for finding niche open math problems and turning the smallest frontier claims into publishable papers.
+You are working in AutoMath, an automated method for finding niche open math problems and turning the smallest frontier-novel claims into publishable papers.
 
 # Goal
 
-The main objective is now one-shot publication mode:
+The main objective is now one-shot publication mode under the MICRO-PAPER objective:
 
 - find the smallest frontier claim where a single strong solve is already 70-90% of a paper
 - prefer exact theorem/result pairs, sharp obstructions, minimal counterexamples, and tiny structural lemmas with immediate applications
+- optimize for paper leverage rather than microscopic statement size
 - heavily downrank any target that needs a feeder ladder, broad campaign buildup, or expensive post-solve packaging before becoming paper-shaped
-- stop automatically only when the strongest honest claim reaches `publication_status = PAPER_READY`
+- stop automatically only when the strongest honest claim is both Lean-complete `EXACT` and `publication_status = PAPER_READY`
 
 The exact-instance engine is still available, but only when the exact solve itself is already near-publication.
 Campaign mode is secondary and should be used only when a family theorem is already very close to closure.
@@ -48,10 +49,11 @@ One-shot publication rules:
 4. Any campaign that keeps producing solved feeders without shrinking the publication gap should be deprioritized.
 5. Use `publication_audit` to decide whether the strongest honest claim is instance-only, slice-level, family-level, rediscovered, or genuinely paper-ready.
 6. Use Lean only when it directly seals a near-publication packet; do not let formalization overhead dominate early selection.
-7. `EXACT` alone is not a stop condition.
-8. Stop automatically only when `publication_status = PAPER_READY` and the relevant proof/formal artifacts are preserved.
+7. `EXACT` alone is not a stop condition; the solve must also be paper-shaped enough to audit as `PAPER_READY`.
+8. Stop automatically only when the intended statement is Lean-complete `EXACT`, `publication_status = PAPER_READY`, and the relevant proof/formal artifacts are preserved.
 9. If verification finds rediscovery, archive it and do not treat it as a frontier success.
 10. If a chosen one-shot path fails, do not silently fall back to campaign-first behavior or broad curation; record the blocker clearly and wait for the next explicit selection step.
+11. Infrastructure failures are not mathematical failures: salvage partial artifacts, cool the slug down, and do not archive it as though the theorem failed.
 
 Parallel policy:
 
@@ -111,12 +113,39 @@ Parallel policy:
   - sharp obstruction theorems,
   - minimal counterexamples,
   - tiny structural lemmas with immediate applications,
-  - narrow claims with cheap rediscovery surfaces.
+  - narrow claims with cheap rediscovery surfaces,
+  - targets where one solve plausibly supplies the title theorem of a short paper.
 - Candidate selection should strongly penalize:
   - feeder ladders,
   - broad family programs with expensive packaging,
   - mathematically easy instances that are still far from publication after the solve,
-  - targets with high novelty-check cost or high formalization overhead.
+  - targets with high novelty-check cost or high formalization overhead,
+  - tiny exact curiosities with weak paper narrative,
+  - unresolved broader-theorem implication risk,
+  - search-heavy targets unless only a tiny human-readable residue remains.
+- Every `paper_candidate` should expose explicit micro-paper fields:
+  - `paper_leverage_score`
+  - `single_solve_to_paper_fraction`
+  - `title_theorem_strength`
+  - `family_anchor_strength`
+  - `publication_narrative_strength`
+  - `editorial_overhead`
+  - `immediate_corollary_headroom`
+  - `isolated_exact_case_risk`
+  - `broader_theorem_implication_risk`
+  - `search_heavy`
+  - `certificate_compactness`
+  - `transfer_kit_present`
+  - `exact_gap_from_source`
+  - `micro_paper_lane_eligible`
+- Unknown on any load-bearing micro-paper field should default to FAIL the micro-paper lane until refreshed.
+- Every micro-paper candidate must carry a transfer kit:
+  - 2 to 4 usable lemmas or proof ingredients from the source literature
+  - 1 toy worked example or smallest nontrivial instance
+  - 1 known obstruction or failure mode
+  - 1 exact sentence saying where prior work stops
+  - 1 recommended first proof attack
+  - 1 sentence explaining what the paper would look like if solved
 - `EXACT` is reserved for an exact intended statement or exact intended disproof fully checked in Lean.
 - Before Lean completes, the strongest positive proof classification is `CANDIDATE`.
 - A non-Lean explicit disproof may still be labeled `COUNTEREXAMPLE`, but it does not stop the harness on its own.

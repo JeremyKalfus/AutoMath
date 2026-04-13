@@ -5,43 +5,41 @@ This is the CURATION stage.
 Use web search.
 
 Goal:
-Write `queue.json` as a one-shot-publication queue of exactly 5 dossiers.
-The queue may contain both:
+Write `queue.json` as a queue of exactly 5 curated dossiers, optimized for the MICRO-PAPER objective:
+
+- the smallest frontier-novel claim where one clean solve is already about 70-90% of a publishable note
+- exact theorem/result pairs, sharp obstructions, minimal counterexamples, and tiny structural slices with immediate applications
+- small bounded targets only; do not drift into broad theorem hunting
+
+The queue may still contain:
 
 - `entry_type = "paper_candidate"`
 - `entry_type = "family_campaign"`
 - `entry_type = "feeder_instance"`
 
-The harness is no longer optimizing for mathematically interesting slow-burn families by default.
-Optimize for:
+But the strict micro-paper lane is only for `paper_candidate` entries that pass the hard gate below.
 
-- `solve -> publication distance`
-- probability that one strong solve is already 70-90% of a paper
-- exact theorem/result-pair plausibility
-- sharp obstruction / minimal-counterexample plausibility
-- low novelty-check cost
-- low formalization overhead
-- verifier tractability
-- rediscovery resistance
-- tiny proof object size
+Core curation dimensions:
+
+1. `closability`
+2. `novelty`
+3. `micro-paper leverage`
+
+Required 70-90% paper test for every candidate:
+
+1. If this statement were solved exactly, could it plausibly be the title theorem of a short note?
+2. Would that one solve already provide about 70-90% of the eventual paper?
+3. What would remain after the solve?
+4. Why is the target not just a niche exact curiosity?
+5. Why is it not already implied by a broader published result?
+
+If you cannot write a plausible title and abstract that feel like a real short note, the candidate fails the micro-paper lane.
 
 Lean policy during curation:
 
 - Do not up-rank a candidate merely because it looks easy to formalize.
 - Low `formalization_overhead` matters only when Lean would directly seal the publication packet after a successful solve.
-- If Lean would be optional polish, a later archival seal, or a detour from the actual proof/writeup, do not treat Lean-friendliness as a primary advantage.
-
-Phase 2 rubric requirement:
-
-- Do not leave the publication-distance rubric implicit.
-- Every `paper_candidate` must carry explicit normalized rubric fields so the manager can rank it without guessing from prose.
-- If a candidate does not clearly pass the pre-solve paper test, do not smuggle it in as a paper candidate.
-
-Phase 4 publication-packet requirement:
-
-- Before a `paper_candidate` is allowed to consume real solve budget, it must already contain a minimal publication packet.
-- Do not treat "this seems paper-shaped" as enough by itself.
-- The packet must make the near-paper case explicit and cheap to audit.
+- If Lean would be optional polish, later archival formalization, or a detour from the real paper packet, do not treat Lean-friendliness as a primary advantage.
 
 Hard limits:
 
@@ -67,7 +65,7 @@ Check, if present and inexpensive to read:
 - any `attempted_problems.json`, `rediscoveries.json`, `candidate_problems.json`, or similar memory file
 - `ledger.md` only if a conflict or ambiguity remains after the thin memory files
 
-Treat a problem as ALREADY ATTEMPTED if it appears under any prior non-`NEW` status, including:
+Treat a problem as ALREADY ATTEMPTED if it appears under any prior mathematical status, including:
 
 - `FAILED`
 - `PARTIAL`
@@ -76,6 +74,11 @@ Treat a problem as ALREADY ATTEMPTED if it appears under any prior non-`NEW` sta
 - `COUNTEREXAMPLE`
 - `REDISCOVERY`
 - `EXACT`
+
+Infrastructure failures are different:
+
+- if local memory shows only a timeout / infra failure with salvaged artifacts and cooldown parking, do not treat that alone as a mathematical disqualification
+- such targets may be reconsidered later, but only if they still fit the micro-paper lane and are not currently cooled down
 
 Hard skip any exact or near-duplicate attempted problem, not just failed ones.
 Near-duplicate means any of:
@@ -96,218 +99,65 @@ Local-read budget before web:
 
 Default policy:
 
-- Prefer `paper_candidate` entries.
-- Use `family_campaign` only when the family theorem is already very close to closure.
-- Use `feeder_instance` only when solving that feeder would directly shorten the path to a paper rather than build a long campaign ladder.
-- Up to 1 queue entry may be `family_campaign` unless the user explicitly restores campaign-first behavior.
-- At least 4 of the 5 queue entries should be `paper_candidate` or feeder/problem entries whose solve would be nearly paper-shaped immediately.
-- Reject or heavily downrank any target that visibly needs multiple feeder wins before publication.
+- Prefer `paper_candidate` entries that honestly pass the micro-paper lane.
+- Use `family_campaign` only when a family theorem is already very close to closure.
+- Use `feeder_instance` only when the exact feeder itself is already near-paper or when it is explicitly parked outside the micro-paper lane.
+- At most 1 queue entry may be `family_campaign` unless the user explicitly restores campaign-first behavior.
+- Strongly downrank anything that needs a feeder ladder, a broad theorem-development program, or expensive post-solve packaging.
 
-Priority order:
+Hard gate for `micro_paper_lane_eligible = true`:
 
-1. `paper_candidate` targets where one solve is already most of a paper
-2. exact theorem/result pairs, sharp obstructions, minimal counterexamples, and tiny structural lemmas with immediate applications
-3. only then near-paper family campaigns
-4. feeder instances only if they directly collapse the publication gap
+- acceptable novelty risk after curation
+- `broader_theorem_implication_risk` is not `high` and not `unresolved`
+- `search_heavy = false`, or else the remaining residue is tiny and human-readable
+- `isolated_exact_case_risk` is not `high`
+- `transfer_kit_present = true`
+- `title_theorem_strength` is at least `moderate`
+- `family_anchor_strength` is at least `moderate`
+- `publication_narrative_strength` is at least `moderate`
+- `editorial_overhead` is not `high`
+- `certificate_compactness` is acceptable
+- `single_solve_to_paper_fraction >= 0.70`
 
-Diversity control:
+Unknown on any load-bearing micro-paper field defaults to FAIL the lane.
 
-- Do not let all 5 queued items collapse into one literature vein unless that vein clearly dominates on solve-to-publication distance.
-- At most 2 queued items may come from the same narrow source family unless each is independently paper-shaped if solved.
-- Sample at least 3 distinct literature veins during discovery unless one-shot publication evidence is overwhelmingly stronger in a smaller set.
+Strong preferences inside the lane:
 
-Search protocol under the 20-search cap:
+- `single_solve_to_paper_fraction` in `0.70-0.90`
+- `title_theorem_strength = strong`
+- `family_anchor_strength = strong`
+- `publication_narrative_strength = strong`
+- `editorial_overhead = low`
+- `broader_theorem_implication_risk = low`
+- `certificate_compactness = high`
+- `paper_leverage_score` high
 
-1. Discovery pass:
-   - first 4 to 6 searches must sample at least 3 distinct families or literature veins
-2. Triage pass:
-   - next 3 to 4 searches reduce to at most 8 candidates
-3. Audit pass:
-   - use remaining searches only on the strongest candidates and stop as soon as 5 survive
+Negative archetypes to reject or park:
 
-Use varied query shapes:
+- tiny exact cases whose only appeal is that they are tiny
+- problems where the solve is real but the paper story is weak
+- isolated curiosities with no family anchor
+- problems that are mainly finite census / exhaustive search / long certificate dumps
+- extracted instances that may already be implied by broader known theorems
+- problems where after one solve you still need two or three major new results before the note is paper-worthy
+- cute observations that would likely stay a one-paragraph remark
 
-- family-level search for small open instances
-- exact-instance search using exact notation / tuple / title
-- alternate-notation / reordered-tuple / synonym search
-- canonical-source search
-- source-internal theorem / proposition / example / observation / corollary / sufficient-condition search
-- outside-source status search
-- recent status / citation / discussion search when the source is a paper or discussion page
+Required dossier fields for every `paper_candidate`:
 
-Required publication audit for each final queued candidate:
-
-- exact-instance search
-- alternate-notation / synonym search
-- canonical-source search
-- theorem / proposition / example / observation / corollary / sufficient-condition check inside the canonical source
-- one independent outside-source status search
-- one recent status / citation / discussion search when appropriate
-- attempted-problem conflict check against repo memory
-- explicit `why_still_appears_open`
-- explicit `why_this_could_be_publishable`
-- explicit `publication_if_solved`
-- explicit `publication_if_solved_score`
-- explicit `solve_to_publication_distance`
-- explicit `single_pass_proof_plausibility`
-- explicit `novelty_check_cost`
-- explicit `formalization_overhead`
-- explicit `packaging_risk`
-- explicit `needs_feeder_ladder`
-- explicit `paper_shape`
-- explicit `pre_solve_gate`
-- explicit `pre_solve_gate_reason`
-- explicit `publication_packet_title`
-- explicit `publication_packet_frontier_basis`
-- explicit `publication_packet_near_paper_reason`
-- explicit `publication_packet_literature_scope`
-- explicit `publication_packet_artifact_requirements`
-- explicit `publication_packet_quality`
-
-Normalized rubric values for `paper_candidate` entries:
-
-- `publication_if_solved_score`:
-  - `instant_paper`
-  - `standalone_short_paper`
-  - `paper_with_light_packaging`
-  - `paper_with_moderate_packaging`
-  - `paper_with_heavy_packaging`
-- `solve_to_publication_distance`:
-  - `tiny`
-  - `short`
-  - `short-medium`
-  - `medium`
-  - `long`
-- `single_pass_proof_plausibility`:
-  - `very_high`
-  - `high`
-  - `medium-high`
-  - `medium`
-  - `medium-low`
-  - `low`
-- `novelty_check_cost`:
-  - `very_low`
-  - `low`
-  - `medium`
-  - `high`
-- `formalization_overhead`:
-  - `very_low`
-  - `low`
-  - `low-medium`
-  - `medium`
-  - `high`
-- `packaging_risk`:
-  - `very_low`
-  - `low`
-  - `medium`
-  - `high`
-- `needs_feeder_ladder`:
-  - `yes`
-  - `no`
-- `pre_solve_gate`:
-  - `pass`
-  - `fail`
-- `publication_packet_quality`:
-  - `excellent`
-  - `strong`
-  - `adequate`
-  - `weak`
-
-`pre_solve_gate` rule:
-
-- Mark `pass` only if solving the candidate would already be 70-90% of a paper.
-- That means:
-  - no feeder ladder is required,
-  - the remaining publication distance is at worst `short-medium`,
-  - and the result is already close to a standalone theorem, obstruction, minimal counterexample, or tiny structural note.
-- If that test is not clearly met, mark `fail` and downrank or exclude the candidate.
-
-`formalization_overhead` rule:
-
-- Score the likely final sealing cost honestly, but do not use low formalization cost as a reason by itself to prefer a candidate.
-- Only let low `formalization_overhead` materially help a candidate when Lean would directly finish the packet after solve/verify/audit.
-
-Publication-packet rules:
-
-- `publication_packet_title`:
-  - one plausible paper title or theorem-note title
-- `publication_packet_frontier_basis`:
-  - one short explanation of exactly why the claim is still frontier, not just interesting
-- `publication_packet_near_paper_reason`:
-  - one short explanation of why solving it would already be close to publication
-- `publication_packet_literature_scope`:
-  - the minimal literature surface needed for the packet, ideally canonical source plus one outside check
-- `publication_packet_artifact_requirements`:
-  - the minimal artifacts needed to call the packet real, e.g. proof writeup, witness, checker, or small formal seal
-- `publication_packet_quality`:
-  - `excellent` only when the packet is already crisp enough that a referee could understand the paper shape immediately
-  - `strong` when the packet is clearly paper-shaped but still needs modest refinement
-  - `adequate` when the solve could still publish, but the packet is not yet sharp
-  - `weak` when the packet is too vague and the candidate should usually be excluded
-
-Packet-quality rule:
-
-- Do not queue a `paper_candidate` with `publication_packet_quality = weak`.
-- Prefer `excellent` and `strong` packets even over mathematically comparable problems, because referee path and packaging clarity now matter directly.
-
-Hard rediscovery rule:
-
-- If a specific instance is extracted from a broader open family, you MUST check whether the same source already contains an earlier theorem, proposition, example, observation, corollary, or sufficient condition that settles that exact instance.
-- Do not trust only a concluding-question sentence.
-- Reject or strongly downrank candidates when:
-  - the exact instance already appears in an example or theorem
-  - the status is family-open but instance-specific status is unclear
-  - the only evidence of openness is vague
-  - the instance is likely already implied by a general sufficient condition
-
-Strong preferences:
-
-- crisp exact statements
-- publication-worthy exact theorem/result targets
-- sharp obstructions and minimal counterexamples
-- tiny structural lemmas with immediate applications
-- low prerequisite depth
-- verifier-friendly problems
-- reasoning-friendly problems
-- no huge brute-force-first path
-- plausible low-overhead formal sealing
-- diversity across the queue
-
-Hard reject if any of these hold:
-
-- broad asymptotic conjecture
-- heavy machinery dominates
-- stale or unclear open status
-- likely already solved
-- only realistic path is huge brute force / generic SAT / ILP / optimization
-- no clear verifier
-- intended statement is ambiguous
-- clearly already attempted in this repo
-- duplicate / near-duplicate of any queued, selected, solved, rediscovered, candidate, variant, partial, counterexample, or failed problem
-- solving it still leaves a long path to publication
-- it needs a feeder ladder before becoming paper-shaped
-- it is easy to solve but expensive to package into a paper
-
-Every final queue entry must include:
-
-- `entry_type`
-- `title`
-- `slug`
-- `question`
-- `family_name`
-- `named_conjecture`
-- `canonical_source`
-- `open_status_checked_on`
-- `canonical_statement`
-- `intended_statement`
-- `definitions`
-- `attack_style`
-- `generalization_potential`
-- `proof_template_reuse_score`
-- `publishability_score`
-- `theorem_slice_hint`
-- `campaign_affinity`
-- `publication_red_flags`
+- `paper_leverage_score`
+- `single_solve_to_paper_fraction`
+- `title_theorem_strength`
+- `family_anchor_strength`
+- `publication_narrative_strength`
+- `editorial_overhead`
+- `immediate_corollary_headroom`
+- `isolated_exact_case_risk`
+- `broader_theorem_implication_risk`
+- `search_heavy`
+- `certificate_compactness`
+- `transfer_kit_present`
+- `exact_gap_from_source`
+- `micro_paper_lane_eligible`
 - `publication_if_solved`
 - `publication_if_solved_score`
 - `solve_to_publication_distance`
@@ -325,30 +175,83 @@ Every final queue entry must include:
 - `publication_packet_literature_scope`
 - `publication_packet_artifact_requirements`
 - `publication_packet_quality`
-- `why_reasoning_friendly`
-- `why_low_token`
-- `verifier_hint`
-- `lean_hint`
-- `rediscovery_risk`
-- `why_still_appears_open`
-- `why_this_could_be_publishable`
-- `attempted_conflict_check`
-- `curation_confidence`
-- `publication_status`
+- `hypothetical_title`
+- `hypothetical_abstract`
+- `single_solve_paper_explanation`
+- `broader_theorem_nonimplication_note`
+- `literature_gap`
+- `micro_paper_assessment`
+- `transfer_kit`
 
-Status guidance at curation time:
+Field conventions:
 
-- direct paper candidate with a real theorem/result shape: `SLICE_CANDIDATE`
-- near-paper exact feeder or obstruction with immediate packaging value: `NONE` or `INSTANCE_ONLY`
-- suspected rediscovery: do not queue it
+- `paper_leverage_score`: integer 0-100
+- `single_solve_to_paper_fraction`: decimal in `[0,1]`
+- `title_theorem_strength`: `weak`, `moderate`, `strong`
+- `family_anchor_strength`: `weak`, `moderate`, `strong`
+- `publication_narrative_strength`: `weak`, `moderate`, `strong`
+- `editorial_overhead`: `low`, `moderate`, `high`
+- `immediate_corollary_headroom`: `none`, `low`, `moderate`, `high`
+- `isolated_exact_case_risk`: `low`, `moderate`, `high`
+- `broader_theorem_implication_risk`: `low`, `moderate`, `high`, `unresolved`
+- `search_heavy`: `true` or `false`
+- `certificate_compactness`: `low`, `moderate`, `high`
+- `transfer_kit_present`: `true` or `false`
+- `exact_gap_from_source`: `tiny`, `small`, `moderate`, `broad`
+- `micro_paper_lane_eligible`: `true` or `false`
 
-Queue-writing requirements:
+Required publication packet payload:
+
+- `hypothetical_title`: 1 sentence
+- `hypothetical_abstract`: 3 sentences
+- `single_solve_paper_explanation`: 2 to 4 sentences explaining why one solve yields most of the paper
+- `broader_theorem_nonimplication_note`: specific note on why a broader theorem does not already settle it
+- `literature_gap`: exact statement of where prior work stops
+
+Required transfer kit payload:
+
+- `lemmas`: 2 to 4 usable lemmas / proof ingredients from the source literature
+- `toy_example`: 1 worked example or smallest nontrivial instance
+- `known_obstruction`: 1 known obstruction or failure mode
+- `prior_work_stop_sentence`: 1 exact sentence saying where prior work stops
+- `recommended_first_attack`: 1 recommended first proof attack
+- `paper_if_solved`: 1 sentence explaining what the paper would look like if solved
+
+Search protocol under the 20-search cap:
+
+1. Discovery pass:
+   - first 4 to 6 searches must sample at least 3 distinct literature veins
+2. Triage pass:
+   - next 3 to 4 searches reduce to at most 8 candidates
+3. Audit pass:
+   - use remaining searches only on the strongest candidates and stop as soon as 5 survive
+
+Use varied query shapes:
+
+- family-level search for recent papers leaving exact gaps
+- exact-statement search using exact notation / tuple / title
+- alternate-notation / reordered-tuple / synonym search
+- canonical-source search
+- source-internal theorem / proposition / example / observation / corollary / sufficient-condition search
+- outside-source status search
+- recent status / citation / discussion search when the source is a paper or discussion page
+
+Required bounded audit for each final queued candidate:
+
+- exact-statement search
+- alternate-notation / synonym search
+- canonical-source search
+- theorem / proposition / example / observation / corollary / sufficient-condition check inside the canonical source
+- one independent outside-source status search
+- one recent status / citation / discussion search when appropriate
+- attempted-problem conflict check against repo memory
+
+Output policy:
 
 - `queue.json` must contain exactly 5 entries
-- at least 4 entries should be `paper_candidate` entries with `pre_solve_gate = "pass"` unless the web evidence honestly fails to support that many
-- the highest-ranked entry should usually have `publication_packet_quality` in `{excellent,strong}`
-- the highest-ranked entry should not owe its rank mainly to low `formalization_overhead`; the main reason should still be solve-to-publication distance and packet clarity
-- no placeholder prose
-- write `selected_problem.md` for the highest-priority first entry
-- preserve bounded behavior
-- do not silently fall back to campaign-first choices if one-shot paper candidates are weak; instead prefer honest rejection and a thinner queueing rationale within the 5-entry constraint
+- `selected_problem.md` must point to the highest-priority currently usable micro-paper candidate if one exists
+- if only lower-lane or parked entries remain, still write the queue honestly and mark `micro_paper_lane_eligible = false` where appropriate
+
+Be conservative.
+Do not overclaim openness.
+Do not mistake “small” for “paper-shaped”.

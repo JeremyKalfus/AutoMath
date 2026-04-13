@@ -65,13 +65,18 @@ PASS 4: `adversarial_check`
 
 PASS 5: `theorem_worthiness`
 
-- does this result suggest a real theorem slice or family statement?
-- if this is a `paper_candidate`, would the solved claim already be 70-90% of a paper?
-- is the proof structural or only hand-picked for the single instance?
-- what part of the argument scales?
-- what part clearly does not?
-- is the best honest publication status still only `INSTANCE_ONLY`?
-- what is the smallest parameter shift, adjacent obstruction, or feeder instance that would most test the claimed template?
+- assess exactness
+- assess novelty
+- assess reproducibility
+- assess Lean readiness
+- assess paper leverage
+- explicitly answer:
+  - would this result, if correct and Lean-sealed, already constitute most of a publishable note?
+  - what percentage of the paper would one solve already provide?
+  - what title theorem is actually visible?
+  - what part of the argument scales?
+  - what part clearly does not?
+  - is the best honest publication status still only `INSTANCE_ONLY` or even `NONE`?
 
 Then update `artifacts/<slug>/record.md` with these sections:
 
@@ -94,6 +99,10 @@ Update `artifacts/<slug>/status.json` with:
 - `lean_gate_reason`
 - `publication_status`
 - `publication_confidence`
+- `single_solve_to_paper_fraction`
+- `title_theorem_strength`
+- `publication_narrative_strength`
+- `micro_paper_assessment`
 - `strongest_honest_claim`
 - `candidate_theorem_slice`
 - `next_action`
@@ -112,9 +121,10 @@ Rules:
 Publication-status guidance:
 
 - isolated exact instance only: `INSTANCE_ONLY`
-- one-shot candidate that would be paper-shaped with only light packaging: `SLICE_CANDIDATE` if the theorem claim is already genuinely visible
+- one-shot candidate with a clear theorem/result packet but light remaining writeup or formal sealing: `SLICE_CANDIDATE`
 - rediscovery: `REDISCOVERY`
 - feeder result pointing to a real theorem slice: `SLICE_CANDIDATE`
 - no visible theorem leverage: `NONE`
 
 Be conservative.
+A result can be exact yet still fail the micro-paper test.

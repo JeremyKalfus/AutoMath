@@ -374,21 +374,5 @@
     "title": "Does the ladder with 4 rungs have the edge-Erdos-Posa property?",
     "publication_status": "NONE",
     "checked_on": "2026-04-12"
-  },
-  {
-    "slug": "order-12-9-regular-one-factorization",
-    "reason": "FAILED",
-    "title": "Is every 9-regular graph on 12 vertices one-factorizable?",
-    "publication_status": "NONE",
-    "checked_on": "2026-04-12",
-    "notes": "Two tightened-budget one-shot solve attempts produced explicit perfect-matching factorization data in solve stdout logs, but both timed out before the manager absorbed a canonical artifact; treated as a non-winning architecture try for this validation batch."
-  },
-  {
-    "slug": "eight-regular-forbidden-outdegree-three-set",
-    "reason": "FAILED",
-    "title": "Does every 8-regular graph admit an F-avoiding orientation for every 3-element forbidden set?",
-    "publication_status": "NONE",
-    "checked_on": "2026-04-12",
-    "notes": "Tightened-budget one-shot solve attempt timed out before a canonical artifact was absorbed; treated as a non-winning architecture try for this validation batch."
   }
 ]

@@ -1,7 +1,23 @@
 {
-  "generated_on": "2026-04-12T19:58:33.930631-04:00",
-  "count": 92,
+  "generated_on": "2026-04-12T22:30:23.037876-04:00",
+  "count": 90,
   "recent_attempts": [
+    {
+      "slug": "dsrg-51-15-10-5-4",
+      "reason": "ATTEMPTED",
+      "title": "dsrg-51-15-10-5-4",
+      "notes": "Legacy archived attempt preserved before thin search memory existed.",
+      "checked_on": null,
+      "publication_status": null
+    },
+    {
+      "slug": "dsrg-28-6-3-2-1",
+      "reason": "ATTEMPTED",
+      "title": "dsrg-28-6-3-2-1",
+      "notes": "Legacy archived attempt preserved before thin search memory existed.",
+      "checked_on": null,
+      "publication_status": null
+    },
     {
       "slug": "powers-of-two-pairs-23",
       "reason": "ATTEMPTED",
@@ -303,22 +319,6 @@
       "reason": "PARTIAL",
       "title": "Does the ladder with 4 rungs have the edge-Erdos-Posa property?",
       "notes": "PARTIAL",
-      "checked_on": "2026-04-12",
-      "publication_status": "NONE"
-    },
-    {
-      "slug": "order-12-9-regular-one-factorization",
-      "reason": "FAILED",
-      "title": "Is every 9-regular graph on 12 vertices one-factorizable?",
-      "notes": "Two tightened-budget one-shot solve attempts produced explicit perfect-matching factorization data in solve stdout logs, but both timed out before the manager absorbed a canonical artifact; treated as a non-winning ar...",
-      "checked_on": "2026-04-12",
-      "publication_status": "NONE"
-    },
-    {
-      "slug": "eight-regular-forbidden-outdegree-three-set",
-      "reason": "FAILED",
-      "title": "Does every 8-regular graph admit an F-avoiding orientation for every 3-element forbidden set?",
-      "notes": "Tightened-budget one-shot solve attempt timed out before a canonical artifact was absorbed; treated as a non-winning architecture try for this validation batch.",
       "checked_on": "2026-04-12",
       "publication_status": "NONE"
     }

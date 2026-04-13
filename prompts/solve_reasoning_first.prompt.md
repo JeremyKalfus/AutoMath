@@ -6,10 +6,11 @@ This is the SOLVE stage.
 Do NOT browse the internet.
 
 Goal:
-Produce the best reasoning-first attempt on the active selected candidate, with minimal code, while keeping the main publication objective in view.
+Produce the best reasoning-first attempt on the active selected candidate, with minimal code, while keeping the MICRO-PAPER objective in view.
 
-- If this is a `paper_candidate`, try to close the smallest frontier claim that is already most of a paper if solved.
-- If this is a `feeder_instance`, try to extract only the family signal that materially shortens the path to publication.
+- If this is a `paper_candidate`, aim for the exact intended theorem or disproof plus the smallest amount of immediate supporting structure that makes the result paper-shaped.
+- If this is a `feeder_instance`, extract only the family signal that materially shortens the path to publication.
+- Do not settle for “some exact witness” if the result still lacks theorem shape.
 
 First determine the active slug and title from `selected_problem.md`.
 Create `artifacts/<slug>/` if missing.
@@ -43,10 +44,11 @@ Work in this order:
    - one structural / invariant approach
    - one construction / extremal / contradiction approach
 4. Write a small lemma graph or proof skeleton.
-5. Choose the best path and attempt a rigorous solution or disproof.
-6. After each major step, add a brief self-check.
-7. Only then decide whether minimal code is actually needed.
-8. After any strong result, extract what part of the argument scales.
+5. Explicitly ask: what extra structure would make this result paper-shaped if the main claim closes?
+6. Choose the best path and attempt a rigorous solution or disproof.
+7. After each major step, add a brief self-check.
+8. Only then decide whether minimal code is actually needed.
+9. After any strong result, extract the smallest supporting theorem slice, one natural corollary or boundary remark, and one exact sentence saying why the instance matters.
 
 Code policy:
 
@@ -58,7 +60,7 @@ Code policy:
   - witness verification
   - later exact search if the reasoning stage already justified it
 - do not start with generic optimization / SAT / ILP / CP-SAT / brute force unless:
-  - the dossier explicitly marks the problem `search-heavy`, or
+  - the dossier explicitly marks the problem `search_heavy`, or
   - two reasoning strategies have already failed
 
 In `record.md`, use these sections:
@@ -78,6 +80,8 @@ In `record.md`, use these sections:
 - `candidate_theorem_slice`
 - `smallest_param_shift_to_test`
 - `why_this_is_or_is_not_publishable`
+- `paper_shape_support`
+- `boundary_remark`
 - `likely_failure_points`
 - `what_verify_should_check`
 
@@ -89,12 +93,16 @@ Mandatory publication-aware outputs:
 - `candidate_theorem_slice`
 - `smallest_param_shift_to_test`
 - `why_this_is_or_is_not_publishable`
+- `paper_shape_support`
+- `boundary_remark`
 
 If this is a `paper_candidate`, also make explicit:
 
 - whether a successful solve would already be 70-90% of a paper
-- what the exact paper claim would be
+- what the exact title theorem would be
 - what the minimal remaining packaging work would be
+- what one immediate corollary or remark naturally falls out
+- whether the current result is still too thin for the micro-paper lane
 
 After any strong exact or counterexample result, you must say:
 
@@ -116,6 +124,10 @@ In `status.json`, keep at least these keys:
 - `lean_complete`
 - `publication_status`
 - `publication_confidence`
+- `single_solve_to_paper_fraction`
+- `title_theorem_strength`
+- `publication_narrative_strength`
+- `micro_paper_assessment`
 - `family_affinity`
 - `generalization_signal`
 - `candidate_theorem_slice`
@@ -136,7 +148,7 @@ Allowed classifications:
 Publication-status guidance in solve:
 
 - exact witness or disproof with no theorem closure yet: usually `INSTANCE_ONLY`
-- partial but obviously campaign-relevant structural package: `SLICE_CANDIDATE` only if a real theorem slice is visible
+- partial but obviously theorem-facing structural package: `SLICE_CANDIDATE` only if a real theorem slice is visible
 - otherwise use `NONE`
 
 Lean should stay off here unless you already have a strong exact candidate or exact disproof.
