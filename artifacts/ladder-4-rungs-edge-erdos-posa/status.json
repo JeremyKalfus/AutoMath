@@ -1,0 +1,31 @@
+{
+  "slug": "ladder-4-rungs-edge-erdos-posa",
+  "title": "Does the ladder with 4 rungs have the edge-Erdos-Posa property?",
+  "stage": "publication_audit",
+  "verify_verdict": "MINOR_FIX",
+  "classification": "PARTIAL",
+  "confidence": 0.76,
+  "code_used": false,
+  "lean_ready": false,
+  "lean_packet_seal": false,
+  "lean_gate_reason": "Lean would only archive the corrected L4 <=> extendable-L3 reduction and the fixed-core cut lemma. The shortest remaining path to a sealed packet is still a combinatorial globalization theorem or an explicit non-condensed-wall counterexample family for the full L4 question.",
+  "lean_complete": false,
+  "publication_status": "NONE",
+  "publication_confidence": 0.68,
+  "strongest_honest_claim": "After skeptical repair and bounded prior-art audit, every L4-subdivision is equivalent to an extendable L3 core with a terminal extension path of length at least three, and for a fixed core any x-y cut in G-E(K) hits all extensions through that interface; this is structural but still not a referee-facing theorem for the selected yes-or-no L4 problem.",
+  "family_affinity": "high via the Lt = extendable L_{t-1} reduction, but still targeted at the single L4 paper-candidate",
+  "generalization_signal": "The useful signal is an extension-interface reformulation: L4 is exactly an extendable L3 core, so the unsolved step is a global packing/hitting theorem for extendable L3 subdivisions.",
+  "candidate_theorem_slice": "A genuine theorem slice would be a bounded-interface or uncrossing theorem for corrected extendable L3 cores that turns the local reduction into a packing/hitting theorem for L4.",
+  "paper_title_hint": "Extendable 3-rung cores and the 4-rung ladder edge-Erdos-Posa problem",
+  "theorem_slice_target": "Prove a one-sided bounded-interface or uncrossing theorem for extendable L3 cores that converts the corrected local reduction into bounded hitting or k edge-disjoint L4 subdivisions.",
+  "fallback_target": "If that positive globalization theorem fails, build an explicit non-condensed-wall counterexample family whose L4-subdivisions necessarily use many incomparable extendable L3 cores, so the failure mechanism itself becomes the theorem.",
+  "next_blocker": "The packet still lacks the publication-critical globalization step from many extendable L3 cores to either a bounded hitting set or k edge-disjoint L4 subdivisions; the current lemma package is only local.",
+  "next_feeder_instances": [
+    "Prove the one-sided bounded-interface theorem when only one terminal side of an L3 core may be extended.",
+    "Classify or uncross two-core interactions for extendable L3 cores before attempting the full many-core theorem."
+  ],
+  "campaign_health": "cool",
+  "publication_packet_quality": "weak",
+  "next_action": "Return to solve/generalize with the claim locked conservatively: first target a one-sided bounded-interface or uncrossing theorem for extendable L3 cores; if that stalls, switch explicitly to an L4 counterexample-family search rather than overstating the current reduction.",
+  "proof_artifacts_preserved": true
+}

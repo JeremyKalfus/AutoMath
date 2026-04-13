@@ -1,39 +1,6 @@
 {
-  "generated_on": "2026-04-12T19:18:08.322527-04:00",
+  "generated_on": "2026-04-12T19:58:33.929830-04:00",
   "queued_publication_packets": [
-    {
-      "slug": "ladder-4-rungs-edge-erdos-posa",
-      "title": "Does the ladder with 4 rungs have the edge-Erdos-Posa property?",
-      "publication_status": "SLICE_CANDIDATE",
-      "publication_packet_title": "The edge-Erdos-Posa property for the 4-rung ladder",
-      "publication_packet_quality": "excellent",
-      "publication_if_solved": "A resolution of the 4-rung ladder case is already a standalone note because the 2024 paper leaves ladders with 4 to 13 rungs explicitly open.",
-      "why_this_could_be_publishable": "It is a smallest-open-case yes/no theorem with immediate context from the 3-rung positive result and the 14-rung negative barrier.",
-      "canonical_source": "Raphael Steck and Arthur Ulmer, \"On the Edge-Erdos-Posa Property of Ladders\" (Graphs and Combinatorics 40, 2024).",
-      "working_packet_path": "artifacts/ladder-4-rungs-edge-erdos-posa/working_packet.md"
-    },
-    {
-      "slug": "order-12-9-regular-one-factorization",
-      "title": "Is every 9-regular graph on 12 vertices one-factorizable?",
-      "publication_status": "SLICE_CANDIDATE",
-      "publication_packet_title": "One-factorizations of 9-regular graphs of order 12",
-      "publication_packet_quality": "strong",
-      "publication_if_solved": "A complete degree-9 classification on order 12 is already a short exact-classification paper because the source explicitly leaves that slice open.",
-      "why_this_could_be_publishable": "It is an exact unresolved finite classification with a tiny verifier and essentially zero post-solve packaging tax.",
-      "canonical_source": "Petteri Kaski and Patric R. J. Ostergard, \"One-Factorizations of Regular Graphs of Order 12\" (Electronic Journal of Combinatorics 12, 2005).",
-      "working_packet_path": "artifacts/order-12-9-regular-one-factorization/working_packet.md"
-    },
-    {
-      "slug": "eight-regular-forbidden-outdegree-three-set",
-      "title": "Does every 8-regular graph admit an F-avoiding orientation for every 3-element forbidden set?",
-      "publication_status": "SLICE_CANDIDATE",
-      "publication_packet_title": "The d = 8 slice of the forbidden out-degree orientation conjecture",
-      "publication_packet_quality": "strong",
-      "publication_if_solved": "A clean d=8 theorem or counterexample would already be a short follow-up paper to the 2026 d<=6 result.",
-      "why_this_could_be_publishable": "It is the exact next even-degree slice after a fresh 2026 advance, with a ready-made paper narrative and tiny verification footprint.",
-      "canonical_source": "Owen Henderschedt and Jessica McDonald, \"On orientations with forbidden out-degrees\" (Discrete Applied Mathematics 387, 2026).",
-      "working_packet_path": "artifacts/eight-regular-forbidden-outdegree-three-set/working_packet.md"
-    },
     {
       "slug": "all-9-vertex-graphs-1-11-representable",
       "title": "Are all graphs on 9 vertices 1-11-representable?",

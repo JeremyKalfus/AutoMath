@@ -1,11 +1,11 @@
 # AutoMath Publication Summary
 
-- Updated: `2026-04-12 19:18:08 EDT`
-- Queued one-shot paper candidate: ladder-4-rungs-edge-erdos-posa
-- Candidate title: Does the ladder with 4 rungs have the edge-Erdos-Posa property?
-- Candidate publication if solved: A resolution of the 4-rung ladder case is already a standalone note because the 2024 paper leaves ladders with 4 to 13 rungs explicitly open.
-- Candidate publication score: standalone_short_paper
-- Candidate packet quality: excellent
+- Updated: `2026-04-12 19:57:31 EDT`
+- Queued one-shot paper candidate: eight-regular-forbidden-outdegree-three-set
+- Candidate title: Does every 8-regular graph admit an F-avoiding orientation for every 3-element forbidden set?
+- Candidate publication if solved: A clean d=8 theorem or counterexample would already be a short follow-up paper to the 2026 d<=6 result.
+- Candidate publication score: paper_with_light_packaging
+- Candidate packet quality: strong
 - Candidate pre-solve gate: pass
 - Active campaigns: zero_divisor_prime_labelings, cnbc_quintic_nonexistence
 - Strongest current publication status: `SLICE_EXACT`
@@ -18,13 +18,13 @@
 - xhigh usable in this environment: `yes`
 - Isolated git worktrees feasible: `yes`
 - Automatic stop condition: `publication_status = PAPER_READY` with preserved proof artifacts
-- Worker infra status this cycle: `not_used`
+- Worker infra status this cycle: `infra_failed`
 - Summary path: `artifacts/families/summary.md`
 - Family status paths: artifacts/families/zero_divisor_prime_labelings/status.json, artifacts/families/cnbc_quintic_nonexistence/status.json
 - Ledger tail:
-  - Publication mode selected one-shot paper candidate cocktail-party-two-monochromatic-diameter-2-cover instead of silently preferring a warm family campaign.
-  - started solving cocktail-party-two-monochromatic-diameter-2-cover
-  - PUBLICATION_AUDIT ran for cocktail-party-two-monochromatic-diameter-2-cover at 2026-04-12 19:15:48 EDT using the selected packet, canonical artifact `record.md` / `status.json`, and a bounded live-web pass on the exact statement, alternate notation, the March 25, 2026 canonical source `2-Reachable Subsets in Two-Colored Graphs`, and one outside-source status sweep.
-  - The bounded prior-art audit did not establish rediscovery: the canonical source still states the diameter-2 cocktail-party claim as `Conjecture 2` and proves only the relaxed `2`-reachable theorem, while the outside-source sweep surfaced only adjacent broader-diameter discussion and no later explicit closure of the selected conjecture.
-  - The canonical artifact was updated before closeout to `stage = publication_audit` with conservative values `publication_status = SLICE_EXACT`, `publication_confidence = 0.61`, `lean_ready = false`, and `proof_artifacts_preserved = true`; the strongest honest packet is now recorded as an exact structural slice plus the exact six-vertex case, not a resolution of the full paper candidate.
-  - cocktail-party-two-monochromatic-diameter-2-cover failed and was moved aside: VARIANT
+  - started solving order-12-9-regular-one-factorization
+  - order-12-9-regular-one-factorization was moved aside after two tightened-budget solve timeouts; the live stdout logs contain promising factorization certificates, but the architecture did not absorb them into a canonical one-shot win within budget.
+  - bounded publication run cycle 1/6 started at 2026-04-12 19:54:30 EDT.
+  - Publication mode selected one-shot paper candidate eight-regular-forbidden-outdegree-three-set instead of silently preferring a warm family campaign.
+  - started solving eight-regular-forbidden-outdegree-three-set
+  - Solve infrastructure failure for eight-regular-forbidden-outdegree-three-set: the worker timed out before a real verdict.

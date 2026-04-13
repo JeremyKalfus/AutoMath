@@ -1,86 +1,86 @@
-# Does the ladder with 4 rungs have the edge-Erdos-Posa property?
+# Are all graphs on 9 vertices 1-11-representable?
 
 - entry_type: `paper_candidate`
-- slug: `ladder-4-rungs-edge-erdos-posa`
-- family_name: `Edge-Erdos-Posa property for fixed planar graphs`
-- canonical_source: `Raphael Steck and Arthur Ulmer, "On the Edge-Erdos-Posa Property of Ladders" (Graphs and Combinatorics 40, 2024).`
+- slug: `all-9-vertex-graphs-1-11-representable`
+- family_name: `1-11-representable graph classification`
+- canonical_source: `Mohammed Alshammari, Sergey Kitaev, Chaoliang Tang, Tianyi Tao, and Junchi Zhang, "On 1-11-representability and multi-1-11-representability of graphs" (Utilitas Mathematica 122, 2025), together with Futorny-Kitaev-Pyatkin, "New Tools to Study 1-11-Representation of Graphs" (Graphs and Combinatorics 40, 2024).`
 - open_status_checked_on: `2026-04-12`
-- attack_style: `extend the 3-rung positive proof and isolate the first extra obstruction pattern, or build the first non-condensed-wall counterexample`
-- curation_confidence: `high`
+- attack_style: `use the 2024-2025 structural toolbox first, then only bounded exhaustive search on the remaining 9-vertex non-word-representable cases`
+- curation_confidence: `medium`
 - publication_status: `SLICE_CANDIDATE`
 - campaign_affinity: `none`
-- publication_if_solved: `A resolution of the 4-rung ladder case is already a standalone note because the 2024 paper leaves ladders with 4 to 13 rungs explicitly open.`
-- publication_if_solved_score: `standalone_short_paper`
-- solve_to_publication_distance: `tiny`
-- single_pass_proof_plausibility: `medium-high`
+- publication_if_solved: `Settling the 9-vertex slice would already be a finite-classification note, either as a complete positive census or as a first minimal counterexample paper.`
+- publication_if_solved_score: `paper_with_light_packaging`
+- solve_to_publication_distance: `short-medium`
+- single_pass_proof_plausibility: `medium`
 - novelty_check_cost: `low`
 - formalization_overhead: `low-medium`
-- packaging_risk: `low`
+- packaging_risk: `medium`
 - needs_feeder_ladder: `no`
 - pre_solve_gate: `pass`
-- publication_packet_quality: `excellent`
-- working_packet_path: `artifacts/ladder-4-rungs-edge-erdos-posa/working_packet.md`
-- paper_shape: `A smallest-open-case theorem or counterexample note for a fixed pattern H, with one structural section and one consequence section.`
+- publication_packet_quality: `strong`
+- working_packet_path: `artifacts/all-9-vertex-graphs-1-11-representable/working_packet.md`
+- paper_shape: `A smallest-unresolved finite-slice note with structural reductions, a compact classification table, and explicit representing words or a minimal obstruction.`
 
 ## question
-If H is the ladder with 4 rungs, must every graph either contain k edge-disjoint H-subdivisions or admit an edge set of size f(k) hitting all H-subdivisions?
+Does every graph with 9 vertices admit a 1-11 representation, or is there a minimal 9-vertex obstruction?
 
 ## canonical_statement
-Determine whether the ladder with 4 rungs has the edge-Erdos-Posa property.
+It is unknown whether every graph is 1-11-representable; the 2025 paper proves all graphs on at most 8 vertices are 1-11-representable and explicitly points toward the 9-vertex slice.
 
 ## intended_statement
-Settle the smallest unresolved ladder case by proving that the 4-rung ladder has the edge-Erdos-Posa property, or by constructing a genuine counterexample graph not ruled out by the condensed-wall barrier.
+Resolve the first unresolved finite slice by proving that every 9-vertex graph is 1-11-representable, or by producing the first 9-vertex counterexample with a rigorous certificate.
 
 ## theorem_slice_hint
-Treat the 4-rung ladder as the smallest unresolved rung count, not as a broad ladder campaign; the whole note should pivot on one yes-or-no theorem.
+Target the 9-vertex universal statement or the first obstruction directly; do not drift into the full all-graphs conjecture.
 
 ## why_reasoning_friendly
-The target graph H is tiny, the positive and negative sides are both crisp, and the canonical source already isolates the ladder-range gap rather than a sprawling family program.
+The problem has a rich reduction toolbox, a sharply bounded finite frontier, and a natural minimal-counterexample flavor.
 
 ## why_low_token
-The statement is short, certificates are compact, and the proof surface is concentrated on one fixed pattern instead of a large parameter family.
+The theorem statement is tiny, witnesses are explicit words, and the remaining frontier is a finite census rather than an open-ended family.
 
 ## verifier_hint
-For a positive solve, verify the hitting/packing theorem against the exact 4-rung ladder definition; for a negative solve, preserve an explicit host graph family together with a checked obstruction argument.
+Positive solutions should preserve explicit 1-11 words for each reduced isomorphism class or a general construction; negative solutions need a complete obstruction certificate for the claimed 9-vertex graph.
 
 ## lean_hint
-Lean only after the combinatorial core is stable; formalization would mostly be finite graph bookkeeping around the exact ladder pattern and edge-hit definition.
+Only formalize after a human-readable certificate style is fixed; the right backend object is a checker for two-letter subword constraints, not a large search proof.
 
 ## rediscovery_risk
-low-medium
+medium
 
 ## why_still_appears_open
-The canonical 2024 paper explicitly asks whether ladders with 4 to 13 rungs have the edge-Erdos-Posa property, and the bounded later-status search surfaced no follow-up resolution for the 4-rung case.
+The 2025 paper still states that it is unknown whether every graph is 1-11-representable, proves only the up-to-8-vertex slice, and its concluding discussion explicitly identifies the 9-vertex frontier as the next natural target; bounded web search found no later 9-vertex resolution.
 
 ## why_this_could_be_publishable
-It is a smallest-open-case yes/no theorem with immediate context from the 3-rung positive result and the 14-rung negative barrier.
+It is exactly the kind of smallest unresolved finite slice that can become a clean note or a minimal-counterexample paper with low novelty-check cost.
 
 ## pre_solve_gate_reason
-This is already the smallest unresolved exact ladder case left open in the canonical 2024 source, so one clean resolution is itself most of a paper with no feeder ladder.
+The 9-vertex slice is already a self-contained smallest unresolved finite classification, so a full settlement would itself be most of a paper without any feeder ladder.
 
 ## publication_packet_title
-The edge-Erdos-Posa property for the 4-rung ladder
+1-11-representability of graphs on 9 vertices
 
 ## publication_packet_frontier_basis
-The canonical 2024 ladder paper proves the 3-rung positive case and the 14-rung negative barrier, while explicitly leaving the 4-rung case open as the smallest unresolved ladder instance.
+The canonical 2025 paper proves the universal statement through 8 vertices and explicitly points to the 9-vertex slice as the next natural unresolved finite frontier.
 
 ## publication_packet_near_paper_reason
-A yes-or-no resolution of the 4-rung case is already a complete smallest-open-case note with built-in context from the 3-rung theorem and the 14-rung obstruction.
+Settling the 9-vertex slice would already be a self-contained finite-classification note or first-obstruction paper with a very short path from solve to writeup.
 
 ## publication_packet_literature_scope
-Canonical 2024 ladder paper plus one bounded later-status search for a follow-up on the 4-rung case.
+Canonical 2025 1-11-representability paper, the adjacent 2024 toolbox paper, and one bounded outside-status check for a later 9-vertex census result.
 
 ## publication_packet_artifact_requirements
-Either a proof that the 4-rung ladder has the edge-Erdos-Posa property or an explicit counterexample family, together with a compact packing/hitting verification writeup.
+Either explicit representing words for the reduced 9-vertex frontier or a certified minimal obstruction, plus a compact two-letter subword checker.
 
 ## paper_shape
-A smallest-open-case theorem or counterexample note for a fixed pattern H, with one structural section and one consequence section.
+A smallest-unresolved finite-slice note with structural reductions, a compact classification table, and explicit representing words or a minimal obstruction.
 
 ## definitions
-- A ladder with t rungs is the graph formed by two parallel paths with t matching edges between corresponding vertices.
-- A graph H has the edge-Erdos-Posa property if there is a function f such that every graph G either contains k edge-disjoint subdivisions of H or an edge set of size at most f(k) meeting every subdivision of H.
-- The 2024 source proves the property for the 3-rung ladder and shows that ladders with 14 or more rungs do not have it.
+- A graph is 1-11-representable if there is a word whose two-letter subwords witness edges by allowing at most one pair of consecutive equal letters and non-edges by forcing at least two.
+- Word-representable graphs are exactly the 0-11-representable graphs.
+- The 2025 source proves all graphs on at most 8 vertices are 1-11-representable and notes the 9-vertex case as the next natural finite target.
 
 ## publication_red_flags
-- A negative answer would need a clean counterexample mechanism, not just an ad hoc gadget.
-- If the positive proof merely replays the 3-rung argument with long case splits, packaging quality could slip.
+- This can drift into a brute-force census if the structural reductions are not used aggressively.
+- If all 9-vertex graphs are representable, the paper still needs a concise certificate strategy rather than a raw machine dump.

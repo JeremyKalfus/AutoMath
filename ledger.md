@@ -14435,3 +14435,36 @@
 - The bounded prior-art audit did not establish rediscovery: the canonical source still states the diameter-2 cocktail-party claim as `Conjecture 2` and proves only the relaxed `2`-reachable theorem, while the outside-source sweep surfaced only adjacent broader-diameter discussion and no later explicit closure of the selected conjecture.
 - The canonical artifact was updated before closeout to `stage = publication_audit` with conservative values `publication_status = SLICE_EXACT`, `publication_confidence = 0.61`, `lean_ready = false`, and `proof_artifacts_preserved = true`; the strongest honest packet is now recorded as an exact structural slice plus the exact six-vertex case, not a resolution of the full paper candidate.
 - cocktail-party-two-monochromatic-diameter-2-cover failed and was moved aside: VARIANT
+- bounded publication run cycle 1/9 started at 2026-04-12 19:33:02 EDT.
+- Publication mode selected one-shot paper candidate ladder-4-rungs-edge-erdos-posa instead of silently preferring a warm family campaign.
+- started solving ladder-4-rungs-edge-erdos-posa
+- PUBLICATION_AUDIT ran for ladder-4-rungs-edge-erdos-posa at 2026-04-12 19:46:06 EDT using the selected packet, canonical artifact `record.md` / `status.json`, the bound `working_packet.md`, and a narrow live-web pass on the exact statement, alternate notation, the 2024 Steck-Ulmer ladder paper, and one outside-source status check.
+- The bounded prior-art audit did not establish rediscovery: the canonical source still presents ladders with `4` through `13` rungs as open, the same-source theorem / proposition / example / corollary scan found no internal implication already settling `L4`, and the outside status pass surfaced no separate `4`-rung closure within budget.
+- The canonical artifact was updated before closeout to `stage = publication_audit` with conservative values `publication_status = NONE`, `publication_confidence = 0.68`, `publication_packet_quality = weak`, `lean_ready = false`, and `proof_artifacts_preserved = true`; the strongest honest claim remains a corrected structural reduction plus a fixed-core cut lemma, not a referee-facing theorem slice for the selected `paper_candidate`.
+- ladder-4-rungs-edge-erdos-posa failed and was moved aside: PARTIAL
+- bounded publication run cycle 1/8 started at 2026-04-12 19:47:17 EDT.
+- Publication mode selected one-shot paper candidate order-12-9-regular-one-factorization instead of silently preferring a warm family campaign.
+- started solving order-12-9-regular-one-factorization
+- Solve infrastructure failure for order-12-9-regular-one-factorization: the worker timed out before a real verdict.
+- bounded publication run cycle 1/8 finished at 2026-04-12 19:50:18 EDT.
+- cycle sleeping for 0 seconds.
+- bounded publication run cycle 2/8 started at 2026-04-12 19:50:18 EDT.
+- Publication mode selected one-shot paper candidate order-12-9-regular-one-factorization instead of silently preferring a warm family campaign.
+- started solving order-12-9-regular-one-factorization
+- Solve infrastructure failure for order-12-9-regular-one-factorization: the worker timed out before a real verdict.
+- bounded publication run cycle 2/8 finished at 2026-04-12 19:53:19 EDT.
+- cycle sleeping for 0 seconds.
+- bounded publication run cycle 3/8 started at 2026-04-12 19:53:19 EDT.
+- Publication mode selected one-shot paper candidate order-12-9-regular-one-factorization instead of silently preferring a warm family campaign.
+- started solving order-12-9-regular-one-factorization
+- order-12-9-regular-one-factorization was moved aside after two tightened-budget solve timeouts; the live stdout logs contain promising factorization certificates, but the architecture did not absorb them into a canonical one-shot win within budget.
+- bounded publication run cycle 1/6 started at 2026-04-12 19:54:30 EDT.
+- Publication mode selected one-shot paper candidate eight-regular-forbidden-outdegree-three-set instead of silently preferring a warm family campaign.
+- started solving eight-regular-forbidden-outdegree-three-set
+- Solve infrastructure failure for eight-regular-forbidden-outdegree-three-set: the worker timed out before a real verdict.
+- bounded publication run cycle 1/6 finished at 2026-04-12 19:57:31 EDT.
+- cycle sleeping for 0 seconds.
+- bounded publication run cycle 2/6 started at 2026-04-12 19:57:31 EDT.
+- Publication mode selected one-shot paper candidate eight-regular-forbidden-outdegree-three-set instead of silently preferring a warm family campaign.
+- started solving eight-regular-forbidden-outdegree-three-set
+- eight-regular-forbidden-outdegree-three-set was moved aside after a tightened-budget solve timeout; no canonical one-shot result was absorbed within budget.
