@@ -1,20 +1,6 @@
 {
-  "generated_on": "2026-04-12T22:30:23.039812-04:00",
+  "generated_on": "2026-04-13T01:10:00.587270-04:00",
   "queued_publication_packets": [
-    {
-      "slug": "five-regular-pseudograph-4-1-factor",
-      "title": "Does every 5-regular pseudograph contain a {4,1}-factor?",
-      "publication_status": "SLICE_CANDIDATE",
-      "publication_packet_title": "The {4,1}-Factor Problem for 5-Regular Pseudographs",
-      "publication_packet_quality": "excellent",
-      "paper_leverage_score": 91,
-      "single_solve_to_paper_fraction": 0.86,
-      "micro_paper_lane_eligible": true,
-      "publication_if_solved": "A full resolution of the smallest unresolved Akbari-Kano-type odd-degree case would already read like a short standalone paper.",
-      "why_this_could_be_publishable": "It is a named-conjecture residue with a clean yes-or-no endpoint, tiny verifier, and immediate title theorem if solved.",
-      "canonical_source": "Maria Axenovich and Jonathan Rollin, \"Brooks type results for conflict-free colorings and {a,b}-factors in graphs\" (Discrete Mathematics 338, 2015), plus Douglas West's regular-subgraph problem summary.",
-      "working_packet_path": "artifacts/five-regular-pseudograph-4-1-factor/working_packet.md"
-    },
     {
       "slug": "all-9-vertex-graphs-1-11-representable",
       "title": "Are all graphs on 9 vertices 1-11-representable?",
@@ -44,6 +30,20 @@
       "working_packet_path": "artifacts/paley-graph-internal-partition/working_packet.md"
     },
     {
+      "slug": "five-regular-pseudograph-4-1-factor",
+      "title": "Does every 5-regular pseudograph contain a {4,1}-factor?",
+      "publication_status": "SLICE_CANDIDATE",
+      "publication_packet_title": "The {4,1}-Factor Problem for 5-Regular Pseudographs",
+      "publication_packet_quality": "excellent",
+      "paper_leverage_score": 91,
+      "single_solve_to_paper_fraction": 0.86,
+      "micro_paper_lane_eligible": true,
+      "publication_if_solved": "A full resolution of the smallest unresolved Akbari-Kano-type odd-degree case would already read like a short standalone paper.",
+      "why_this_could_be_publishable": "It is a named-conjecture residue with a clean yes-or-no endpoint, tiny verifier, and immediate title theorem if solved.",
+      "canonical_source": "Maria Axenovich and Jonathan Rollin, \"Brooks type results for conflict-free colorings and {a,b}-factors in graphs\" (Discrete Mathematics 338, 2015), plus Douglas West's regular-subgraph problem summary.",
+      "working_packet_path": "artifacts/five-regular-pseudograph-4-1-factor/working_packet.md"
+    },
+    {
       "slug": "four-regular-pseudograph-three-regular-subgraph",
       "title": "Does every 4-regular pseudograph contain a 3-regular subgraph?",
       "publication_status": "NONE",
@@ -70,20 +70,6 @@
       "why_this_could_be_publishable": "It is a canonical exact existence question with essentially zero post-solve packaging overhead.",
       "canonical_source": "Makhnev et al., \"Strongly regular graphs with non-trivial automorphisms\" (Discrete Mathematics 311, 2011), cross-checked against recent conference-graph reference summaries.",
       "working_packet_path": "artifacts/conference-graph-order-85/working_packet.md"
-    }
-  ],
-  "near_paper_campaigns": [
-    {
-      "family_slug": "zero_divisor_prime_labelings",
-      "publication_status": "SLICE_EXACT",
-      "strongest_honest_claim": "As of 2026-04-12T03:55:30-0400, the strongest honest family claim remains the Lean-checked paired structural theorem `AutoMath.Families.ZeroDivisorPublicationSlice.zero_divisor_prime_labelings_paired_exact_slice`. The...",
-      "next_blocker": "The only live blocker to a referee-facing direct `F25` theorem is to package a chosen `(p - 1)`-element subset of `fixedC0Finset` as an injective `C`-class labeling and extend i..."
-    },
-    {
-      "family_slug": "cnbc_quintic_nonexistence",
-      "publication_status": "SLICE_CANDIDATE",
-      "strongest_honest_claim": "As of 2026-04-12T03:20:51-0400, the strongest honest publication-facing claim is still a Route I theorem-slice candidate: for G = C_n(a,b,m) with n = 2m and 1 <= a < b < m, if sigma_{n,a,b}(k) = 1 + 2 cos(2*pi*a*k/n)...",
-      "next_blocker": "The live blocker is now only the missing family Fourier diagonalization of the six-term circulant operator B_{n,a,b} together with the reusable lemma sigma_{n,a,b}(k) != 0 for a..."
     }
   ],
   "exact_wins": [

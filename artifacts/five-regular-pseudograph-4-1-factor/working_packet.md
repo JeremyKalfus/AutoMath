@@ -14,7 +14,7 @@ Resolve the exact 5-regular pseudograph case, either by proving every such pseud
 ## novelty_notes
 - frontier basis: The 2015 source narrows the odd-degree landscape to this last 5-regular pseudograph residue after larger odd-degree failures.
 - why still open: The 2015 paper explicitly leaves the r = 5, t = 1 case open after disproving the broader odd-r conjecture, and the bounded status sweep surfaced only summary material still pointing to the same residue.
-- attempted conflict check: Repo exclusion sweep found no matching slug, title, or near-duplicate exact statement in failed_problems.json, queue.json, selected_problem.md, campaigns/, PROOFS.md, or artifact statuses.
+- attempted conflict check: Repo exclusion sweep found no matching slug, title, or near-duplicate exact statement in failed_problems.json, queue.json, selected_problem.md, PROOFS.md, or artifact statuses.
 - rediscovery risk: low-medium
 
 ## proof_sketch

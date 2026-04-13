@@ -5,19 +5,12 @@ This is the CURATION stage.
 Use web search.
 
 Goal:
-Write `queue.json` as a queue of exactly 5 curated dossiers, optimized for the MICRO-PAPER objective:
+Write `queue.json` as a queue of exactly 5 `paper_candidate` dossiers, optimized for the MICRO-PAPER objective:
 
-- the smallest frontier-novel claim where one clean solve is already about 70-90% of a publishable note
+- the smallest frontier-novel exact claim where one clean solve is already about 70-90% of a publishable note
 - exact theorem/result pairs, sharp obstructions, minimal counterexamples, and tiny structural slices with immediate applications
 - small bounded targets only; do not drift into broad theorem hunting
-
-The queue may still contain:
-
-- `entry_type = "paper_candidate"`
-- `entry_type = "family_campaign"`
-- `entry_type = "feeder_instance"`
-
-But the strict micro-paper lane is only for `paper_candidate` entries that pass the hard gate below.
+- no reserve lane, no alternate fallback lane, and no feeder-instance queue slots
 
 Core curation dimensions:
 
@@ -33,7 +26,7 @@ Required 70-90% paper test for every candidate:
 4. Why is the target not just a niche exact curiosity?
 5. Why is it not already implied by a broader published result?
 
-If you cannot write a plausible title and abstract that feel like a real short note, the candidate fails the micro-paper lane.
+If you cannot write a plausible title and abstract that feel like a real short note, the candidate fails.
 
 Lean policy during curation:
 
@@ -59,8 +52,6 @@ Check, if present and inexpensive to read:
 - `queue.json`
 - `selected_problem.md`
 - `PROOFS.md`
-- `campaigns/`
-- `campaigns/manifest.json`
 - artifact directory names and cheap status summaries if available
 - any `attempted_problems.json`, `rediscoveries.json`, `candidate_problems.json`, or similar memory file
 - `ledger.md` only if a conflict or ambiguity remains after the thin memory files
@@ -99,11 +90,9 @@ Local-read budget before web:
 
 Default policy:
 
-- Prefer `paper_candidate` entries that honestly pass the micro-paper lane.
-- Use `family_campaign` only when a family theorem is already very close to closure.
-- Use `feeder_instance` only when the exact feeder itself is already near-paper or when it is explicitly parked outside the micro-paper lane.
-- At most 1 queue entry may be `family_campaign` unless the user explicitly restores campaign-first behavior.
+- Every queue slot must be a `paper_candidate`.
 - Strongly downrank anything that needs a feeder ladder, a broad theorem-development program, or expensive post-solve packaging.
+- Reject targets whose story depends on a future campaign rather than the one-shot solve itself.
 
 Hard gate for `micro_paper_lane_eligible = true`:
 
@@ -132,7 +121,7 @@ Strong preferences inside the lane:
 - `certificate_compactness = high`
 - `paper_leverage_score` high
 
-Negative archetypes to reject or park:
+Negative archetypes to reject:
 
 - tiny exact cases whose only appeal is that they are tiny
 - problems where the solve is real but the paper story is weak
@@ -248,10 +237,9 @@ Required bounded audit for each final queued candidate:
 
 Output policy:
 
-- `queue.json` must contain exactly 5 entries
-- `selected_problem.md` must point to the highest-priority currently usable micro-paper candidate if one exists
-- if only lower-lane or parked entries remain, still write the queue honestly and mark `micro_paper_lane_eligible = false` where appropriate
+- `queue.json` must contain exactly 5 `paper_candidate` entries
+- `selected_problem.md` must point to the highest-priority currently usable micro-paper candidate
+- rank the queue by smallest honest `solve_to_publication_distance` and strongest paper packet quality, not by future theorem-program momentum
+- if fewer than 5 honest micro-paper candidates survive, still write 5 `paper_candidate` entries but mark weak ones honestly with `micro_paper_lane_eligible = false`
 
 Be conservative.
-Do not overclaim openness.
-Do not mistake “small” for “paper-shaped”.

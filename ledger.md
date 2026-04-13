@@ -14468,3 +14468,9 @@
 - Publication mode selected one-shot paper candidate eight-regular-forbidden-outdegree-three-set instead of silently preferring a warm family campaign.
 - started solving eight-regular-forbidden-outdegree-three-set
 - eight-regular-forbidden-outdegree-three-set was moved aside after a tightened-budget solve timeout; no canonical one-shot result was absorbed within budget.
+- Publication mode selected one-shot paper candidate five-regular-pseudograph-4-1-factor instead of silently preferring a warm family campaign.
+- started solving five-regular-pseudograph-4-1-factor
+- Solve infrastructure failure for five-regular-pseudograph-4-1-factor: the worker timed out before a real verdict.
+- five-regular-pseudograph-4-1-factor hit an infrastructure failure during solve_five-regular-pseudograph-4-1-factor; canonical salvage was written to artifacts/five-regular-pseudograph-4-1-factor/salvage/solve_five-regular-pseudograph-4-1-factor_last_failure.json and the slug is cooled down until 2026-04-13T06:35:01.807299-04:00 instead of being archived as a mathematical failure.
+- Publication mode selected one-shot paper candidate all-9-vertex-graphs-1-11-representable.
+- started solving all-9-vertex-graphs-1-11-representable

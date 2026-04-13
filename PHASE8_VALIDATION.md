@@ -9,6 +9,15 @@ It is intentionally conservative. The goal is to record what the repo state alre
 supports, not to claim that the redesign is fully vindicated before a real one-shot
 paper win exists.
 
+Current interpretation note:
+
+- this is a validation memo, not the live operating spec
+- the live source of truth is now stricter and plainer:
+  - default to `paper_candidate` selection
+  - use the strict 5-stage micro-paper lane only
+  - optimize for “single solve => paper,” not “campaign momentum”
+  - allow up to two concurrent solve workers while keeping verify/audit/Lean manager-serial
+
 Micro-paper update:
 
 - this validation memo predates the stricter MICRO-PAPER lane patch
@@ -28,7 +37,7 @@ Micro-paper update:
   - the repo was clean before the continuation run
   - the redesign landing already included the Phase 7 context-hygiene work
 - Actual redesigned dry run now executed:
-  - `scripts/automath_cycle.py --mode publication`
+  - `scripts/automath_cycle.py`
   - selected candidate: `cocktail-party-two-monochromatic-diameter-2-cover`
   - end state: candidate archived honestly as `VARIANT` with candidate-local `publication_status = SLICE_EXACT`
 - Current queue shape after that dry run:
@@ -36,7 +45,7 @@ Micro-paper update:
   - next queued candidate is `ladder-4-rungs-edge-erdos-posa`
 - Current strongest publication status in the repo summary:
   - `SLICE_EXACT`
-  - this still comes from the legacy warm family campaign `zero_divisor_prime_labelings`, not from a new redesigned one-shot `PAPER_READY` win
+  - this does not yet amount to a redesigned one-shot `PAPER_READY` win
 
 ## Check 27: A/B Calibration On Existing Repo History
 
@@ -88,8 +97,6 @@ Status: `PASS`
 Evidence:
 - `queue.json` currently contains:
   - 4 `paper_candidate`
-  - 0 `family_campaign`
-  - 0 `feeder_instance`
 
 Current queued scores:
 - `ladder-4-rungs-edge-erdos-posa`
@@ -111,7 +118,7 @@ Current queued scores:
 
 Validation conclusion:
 - the queue is now dominated by one-shot publication candidates exactly as intended
-- feeder ladders and warm campaigns are not occupying the top slots by default
+- feeder ladders and other legacy non-paper paths are not occupying the top slots by default
 - the first queued cocktail-party packet was consumed by a real redesigned run and then removed honestly instead of lingering as fake active progress
 
 ## Check 29: Runtime Behavior Changes In The Expected Direction
@@ -121,20 +128,19 @@ Status: `PASS`
 Evidence from `ledger.md`:
 - the redesigned runtime explicitly recorded:
   - `Queue had no usable paper_candidate, so one-shot publication curation started.`
-  - `Publication mode selected one-shot paper candidate forbidden-outdegree-orientation-d7 instead of silently preferring a warm family campaign.`
-  - `Publication mode selected one-shot paper candidate cocktail-party-two-monochromatic-diameter-2-cover instead of silently preferring a warm family campaign.`
+  - `Publication mode selected one-shot paper candidate forbidden-outdegree-orientation-d7 immediately from the paper-candidate queue.`
+  - `Publication mode selected one-shot paper candidate cocktail-party-two-monochromatic-diameter-2-cover immediately from the paper-candidate queue.`
   - the cocktail-party candidate then ran through solve, verify, and publication audit before being moved aside as `VARIANT`
 
 What this shows:
 - the manager now prefers the one-shot lane when usable paper candidates are available
-- it does not silently default back to the old warm-campaign behavior
+- it does not silently default back to an older non-paper execution path
 - when the first redesigned paper candidate failed verification, it was honestly reclassified as `REDISCOVERY` rather than being padded into a fake publication win
 - when the second redesigned paper candidate failed to close the full theorem, the system still preserved the strongest honest publication packet it actually earned instead of overstating the result
 
 Important limitation:
-- the repo still contains strong legacy family infrastructure and family summaries
-- the strongest current publication status in `artifacts/families/summary.md` still comes from the old zero-divisor campaign
-- so the redesign has changed queueing and selection behavior more strongly than it has changed the top-line “strongest claim in repo” headline
+- this memo predates the final cleanup that removed the live reserve lane entirely
+- the redesigned cleanup now routes the summary surface through `artifacts/summary.md`
 
 Runtime coherence fix applied during validation:
 - the cocktail-party dry run exposed that archiving or rotating a queue entry could leave `selected_problem.md` pointing at the retired packet even after `queue.json` moved on

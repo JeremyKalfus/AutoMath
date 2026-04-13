@@ -1,34 +1,29 @@
-Read `AGENTS.md` and `selected_problem.md` first.
-If `selected_problem.md` includes `handoff_memo_path`, read that memo immediately after `selected_problem.md` and treat it as the binding scope authority for allowed files, stop condition, and output path.
-If `selected_problem.md` includes `working_packet_path`, read that file immediately after `selected_problem.md`.
+Read `AGENTS.md` and the active selection file first.
+Unless the manager preface names another file, the active selection file is `selected_problem.md`.
+If the active selection file includes `handoff_memo_path`, read that memo immediately after the active selection file and treat it as the binding scope authority for allowed files, stop condition, and output path.
+If the active selection file includes `working_packet_path`, read that file immediately after the active selection file.
 
 This is the PUBLICATION_AUDIT stage.
 Limited web is allowed.
 
 Purpose:
 Judge theorem-worthiness, publication-worthiness, and MICRO-PAPER leverage, not just correctness.
+Default question: is this chosen one-shot candidate actually close to a paper, or did it only look attractive before audit?
 
-This stage may run after:
+This stage runs after `verify`.
 
-- `verify`
-- `generalize`
+Work under `artifacts/<slug>/`.
+Read the relevant `record.md` and `status.json`.
+If the active selection file includes `attempt_output_markdown` and `attempt_output_json`, treat this as a sidecar audit:
 
-First detect whether the selected entry is:
-
-- a `family_campaign`, in which case work under `artifacts/families/<family_slug>/`
-- a `paper_candidate` or `feeder_instance`, in which case work under `artifacts/<slug>/`
-
-Read the relevant `record.md`, `status.json`, and the campaign dossier if one exists.
-If `selected_problem.md` includes `attempt_output_markdown` and `attempt_output_json`, treat this as a sidecar audit:
-
-- read the canonical dossier / artifact record / status as inputs only
+- read the canonical artifact record / status as inputs only
 - if the sidecar output files already exist, continue from them instead of restarting from scratch
 - write the audited markdown/json outputs to those sidecar paths instead of the canonical files
-- do not mutate canonical dossier or canonical `record.md` / `status.json` in this sidecar mode
+- do not mutate canonical `record.md` / `status.json` in this sidecar mode
 
 Read budget:
 
-- target 3 to 6 local files total after `selected_problem.md`
+- target 3 to 6 local files total after the active selection file
 - hard cap 8 local files unless the canonical source itself forces one extra pinpoint check
 - prefer the working packet, local artifact record/status, and one canonical source anchor over broad repo rereads
 - do not replay long ledger history during publication audit
@@ -36,9 +31,9 @@ Read budget:
 Bounded-audit policy:
 
 - Keep the literature pass narrow and claim-specific.
-- Prefer the exact family statement, theorem-slice wording, canonical source, and one independent status source over broad wandering.
+- Prefer the exact statement, theorem-slice wording, canonical source, and one independent status source over broad wandering.
 - Use only the minimum web needed to answer the prior-art and publication-worthiness questions honestly.
-- For a `paper_candidate`, use the narrow one-shot audit by default:
+- Use the narrow one-shot audit by default:
   - exact statement search
   - alternate notation search
   - canonical source check
@@ -65,20 +60,19 @@ Questions you must answer explicitly:
 - Would this survive a referee asking “what is the theorem?”
 - Is the claim still too dependent on hand-picked small cases?
 - If this is not yet paper-ready, is the remaining gap genuinely small or did the candidate only look attractive before audit?
-- For a `paper_candidate`, would Lean directly seal the packet, or would it only be optional polish / later archival formalization?
+- If this is not yet paper-ready, should it be moved aside rather than expanded into a larger theorem program?
+- Would Lean directly seal the packet, or would it only be optional polish / later archival formalization?
 
 Prior-art / rediscovery audit requirements:
 
-- `paper_candidate` narrow audit:
-  - exact statement search
-  - alternate notation search
-  - canonical source search
-  - theorem / proposition / example / corollary / observation / sufficient-condition check inside the canonical source
-  - one outside-source status search
-- broader audit only when needed:
-  - one recent citation / discussion / follow-up check when appropriate
+- exact statement search
+- alternate notation search
+- canonical source search
+- theorem / proposition / example / corollary / observation / sufficient-condition check inside the canonical source
+- one outside-source status search
+- one recent citation / discussion / follow-up check only when needed
 
-Then update the relevant `record.md` with these sections:
+Then update `record.md` with these sections:
 
 - `publication_prior_art_audit`
 - `publication_statement_faithfulness`
@@ -90,7 +84,7 @@ Then update the relevant `record.md` with these sections:
 - `paper_title_hint`
 - `next_action`
 
-Update the relevant `status.json` with:
+Update `status.json` with:
 
 - `publication_status`
 - `publication_confidence`
@@ -100,11 +94,7 @@ Update the relevant `status.json` with:
 - `micro_paper_assessment`
 - `strongest_honest_claim`
 - `paper_title_hint`
-- `theorem_slice_target`
-- `fallback_target`
-- `next_blocker`
-- `next_feeder_instances`
-- `campaign_health`
+- `candidate_theorem_slice`
 - `publication_packet_quality`
 - `lean_packet_seal`
 - `lean_gate_reason`
@@ -119,17 +109,15 @@ Publication status taxonomy:
 - `REDISCOVERY`
 - `SLICE_CANDIDATE`
 - `SLICE_EXACT`
-- `FAMILY_CANDIDATE`
 - `PAPER_READY`
 
 Interpretation rules:
 
 - Lean-backed exact instance but still just an example: `INSTANCE_ONLY`
-- one-shot candidate with a clear theorem/result packet but light remaining writeup or formal sealing: usually `SLICE_CANDIDATE`
+- one-shot candidate with a clear theorem/result packet and genuinely small remaining gap: usually `SLICE_CANDIDATE`
 - rediscovery: `REDISCOVERY`
 - strong but not fully closed theorem slice: `SLICE_CANDIDATE`
 - fully proved nontrivial slice: `SLICE_EXACT`
-- plausible family theorem not yet closed: `FAMILY_CANDIDATE`
 - strongest honest claim looks genuinely publishable: `PAPER_READY`
 
 Stop-condition rule:

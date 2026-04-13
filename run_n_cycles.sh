@@ -13,7 +13,7 @@ usage() {
 Usage: ./run_n_cycles.sh <positive-integer>
 
 Runs AutoMath for a fixed number of publication-first cycles.
-`run_once.sh` now defaults to publication mode; exact-instance feeder mode remains available via `./run_feeder_cycle.sh`.
+`run_once.sh` runs the strict micro-paper lane.
 Any `.stop_harness` marker is deferred until the requested cycle count completes.
 Set AUTOMATH_SLEEP_SECONDS to override the default 60-second pause between cycles.
 EOF

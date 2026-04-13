@@ -6,6 +6,10 @@ Redesign AutoMath so it optimizes for:
 
 `the smallest frontier claim where a single strong solve is already 70-90% of a paper`
 
+Plain-English restatement:
+
+`something super easy and niche where simple work on one exact claim would already yield a paper`
+
 This is not the same as:
 
 - finding mathematically interesting families,
@@ -18,6 +22,7 @@ The new default target is:
 - frontier enough to matter,
 - exact enough to verify and Lean-seal honestly,
 - and immediately paper-shaped if solved.
+- not dependent on a feeder ladder, broad family buildup, or a second research program after the solve.
 
 Call this the MICRO-PAPER objective:
 
@@ -34,8 +39,7 @@ These are explicit constraints, not suggestions.
 If something does not work, AutoMath must not silently fall back to:
 
 - broad curation,
-- family-campaign mode,
-- feeder-ladder mode,
+- any reserve lane,
 - alternate publication criteria,
 - or any other substitute objective.
 
@@ -87,7 +91,7 @@ Anything that requires a long feeder ladder before becoming paper-shaped should 
 1. Curation should optimize for `solve -> publication distance`, not just solve difficulty.
 2. Any problem that needs a feeder ladder before it becomes paper-shaped should be downranked hard.
 3. Any campaign that keeps producing solved feeders without shrinking the final publication gap should be deprioritized.
-4. "Family theorem potential" should stop dominating unless the family theorem is already very close.
+4. "Family theorem potential" should not dominate selection by itself.
 5. The best targets should be exact theorem/result pairs, sharp obstructions, minimal counterexamples, or tiny structural lemmas with immediate applications.
 6. If solving a problem does not already put the project most of the way to a paper, that problem is probably not a top-priority target.
 
@@ -143,7 +147,7 @@ Anything that requires a long feeder ladder before becoming paper-shaped should 
    - `micro_paper_lane_eligible`
    Success check: the top-ranked queue entries are obviously "paper if solved" rather than "interesting if extended."
 
-7. Introduce a new top-level candidate type: `paper_candidate`.
+7. Use a single live candidate type: `paper_candidate`.
    Meaning:
    - exact theorem/result pair,
    - sharp obstruction,
@@ -167,21 +171,17 @@ Anything that requires a long feeder ladder before becoming paper-shaped should 
 
 ### Phase 3: Scheduler Redesign
 
-9. Split the pipeline into two modes, with one-shot publication mode as the default.
-   Default mode:
+9. Collapse the pipeline to a single live micro-paper mode:
    - curate
-   - bounded novelty check
    - solve
    - verify
    - publication audit
    - Lean only if it directly seals the packet
-   Secondary mode:
-   - campaign mode, only when a family theorem is already visibly near closure
-   Success check: most fresh runs enter the one-shot lane, not the campaign lane.
+   Success check: the active harness no longer exposes campaign-first or feeder-first execution paths.
 
 10. Add hard time caps per candidate.
    Policy:
-   - one bounded solve pass,
+   - up to two concurrent bounded solve passes on distinct queued candidates,
    - one verify pass,
    - one publication audit pass,
    - optional Lean pass only if it directly closes the packet.
@@ -190,8 +190,8 @@ Anything that requires a long feeder ladder before becoming paper-shaped should 
 11. Penalize repeated solved feeders that do not reduce paper distance.
    Success check: the scheduler stops treating "more feeder evidence" as progress when the paper gap is unchanged.
 
-12. Remove automatic preference for long-horizon family generalization unless the family theorem is one or two explicit lemmas from closure.
-   Success check: warm campaigns no longer dominate simply because they already have momentum.
+12. Remove all automatic long-horizon family generalization from the live manager.
+   Success check: legacy non-paper paths no longer dominate simply because they already have momentum.
 
 ### Phase 4: Publication Packet First
 
@@ -318,7 +318,7 @@ Anything that requires a long feeder ladder before becoming paper-shaped should 
 AutoMath should reject or heavily penalize:
 
 - problems that need many feeders before becoming paper-shaped,
-- broad family campaigns with expensive packaging,
+- broad multi-result programs with expensive packaging,
 - exact instances that are easy to solve but expensive to publish,
 - results with fuzzy novelty surfaces,
 - family programs where the theorem still depends on multiple unresolved structural steps.

@@ -40,19 +40,6 @@ def emit(slug):
     print(slug)
 
 
-manifest = base / "campaigns" / "manifest.json"
-if manifest.exists():
-    try:
-        data = json.loads(manifest.read_text())
-    except Exception:
-        data = []
-    if isinstance(data, list):
-        for campaign in data:
-            if not isinstance(campaign, dict):
-                continue
-            for slug in campaign.get("seed_instances", []):
-                emit(slug)
-
 queue_path = base / "queue.json"
 if queue_path.exists():
     try:
@@ -63,26 +50,15 @@ if queue_path.exists():
         for item in queue:
             if not isinstance(item, dict):
                 continue
-            if item.get("entry_type") in {"paper_candidate", "feeder_instance"}:
+            if item.get("entry_type") == "paper_candidate":
                 emit(item.get("slug"))
-            for key in ["seed_instances", "next_feeder_instances"]:
-                for slug in item.get(key, []):
-                    emit(slug)
 
 selected = base / "selected_problem.md"
 if selected.exists():
     text = selected.read_text()
     match = re.search(r"^- slug: `([^`]+)`", text, flags=re.M)
     if match:
-        slug = match.group(1)
-        if not slug.startswith("family-"):
-            emit(slug)
-    for block_key in ["seed_instances", "next_feeder_instances"]:
-        block = re.search(rf"^## {re.escape(block_key)}\n((?:- .+\n)*)", text, flags=re.M)
-        if block:
-            for line in block.group(1).splitlines():
-                if line.startswith("- "):
-                    emit(line[2:].strip())
+        emit(match.group(1))
 PY
 }
 
@@ -96,16 +72,14 @@ seed_monitor_checkout() {
     failed_problems.json
     selected_problem.md
     prompts
-    campaigns
     scripts
     run_once.sh
     run_publication_cycle.sh
-    run_feeder_cycle.sh
     run_n_cycles.sh
     run_continuous.sh
     lean/AutoMath.lean
     lean/AutoMath
-    artifacts/families
+    artifacts/summary.md
   )
 
   for item in "${items[@]}"; do
@@ -124,8 +98,7 @@ sync_monitor_results_back() {
     queue.json
     selected_problem.md
     PROOFS.md
-    campaigns
-    artifacts/families
+    artifacts/summary.md
     artifacts/_logs/cycle.log
     artifacts/_logs/codex_capabilities.json
   )
@@ -160,4 +133,4 @@ seed_monitor_checkout
 sync_monitor_results_back
 
 printf 'Publication monitor cycle complete.\n'
-printf 'Summary: %s\n' "$ROOT/artifacts/families/summary.md"
+printf 'Summary: %s\n' "$ROOT/artifacts/summary.md"

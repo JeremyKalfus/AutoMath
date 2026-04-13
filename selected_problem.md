@@ -1,140 +1,135 @@
-# Does every 5-regular pseudograph contain a {4,1}-factor?
+# Are all graphs on 9 vertices 1-11-representable?
 
 - entry_type: `paper_candidate`
-- slug: `five-regular-pseudograph-4-1-factor`
-- family_name: `Regular graph {a,b}-factors`
-- canonical_source: `Maria Axenovich and Jonathan Rollin, "Brooks type results for conflict-free colorings and {a,b}-factors in graphs" (Discrete Mathematics 338, 2015), plus Douglas West's regular-subgraph problem summary.`
+- slug: `all-9-vertex-graphs-1-11-representable`
+- canonical_source: `Mohammed Alshammari, Sergey Kitaev, Chaoliang Tang, Tianyi Tao, and Junchi Zhang, "On 1-11-representability and multi-1-11-representability of graphs" (Utilitas Mathematica 122, 2025), together with Futorny-Kitaev-Pyatkin, "New Tools to Study 1-11-Representation of Graphs" (Graphs and Combinatorics 40, 2024).`
 - open_status_checked_on: `2026-04-12`
-- attack_style: `minimal-counterexample plus cut/parity analysis through the mod-3 edge-label reformulation`
-- curation_confidence: `medium-high`
+- attack_style: `use the 2024-2025 structural toolbox first, then only bounded exhaustive search on the remaining 9-vertex non-word-representable cases`
+- curation_confidence: `medium`
 - publication_status: `SLICE_CANDIDATE`
-- campaign_affinity: `none`
-- publication_if_solved: `A full resolution of the smallest unresolved Akbari-Kano-type odd-degree case would already read like a short standalone paper.`
-- publication_if_solved_score: `standalone_short_paper`
-- solve_to_publication_distance: `short`
+- publication_if_solved: `Settling the 9-vertex slice would already be a finite-classification note, either as a complete positive census or as a first minimal counterexample paper.`
+- publication_if_solved_score: `paper_with_light_packaging`
+- solve_to_publication_distance: `short-medium`
 - single_pass_proof_plausibility: `medium`
-- paper_leverage_score: `91`
-- single_solve_to_paper_fraction: `0.86`
+- paper_leverage_score: `86`
+- single_solve_to_paper_fraction: `0.76`
 - title_theorem_strength: `strong`
 - family_anchor_strength: `strong`
 - publication_narrative_strength: `strong`
-- editorial_overhead: `low`
+- editorial_overhead: `moderate`
 - immediate_corollary_headroom: `moderate`
 - isolated_exact_case_risk: `low`
 - broader_theorem_implication_risk: `low`
-- search_heavy: `False`
+- search_heavy: `True`
 - certificate_compactness: `high`
 - transfer_kit_present: `True`
-- exact_gap_from_source: `small`
+- exact_gap_from_source: `tiny`
 - micro_paper_lane_eligible: `True`
-- novelty_check_cost: `low-medium`
+- novelty_check_cost: `low`
 - formalization_overhead: `low-medium`
-- packaging_risk: `low`
+- packaging_risk: `medium`
 - needs_feeder_ladder: `no`
 - pre_solve_gate: `pass`
-- publication_packet_quality: `excellent`
-- working_packet_path: `artifacts/five-regular-pseudograph-4-1-factor/working_packet.md`
-- paper_shape: `One exact theorem or counterexample package, with a brief structural section around the mod-3 reformulation and a short obstruction discussion.`
+- publication_packet_quality: `strong`
+- working_packet_path: `artifacts/all-9-vertex-graphs-1-11-representable/working_packet.md`
+- paper_shape: `A smallest-unresolved finite-slice note with structural reductions, a compact classification table, and explicit representing words or a minimal obstruction.`
 
 ## question
-Is every 5-regular pseudograph guaranteed to have a spanning subgraph in which every vertex has degree 4 or 1?
+Does every graph with 9 vertices admit a 1-11 representation, or is there a minimal 9-vertex obstruction?
 
 ## canonical_statement
-Every 5-regular pseudograph contains a {4,1}-factor.
+It is unknown whether every graph is 1-11-representable; the 2025 paper proves all graphs on at most 8 vertices are 1-11-representable and explicitly points toward the 9-vertex slice.
 
 ## intended_statement
-Resolve the exact 5-regular pseudograph case, either by proving every such pseudograph has a {4,1}-factor or by exhibiting a genuine counterexample.
-
-## theorem_slice_hint
-Exploit the mod-3 edge-label equivalence and rule out reducible local configurations in a vertex-minimal counterexample.
+Resolve the first unresolved finite slice by proving that every 9-vertex graph is 1-11-representable, or by producing the first 9-vertex counterexample with a rigorous certificate.
 
 ## why_reasoning_friendly
-The statement is crisp, parity-heavy, and already has a known equivalent reformulation, so the search surface is much closer to a direct proof than to a campaign.
+The problem has a rich reduction toolbox, a sharply bounded finite frontier, and a natural minimal-counterexample flavor.
 
 ## why_low_token
-The object is tiny to state, the verifier is just local degree bookkeeping, and the mod-3 formulation keeps the proof surface narrow.
+The theorem statement is tiny, witnesses are explicit words, and any remaining residue is a finite census rather than an open-ended family.
 
 ## verifier_hint
-For a positive solve, verify the spanning subgraph degrees directly; for a negative solve, preserve the exact counterexample and the argument excluding every {4,1}-factor.
+Positive solutions should preserve explicit 1-11 words for each reduced isomorphism class or a general construction; negative solutions need a complete obstruction certificate for the claimed 9-vertex graph.
 
 ## lean_hint
-If the theorem closes, formalize only the local degree bookkeeping and the reformulation needed for the final statement; do not front-load Lean.
+Only formalize after a human-readable certificate style is fixed; the right backend object is a checker for two-letter subword constraints, not a large search proof.
 
 ## rediscovery_risk
-low-medium
+medium
 
 ## why_still_appears_open
-The 2015 paper explicitly leaves the r = 5, t = 1 case open after disproving the broader odd-r conjecture, and the bounded status sweep surfaced only summary material still pointing to the same residue.
+The 2025 paper still states that it is unknown whether every graph is 1-11-representable, proves only the up-to-8-vertex slice, and identifies the 9-vertex frontier as the next natural target; bounded follow-up search found no later 9-vertex resolution.
 
 ## why_this_could_be_publishable
-It is a named-conjecture residue with a clean yes-or-no endpoint, tiny verifier, and immediate title theorem if solved.
+It is exactly the kind of smallest unresolved finite slice that can become a clean note or a minimal-counterexample paper with low novelty-check cost.
 
 ## pre_solve_gate_reason
-The 2015 paper isolates this exact residue after the larger odd-degree failures, so one solve is already most of a paper with no feeder ladder.
+The 9-vertex slice is already a self-contained smallest unresolved finite classification, so a full settlement would itself be most of a paper without a feeder ladder.
 
 ## micro_paper_assessment
-Pass: this is a named-conjecture residue with a strong title theorem, low editorial overhead, and a direct note narrative once solved.
+Pass: this is a smallest unresolved finite slice with a strong title theorem, explicit family anchor, and only a tiny human-readable search residue.
 
 ## hypothetical_title
-The {4,1}-Factor Problem for 5-Regular Pseudographs
+1-11-Representability of Graphs on 9 Vertices
 
 ## hypothetical_abstract
-We settle the 5-regular pseudograph case of the Akbari-Kano {1,4}-factor problem. Using the mod-3 edge-label reformulation and a minimal-counterexample analysis, we either prove that every 5-regular pseudograph admits a {4,1}-factor or isolate a genuine minimal obstruction. This closes the smallest surviving odd-degree residue after the 2015 counterexamples and leaves only routine framing and formal sealing.
+We settle the first unresolved finite slice of the 1-11-representability program by classifying graphs on 9 vertices. Using the 2024-2025 structural toolbox and a bounded residue analysis, we either prove that every 9-vertex graph is 1-11-representable or isolate a first obstruction with a compact certificate. The result converts the universal conjecture into a sharper frontier statement and needs only light packaging beyond the solve.
 
 ## single_solve_paper_explanation
-The source already supplies the broader conjectural frame and the negative larger-odd-degree background, so the remaining narrative is almost forced. Once the 5-regular residue is solved, the paper mainly needs a short introduction, the exact proof or obstruction, and one brief discussion of how the 2015 reformulation pinpoints the last odd-degree gap. No feeder ladder or second theorem program is needed.
+The source already fixes the natural headline theorem: the 9-vertex slice is the first omitted finite case after the complete 8-vertex classification. Once the slice is settled, the rest of the paper is mostly a short literature frame, a compact certificate table or obstruction description, and one or two immediate remarks on how the 9-vertex frontier interacts with the broader conjecture. The residue is small enough that even a computational component can stay human-readable.
 
 ## broader_theorem_nonimplication_note
-The 2015 paper disproves the broader odd-r conjecture for larger odd degrees but explicitly isolates the 5-regular pseudograph case as the remaining residue; those broader counterexamples do not settle this exact low-degree endpoint.
+The 2025 paper proves the up-to-8-vertex theorem and adjacent structural tools, but it does not imply the 9-vertex slice; bounded follow-up checks found no broader theorem settling the omitted case.
 
 ## literature_gap
-Prior work reaches the reformulation, proves counterexamples for larger odd r, and then stops with the exact 5-regular pseudograph {4,1}-factor case still open.
+Prior work proves 1-11-representability through 8 vertices and develops the nearby toolbox, but stops before the 9-vertex slice.
 
 ## publication_packet_title
-The {4,1}-Factor Problem for 5-Regular Pseudographs
+1-11-Representability of Graphs on 9 Vertices
 
 ## publication_packet_frontier_basis
-The 2015 source narrows the odd-degree landscape to this last 5-regular pseudograph residue after larger odd-degree failures.
+The canonical 2025 paper proves the universal statement through 8 vertices and explicitly points to the 9-vertex slice as the next natural finite frontier.
 
 ## publication_packet_near_paper_reason
-A proof or counterexample would directly close the named low-degree residue and would already determine the title theorem and core proof section of the paper.
+Settling the 9-vertex slice would already be a self-contained finite-classification note or first-obstruction paper with a short path from solve to writeup.
 
 ## publication_packet_literature_scope
-The 2015 source, the mod-3 reformulation it records, and one bounded later-status check.
+The canonical 2025 1-11-representability paper, the adjacent 2024 toolbox paper, and one bounded outside-status check for a later 9-vertex census result.
 
 ## publication_packet_artifact_requirements
-Either a structural proof or a minimal counterexample, together with a tiny checker for the {4,1}-factor or the equivalent edge-labeling certificate.
+Either explicit representing words for the reduced 9-vertex frontier or a certified minimal obstruction, plus a compact two-letter subword checker.
 
 ## paper_shape
-One exact theorem or counterexample package, with a brief structural section around the mod-3 reformulation and a short obstruction discussion.
+A smallest-unresolved finite-slice note with structural reductions, a compact classification table, and explicit representing words or a minimal obstruction.
 
 ## transfer_kit
 
 ### usable_lemmas
-- Use the 2015 equivalence between a {4,1}-factor and an edge-labeling by {1,2} with every vertex-sum 0 modulo 3.
-- The 2015 counterexamples for larger odd degrees mean any proof can focus on the isolated 5-regular residue rather than a broad odd-degree program.
-- Minimal-counterexample reductions can stay local because the certificate is only degree bookkeeping on a spanning subgraph or its mod-3 label image.
+- Use the 2024-2025 structural toolbox to reduce from arbitrary 9-vertex graphs to the non-word-representable residue first.
+- The 2025 paper already proves the complete 8-vertex slice, so all induction and minimal-counterexample rhetoric can start at 9 vertices.
+- Representing words are explicit finite certificates, so any surviving residue can be documented class by class without long certificate dumps.
 
 ### toy_example
-K_6 is a sanity-check model: deleting any perfect matching leaves a spanning 4-regular subgraph, so the positive certificate format is completely explicit on the smallest simple 5-regular graph.
+The full 8-vertex classification from the 2025 source is the immediate toy model: it shows exactly what a positive finite-slice note and certificate table should look like one step lower.
 
 ### known_obstruction
-Naive induction on odd degree is false because larger odd-degree cases already admit counterexamples.
+If the positive route survives only by machine census, the packet risks turning into a search dump unless the residue stays tiny and the certificates stay compact.
 
 ### prior_work_stop_sentence
-After the broader odd-degree failures, prior work stops at the exact 5-regular pseudograph {4,1}-factor case.
+The source proves the 1-11-representability theorem through 8 vertices and then stops at the 9-vertex frontier.
 
 ### recommended_first_attack
-Work in the mod-3 edge-label language and force a vertex-minimal counterexample to contain a reducible cut or parity configuration.
+Use the structural reductions to isolate the few 9-vertex classes not already handled by word-representability and only then run bounded certificate search.
 
 ### paper_if_solved
-The paper would be a one-theorem note closing the last low-degree odd residue, with the mod-3 reformulation as the short setup section.
+The paper would be a finite-slice classification note with a short structural reduction section and either a compact certificate table or a first obstruction section.
 
 ## definitions
-- A {4,1}-factor is a spanning subgraph in which each vertex has degree either 4 or 1.
-- A pseudograph may contain loops and multiple edges.
-- The 2015 source reformulates the problem as an edge-labeling by {1,2} with vertex-sums 0 modulo 3.
+- A graph is 1-11-representable if a word witnesses edges by allowing at most one occurrence of consecutive equal letters and non-edges by forcing at least two.
+- Word-representable graphs are exactly the 0-11-representable graphs.
+- The 2025 source proves all graphs on at most 8 vertices are 1-11-representable and singles out the 9-vertex slice as the next frontier.
 
 ## publication_red_flags
-- The freshest explicit open-status signal is a summary page rather than a dedicated follow-up paper.
-- A negative answer would need a carefully minimized obstruction rather than a raw machine witness.
+- This can drift into a brute-force census if the structural reductions are not used aggressively.
+- If all 9-vertex graphs are representable, the paper still needs a concise certificate strategy rather than a raw machine dump.

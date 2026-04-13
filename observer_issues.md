@@ -1,5 +1,8 @@
 # Observer Issues
 
+Historical note:
+This file is a harness-debug log, not a live operating spec. Read it as historical infrastructure context, not as the current publication-selection policy.
+
 ## 2026-04-08
 
 - Confirmed issue: a curation worker can finish writing `queue.json` close to the timeout boundary, but `run_once.sh` may check for a usable queue too quickly and incorrectly end the cycle as if no queue was produced.

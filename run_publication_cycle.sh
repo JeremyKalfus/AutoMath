@@ -10,5 +10,4 @@ if [[ -f "$HOME/.elan/env" ]]; then
   source "$HOME/.elan/env"
 fi
 
-python3 "$ROOT/scripts/automath_cycle.py" --mode publication "$@"
-
+python3 "$ROOT/scripts/automath_cycle.py" "$@"

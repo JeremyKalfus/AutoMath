@@ -1,18 +1,20 @@
-Read `AGENTS.md` and `selected_problem.md` first.
-If `selected_problem.md` includes `handoff_memo_path`, read that memo immediately after `selected_problem.md` and treat it as the binding scope authority for allowed files, stop condition, and output path.
-If `selected_problem.md` includes `working_packet_path`, read that file immediately after `selected_problem.md`.
+Read `AGENTS.md` and the active selection file first.
+Unless the manager preface names another file, the active selection file is `selected_problem.md`.
+If the active selection file includes `handoff_memo_path`, read that memo immediately after the active selection file and treat it as the binding scope authority for allowed files, stop condition, and output path.
+If the active selection file includes `working_packet_path`, read that file immediately after the active selection file.
 
 This is the SOLVE stage.
 Do NOT browse the internet.
 
 Goal:
-Produce the best reasoning-first attempt on the active selected candidate, with minimal code, while keeping the MICRO-PAPER objective in view.
+Produce the best reasoning-first attempt on the active selected `paper_candidate`, with minimal code, while keeping the MICRO-PAPER objective in view.
 
-- If this is a `paper_candidate`, aim for the exact intended theorem or disproof plus the smallest amount of immediate supporting structure that makes the result paper-shaped.
-- If this is a `feeder_instance`, extract only the family signal that materially shortens the path to publication.
-- Do not settle for “some exact witness” if the result still lacks theorem shape.
+- plain-language target: if this closes, it should already feel like the title theorem of a short paper
+- aim for the exact intended theorem or disproof plus the smallest amount of immediate supporting structure that makes the result paper-shaped
+- do not settle for “some exact witness” if the result still lacks theorem shape
+- if the result is mathematically real but still far from a paper packet, say that explicitly instead of inventing extra side-goals
 
-First determine the active slug and title from `selected_problem.md`.
+First determine the active slug and title from the active selection file.
 Create `artifacts/<slug>/` if missing.
 
 Use these files:
@@ -23,14 +25,14 @@ Use these files:
 
 Read budget:
 
-- target 3 to 6 local files total after `selected_problem.md`
+- target 3 to 6 local files total after the active selection file
 - hard cap 8 local files unless an exact blocker makes one more file unavoidable
 - prefer the working packet, the local artifact record/status, and at most one or two supporting files
 - do not reopen broad ledger history or unrelated artifact directories during solve
 
 Sidecar attempt mode:
 
-- if `selected_problem.md` includes `attempt_output_markdown` and `attempt_output_json`, treat this as a sidecar solver run
+- if the active selection file includes `attempt_output_markdown` and `attempt_output_json`, treat this as a sidecar solver run
 - read the canonical artifact `record.md` / `status.json` as inputs only
 - if the sidecar output files already exist, continue from them instead of restarting from scratch
 - write the durable solve record and solve status to those sidecar output paths instead of the canonical artifact files
@@ -96,7 +98,7 @@ Mandatory publication-aware outputs:
 - `paper_shape_support`
 - `boundary_remark`
 
-If this is a `paper_candidate`, also make explicit:
+Also make explicit:
 
 - whether a successful solve would already be 70-90% of a paper
 - what the exact title theorem would be
@@ -109,7 +111,7 @@ After any strong exact or counterexample result, you must say:
 - what part of the argument scales
 - what part does not
 - what theorem slice is suggested
-- what one or two next feeder instances would help most
+- what one or two next parameter shifts would help most
 - whether the current package is still just an instance or already closer to a paper-shaped claim
 
 In `status.json`, keep at least these keys:

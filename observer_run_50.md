@@ -1,5 +1,8 @@
 # AutoMath 50-Cycle Observer Log
 
+Historical note:
+This file records a pre-one-shot-redesign observer run. Keep it for harness debugging history, but do not treat it as the current AutoMath operating plan or queue policy.
+
 Date: 2026-04-08
 Observer: Codex
 

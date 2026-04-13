@@ -3,63 +3,66 @@ You are working in AutoMath, an automated method for finding niche open math pro
 
 # Goal
 
-The main objective is now one-shot publication mode under the MICRO-PAPER objective:
+The main objective is one-shot publication mode under the MICRO-PAPER objective.
 
-- find the smallest frontier claim where a single strong solve is already 70-90% of a paper
+Plain-English version:
+
+- look for something super easy and niche where simple work on one exact claim would already yield a paper
+- equivalently, find the smallest frontier claim where a single strong solve is already 70-90% of a paper
 - prefer exact theorem/result pairs, sharp obstructions, minimal counterexamples, and tiny structural lemmas with immediate applications
 - optimize for paper leverage rather than microscopic statement size
 - heavily downrank any target that needs a feeder ladder, broad campaign buildup, or expensive post-solve packaging before becoming paper-shaped
 - stop automatically only when the strongest honest claim is both Lean-complete `EXACT` and `publication_status = PAPER_READY`
 
-The exact-instance engine is still available, but only when the exact solve itself is already near-publication.
-Campaign mode is secondary and should be used only when a family theorem is already very close to closure.
+AutoMath is now a strict micro-paper lane only.
+The active harness is exactly five stages: `curate`, `solve`, `verify`, `publication_audit`, and `lean`.
 
 # Repo layout
 
 - `ledger.md`: append-only human-readable log of what the harness did.
-- `queue.json`: current batch of exactly 5 curated dossiers. Entries may now be `paper_candidate`, `family_campaign`, or `feeder_instance`.
+- `queue.json`: current batch of exactly 5 curated dossiers. Every live queue entry should be a `paper_candidate`.
 - `failed_problems.json`: problems that failed, rediscoveries, archived exacts, and other do-not-recur memory.
-- `selected_problem.md`: the currently active queue entry or family campaign brief.
+- `selected_problem.md`: the currently active queue entry.
 - `memory/`: thin canonical memory surfaces, especially `paper_memory.json` for near-paper packets and `search_memory.json` for attempted/rejected targets.
-- `campaigns/`: active campaign dossiers plus campaign manifest/state.
-- `prompts/`: stage prompts for `curate`, `solve`, `verify`, `generalize`, `publication_audit`, and `lean`.
-- `artifacts/<slug>/`: per-instance work files.
-- `artifacts/families/<family_slug>/`: durable family-campaign work files.
-- `lean/`: the official AutoMath Lean backend, including reusable family-supporting lemmas.
+- `prompts/`: stage prompts for `curate`, `solve`, `verify`, `publication_audit`, and `lean`.
+- `artifacts/<slug>/`: per-candidate work files.
+- `lean/`: the official AutoMath Lean backend.
 - `run_once.sh`: one publication-oriented cycle by default.
 - `run_n_cycles.sh`: bounded repeated cycles.
 - `run_continuous.sh`: repeated cycles until stopped.
 
 # Workflow
 
-AutoMath now has 6 conceptual stages:
+AutoMath now has 5 conceptual stages:
 
 1. `curate`
 2. `solve`
 3. `verify`
-4. `generalize`
-5. `publication_audit`
-6. `lean`
+4. `publication_audit`
+5. `lean`
 
 One-shot publication rules:
 
-1. Prefer a `paper_candidate` whose solve would already be most of a paper before considering any family campaign.
-2. Curation must optimize for `solve -> publication distance`, not just solve difficulty.
-3. Any target that needs a feeder ladder before becoming paper-shaped should be downranked hard.
-4. Any campaign that keeps producing solved feeders without shrinking the publication gap should be deprioritized.
-5. Use `publication_audit` to decide whether the strongest honest claim is instance-only, slice-level, family-level, rediscovered, or genuinely paper-ready.
-6. Use Lean only when it directly seals a near-publication packet; do not let formalization overhead dominate early selection.
-7. `EXACT` alone is not a stop condition; the solve must also be paper-shaped enough to audit as `PAPER_READY`.
-8. Stop automatically only when the intended statement is Lean-complete `EXACT`, `publication_status = PAPER_READY`, and the relevant proof/formal artifacts are preserved.
-9. If verification finds rediscovery, archive it and do not treat it as a frontier success.
-10. If a chosen one-shot path fails, do not silently fall back to campaign-first behavior or broad curation; record the blocker clearly and wait for the next explicit selection step.
-11. Infrastructure failures are not mathematical failures: salvage partial artifacts, cool the slug down, and do not archive it as though the theorem failed.
+1. Every live run targets a `paper_candidate`.
+2. In plain terms, prefer the smallest honest target where one clean solve would already read like the title theorem of a short paper.
+3. Curation must optimize for `solve -> publication distance`, not just solve difficulty.
+4. Any target that needs a feeder ladder before becoming paper-shaped should be downranked hard.
+5. Use `publication_audit` to decide whether the strongest honest claim is instance-only, slice-level, rediscovered, or genuinely paper-ready.
+6. The manager may run up to 2 concurrent solve workers on distinct queued `paper_candidate` slugs; solve is the only parallelized stage in the live harness.
+7. The default solve budget is 45 minutes per candidate unless `AUTOMATH_SOLVE_TIMEOUT` is overridden explicitly.
+8. Use Lean only when it directly seals a near-publication packet; do not let formalization overhead dominate early selection.
+9. `EXACT` alone is not a stop condition; the solve must also be paper-shaped enough to audit as `PAPER_READY`.
+10. Stop automatically only when the intended statement is Lean-complete `EXACT`, `publication_status = PAPER_READY`, and the relevant proof/formal artifacts are preserved.
+11. If verification finds rediscovery, archive it and do not treat it as a frontier success.
+12. No automatic fallbacks: if a chosen path fails, do not silently switch into campaign-building, feeder-ladder work, or another conceptually different lane. Record the blocker, preserve useful artifacts, and continue only through the same one-shot lane.
+13. Infrastructure failures are not mathematical failures: salvage partial artifacts, cool the slug down, and do not archive it as though the theorem failed.
 
 Parallel policy:
 
 - One manager thread/worktree orchestrates the run.
-- If the repo is under Git, isolated workers may run in dedicated worktrees.
-- Use subagents or isolated workers only for narrowly scoped tasks with strict context budgets and clear write ownership.
+- The manager may launch up to 2 isolated solve workers concurrently on distinct queued paper candidates.
+- `verify`, `publication_audit`, and `lean` remain manager-serial even when solve runs in parallel.
+- Use isolated workers only for narrowly scoped paper-candidate tasks with strict context budgets and clear write ownership.
 - Merge back only stable dossier and artifact updates.
 - Allowed narrow worker roles are:
   - `curation-scout`
@@ -67,7 +70,7 @@ Parallel policy:
   - `solver-A`
   - `solver-B`
   - `packet-auditor`
-- Do not ask a worker to absorb the whole repo or wander across unrelated campaigns.
+- Do not ask a worker to absorb the whole repo or wander across unrelated dossiers.
 - Every worker should receive a short handoff memo containing:
   - exact statement
   - why publishable if solved
@@ -75,13 +78,14 @@ Parallel policy:
   - stop condition
   - output path
 - Default worker context budget:
-  - 1 candidate or campaign
+  - 1 candidate
   - at most 1 dossier
   - target 3 to 6 source files
   - 1 explicit output file pair
 - Write ownership:
   - the manager owns canonical queue files and canonical `record.md` / `status.json`
-  - solver workers write only candidate-local sidecar attempt artifacts
+  - parallel solve workers may write only candidate-local canonical solve artifacts for their assigned slug plus candidate-local helper files
+  - sidecar solve workers, when used, write only candidate-local sidecar attempt artifacts
   - packet-auditor workers write only publication-packet sidecar artifacts
   - the manager alone decides whether a sidecar output is strong enough to absorb
 
@@ -106,7 +110,6 @@ Parallel policy:
   - `REDISCOVERY`
   - `SLICE_CANDIDATE`
   - `SLICE_EXACT`
-  - `FAMILY_CANDIDATE`
   - `PAPER_READY`
 - Candidate selection should strongly prefer:
   - exact theorem/result pairs,
@@ -117,7 +120,7 @@ Parallel policy:
   - targets where one solve plausibly supplies the title theorem of a short paper.
 - Candidate selection should strongly penalize:
   - feeder ladders,
-  - broad family programs with expensive packaging,
+  - broad theorem programs with expensive packaging,
   - mathematically easy instances that are still far from publication after the solve,
   - targets with high novelty-check cost or high formalization overhead,
   - tiny exact curiosities with weak paper narrative,
@@ -157,7 +160,7 @@ Parallel policy:
 - Verification begins with a bounded rediscovery / prior-art search before proof checking.
 - Curation must explicitly downrank likely rediscoveries, search-heavy targets, feeder-ladder targets, and any target whose solve still leaves a long path to publication.
 - If a specific instance is extracted from a broader open family, curation must check whether an earlier theorem, proposition, example, observation, corollary, or sufficient condition already settles that exact instance.
-- Solve and most family generalization must run with web disabled. Verification may use limited web for the bounded rediscovery pass. Publication audit may use limited web.
+- Solve runs with web disabled. Verification and publication audit may use limited web for bounded prior-art checking.
 - Be conservative about claim types and theorem scope.
 - Keep the ledger updated in plain English.
 - Discard worker outputs that do not honestly shorten solve-to-publication distance.
