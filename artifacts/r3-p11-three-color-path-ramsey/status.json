@@ -1,0 +1,20 @@
+{
+  "slug": "r3-p11-three-color-path-ramsey",
+  "title": "Determine the exact value of R(P11, P11, P11)",
+  "stage": "solve",
+  "classification": "PARTIAL",
+  "confidence": 0.37,
+  "code_used": true,
+  "lean_ready": false,
+  "lean_complete": false,
+  "publication_status": "SLICE_CANDIDATE",
+  "publication_confidence": 0.29,
+  "single_solve_to_paper_fraction": 0.34,
+  "title_theorem_strength": "strong target, unresolved",
+  "publication_narrative_strength": "moderate",
+  "micro_paper_assessment": "Useful saturation lemma and exact structured-family exclusion, but still too thin for the micro-paper lane without the exact theorem or a full counterexample.",
+  "family_affinity": "strong exact-small-parameter three-color path Ramsey family affinity",
+  "generalization_signal": "moderate",
+  "candidate_theorem_slice": "Any K20 coloring in which every vertex lies in a traceable monochromatic 10-vertex component is saturated against one-vertex extension; in particular the explicit dense 5+5+5+5 template does not extend, and no counterexample appears in the tested 5+5+5+5+1 or 6+5+5+5 block-constant deformations.",
+  "next_action": "Verify the saturation lemma wording and the exact structured-family counts, then decide whether to pursue a global nontraceable-component theorem or keep this as a theorem-facing partial."
+}

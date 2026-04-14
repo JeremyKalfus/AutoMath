@@ -12,6 +12,8 @@ import AutoMath.Z7Z7Z2
 import AutoMath.Z2Power8
 import AutoMath.P7SquarePrimeLabeling
 import AutoMath.P4xP4GridPrimeLabeling
+import AutoMath.RB8B10BookRamsey
+import AutoMath.RB10B12BookRamsey
 
 /-
 `AutoMath.Publications` is the publication-safe Lean surface.

@@ -1,0 +1,20 @@
+{
+  "slug": "r-k7-k4e-almost-clique-ramsey",
+  "title": "Determine the exact value of R(K7, K4-e)",
+  "stage": "solve",
+  "classification": "PARTIAL",
+  "confidence": 0.34,
+  "code_used": false,
+  "lean_ready": false,
+  "lean_complete": false,
+  "publication_status": "NONE",
+  "publication_confidence": 0.18,
+  "single_solve_to_paper_fraction": 0.82,
+  "title_theorem_strength": "strong",
+  "publication_narrative_strength": "strong",
+  "micro_paper_assessment": "Exact closure remains open. The current packet isolates a theorem-facing local structure slice, but it is still too thin for the micro-paper lane without the exact 28 versus 29 endpoint.",
+  "family_affinity": "strong local affinity to the R(K_t, K4-e) almost-clique family via the neighborhood-matching and anti-neighborhood recursion template",
+  "generalization_signal": "moderate: for K4-e-free graphs with alpha <= r, the same proof gives matching-plus-isolates neighborhoods, Delta <= 2r, and anti-neighborhood independence at most r-1",
+  "candidate_theorem_slice": "Any K4-e-free graph G with alpha(G) <= 6 has Delta(G) <= 12; each degree-12 neighborhood is 6K2, each degree-11 neighborhood is 5K2 + K1, and every anti-neighborhood has independence number at most 5.",
+  "next_action": "If this lane is continued, focus on the degree-11/12 local template and the resulting alpha <= 5 anti-neighborhood subproblem; do not escalate to broad search without first confirming that this structural slice is not already standard."
+}

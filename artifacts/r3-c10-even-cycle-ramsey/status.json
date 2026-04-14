@@ -1,0 +1,20 @@
+{
+  "slug": "r3-c10-even-cycle-ramsey",
+  "title": "The Exact Value of R(C10, C10, C10)",
+  "stage": "solve",
+  "classification": "PARTIAL",
+  "confidence": 0.39,
+  "code_used": true,
+  "lean_ready": false,
+  "lean_complete": false,
+  "publication_status": "SLICE_CANDIDATE",
+  "publication_confidence": 0.36,
+  "single_solve_to_paper_fraction": 0.82,
+  "title_theorem_strength": "strong",
+  "publication_narrative_strength": "strong",
+  "micro_paper_assessment": "Main claim remains micro-paper eligible, but this solve produced only a supportive theorem slice rather than an exact-value closure.",
+  "family_affinity": "high",
+  "generalization_signal": "moderate",
+  "candidate_theorem_slice": "Every pure four-block blow-up of a 3-edge-colored K4 with part sizes (5,5,5,5) contains a monochromatic C10; the same holds for part sizes (5,5,5,4).",
+  "next_action": "Verify the bounded template-elimination computations, then decide whether to attack five-block/refined-template constructions or build a stability proof around the actual 19-vertex lower-bound pattern."
+}

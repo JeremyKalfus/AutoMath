@@ -1,0 +1,22 @@
+{
+  "slug": "r-b4-b4-diagonal-book-ramsey",
+  "title": "Determine the exact value of R(B4, B4)",
+  "stage": "verify",
+  "classification": "REDISCOVERY",
+  "verify_verdict": "REDISCOVERY",
+  "confidence": "high",
+  "code_used": true,
+  "lean_ready": false,
+  "lean_complete": false,
+  "lean_packet_seal": false,
+  "lean_gate_reason": "Lean is not the shortest remaining path because the exact claim is already a rediscovery; formalization here would be archival rather than publication-sealing.",
+  "publication_status": "REDISCOVERY",
+  "publication_confidence": "high",
+  "single_solve_to_paper_fraction": 0.0,
+  "title_theorem_strength": "preexisting",
+  "publication_narrative_strength": "none",
+  "micro_paper_assessment": "Fail for the micro-paper lane. The exact theorem R(B4,B4)=18 is already in prior art via the prime-power diagonal-book result, and the Paley-17 witness is known family machinery rather than a frontier closure.",
+  "strongest_honest_claim": "The quadratic-residue coloring of K17 is a correct monochromatic-B4-free witness, but this lower-bound slice and the exact equality R(B4,B4)=18 are already known in the literature.",
+  "candidate_theorem_slice": "Known slice: the Paley coloring on 17 vertices yields R(B4,B4) >= 18; combined with the published prime-power theorem this gives the already-known exact value R(B4,B4)=18.",
+  "next_action": "archive_as_rediscovery"
+}

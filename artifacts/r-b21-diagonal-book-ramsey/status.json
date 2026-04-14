@@ -1,0 +1,20 @@
+{
+  "slug": "r-b21-diagonal-book-ramsey",
+  "title": "Determine the exact value of R(B21, B21)",
+  "stage": "solve",
+  "classification": "PARTIAL",
+  "confidence": 0.85,
+  "code_used": "tiny_bounded_experiments_only",
+  "lean_ready": false,
+  "lean_complete": false,
+  "publication_status": "SLICE_CANDIDATE",
+  "publication_confidence": 0.58,
+  "single_solve_to_paper_fraction": 0.78,
+  "title_theorem_strength": "strong",
+  "publication_narrative_strength": "strong",
+  "micro_paper_assessment": "The exact 85-vs-86 claim would still be a micro-paper if closed, but the current output is only a sharp structural slice: any 85-vertex witness must be an srg(85,42,20,21).",
+  "family_affinity": "strong",
+  "generalization_signal": "The common-neighbor summation and Cauchy-equality collapse appear reusable for other diagonal one-gap book Ramsey residues on 4n+1 vertices.",
+  "candidate_theorem_slice": "Any graph on 85 vertices whose graph and complement both avoid B21 must be strongly regular with parameters (85,42,20,21).",
+  "next_action": "Verification should check whether the reduction to srg(85,42,20,21) is already known and whether that conference graph is known to exist or not; if still open, the next solve step is construction/nonexistence strictly inside the conference-graph lane."
+}

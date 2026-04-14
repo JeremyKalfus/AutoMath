@@ -1,0 +1,20 @@
+{
+  "slug": "hoffman-singleton-k50-decomposition",
+  "title": "Does K_50 decompose into 7 copies of the Hoffman-Singleton graph?",
+  "stage": "solve",
+  "classification": "PARTIAL",
+  "confidence": 0.46,
+  "code_used": false,
+  "lean_ready": false,
+  "lean_complete": false,
+  "publication_status": "SLICE_CANDIDATE",
+  "publication_confidence": 0.34,
+  "single_solve_to_paper_fraction": 0.82,
+  "title_theorem_strength": "strong",
+  "publication_narrative_strength": "strong",
+  "micro_paper_assessment": "A real theorem-facing slice is now visible, but the solve did not settle the exact decomposition or obstruction and remains too thin for the micro-paper lane on its own.",
+  "family_affinity": "Exceptional Moore-graph decomposition / strongly regular color-class decomposition of a complete graph.",
+  "generalization_signal": "The local block-matching argument scales to hypothetical decompositions of K_{d^2+1} into d triangle-free Moore graphs, but global closure here still depends on the concrete 14-regular residue.",
+  "candidate_theorem_slice": "Any seven-copy Hoffman-Singleton decomposition of K_50 forces a rigid vertex-centered 7x7 block system with pairwise perfect matchings between corresponding color blocks, and every edge lies in exactly 30 rainbow triangles.",
+  "next_action": "Obtain the explicit five-copy packing or its 14-regular residual graph and test completion/obstruction against the forced block-matching and rainbow-triangle constraints."
+}

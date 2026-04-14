@@ -1,0 +1,20 @@
+{
+  "slug": "density-turan-beta-half-two",
+  "title": "Is beta(1/2,2) equal to 1/50 in the density version of Turan's theorem?",
+  "stage": "solve",
+  "classification": "PARTIAL",
+  "confidence": 0.76,
+  "code_used": false,
+  "lean_ready": false,
+  "lean_complete": false,
+  "publication_status": "SLICE_CANDIDATE",
+  "publication_confidence": 0.58,
+  "single_solve_to_paper_fraction": 0.78,
+  "title_theorem_strength": "strong",
+  "publication_narrative_strength": "strong",
+  "micro_paper_assessment": "A real theorem slice was proved for the C5-homomorphic family, but the global half-set threshold remains unresolved, so this run is not yet paper-ready in the micro-paper lane.",
+  "family_affinity": "Strong for balanced C5 blowups and C5-homomorphic triangle-free graphs; unresolved for Petersen-type witnesses and general triangle-free structure.",
+  "generalization_signal": "The weighted-template averaging argument should transfer to Petersen blowups or a future stability reduction, and nearby alpha values may be tractable inside fixed five-part families.",
+  "candidate_theorem_slice": "Among triangle-free graphs admitting a homomorphism to C5, the maximum possible minimum induced edge density over n/2-vertex subsets is 1/50, achieved uniquely by the balanced C5 blowup.",
+  "next_action": "Verify the weighted C5 optimization and equality case, then attempt the same half-set optimization on Petersen blowups or prove a reduction from near-extremal graphs to the known witness families."
+}

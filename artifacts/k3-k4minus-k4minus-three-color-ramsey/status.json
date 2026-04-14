@@ -1,0 +1,20 @@
+{
+  "slug": "k3-k4minus-k4minus-three-color-ramsey",
+  "title": "Determine the exact value of R(K3, K4-e, K4-e)",
+  "stage": "solve",
+  "classification": "PARTIAL",
+  "confidence": "medium",
+  "code_used": "minimal exhaustive circulant scan over distance-colorings on Z_n for n=17..21",
+  "lean_ready": false,
+  "lean_complete": false,
+  "publication_status": "NONE",
+  "publication_confidence": "low",
+  "single_solve_to_paper_fraction": 0.78,
+  "title_theorem_strength": "strong",
+  "publication_narrative_strength": "strong",
+  "micro_paper_assessment": "Unresolved. This pass eliminated pure circulant witnesses for n=17..21 and sharpened the solver map, but it did not close the exact value or produce a paper-shaped theorem packet.",
+  "family_affinity": "Strong small-graph three-color Ramsey residue around R(K3, J4, J4) and the equivalent K3+e/J4/J4 slice.",
+  "generalization_signal": "Neighborhood-matching reductions scale naturally in J4-type Ramsey problems, while pure one-orbit circulant constructions appear too rigid even below the known lower bound.",
+  "candidate_theorem_slice": "No pure circulant distance-coloring on Z_n for 17 <= n <= 21 avoids a red K3 and blue/green J4.",
+  "next_action": "Either isolate the exact local two-color threshold needed to force 21 via the neighborhood-matching reduction, or test the smallest near-circulant witness family on 21."
+}

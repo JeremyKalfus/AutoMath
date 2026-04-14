@@ -2,25 +2,25 @@
 
 - slug: `all-9-vertex-graphs-1-11-representable`
 - title: Are all graphs on 9 vertices 1-11-representable?
-- publication status: `SLICE_CANDIDATE`
+- publication status: `NONE`
 - packet quality: `strong`
 - micro-paper eligible: `True`
 - paper leverage score: `86`
 - single-solve-to-paper fraction: `0.76`
 
 ## statement
-Resolve the first unresolved finite slice by proving that every 9-vertex graph is 1-11-representable, or by producing the first 9-vertex counterexample with a rigorous certificate.
+Either prove that every 9-vertex graph is 1-11-representable or produce a first 9-vertex counterexample with a rigorous certificate.
 
 ## novelty_notes
-- frontier basis: The canonical 2025 paper proves the universal statement through 8 vertices and explicitly points to the 9-vertex slice as the next natural finite frontier.
-- why still open: The 2025 paper still states that it is unknown whether every graph is 1-11-representable, proves only the up-to-8-vertex slice, and identifies the 9-vertex frontier as the next natural target; bounded follow-up search found no later 9-vertex resolution.
-- attempted conflict check: The repo exclusion sweep found no existing AutoMath artifact, queue entry, or failed problem near the 1-11-representability 9-vertex slice.
-- rediscovery risk: medium
+- frontier basis: The 2025 paper proves the universal statement through 8 vertices and explicitly identifies the 9-vertex slice as the next finite frontier; bounded follow-up checks surfaced no later 9-vertex resolution.
+- why still open: (not recorded)
+- attempted conflict check: The exclusion sweep found no prior AutoMath mathematical attempt, slug conflict, or near-duplicate for the exact 9-vertex 1-11-representability slice.
+- rediscovery risk: (not recorded)
 
 ## proof_sketch
-- attack style: use the 2024-2025 structural toolbox first, then only bounded exhaustive search on the remaining 9-vertex non-word-representable cases
-- likely route: Settling the 9-vertex slice would already be a self-contained finite-classification note or first-obstruction paper with a short path from solve to writeup.
-- verifier focus: Positive solutions should preserve explicit 1-11 words for each reduced isomorphism class or a general construction; negative solutions need a complete obstruction certificate for the claimed 9-vertex graph.
+- attack style: (not recorded)
+- likely route: After the solve, the remaining paper is mostly a short literature frame, a compact certificate table or obstruction section, and one brief discussion of how the 9-vertex slice sharpens the broader conjecture.
+- verifier focus: (not recorded)
 
 ## micro_paper_test
 - title theorem strength: strong
@@ -30,29 +30,30 @@ Resolve the first unresolved finite slice by proving that every 9-vertex graph i
 - immediate corollary headroom: moderate
 - isolated exact-case risk: low
 - broader-theorem implication risk: low
+- theorem-slice stability: stable
 - search-heavy: True
 - certificate compactness: high
 - exact gap from source: tiny
-- assessment: Pass: this is a smallest unresolved finite slice with a strong title theorem, explicit family anchor, and only a tiny human-readable search residue.
+- assessment: Pass: this is the first unresolved finite slice, the theorem surface is stable, and the remaining search residue is small enough to stay certificate-compact.
 
 ## likely_paper_shape
 - note title: 1-11-Representability of Graphs on 9 Vertices
 - hypothetical title: 1-11-Representability of Graphs on 9 Vertices
 - paper shape: A smallest-unresolved finite-slice note with structural reductions, a compact classification table, and explicit representing words or a minimal obstruction.
-- publication if solved: Settling the 9-vertex slice would already be a finite-classification note, either as a complete positive census or as a first minimal counterexample paper.
+- publication if solved: Settling the first unresolved finite slice at 9 vertices would already be a compact finite-classification note or first-obstruction note.
 - minimal artifact requirements: Either explicit representing words for the reduced 9-vertex frontier or a certified minimal obstruction, plus a compact two-letter subword checker.
 
 ## hypothetical_abstract
 We settle the first unresolved finite slice of the 1-11-representability program by classifying graphs on 9 vertices. Using the 2024-2025 structural toolbox and a bounded residue analysis, we either prove that every 9-vertex graph is 1-11-representable or isolate a first obstruction with a compact certificate. The result converts the universal conjecture into a sharper frontier statement and needs only light packaging beyond the solve.
 
 ## single_solve_explanation
-The source already fixes the natural headline theorem: the 9-vertex slice is the first omitted finite case after the complete 8-vertex classification. Once the slice is settled, the rest of the paper is mostly a short literature frame, a compact certificate table or obstruction description, and one or two immediate remarks on how the 9-vertex frontier interacts with the broader conjecture. The residue is small enough that even a computational component can stay human-readable.
+The literature already fixes the headline theorem: the 9-vertex slice is the first omitted finite case after a complete 8-vertex classification. Once that slice is settled, the note largely writes itself as a short structural reduction plus a compact table of representing words or a first obstruction. The only remaining risk is keeping any machine residue small and human-readable.
 
 ## broader_theorem_nonimplication
-The 2025 paper proves the up-to-8-vertex theorem and adjacent structural tools, but it does not imply the 9-vertex slice; bounded follow-up checks found no broader theorem settling the omitted case.
+The 2025 paper proves the up-to-8-vertex theorem and develops nearby tools, but it does not imply the 9-vertex slice, and bounded follow-up checks did not reveal a broader theorem settling that omitted case.
 
 ## literature_gap
-Prior work proves 1-11-representability through 8 vertices and develops the nearby toolbox, but stops before the 9-vertex slice.
+Prior work proves 1-11-representability through 8 vertices and develops the adjacent structural toolbox, but stops before the 9-vertex slice.
 
 ## transfer_kit
 - lemma: Use the 2024-2025 structural toolbox to reduce from arbitrary 9-vertex graphs to the non-word-representable residue first.
@@ -66,6 +67,6 @@ Prior work proves 1-11-representability through 8 vertices and develops the near
 
 ## bounded_source_list
 - Mohammed Alshammari, Sergey Kitaev, Chaoliang Tang, Tianyi Tao, and Junchi Zhang, "On 1-11-representability and multi-1-11-representability of graphs" (Utilitas Mathematica 122, 2025), together with Futorny-Kitaev-Pyatkin, "New Tools to Study 1-11-Representation of Graphs" (Graphs and Combinatorics 40, 2024).
-- The canonical 2025 1-11-representability paper, the adjacent 2024 toolbox paper, and one bounded outside-status check for a later 9-vertex census result.
+- The 2025 1-11-representability paper, the 2024 toolbox paper, and bounded later-status checks for a 9-vertex census resolution.
 - artifacts/all-9-vertex-graphs-1-11-representable/record.md
 - artifacts/all-9-vertex-graphs-1-11-representable/status.json

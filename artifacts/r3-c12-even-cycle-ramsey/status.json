@@ -1,0 +1,20 @@
+{
+  "slug": "r3-c12-even-cycle-ramsey",
+  "title": "Determine the exact value of R(C12, C12, C12)",
+  "stage": "solve",
+  "classification": "PARTIAL",
+  "confidence": 0.34,
+  "code_used": false,
+  "lean_ready": false,
+  "lean_complete": false,
+  "publication_status": "NONE",
+  "publication_confidence": 0.18,
+  "single_solve_to_paper_fraction": 0.75,
+  "title_theorem_strength": "strong",
+  "publication_narrative_strength": "strong",
+  "micro_paper_assessment": "Main exact claim remains open. Current output is a real obstruction slice, but still too thin for the micro-paper lane on its own.",
+  "family_affinity": "strong",
+  "generalization_signal": "Balanced 4-part blow-up obstruction scales across the even-cycle family, but the stability reduction from arbitrary colorings is still missing.",
+  "candidate_theorem_slice": "Any balanced 4-part blow-up of the proper 3-coloring of K4 with part size 6 already contains a monochromatic C12 via a monochromatic K_{6,6}.",
+  "next_action": "Recover the explicit 23-vertex lower-bound template or prove a stability reduction showing that any K24 counterexample must create a monochromatic K_{6,6}-type obstruction."
+}

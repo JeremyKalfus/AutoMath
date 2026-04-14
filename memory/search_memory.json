@@ -1,95 +1,7 @@
 {
-  "generated_on": "2026-04-13T02:07:05.238000-04:00",
-  "count": 91,
+  "generated_on": "2026-04-14T08:38:13.382052-04:00",
+  "count": 102,
   "recent_attempts": [
-    {
-      "slug": "dsrg-28-6-3-2-1",
-      "reason": "ATTEMPTED",
-      "title": "dsrg-28-6-3-2-1",
-      "notes": "Legacy archived attempt preserved before thin search memory existed.",
-      "checked_on": null,
-      "publication_status": null
-    },
-    {
-      "slug": "powers-of-two-pairs-23",
-      "reason": "ATTEMPTED",
-      "title": "powers-of-two-pairs-23",
-      "notes": "Legacy archived attempt preserved before thin search memory existed.",
-      "checked_on": null,
-      "publication_status": null
-    },
-    {
-      "slug": "d5-balanced-equi-30-square",
-      "reason": "ATTEMPTED",
-      "title": "d5-balanced-equi-30-square",
-      "notes": "Legacy archived attempt preserved before thin search memory existed.",
-      "checked_on": null,
-      "publication_status": null
-    },
-    {
-      "slug": "dsrg-24-10-5-3-5",
-      "reason": "ATTEMPTED",
-      "title": "dsrg-24-10-5-3-5",
-      "notes": "Legacy archived attempt preserved before thin search memory existed.",
-      "checked_on": null,
-      "publication_status": null
-    },
-    {
-      "slug": "dsrg-27-7-4-1-2",
-      "reason": "ATTEMPTED",
-      "title": "dsrg-27-7-4-1-2",
-      "notes": "Legacy archived attempt preserved before thin search memory existed.",
-      "checked_on": null,
-      "publication_status": null
-    },
-    {
-      "slug": "dsrg-40-18-9-7-9",
-      "reason": "ATTEMPTED",
-      "title": "dsrg-40-18-9-7-9",
-      "notes": "Legacy archived attempt preserved before thin search memory existed.",
-      "checked_on": null,
-      "publication_status": null
-    },
-    {
-      "slug": "dsrg-48-22-11-9-11",
-      "reason": "ATTEMPTED",
-      "title": "dsrg-48-22-11-9-11",
-      "notes": "Legacy archived attempt preserved before thin search memory existed.",
-      "checked_on": null,
-      "publication_status": null
-    },
-    {
-      "slug": "dsrg-56-12-3-1-3",
-      "reason": "ATTEMPTED",
-      "title": "dsrg-56-12-3-1-3",
-      "notes": "Legacy archived attempt preserved before thin search memory existed.",
-      "checked_on": null,
-      "publication_status": null
-    },
-    {
-      "slug": "dsrg-48-9-5-0-2",
-      "reason": "ATTEMPTED",
-      "title": "dsrg-48-9-5-0-2",
-      "notes": "Legacy archived attempt preserved before thin search memory existed.",
-      "checked_on": null,
-      "publication_status": null
-    },
-    {
-      "slug": "dsrg-30-11-9-2-5",
-      "reason": "ATTEMPTED",
-      "title": "dsrg-30-11-9-2-5",
-      "notes": "Legacy archived attempt preserved before thin search memory existed.",
-      "checked_on": null,
-      "publication_status": null
-    },
-    {
-      "slug": "z11-z25-prime-zero-divisor-graph",
-      "reason": "CANDIDATE",
-      "title": "Is the zero-divisor graph \u0393(Z_11 \u00d7 Z_25) prime?",
-      "notes": "Verified feeder evidence archived so the p = 11 witness remains campaign input for the zero-divisor theorem slice without reentering the live queue as a fresh target.",
-      "checked_on": "2026-04-09",
-      "publication_status": "SLICE_CANDIDATE"
-    },
     {
       "slug": "z11-z11-z2-prime-zero-divisor-graph",
       "reason": "CANDIDATE",
@@ -320,6 +232,94 @@
       "title": "Are all graphs on 9 vertices 1-11-representable?",
       "notes": "VARIANT",
       "checked_on": "2026-04-13",
+      "publication_status": "REDISCOVERY"
+    },
+    {
+      "slug": "r-b8-b10-book-ramsey",
+      "reason": "CANDIDATE",
+      "title": "Determine the exact value of R(B8, B10)",
+      "notes": "Verified but not fully sealed micro-paper attempt archived so it does not immediately recycle into the queue.",
+      "checked_on": "2026-04-13",
+      "publication_status": "SLICE_CANDIDATE"
+    },
+    {
+      "slug": "r-b15-b17-book-ramsey",
+      "reason": "REDISCOVERY",
+      "title": "Determine the exact value of R(B15, B17)",
+      "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
+      "checked_on": "2026-04-14",
+      "publication_status": "REDISCOVERY"
+    },
+    {
+      "slug": "r-b4-b4-diagonal-book-ramsey",
+      "reason": "REDISCOVERY",
+      "title": "Determine the exact value of R(B4, B4)",
+      "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
+      "checked_on": "2026-04-14",
+      "publication_status": "REDISCOVERY"
+    },
+    {
+      "slug": "r-b6-b6-diagonal-book-ramsey",
+      "reason": "REDISCOVERY",
+      "title": "Determine the exact value of R(B6, B6)",
+      "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
+      "checked_on": "2026-04-14",
+      "publication_status": "REDISCOVERY"
+    },
+    {
+      "slug": "r-b7-b7-diagonal-book-ramsey",
+      "reason": "REDISCOVERY",
+      "title": "Determine the exact value of R(B7, B7)",
+      "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
+      "checked_on": "2026-04-14",
+      "publication_status": "REDISCOVERY"
+    },
+    {
+      "slug": "r-b9-b9-diagonal-book-ramsey",
+      "reason": "REDISCOVERY",
+      "title": "Determine the exact value of R(B9, B9)",
+      "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
+      "checked_on": "2026-04-14",
+      "publication_status": "REDISCOVERY"
+    },
+    {
+      "slug": "r-k3-k4-k4-three-color-ramsey",
+      "reason": "REDISCOVERY",
+      "title": "Determine the exact value of R(K3, K4, K4)",
+      "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
+      "checked_on": "2026-04-14",
+      "publication_status": "REDISCOVERY"
+    },
+    {
+      "slug": "r-b12-b12-diagonal-book-ramsey",
+      "reason": "REDISCOVERY",
+      "title": "Determine the exact value of R(B12, B12)",
+      "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
+      "checked_on": "2026-04-14",
+      "publication_status": "REDISCOVERY"
+    },
+    {
+      "slug": "r-b13-b13-diagonal-book-ramsey",
+      "reason": "CANDIDATE_SURVIVES_WITH_CITATION_RISK",
+      "title": "Determine the exact value of R(B13, B13)",
+      "notes": "CANDIDATE_SURVIVES_WITH_CITATION_RISK",
+      "checked_on": "2026-04-14",
+      "publication_status": "REDISCOVERY"
+    },
+    {
+      "slug": "r-b19-b19-diagonal-book-ramsey",
+      "reason": "REDISCOVERED_IN_CANONICAL_SOURCE_DURING_PUBLICATION_AUDIT",
+      "title": "Determine the exact value of R(B19, B19)",
+      "notes": "REDISCOVERED_IN_CANONICAL_SOURCE_DURING_PUBLICATION_AUDIT",
+      "checked_on": "2026-04-14",
+      "publication_status": "REDISCOVERY"
+    },
+    {
+      "slug": "r-b20-b20-diagonal-book-ramsey",
+      "reason": "REDISCOVERY",
+      "title": "Determine the exact value of R(B20, B20)",
+      "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
+      "checked_on": "2026-04-14",
       "publication_status": "REDISCOVERY"
     }
   ]

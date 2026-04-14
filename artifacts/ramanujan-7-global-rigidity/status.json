@@ -1,0 +1,20 @@
+{
+  "slug": "ramanujan-7-global-rigidity",
+  "title": "Is every 7-regular Ramanujan graph globally rigid in R^2?",
+  "stage": "solve",
+  "classification": "PARTIAL",
+  "confidence": 0.58,
+  "code_used": true,
+  "lean_ready": false,
+  "lean_complete": false,
+  "publication_status": "SLICE_CANDIDATE",
+  "publication_confidence": 0.34,
+  "single_solve_to_paper_fraction": 0.77,
+  "title_theorem_strength": "strong target, not yet closed",
+  "publication_narrative_strength": "good if the remaining residue closes; current slice alone is too thin",
+  "micro_paper_assessment": "A real theorem-facing separator slice was obtained, but the current package is still too thin for the micro-paper lane because 4-cut templates for n=16,18 and 5-cut templates generally remain alive.",
+  "family_affinity": "high",
+  "generalization_signal": "moderate; separator-plus-interlacing scales to tiny cuts but weakens at larger separators",
+  "candidate_theorem_slice": "Every 7-regular Ramanujan graph on 16, 18, or 20 vertices has no vertex cut of size at most 3; moreover, a 20-vertex 7-regular Ramanujan graph has no vertex cut of size 4.",
+  "next_action": "Tighten the surviving 4-cut templates for n=16 and n=18, then attack the s=5 residue using additional rigidity structure or local residue tables rather than more raw quotient bounds."
+}

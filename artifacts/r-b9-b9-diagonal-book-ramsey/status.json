@@ -1,0 +1,22 @@
+{
+  "slug": "r-b9-b9-diagonal-book-ramsey",
+  "title": "Determine the exact value of R(B9, B9)",
+  "stage": "verify",
+  "verify_verdict": "REDISCOVERY",
+  "classification": "REDISCOVERY",
+  "confidence": 0.96,
+  "code_used": true,
+  "lean_ready": false,
+  "lean_packet_seal": false,
+  "lean_complete": false,
+  "lean_gate_reason": "PASS 1 indicates the exact theorem R(B9,B9)=38 is already covered in prior art, so Lean would formalize a rediscovery rather than seal a frontier publication packet.",
+  "publication_status": "REDISCOVERY",
+  "publication_confidence": 0.95,
+  "single_solve_to_paper_fraction": 0.0,
+  "title_theorem_strength": "known exact theorem, not frontier-novel",
+  "publication_narrative_strength": "none",
+  "micro_paper_assessment": "Mathematically clean exact-value packet, but not a micro-paper candidate because the exact statement appears to be already known from prior art.",
+  "strongest_honest_claim": "The local Goodman-plus-Paley argument correctly reproduces the known exact value R(B9,B9)=38, but this run does not establish novelty.",
+  "candidate_theorem_slice": "A monochromatic-B9-free coloring of K37 lies on the Goodman equality boundary and has strongly regular parameters (37,18,8,9), realized by the Paley graph on 37 vertices; this is supporting structure for a known theorem, not a new frontier slice.",
+  "next_action": "archive_as_rediscovery"
+}

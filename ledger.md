@@ -14421,6 +14421,7 @@
 - Canonical family `record.md` now contains the required publication-audit sections, and `status.json` was updated before closeout to `stage = publication_audit` with conservative values `publication_status = SLICE_EXACT`, `publication_confidence = high`, `lean_ready = true`, and `proof_artifacts_preserved = true`; the paired exact slice is theorem-worthy and stronger than an example, but the campaign is still not `PAPER_READY` until the missing `F25` injection / extension package yields the direct finite-range corollary through `59 <= p <= 97`.
 - Stop marker already exists, so this cycle was skipped.
 - Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curate refreshed the 5-slot micro-paper queue with `r3-p10-three-color-path-ramsey` retained as the top selected problem after a bounded web audit against DS1.17 and family-level cycle/path sources.
 - Publication mode selected one-shot paper candidate forbidden-outdegree-orientation-d7 instead of silently preferring a warm family campaign.
 - started solving forbidden-outdegree-orientation-d7
 - Solve pass for forbidden-outdegree-orientation-d7 proved two conservative slices without using code: every 7-regular graph has a strong `{3,4}`-orientation, so all forbidden sets disjoint from `{3,4}` are solved, and the full conjecture holds for bipartite 7-regular graphs by orienting a 1-factorization along a complementary pair `{k,7-k}` missed by `F`.
@@ -14480,3 +14481,659 @@
 - Publication mode selected one-shot paper candidate paley-graph-internal-partition.
 - Parallel solve launch: solver-A started paley-graph-internal-partition with a 2700-second budget.
 - started solving paley-graph-internal-partition
+- Parallel solve finish: solver-A completed paley-graph-internal-partition with a usable solve artifact; worker log at artifacts/_logs/20260413T021243_solve_paley-graph-internal-partition.stdout.log.
+- Publication mode advanced paley-graph-internal-partition from solved status into verify/publication audit.
+- Resuming paley-graph-internal-partition from preserved solve artifacts instead of rerunning solve.
+- Publication audit for paley-graph-internal-partition on 2026-04-13 02:26:36 EDT kept the slug at SLICE_CANDIDATE, lowered one-shot paper leverage, and flagged that the current proof appears to collapse to a generic conference-graph closed-neighborhood observation; next action is one pinpoint folklore check before any Lean work.
+- Lean was skipped for paley-graph-internal-partition because Hold Lean until the conference-graph folklore question is cleared; Lean would certify correctness, but it would not resolve whether the result is already implicit or too immediate for a standalone note..
+- publication cycle started at 2026-04-13 02:27:32 EDT.
+- Publication mode resumed one-shot paper candidate paley-graph-internal-partition from preserved solve artifacts.
+- Resuming paley-graph-internal-partition from preserved solve artifacts instead of rerunning solve.
+- Lean was skipped for paley-graph-internal-partition because Lean can seal the short closed-neighborhood argument once the exact theorem slice is frozen, but it does not resolve the remaining publication gate: whether the conference-graph observation is already known or folklore..
+- publication cycle finished at 2026-04-13 02:43:17 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 02:44:17 EDT.
+- Publication mode resumed one-shot paper candidate paley-graph-internal-partition from preserved solve artifacts.
+- Resuming paley-graph-internal-partition from preserved solve artifacts instead of rerunning solve.
+- publication cycle started at 2026-04-13 02:53:55 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Publication mode selected one-shot paper candidate hoffman-singleton-k50-decomposition.
+- Parallel solve launch: solver-A started hoffman-singleton-k50-decomposition with a 2700-second budget.
+- started solving hoffman-singleton-k50-decomposition
+- Parallel solve finish: solver-A completed hoffman-singleton-k50-decomposition with a usable solve artifact; worker log at artifacts/_logs/20260413T030242_solve_hoffman-singleton-k50-decomposition.stdout.log.
+- Parallel solve batch ended without a queued candidate advancing past solve, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 03:17:13 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 03:18:14 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 03:22:14 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 03:23:14 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 03:26:37 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 03:27:37 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation timed out before producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 03:40:57 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 03:41:57 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Publication mode selected one-shot paper candidate density-turan-beta-half-two.
+- Parallel solve launch: solver-A started density-turan-beta-half-two with a 2700-second budget.
+- started solving density-turan-beta-half-two
+- Parallel solve finish: solver-A completed density-turan-beta-half-two with a usable solve artifact; worker log at artifacts/_logs/20260413T035027_solve_density-turan-beta-half-two.stdout.log.
+- Parallel solve batch ended without a queued candidate advancing past solve, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 04:35:34 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 10:06:50 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 10:10:27 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 10:11:27 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 10:14:41 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 10:15:41 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 10:20:12 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 10:21:12 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 10:24:04 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 10:25:04 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Publication mode launched a parallel solve batch for 2k2-k4-recolourable, ramanujan-7-global-rigidity with 2 concurrent slots and 2700-second per-solve budgets.
+- Parallel solve launch: solver-A started 2k2-k4-recolourable with a 2700-second budget.
+- Parallel solve launch: solver-B started ramanujan-7-global-rigidity with a 2700-second budget.
+- started solving ramanujan-7-global-rigidity
+- started solving 2k2-k4-recolourable
+- Parallel solve finish: solver-B completed ramanujan-7-global-rigidity with a usable solve artifact; worker log at artifacts/_logs/20260413T103403_solve_ramanujan-7-global-rigidity.stdout.log.
+- Parallel solve finish: solver-A completed 2k2-k4-recolourable with a usable solve artifact; worker log at artifacts/_logs/20260413T103403_solve_2k2-k4-recolourable.stdout.log.
+- Parallel solve batch ended without a queued candidate advancing past solve, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 10:42:41 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 10:43:41 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Publication mode selected one-shot paper candidate ramanujan-4vt-48-52-global-rigidity.
+- Parallel solve launch: solver-A started ramanujan-4vt-48-52-global-rigidity with a 2700-second budget.
+- started solving ramanujan-4vt-48-52-global-rigidity
+- Parallel solve finish: solver-A completed ramanujan-4vt-48-52-global-rigidity with a usable solve artifact; worker log at artifacts/_logs/20260413T105130_solve_ramanujan-4vt-48-52-global-rigidity.stdout.log.
+- Parallel solve batch ended without a queued candidate advancing past solve, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 11:03:17 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 11:04:17 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 11:11:48 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 11:12:48 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 11:16:35 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 11:17:35 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 11:20:59 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 11:21:59 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- publication cycle started at 2026-04-13 12:08:09 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Publication mode launched a parallel solve batch for r3-p11-three-color-path-ramsey, r3-c12-even-cycle-ramsey with 2 concurrent slots and 2700-second per-solve budgets.
+- Parallel solve launch: solver-A started r3-p11-three-color-path-ramsey with a 2700-second budget.
+- Parallel solve launch: solver-B started r3-c12-even-cycle-ramsey with a 2700-second budget.
+- started solving r3-p11-three-color-path-ramsey
+- started solving r3-c12-even-cycle-ramsey
+- Parallel solve finish: solver-B completed r3-c12-even-cycle-ramsey with a usable solve artifact; worker log at artifacts/_logs/20260413T121556_solve_r3-c12-even-cycle-ramsey.stdout.log.
+- Parallel solve finish: solver-A completed r3-p11-three-color-path-ramsey with a usable solve artifact; worker log at artifacts/_logs/20260413T121556_solve_r3-p11-three-color-path-ramsey.stdout.log.
+- Parallel solve batch ended without a queued candidate advancing past solve, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 12:24:52 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 12:25:52 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Publication mode launched a parallel solve batch for r3-c9-odd-cycle-ramsey, r3-p12-three-color-path-ramsey with 2 concurrent slots and 2700-second per-solve budgets.
+- Parallel solve launch: solver-A started r3-c9-odd-cycle-ramsey with a 2700-second budget.
+- Parallel solve launch: solver-B started r3-p12-three-color-path-ramsey with a 2700-second budget.
+- started solving r3-c9-odd-cycle-ramsey
+- started solving r3-p12-three-color-path-ramsey
+- Parallel solve finish: solver-A completed r3-c9-odd-cycle-ramsey with a usable solve artifact; worker log at artifacts/_logs/20260413T123419_solve_r3-c9-odd-cycle-ramsey.stdout.log.
+- Parallel solve finish: solver-B completed r3-p12-three-color-path-ramsey with a usable solve artifact; worker log at artifacts/_logs/20260413T123419_solve_r3-p12-three-color-path-ramsey.stdout.log.
+- Parallel solve batch ended without a queued candidate advancing past solve, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 12:55:09 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 12:56:09 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation timed out before producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 13:10:55 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 13:11:55 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 13:15:43 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 13:16:43 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 13:21:26 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 13:22:26 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 13:25:59 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 13:26:59 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 13:30:25 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 13:31:25 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Publication mode launched a parallel solve batch for r3-p10-three-color-path-ramsey, r3-c10-even-cycle-ramsey with 2 concurrent slots and 2700-second per-solve budgets.
+- Parallel solve launch: solver-A started r3-p10-three-color-path-ramsey with a 2700-second budget.
+- Parallel solve launch: solver-B started r3-c10-even-cycle-ramsey with a 2700-second budget.
+- started solving r3-p10-three-color-path-ramsey
+- started solving r3-c10-even-cycle-ramsey
+- Parallel solve finish: solver-A completed r3-p10-three-color-path-ramsey with a usable solve artifact; worker log at artifacts/_logs/20260413T133904_solve_r3-p10-three-color-path-ramsey.stdout.log.
+- Parallel solve finish: solver-B completed r3-c10-even-cycle-ramsey with a usable solve artifact; worker log at artifacts/_logs/20260413T133904_solve_r3-c10-even-cycle-ramsey.stdout.log.
+- Parallel solve batch ended without a queued candidate advancing past solve, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 13:47:44 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 13:48:44 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 13:51:25 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 13:52:25 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 14:00:04 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 14:01:04 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Publication mode launched a parallel solve batch for r-b4-b7-book-ramsey, r-b2-b10-book-ramsey with 2 concurrent slots and 2700-second per-solve budgets.
+- Parallel solve launch: solver-A started r-b4-b7-book-ramsey with a 2700-second budget.
+- Parallel solve launch: solver-B started r-b2-b10-book-ramsey with a 2700-second budget.
+- started solving r-b4-b7-book-ramsey
+- started solving r-b2-b10-book-ramsey
+- Parallel solve finish: solver-B completed r-b2-b10-book-ramsey with a usable solve artifact; worker log at artifacts/_logs/20260413T141041_solve_r-b2-b10-book-ramsey.stdout.log.
+- Parallel solve finish: solver-A completed r-b4-b7-book-ramsey with a usable solve artifact; worker log at artifacts/_logs/20260413T141041_solve_r-b4-b7-book-ramsey.stdout.log.
+- Parallel solve batch ended without a queued candidate advancing past solve, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 14:22:41 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 14:23:41 EDT.
+- Publication mode selected one-shot paper candidate r-b11-diagonal-book-ramsey.
+- Parallel solve launch: solver-A started r-b11-diagonal-book-ramsey with a 2700-second budget.
+- started solving r-b11-diagonal-book-ramsey
+- Parallel solve finish: solver-A completed r-b11-diagonal-book-ramsey with a usable solve artifact; worker log at artifacts/_logs/20260413T142341_solve_r-b11-diagonal-book-ramsey.stdout.log.
+- Parallel solve batch ended without a queued candidate advancing past solve, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 14:34:18 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 14:35:18 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation timed out before producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 15:29:07 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 15:30:07 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation timed out before producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 15:54:39 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 15:55:39 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Publication mode launched a parallel solve batch for r-b16-diagonal-book-ramsey, r-b21-diagonal-book-ramsey with 2 concurrent slots and 2700-second per-solve budgets.
+- Parallel solve launch: solver-A started r-b16-diagonal-book-ramsey with a 2700-second budget.
+- Parallel solve launch: solver-B started r-b21-diagonal-book-ramsey with a 2700-second budget.
+- started solving r-b16-diagonal-book-ramsey
+- started solving r-b21-diagonal-book-ramsey
+- Parallel solve finish: solver-A completed r-b16-diagonal-book-ramsey with a usable solve artifact; worker log at artifacts/_logs/20260413T160510_solve_r-b16-diagonal-book-ramsey.stdout.log.
+- Parallel solve finish: solver-B completed r-b21-diagonal-book-ramsey with a usable solve artifact; worker log at artifacts/_logs/20260413T160510_solve_r-b21-diagonal-book-ramsey.stdout.log.
+- Parallel solve batch ended without a queued candidate advancing past solve, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 16:52:06 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 16:53:06 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 16:57:19 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 16:58:19 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation timed out before producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 17:22:37 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 17:32:39 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation timed out before producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 18:05:08 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 18:06:21 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 18:14:14 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 18:15:40 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Publication mode launched a parallel solve batch for c4-c4-k4-three-color-ramsey, k3-k4minus-k4minus-three-color-ramsey with 2 concurrent slots and 2700-second per-solve budgets.
+- Parallel solve launch: solver-A started c4-c4-k4-three-color-ramsey with a 2700-second budget.
+- Parallel solve launch: solver-B started k3-k4minus-k4minus-three-color-ramsey with a 2700-second budget.
+- started solving c4-c4-k4-three-color-ramsey
+- started solving k3-k4minus-k4minus-three-color-ramsey
+- Parallel solve finish: solver-B completed k3-k4minus-k4minus-three-color-ramsey with a usable solve artifact; worker log at artifacts/_logs/20260413T182423_solve_k3-k4minus-k4minus-three-color-ramsey.stdout.log.
+- Parallel solve finish: solver-A completed c4-c4-k4-three-color-ramsey with a usable solve artifact; worker log at artifacts/_logs/20260413T182423_solve_c4-c4-k4-three-color-ramsey.stdout.log.
+- Parallel solve batch ended without a queued candidate advancing past solve, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 18:37:31 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 18:38:31 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Publication mode selected one-shot paper candidate r-b8-b10-book-ramsey.
+- Parallel solve launch: solver-A started r-b8-b10-book-ramsey with a 2700-second budget.
+- started solving r-b8-b10-book-ramsey
+- Parallel solve finish: solver-A completed r-b8-b10-book-ramsey with a usable solve artifact; worker log at artifacts/_logs/20260413T184903_solve_r-b8-b10-book-ramsey.stdout.log.
+- Publication mode advanced r-b8-b10-book-ramsey from solved status into verify/publication audit.
+- Resuming r-b8-b10-book-ramsey from preserved solve artifacts instead of rerunning solve.
+- Archived the verified-but-unsealed micro-paper attempt for r-b8-b10-book-ramsey so the queue can move on cleanly.
+- publication cycle finished at 2026-04-13 19:14:12 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 19:15:12 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 19:22:33 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 19:23:33 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 19:32:16 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 19:33:16 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation timed out before producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 19:44:28 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 19:45:28 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation timed out before producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 20:25:34 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 20:26:34 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation timed out before producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-13 20:40:43 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 20:41:43 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Publication mode launched a parallel solve batch for r-b10-b12-book-ramsey, r-b11-b13-book-ramsey with 2 concurrent slots and 2700-second per-solve budgets.
+- Parallel solve launch: solver-A started r-b10-b12-book-ramsey with a 2700-second budget.
+- Parallel solve launch: solver-B started r-b11-b13-book-ramsey with a 2700-second budget.
+- started solving r-b10-b12-book-ramsey
+- started solving r-b11-b13-book-ramsey
+- Parallel solve finish: solver-B completed r-b11-b13-book-ramsey with a usable solve artifact; worker log at artifacts/_logs/20260413T204936_solve_r-b11-b13-book-ramsey.stdout.log.
+- Parallel solve finish: solver-A completed r-b10-b12-book-ramsey with a usable solve artifact; worker log at artifacts/_logs/20260413T204936_solve_r-b10-b12-book-ramsey.stdout.log.
+- Publication mode advanced r-b10-b12-book-ramsey from solved status into verify/publication audit.
+- Resuming r-b10-b12-book-ramsey from preserved solve artifacts instead of rerunning solve.
+- publication cycle finished at 2026-04-13 21:18:29 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 21:19:29 EDT.
+- Publication mode resumed one-shot paper candidate r-b10-b12-book-ramsey from preserved solve artifacts.
+- Resuming r-b10-b12-book-ramsey from preserved solve artifacts instead of rerunning solve.
+- Publication audit for r-b10-b12-book-ramsey completed on 2026-04-13: bounded prior-art check did not show rediscovery, but the packet remains `SLICE_CANDIDATE` rather than `PAPER_READY` until Lean seals the repaired obstruction proof.
+- Next action for r-b10-b12-book-ramsey after publication audit: formalize the corrected Goodman/equality/spectral chain in Lean; if that seal fails on a real mathematical mismatch, cool the slug instead of broadening scope.
+- publication cycle finished at 2026-04-13 21:35:13 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 21:36:13 EDT.
+- Publication mode resumed one-shot paper candidate r-b10-b12-book-ramsey from preserved solve artifacts.
+- Resuming r-b10-b12-book-ramsey from preserved solve artifacts instead of rerunning solve.
+- Publication audit refresh for r-b10-b12-book-ramsey on 2026-04-13: bounded exact-term and alternate-notation web checks still support the one-gap window `45 <= R(B10, B12) <= 46`; no rediscovery surfaced, the packet stays `SLICE_CANDIDATE`, and Lean is the direct seal step rather than optional polish.
+- Next publication action for r-b10-b12-book-ramsey: do not broaden scope; formalize the counterexample-to-`srg(45,22,9,12)` reduction and the spectral multiplicity contradiction, or cool the slug if that bridge fails on a real mismatch.
+- publication cycle finished at 2026-04-13 22:32:49 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 22:33:49 EDT.
+- Publication mode resumed one-shot paper candidate r-b10-b12-book-ramsey from preserved solve artifacts.
+- Resuming r-b10-b12-book-ramsey from preserved solve artifacts instead of rerunning solve.
+- publication cycle finished at 2026-04-13 22:53:52 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 22:54:52 EDT.
+- Publication mode resumed one-shot paper candidate r-b10-b12-book-ramsey from preserved solve artifacts.
+- Resuming r-b10-b12-book-ramsey from preserved solve artifacts instead of rerunning solve.
+- publication cycle finished at 2026-04-13 23:11:45 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 23:12:45 EDT.
+- Publication mode resumed one-shot paper candidate r-b10-b12-book-ramsey from preserved solve artifacts.
+- Resuming r-b10-b12-book-ramsey from preserved solve artifacts instead of rerunning solve.
+- publication cycle finished at 2026-04-13 23:37:19 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-13 23:38:19 EDT.
+- Publication mode resumed one-shot paper candidate r-b10-b12-book-ramsey from preserved solve artifacts.
+- Resuming r-b10-b12-book-ramsey from preserved solve artifacts instead of rerunning solve.
+- publication cycle finished at 2026-04-14 00:08:12 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 00:09:12 EDT.
+- Publication mode resumed one-shot paper candidate r-b10-b12-book-ramsey from preserved solve artifacts.
+- Resuming r-b10-b12-book-ramsey from preserved solve artifacts instead of rerunning solve.
+- publication audit updated at 2026-04-14 00:19:48 EDT for r-b10-b12-book-ramsey.
+- Bounded prior-art check still supports only 45 <= R(B10, B12) <= 46; status stays SLICE_CANDIDATE, not PAPER_READY, because the exact packet is not yet Lean-complete.
+- publication cycle finished at 2026-04-14 00:36:31 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 00:37:31 EDT.
+- Publication mode resumed one-shot paper candidate r-b10-b12-book-ramsey from preserved solve artifacts.
+- Resuming r-b10-b12-book-ramsey from preserved solve artifacts instead of rerunning solve.
+- publication cycle finished at 2026-04-14 00:53:38 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 00:54:38 EDT.
+- Publication mode resumed one-shot paper candidate r-b10-b12-book-ramsey from preserved solve artifacts.
+- Resuming r-b10-b12-book-ramsey from preserved solve artifacts instead of rerunning solve.
+- publication cycle finished at 2026-04-14 01:28:03 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 01:29:03 EDT.
+- Publication mode resumed one-shot paper candidate r-b10-b12-book-ramsey from preserved solve artifacts.
+- Resuming r-b10-b12-book-ramsey from preserved solve artifacts instead of rerunning solve.
+- publication cycle finished at 2026-04-14 01:51:15 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 01:52:15 EDT.
+- Publication mode resumed one-shot paper candidate r-b10-b12-book-ramsey from preserved solve artifacts.
+- Resuming r-b10-b12-book-ramsey from preserved solve artifacts instead of rerunning solve.
+- Publication audit infrastructure failure for r-b10-b12-book-ramsey: the worker exited unexpectedly.
+- r-b10-b12-book-ramsey hit an infrastructure failure during publication_audit; canonical salvage was written to artifacts/r-b10-b12-book-ramsey/salvage/publication_audit_last_failure.json and the slug is cooled down until 2026-04-14T08:01:07.871315-04:00 instead of being archived as a mathematical failure.
+- publication cycle finished at 2026-04-14 02:01:07 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 02:02:07 EDT.
+- Publication mode resumed one-shot paper candidate r-b11-b13-book-ramsey from preserved solve artifacts.
+- Resuming r-b11-b13-book-ramsey from preserved solve artifacts instead of rerunning solve.
+- Publication audit infrastructure failure for r-b11-b13-book-ramsey: the worker exited unexpectedly.
+- r-b11-b13-book-ramsey hit an infrastructure failure during publication_audit; canonical salvage was written to artifacts/r-b11-b13-book-ramsey/salvage/publication_audit_last_failure.json and the slug is cooled down until 2026-04-14T08:08:17.692628-04:00 instead of being archived as a mathematical failure.
+- publication cycle finished at 2026-04-14 02:08:17 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 02:09:17 EDT.
+- Publication mode selected one-shot paper candidate r-b13-b15-book-ramsey.
+- Parallel solve launch: solver-A started r-b13-b15-book-ramsey with a 2700-second budget.
+- started solving r-b13-b15-book-ramsey
+- Parallel solve finish: solver-A completed r-b13-b15-book-ramsey with a usable solve artifact; worker log at artifacts/_logs/20260414T020917_solve_r-b13-b15-book-ramsey.stdout.log.
+- Publication mode advanced r-b13-b15-book-ramsey from solved status into verify/publication audit.
+- Resuming r-b13-b15-book-ramsey from preserved solve artifacts instead of rerunning solve.
+- Publication audit infrastructure failure for r-b13-b15-book-ramsey: the worker exited unexpectedly.
+- r-b13-b15-book-ramsey hit an infrastructure failure during publication_audit; canonical salvage was written to artifacts/r-b13-b15-book-ramsey/salvage/publication_audit_last_failure.json and the slug is cooled down until 2026-04-14T08:22:23.348390-04:00 instead of being archived as a mathematical failure.
+- publication cycle finished at 2026-04-14 02:22:23 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 02:23:23 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Publication mode launched a parallel solve batch for r-b9-b11-book-ramsey, r-b15-b17-book-ramsey with 2 concurrent slots and 2700-second per-solve budgets.
+- Parallel solve launch: solver-A started r-b9-b11-book-ramsey with a 2700-second budget.
+- Parallel solve launch: solver-B started r-b15-b17-book-ramsey with a 2700-second budget.
+- started solving r-b9-b11-book-ramsey
+- started solving r-b15-b17-book-ramsey
+- Parallel solve finish: solver-A completed r-b9-b11-book-ramsey with a usable solve artifact; worker log at artifacts/_logs/20260414T023309_solve_r-b9-b11-book-ramsey.stdout.log.
+- Parallel solve finish: solver-B completed r-b15-b17-book-ramsey with a usable solve artifact; worker log at artifacts/_logs/20260414T023309_solve_r-b15-b17-book-ramsey.stdout.log.
+- Publication mode advanced r-b9-b11-book-ramsey from solved status into verify/publication audit.
+- Resuming r-b9-b11-book-ramsey from preserved solve artifacts instead of rerunning solve.
+- Publication audit for r-b9-b11-book-ramsey stayed clean within a bounded prior-art pass: public sources checked still leave 41 <= R(B9, B11) <= 42, the packet remains a structural SLICE_CANDIDATE rather than PAPER_READY, and Lean is now the direct seal step.
+- publication cycle finished at 2026-04-14 03:00:28 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 03:01:28 EDT.
+- Publication mode resumed one-shot paper candidate r-b9-b11-book-ramsey from preserved solve artifacts.
+- Resuming r-b9-b11-book-ramsey from preserved solve artifacts instead of rerunning solve.
+- publication cycle finished at 2026-04-14 03:31:49 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 03:32:49 EDT.
+- Publication mode resumed one-shot paper candidate r-b9-b11-book-ramsey from preserved solve artifacts.
+- Resuming r-b9-b11-book-ramsey from preserved solve artifacts instead of rerunning solve.
+- Publication audit infrastructure failure for r-b9-b11-book-ramsey: the worker exited unexpectedly.
+- r-b9-b11-book-ramsey hit an infrastructure failure during publication_audit; canonical salvage was written to artifacts/r-b9-b11-book-ramsey/salvage/publication_audit_last_failure.json and the slug is cooled down until 2026-04-14T09:43:03.844172-04:00 instead of being archived as a mathematical failure.
+- publication cycle finished at 2026-04-14 03:43:03 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 03:44:03 EDT.
+- Publication mode resumed one-shot paper candidate r-b15-b17-book-ramsey from preserved solve artifacts.
+- Resuming r-b15-b17-book-ramsey from preserved solve artifacts instead of rerunning solve.
+- r-b15-b17-book-ramsey was reclassified as REDISCOVERY after the prior-art audit and was moved aside.
+- publication cycle finished at 2026-04-14 03:50:29 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 03:51:29 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Publication mode selected one-shot paper candidate r-k3-k4e-k4e-three-color.
+- Parallel solve launch: solver-A started r-k3-k4e-k4e-three-color with a 2700-second budget.
+- started solving r-k3-k4e-k4e-three-color
+- Parallel solve finish: solver-A completed r-k3-k4e-k4e-three-color with a usable solve artifact; worker log at artifacts/_logs/20260414T040007_solve_r-k3-k4e-k4e-three-color.stdout.log.
+- Parallel solve batch ended without a queued candidate advancing past solve, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 04:13:49 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 04:14:49 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 04:18:16 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 04:19:16 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation timed out before producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 04:30:27 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 04:31:27 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Publication mode selected one-shot paper candidate r-k5-k5e-five-vertex-ramsey.
+- Parallel solve launch: solver-A started r-k5-k5e-five-vertex-ramsey with a 2700-second budget.
+- started solving r-k5-k5e-five-vertex-ramsey
+- Parallel solve finish: solver-A completed r-k5-k5e-five-vertex-ramsey with a usable solve artifact; worker log at artifacts/_logs/20260414T044021_solve_r-k5-k5e-five-vertex-ramsey.stdout.log.
+- Parallel solve batch ended without a queued candidate advancing past solve, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 04:46:35 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 04:47:35 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Publication mode launched a parallel solve batch for r-b4-b4-diagonal-book-ramsey, r-b6-b6-diagonal-book-ramsey with 2 concurrent slots and 2700-second per-solve budgets.
+- Parallel solve launch: solver-A started r-b4-b4-diagonal-book-ramsey with a 2700-second budget.
+- Parallel solve launch: solver-B started r-b6-b6-diagonal-book-ramsey with a 2700-second budget.
+- started solving r-b4-b4-diagonal-book-ramsey
+- started solving r-b6-b6-diagonal-book-ramsey
+- Parallel solve finish: solver-A completed r-b4-b4-diagonal-book-ramsey with a usable solve artifact; worker log at artifacts/_logs/20260414T045547_solve_r-b4-b4-diagonal-book-ramsey.stdout.log.
+- Parallel solve finish: solver-B completed r-b6-b6-diagonal-book-ramsey with a usable solve artifact; worker log at artifacts/_logs/20260414T045547_solve_r-b6-b6-diagonal-book-ramsey.stdout.log.
+- Publication mode advanced r-b4-b4-diagonal-book-ramsey from solved status into verify/publication audit.
+- Resuming r-b4-b4-diagonal-book-ramsey from preserved solve artifacts instead of rerunning solve.
+- r-b4-b4-diagonal-book-ramsey was reclassified as REDISCOVERY after the prior-art audit and was moved aside.
+- publication cycle finished at 2026-04-14 05:07:24 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 05:08:24 EDT.
+- Publication mode resumed one-shot paper candidate r-b6-b6-diagonal-book-ramsey from preserved solve artifacts.
+- Resuming r-b6-b6-diagonal-book-ramsey from preserved solve artifacts instead of rerunning solve.
+- r-b6-b6-diagonal-book-ramsey was reclassified as REDISCOVERY after the prior-art audit and was moved aside.
+- publication cycle finished at 2026-04-14 05:13:06 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 05:14:06 EDT.
+- Publication mode launched a parallel solve batch for r-b7-b7-diagonal-book-ramsey, r-b9-b9-diagonal-book-ramsey with 2 concurrent slots and 2700-second per-solve budgets.
+- Parallel solve launch: solver-A started r-b7-b7-diagonal-book-ramsey with a 2700-second budget.
+- Parallel solve launch: solver-B started r-b9-b9-diagonal-book-ramsey with a 2700-second budget.
+- started solving r-b7-b7-diagonal-book-ramsey
+- started solving r-b9-b9-diagonal-book-ramsey
+- Parallel solve finish: solver-B completed r-b9-b9-diagonal-book-ramsey with a usable solve artifact; worker log at artifacts/_logs/20260414T051406_solve_r-b9-b9-diagonal-book-ramsey.stdout.log.
+- Parallel solve finish: solver-A completed r-b7-b7-diagonal-book-ramsey with a usable solve artifact; worker log at artifacts/_logs/20260414T051406_solve_r-b7-b7-diagonal-book-ramsey.stdout.log.
+- Publication mode advanced r-b7-b7-diagonal-book-ramsey from solved status into verify/publication audit.
+- Resuming r-b7-b7-diagonal-book-ramsey from preserved solve artifacts instead of rerunning solve.
+- r-b7-b7-diagonal-book-ramsey was reclassified as REDISCOVERY after the prior-art audit and was moved aside.
+- publication cycle finished at 2026-04-14 05:30:46 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 05:31:46 EDT.
+- Publication mode resumed one-shot paper candidate r-b9-b9-diagonal-book-ramsey from preserved solve artifacts.
+- Resuming r-b9-b9-diagonal-book-ramsey from preserved solve artifacts instead of rerunning solve.
+- r-b9-b9-diagonal-book-ramsey was reclassified as REDISCOVERY after the prior-art audit and was moved aside.
+- publication cycle finished at 2026-04-14 05:35:45 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 05:36:45 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation replaced the queue with five fresh paper_candidate dossiers after a bounded thin-memory exclusion sweep and a 2026-04-14 web audit focused on small exact Ramsey gaps with high micro-paper leverage.
+- selected_problem.md now points to r-c4-c4-k4-multicolor-ramsey, ranked first because current public sources leave only the one-step gap 20 <= R(C4, C4, K4) <= 21 and a solve would already be close to a complete short note.
+- Publication mode launched a parallel solve batch for r-c4-c4-k4-multicolor-ramsey, r-k7-k4e-almost-clique-ramsey with 2 concurrent slots and 2700-second per-solve budgets.
+- Parallel solve launch: solver-A started r-c4-c4-k4-multicolor-ramsey with a 2700-second budget.
+- Parallel solve launch: solver-B started r-k7-k4e-almost-clique-ramsey with a 2700-second budget.
+- started solving r-c4-c4-k4-multicolor-ramsey
+- started solving r-k7-k4e-almost-clique-ramsey
+- Parallel solve finish: solver-B completed r-k7-k4e-almost-clique-ramsey with a usable solve artifact; worker log at artifacts/_logs/20260414T054507_solve_r-k7-k4e-almost-clique-ramsey.stdout.log.
+- Parallel solve finish: solver-A completed r-c4-c4-k4-multicolor-ramsey with a usable solve artifact; worker log at artifacts/_logs/20260414T054507_solve_r-c4-c4-k4-multicolor-ramsey.stdout.log.
+- Parallel solve batch ended without a queued candidate advancing past solve, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 05:57:22 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 05:58:22 EDT.
+- Publication mode selected one-shot paper candidate r-k3-k4-k4-three-color-ramsey.
+- Parallel solve launch: solver-A started r-k3-k4-k4-three-color-ramsey with a 2700-second budget.
+- started solving r-k3-k4-k4-three-color-ramsey
+- Parallel solve finish: solver-A completed r-k3-k4-k4-three-color-ramsey with a usable solve artifact; worker log at artifacts/_logs/20260414T055823_solve_r-k3-k4-k4-three-color-ramsey.stdout.log.
+- Publication mode advanced r-k3-k4-k4-three-color-ramsey from solved status into verify/publication audit.
+- Resuming r-k3-k4-k4-three-color-ramsey from preserved solve artifacts instead of rerunning solve.
+- r-k3-k4-k4-three-color-ramsey was reclassified as REDISCOVERY after the prior-art audit and was moved aside.
+- publication cycle finished at 2026-04-14 06:10:15 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 06:11:16 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Publication mode selected one-shot paper candidate r-k4e-k4e-k4e-three-uniform-hypergraph-ramsey.
+- Parallel solve launch: solver-A started r-k4e-k4e-k4e-three-uniform-hypergraph-ramsey with a 2700-second budget.
+- started solving r-k4e-k4e-k4e-three-uniform-hypergraph-ramsey
+- Parallel solve finish: solver-A completed r-k4e-k4e-k4e-three-uniform-hypergraph-ramsey with a usable solve artifact; worker log at artifacts/_logs/20260414T062020_solve_r-k4e-k4e-k4e-three-uniform-hypergraph-ramsey.stdout.log.
+- Parallel solve batch ended without a queued candidate advancing past solve, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 06:26:41 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 06:27:41 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Publication mode selected one-shot paper candidate r-k25-k35-complete-bipartite-ramsey.
+- Parallel solve launch: solver-A started r-k25-k35-complete-bipartite-ramsey with a 2700-second budget.
+- started solving r-k25-k35-complete-bipartite-ramsey
+- Parallel solve finish: solver-A completed r-k25-k35-complete-bipartite-ramsey with a usable solve artifact; worker log at artifacts/_logs/20260414T063629_solve_r-k25-k35-complete-bipartite-ramsey.stdout.log.
+- Parallel solve batch ended without a queued candidate advancing past solve, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 06:43:53 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 06:44:53 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Publication mode launched a parallel solve batch for r-b12-b12-diagonal-book-ramsey, r-b14-b14-diagonal-book-ramsey with 2 concurrent slots and 2700-second per-solve budgets.
+- Parallel solve launch: solver-A started r-b12-b12-diagonal-book-ramsey with a 2700-second budget.
+- Parallel solve launch: solver-B started r-b14-b14-diagonal-book-ramsey with a 2700-second budget.
+- started solving r-b12-b12-diagonal-book-ramsey
+- started solving r-b14-b14-diagonal-book-ramsey
+- Parallel solve finish: solver-A completed r-b12-b12-diagonal-book-ramsey with a usable solve artifact; worker log at artifacts/_logs/20260414T065253_solve_r-b12-b12-diagonal-book-ramsey.stdout.log.
+- Parallel solve finish: solver-B completed r-b14-b14-diagonal-book-ramsey with a usable solve artifact; worker log at artifacts/_logs/20260414T065253_solve_r-b14-b14-diagonal-book-ramsey.stdout.log.
+- Publication mode advanced r-b12-b12-diagonal-book-ramsey from solved status into verify/publication audit.
+- Resuming r-b12-b12-diagonal-book-ramsey from preserved solve artifacts instead of rerunning solve.
+- Publication audit on r-b12-b12-diagonal-book-ramsey stayed conservative: bounded 2026-04-14 prior-art checking found no exact closure past the 2025 EJC interval, corrected the canonical source anchor from `Lemma 1` to `Theorem 1`, and left the packet at `publication_status = SLICE_CANDIDATE` because the Paley(49) route is theorem-worthy but not yet frozen into a durable checker / Lean-ready proof packet.
+- Lean was skipped for r-b12-b12-diagonal-book-ramsey because Lean is not marked ready.
+- publication cycle finished at 2026-04-14 07:10:29 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 07:11:29 EDT.
+- Publication mode resumed one-shot paper candidate r-b12-b12-diagonal-book-ramsey from preserved solve artifacts.
+- Resuming r-b12-b12-diagonal-book-ramsey from preserved solve artifacts instead of rerunning solve.
+- r-b12-b12-diagonal-book-ramsey was reclassified as REDISCOVERY after the prior-art audit and was moved aside.
+- publication cycle finished at 2026-04-14 07:15:53 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 07:16:53 EDT.
+- Publication mode selected one-shot paper candidate r-b13-b13-diagonal-book-ramsey.
+- Parallel solve launch: solver-A started r-b13-b13-diagonal-book-ramsey with a 2700-second budget.
+- started solving r-b13-b13-diagonal-book-ramsey
+- Parallel solve finish: solver-A completed r-b13-b13-diagonal-book-ramsey with a usable solve artifact; worker log at artifacts/_logs/20260414T071653_solve_r-b13-b13-diagonal-book-ramsey.stdout.log.
+- Publication mode advanced r-b13-b13-diagonal-book-ramsey from solved status into verify/publication audit.
+- Resuming r-b13-b13-diagonal-book-ramsey from preserved solve artifacts instead of rerunning solve.
+- r-b13-b13-diagonal-book-ramsey failed and was moved aside: CANDIDATE_SURVIVES_WITH_CITATION_RISK
+- publication cycle finished at 2026-04-14 07:52:18 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 07:53:18 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 07:58:57 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 07:59:57 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Publication mode selected one-shot paper candidate r-b19-b19-diagonal-book-ramsey.
+- Parallel solve launch: solver-A started r-b19-b19-diagonal-book-ramsey with a 2700-second budget.
+- started solving r-b19-b19-diagonal-book-ramsey
+- Parallel solve finish: solver-A completed r-b19-b19-diagonal-book-ramsey with a usable solve artifact; worker log at artifacts/_logs/20260414T080751_solve_r-b19-b19-diagonal-book-ramsey.stdout.log.
+- Publication mode advanced r-b19-b19-diagonal-book-ramsey from solved status into verify/publication audit.
+- Resuming r-b19-b19-diagonal-book-ramsey from preserved solve artifacts instead of rerunning solve.
+- r-b19-b19-diagonal-book-ramsey failed and was moved aside: REDISCOVERED_IN_CANONICAL_SOURCE_DURING_PUBLICATION_AUDIT
+- publication cycle finished at 2026-04-14 08:21:21 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 08:22:21 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Publication mode launched a parallel solve batch for r-b20-b20-diagonal-book-ramsey, r-b21-b21-diagonal-book-ramsey with 2 concurrent slots and 2700-second per-solve budgets.
+- Parallel solve launch: solver-A started r-b20-b20-diagonal-book-ramsey with a 2700-second budget.
+- Parallel solve launch: solver-B started r-b21-b21-diagonal-book-ramsey with a 2700-second budget.
+- started solving r-b20-b20-diagonal-book-ramsey
+- started solving r-b21-b21-diagonal-book-ramsey
+- Parallel solve finish: solver-A completed r-b20-b20-diagonal-book-ramsey with a usable solve artifact; worker log at artifacts/_logs/20260414T082802_solve_r-b20-b20-diagonal-book-ramsey.stdout.log.
+- Parallel solve finish: solver-B completed r-b21-b21-diagonal-book-ramsey with a usable solve artifact; worker log at artifacts/_logs/20260414T082802_solve_r-b21-b21-diagonal-book-ramsey.stdout.log.
+- Publication mode advanced r-b20-b20-diagonal-book-ramsey from solved status into verify/publication audit.
+- Resuming r-b20-b20-diagonal-book-ramsey from preserved solve artifacts instead of rerunning solve.
+- r-b20-b20-diagonal-book-ramsey was reclassified as REDISCOVERY after the prior-art audit and was moved aside.
+- publication cycle finished at 2026-04-14 08:38:13 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 08:39:13 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Publication mode selected one-shot paper candidate r-3-10-classical-ramsey.
+- Parallel solve launch: solver-A started r-3-10-classical-ramsey with a 2700-second budget.
+- started solving r-3-10-classical-ramsey
+- Parallel solve finish: solver-A completed r-3-10-classical-ramsey with a usable solve artifact; worker log at artifacts/_logs/20260414T084935_solve_r-3-10-classical-ramsey.stdout.log.
+- Parallel solve batch ended without a queued candidate advancing past solve, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 08:54:53 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 08:55:53 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 09:06:33 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 09:23:04 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 09:32:46 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 09:33:46 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 09:42:35 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 09:43:35 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 09:52:22 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 09:53:22 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 10:00:53 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 10:01:53 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 10:11:53 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 10:12:53 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 10:20:38 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 10:21:38 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 10:30:07 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 10:31:07 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 10:40:05 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 10:41:05 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation refreshed the queue at 2026-04-14 10:48:25 EDT with five quadrilateral-star one-gap `paper_candidate` dossiers ranked by solve-to-publication distance; `r-c4-k1-52-quadrilateral-star-ramsey` is now the active selected problem.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 10:48:46 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 10:49:46 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 10:59:40 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 11:00:40 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 11:07:46 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 11:08:46 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- publication cycle started at 2026-04-14 11:12:15 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.

@@ -1,0 +1,20 @@
+{
+  "slug": "c4-c4-k4-three-color-ramsey",
+  "title": "Determine the exact value of R(C4, C4, K4)",
+  "stage": "solve",
+  "classification": "PARTIAL",
+  "confidence": 0.38,
+  "code_used": "Tiny bounded experiment only: exhaustive check of the simplest cyclic 4x5 block template with one shift-matching per block pair; no full search, SAT, ILP, or brute-force coloring census.",
+  "lean_ready": false,
+  "lean_complete": false,
+  "publication_status": "NONE",
+  "publication_confidence": 0.17,
+  "single_solve_to_paper_fraction": 0.81,
+  "title_theorem_strength": "strong",
+  "publication_narrative_strength": "strong",
+  "micro_paper_assessment": "Still a strong micro-paper target if solved, but this solve only isolates a rigorous 20->10 neighborhood reduction and rules out the simplest cyclic four-K5 lower-bound template. The current package is still too thin for the micro-paper lane.",
+  "family_affinity": "strong",
+  "generalization_signal": "moderate: the density-to-neighborhood reduction should transfer to nearby (C4, C4, K_t) triples, but the sharp local obstruction remains unresolved.",
+  "candidate_theorem_slice": "If every 10-vertex 3-coloring with no red C4 and no blue C4 contains a green triangle, then every 20-vertex 3-coloring contains a red C4, a blue C4, or a green K4; hence R(C4, C4, K4) = 20.",
+  "next_action": "Prioritize the exact local obstruction R(C4, C4, K3) or a stronger green-degree lemma. If the lower-bound side is revisited, move only to slightly richer affine/incidence-style block interfaces, not broad unconstrained search."
+}

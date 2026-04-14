@@ -381,5 +381,91 @@
     "title": "Are all graphs on 9 vertices 1-11-representable?",
     "publication_status": "REDISCOVERY",
     "checked_on": "2026-04-13"
+  },
+  {
+    "slug": "r-b8-b10-book-ramsey",
+    "reason": "CANDIDATE",
+    "title": "Determine the exact value of R(B8, B10)",
+    "notes": "Verified but not fully sealed micro-paper attempt archived so it does not immediately recycle into the queue.",
+    "publication_status": "SLICE_CANDIDATE",
+    "checked_on": "2026-04-13"
+  },
+  {
+    "slug": "r-b15-b17-book-ramsey",
+    "reason": "REDISCOVERY",
+    "title": "Determine the exact value of R(B15, B17)",
+    "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
+    "publication_status": "REDISCOVERY",
+    "checked_on": "2026-04-14"
+  },
+  {
+    "slug": "r-b4-b4-diagonal-book-ramsey",
+    "reason": "REDISCOVERY",
+    "title": "Determine the exact value of R(B4, B4)",
+    "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
+    "publication_status": "REDISCOVERY",
+    "checked_on": "2026-04-14"
+  },
+  {
+    "slug": "r-b6-b6-diagonal-book-ramsey",
+    "reason": "REDISCOVERY",
+    "title": "Determine the exact value of R(B6, B6)",
+    "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
+    "publication_status": "REDISCOVERY",
+    "checked_on": "2026-04-14"
+  },
+  {
+    "slug": "r-b7-b7-diagonal-book-ramsey",
+    "reason": "REDISCOVERY",
+    "title": "Determine the exact value of R(B7, B7)",
+    "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
+    "publication_status": "REDISCOVERY",
+    "checked_on": "2026-04-14"
+  },
+  {
+    "slug": "r-b9-b9-diagonal-book-ramsey",
+    "reason": "REDISCOVERY",
+    "title": "Determine the exact value of R(B9, B9)",
+    "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
+    "publication_status": "REDISCOVERY",
+    "checked_on": "2026-04-14"
+  },
+  {
+    "slug": "r-k3-k4-k4-three-color-ramsey",
+    "reason": "REDISCOVERY",
+    "title": "Determine the exact value of R(K3, K4, K4)",
+    "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
+    "publication_status": "REDISCOVERY",
+    "checked_on": "2026-04-14"
+  },
+  {
+    "slug": "r-b12-b12-diagonal-book-ramsey",
+    "reason": "REDISCOVERY",
+    "title": "Determine the exact value of R(B12, B12)",
+    "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
+    "publication_status": "REDISCOVERY",
+    "checked_on": "2026-04-14"
+  },
+  {
+    "slug": "r-b13-b13-diagonal-book-ramsey",
+    "reason": "CANDIDATE_SURVIVES_WITH_CITATION_RISK",
+    "title": "Determine the exact value of R(B13, B13)",
+    "publication_status": "REDISCOVERY",
+    "checked_on": "2026-04-14"
+  },
+  {
+    "slug": "r-b19-b19-diagonal-book-ramsey",
+    "reason": "REDISCOVERED_IN_CANONICAL_SOURCE_DURING_PUBLICATION_AUDIT",
+    "title": "Determine the exact value of R(B19, B19)",
+    "publication_status": "REDISCOVERY",
+    "checked_on": "2026-04-14"
+  },
+  {
+    "slug": "r-b20-b20-diagonal-book-ramsey",
+    "reason": "REDISCOVERY",
+    "title": "Determine the exact value of R(B20, B20)",
+    "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
+    "publication_status": "REDISCOVERY",
+    "checked_on": "2026-04-14"
   }
 ]

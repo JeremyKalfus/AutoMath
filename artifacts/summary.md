@@ -1,26 +1,26 @@
 # AutoMath Publication Summary
 
-- Updated: `2026-04-13 02:07:05 EDT`
-- Queued one-shot paper candidate: paley-graph-internal-partition
-- Candidate title: Does every Paley graph have an internal partition?
-- Candidate publication if solved: A complete Paley-family theorem is immediately paper-ready because the family is classical and the statement is already singled out as a named open problem.
-- Candidate publication score: standalone_short_paper
-- Candidate packet quality: strong
-- Candidate pre-solve gate: pass
-- Candidate paper leverage score: 74
-- Candidate single-solve paper fraction: 0.78
-- Candidate micro-paper lane: True
+- Updated: `2026-04-14 11:07:46 EDT`
+- Queued one-shot paper candidate: (none queued)
+- Candidate title: (none queued)
+- Candidate publication if solved: (none queued)
+- Candidate publication score: (none queued)
+- Candidate packet quality: (none queued)
+- Candidate pre-solve gate: (none queued)
+- Candidate paper leverage score: (none queued)
+- Candidate single-solve paper fraction: (none queued)
+- Candidate micro-paper lane: (none queued)
 - Solve timeout: `2700` seconds
 - Concurrent solve slots: `2`
 - xhigh usable in this environment: `yes`
 - Automatic stop condition: `publication_status = PAPER_READY`, `classification = EXACT`, and `lean_complete = true`
 - Worker infra status this cycle: `not_used`
 - Summary path: `artifacts/summary.md`
-- Candidate status path: `artifacts/paley-graph-internal-partition/status.json`
+- Candidate status path: `(none)`
 - Ledger tail:
-  - five-regular-pseudograph-4-1-factor hit an infrastructure failure during solve_five-regular-pseudograph-4-1-factor; canonical salvage was written to artifacts/five-regular-pseudograph-4-1-factor/salvage/solve_five-regular-pseudograph-4-1-factor_last_failure.json and the slug is cooled down until 2026-04-13T06:35:01.807299-04:00 instead of being archived as a mathematical failure.
-  - Publication mode selected one-shot paper candidate all-9-vertex-graphs-1-11-representable.
-  - started solving all-9-vertex-graphs-1-11-representable
-  - Publication mode resumed one-shot paper candidate all-9-vertex-graphs-1-11-representable from preserved solve artifacts.
-  - Resuming all-9-vertex-graphs-1-11-representable from preserved solve artifacts instead of rerunning solve.
-  - all-9-vertex-graphs-1-11-representable failed and was moved aside: VARIANT
+  - Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+  - publication cycle finished at 2026-04-14 10:59:40 EDT.
+  - publication cycle sleeping for 60 seconds.
+  - publication cycle started at 2026-04-14 11:00:40 EDT.
+  - Queue had no usable `paper_candidate`, so one-shot publication curation started.
+  - Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.

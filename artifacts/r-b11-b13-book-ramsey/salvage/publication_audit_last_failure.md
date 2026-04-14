@@ -1,0 +1,109 @@
+# Salvage: r-b11-b13-book-ramsey
+
+- stage: `publication_audit`
+- failure_reason: `publication_audit_nonzero_exit`
+- timed_out: `False`
+- timeout_secs: `1200`
+- salvaged_on: `2026-04-14T02:08:17.692716-04:00`
+- stdout_log: `artifacts/_logs/20260414T020735_publication_audit.stdout.log`
+- last_message_path: `artifacts/_logs/20260414T020735_publication_audit.last.txt`
+
+## strongest_recoverable_status
+{
+  "stage": "verify",
+  "classification": "CANDIDATE",
+  "verify_verdict": "CANDIDATE_CONFIRMED",
+  "publication_status": "SLICE_CANDIDATE",
+  "publication_confidence": 0.82,
+  "lean_ready": false,
+  "lean_complete": false,
+  "next_action": "Run publication_audit on the exact-value novelty position and paper packet. If that stays clean, decide whether Lean adds enough sealing value to justify the formalization cost."
+}
+
+## partial_artifacts
+- artifacts/r-b11-b13-book-ramsey/attempts/solver-B.selection.md
+- artifacts/r-b11-b13-book-ramsey/record.md
+- artifacts/r-b11-b13-book-ramsey/status.json
+- artifacts/r-b11-b13-book-ramsey/working_packet.md
+
+## stdout_tail
+- attempted conflict check: (not recorded)
+- rediscovery risk: (not recorded)
+
+## proof_sketch
+- attack style: (not recorded)
+- likely route: The write-up after a successful solve is short and standard: exact statement, forcing proof or extremal graph, one comparison with the solved R(B12, B13) benchmark, and a brief discussion of why the broader almost-diagonal line remains open. That is enough for a clean note.
+- verifier focus: (not recorded)
+
+## micro_paper_test
+- title theorem strength: strong
+- family anchor strength: strong
+- publication narrative strength: strong
+- editorial overhead: low
+- immediate corollary headroom: moderate
+- isolated exact-case risk: moderate
+- broader-theorem implication risk: low
+- theorem-slice stability: stable
+- search-heavy: False
+- certificate compactness: high
+- exact gap from source: tiny
+- assessment: Pass. This is a one-gap frontier case with a strong family anchor and a natural exact neighbor, so a single clean solve would already look like a finished short paper.
+
+## likely_paper_shape
+- note title: The Exact Value of R(B11, B13)
+- hypothetical title: The Exact Value of R(B11, B13)
+- paper shape: A one-theorem exact-value note on the almost-diagonal book Ramsey line.
+- publication if solved: Closing R(B11, B13) would already support a compact exact-value note on the unresolved B_{n-2} versus B_n book Ramsey line.
+- minimal artifact requirements: Either a proof that every 49-vertex graph forces B11 or a complement B13, or one explicit 49-vertex witness graph avoiding B11 whose complement avoids B13.
+
+## hypothetical_abstract
+We determine the book Ramsey number R(B11, B13). Existing public bounds leave this almost-diagonal case in the one-gap window 49 <= R(B11, B13) <= 50. Our result closes a natural unresolved point adjacent to the exact neighboring value R(B12, B13) = 51.
+
+## single_solve_explanation
+An exact value for this pair is already the whole point of the paper. The family scaffolding is recent and explicit, so the remaining work after the solve is small: present the proof or witness, compare with the neighboring exact case, and document the frontier gap that just got removed. That keeps the solve-to-paper distance short.
+
+## broader_theorem_nonimplication
+The exact line R(B_{n-1}, B_n) = 4n - 1 does not imply anything exact for R(B_{n-2}, B_n). For n = 13, the public record still gives only 49 <= R(B11, B13) <= 50.
+
+## literature_gap
+Current public sources support only 49 <= R(B11, B13) <= 50, and the bounded 2026-04-13 exact-term and alternate-notation audit did not uncover a later exact determination.
+
+## transfer_kit
+- lemma: Lidický-McKinley-Pfender-Van Overberghe 2025, Theorem 1, gives 49 <= R(B11, B13).
+- lemma: DS1.17 item 5.3.g gives R(B11, B13) <= 2(11 + 13 + 1) = 50.
+- lemma: DS1.17 item 5.3.e and Wesley 2026 together give the adjacent exact benchmark R(B12, B13) = 51.
+- toy example: The neighboring exact case R(B12, B13) = 51 is a worked benchmark on the same family corridor.
+- known obstruction: A proof of 49 must force B11 against B13 at the threshold, while a proof of 50 needs a 49-vertex witness that extends the current lower-bound template by one more layer.
+- prior-work stop sentence: Current sources stop at the one-gap window 49 <= R(B11, B13) <= 50.
+- recommended first attack: Try to extend the 48-vertex almost-diagonal lower-bound constructions from the 2025 repository and treat nonextendability as the first forcing target.
+- paper if solved: The paper would be a short exact-value note on an unresolved one-gap book Ramsey pair.
+
+## bounded_source_list
+- Stanisław P. Radziszowski, "Small Ramsey Numbers" (Electronic Journal of Combinatorics, Dynamic Survey DS1.17, 2024), Section 5.3 items (g)-(h); Bernard Lidický, Gwen McKinley, Florian Pfender, and Steven Van Overberghe, "Small Ramsey Numbers for Books, Wheels, and Generalizations" (Electronic Journal of Combinatorics 32(4), 2025), Theorem 1; William J. Wesley, "Lower bounds for book Ramsey numbers" (Discrete Mathematics 349(5), 2026), Theorem 2 and appendix benchmarks; and bounded exact-term and alternate-notation web checks performed on 2026-04-13.
+- DS1.17 Section 5.3, Lidický-McKinley-Pfender-Van Overberghe 2025 Theorem 1, Wesley 2026 Theorem 2 and appendix benchmarks, plus bounded exact-term and alternate-notation web searches on 2026-04-13.
+- artifacts/r-b11-b13-book-ramsey/record.md
+- artifacts/r-b11-b13-book-ramsey/status.json
+
+2026-04-14T06:08:09.165375Z  WARN codex_core::plugins::manifest: ignoring interface.defaultPrompt: prompt must be at most 128 characters path=/var/folders/dt/8glc0ycs71n4sb1kzlxncvlc0000gn/T/tmpmo9iw2ew/.codex/.tmp/plugins/plugins/build-ios-apps/.codex-plugin/plugin.json
+2026-04-14T06:08:09.165680Z  WARN codex_core::plugins::manifest: ignoring interface.defaultPrompt: prompt must be at most 128 characters path=/var/folders/dt/8glc0ycs71n4sb1kzlxncvlc0000gn/T/tmpmo9iw2ew/.codex/.tmp/plugins/plugins/life-science-research/.codex-plugin/plugin.json
+2026-04-14T06:08:09.167179Z  WARN codex_core::plugins::manifest: ignoring interface.defaultPrompt: prompt must be at most 128 characters path=/var/folders/dt/8glc0ycs71n4sb1kzlxncvlc0000gn/T/tmpmo9iw2ew/.codex/.tmp/plugins/plugins/build-ios-apps/.codex-plugin/plugin.json
+2026-04-14T06:08:09.167403Z  WARN codex_core::plugins::manifest: ignoring interface.defaultPrompt: prompt must be at most 128 characters path=/var/folders/dt/8glc0ycs71n4sb1kzlxncvlc0000gn/T/tmpmo9iw2ew/.codex/.tmp/plugins/plugins/life-science-research/.codex-plugin/plugin.json
+2026-04-14T06:08:09.169313Z  WARN codex_core::plugins::manifest: ignoring interface.defaultPrompt: prompt must be at most 128 characters path=/var/folders/dt/8glc0ycs71n4sb1kzlxncvlc0000gn/T/tmpmo9iw2ew/.codex/.tmp/plugins/plugins/build-ios-apps/.codex-plugin/plugin.json
+2026-04-14T06:08:09.169534Z  WARN codex_core::plugins::manifest: ignoring interface.defaultPrompt: prompt must be at most 128 characters path=/var/folders/dt/8glc0ycs71n4sb1kzlxncvlc0000gn/T/tmpmo9iw2ew/.codex/.tmp/plugins/plugins/life-science-research/.codex-plugin/plugin.json
+2026-04-14T06:08:09.172286Z  WARN codex_core::plugins::manifest: ignoring interface.defaultPrompt: prompt must be at most 128 characters path=/var/folders/dt/8glc0ycs71n4sb1kzlxncvlc0000gn/T/tmpmo9iw2ew/.codex/.tmp/plugins/plugins/build-ios-apps/.codex-plugin/plugin.json
+2026-04-14T06:08:09.172486Z  WARN codex_core::plugins::manifest: ignoring interface.defaultPrompt: prompt must be at most 128 characters path=/var/folders/dt/8glc0ycs71n4sb1kzlxncvlc0000gn/T/tmpmo9iw2ew/.codex/.tmp/plugins/plugins/life-science-research/.codex-plugin/plugin.json
+2026-04-14T06:08:09.174469Z  WARN codex_core::plugins::manifest: ignoring interface.defaultPrompt: prompt must be at most 128 characters path=/var/folders/dt/8glc0ycs71n4sb1kzlxncvlc0000gn/T/tmpmo9iw2ew/.codex/.tmp/plugins/plugins/build-ios-apps/.codex-plugin/plugin.json
+2026-04-14T06:08:09.174712Z  WARN codex_core::plugins::manifest: ignoring interface.defaultPrompt: prompt must be at most 128 characters path=/var/folders/dt/8glc0ycs71n4sb1kzlxncvlc0000gn/T/tmpmo9iw2ew/.codex/.tmp/plugins/plugins/life-science-research/.codex-plugin/plugin.json
+2026-04-14T06:08:09.177486Z  WARN codex_core::plugins::manifest: ignoring interface.defaultPrompt: prompt must be at most 128 characters path=/var/folders/dt/8glc0ycs71n4sb1kzlxncvlc0000gn/T/tmpmo9iw2ew/.codex/.tmp/plugins/plugins/build-ios-apps/.codex-plugin/plugin.json
+2026-04-14T06:08:09.177669Z  WARN codex_core::plugins::manifest: ignoring interface.defaultPrompt: prompt must be at most 128 characters path=/var/folders/dt/8glc0ycs71n4sb1kzlxncvlc0000gn/T/tmpmo9iw2ew/.codex/.tmp/plugins/plugins/life-science-research/.codex-plugin/plugin.json
+2026-04-14T06:08:09.180579Z  WARN codex_core::plugins::manifest: ignoring interface.defaultPrompt: prompt must be at most 128 characters path=/var/folders/dt/8glc0ycs71n4sb1kzlxncvlc0000gn/T/tmpmo9iw2ew/.codex/.tmp/plugins/plugins/build-ios-apps/.codex-plugin/plugin.json
+2026-04-14T06:08:09.180764Z  WARN codex_core::plugins::manifest: ignoring interface.defaultPrompt: prompt must be at most 128 characters path=/var/folders/dt/8glc0ycs71n4sb1kzlxncvlc0000gn/T/tmpmo9iw2ew/.codex/.tmp/plugins/plugins/life-science-research/.codex-plugin/plugin.json
+2026-04-14T06:08:09.182995Z  WARN codex_core::plugins::manifest: ignoring interface.defaultPrompt: prompt must be at most 128 characters path=/var/folders/dt/8glc0ycs71n4sb1kzlxncvlc0000gn/T/tmpmo9iw2ew/.codex/.tmp/plugins/plugins/build-ios-apps/.codex-plugin/plugin.json
+2026-04-14T06:08:09.183175Z  WARN codex_core::plugins::manifest: ignoring interface.defaultPrompt: prompt must be at most 128 characters path=/var/folders/dt/8glc0ycs71n4sb1kzlxncvlc0000gn/T/tmpmo9iw2ew/.codex/.tmp/plugins/plugins/life-science-research/.codex-plugin/plugin.json
+2026-04-14T06:08:09.186722Z  WARN codex_core::plugins::manifest: ignoring interface.defaultPrompt: prompt must be at most 128 characters path=/var/folders/dt/8glc0ycs71n4sb1kzlxncvlc0000gn/T/tmpmo9iw2ew/.codex/.tmp/plugins/plugins/build-ios-apps/.codex-plugin/plugin.json
+2026-04-14T06:08:09.186892Z  WARN codex_core::plugins::manifest: ignoring interface.defaultPrompt: prompt must be at most 128 characters path=/var/folders/dt/8glc0ycs71n4sb1kzlxncvlc0000gn/T/tmpmo9iw2ew/.codex/.tmp/plugins/plugins/life-science-research/.codex-plugin/plugin.json
+ERROR: Selected model is at capacity. Please try a different model.
+2026-04-14T06:08:16.884217Z  WARN codex_exec: thread/read failed while backfilling turn items for turn completion: thread/read: thread/read failed: ephemeral threads do not support includeTurns
+ERROR: Selected model is at capacity. Please try a different model.
+tokens used
+34,824

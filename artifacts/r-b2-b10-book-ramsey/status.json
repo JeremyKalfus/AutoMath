@@ -1,0 +1,20 @@
+{
+  "slug": "r-b2-b10-book-ramsey",
+  "title": "Determine the exact value of R(B2, B10)",
+  "stage": "solve",
+  "classification": "PARTIAL",
+  "confidence": 0.43,
+  "code_used": true,
+  "lean_ready": false,
+  "lean_complete": false,
+  "publication_status": "SLICE_CANDIDATE",
+  "publication_confidence": 0.46,
+  "single_solve_to_paper_fraction": 0.79,
+  "title_theorem_strength": "strong",
+  "publication_narrative_strength": "strong",
+  "micro_paper_assessment": "Not solved yet. A real theorem slice is present, and bounded search ruled out one symmetric family without finding a witness, but the package is still too thin for the micro-paper lane until the exact value is forced or a 25-vertex obstruction is constructed.",
+  "family_affinity": "high",
+  "generalization_signal": "moderate; the counting template should extend to nearby B2 versus Bn one-gap residues",
+  "candidate_theorem_slice": "Any 25-vertex graph with no B2 and with complement containing no B10 must have every neighborhood of maximum degree 1, independence number at most 11, and edge count between 117 and 150.",
+  "next_action": "Either import the published 24-vertex witness and classify all 25th-vertex extensions, or run an exact search restricted to the proven feasible band 117 <= e(G) <= 150."
+}

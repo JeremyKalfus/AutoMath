@@ -1,0 +1,20 @@
+{
+  "slug": "r-c4-c4-k4-multicolor-ramsey",
+  "title": "Determine the exact value of R(C4, C4, K4)",
+  "stage": "solve",
+  "classification": "PARTIAL",
+  "confidence": 0.34,
+  "code_used": true,
+  "lean_ready": false,
+  "lean_complete": false,
+  "publication_status": "SLICE_CANDIDATE",
+  "publication_confidence": 0.26,
+  "single_solve_to_paper_fraction": 0.86,
+  "title_theorem_strength": "strong_if_closed",
+  "publication_narrative_strength": "strong_if_closed",
+  "micro_paper_assessment": "Main frontier claim remains unresolved. The exact circulant-family obstruction is real but too thin on its own for the micro-paper lane.",
+  "family_affinity": "Strong affinity with exact mixed multicolor C4/C4/K4 Ramsey-value work; strongest output here is an exact circulant-family obstruction plus local neighborhood lemmas.",
+  "generalization_signal": "Moderate and narrow: the neighborhood lemmas and circulant obstruction method should transfer to nearby (C4, C4, K_t) instances, but the current near-miss search gives no scalable proof mechanism.",
+  "candidate_theorem_slice": "No undirected circulant 3-coloring of K_n for n in {18, 19, 20} avoids a red C4, a blue C4, and a green K4.",
+  "next_action": "Verify the full circulant enumeration, then either seed a non-circulant witness search from the 5-violation K20 near-miss or extract degree/neighborhood contradictions from the local lemmas."
+}

@@ -1,0 +1,20 @@
+{
+  "slug": "r3-p10-three-color-path-ramsey",
+  "title": "Determine the exact value of R(P10, P10, P10)",
+  "stage": "solve",
+  "classification": "PARTIAL",
+  "confidence": 0.62,
+  "code_used": true,
+  "lean_ready": false,
+  "lean_complete": false,
+  "publication_status": "SLICE_CANDIDATE",
+  "publication_confidence": 0.44,
+  "single_solve_to_paper_fraction": 0.85,
+  "title_theorem_strength": "strong",
+  "publication_narrative_strength": "strong",
+  "micro_paper_assessment": "Full resolution would still be a strong micro-paper, but the current solve output is only a theorem-facing slice: a sharp K17 lower bound, an obstruction to one-vertex four-block extensions on K18, and bounded symmetric-family evidence. This is not yet paper-ready.",
+  "family_affinity": "strong; first open diagonal three-color path case, with a reusable four-block extremal obstruction pattern for even path targets",
+  "generalization_signal": "The one-vertex-extension obstruction of the standard four-block lower template appears to scale to even P_{2m}, but the stability reduction from arbitrary colorings is still missing.",
+  "candidate_theorem_slice": "Every one-vertex extension of the standard (5,4,4,4) four-block lower-bound coloring for P10 already contains a monochromatic P10.",
+  "next_action": "Continue the upper-bound route by proving a stability reduction from arbitrary K18 counterexamples to the four-block quotient pattern; keep the current theorem slice and K17 construction as support, not as a finished exact-value claim."
+}

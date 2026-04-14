@@ -28,6 +28,14 @@ Required 70-90% paper test for every candidate:
 
 If you cannot write a plausible title and abstract that feel like a real short note, the candidate fails.
 
+Proof-genericity stress test for every candidate:
+
+1. If the shortest plausible proof succeeds, will the honest title theorem still be this exact candidate?
+2. Could the proof collapse into a broader ambient observation that makes the branded family/result feel like just a corollary?
+3. Could that broader statement plausibly be folklore or materially raise rediscovery risk?
+
+If the theorem slice would likely shift after the solve, mark `theorem_slice_stability` as `fragile` or `unclear` and fail the micro-paper lane.
+
 Lean policy during curation:
 
 - Do not up-rank a candidate merely because it looks easy to formalize.
@@ -98,6 +106,7 @@ Hard gate for `micro_paper_lane_eligible = true`:
 
 - acceptable novelty risk after curation
 - `broader_theorem_implication_risk` is not `high` and not `unresolved`
+- `theorem_slice_stability = stable`
 - `search_heavy = false`, or else the remaining residue is tiny and human-readable
 - `isolated_exact_case_risk` is not `high`
 - `transfer_kit_present = true`
@@ -128,6 +137,7 @@ Negative archetypes to reject:
 - isolated curiosities with no family anchor
 - problems that are mainly finite census / exhaustive search / long certificate dumps
 - extracted instances that may already be implied by broader known theorems
+- targets whose shortest plausible proof would likely reframe the honest theorem as a broader generic observation
 - problems where after one solve you still need two or three major new results before the note is paper-worthy
 - cute observations that would likely stay a one-paragraph remark
 
@@ -142,6 +152,7 @@ Required dossier fields for every `paper_candidate`:
 - `immediate_corollary_headroom`
 - `isolated_exact_case_risk`
 - `broader_theorem_implication_risk`
+- `theorem_slice_stability`
 - `search_heavy`
 - `certificate_compactness`
 - `transfer_kit_present`
@@ -183,6 +194,7 @@ Field conventions:
 - `immediate_corollary_headroom`: `none`, `low`, `moderate`, `high`
 - `isolated_exact_case_risk`: `low`, `moderate`, `high`
 - `broader_theorem_implication_risk`: `low`, `moderate`, `high`, `unresolved`
+- `theorem_slice_stability`: `stable`, `fragile`, `unclear`
 - `search_heavy`: `true` or `false`
 - `certificate_compactness`: `low`, `moderate`, `high`
 - `transfer_kit_present`: `true` or `false`

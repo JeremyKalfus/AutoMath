@@ -401,6 +401,13 @@ def parse_status_timestamp(value: str | None) -> dt.datetime | None:
         return None
 
 
+def candidate_last_post_solve_attempt(slug: str) -> dt.datetime | None:
+    if not slug:
+        return None
+    state = runtime_candidate_state(slug)
+    return parse_status_timestamp(state.get("last_post_solve_attempt_on"))
+
+
 def add_text_section(lines: list[str], heading: str, value) -> None:
     if value is None:
         return
@@ -461,6 +468,7 @@ def render_selected_problem(entry: dict, output_path: pathlib.Path = SELECTED) -
         "immediate_corollary_headroom",
         "isolated_exact_case_risk",
         "broader_theorem_implication_risk",
+        "theorem_slice_stability",
         "search_heavy",
         "certificate_compactness",
         "transfer_kit_present",
@@ -642,6 +650,7 @@ PAPER_CANDIDATE_REQUIRED_FIELDS = [
     "immediate_corollary_headroom",
     "isolated_exact_case_risk",
     "broader_theorem_implication_risk",
+    "theorem_slice_stability",
     "search_heavy",
     "certificate_compactness",
     "transfer_kit_present",
@@ -824,6 +833,7 @@ def build_candidate_working_packet(entry: dict) -> str:
         f"- immediate corollary headroom: {entry.get('immediate_corollary_headroom', '(not recorded)')}",
         f"- isolated exact-case risk: {entry.get('isolated_exact_case_risk', '(not recorded)')}",
         f"- broader-theorem implication risk: {entry.get('broader_theorem_implication_risk', '(not recorded)')}",
+        f"- theorem-slice stability: {entry.get('theorem_slice_stability', '(not recorded)')}",
         f"- search-heavy: {entry.get('search_heavy', '(not recorded)')}",
         f"- certificate compactness: {entry.get('certificate_compactness', '(not recorded)')}",
         f"- exact gap from source: {entry.get('exact_gap_from_source', '(not recorded)')}",
@@ -949,6 +959,7 @@ def refresh_paper_memory(queue_entries: list[dict] | None = None) -> None:
                 "paper_leverage_score": entry.get("paper_leverage_score"),
                 "single_solve_to_paper_fraction": entry.get("single_solve_to_paper_fraction"),
                 "micro_paper_lane_eligible": entry.get("micro_paper_lane_eligible"),
+                "theorem_slice_stability": entry.get("theorem_slice_stability"),
                 "publication_if_solved": compact_text(entry.get("publication_if_solved"), 180),
                 "why_this_could_be_publishable": compact_text(entry.get("why_this_could_be_publishable"), 180),
                 "canonical_source": entry.get("canonical_source"),
@@ -1067,6 +1078,9 @@ def paper_candidate_gate(entry: dict) -> tuple[bool, str]:
         return False, "isolated_exact_case_risk is too high for the micro-paper lane"
     if normalized_rank(entry.get("broader_theorem_implication_risk"), RISK_RANK, 99) > RISK_RANK["moderate"]:
         return False, "broader_theorem_implication_risk is still too high or unresolved"
+    theorem_slice_stability = str(entry.get("theorem_slice_stability") or "").strip().lower().replace(" ", "_")
+    if theorem_slice_stability != "stable":
+        return False, "theorem_slice_stability must be stable before a one-shot paper candidate can enter solve"
     if normalized_rank(entry.get("certificate_compactness"), COMPACTNESS_RANK, 99) > COMPACTNESS_RANK["moderate"]:
         return False, "certificate_compactness is too weak for a compact note"
     search_heavy = normalized_flag(entry.get("search_heavy"))
@@ -1334,6 +1348,13 @@ def candidate_has_usable_solve_status(slug: str) -> bool:
     if data.get("verify_verdict") in NON_RESUMABLE_VERIFY_VERDICTS:
         return False
     return data.get("classification") in RESUMABLE_POST_SOLVE_CLASSIFICATIONS
+
+
+def ready_candidate_priority(entry: dict) -> tuple[int, float, tuple[int, int, int, int, int, int, int, int, int, str]]:
+    last_attempt = candidate_last_post_solve_attempt(entry.get("slug", ""))
+    if last_attempt is None:
+        return (0, 0.0, paper_candidate_priority(entry))
+    return (1, last_attempt.timestamp(), paper_candidate_priority(entry))
 
 
 def transport_env(profile: str) -> tuple[dict, tempfile.TemporaryDirectory | None]:
@@ -2087,7 +2108,7 @@ def run_parallel_solve_batch(entries: list[dict]) -> list[ParallelSolveWorker]:
 
 def solve_ready_queue_candidates() -> list[dict]:
     ready = [entry for entry in usable_paper_candidates() if candidate_has_usable_solve_status(entry["slug"])]
-    ready.sort(key=paper_candidate_priority)
+    ready.sort(key=ready_candidate_priority)
     return ready
 
 
@@ -2126,6 +2147,10 @@ def run_selected_entry(
         if emit_summary:
             write_publication_summary("not_used")
         return 0
+    update_runtime_candidate_state(
+        entry["slug"],
+        last_post_solve_attempt_on=now_iso(),
+    )
     return run_post_solve_pipeline(entry, status_path, emit_summary=emit_summary, selection_file=selection_file)
 
 

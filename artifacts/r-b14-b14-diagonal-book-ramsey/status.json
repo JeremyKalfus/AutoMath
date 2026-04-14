@@ -1,0 +1,20 @@
+{
+  "slug": "r-b14-b14-diagonal-book-ramsey",
+  "title": "Determine the exact value of R(B14, B14)",
+  "stage": "solve",
+  "classification": "PARTIAL",
+  "confidence": 0.74,
+  "code_used": false,
+  "lean_ready": false,
+  "lean_complete": false,
+  "publication_status": "SLICE_CANDIDATE",
+  "publication_confidence": 0.68,
+  "single_solve_to_paper_fraction": 0.79,
+  "title_theorem_strength": "strong",
+  "publication_narrative_strength": "strong",
+  "micro_paper_assessment": "Not solved yet. The current run proves that any 57-vertex obstruction must be a strongly regular graph with parameters (57,28,13,14), so the exact value question reduces to one rigid conference-graph existence problem. That is a real theorem slice, but it is still too thin for the micro-paper lane until existence or nonexistence of that graph is settled.",
+  "family_affinity": "high",
+  "generalization_signal": "high; the same Goodman pinching should reduce diagonal Bm one-gap obstructions on 4m+1 vertices to conference parameters (4m+1,2m,m-1,m)",
+  "candidate_theorem_slice": "Any 57-vertex graph with no B14 and with complement containing no B14 must be a strongly regular graph with parameters (57,28,13,14). Equivalently, R(B14, B14) equals 58 exactly when srg(57,28,13,14) exists.",
+  "next_action": "Either prove nonexistence of srg(57,28,13,14) by a local conference-graph/design argument, or import and verify an explicit 57-vertex graph with those exact parameters."
+}

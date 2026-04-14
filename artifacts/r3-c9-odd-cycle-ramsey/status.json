@@ -1,0 +1,20 @@
+{
+  "slug": "r3-c9-odd-cycle-ramsey",
+  "title": "Determine the exact value of R(C9, C9, C9)",
+  "stage": "solve",
+  "classification": "PARTIAL",
+  "confidence": 0.24,
+  "code_used": false,
+  "lean_ready": false,
+  "lean_complete": false,
+  "publication_status": "SLICE_CANDIDATE",
+  "publication_confidence": 0.21,
+  "single_solve_to_paper_fraction": 0.83,
+  "title_theorem_strength": "strong",
+  "publication_narrative_strength": "strong",
+  "micro_paper_assessment": "Target remains micro-paper eligible, but this run only isolates a theorem-facing stability slice; it does not yet produce an exact value or a publishable packet.",
+  "family_affinity": "high; bounded odd-cycle diagonal Bondy-Erdos stability lane",
+  "generalization_signal": "moderate; the neighborhood path obstruction and one-vertex extension obstruction scale to C_{2m+1}, but the global four-block stability step is still missing",
+  "candidate_theorem_slice": "In the standard four-block 32-vertex lower-bound scaffold, any added vertex that uses the color of a quotient edge on both incident blocks of that edge creates a monochromatic C9.",
+  "next_action": "Either prove a four-block stability reduction from the P8-free neighborhood constraint, or fix a canonical 32-vertex lower-bound witness and run a tightly-scoped search over admissible 33rd-vertex attachment signatures."
+}

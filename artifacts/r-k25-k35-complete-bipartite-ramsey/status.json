@@ -1,0 +1,20 @@
+{
+  "slug": "r-k25-k35-complete-bipartite-ramsey",
+  "title": "Determine the exact value of R(K2,5, K3,5)",
+  "stage": "solve",
+  "classification": "PARTIAL",
+  "confidence": 0.42,
+  "code_used": true,
+  "lean_ready": false,
+  "lean_complete": false,
+  "publication_status": "SLICE_CANDIDATE",
+  "publication_confidence": 0.34,
+  "single_solve_to_paper_fraction": 0.84,
+  "title_theorem_strength": "strong",
+  "publication_narrative_strength": "strong",
+  "micro_paper_assessment": "Exact closure remains micro-paper eligible, but the current solve only produced a structural slice and is not yet paper-shaped on its own.",
+  "family_affinity": "Strong fit with one-step mixed complete-bipartite Ramsey gaps, especially the R(K2,t, K3,s) corridor.",
+  "generalization_signal": "Pair/triple common-neighborhood counting and the one-vertex extension lemma should transfer to nearby one-step mixed bipartite gaps, but the final obstruction is still witness-specific.",
+  "candidate_theorem_slice": "Any 22-vertex coloring avoiding red K2,5 and blue K3,5 has red edge count between 89 and 106; for every vertex v, the red graph on N_R(v) has maximum degree at most 4 and the blue graph on N_B(v) is K2,5-free.",
+  "next_action": "Obtain the concrete 21-vertex lower-bound witness and test the admissible one-vertex extension conditions; absent that, sharpen the local obstruction analytically rather than launching blind graph search."
+}

@@ -1,0 +1,20 @@
+{
+  "slug": "r-b16-diagonal-book-ramsey",
+  "title": "Determine the exact value of R(B16, B16)",
+  "stage": "solve",
+  "classification": "PARTIAL",
+  "confidence": "medium",
+  "code_used": false,
+  "lean_ready": false,
+  "lean_complete": false,
+  "publication_status": "SLICE_CANDIDATE",
+  "publication_confidence": "medium",
+  "single_solve_to_paper_fraction": 0.82,
+  "title_theorem_strength": "strong",
+  "publication_narrative_strength": "strong",
+  "micro_paper_assessment": "Unsolved, but the solve run produced a real theorem slice: any 65-vertex witness would have to be strongly regular with parameters (65,32,15,16). The package is still short of the micro-paper lane until the existence question for that graph is settled.",
+  "family_affinity": "high; the reduction naturally extends to the diagonal one-gap family on 4n+1 vertices",
+  "generalization_signal": "strong; any 4n+1-vertex two-color Bn witness would have to be srg(4n+1,2n,n-1,n)",
+  "candidate_theorem_slice": "Any graph on 65 vertices with no B16 in either the graph or its complement is strongly regular with parameters (65,32,15,16).",
+  "next_action": "Verify the Goodman-saturation reduction and then check whether srg(65,32,15,16) or an equivalent symmetric conference matrix of order 66 is already known; if not, attack the 65-vertex existence question using the published 64-vertex template family under the forced 32/15/16 local constraints."
+}
