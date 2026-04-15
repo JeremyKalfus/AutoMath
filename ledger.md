@@ -15137,3 +15137,602 @@
 - Queue had no usable `paper_candidate`, so one-shot publication curation started.
 - publication cycle started at 2026-04-14 11:12:15 EDT.
 - Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation timed out before producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 11:23:27 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 11:24:27 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 11:34:16 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 11:35:16 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation timed out before producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 11:46:28 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 11:47:28 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation produced a 5-entry micro-paper queue on 2026-04-14 and selected `k12-r4-binary-covering-code` as the highest-priority usable packet.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 11:56:33 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 11:57:33 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 12:03:36 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 12:04:36 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 12:08:09 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 12:09:09 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 12:18:10 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 12:19:10 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 12:27:48 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 12:28:48 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 12:34:29 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 12:35:29 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- publication cycle started at 2026-04-14 12:44:22 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 12:52:48 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 12:53:48 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 12:56:46 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 12:57:46 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 13:02:11 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 13:03:11 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 13:07:03 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 13:08:03 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 13:15:12 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 13:15:47 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 13:19:46 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 13:20:46 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 13:25:32 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 13:26:32 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 13:29:37 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 13:30:37 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 13:34:33 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 13:35:33 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 13:38:38 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 13:39:38 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- 2026-04-14 curate: bounded web audit retained the five Type 1 BSHM micro-paper candidates in `queue.json`; `bshm-72-11-11-neg1` remains the top queue entry and `selected_problem.md` points to it.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 13:43:07 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 13:44:07 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 13:47:11 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 13:48:11 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 13:51:08 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 13:52:08 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 13:55:58 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 13:56:58 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 13:59:17 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 14:00:17 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 14:04:05 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 14:05:05 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 14:07:56 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 14:08:56 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- 2026-04-14 curate: replaced previously attempted Type 1 BSHM queue with a fresh Type 2 Table 5 queue; ranked `bshm-72-12-12-0` first, kept four lane-eligible dossiers, and marked `bshm-168-28-28-0` ineligible because its tuple-specific external audit was not completed under the 20-search cap.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 14:17:13 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 14:18:13 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 14:21:37 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 14:22:37 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 14:26:26 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 14:27:26 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- 2026-04-14 curate: rewrote `queue.json` to the Type 2 Table 5 micro-paper queue with `bshm-72-12-12-0` ranked first; kept four lane-eligible odd-odd residues and filled the fifth slot with `bshm-168-28-28-0` marked `micro_paper_lane_eligible = false` because the packaging fraction stayed below the 0.70 gate.
+- publication cycle finished at 2026-04-14 14:31:29 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 14:32:29 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 14:36:11 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 14:37:11 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation timed out before producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 15:43:41 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 16:39:15 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 16:44:15 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 16:45:15 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 16:48:46 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 16:49:46 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 16:57:01 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 16:58:01 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 17:00:40 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 17:01:40 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 17:07:47 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 17:08:47 EDT.
+- Publication mode launched a parallel solve batch for bshm-72-12-12-0, bshm-120-20-20-0 with 2 concurrent slots and 2700-second per-solve budgets.
+- Parallel solve launch: solver-A started bshm-72-12-12-0 with a 2700-second budget.
+- Parallel solve launch: solver-B started bshm-120-20-20-0 with a 2700-second budget.
+- started solving bshm-72-12-12-0
+- started solving bshm-120-20-20-0
+- publication cycle started at 2026-04-14 17:09:21 EDT.
+- Publication mode launched a parallel solve batch for bshm-72-12-12-0, bshm-120-20-20-0 with 2 concurrent slots and 2700-second per-solve budgets.
+- Parallel solve launch: solver-A started bshm-72-12-12-0 with a 2700-second budget.
+- Parallel solve launch: solver-B started bshm-120-20-20-0 with a 2700-second budget.
+- started solving bshm-72-12-12-0
+- started solving bshm-120-20-20-0
+- Parallel solve finish: solver-B completed bshm-120-20-20-0 with a usable solve artifact; worker log at artifacts/_logs/20260414T170921_solve_bshm-120-20-20-0.stdout.log.
+- Parallel solve finish: solver-A completed bshm-72-12-12-0 with a usable solve artifact; worker log at artifacts/_logs/20260414T170921_solve_bshm-72-12-12-0.stdout.log.
+- Parallel solve batch ended without a queued candidate advancing past solve, so this cycle ended cleanly.
+- publication cycle ended with an error at 2026-04-14 17:19:04 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 17:20:04 EDT.
+- Publication mode selected one-shot paper candidate bshm-120-12-12-0.
+- Parallel solve launch: solver-A started bshm-120-12-12-0 with a 2700-second budget.
+- started solving bshm-120-12-12-0
+- Parallel solve finish: solver-A completed bshm-120-12-12-0 with a usable solve artifact; worker log at artifacts/_logs/20260414T172004_solve_bshm-120-12-12-0.stdout.log.
+- Parallel solve batch ended without a queued candidate advancing past solve, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 17:23:47 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 17:24:47 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 17:26:48 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 17:27:48 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 17:29:33 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 17:30:33 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 17:35:34 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 17:36:34 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 17:39:17 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 17:40:17 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 17:42:34 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 17:43:34 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- 2026-04-14 curate: existing five-slot BSHM queue already satisfied the current MICRO-PAPER curation contract, so no new browsing was needed.
+- 2026-04-14 curate: retained bshm-72-12-12-0 as the highest-priority lane-eligible candidate and rewrote queue.json and selected_problem.md in normalized form.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 17:45:15 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 17:46:15 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 17:48:08 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 17:49:08 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- 2026-04-14 curate: reused the existing five-slot BSHM shortlist under the no-browse rule because queue.json already contained lane-eligible paper candidates.
+- 2026-04-14 curate: reranked the tail to prefer the smaller first-open Type 1 case bshm-20-3-3-neg1 ahead of bshm-168-12-12-0 and rewrote queue.json plus selected_problem.md.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 17:55:07 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 17:56:07 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 18:05:10 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 18:06:10 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 18:08:26 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 18:09:26 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 18:11:11 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 18:12:11 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 18:16:48 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 18:17:48 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 18:19:46 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 18:20:46 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 18:22:47 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 18:23:47 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 18:25:37 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 18:26:37 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 18:28:44 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 18:29:44 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 18:31:16 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 18:32:16 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 18:33:57 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 18:34:57 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 18:36:54 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 18:37:54 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 18:39:23 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 18:40:23 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 18:41:53 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 18:42:53 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 18:45:16 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 18:46:16 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 18:48:40 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 18:49:40 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 18:51:09 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 18:52:09 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 18:53:39 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 18:54:39 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 18:56:24 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 18:57:24 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 18:58:42 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 18:59:42 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 19:01:41 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 19:02:41 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 19:04:21 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 19:05:21 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 19:07:24 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 19:08:24 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 19:10:24 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 19:11:24 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 19:13:11 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 19:14:11 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 19:17:10 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 19:18:10 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 19:20:00 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 19:21:00 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 19:22:38 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 19:23:38 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation reused the existing audited five-slot micro-paper queue, reranked it deterministically, and kept `bshm-72-12-12-0` as the active selected problem without fresh web discovery because the queue already contained a lane-eligible `paper_candidate`.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 19:26:59 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 19:27:59 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 19:29:18 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 19:30:18 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 19:31:34 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 19:32:34 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 19:41:02 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 19:42:02 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 19:44:48 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 19:45:48 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 19:47:27 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 19:48:27 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 19:50:07 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 19:51:07 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curate stage reused the existing audited Gordon residual-difference-set shortlist, kept `abelian-difference-set-64681-441-3` selected, and rewrote `queue.json` plus `selected_problem.md` without new browsing because the queue already contained lane-eligible paper candidates.
+- manual curate refresh finished at 2026-04-14 19:52:53 EDT.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 21:22:07 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 21:23:17 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 21:32:13 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 21:33:13 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 21:35:08 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 21:36:08 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- manual curate refresh reused the existing five-slot Gordon residual-difference-set queue, confirmed `abelian-difference-set-64681-441-3` as the best lane-eligible survivor after a local conflict sweep, and rewrote `queue.json` plus `selected_problem.md` without new browsing.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 21:38:06 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 21:39:06 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 21:40:57 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 21:41:57 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 21:44:07 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 21:45:07 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 21:46:24 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 21:47:24 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 21:49:12 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 21:50:12 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 21:52:06 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 21:53:06 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 21:55:41 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 21:56:41 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 21:58:43 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 21:59:43 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 22:02:06 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 22:03:06 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 22:04:26 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 22:05:26 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 22:06:55 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 22:07:55 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 22:09:29 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 22:10:29 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 22:12:29 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 22:13:29 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 22:15:20 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 22:16:20 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- curate stage at 2026-04-14 22:17:32 EDT reused the existing audited difference-set queue from thin memory because `queue.json` already contained a lane-eligible survivor.
+- `selected_problem.md` remained on `abelian-difference-set-64681-441-3`, the top-ranked micro-paper candidate in the current queue.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 22:18:40 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 22:19:40 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 22:21:15 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 22:22:15 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 22:24:03 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 22:25:03 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 22:27:06 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 22:28:06 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 22:29:28 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 22:30:28 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 22:32:08 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 22:33:08 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-14 22:34:57 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-14 22:35:57 EDT.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- publication cycle started at 2026-04-15 01:29:38 EDT.
+- Publication mode launched a parallel solve batch for abelian-difference-set-64681-441-3, abelian-difference-set-1840051-2350-3 with 2 concurrent slots and 2700-second per-solve budgets.
+- Parallel solve launch: solver-A started abelian-difference-set-64681-441-3 with a 2700-second budget.
+- Parallel solve launch: solver-B started abelian-difference-set-1840051-2350-3 with a 2700-second budget.
+- started solving abelian-difference-set-1840051-2350-3
+- started solving abelian-difference-set-64681-441-3
+- Parallel solve finish: solver-A completed abelian-difference-set-64681-441-3 with a usable solve artifact; worker log at artifacts/_logs/20260415T012938_solve_abelian-difference-set-64681-441-3.stdout.log.
+- Parallel solve finish: solver-B completed abelian-difference-set-1840051-2350-3 with a usable solve artifact; worker log at artifacts/_logs/20260415T012938_solve_abelian-difference-set-1840051-2350-3.stdout.log.
+- Publication mode advanced abelian-difference-set-64681-441-3 from solved status into verify/publication audit.
+- Resuming abelian-difference-set-64681-441-3 from preserved solve artifacts instead of rerunning solve.
+- Publication audit on 2026-04-15 01:48:46 EDT marked abelian-difference-set-64681-441-3 as PAPER_READY / HUMAN_READY: the repaired r=73 multiplier-orbit proof still appears frontier-novel on a bounded prior-art pass and already reads like a one-theorem residual-case note.
+- abelian-difference-set-64681-441-3 reached HUMAN_READY and was moved off the main queue into LEAN_QUEUE so fresh discovery can continue.
+- publication cycle finished at 2026-04-15 01:51:07 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 01:52:07 EDT.
+- Publication mode resumed one-shot paper candidate abelian-difference-set-1840051-2350-3 from preserved solve artifacts.
+- Resuming abelian-difference-set-1840051-2350-3 from preserved solve artifacts instead of rerunning solve.
+- Verify stage for abelian-difference-set-1840051-2350-3 ran on 2026-04-15 01:55:16 EDT with a bounded rediscovery audit first. That pass did not establish that the exact tuple `(1840051,2350,3)` was already solved or directly implied in later literature within budget. Offline skeptical checking then confirmed the prime-order arithmetic backbone (`1840051` prime, `2347` prime, `ord_1840051(2347)=47`, quotient size `39150`) and verified the reduction to a translated union of `50` multiplier cosets, but found that the stronger exact orbit-pair fiber taxonomy is not reproducible from the preserved artifact because no checker or durable computation output was saved. The run is now `stage = verify`, `verify_verdict = MINOR_FIX`, `classification = PARTIAL`, `publication_status = NONE`, and `lean_ready = false`; the next action is to restore the missing computation support before pushing the quotient model further.
+- abelian-difference-set-1840051-2350-3 failed and was moved aside: MINOR_FIX
+- publication cycle finished at 2026-04-15 02:02:33 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 02:03:33 EDT.
+- Queue preflight found no usable `paper_candidate`s. Rejection reasons: abelian-difference-set-1124921029-47433-2: micro_paper_lane_eligible is not an explicit pass; abelian-difference-set-3699075079-86013-2: micro_paper_lane_eligible is not an explicit pass; abelian-difference-set-396224014111-890196-2: micro_paper_lane_eligible is not an explicit pass
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation on 2026-04-15 02:08:40 EDT rebuilt `queue.json` around five exact residual circulant weighing-matrix cases from the current Gordon / Arasu-Zhang weight-36 frontier: `CW(105,36)`, `CW(112,36)`, `CW(117,36)`, `CW(140,36)`, and `CW(180,36)`.
+- No audited survivor met the strict `micro_paper_lane_eligible = true` gate because the best packets still look certificate-heavy and search-driven rather than compact one-pass notes.
+- `selected_problem.md` now points to `circulant-weighing-matrix-105-36` as the best current residual-case packet.
+- Queue preflight found no usable `paper_candidate`s. Rejection reasons: circulant-weighing-matrix-105-36: micro_paper_lane_eligible is not an explicit pass; circulant-weighing-matrix-112-36: micro_paper_lane_eligible is not an explicit pass; circulant-weighing-matrix-117-36: micro_paper_lane_eligible is not an explicit pass; circulant-weighing-matrix-140-36: micro_paper_lane_eligible is not an explicit pass; circulant-weighing-matrix-180-36: micro_paper_lane_eligible is not an explicit pass
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-15 02:12:32 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 02:13:32 EDT.
+- Queue preflight found no usable `paper_candidate`s. Rejection reasons: circulant-weighing-matrix-105-36: micro_paper_lane_eligible is not an explicit pass; circulant-weighing-matrix-112-36: micro_paper_lane_eligible is not an explicit pass; circulant-weighing-matrix-117-36: micro_paper_lane_eligible is not an explicit pass; circulant-weighing-matrix-140-36: micro_paper_lane_eligible is not an explicit pass; circulant-weighing-matrix-180-36: micro_paper_lane_eligible is not an explicit pass
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- publication cycle started at 2026-04-15 02:19:18 EDT.
+- Queue preflight found no `paper_candidate` entries in queue.json.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- publication cycle started at 2026-04-15 02:25:52 EDT.
+- Queue preflight found no `paper_candidate` entries in queue.json.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- publication cycle started at 2026-04-15 02:29:56 EDT.
+- Queue preflight found no `paper_candidate` entries in queue.json.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.

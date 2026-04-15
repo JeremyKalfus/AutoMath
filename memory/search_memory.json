@@ -1,15 +1,7 @@
 {
-  "generated_on": "2026-04-14T08:38:13.382052-04:00",
-  "count": 102,
+  "generated_on": "2026-04-15T02:02:33.223306-04:00",
+  "count": 103,
   "recent_attempts": [
-    {
-      "slug": "z11-z11-z2-prime-zero-divisor-graph",
-      "reason": "CANDIDATE",
-      "title": "Is the zero-divisor graph \u0393(Z_11 \u00d7 Z_11 \u00d7 Z_2) prime?",
-      "notes": "Verified feeder evidence archived after skeptical verify so the paired p = 11 zero-divisor campaign can move to the p = 13 frontier without rerunning this preserved instance.",
-      "checked_on": "2026-04-09",
-      "publication_status": "SLICE_CANDIDATE"
-    },
     {
       "slug": "z13-z25-prime-zero-divisor-graph",
       "reason": "CANDIDATE",
@@ -321,6 +313,14 @@
       "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
       "checked_on": "2026-04-14",
       "publication_status": "REDISCOVERY"
+    },
+    {
+      "slug": "abelian-difference-set-1840051-2350-3",
+      "reason": "MINOR_FIX",
+      "title": "abelian-difference-set-1840051-2350-3",
+      "notes": "MINOR_FIX",
+      "checked_on": "2026-04-15",
+      "publication_status": "NONE"
     }
   ]
 }

@@ -467,5 +467,12 @@
     "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
     "publication_status": "REDISCOVERY",
     "checked_on": "2026-04-14"
+  },
+  {
+    "slug": "abelian-difference-set-1840051-2350-3",
+    "reason": "MINOR_FIX",
+    "title": null,
+    "publication_status": "NONE",
+    "checked_on": "2026-04-15"
   }
 ]

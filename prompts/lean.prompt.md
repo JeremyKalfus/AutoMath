@@ -8,7 +8,8 @@ Do NOT browse the internet.
 
 Work under `artifacts/<slug>/`.
 
-Only continue if the verified result is strong enough to formalize and the current classification is not `REDISCOVERY`.
+Only continue if the verified result is strong enough to formalize, the current classification is not `REDISCOVERY`, and the packet is already marked HUMAN_READY.
+This stage runs from the secondary `LEAN_QUEUE`, not the main discovery queue.
 Only continue when the current `status.json` makes it explicit that Lean is the direct packet-sealing step rather than optional polish.
 
 Sidecar attempt mode:

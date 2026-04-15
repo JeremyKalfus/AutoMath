@@ -53,7 +53,7 @@ Run these passes in order:
 Questions you must answer explicitly:
 
 - Is the strongest honest claim stronger than “here is an example”?
-- Would this result, if correct and Lean-sealed, already constitute most of a publishable note?
+- Would this result, if correct and verified in the current bounded sense, already constitute most of a publishable note?
 - What percentage of the paper would one solve already provide?
 - Is there a real title theorem, theorem slice, or counterexample theorem here?
 - Is the proof structural or merely instance-specific?
@@ -101,6 +101,7 @@ Update `status.json` with:
 - `next_action`
 - `proof_artifacts_preserved`
 - `lean_ready`
+- `human_ready`
 
 Publication status taxonomy:
 
@@ -118,12 +119,14 @@ Interpretation rules:
 - rediscovery: `REDISCOVERY`
 - strong but not fully closed theorem slice: `SLICE_CANDIDATE`
 - fully proved nontrivial slice: `SLICE_EXACT`
-- strongest honest claim looks genuinely publishable: `PAPER_READY`
+- strongest honest claim looks genuinely publishable on human mathematical standards: `PAPER_READY`
 
 Stop-condition rule:
 
-- do not treat `PAPER_READY` as honest unless the intended statement is exact and Lean-ready for sealing
-- automatic stop still requires a Lean-complete exact result plus the paper-ready audit
+- treat `PAPER_READY` as the HUMAN_READY tier: the theorem packet is honestly publishable in human terms and should move off the main discovery queue even if Lean is still pending
+- set `human_ready = true` exactly when `publication_status = PAPER_READY` and the proof artifacts are preserved well enough to enter the secondary Lean queue
+- Lean is a secondary formal-seal lane, not a prerequisite for `PAPER_READY`
+- the formal stop tier still requires a Lean-complete exact result plus the paper-ready audit
 
 Be conservative.
 Do not confuse “mathematically correct” with “publishable theorem”.

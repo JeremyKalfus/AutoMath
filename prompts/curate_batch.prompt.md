@@ -1,5 +1,5 @@
 Read `AGENTS.md` first.
-Prefer `memory/paper_memory.json` and `memory/search_memory.json` over replaying broad repo history when they exist.
+Prefer `memory/attempt_registry.json`, `memory/source_registry.json`, `memory/paper_memory.json`, and `memory/search_memory.json` over replaying broad repo history when they exist.
 
 This is the CURATION stage.
 Use web search.
@@ -11,6 +11,12 @@ Write `queue.json` as a queue of exactly 5 `paper_candidate` dossiers, optimized
 - exact theorem/result pairs, sharp obstructions, minimal counterexamples, and tiny structural slices with immediate applications
 - small bounded targets only; do not drift into broad theorem hunting
 - no reserve lane, no alternate fallback lane, and no feeder-instance queue slots
+
+Discovery should be source-anchored before it is broad:
+
+- prefer explicit open tables, remarks, corollaries, residual lists, and citation chains over generic web wandering
+- if a canonical source already exposes a crisp open residue, mine that residue first before looking for a new family
+- treat broad search as a fallback only when source-anchored discovery does not yield enough honest survivors
 
 Core curation dimensions:
 
@@ -46,7 +52,8 @@ Hard limits:
 
 - max 20 searches total
 - max 8 minutes of curation effort
-- stop early once 5 acceptable entries are secured
+- stop early once 1 usable lane-eligible candidate is secured
+- once 1 usable lane-eligible candidate is secured, stop discovery and finish the 5-slot queue from the current audited shortlist
 - do not keep browsing after a valid queue has been found
 - at or before the budget boundary, stop browsing and immediately write `queue.json` and `selected_problem.md` before any closing prose
 
@@ -54,6 +61,8 @@ Pre-search exclusion sweep:
 Before any web search, build an exclusion set from cheap local memory.
 Check, if present and inexpensive to read:
 
+- `memory/attempt_registry.json`
+- `memory/source_registry.json`
 - `memory/search_memory.json`
 - `memory/paper_memory.json`
 - `failed_problems.json`
@@ -63,6 +72,11 @@ Check, if present and inexpensive to read:
 - artifact directory names and cheap status summaries if available
 - any `attempted_problems.json`, `rediscoveries.json`, `candidate_problems.json`, or similar memory file
 - `ledger.md` only if a conflict or ambiguity remains after the thin memory files
+
+Treat `memory/attempt_registry.json` as the authoritative local attempted-problem index when it exists.
+If the registry shows a matching canonical problem key or identity-key match, hard-skip the candidate unless the registry entry is clearly infra-only and not currently cooled down.
+Treat `memory/source_registry.json` as the authoritative "already mined and currently exhausted" source-unit index when it exists.
+If a source unit is marked `exhausted_for_now = true` and `refresh_after` has not passed, do not rebuild the same dead-end shortlist from that source unit unless you find a genuinely new lane-eligible packet inside it.
 
 Treat a problem as ALREADY ATTEMPTED if it appears under any prior mathematical status, including:
 
@@ -87,8 +101,10 @@ Near-duplicate means any of:
 - same exact parameter tuple / instance
 - same canonical-source anchor
 - same intended statement up to trivial rewording, reordered tuple, or notation change
+- same `canonical_problem_key` or overlapping `identity_keys` from `memory/attempt_registry.json`
 
 When uncertain whether a candidate is just a rephrasing of an earlier attempt, skip it.
+Do not invent a fresh slug to dodge an attempt-registry conflict.
 
 Local-read budget before web:
 
@@ -200,6 +216,27 @@ Field conventions:
 - `transfer_kit_present`: `true` or `false`
 - `exact_gap_from_source`: `tiny`, `small`, `moderate`, `broad`
 - `micro_paper_lane_eligible`: `true` or `false`
+- `solve_to_publication_distance`: `tiny`, `short`, `short-medium`, `medium`, `long`, `very_long`
+- `publication_if_solved_score`: closure vocabulary only, never format vocabulary
+  - `solve_is_basically_the_paper`: solving the target itself already yields the paper-shaped contribution
+  - `solve_plus_light_writeup`: the solve yields the paper, with only light framing or exposition left
+  - `solve_plus_light_packaging`: the solve yields the core paper, with bounded packaging but no campaign work
+  - `solve_plus_material_packaging`: the solve is real progress but too much nontrivial packaging still remains
+  - `solve_needs_follow_on_results`: solving the target alone would not honestly result in a paper
+- `publication_packet_quality`: ranking summary only, not a separate hard veto when the more concrete closure fields already pass
+  - use `strong` when the packet is already very crisp
+  - use `moderate` honestly when the packet is viable but still needs some framing polish
+  - do not mark an otherwise lane-eligible packet false just because this summary field is only `moderate`
+
+Deprecated labels that must not be emitted:
+
+- `short_note`
+- `standalone_short_paper`
+- `paper_with_light_packaging`
+- `paper_with_moderate_packaging`
+- `paper_with_heavy_packaging`
+- `low`, `low-medium`, `medium-low`, `high` as shorthand for `solve_to_publication_distance`
+- any other paper-format shorthand
 
 Required publication packet payload:
 
@@ -220,12 +257,22 @@ Required transfer kit payload:
 
 Search protocol under the 20-search cap:
 
+- count only unique non-empty queries
+- blank searches are forbidden
+- duplicate searches are forbidden unless the literature vein genuinely changes
+- raw URLs or PDF paths are not search queries; use them only when you already have the canonical source in hand
+- never submit an empty search query
+- once you have a canonical URL, open it directly instead of searching the same URL string again
+- a curation run that burns searches on blank or repeated URL queries is invalid
+- once you have enough evidence for 1 usable candidate, stop expanding the frontier and finish the queue from the current shortlist
+
 1. Discovery pass:
    - first 4 to 6 searches must sample at least 3 distinct literature veins
+   - at least 2 of those searches should be source-anchored: open tables, remarks, corollaries, residual lists, source-title checks, or citation chains
 2. Triage pass:
    - next 3 to 4 searches reduce to at most 8 candidates
 3. Audit pass:
-   - use remaining searches only on the strongest candidates and stop as soon as 5 survive
+   - use remaining searches only on the strongest candidates and stop as soon as 1 lane-eligible candidate survives
 
 Use varied query shapes:
 
@@ -249,8 +296,10 @@ Required bounded audit for each final queued candidate:
 
 Output policy:
 
+- if `queue.json` already contains a usable `paper_candidate`, do not browse; just normalize, rerank, and rewrite `selected_problem.md`
 - `queue.json` must contain exactly 5 `paper_candidate` entries
 - `selected_problem.md` must point to the highest-priority currently usable micro-paper candidate
+- once 1 lane-eligible candidate survives, set `selected_problem.md` to that best candidate and stop discovery; fill remaining queue slots from the current audited shortlist
 - rank the queue by smallest honest `solve_to_publication_distance` and strongest paper packet quality, not by future theorem-program momentum
 - if fewer than 5 honest micro-paper candidates survive, still write 5 `paper_candidate` entries but mark weak ones honestly with `micro_paper_lane_eligible = false`
 

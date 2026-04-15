@@ -1,0 +1,21 @@
+{
+  "slug": "bshm-72-12-12-0",
+  "title": "The First Odd-Odd Open Case for BSHM(8rs,4s,4s,0)",
+  "stage": "solve",
+  "classification": "PARTIAL",
+  "confidence": "medium",
+  "code_used": false,
+  "lean_ready": false,
+  "lean_complete": false,
+  "publication_status": "SLICE_CANDIDATE",
+  "publication_confidence": "medium",
+  "single_solve_to_paper_fraction": 0.84,
+  "title_theorem_strength": "strong",
+  "publication_narrative_strength": "strong",
+  "micro_paper_assessment": "Strong theorem-facing reduction proved, but the exact existence question remains open because the reduced 60-row block-balanced orthogonal completion problem was not closed.",
+  "family_affinity": "High; the Gram-to-clique reduction scales across BSHM(n,ell,ell,0), and here it forces twelve six-column classes in the Type 2 family.",
+  "generalization_signal": "The clique-union and block-balance reduction scales, but the global orthogonal completion problem remains the hard instance-sensitive residue.",
+  "candidate_theorem_slice": "BSHM(72,12,12,0) exists if and only if there is a 60x72 orthogonal +/-1 completion whose rows are 3-balanced on each of twelve six-column blocks forced by the selected rows.",
+  "next_action": "Verify the source-faithful reduction and then attack or obstruct the reduced 60-row block-balanced completion problem without broadening beyond this micro-paper lane.",
+  "human_ready": false
+}

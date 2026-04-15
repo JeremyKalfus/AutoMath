@@ -12,7 +12,8 @@ Plain-English version:
 - prefer exact theorem/result pairs, sharp obstructions, minimal counterexamples, and tiny structural lemmas with immediate applications
 - optimize for paper leverage rather than microscopic statement size
 - heavily downrank any target that needs a feeder ladder, broad campaign buildup, or expensive post-solve packaging before becoming paper-shaped
-- stop automatically only when the strongest honest claim is both Lean-complete `EXACT` and `publication_status = PAPER_READY`
+- primary publication success is now a HUMAN_READY packet: `verify_verdict = VERIFIED`, `publication_status = PAPER_READY`, and proof artifacts preserved
+- Lean-complete `EXACT` is a second-tier formal seal, not the only kind of success
 
 AutoMath is now a strict micro-paper lane only.
 The active harness is exactly five stages: `curate`, `solve`, `verify`, `publication_audit`, and `lean`.
@@ -22,6 +23,8 @@ The active harness is exactly five stages: `curate`, `solve`, `verify`, `publica
 - `ledger.md`: append-only human-readable log of what the harness did.
 - `queue.json`: current batch of exactly 5 curated dossiers. Every live queue entry should be a `paper_candidate`.
 - `failed_problems.json`: problems that failed, rediscoveries, archived exacts, and other do-not-recur memory.
+- `human_ready.json`: archived HUMAN_READY packets that are publishable in human terms and should no longer block fresh discovery.
+- `lean_queue.json`: derived queue of HUMAN_READY packets that are not yet Lean-complete and are eligible for non-blocking formal sealing.
 - `selected_problem.md`: the currently active queue entry.
 - `memory/`: thin canonical memory surfaces, especially `paper_memory.json` for near-paper packets and `search_memory.json` for attempted/rejected targets.
 - `prompts/`: stage prompts for `curate`, `solve`, `verify`, `publication_audit`, and `lean`.
@@ -30,6 +33,8 @@ The active harness is exactly five stages: `curate`, `solve`, `verify`, `publica
 - `run_once.sh`: one publication-oriented cycle by default.
 - `run_n_cycles.sh`: bounded repeated cycles.
 - `run_continuous.sh`: repeated cycles until stopped.
+- `run_lean_queue_once.sh`: one non-blocking Lean-queue cycle over HUMAN_READY packets.
+- `run_lean_queue_continuous.sh`: repeated Lean-queue cycles until stopped.
 
 # Workflow
 
@@ -50,18 +55,20 @@ One-shot publication rules:
 5. Use `publication_audit` to decide whether the strongest honest claim is instance-only, slice-level, rediscovered, or genuinely paper-ready.
 6. The manager may run up to 2 concurrent solve workers on distinct queued `paper_candidate` slugs; solve is the only parallelized stage in the live harness.
 7. The default solve budget is 45 minutes per candidate unless `AUTOMATH_SOLVE_TIMEOUT` is overridden explicitly.
-8. Use Lean only when it directly seals a near-publication packet; do not let formalization overhead dominate early selection.
-9. `EXACT` alone is not a stop condition; the solve must also be paper-shaped enough to audit as `PAPER_READY`.
-10. Stop automatically only when the intended statement is Lean-complete `EXACT`, `publication_status = PAPER_READY`, and the relevant proof/formal artifacts are preserved.
-11. If verification finds rediscovery, archive it and do not treat it as a frontier success.
-12. No automatic fallbacks: if a chosen path fails, do not silently switch into campaign-building, feeder-ladder work, or another conceptually different lane. Record the blocker, preserve useful artifacts, and continue only through the same one-shot lane.
-13. Infrastructure failures are not mathematical failures: salvage partial artifacts, cool the slug down, and do not archive it as though the theorem failed.
+8. Use Lean as a secondary formal-seal lane fed by HUMAN_READY packets; do not let formalization overhead dominate early selection or block fresh curation/solve work.
+9. `EXACT` alone is not a publication success condition; the solve must also be paper-shaped enough to audit as `PAPER_READY`.
+10. HUMAN_READY packets must leave the main queue and continue discovery work even if Lean is still pending.
+11. A Lean-complete `EXACT` result is the formal-seal tier, not the only tier that counts as a success.
+12. If verification finds rediscovery, archive it and do not treat it as a frontier success.
+13. No automatic fallbacks: if a chosen path fails, do not silently switch into campaign-building, feeder-ladder work, or another conceptually different lane. Record the blocker, preserve useful artifacts, and continue only through the same one-shot lane.
+14. Infrastructure failures are not mathematical failures: salvage partial artifacts, cool the slug down, and do not archive it as though the theorem failed.
 
 Parallel policy:
 
 - One manager thread/worktree orchestrates the run.
 - The manager may launch up to 2 isolated solve workers concurrently on distinct queued paper candidates.
-- `verify`, `publication_audit`, and `lean` remain manager-serial even when solve runs in parallel.
+- `verify` and `publication_audit` remain manager-serial even when solve runs in parallel.
+- `lean` runs from `lean_queue.json` as a non-blocking secondary lane fed by HUMAN_READY packets and should not prevent fresh curation/solve work.
 - Use isolated workers only for narrowly scoped paper-candidate tasks with strict context budgets and clear write ownership.
 - Merge back only stable dossier and artifact updates.
 - Allowed narrow worker roles are:
@@ -110,7 +117,7 @@ Parallel policy:
   - `REDISCOVERY`
   - `SLICE_CANDIDATE`
   - `SLICE_EXACT`
-  - `PAPER_READY`
+- `PAPER_READY`
 - Candidate selection should strongly prefer:
   - exact theorem/result pairs,
   - sharp obstruction theorems,
@@ -153,6 +160,7 @@ Parallel policy:
 - Before Lean completes, the strongest positive proof classification is `CANDIDATE`.
 - A non-Lean explicit disproof may still be labeled `COUNTEREXAMPLE`, but it does not stop the harness on its own.
 - A Lean-backed exact instance may still have `publication_status = INSTANCE_ONLY`.
+- `PAPER_READY` is the human-ready tier: the strongest honest claim already looks publishable on human mathematical standards even if Lean is still pending.
 - `REDISCOVERY` means the exact intended statement is already solved or directly implied in prior art; it never counts as a frontier-novel publication win.
 - Do not start solve with SAT, ILP, CP-SAT, brute force, or generic optimization unless the problem is explicitly marked `search-heavy` or two reasoning strategies have already failed.
 - Before any nontrivial code, write the reasoning section in the relevant `record.md`.

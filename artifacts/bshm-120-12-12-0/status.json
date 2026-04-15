@@ -1,0 +1,21 @@
+{
+  "slug": "bshm-120-12-12-0",
+  "title": "The Parameter Set (120,12,12,0) for Balanced Splittable Hadamard Matrices",
+  "stage": "solve",
+  "classification": "PARTIAL",
+  "confidence": "medium",
+  "code_used": false,
+  "lean_ready": false,
+  "lean_complete": false,
+  "publication_status": "SLICE_CANDIDATE",
+  "publication_confidence": "medium",
+  "single_solve_to_paper_fraction": 0.79,
+  "title_theorem_strength": "strong_if_closed_exactly",
+  "publication_narrative_strength": "strong_if_closed_exactly",
+  "micro_paper_assessment": "Strong structural slice only. The forced 12K10 and 5+/5- block-zero-sum reduction is theorem-facing, but there is no exact existence verdict yet, so the current packet is not paper-ready.",
+  "family_affinity": "high; the same B^2=nB reduction extends across the Type 2 family BSHM(8rs,4s,4s,0)",
+  "generalization_signal": "The selected-row column graph is forced to be 4s disjoint cliques K_{2r}; equivalently H1 is column-permutation equivalent to H_(4s) times the all-ones row on 2r columns.",
+  "candidate_theorem_slice": "Any BSHM(120,12,12,0), if it exists, has selected 12-row submatrix H_12 times the all-ones row on 10 columns up to column permutation, and every complementary row has a 5+/5- split on each ten-column block.",
+  "next_action": "verify the 12K10 reduction carefully, then decide whether the complementary 108-row block model can support a bounded exact obstruction or extension argument without generic search",
+  "human_ready": false
+}

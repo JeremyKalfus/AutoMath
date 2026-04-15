@@ -1,6 +1,6 @@
 # AutoMath Publication Summary
 
-- Updated: `2026-04-14 11:07:46 EDT`
+- Updated: `2026-04-15 02:12:32 EDT`
 - Queued one-shot paper candidate: (none queued)
 - Candidate title: (none queued)
 - Candidate publication if solved: (none queued)
@@ -13,14 +13,19 @@
 - Solve timeout: `2700` seconds
 - Concurrent solve slots: `2`
 - xhigh usable in this environment: `yes`
-- Automatic stop condition: `publication_status = PAPER_READY`, `classification = EXACT`, and `lean_complete = true`
+- HUMAN_READY backlog: `1`
+- LEAN_QUEUE backlog: `1`
+- Next LEAN_QUEUE packet: `abelian-difference-set-64681-441-3`
+- LEAN_QUEUE is processed only by the separate Lean runner, not by the main publication loop
+- Primary success tier: `publication_status = PAPER_READY` with verified preserved proof artifacts
+- Formal stop condition: `publication_status = PAPER_READY`, `classification = EXACT`, and `lean_complete = true`
 - Worker infra status this cycle: `not_used`
 - Summary path: `artifacts/summary.md`
 - Candidate status path: `(none)`
 - Ledger tail:
-  - Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
-  - publication cycle finished at 2026-04-14 10:59:40 EDT.
-  - publication cycle sleeping for 60 seconds.
-  - publication cycle started at 2026-04-14 11:00:40 EDT.
   - Queue had no usable `paper_candidate`, so one-shot publication curation started.
+  - Curation on 2026-04-15 02:08:40 EDT rebuilt `queue.json` around five exact residual circulant weighing-matrix cases from the current Gordon / Arasu-Zhang weight-36 frontier: `CW(105,36)`, `CW(112,36)`, `CW(117,36)`, `CW(140,36)`, and `CW(180,36)`.
+  - No audited survivor met the strict `micro_paper_lane_eligible = true` gate because the best packets still look certificate-heavy and search-driven rather than compact one-pass notes.
+  - `selected_problem.md` now points to `circulant-weighing-matrix-105-36` as the best current residual-case packet.
+  - Queue preflight found no usable `paper_candidate`s. Rejection reasons: circulant-weighing-matrix-105-36: micro_paper_lane_eligible is not an explicit pass; circulant-weighing-matrix-112-36: micro_paper_lane_eligible is not an explicit pass; circulant-weighing-matrix-117-36: micro_paper_lane_eligible is not an explicit pass; circulant-weighing-matrix-140-36: micro_paper_lane_eligible is not an explicit pass; circulant-weighing-matrix-180-36: micro_paper_lane_eligible is not an explicit pass
   - Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
