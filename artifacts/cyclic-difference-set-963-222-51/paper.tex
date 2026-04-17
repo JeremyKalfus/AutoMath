@@ -1,0 +1,102 @@
+\documentclass[11pt]{amsart}
+\input{../paper_preamble.tex}
+
+\begin{document}
+
+\title[Nonexistence of a Cyclic $(963,222,51)$ Difference Set]{Nonexistence of a Cyclic $(963,222,51)$ Difference Set\thanks{AutoMath assisted in generating the solution and preparing this draft.}}
+\date{April 15, 2026}
+
+\begin{abstract}
+We show that the cyclic group $\Cyc{963}$ admits no $(963,222,51)$-difference set.
+The proof uses the quotient $\Cyc{963}\twoheadrightarrow \Cyc{107}$.
+A contracted multiplier theorem makes $19$ a $107$-multiplier, so after translation the quotient coefficient function is constant on the multiplication-by-$19$ orbits on $\Cyc{107}$.
+Those orbits have sizes $1,53,53$, while each quotient coefficient is at most $9$.
+The required weight $222$ is therefore impossible.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+The cyclic row $(963,222,51)$, equivalently the $[9,107]$ case, appears as a small open residue in Gordon's La Jolla difference-set status tables \cite{Gordon2019}.
+We give a short quotient-orbit obstruction that rules it out.
+
+\begin{theorem}
+The cyclic group $\Cyc{963}$ does not admit a $(963,222,51)$-difference set.
+\end{theorem}
+
+\begin{proof}
+Assume for contradiction that $D\subseteq G=\Cyc{963}$ is a $(963,222,51)$-difference set.
+Set
+\[
+n=k-\lambda=222-51=171=3^2\cdot 19.
+\]
+Let $N$ be the subgroup of order $9$, and write
+\[
+Q=G/N\cong \Cyc{107}.
+\]
+For each $u\in Q$, let $a_u$ denote the number of points of $D$ in the coset above $u$.
+Then
+\[
+0\le a_u\le 9
+\qquad\text{and}\qquad
+\sum_{u\in Q} a_u = 222.
+\]
+
+We use the contracted multiplier theorem on the quotient $Q$.
+Take $t=19$ and $w=107$.
+For the prime divisor $19$ of $n$ we have $19^1\equiv 19\pmod{107}$, and for the prime divisor $3$ of $n$ we have
+\[
+3^{95}\equiv 19 \pmod{107}.
+\]
+Therefore Baumert--Gordon's sufficient criterion for $w$-multipliers applies, so $19$ is a $107$-multiplier for $D$ \cite[Thm.~3.2]{BG2004}.
+Equivalently, after translating $D$ if necessary, we may assume that the quotient coefficient function is invariant under multiplication by $19$ on $Q$:
+\[
+a_{19u}=a_u \qquad (u\in Q).
+\]
+
+Since $107$ is prime, the orbit sizes of $u\mapsto 19u$ are determined by $\ord_{107}(19)$.
+A direct modular computation gives
+\[
+\ord_{107}(19)=53.
+\]
+Hence the action of multiplication by $19$ on $Q$ has exactly three orbits:
+\[
+\{0\},\qquad O_1,\qquad O_2,
+\]
+where $|O_1|=|O_2|=53$.
+Because the function $u\mapsto a_u$ is orbit-constant, there exist integers $b_0,\alpha,\beta$ with
+\[
+0\le b_0,\alpha,\beta\le 9
+\]
+such that
+\[
+222 = b_0 + 53(\alpha+\beta).
+\]
+Reducing modulo $53$ gives
+\[
+b_0 \equiv 222 \equiv 10 \pmod{53}.
+\]
+But $0\le b_0\le 9$, which is impossible.
+This contradiction proves that $\Cyc{963}$ admits no $(963,222,51)$-difference set.
+\end{proof}
+
+\begin{remark}
+The decisive obstruction takes place on the prime quotient $\Cyc{107}$.
+The weight $222$ is too small in the distinguished fixed coset and too rigid modulo the two $53$-cycles.
+\end{remark}
+
+\begin{thebibliography}{99}
+
+\bibitem{BG2004}
+Leonard D.~Baumert and Daniel M.~Gordon,
+\emph{On the existence of cyclic difference sets with small parameters},
+Fields Inst. Commun. \textbf{41} (2004), 29--40.
+
+\bibitem{Gordon2019}
+Daniel M.~Gordon,
+\emph{The La Jolla Difference Set Repository},
+ArasuFest talk slides, August 3, 2019.
+
+\end{thebibliography}
+
+\end{document}

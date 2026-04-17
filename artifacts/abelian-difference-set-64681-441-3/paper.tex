@@ -1,0 +1,94 @@
+\documentclass[11pt]{amsart}
+\input{../paper_preamble.tex}
+
+\begin{document}
+
+\title[No Abelian $(64681,441,3)$-Difference Set]{No Abelian $(64681,441,3)$-Difference Set Exists\thanks{AutoMath assisted in generating the solution and preparing this draft.}}
+\date{April 15, 2026}
+
+\begin{abstract}
+We show that no abelian group of order $64681$ admits a $(64681,441,3)$-difference set.
+The proof is short: since $64681=71\cdot 911$ is squarefree, every abelian group of that order is cyclic.
+The first multiplier theorem makes $73$ a multiplier, and after translation any putative difference set is invariant under multiplication by $73$ on $\Cyc{64681}$.
+Every nonzero $73$-orbit has size $35$, so an invariant set has size $\delta+35a$ with $\delta\in\{0,1\}$.
+This cannot equal $441$.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+Gordon's 2022 analysis of abelian difference sets with small $\lambda$ leaves $(64681,441,3)$ on the residual list of open abelian $\lambda=3$ cases \cite{Gordon2022}.
+We record a direct multiplier-orbit obstruction that removes this tuple.
+
+\begin{theorem}
+No abelian group of order $64681$ admits a $(64681,441,3)$-difference set.
+\end{theorem}
+
+\begin{proof}
+Let $G$ be an abelian group of order
+\[
+64681 = 71\cdot 911.
+\]
+Since the order is squarefree, $G$ is cyclic, so it is enough to rule out a difference set in $\Cyc{64681}$.
+
+Assume for contradiction that $D\subseteq \Cyc{64681}$ is a $(64681,441,3)$-difference set.
+Its order is
+\[
+n=k-\lambda=441-3=438=2\cdot 3\cdot 73.
+\]
+Because $73$ is a prime divisor of $n$ with $73>\lambda$ and $\gcd(73,64681)=1$, the first multiplier theorem implies that $73$ is a numerical multiplier of $D$.
+Thus there exists $s\in \Cyc{64681}$ such that
+\[
+73D=D+s.
+\]
+Since
+\[
+\gcd(73-1,64681)=\gcd(72,64681)=1,
+\]
+we may choose $g\in \Cyc{64681}$ with $(73-1)g=-s$.
+Then the translate $D'=D+g$ satisfies
+\[
+73D'=73D+73g=D+s+73g=D+g=D'.
+\]
+Replacing $D$ by $D'$, we may assume from the start that $73D=D$.
+
+We now compute the orbit sizes of the map $x\mapsto 73x$ on $\Cyc{64681}$.
+The point $0$ is fixed.
+If $x$ is a nonzero multiple of $911$, then its orbit size is $\ord_{71}(73)$.
+Since $73\equiv 2\pmod{71}$ and $2^{35}\equiv 1\pmod{71}$, we have $\ord_{71}(73)=35$.
+Likewise, if $x$ is a nonzero multiple of $71$, then the orbit size is $\ord_{911}(73)$, and a direct computation gives $\ord_{911}(73)=35$.
+For a unit $x$, the orbit size is
+\[
+\operatorname{lcm}\bigl(\ord_{71}(73),\ord_{911}(73)\bigr)=35.
+\]
+Therefore every nonzero orbit has size $35$.
+
+Because $D$ is $73$-invariant, it is a union of $73$-orbits.
+Hence
+\[
+|D|=\delta+35a
+\]
+for some integer $a\ge 0$ and some $\delta\in\{0,1\}$ according to whether $0\in D$.
+But $|D|=441$, and neither $441$ nor $440$ is divisible by $35$.
+This contradiction proves that no such difference set exists.
+\end{proof}
+
+\begin{remark}
+The obstruction is entirely orbit-theoretic: once the valid multiplier $73$ is chosen, the orbit-size semigroup on $\Cyc{64681}$ misses the required weight $441$.
+\end{remark}
+
+\begin{thebibliography}{99}
+
+\bibitem{Gordon2022}
+Daniel M.~Gordon,
+\emph{On difference sets with small lambda},
+J. Algebraic Combin. \textbf{55} (2022).
+
+\bibitem{Lander}
+E.~S.~Lander,
+\emph{Symmetric Designs: An Algebraic Approach},
+Cambridge University Press, 1983.
+
+\end{thebibliography}
+
+\end{document}

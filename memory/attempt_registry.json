@@ -1,6 +1,6 @@
 {
-  "generated_on": "2026-04-15T02:19:19.008415-04:00",
-  "count": 137,
+  "generated_on": "2026-04-16T00:59:46.485131-04:00",
+  "count": 189,
   "entries": [
     {
       "canonical_problem_key": "stmt:5aaddbe333cf0ce7",
@@ -78,6 +78,49 @@
       "artifact_status_path": "artifacts/abelian-difference-set-4761-120-3/status.json",
       "working_packet_path": null,
       "notes": "Supply an exact cited abelian prime-multiplier theorem covering p=13 for this tuple, verify its hypotheses explicitly, then rerun verification before any Lean stage."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:abelian-difference-set:182733434811,740406,3:977d2b3b03813781",
+      "identity_keys": [
+        "family_tuple:abelian-difference-set:182733434811,740406,3",
+        "family_tuple:on-open-abelian-difference-set-case:182733434811,740406,3",
+        "slug:abelian difference set 182733434811 740406 3",
+        "source_tuple:977d2b3b03813781:182733434811,740406,3",
+        "stmt:2959862c548d027f",
+        "title:abelian difference set 182733434811 740406 3",
+        "title:on an open abelian 182733434811 740406 3 difference set case"
+      ],
+      "family_hint": "abelian-difference-set",
+      "parameter_tuple": [
+        182733434811,
+        740406,
+        3
+      ],
+      "statement": "Determine whether any abelian group of order 182733434811 admits a (182733434811,740406,3)-difference set.",
+      "canonical_source": "Daniel M. Gordon, \"On difference sets with small lambda\" (Journal of Algebraic Combinatorics 55, 2022), especially Theorem 2, Theorems 3 and 4, and Table 4 listing the six remaining abelian (v,k,3)-difference-set cases for k <= 10^10.",
+      "source_unit_hint": "Theorem 2, Table 4",
+      "slug": "abelian-difference-set-182733434811-740406-3",
+      "slug_history": [
+        "abelian-difference-set-182733434811-740406-3"
+      ],
+      "title": "abelian-difference-set-182733434811-740406-3",
+      "current_status": "publication_audit",
+      "classification": "PARTIAL",
+      "verify_verdict": "CRITICAL_FLAW",
+      "publication_status": "NONE",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "partial",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/abelian-difference-set-182733434811-740406-3/status.json",
+      "working_packet_path": "artifacts/abelian-difference-set-182733434811-740406-3/working_packet.md",
+      "notes": "Bounded prior-art checking still leaves the exact abelian (182733434811,740406,3) case unresolved in the surfaced literature, but the current nonexistence proof fails source-faithfulness: Gordon's Theorem 2 must use t..."
     },
     {
       "canonical_problem_key": "family_tuple_source:abelian-difference-set:1840051,2350,3:590833bc7cfc70d2",
@@ -162,6 +205,676 @@
       "artifact_status_path": "artifacts/abelian-difference-set-64681-441-3/status.json",
       "working_packet_path": "artifacts/abelian-difference-set-64681-441-3/working_packet.md",
       "notes": "No abelian group of order 64681 admits a (64681,441,3)-difference set; on the bounded 2026-04-15 publication audit this still appears to remove one of Gordon's six residual abelian lambda=3 cases rather than rediscove..."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:abelian-difference-set-group:243,121,60:7896a843c9ac2125",
+      "identity_keys": [
+        "family_tuple:abelian-difference-set-group:243,121,60",
+        "family_tuple:on-difference-sets-c3-x-c9:243,121,60",
+        "slug:abelian difference set 243 121 60 group 3 9 9",
+        "source_tuple:7896a843c9ac2125:243,121,60",
+        "stmt:c95cc780ddeae5cf",
+        "title:abelian difference set 243 121 60 group 3 9 9",
+        "title:on 243 121 60 difference sets in c3 x c9 x c9"
+      ],
+      "family_hint": "abelian-difference-set-group",
+      "parameter_tuple": [
+        243,
+        121,
+        60
+      ],
+      "statement": "Determine whether the abelian group of type [3,9,9] admits a (243,121,60)-difference set.",
+      "canonical_source": "Daniel M. Gordon, \"The La Jolla Difference Set Repository\" (ArasuFest talk slides, August 3, 2019), especially the slide listing the smallest open exact group-specific case (243,121,60) in [3,9,9], together with the same talk's group-ring and character criteria slides.",
+      "source_unit_hint": "Daniel M. Gordon, \"The La Jolla Difference Set Repository\" (ArasuFest talk slides, August 3, 2019), especially the sl...",
+      "slug": "abelian-difference-set-243-121-60-group-3-9-9",
+      "slug_history": [
+        "abelian-difference-set-243-121-60-group-3-9-9"
+      ],
+      "title": "abelian-difference-set-243-121-60-group-3-9-9",
+      "current_status": "publication_audit",
+      "classification": "VARIANT",
+      "verify_verdict": "MINOR_FIX",
+      "publication_status": "NONE",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "attempted",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/abelian-difference-set-243-121-60-group-3-9-9/status.json",
+      "working_packet_path": "artifacts/abelian-difference-set-243-121-60-group-3-9-9/working_packet.md",
+      "notes": "If a (243,121,60)-difference set exists in C3 x C9 x C9, then after 61-multiplier normalization its image in G/G[3] ~= C3^2 has one coset of weight 13, three opposite coset pairs of weights {12,15}, and one opposite c..."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:abelian-difference-set-group:425,160,60:391052c7711a179d",
+      "identity_keys": [
+        "family_tuple:abelian-difference-set-group:425,160,60",
+        "slug:abelian difference set 425 160 60 group 5 85",
+        "source_tuple:391052c7711a179d:425,160,60",
+        "stmt:d22d0ba1a150d1b3",
+        "title:abelian difference set 425 160 60 group 5 85"
+      ],
+      "family_hint": "abelian-difference-set-group",
+      "parameter_tuple": [
+        425,
+        160,
+        60
+      ],
+      "statement": "Determine whether the abelian group C_5 x C_85 admits a (425,160,60)-difference set.",
+      "canonical_source": "Daniel M. Gordon and Bernhard Schmidt, \"A Survey of the Multiplier Conjecture\" (Designs, Codes and Cryptography 78, 2016), especially Table 2 listing the exact open row (425,160,60) in group [5,85].",
+      "source_unit_hint": "Table 2",
+      "slug": "abelian-difference-set-425-160-60-group-5-85",
+      "slug_history": [
+        "abelian-difference-set-425-160-60-group-5-85"
+      ],
+      "title": "abelian-difference-set-425-160-60-group-5-85",
+      "current_status": "publication_audit",
+      "classification": "PARTIAL",
+      "verify_verdict": "PARTIAL",
+      "publication_status": "SLICE_EXACT",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "theorem_facing_partial",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/abelian-difference-set-425-160-60-group-5-85/status.json",
+      "working_packet_path": "artifacts/abelian-difference-set-425-160-60-group-5-85/working_packet.md",
+      "notes": "Up to translation in C_17, any (425,160,60)-difference set in C_5^2 x C_17 must avoid exactly one C_5^2-coset and meet each of the other sixteen C_5^2-cosets in exactly 10 points."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:abelian-difference-set-group:495,247,123:3b870ac908b06e16",
+      "identity_keys": [
+        "family_tuple:abelian-difference-set-group:495,247,123",
+        "family_tuple:abelian-group-type-admit-difference-set:495,247,123",
+        "slug:abelian difference set 495 247 123 group 3 165",
+        "source_tuple:3b870ac908b06e16:495,247,123",
+        "stmt:7d1b6578751020da",
+        "title:abelian difference set 495 247 123 group 3 165",
+        "title:does the abelian group of type 3 165 admit a 495 247 123 difference set"
+      ],
+      "family_hint": "abelian-difference-set-group",
+      "parameter_tuple": [
+        495,
+        247,
+        123
+      ],
+      "statement": "Determine whether the abelian group of type [3,165] admits a (495,247,123)-difference set.",
+      "canonical_source": "Daniel M. Gordon and Bernhard Schmidt, \"A Survey of the Multiplier Conjecture\" (Designs, Codes and Cryptography 78, 2016), especially Table 2 listing the exact open row (495,247,123) in group [3,165].",
+      "source_unit_hint": "Table 2",
+      "slug": "abelian-difference-set-495-247-123-group-3-165",
+      "slug_history": [
+        "abelian-difference-set-495-247-123-group-3-165"
+      ],
+      "title": "abelian-difference-set-495-247-123-group-3-165",
+      "current_status": "publication_audit",
+      "classification": "VARIANT",
+      "verify_verdict": "NOT_VERIFIED",
+      "publication_status": "NONE",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "attempted",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/abelian-difference-set-495-247-123-group-3-165/status.json",
+      "working_packet_path": "artifacts/abelian-difference-set-495-247-123-group-3-165/working_packet.md",
+      "notes": "If a hypothetical (495,247,123)-difference set in the abelian group [3,165] could be translated to satisfy 2D = D, then the C_3 quotient would force an integer square (a-b)^2 = 124, impossible. This does not settle th..."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:abelian-difference-set-group:729,273,102:ddb53038d04eceb7",
+      "identity_keys": [
+        "family_tuple:abelian-difference-set-group:729,273,102",
+        "slug:abelian difference set 729 273 102 group 3 3 3 3 3 3",
+        "source_tuple:ddb53038d04eceb7:729,273,102",
+        "stmt:52879780c69c19f9",
+        "title:abelian difference set 729 273 102 group 3 3 3 3 3 3"
+      ],
+      "family_hint": "abelian-difference-set-group",
+      "parameter_tuple": [
+        729,
+        273,
+        102
+      ],
+      "statement": "Determine whether the elementary abelian group C_3^6 admits a (729,273,102)-difference set.",
+      "canonical_source": "Daniel M. Gordon, \"The La Jolla Difference Set Repository\" (ArasuFest talk slides, August 3, 2019), especially slide 46 listing the smallest open elementary-abelian case 729 273 102 [3,3,3,3,3,3].",
+      "source_unit_hint": "Daniel M. Gordon, \"The La Jolla Difference Set Repository\" (ArasuFest talk slides, August 3, 2019), especially slide...",
+      "slug": "abelian-difference-set-729-273-102-group-3-3-3-3-3-3",
+      "slug_history": [
+        "abelian-difference-set-729-273-102-group-3-3-3-3-3-3"
+      ],
+      "title": "abelian-difference-set-729-273-102-group-3-3-3-3-3-3",
+      "current_status": "publication_audit",
+      "classification": "VARIANT",
+      "verify_verdict": "CRITICAL_FLAW",
+      "publication_status": "SLICE_EXACT",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "attempted",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/abelian-difference-set-729-273-102-group-3-3-3-3-3-3/status.json",
+      "working_packet_path": "artifacts/abelian-difference-set-729-273-102-group-3-3-3-3-3-3/working_packet.md",
+      "notes": "If D is a putative (729,273,102)-difference set in C_3^6, then for every index-3 quotient the sorted coset-count multiset is either {83,92,98} or {84,90,99}."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:abelian-difference-set-group:765,192,48:49802f80b3927bfb",
+      "identity_keys": [
+        "family_tuple:abelian-difference-set-group:765,192,48",
+        "family_tuple:on-difference-set-problem-c-x:765,192,48",
+        "slug:abelian difference set 765 192 48 group 3 255",
+        "source_tuple:49802f80b3927bfb:765,192,48",
+        "stmt:85601c2a9c8a26f3",
+        "title:abelian difference set 765 192 48 group 3 255",
+        "title:on the 765 192 48 difference set problem in c 3 x c 255"
+      ],
+      "family_hint": "abelian-difference-set-group",
+      "parameter_tuple": [
+        765,
+        192,
+        48
+      ],
+      "statement": "Determine whether the abelian group C_3 x C_255 admits a (765,192,48)-difference set.",
+      "canonical_source": "Daniel M. Gordon and Bernhard Schmidt, \"A Survey of the Multiplier Conjecture\" (Designs, Codes and Cryptography 78, 2016), especially Table 2 listing the exact open row (765,192,48) in group [3,255].",
+      "source_unit_hint": "Table 2",
+      "slug": "abelian-difference-set-765-192-48-group-3-255",
+      "slug_history": [
+        "abelian-difference-set-765-192-48-group-3-255"
+      ],
+      "title": "abelian-difference-set-765-192-48-group-3-255",
+      "current_status": "publication_audit",
+      "classification": "VARIANT",
+      "verify_verdict": "VARIANT",
+      "publication_status": "NONE",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "attempted",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/abelian-difference-set-765-192-48-group-3-255/status.json",
+      "working_packet_path": "artifacts/abelian-difference-set-765-192-48-group-3-255/working_packet.md",
+      "notes": "Assuming a valid 2-multiplier normalization for a hypothetical (765,192,48)-difference set in C_3 x C_255, the induced C_17 quotient fiber counts are uniquely forced to satisfy m(0)=0 and m(x)=12 for every nonzero x;..."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:abelian-difference-set-group:783,391,195:2d77b85fa1709591",
+      "identity_keys": [
+        "family_tuple:abelian-difference-set-group:783,391,195",
+        "slug:abelian difference set 783 391 195 group 3 261",
+        "source_tuple:2d77b85fa1709591:783,391,195",
+        "stmt:d5242b926121e4e7",
+        "title:abelian difference set 783 391 195 group 3 261"
+      ],
+      "family_hint": "abelian-difference-set-group",
+      "parameter_tuple": [
+        783,
+        391,
+        195
+      ],
+      "statement": "Determine whether the abelian group C_3 x C_261 admits a (783,391,195)-difference set.",
+      "canonical_source": "Daniel M. Gordon and Bernhard Schmidt, \"A Survey of the Multiplier Conjecture\" (2015), especially Table 1 listing the known (783,391,195) row in group [3,3,87] and Table 2 listing the open row in group [3,261].",
+      "source_unit_hint": "Table 1, Table 2",
+      "slug": "abelian-difference-set-783-391-195-group-3-261",
+      "slug_history": [
+        "abelian-difference-set-783-391-195-group-3-261"
+      ],
+      "title": "abelian-difference-set-783-391-195-group-3-261",
+      "current_status": "publication_audit",
+      "classification": "REDISCOVERY",
+      "verify_verdict": "VERIFIED",
+      "publication_status": "REDISCOVERY",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "rediscovery",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/abelian-difference-set-783-391-195-group-3-261/status.json",
+      "working_packet_path": "artifacts/abelian-difference-set-783-391-195-group-3-261/working_packet.md",
+      "notes": "The current packet appears to independently rederive the nonexistence of a (783,391,195) difference set in C_3 x C_261, but that exact theorem appears already in Niklas Miller's 2025 dissertation and associated arXiv..."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:abelian-difference-set-group:816,326,130:a4194a11a419c2e7",
+      "identity_keys": [
+        "family_tuple:abelian-difference-set-group:816,326,130",
+        "family_tuple:on-difference-set-problem-c-x:816,326,130",
+        "slug:abelian difference set 816 326 130 group 2 408",
+        "source_tuple:a4194a11a419c2e7:816,326,130",
+        "stmt:aa16b2b5522254bf",
+        "title:abelian difference set 816 326 130 group 2 408",
+        "title:on the 816 326 130 difference set problem in c 2 x c 408"
+      ],
+      "family_hint": "abelian-difference-set-group",
+      "parameter_tuple": [
+        816,
+        326,
+        130
+      ],
+      "statement": "Determine whether the abelian group C_2 x C_408 admits a (816,326,130)-difference set.",
+      "canonical_source": "Daniel M. Gordon and Bernhard Schmidt, \"A Survey of the Multiplier Conjecture\" (Designs, Codes and Cryptography 78, 2016), especially Table 2 listing the exact open row (816,326,130) in group [2,408].",
+      "source_unit_hint": "Table 2",
+      "slug": "abelian-difference-set-816-326-130-group-2-408",
+      "slug_history": [
+        "abelian-difference-set-816-326-130-group-2-408"
+      ],
+      "title": "abelian-difference-set-816-326-130-group-2-408",
+      "current_status": "publication_audit",
+      "classification": "VARIANT",
+      "verify_verdict": "CRITICAL_FLAW",
+      "publication_status": "NONE",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "attempted",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/abelian-difference-set-816-326-130-group-2-408/status.json",
+      "working_packet_path": "artifacts/abelian-difference-set-816-326-130-group-2-408/working_packet.md",
+      "notes": "The current artifact gives only a conditional structural obstruction: if a putative (816,326,130) difference set in C_2 x C_408 admitted the needed 7-multiplier input inducing the stated affine action on C_3 x C_17, t..."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:abelian-difference-set-group:847,423,211:62da15a1873c724e",
+      "identity_keys": [
+        "family_tuple:abelian-difference-set-group:847,423,211",
+        "family_tuple:on-difference-set-problem-c-x:847,423,211",
+        "slug:abelian difference set 847 423 211 group 11 77",
+        "source_tuple:62da15a1873c724e:847,423,211",
+        "stmt:93d476c3e2c1ed3d",
+        "title:abelian difference set 847 423 211 group 11 77",
+        "title:on the 847 423 211 difference set problem in c 11 x c 77"
+      ],
+      "family_hint": "abelian-difference-set-group",
+      "parameter_tuple": [
+        847,
+        423,
+        211
+      ],
+      "statement": "Determine whether the abelian group C_11 x C_77 admits a (847,423,211)-difference set.",
+      "canonical_source": "Daniel M. Gordon and Bernhard Schmidt, \"A Survey of the Multiplier Conjecture\" (2015), especially Table 2 listing the exact open row (847,423,211) in group [11,77].",
+      "source_unit_hint": "Table 2",
+      "slug": "abelian-difference-set-847-423-211-group-11-77",
+      "slug_history": [
+        "abelian-difference-set-847-423-211-group-11-77"
+      ],
+      "title": "abelian-difference-set-847-423-211-group-11-77",
+      "current_status": "publication_audit",
+      "classification": "PARTIAL",
+      "verify_verdict": "MINOR_FIX",
+      "publication_status": "NONE",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "partial",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/abelian-difference-set-847-423-211-group-11-77/status.json",
+      "working_packet_path": "artifacts/abelian-difference-set-847-423-211-group-11-77/working_packet.md",
+      "notes": "The current packet gives a nontrivial necessary-condition reduction for the exact open row: any putative (847,423,211) difference set in C_11 x C_77 would have odd C_7-fiber counts over C_11^2, hence only fiber sizes..."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:abelian-difference-set-group:855,183,39:8accbc5da7eda601",
+      "identity_keys": [
+        "family_tuple:abelian-difference-set-group:855,183,39",
+        "family_tuple:on-difference-set-problem-c-x:855,183,39",
+        "slug:abelian difference set 855 183 39 group 3 285",
+        "source_tuple:8accbc5da7eda601:855,183,39",
+        "stmt:a7212ec9ba99172a",
+        "title:abelian difference set 855 183 39 group 3 285",
+        "title:on the 855 183 39 difference set problem in c 3 x c 285"
+      ],
+      "family_hint": "abelian-difference-set-group",
+      "parameter_tuple": [
+        855,
+        183,
+        39
+      ],
+      "statement": "Determine whether the abelian group C_3 x C_285 admits a (855,183,39)-difference set.",
+      "canonical_source": "Daniel M. Gordon and Bernhard Schmidt, \"A Survey of the Multiplier Conjecture\" (Designs, Codes and Cryptography 78, 2016), especially Table 2 listing the exact open row (855,183,39) in group [3,285].",
+      "source_unit_hint": "Table 2",
+      "slug": "abelian-difference-set-855-183-39-group-3-285",
+      "slug_history": [
+        "abelian-difference-set-855-183-39-group-3-285"
+      ],
+      "title": "abelian-difference-set-855-183-39-group-3-285",
+      "current_status": "publication_audit",
+      "classification": "VARIANT",
+      "verify_verdict": "VARIANT_REPAIRED",
+      "publication_status": "SLICE_EXACT",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "attempted",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/abelian-difference-set-855-183-39-group-3-285/status.json",
+      "working_packet_path": "artifacts/abelian-difference-set-855-183-39-group-3-285/working_packet.md",
+      "notes": "Any hypothetical (855,183,39) difference set in C_3 x C_285 must project to C_19 with occupancies 21,9,...,9 and to C_5 with occupancies 27,39,39,39,39, up to translation."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:abelian-difference-set-group:909,228,57:dbf8b505d35c83cb",
+      "identity_keys": [
+        "family_tuple:abelian-difference-set-group:909,228,57",
+        "family_tuple:on-difference-set-problem-c-x:909,228,57",
+        "slug:abelian difference set 909 228 57 group 3 303",
+        "source_tuple:dbf8b505d35c83cb:909,228,57",
+        "stmt:18bd58050dc6fa6e",
+        "title:abelian difference set 909 228 57 group 3 303",
+        "title:on the 909 228 57 difference set problem in c 3 x c 303"
+      ],
+      "family_hint": "abelian-difference-set-group",
+      "parameter_tuple": [
+        909,
+        228,
+        57
+      ],
+      "statement": "Determine whether the abelian group C_3 x C_303 admits a (909,228,57)-difference set.",
+      "canonical_source": "Daniel M. Gordon and Bernhard Schmidt, \"A Survey of the Multiplier Conjecture\" (Designs, Codes and Cryptography 78, 2016), especially Table 2 listing the exact open row (909,228,57) in group [3,303].",
+      "source_unit_hint": "Table 2",
+      "slug": "abelian-difference-set-909-228-57-group-3-303",
+      "slug_history": [
+        "abelian-difference-set-909-228-57-group-3-303"
+      ],
+      "title": "abelian-difference-set-909-228-57-group-3-303",
+      "current_status": "publication_audit",
+      "classification": "VARIANT",
+      "verify_verdict": "VARIANT",
+      "publication_status": "SLICE_CANDIDATE",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "attempted",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/abelian-difference-set-909-228-57-group-3-303/status.json",
+      "working_packet_path": "artifacts/abelian-difference-set-909-228-57-group-3-303/working_packet.md",
+      "notes": "Conditional exact-row theorem: if the Gordon-Schmidt Table 2 / MC-primes convention indeed certifies 19 as a known multiplier for the exact [3,303] row, then the affine-orbit and quotient-energy argument rules out a (..."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:abelian-group-c-x-c-admit:343,171,85:ee1617809bf4ae69",
+      "identity_keys": [
+        "family_tuple:abelian-group-c-x-c-admit:343,171,85",
+        "slug:abelian difference set 343 171 85 group 7 49",
+        "source_tuple:ee1617809bf4ae69:343,171,85",
+        "stmt:9d84ae4889764746",
+        "title:does the abelian group c 7 x c 49 admit a 343 171 85 difference set"
+      ],
+      "family_hint": "abelian-group-c-x-c-admit",
+      "parameter_tuple": [
+        343,
+        171,
+        85
+      ],
+      "statement": "Determine whether the abelian group C_7 x C_49 admits a (343,171,85)-difference set.",
+      "canonical_source": "Daniel M. Gordon and Bernhard Schmidt, \"A Survey of the Multiplier Conjecture\" (Designs, Codes and Cryptography 78, 2016), especially Table 2 listing the exact open row (343,171,85) in group [7,49].",
+      "source_unit_hint": "Table 2",
+      "slug": "abelian-difference-set-343-171-85-group-7-49",
+      "slug_history": [
+        "abelian-difference-set-343-171-85-group-7-49"
+      ],
+      "title": "Does the abelian group C_7 x C_49 admit a (343,171,85)-difference set?",
+      "current_status": "verify",
+      "classification": "REDISCOVERY",
+      "verify_verdict": "REDISCOVERY",
+      "publication_status": "REDISCOVERY",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "rediscovery",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/abelian-difference-set-343-171-85-group-7-49/status.json",
+      "working_packet_path": "artifacts/abelian-difference-set-343-171-85-group-7-49/working_packet.md",
+      "notes": "The local artifact correctly derives and independently verifies a 7-term quotient obstruction with 112 oriented solutions in 8 dihedral orbits, but the title problem itself appears already ruled out in prior art."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:abelian-group-c-x-c-admit:448,150,50:20a24caecdb1d37d",
+      "identity_keys": [
+        "family_tuple:abelian-group-c-x-c-admit:448,150,50",
+        "slug:abelian difference set 448 150 50 group 4 112",
+        "source_tuple:20a24caecdb1d37d:448,150,50",
+        "stmt:402b78c7a7ab1d2c",
+        "title:does the abelian group c 4 x c 112 admit a 448 150 50 difference set"
+      ],
+      "family_hint": "abelian-group-c-x-c-admit",
+      "parameter_tuple": [
+        448,
+        150,
+        50
+      ],
+      "statement": "Determine whether the abelian group C_4 x C_112 admits a (448,150,50)-difference set.",
+      "canonical_source": "Daniel M. Gordon and Bernhard Schmidt, \"A Survey of the Multiplier Conjecture\" (Designs, Codes and Cryptography 78, 2016), especially Table 2 listing the exact open row (448,150,50) in group [4,112] after the survey's multiplier-based eliminations.",
+      "source_unit_hint": "Table 2",
+      "slug": "abelian-difference-set-448-150-50-group-4-112",
+      "slug_history": [
+        "abelian-difference-set-448-150-50-group-4-112"
+      ],
+      "title": "Does the abelian group C_4 x C_112 admit a (448,150,50)-difference set?",
+      "current_status": "publication_audit",
+      "classification": "PARTIAL",
+      "verify_verdict": "UNVERIFIED",
+      "publication_status": "NONE",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "partial",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/abelian-difference-set-448-150-50-group-4-112/status.json",
+      "working_packet_path": "artifacts/abelian-difference-set-448-150-50-group-4-112/working_packet.md",
+      "notes": "Assuming a valid 5-multiplier normalization for this exact row, any (448,150,50)-difference set in C_4 x C_112 has C_7-fiber sizes (30,20,20,20,20,20,20) and, after quotienting the 2-part by C_4 x 4C_16, a unique coar..."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:abelian-group-c-x-c-admit:477,204,87:491e0e6d8a938c8e",
+      "identity_keys": [
+        "family_tuple:abelian-group-c-x-c-admit:477,204,87",
+        "slug:abelian difference set 477 204 87 group 3 159",
+        "source_tuple:491e0e6d8a938c8e:477,204,87",
+        "stmt:2811fec9cac7608a",
+        "title:does the abelian group c 3 x c 159 admit a 477 204 87 difference set"
+      ],
+      "family_hint": "abelian-group-c-x-c-admit",
+      "parameter_tuple": [
+        477,
+        204,
+        87
+      ],
+      "statement": "Determine whether the abelian group C_3 x C_159 admits a (477,204,87)-difference set.",
+      "canonical_source": "Daniel M. Gordon and Bernhard Schmidt, \"A Survey of the Multiplier Conjecture\" (Designs, Codes and Cryptography 78, 2016), especially Table 2 listing the exact open row 477 204 87 [3,159].",
+      "source_unit_hint": "Table 2",
+      "slug": "abelian-difference-set-477-204-87-group-3-159",
+      "slug_history": [
+        "abelian-difference-set-477-204-87-group-3-159"
+      ],
+      "title": "Does the abelian group C_3 x C_159 admit a (477,204,87)-difference set?",
+      "current_status": "publication_audit",
+      "classification": "PARTIAL",
+      "verify_verdict": "NOT_VERIFIED",
+      "publication_status": "NONE",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "partial",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/abelian-difference-set-477-204-87-group-3-159/status.json",
+      "working_packet_path": "artifacts/abelian-difference-set-477-204-87-group-3-159/working_packet.md",
+      "notes": "The current artifacts support only a conditional structural obstruction: if 13 is an unconditional multiplier for any (477,204,87)-difference set in C_3 x C_159, then the orbit-plus-quotient argument in the packet yie..."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:abelian-group-c-x-c-admit:621,156,39:8175027813d29b0e",
+      "identity_keys": [
+        "family_tuple:abelian-group-c-x-c-admit:621,156,39",
+        "slug:abelian difference set 621 156 39 group 3 207",
+        "source_tuple:8175027813d29b0e:621,156,39",
+        "stmt:38a8c8dd3db22390",
+        "title:does the abelian group c 3 x c 207 admit a 621 156 39 difference set"
+      ],
+      "family_hint": "abelian-group-c-x-c-admit",
+      "parameter_tuple": [
+        621,
+        156,
+        39
+      ],
+      "statement": "Determine whether the abelian group C_3 x C_207 admits a (621,156,39)-difference set.",
+      "canonical_source": "Daniel M. Gordon and Bernhard Schmidt, \"A Survey of the Multiplier Conjecture\" (Designs, Codes and Cryptography 78, 2016), especially Table 2 listing the exact open row (621,156,39) in group [3,207].",
+      "source_unit_hint": "Table 2",
+      "slug": "abelian-difference-set-621-156-39-group-3-207",
+      "slug_history": [
+        "abelian-difference-set-621-156-39-group-3-207"
+      ],
+      "title": "Does the abelian group C_3 x C_207 admit a (621,156,39)-difference set?",
+      "current_status": "publication_audit",
+      "classification": "VARIANT",
+      "verify_verdict": "VARIANT",
+      "publication_status": "NONE",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "attempted",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/abelian-difference-set-621-156-39-group-3-207/status.json",
+      "working_packet_path": "artifacts/abelian-difference-set-621-156-39-group-3-207/working_packet.md",
+      "notes": "Assuming a valid 13-multiplier normalization for a hypothetical (621,156,39)-difference set in C_3 x C_207, the C_23 quotient fibers are forced to (2;5^11;9^11) up to orbit swap and the order-3 character argument on C..."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:abelian-group-type-g16-g9-admit:1008,266,70:68c007a049ad2ff8",
+      "identity_keys": [
+        "family_tuple:abelian-group-type-g16-g9-admit:1008,266,70",
+        "slug:abelian difference set 1008 266 70 group g16 g9 7",
+        "source_tuple:68c007a049ad2ff8:1008,266,70",
+        "stmt:439247a8cc78714e",
+        "title:does an abelian group of type g16 g9 7 admit a 1008 266 70 difference set"
+      ],
+      "family_hint": "abelian-group-type-g16-g9-admit",
+      "parameter_tuple": [
+        1008,
+        266,
+        70
+      ],
+      "statement": "Determine whether any abelian group with Gordon's Table-2 type [G16,G9,7] admits a (1008,266,70)-difference set.",
+      "canonical_source": "Daniel M. Gordon, \"The La Jolla Difference Set Repository\" (ArasuFest talk slides, August 3, 2019), especially the Lander-conjecture slide listing the exact open row 1008 266 70 196 [G16,G9,7] with p = 7.",
+      "source_unit_hint": "Daniel M. Gordon, \"The La Jolla Difference Set Repository\" (ArasuFest talk slides, August 3, 2019), especially the La...",
+      "slug": "abelian-difference-set-1008-266-70-group-g16-g9-7",
+      "slug_history": [
+        "abelian-difference-set-1008-266-70-group-g16-g9-7"
+      ],
+      "title": "Does an abelian group of type [G16,G9,7] admit a (1008,266,70)-difference set?",
+      "current_status": "publication_audit",
+      "classification": "VARIANT",
+      "verify_verdict": "VERIFIED",
+      "publication_status": "NONE",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "attempted",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/abelian-difference-set-1008-266-70-group-g16-g9-7/status.json",
+      "working_packet_path": "artifacts/abelian-difference-set-1008-266-70-group-g16-g9-7/working_packet.md",
+      "notes": "A hypothetical (1008,266,70) difference set in a group of type [G16,G9,7] cannot be a union of the order-7 cosets; the solver's attempted descent to a (144,38,10) quotient is invalid."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:abelian-group-type-g9-admit-difference:990,345,120:cb3d6aafabbed95b",
+      "identity_keys": [
+        "family_tuple:abelian-group-type-g9-admit-difference:990,345,120",
+        "slug:abelian difference set 990 345 120 group 2 g9 5 11",
+        "source_tuple:cb3d6aafabbed95b:990,345,120",
+        "stmt:66d2507256b5f52c",
+        "title:does an abelian group of type 2 g9 5 11 admit a 990 345 120 difference set"
+      ],
+      "family_hint": "abelian-group-type-g9-admit-difference",
+      "parameter_tuple": [
+        990,
+        345,
+        120
+      ],
+      "statement": "Determine whether any abelian group with Gordon's Lander-conjecture row [2,G9,5,11] admits a (990,345,120)-difference set.",
+      "canonical_source": "Daniel M. Gordon, \"The La Jolla Difference Set Repository\" (ArasuFest talk slides, August 3, 2019), especially the Lander-conjecture slide listing the exact open row 990 345 120 225 [2,G9,5,11] with p = 3,5.",
+      "source_unit_hint": "Daniel M. Gordon, \"The La Jolla Difference Set Repository\" (ArasuFest talk slides, August 3, 2019), especially the La...",
+      "slug": "abelian-difference-set-990-345-120-group-2-g9-5-11",
+      "slug_history": [
+        "abelian-difference-set-990-345-120-group-2-g9-5-11"
+      ],
+      "title": "Does an abelian group of type [2,G9,5,11] admit a (990,345,120)-difference set?",
+      "current_status": "publication_audit",
+      "classification": "VARIANT",
+      "verify_verdict": "CRITICAL_FLAW",
+      "publication_status": "NONE",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "attempted",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/abelian-difference-set-990-345-120-group-2-g9-5-11/status.json",
+      "working_packet_path": "artifacts/abelian-difference-set-990-345-120-group-2-g9-5-11/working_packet.md",
+      "notes": "The order-5 centered norm-25 quotient equation admits exactly two cyclic-orbit profile types, giving quotient profiles {81,66,66,66,66} and {57,72,72,72,72}; the claimed order-11 and order-22 rigidity theorem is not v..."
     },
     {
       "canonical_problem_key": "stmt:e5bd15cf8b491b49",
@@ -800,6 +1513,1167 @@
       "notes": "keep this as a verified partial reduction; do not run Lean; continue the harness with the next problem"
     },
     {
+      "canonical_problem_key": "family_tuple_source:cyclic-difference-set:1785,224,28:156cbbbaf1ff7e14",
+      "identity_keys": [
+        "family_tuple:cyclic-difference-set-case:1785,224,28",
+        "family_tuple:cyclic-difference-set:1785,224,28",
+        "slug:cyclic difference set 1785 224 28",
+        "source_tuple:156cbbbaf1ff7e14:1785,224,28",
+        "stmt:180963d366c41f5c",
+        "title:cyclic difference set 1785 224 28",
+        "title:the cyclic 1785 224 28 difference set case"
+      ],
+      "family_hint": "cyclic-difference-set",
+      "parameter_tuple": [
+        1785,
+        224,
+        28
+      ],
+      "statement": "Determine whether the cyclic group C_1785 admits a (1785,224,28)-difference set.",
+      "canonical_source": "Leonard D. Baumert and Daniel M. Gordon, \"On the existence of cyclic difference sets with small parameters\" (Fields Institute Communications 41, 2004), especially Table 2 listing the exact cyclic row (1785,224,28) among the possible cases with 150 <= k <= 300 and gcd(v,n) > 1.",
+      "source_unit_hint": "Table 2",
+      "slug": "cyclic-difference-set-1785-224-28",
+      "slug_history": [
+        "cyclic-difference-set-1785-224-28"
+      ],
+      "title": "cyclic-difference-set-1785-224-28",
+      "current_status": "publication_audit",
+      "classification": "VARIANT",
+      "verify_verdict": "NOT_VERIFIED",
+      "publication_status": "NONE",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "attempted",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/cyclic-difference-set-1785-224-28/status.json",
+      "working_packet_path": "artifacts/cyclic-difference-set-1785-224-28/working_packet.md",
+      "notes": "Under the valid Baumert-Gordon Theorem 3.2 multiplier premise at w = 17 with t = 2, any hypothetical cyclic (1785,224,28) difference set has contracted mod-17 coefficient pattern (0,14,14) on the three 2-orbits, so it..."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:cyclic-difference-set:1925,260,35:26f4a416a89323a7",
+      "identity_keys": [
+        "family_tuple:cyclic-difference-set-case:1925,260,35",
+        "family_tuple:cyclic-difference-set:1925,260,35",
+        "slug:cyclic difference set 1925 260 35",
+        "source_tuple:26f4a416a89323a7:1925,260,35",
+        "stmt:a9a5bc89589ec27d",
+        "title:cyclic difference set 1925 260 35",
+        "title:the cyclic 1925 260 35 difference set case"
+      ],
+      "family_hint": "cyclic-difference-set",
+      "parameter_tuple": [
+        1925,
+        260,
+        35
+      ],
+      "statement": "Determine whether the cyclic group C_1925 admits a (1925,260,35)-difference set.",
+      "canonical_source": "Leonard D. Baumert and Daniel M. Gordon, \"On the existence of cyclic difference sets with small parameters\" (Fields Institute Communications 41, 2004), especially Table 2 listing the exact cyclic row (1925,260,35) among the possible cases with 150 <= k <= 300 and gcd(v,n) > 1.",
+      "source_unit_hint": "Table 2",
+      "slug": "cyclic-difference-set-1925-260-35",
+      "slug_history": [
+        "cyclic-difference-set-1925-260-35"
+      ],
+      "title": "cyclic-difference-set-1925-260-35",
+      "current_status": "publication_audit",
+      "classification": "COUNTEREXAMPLE",
+      "verify_verdict": "VERIFIED",
+      "publication_status": "PAPER_READY",
+      "human_ready": true,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "human_ready",
+      "surface_origins": [
+        "artifact_status",
+        "human_ready"
+      ],
+      "artifact_status_path": "artifacts/cyclic-difference-set-1925-260-35/status.json",
+      "working_packet_path": "artifacts/cyclic-difference-set-1925-260-35/working_packet.md",
+      "notes": "No cyclic (1925,260,35) difference set exists: after first-multiplier normalization to exact 3-invariance, the forced contractions modulo 25 and 7 admit no orbit-constant refinement on C_175, and the bounded 2026-04-1..."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:cyclic-difference-set:2291,230,23:e3ef43a8c0c6a4a3",
+      "identity_keys": [
+        "family_tuple:cyclic-difference-set-case:2291,230,23",
+        "family_tuple:cyclic-difference-set:2291,230,23",
+        "slug:cyclic difference set 2291 230 23",
+        "source_tuple:e3ef43a8c0c6a4a3:2291,230,23",
+        "stmt:a0614afd6b4f0beb",
+        "title:cyclic difference set 2291 230 23",
+        "title:the cyclic 2291 230 23 difference set case"
+      ],
+      "family_hint": "cyclic-difference-set",
+      "parameter_tuple": [
+        2291,
+        230,
+        23
+      ],
+      "statement": "Determine whether the cyclic group C_2291 admits a (2291,230,23)-difference set.",
+      "canonical_source": "Leonard D. Baumert and Daniel M. Gordon, \"On the existence of cyclic difference sets with small parameters\" (Fields Institute Communications 41, 2004), especially Table 3 listing the exact cyclic row (2291,230,23) among the possible cases with 150 <= k <= 300 and gcd(v,n) = 1.",
+      "source_unit_hint": "Table 3",
+      "slug": "cyclic-difference-set-2291-230-23",
+      "slug_history": [
+        "cyclic-difference-set-2291-230-23"
+      ],
+      "title": "cyclic-difference-set-2291-230-23",
+      "current_status": "publication_audit",
+      "classification": "COUNTEREXAMPLE",
+      "verify_verdict": "VERIFIED",
+      "publication_status": "PAPER_READY",
+      "human_ready": true,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "human_ready",
+      "surface_origins": [
+        "artifact_status",
+        "human_ready"
+      ],
+      "artifact_status_path": "artifacts/cyclic-difference-set-2291-230-23/status.json",
+      "working_packet_path": "artifacts/cyclic-difference-set-2291-230-23/working_packet.md",
+      "notes": "Within the bounded prior-art audit completed on 2026-04-15, the cyclic group C_2291 admits no (2291,230,23)-difference set. A full 23-multiplier and translation normalization reduce the problem to a unique mod-29 cont..."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:cyclic-difference-set:2869,240,20:9801ccb3c4e9c93f",
+      "identity_keys": [
+        "family_tuple:cyclic-difference-set-case:2869,240,20",
+        "family_tuple:cyclic-difference-set:2869,240,20",
+        "slug:cyclic difference set 2869 240 20",
+        "source_tuple:9801ccb3c4e9c93f:2869,240,20",
+        "stmt:acf9a76f2247ba89",
+        "title:cyclic difference set 2869 240 20",
+        "title:the cyclic 2869 240 20 difference set case"
+      ],
+      "family_hint": "cyclic-difference-set",
+      "parameter_tuple": [
+        2869,
+        240,
+        20
+      ],
+      "statement": "Determine whether the cyclic group C_2869 admits a (2869,240,20)-difference set.",
+      "canonical_source": "Leonard D. Baumert and Daniel M. Gordon, \"On the existence of cyclic difference sets with small parameters\" (Fields Institute Communications 41, 2004), especially Table 3 listing the exact cyclic row (2869,240,20) among the possible cases with 150 <= k <= 300 and gcd(v,n) = 1.",
+      "source_unit_hint": "Table 3",
+      "slug": "cyclic-difference-set-2869-240-20",
+      "slug_history": [
+        "cyclic-difference-set-2869-240-20"
+      ],
+      "title": "cyclic-difference-set-2869-240-20",
+      "current_status": "publication_audit",
+      "classification": "VARIANT",
+      "verify_verdict": "VERIFIED",
+      "publication_status": "SLICE_EXACT",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "attempted",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/cyclic-difference-set-2869-240-20/status.json",
+      "working_packet_path": "artifacts/cyclic-difference-set-2869-240-20/working_packet.md",
+      "notes": "If a cyclic (2869,240,20) difference set exists, then after multiplier normalization its contraction modulo 151 is uniquely forced, up to swapping quadratic residues and nonresidues, to satisfy c_0 = 15, c_x = 2 on on..."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:cyclic-difference-set:465,145,45:3ff439274f28651b",
+      "identity_keys": [
+        "family_tuple:cyclic-difference-set-problem:465,145,45",
+        "family_tuple:cyclic-difference-set:465,145,45",
+        "slug:cyclic difference set 465 145 45",
+        "source_tuple:3ff439274f28651b:465,145,45",
+        "stmt:3b79746d2ae9dd97",
+        "title:cyclic difference set 465 145 45",
+        "title:the cyclic 465 145 45 difference set problem"
+      ],
+      "family_hint": "cyclic-difference-set",
+      "parameter_tuple": [
+        465,
+        145,
+        45
+      ],
+      "statement": "Determine whether the cyclic group C_465 admits a (465,145,45)-difference set.",
+      "canonical_source": "Leonard D. Baumert and Daniel M. Gordon, \"On the existence of cyclic difference sets with small parameters\" (Fields Institute Communications 41, 2004), especially Table 1 listing the two remaining open cyclic cases with k <= 150; status rechecked against Daniel M. Gordon and Bernhard Schmidt, \"A Survey of the Multip...",
+      "source_unit_hint": "Table 1, Table 2",
+      "slug": "cyclic-difference-set-465-145-45",
+      "slug_history": [
+        "cyclic-difference-set-465-145-45"
+      ],
+      "title": "cyclic-difference-set-465-145-45",
+      "current_status": "publication_audit",
+      "classification": "VARIANT",
+      "verify_verdict": "WRONG_STATEMENT",
+      "publication_status": "NONE",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "attempted",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/cyclic-difference-set-465-145-45/status.json",
+      "working_packet_path": "artifacts/cyclic-difference-set-465-145-45/working_packet.md",
+      "notes": "If one additionally assumes that multiplication by 2 can be imposed as a genuine multiplier symmetry for a cyclic (465,145,45) difference set, then no 2-orbit-constant contracted coefficient vector modulo 93 or 155 sa..."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:cyclic-difference-set:469,208,92:13a66cc6719ef19b",
+      "identity_keys": [
+        "family_tuple:cyclic-difference-set:469,208,92",
+        "slug:cyclic difference set 469 208 92",
+        "source_tuple:13a66cc6719ef19b:469,208,92",
+        "stmt:1e576cd134ea5087",
+        "title:cyclic difference set 469 208 92"
+      ],
+      "family_hint": "cyclic-difference-set",
+      "parameter_tuple": [
+        469,
+        208,
+        92
+      ],
+      "statement": "Determine whether the cyclic group C_469 admits a (469,208,92)-difference set.",
+      "canonical_source": "Leonard D. Baumert and Daniel M. Gordon, \"On the existence of cyclic difference sets with small parameters\" (Fields Institute Communications 41, 2004), especially Table 3 listing possible cyclic cases with 150 <= k <= 300 and gcd(v,n)=1; status rechecked against Daniel M. Gordon and Bernhard Schmidt, \"A Survey of th...",
+      "source_unit_hint": "Table 3, Table 2",
+      "slug": "cyclic-difference-set-469-208-92",
+      "slug_history": [
+        "cyclic-difference-set-469-208-92"
+      ],
+      "title": "cyclic-difference-set-469-208-92",
+      "current_status": "publication_audit",
+      "classification": "VARIANT",
+      "verify_verdict": "VARIANT",
+      "publication_status": "REDISCOVERY",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "rediscovery",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/cyclic-difference-set-469-208-92/status.json",
+      "working_packet_path": "artifacts/cyclic-difference-set-469-208-92/working_packet.md",
+      "notes": "The local artifact proves only the conditional mod-67 even-occupancy lemma for a hypothetical cyclic (469,208,92) difference set; separately, the bounded publication audit indicates the intended exact case is already..."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:cyclic-difference-set:639,232,84:13a66cc6719ef19b",
+      "identity_keys": [
+        "family_tuple:cyclic-difference-set-problem:639,232,84",
+        "family_tuple:cyclic-difference-set:639,232,84",
+        "slug:cyclic difference set 639 232 84",
+        "source_tuple:13a66cc6719ef19b:639,232,84",
+        "stmt:d1520a839d63cdb3",
+        "title:cyclic difference set 639 232 84",
+        "title:the cyclic 639 232 84 difference set problem"
+      ],
+      "family_hint": "cyclic-difference-set",
+      "parameter_tuple": [
+        639,
+        232,
+        84
+      ],
+      "statement": "Determine whether the cyclic group C_639 admits a (639,232,84)-difference set.",
+      "canonical_source": "Leonard D. Baumert and Daniel M. Gordon, \"On the existence of cyclic difference sets with small parameters\" (Fields Institute Communications 41, 2004), especially Table 3 listing possible cyclic cases with 150 <= k <= 300 and gcd(v,n)=1; status rechecked against Daniel M. Gordon and Bernhard Schmidt, \"A Survey of th...",
+      "source_unit_hint": "Table 3, Table 2",
+      "slug": "cyclic-difference-set-639-232-84",
+      "slug_history": [
+        "cyclic-difference-set-639-232-84"
+      ],
+      "title": "cyclic-difference-set-639-232-84",
+      "current_status": "publication_audit",
+      "classification": "VARIANT",
+      "verify_verdict": "VARIANT",
+      "publication_status": "NONE",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "attempted",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/cyclic-difference-set-639-232-84/status.json",
+      "working_packet_path": "artifacts/cyclic-difference-set-639-232-84/working_packet.md",
+      "notes": "Any cyclic (639,232,84)-difference set has C3 occupancy multiset {70,78,84}; the displayed C9 contraction is genuinely feasible; and if 2 is available as a numerical multiplier for this exact cyclic row, then the quot..."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:cyclic-difference-set:703,325,150:cb26f2c5d58b1f85",
+      "identity_keys": [
+        "family_tuple:cyclic-difference-set:703,325,150",
+        "family_tuple:on-cyclic-difference-set-problem:703,325,150",
+        "slug:cyclic difference set 703 325 150",
+        "source_tuple:cb26f2c5d58b1f85:703,325,150",
+        "stmt:9f3e572a68574a05",
+        "title:cyclic difference set 703 325 150",
+        "title:on the 703 325 150 cyclic difference set problem"
+      ],
+      "family_hint": "cyclic-difference-set",
+      "parameter_tuple": [
+        703,
+        325,
+        150
+      ],
+      "statement": "Determine whether the cyclic group C_703 admits a (703,325,150)-difference set.",
+      "canonical_source": "Daniel M. Gordon and Bernhard Schmidt, \"A Survey of the Multiplier Conjecture\" (2015), especially Table 2 listing the exact open cyclic row (703,325,150) in group [703].",
+      "source_unit_hint": "Table 2",
+      "slug": "cyclic-difference-set-703-325-150",
+      "slug_history": [
+        "cyclic-difference-set-703-325-150"
+      ],
+      "title": "cyclic-difference-set-703-325-150",
+      "current_status": "publication_audit",
+      "classification": "PARTIAL",
+      "verify_verdict": "UNVERIFIED",
+      "publication_status": "NONE",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "partial",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/cyclic-difference-set-703-325-150/status.json",
+      "working_packet_path": "artifacts/cyclic-difference-set-703-325-150/working_packet.md",
+      "notes": "The current artifact does not settle the exact cyclic row. What it preserves is a conditional obstruction: if 5 is an actual multiplier for (703,325,150), then the mod-37 contraction forces a square contradiction and..."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:cyclic-difference-set:781,300,115:bea4b97b39f895b7",
+      "identity_keys": [
+        "family_tuple:cyclic-difference-set:781,300,115",
+        "slug:cyclic difference set 781 300 115",
+        "source_tuple:bea4b97b39f895b7:781,300,115",
+        "stmt:418dcfaa22f818f0",
+        "title:cyclic difference set 781 300 115"
+      ],
+      "family_hint": "cyclic-difference-set",
+      "parameter_tuple": [
+        781,
+        300,
+        115
+      ],
+      "statement": "Determine whether the cyclic group C_781 admits a (781,300,115)-difference set.",
+      "canonical_source": "Leonard D. Baumert and Daniel M. Gordon, \"On the existence of cyclic difference sets with small parameters\" (Fields Institute Communications 41, 2004), especially Table 3 listing the exact cyclic row (781,300,115); status rechecked against Daniel M. Gordon and Bernhard Schmidt, \"A Survey of the Multiplier Conjecture...",
+      "source_unit_hint": "Table 3, Table 2",
+      "slug": "cyclic-difference-set-781-300-115",
+      "slug_history": [
+        "cyclic-difference-set-781-300-115"
+      ],
+      "title": "cyclic-difference-set-781-300-115",
+      "current_status": "publication_audit",
+      "classification": "VARIANT",
+      "verify_verdict": "NOT_VERIFIED",
+      "publication_status": "NONE",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "attempted",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/cyclic-difference-set-781-300-115/status.json",
+      "working_packet_path": "artifacts/cyclic-difference-set-781-300-115/working_packet.md",
+      "notes": "Under the valid mod-11 multiplier premise from Baumert-Gordon Theorem 3.2, any hypothetical cyclic (781,300,115) difference set has mod-11 contraction equal to (15,28,29) or (30,23,31), up to swapping the two nonzero..."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:cyclic-difference-set:910,405,180:a075332e2e8c01ab",
+      "identity_keys": [
+        "family_tuple:cyclic-difference-set:910,405,180",
+        "family_tuple:on-cyclic-difference-set-problem:910,405,180",
+        "slug:cyclic difference set 910 405 180",
+        "source_tuple:a075332e2e8c01ab:910,405,180",
+        "stmt:d03c24c65ba3c1e3",
+        "title:cyclic difference set 910 405 180",
+        "title:on the cyclic 910 405 180 difference set problem"
+      ],
+      "family_hint": "cyclic-difference-set",
+      "parameter_tuple": [
+        910,
+        405,
+        180
+      ],
+      "statement": "Determine whether the cyclic group C_910 admits a (910,405,180)-difference set.",
+      "canonical_source": "Daniel M. Gordon and Bernhard Schmidt, \"A Survey of the Multiplier Conjecture\" (Designs, Codes and Cryptography 78, 2016), especially Table 2 listing the exact open cyclic row (910,405,180) in group [910], cross-checked against Daniel M. Gordon, \"The La Jolla Difference Set Repository\" (ArasuFest talk slides, August...",
+      "source_unit_hint": "Table 2",
+      "slug": "cyclic-difference-set-910-405-180",
+      "slug_history": [
+        "cyclic-difference-set-910-405-180"
+      ],
+      "title": "cyclic-difference-set-910-405-180",
+      "current_status": "publication_audit",
+      "classification": "VARIANT",
+      "verify_verdict": "UNVERIFIED",
+      "publication_status": "NONE",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "attempted",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/cyclic-difference-set-910-405-180/status.json",
+      "working_packet_path": "artifacts/cyclic-difference-set-910-405-180/working_packet.md",
+      "notes": "If a cyclic (910,405,180) difference set exists, then its contractions to C_5, C_7, C_13, and C_35 lie in the exact finite profile lists verified in the record. This is stronger than an example, but it is still a supp..."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:cyclic-difference-set-case:936,375,150:8dcece44aaef9080",
+      "identity_keys": [
+        "family_tuple:cyclic-difference-set-case:936,375,150",
+        "slug:cyclic difference set 936 375 150",
+        "source_tuple:8dcece44aaef9080:936,375,150",
+        "stmt:c71b0901fc06bac6",
+        "title:the cyclic 936 375 150 difference set case"
+      ],
+      "family_hint": "cyclic-difference-set-case",
+      "parameter_tuple": [
+        936,
+        375,
+        150
+      ],
+      "statement": "Determine whether the cyclic group C_936 admits a (936,375,150)-difference set.",
+      "canonical_source": "Daniel M. Gordon, \"The La Jolla Difference Set Repository\" (ArasuFest talk slides, August 3, 2019), especially the Ryser-conjecture slide listing (936,375,150,225) among the small open cyclic cases and the Lander-conjecture slide listing exact noncyclic 936 rows.",
+      "source_unit_hint": "Daniel M. Gordon, \"The La Jolla Difference Set Repository\" (ArasuFest talk slides, August 3, 2019), especially the Ry...",
+      "slug": "cyclic-difference-set-936-375-150",
+      "slug_history": [
+        "cyclic-difference-set-936-375-150"
+      ],
+      "title": "The Cyclic (936,375,150) Difference-Set Case",
+      "current_status": "QUEUED",
+      "classification": null,
+      "verify_verdict": null,
+      "publication_status": "NONE",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "active_queue",
+      "surface_origins": [
+        "queue"
+      ],
+      "artifact_status_path": null,
+      "working_packet_path": null,
+      "notes": "The row is explicit and recent-status surfaced, but the same parameter set also carries named noncyclic residual rows, so the cyclic-only packet is not quite strong enough to clear the paper-fraction gate under the cap."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:cyclic-difference-set-case:990,345,120:897d4a318c47dee5",
+      "identity_keys": [
+        "family_tuple:cyclic-difference-set-case:990,345,120",
+        "slug:cyclic difference set 990 345 120",
+        "source_tuple:897d4a318c47dee5:990,345,120",
+        "stmt:80a21c5f9147ce5d",
+        "title:the cyclic 990 345 120 difference set case"
+      ],
+      "family_hint": "cyclic-difference-set-case",
+      "parameter_tuple": [
+        990,
+        345,
+        120
+      ],
+      "statement": "Determine whether the cyclic group C_990 admits a (990,345,120)-difference set.",
+      "canonical_source": "Daniel M. Gordon, \"The La Jolla Difference Set Repository\" (ArasuFest talk slides, August 3, 2019), especially the Ryser-conjecture slide listing (990,345,120,225) among the small open cyclic cases and the Lander-conjecture slide listing the exact 990 row [2,G9,5,11].",
+      "source_unit_hint": "Daniel M. Gordon, \"The La Jolla Difference Set Repository\" (ArasuFest talk slides, August 3, 2019), especially the Ry...",
+      "slug": "cyclic-difference-set-990-345-120",
+      "slug_history": [
+        "cyclic-difference-set-990-345-120"
+      ],
+      "title": "The Cyclic (990,345,120) Difference-Set Case",
+      "current_status": "QUEUED",
+      "classification": null,
+      "verify_verdict": null,
+      "publication_status": "NONE",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "active_queue",
+      "surface_origins": [
+        "queue"
+      ],
+      "artifact_status_path": null,
+      "working_packet_path": null,
+      "notes": "The cyclic 990 row is source-anchored, a later 2019 status surface still names it as open, no exact local attempt conflict exists, and one exact solve would already supply essentially the whole note."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:cyclic-group-c-admit-difference-set:1093,169,26:ac65465536dc060c",
+      "identity_keys": [
+        "family_tuple:cyclic-group-c-admit-difference-set:1093,169,26",
+        "slug:cyclic difference set 1093 169 26",
+        "source_tuple:ac65465536dc060c:1093,169,26",
+        "stmt:e1d9e98bf3646cb0",
+        "title:does the cyclic group c 1093 admit a 1093 169 26 difference set"
+      ],
+      "family_hint": "cyclic-group-c-admit-difference-set",
+      "parameter_tuple": [
+        1093,
+        169,
+        26
+      ],
+      "statement": "Determine whether the cyclic group C_1093 admits a (1093,169,26)-difference set.",
+      "canonical_source": "Leonard D. Baumert and Daniel M. Gordon, \"On the existence of cyclic difference sets with small parameters\" (Fields Institute Communications 41, 2004), especially Table 3 listing the open cyclic row (1093,169,26) among the possible cases with 150 <= k <= 300 and gcd(v,n)=1.",
+      "source_unit_hint": "Table 3",
+      "slug": "cyclic-difference-set-1093-169-26",
+      "slug_history": [
+        "cyclic-difference-set-1093-169-26"
+      ],
+      "title": "Does the cyclic group C_1093 admit a (1093,169,26)-difference set?",
+      "current_status": "publication_audit",
+      "classification": "FAILED",
+      "verify_verdict": "CRITICAL_FLAW",
+      "publication_status": "NONE",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "attempted",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/cyclic-difference-set-1093-169-26/status.json",
+      "working_packet_path": "artifacts/cyclic-difference-set-1093-169-26/working_packet.md",
+      "notes": "The current packet does not settle the cyclic (1093,169,26) row. The bounded audit only supports the narrower statement that Baumert-Gordon still isolate the row as residual and that Theorem 3.2 justifies 11, not 13,..."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:cyclic-group-c-admit-difference-set:1111,186,31:a32cc479488e2cda",
+      "identity_keys": [
+        "family_tuple:cyclic-group-c-admit-difference-set:1111,186,31",
+        "slug:cyclic difference set 1111 186 31",
+        "source_tuple:a32cc479488e2cda:1111,186,31",
+        "stmt:ba66909cf730cc10",
+        "title:does the cyclic group c 1111 admit a 1111 186 31 difference set"
+      ],
+      "family_hint": "cyclic-group-c-admit-difference-set",
+      "parameter_tuple": [
+        1111,
+        186,
+        31
+      ],
+      "statement": "Determine whether the cyclic group C_1111 admits a (1111,186,31)-difference set.",
+      "canonical_source": "Leonard D. Baumert and Daniel M. Gordon, \"On the existence of cyclic difference sets with small parameters\" (Fields Institute Communications 41, 2004), especially Table 3 listing the open cyclic row (1111,186,31) among the possible cases with 150 <= k <= 300 and gcd(v,n)=1.",
+      "source_unit_hint": "Table 3",
+      "slug": "cyclic-difference-set-1111-186-31",
+      "slug_history": [
+        "cyclic-difference-set-1111-186-31"
+      ],
+      "title": "Does the cyclic group C_1111 admit a (1111,186,31)-difference set?",
+      "current_status": "publication_audit",
+      "classification": "CANDIDATE",
+      "verify_verdict": "VERIFIED",
+      "publication_status": "PAPER_READY",
+      "human_ready": true,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "human_ready",
+      "surface_origins": [
+        "artifact_status",
+        "human_ready"
+      ],
+      "artifact_status_path": "artifacts/cyclic-difference-set-1111-186-31/status.json",
+      "working_packet_path": "artifacts/cyclic-difference-set-1111-186-31/working_packet.md",
+      "notes": "No cyclic (1111,186,31) difference set exists; a 5-multiplier orbit-and-contraction argument on Z_11 x Z_101 gives a direct contradiction, and the bounded publication audit did not uncover a prior settlement of this e..."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:cyclic-group-c-admit-difference-set:1123,154,21:dff445f01b4726f2",
+      "identity_keys": [
+        "family_tuple:cyclic-group-c-admit-difference-set:1123,154,21",
+        "slug:cyclic difference set 1123 154 21",
+        "source_tuple:dff445f01b4726f2:1123,154,21",
+        "stmt:946dc64bb990c7b3",
+        "title:does the cyclic group c 1123 admit a 1123 154 21 difference set"
+      ],
+      "family_hint": "cyclic-group-c-admit-difference-set",
+      "parameter_tuple": [
+        1123,
+        154,
+        21
+      ],
+      "statement": "Determine whether the cyclic group C_1123 admits a (1123,154,21)-difference set.",
+      "canonical_source": "Leonard D. Baumert and Daniel M. Gordon, \"On the existence of cyclic difference sets with small parameters\" (Fields Institute Communications 41, 2004), especially Table 3 listing the exact cyclic row (1123,154,21) among the possible cases with 150 <= k <= 300 and gcd(v,n) = 1.",
+      "source_unit_hint": "Table 3",
+      "slug": "cyclic-difference-set-1123-154-21",
+      "slug_history": [
+        "cyclic-difference-set-1123-154-21"
+      ],
+      "title": "Does the cyclic group C_1123 admit a (1123,154,21)-difference set?",
+      "current_status": "publication_audit",
+      "classification": "REDISCOVERY",
+      "verify_verdict": "NOT_VERIFIED",
+      "publication_status": "REDISCOVERY",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "rediscovery",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/cyclic-difference-set-1123-154-21/status.json",
+      "working_packet_path": "artifacts/cyclic-difference-set-1123-154-21/working_packet.md",
+      "notes": "The bounded publication audit found direct later-settlement evidence: Leung-Ma-Schmidt, A multiplier theorem (JCTA 124, 2014), appears to treat the exact cyclic (1123,154,21) row in Example 5.4, while the local packet..."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:cyclic-group-c-admit-difference-set:1801,225,28:3b10c7c69226879b",
+      "identity_keys": [
+        "family_tuple:cyclic-group-c-admit-difference-set:1801,225,28",
+        "slug:cyclic difference set 1801 225 28",
+        "source_tuple:3b10c7c69226879b:1801,225,28",
+        "stmt:a7b7510b5ffba19e",
+        "title:does the cyclic group c 1801 admit a 1801 225 28 difference set"
+      ],
+      "family_hint": "cyclic-group-c-admit-difference-set",
+      "parameter_tuple": [
+        1801,
+        225,
+        28
+      ],
+      "statement": "Determine whether the cyclic group C_1801 admits a (1801,225,28)-difference set.",
+      "canonical_source": "Leonard D. Baumert and Daniel M. Gordon, \"On the existence of cyclic difference sets with small parameters\" (Fields Institute Communications 41, 2004), especially Table 3 listing the exact cyclic row (1801,225,28) among the possible cases with 150 <= k <= 300 and gcd(v,n) = 1.",
+      "source_unit_hint": "Table 3",
+      "slug": "cyclic-difference-set-1801-225-28",
+      "slug_history": [
+        "cyclic-difference-set-1801-225-28"
+      ],
+      "title": "Does the cyclic group C_1801 admit a (1801,225,28)-difference set?",
+      "current_status": "publication_audit",
+      "classification": "PARTIAL",
+      "verify_verdict": "UNVERIFIED",
+      "publication_status": "SLICE_EXACT",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "theorem_facing_partial",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/cyclic-difference-set-1801-225-28/status.json",
+      "working_packet_path": "artifacts/cyclic-difference-set-1801-225-28/working_packet.md",
+      "notes": "Any cyclic (1801,225,28) difference set can, by Baumert-Gordon Theorem 3.2 and translation normalization, be put into exact 197-invariant form; since ord_1801(197)=25, the normalized set is a union of exactly nine non..."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:cyclic-group-c-admit-difference-set:2160,255,30:725e4f0a8459c979",
+      "identity_keys": [
+        "family_tuple:cyclic-group-c-admit-difference-set:2160,255,30",
+        "slug:cyclic difference set 2160 255 30",
+        "source_tuple:725e4f0a8459c979:2160,255,30",
+        "stmt:b5461e6423531563",
+        "title:does the cyclic group c 2160 admit a 2160 255 30 difference set"
+      ],
+      "family_hint": "cyclic-group-c-admit-difference-set",
+      "parameter_tuple": [
+        2160,
+        255,
+        30
+      ],
+      "statement": "Determine whether the cyclic group C_2160 admits a (2160,255,30)-difference set.",
+      "canonical_source": "Leonard D. Baumert and Daniel M. Gordon, \"On the existence of cyclic difference sets with small parameters\" (Fields Institute Communications 41, 2004), especially Table 2 listing the exact cyclic row (2160,255,30) among the possible cases with 150 <= k <= 300 and gcd(v,n) > 1.",
+      "source_unit_hint": "Table 2",
+      "slug": "cyclic-difference-set-2160-255-30",
+      "slug_history": [
+        "cyclic-difference-set-2160-255-30"
+      ],
+      "title": "Does the cyclic group C_2160 admit a (2160,255,30)-difference set?",
+      "current_status": "publication_audit",
+      "classification": "VARIANT",
+      "verify_verdict": "VARIANT",
+      "publication_status": "NONE",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "attempted",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/cyclic-difference-set-2160-255-30/status.json",
+      "working_packet_path": "artifacts/cyclic-difference-set-2160-255-30/working_packet.md",
+      "notes": "Any cyclic (2160,255,30) difference set must satisfy the exact mod-2, mod-3, and mod-5 contraction constraints established in verify, and the displayed C15/C30 objects are valid witnesses only inside one mod-3 branch...."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:cyclic-group-c-admit-difference-set:3439,1719,859:a8c246b4b78b800d",
+      "identity_keys": [
+        "family_tuple:cyclic-group-c-admit-difference-set:3439,1719,859",
+        "slug:cyclic hadamard difference set 3439 1719 859",
+        "source_tuple:a8c246b4b78b800d:3439,1719,859",
+        "stmt:d5f27bfb8221226b",
+        "title:does the cyclic group c 3439 admit a 3439 1719 859 difference set"
+      ],
+      "family_hint": "cyclic-group-c-admit-difference-set",
+      "parameter_tuple": [
+        3439,
+        1719,
+        859
+      ],
+      "statement": "Determine whether the cyclic group C_3439 admits a (3439,1719,859)-difference set.",
+      "canonical_source": "Leonard D. Baumert and Daniel M. Gordon, \"On the existence of cyclic difference sets with small parameters\" (Fields Institute Communications 41, 2004), Table 5 listing (3439,1719,859) as open among the cyclic Hadamard cases up to v = 10000; status rechecked against Daniel M. Gordon, \"The La Jolla Difference Set Repo...",
+      "source_unit_hint": "Table 5",
+      "slug": "cyclic-hadamard-difference-set-3439-1719-859",
+      "slug_history": [
+        "cyclic-hadamard-difference-set-3439-1719-859"
+      ],
+      "title": "Does the cyclic group C_3439 admit a (3439,1719,859)-difference set?",
+      "current_status": "solve",
+      "classification": "PARTIAL",
+      "verify_verdict": null,
+      "publication_status": "NONE",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "partial",
+      "surface_origins": [
+        "artifact_status"
+      ],
+      "artifact_status_path": "artifacts/cyclic-hadamard-difference-set-3439-1719-859/status.json",
+      "working_packet_path": "artifacts/cyclic-hadamard-difference-set-3439-1719-859/working_packet.md",
+      "notes": "Unconditionally, any (3439,1719,859) cyclic difference set forces odd C_19 quotient deviations and even C_181 quotient deviations satisfying exact reduced autocorrelation systems; conditionally on the Baumert-Gordon w..."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:cyclic-group-c-admit-difference-set:419,133,42:efcede6f580886a3",
+      "identity_keys": [
+        "family_tuple:cyclic-group-c-admit-difference-set:419,133,42",
+        "slug:cyclic difference set 419 133 42",
+        "source_tuple:efcede6f580886a3:419,133,42",
+        "stmt:c5bb04b69255ab6a",
+        "title:does the cyclic group c 419 admit a 419 133 42 difference set"
+      ],
+      "family_hint": "cyclic-group-c-admit-difference-set",
+      "parameter_tuple": [
+        419,
+        133,
+        42
+      ],
+      "statement": "Determine whether the cyclic group C_419 admits a (419,133,42)-difference set.",
+      "canonical_source": "Leonard D. Baumert and Daniel M. Gordon, \"On the existence of cyclic difference sets with small parameters\" (Fields Institute Communications 41, 2004), especially Table 1 listing the open cyclic row (419,133,42) among the remaining cyclic cases with k <= 150.",
+      "source_unit_hint": "Table 1",
+      "slug": "cyclic-difference-set-419-133-42",
+      "slug_history": [
+        "cyclic-difference-set-419-133-42"
+      ],
+      "title": "Does the cyclic group C_419 admit a (419,133,42)-difference set?",
+      "current_status": "verify",
+      "classification": "REDISCOVERY",
+      "verify_verdict": "REDISCOVERY",
+      "publication_status": "REDISCOVERY",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "rediscovery",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/cyclic-difference-set-419-133-42/status.json",
+      "working_packet_path": "artifacts/cyclic-difference-set-419-133-42/working_packet.md",
+      "notes": "The cyclic group C_419 does not admit a (419,133,42) difference set, but this run did not discover that fact: bounded prior-art audit found it already settled in Leung-Ma-Schmidt, Example 5.4, and the local proof atte..."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:cyclic-group-c-admit-difference-set:4355,2177,1088:853910f2df4b5440",
+      "identity_keys": [
+        "family_tuple:cyclic-group-c-admit-difference-set:4355,2177,1088",
+        "slug:cyclic hadamard difference set 4355 2177 1088",
+        "source_tuple:853910f2df4b5440:4355,2177,1088",
+        "stmt:167cc8e13a320785",
+        "title:does the cyclic group c 4355 admit a 4355 2177 1088 difference set"
+      ],
+      "family_hint": "cyclic-group-c-admit-difference-set",
+      "parameter_tuple": [
+        4355,
+        2177,
+        1088
+      ],
+      "statement": "Determine whether the cyclic group C_4355 admits a (4355,2177,1088)-difference set.",
+      "canonical_source": "Leonard D. Baumert and Daniel M. Gordon, \"On the existence of cyclic difference sets with small parameters\" (Fields Institute Communications 41, 2004), Table 5 listing (4355,2177,1088) as open among the cyclic Hadamard cases up to v = 10000; status rechecked against Daniel M. Gordon, \"The La Jolla Difference Set Rep...",
+      "source_unit_hint": "Table 5",
+      "slug": "cyclic-hadamard-difference-set-4355-2177-1088",
+      "slug_history": [
+        "cyclic-hadamard-difference-set-4355-2177-1088"
+      ],
+      "title": "Does the cyclic group C_4355 admit a (4355,2177,1088)-difference set?",
+      "current_status": "publication_audit",
+      "classification": "VARIANT",
+      "verify_verdict": "VARIANT",
+      "publication_status": "NONE",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "attempted",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/cyclic-hadamard-difference-set-4355-2177-1088/status.json",
+      "working_packet_path": "artifacts/cyclic-hadamard-difference-set-4355-2177-1088/working_packet.md",
+      "notes": "Any cyclic (4355,2177,1088)-difference set would have the unique 67-quotient profile (65,32,...,32) and one of five explicit 13-quotient and five explicit 5-quotient profile classes."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:cyclic-group-c-admit-difference-set:616,165,44:f180ebaa97558256",
+      "identity_keys": [
+        "family_tuple:cyclic-group-c-admit-difference-set:616,165,44",
+        "slug:cyclic difference set 616 165 44",
+        "source_tuple:f180ebaa97558256:616,165,44",
+        "stmt:90dc9e3d69958f8a",
+        "title:does the cyclic group c 616 admit a 616 165 44 difference set"
+      ],
+      "family_hint": "cyclic-group-c-admit-difference-set",
+      "parameter_tuple": [
+        616,
+        165,
+        44
+      ],
+      "statement": "Determine whether the cyclic group C_616 admits a (616,165,44)-difference set.",
+      "canonical_source": "Daniel M. Gordon, \"The La Jolla Difference Set Repository\" (ArasuFest talk slides, August 3, 2019), especially the Ryser-conjecture slide listing (616,165,44,121) among the six small open cyclic cases.",
+      "source_unit_hint": "Daniel M. Gordon, \"The La Jolla Difference Set Repository\" (ArasuFest talk slides, August 3, 2019), especially the Ry...",
+      "slug": "cyclic-difference-set-616-165-44",
+      "slug_history": [
+        "cyclic-difference-set-616-165-44"
+      ],
+      "title": "Does the cyclic group C_616 admit a (616,165,44)-difference set?",
+      "current_status": "verify",
+      "classification": "REDISCOVERY",
+      "verify_verdict": "REDISCOVERY",
+      "publication_status": "REDISCOVERY",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "rediscovery",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/cyclic-difference-set-616-165-44/status.json",
+      "working_packet_path": "artifacts/cyclic-difference-set-616-165-44/working_packet.md",
+      "notes": "The local artifact appears to independently rederive a known nonexistence theorem: C_616 admits no (616,165,44)-difference set."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:cyclic-group-c-admit-difference-set:645,161,40:c550df13640829d6",
+      "identity_keys": [
+        "family_tuple:cyclic-group-c-admit-difference-set:645,161,40",
+        "slug:cyclic difference set 645 161 40",
+        "source_tuple:c550df13640829d6:645,161,40",
+        "stmt:8ccabb73070e028a",
+        "title:does the cyclic group c 645 admit a 645 161 40 difference set"
+      ],
+      "family_hint": "cyclic-group-c-admit-difference-set",
+      "parameter_tuple": [
+        645,
+        161,
+        40
+      ],
+      "statement": "Determine whether the cyclic group C_645 admits a (645,161,40)-difference set.",
+      "canonical_source": "Leonard D. Baumert and Daniel M. Gordon, \"On the existence of cyclic difference sets with small parameters\" (Fields Institute Communications 41, 2004), especially Table 3 listing the open cyclic row (645,161,40) among the possible cases with 150 <= k <= 300 and gcd(v,n)=1.",
+      "source_unit_hint": "Table 3",
+      "slug": "cyclic-difference-set-645-161-40",
+      "slug_history": [
+        "cyclic-difference-set-645-161-40"
+      ],
+      "title": "Does the cyclic group C_645 admit a (645,161,40)-difference set?",
+      "current_status": "publication_audit",
+      "classification": "COUNTEREXAMPLE",
+      "verify_verdict": "VERIFIED",
+      "publication_status": "PAPER_READY",
+      "human_ready": true,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "human_ready",
+      "surface_origins": [
+        "artifact_status",
+        "human_ready"
+      ],
+      "artifact_status_path": "artifacts/cyclic-difference-set-645-161-40/status.json",
+      "working_packet_path": "artifacts/cyclic-difference-set-645-161-40/working_packet.md",
+      "notes": "The cyclic group C_645 does not admit a (645,161,40) difference set. Within the bounded publication audit, Baumert-Gordon 2004 still anchors the exact row as a residual Table 3 case, no later direct settlement surface..."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:cyclic-group-c-admit-difference-set:8591,4295,2147:296ce18adeba88db",
+      "identity_keys": [
+        "family_tuple:cyclic-group-c-admit-difference-set:8591,4295,2147",
+        "slug:cyclic hadamard difference set 8591 4295 2147",
+        "source_tuple:296ce18adeba88db:8591,4295,2147",
+        "stmt:d2c6e88bd9b57f51",
+        "title:does the cyclic group c 8591 admit a 8591 4295 2147 difference set"
+      ],
+      "family_hint": "cyclic-group-c-admit-difference-set",
+      "parameter_tuple": [
+        8591,
+        4295,
+        2147
+      ],
+      "statement": "Determine whether the cyclic group C_8591 admits a (8591,4295,2147)-difference set.",
+      "canonical_source": "Leonard D. Baumert and Daniel M. Gordon, \"On the existence of cyclic difference sets with small parameters\" (Fields Institute Communications 41, 2004), Table 5 listing (8591,4295,2147) as open among the cyclic Hadamard cases up to v = 10000; status rechecked against Daniel M. Gordon, \"The La Jolla Difference Set Rep...",
+      "source_unit_hint": "Table 5",
+      "slug": "cyclic-hadamard-difference-set-8591-4295-2147",
+      "slug_history": [
+        "cyclic-hadamard-difference-set-8591-4295-2147"
+      ],
+      "title": "Does the cyclic group C_8591 admit a (8591,4295,2147)-difference set?",
+      "current_status": "publication_audit",
+      "classification": "VARIANT",
+      "verify_verdict": "UNVERIFIED",
+      "publication_status": "SLICE_EXACT",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "attempted",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/cyclic-hadamard-difference-set-8591-4295-2147/status.json",
+      "working_packet_path": "artifacts/cyclic-hadamard-difference-set-8591-4295-2147/working_packet.md",
+      "notes": "Any hypothetical cyclic (8591,4295,2147) difference set has C_11 quotient profile (375;405^5;379^5) or (425;395^5;379^5), up to swapping the two nonzero 3-orbits; equivalently, every order-11 character value is forced..."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:cyclic-group-c-admit-difference-set:8835,4417,2208:caf0f5a9ad503314",
+      "identity_keys": [
+        "family_tuple:cyclic-group-c-admit-difference-set:8835,4417,2208",
+        "slug:cyclic hadamard difference set 8835 4417 2208",
+        "source_tuple:caf0f5a9ad503314:8835,4417,2208",
+        "stmt:3e01a553a23ee647",
+        "title:does the cyclic group c 8835 admit a 8835 4417 2208 difference set"
+      ],
+      "family_hint": "cyclic-group-c-admit-difference-set",
+      "parameter_tuple": [
+        8835,
+        4417,
+        2208
+      ],
+      "statement": "Determine whether the cyclic group C_8835 admits a (8835,4417,2208)-difference set.",
+      "canonical_source": "Leonard D. Baumert and Daniel M. Gordon, \"On the existence of cyclic difference sets with small parameters\" (Fields Institute Communications 41, 2004), Table 5 listing (8835,4417,2208) as open among the cyclic Hadamard cases up to v = 10000; status rechecked against Daniel M. Gordon, \"The La Jolla Difference Set Rep...",
+      "source_unit_hint": "Table 5",
+      "slug": "cyclic-hadamard-difference-set-8835-4417-2208",
+      "slug_history": [
+        "cyclic-hadamard-difference-set-8835-4417-2208"
+      ],
+      "title": "Does the cyclic group C_8835 admit a (8835,4417,2208)-difference set?",
+      "current_status": "publication_audit",
+      "classification": "COUNTEREXAMPLE",
+      "verify_verdict": "VERIFIED",
+      "publication_status": "PAPER_READY",
+      "human_ready": true,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "human_ready",
+      "surface_origins": [
+        "artifact_status",
+        "human_ready"
+      ],
+      "artifact_status_path": "artifacts/cyclic-hadamard-difference-set-8835-4417-2208/status.json",
+      "working_packet_path": "artifacts/cyclic-hadamard-difference-set-8835-4417-2208/working_packet.md",
+      "notes": "The bounded verify and publication audit support the exact nonexistence theorem that C_8835 admits no cyclic (8835,4417,2208)-difference set; equivalently, the unique mod 15 profile forces a 624-point {5,10} block tha..."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:cyclic-group-c-admit-difference-set:9135,4567,2283:464601b41d90bc53",
+      "identity_keys": [
+        "family_tuple:cyclic-group-c-admit-difference-set:9135,4567,2283",
+        "slug:cyclic hadamard difference set 9135 4567 2283",
+        "source_tuple:464601b41d90bc53:9135,4567,2283",
+        "stmt:50079c94874652db",
+        "title:does the cyclic group c 9135 admit a 9135 4567 2283 difference set"
+      ],
+      "family_hint": "cyclic-group-c-admit-difference-set",
+      "parameter_tuple": [
+        9135,
+        4567,
+        2283
+      ],
+      "statement": "Determine whether the cyclic group C_9135 admits a (9135,4567,2283)-difference set.",
+      "canonical_source": "Leonard D. Baumert and Daniel M. Gordon, \"On the existence of cyclic difference sets with small parameters\" (Fields Institute Communications 41, 2004), Table 5 listing (9135,4567,2283) as open among the cyclic Hadamard cases up to v = 10000; status rechecked against Daniel M. Gordon, \"The La Jolla Difference Set Rep...",
+      "source_unit_hint": "Table 5",
+      "slug": "cyclic-hadamard-difference-set-9135-4567-2283",
+      "slug_history": [
+        "cyclic-hadamard-difference-set-9135-4567-2283"
+      ],
+      "title": "Does the cyclic group C_9135 admit a (9135,4567,2283)-difference set?",
+      "current_status": "publication_audit",
+      "classification": "PARTIAL",
+      "verify_verdict": "CRITICAL_FLAW",
+      "publication_status": "NONE",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "partial",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/cyclic-hadamard-difference-set-9135-4567-2283/status.json",
+      "working_packet_path": "artifacts/cyclic-hadamard-difference-set-9135-4567-2283/working_packet.md",
+      "notes": "Within the bounded audit using Baumert-Gordon Theorems 3.1 and 3.2 at w = 7 and w = 29, any cyclic (9135,4567,2283) difference set would have mod-7 contraction equal to one of (628,671,642), (649,671,635), or (682,660..."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:cyclic-group-c-admit-difference-set:9215,4607,2303:cadb666945acd725",
+      "identity_keys": [
+        "family_tuple:cyclic-group-c-admit-difference-set:9215,4607,2303",
+        "slug:cyclic hadamard difference set 9215 4607 2303",
+        "source_tuple:cadb666945acd725:9215,4607,2303",
+        "stmt:fee8894166c8488c",
+        "title:does the cyclic group c 9215 admit a 9215 4607 2303 difference set"
+      ],
+      "family_hint": "cyclic-group-c-admit-difference-set",
+      "parameter_tuple": [
+        9215,
+        4607,
+        2303
+      ],
+      "statement": "Determine whether the cyclic group C_9215 admits a (9215,4607,2303)-difference set.",
+      "canonical_source": "Leonard D. Baumert and Daniel M. Gordon, \"On the existence of cyclic difference sets with small parameters\" (Fields Institute Communications 41, 2004), Table 5 listing (9215,4607,2303) as open among the cyclic Hadamard cases up to v = 10000; status rechecked against Daniel M. Gordon, \"The La Jolla Difference Set Rep...",
+      "source_unit_hint": "Table 5",
+      "slug": "cyclic-hadamard-difference-set-9215-4607-2303",
+      "slug_history": [
+        "cyclic-hadamard-difference-set-9215-4607-2303"
+      ],
+      "title": "Does the cyclic group C_9215 admit a (9215,4607,2303)-difference set?",
+      "current_status": "publication_audit",
+      "classification": "PARTIAL",
+      "verify_verdict": "MINOR_FIX",
+      "publication_status": "SLICE_CANDIDATE",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "theorem_facing_partial",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/cyclic-hadamard-difference-set-9215-4607-2303/status.json",
+      "working_packet_path": "artifacts/cyclic-hadamard-difference-set-9215-4607-2303/working_packet.md",
+      "notes": "After translation, any putative cyclic (9215,4607,2303)-difference set can be taken 2-invariant, and its prime-quotient profiles are forced to be (883,931,931,931,931) on C_5, (197,245,...,245) on C_19, and (95,47,......"
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:cyclic-group-c-admit-difference-set:9423,4711,2355:de420c69a67c63a6",
+      "identity_keys": [
+        "family_tuple:cyclic-group-c-admit-difference-set:9423,4711,2355",
+        "slug:cyclic hadamard difference set 9423 4711 2355",
+        "source_tuple:de420c69a67c63a6:9423,4711,2355",
+        "stmt:aaa711c00b5a3ff8",
+        "title:does the cyclic group c 9423 admit a 9423 4711 2355 difference set"
+      ],
+      "family_hint": "cyclic-group-c-admit-difference-set",
+      "parameter_tuple": [
+        9423,
+        4711,
+        2355
+      ],
+      "statement": "Determine whether the cyclic group C_9423 admits a (9423,4711,2355)-difference set.",
+      "canonical_source": "Leonard D. Baumert and Daniel M. Gordon, \"On the existence of cyclic difference sets with small parameters\" (Fields Institute Communications 41, 2004), Table 5 listing (9423,4711,2355) as open among the cyclic Hadamard cases up to v = 10000; status rechecked against Daniel M. Gordon, \"The La Jolla Difference Set Rep...",
+      "source_unit_hint": "Table 5",
+      "slug": "cyclic-hadamard-difference-set-9423-4711-2355",
+      "slug_history": [
+        "cyclic-hadamard-difference-set-9423-4711-2355"
+      ],
+      "title": "Does the cyclic group C_9423 admit a (9423,4711,2355)-difference set?",
+      "current_status": "publication_audit",
+      "classification": "COUNTEREXAMPLE",
+      "verify_verdict": "VERIFIED",
+      "publication_status": "PAPER_READY",
+      "human_ready": true,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "human_ready",
+      "surface_origins": [
+        "artifact_status",
+        "human_ready"
+      ],
+      "artifact_status_path": "artifacts/cyclic-hadamard-difference-set-9423-4711-2355/status.json",
+      "working_packet_path": "artifacts/cyclic-hadamard-difference-set-9423-4711-2355/working_packet.md",
+      "notes": "The bounded verify and publication audit support the exact nonexistence theorem that C_9423 admits no (9423,4711,2355)-difference set. Baumert-Gordon 2004 still anchors the row as open, Gordon's 2019 cyclic-Hadamard s..."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:cyclic-group-c-admit-difference-set:963,222,51:fbb856679a50f3f9",
+      "identity_keys": [
+        "family_tuple:cyclic-group-c-admit-difference-set:963,222,51",
+        "slug:cyclic difference set 963 222 51",
+        "source_tuple:fbb856679a50f3f9:963,222,51",
+        "stmt:385aecfa572b7a91",
+        "title:does the cyclic group c 963 admit a 963 222 51 difference set"
+      ],
+      "family_hint": "cyclic-group-c-admit-difference-set",
+      "parameter_tuple": [
+        963,
+        222,
+        51
+      ],
+      "statement": "Determine whether the cyclic group C_963 admits a (963,222,51)-difference set.",
+      "canonical_source": "Daniel M. Gordon, \"The La Jolla Difference Set Repository\" (ArasuFest talk slides, August 3, 2019), especially the Ryser-conjecture slide listing the cyclic row (963,222,51,171) among the small open cases and the Lander-conjecture slide listing the exact group [9,107] as a smallest open case with p = 3.",
+      "source_unit_hint": "Daniel M. Gordon, \"The La Jolla Difference Set Repository\" (ArasuFest talk slides, August 3, 2019), especially the Ry...",
+      "slug": "cyclic-difference-set-963-222-51",
+      "slug_history": [
+        "cyclic-difference-set-963-222-51"
+      ],
+      "title": "Does the cyclic group C_963 admit a (963,222,51)-difference set?",
+      "current_status": "publication_audit",
+      "classification": "COUNTEREXAMPLE",
+      "verify_verdict": "VERIFIED",
+      "publication_status": "PAPER_READY",
+      "human_ready": true,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "human_ready",
+      "surface_origins": [
+        "artifact_status",
+        "human_ready"
+      ],
+      "artifact_status_path": "artifacts/cyclic-difference-set-963-222-51/status.json",
+      "working_packet_path": "artifacts/cyclic-difference-set-963-222-51/working_packet.md",
+      "notes": "The cyclic group C_963 does not admit a (963,222,51)-difference set; a short quotient-orbit obstruction on the C_107 contraction closes the exact [9,107] row."
+    },
+    {
       "canonical_problem_key": "stmt:3288c907e09d0a81",
       "identity_keys": [
         "slug:d4 balanced equi 20 square",
@@ -906,6 +2780,91 @@
       "artifact_status_path": "artifacts/d5-balanced-equi-30-square/status.json",
       "working_packet_path": null,
       "notes": "continue solve with a sharper multi-symbol structural obstruction or a broader but still structured construction search; do not run Lean because no exact proof or disproof is available, and bounded PASS 1 did not esta..."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:difference-set-case:448,150,50:380f40fb73f8e5f4",
+      "identity_keys": [
+        "family_tuple:difference-set-case:448,150,50",
+        "slug:abelian difference set 448 150 50 group 2 224",
+        "source_tuple:380f40fb73f8e5f4:448,150,50",
+        "stmt:3f0b5f9642518778",
+        "title:the 2 224 448 150 50 difference set case"
+      ],
+      "family_hint": "difference-set-case",
+      "parameter_tuple": [
+        448,
+        150,
+        50
+      ],
+      "statement": "Determine whether the abelian group C_2 x C_224 admits a (448,150,50)-difference set.",
+      "canonical_source": "Daniel M. Gordon and Bernhard Schmidt, \"A Survey of the Multiplier Conjecture\" (Designs, Codes and Cryptography 78, 2016), especially Table 2 listing the exact open row (448,150,50) in group [2,224].",
+      "source_unit_hint": "Table 2",
+      "slug": "abelian-difference-set-448-150-50-group-2-224",
+      "slug_history": [
+        "abelian-difference-set-448-150-50-group-2-224"
+      ],
+      "title": "The [2,224] (448,150,50) Difference-Set Case",
+      "current_status": "QUEUED",
+      "classification": null,
+      "verify_verdict": null,
+      "publication_status": "NONE",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "active_queue",
+      "surface_origins": [
+        "queue"
+      ],
+      "artifact_status_path": null,
+      "working_packet_path": null,
+      "notes": "The survey table gives a clean exact row, but the bounded 2026-04-16 exact/survey searches surfaced no strong independent later-status source, so the novelty and paper-shape picture is still too thin."
+    },
+    {
+      "canonical_problem_key": "family_tuple_source:difference-set-case:936,375,150:a3b6373f11c68927",
+      "identity_keys": [
+        "family_tuple:difference-set-case:936,375,150",
+        "slug:abelian difference set 936 375 150 group 2 4 9 13",
+        "slug:abelian difference set 936 375 150 group 8 9 13",
+        "source_tuple:a3b6373f11c68927:936,375,150",
+        "source_tuple:feab25101a986fe1:936,375,150",
+        "stmt:22c329f1885f8bfe",
+        "stmt:bd92f7d762bf26e7",
+        "title:the 2 4 9 13 936 375 150 difference set case",
+        "title:the 8 9 13 936 375 150 difference set case"
+      ],
+      "family_hint": "difference-set-case",
+      "parameter_tuple": [
+        936,
+        375,
+        150
+      ],
+      "statement": "Determine whether any abelian group of type [2,4,9,13] admits a (936,375,150)-difference set.",
+      "canonical_source": "Daniel M. Gordon, \"The La Jolla Difference Set Repository\" (ArasuFest talk slides, August 3, 2019), especially the Lander-conjecture slide listing the exact open row 936 375 150 225 [2,4,9,13] with p = 3.",
+      "source_unit_hint": "Daniel M. Gordon, \"The La Jolla Difference Set Repository\" (ArasuFest talk slides, August 3, 2019), especially the La...",
+      "slug": "abelian-difference-set-936-375-150-group-2-4-9-13",
+      "slug_history": [
+        "abelian-difference-set-936-375-150-group-2-4-9-13",
+        "abelian-difference-set-936-375-150-group-8-9-13"
+      ],
+      "title": "The [2,4,9,13] (936,375,150) Difference-Set Case",
+      "current_status": "QUEUED",
+      "classification": null,
+      "verify_verdict": null,
+      "publication_status": "NONE",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "active_queue",
+      "surface_origins": [
+        "queue"
+      ],
+      "artifact_status_path": null,
+      "working_packet_path": null,
+      "notes": "The exact group row is real and bounded, but the group-specific narrative still looks somewhat instance-bound beside the neighboring 936 rows, so isolated-case risk is too high for the lead lane."
     },
     {
       "canonical_problem_key": "family_tuple_source:do-regular-vertex-transitive-ramanujan-graphs:48,52:c064e8aa14a73110",
@@ -2312,10 +4271,7 @@
       "identity_keys": [
         "family_tuple:exact-value-r-b21-b21:85,42,20,21",
         "slug:r b21 b21 diagonal book ramsey",
-        "slug:r b21 diagonal book ramsey",
         "source_tuple:024753881cd0a05d:85,42,20,21",
-        "source_tuple:b45676acea01309a:85,42,20,21",
-        "stmt:5ac4b8c1015ce66f",
         "stmt:e490f1969e7d20f3",
         "title:determine the exact value of r b21 b21"
       ],
@@ -2331,8 +4287,7 @@
       "source_unit_hint": "Lemma 1",
       "slug": "r-b21-b21-diagonal-book-ramsey",
       "slug_history": [
-        "r-b21-b21-diagonal-book-ramsey",
-        "r-b21-diagonal-book-ramsey"
+        "r-b21-b21-diagonal-book-ramsey"
       ],
       "title": "Determine the exact value of R(B21, B21)",
       "current_status": "solve",
@@ -3525,6 +5480,200 @@
       "artifact_status_path": "artifacts/c12-1-3-6-cnbc/status.json",
       "working_packet_path": null,
       "notes": "archive_as_rediscovery"
+    },
+    {
+      "canonical_problem_key": "stmt:b8ca96188ee210a8",
+      "identity_keys": [
+        "slug:r b10 b10 diagonal book ramsey",
+        "stmt:b8ca96188ee210a8",
+        "title:r b10 b10 diagonal book ramsey",
+        "title:the exact value of r b10 b10"
+      ],
+      "family_hint": "r-b10-b10-diagonal-book-ramsey",
+      "parameter_tuple": [],
+      "statement": "Determine the least n such that every red-blue coloring of K_n contains a monochromatic copy of the 10-page book graph B10.",
+      "canonical_source": "Maksim V. Pchelintsev, Peter Rath, and Sebastian Angeltveit, \"New lower and upper bounds on Ramsey numbers\" (Electronic Journal of Combinatorics 32(4), 2025), Theorem 1 and the note immediately following it, together with William J. Wesley, \"Lower bounds for book Ramsey numbers\" (Discrete Mathematics 349(5), 2026, 1...",
+      "source_unit_hint": "Theorem 1",
+      "slug": "r-b10-b10-diagonal-book-ramsey",
+      "slug_history": [
+        "r-b10-b10-diagonal-book-ramsey"
+      ],
+      "title": "r-b10-b10-diagonal-book-ramsey",
+      "current_status": "verify",
+      "classification": "REDISCOVERY",
+      "verify_verdict": "REDISCOVERY",
+      "publication_status": "REDISCOVERY",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "rediscovery",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/r-b10-b10-diagonal-book-ramsey/status.json",
+      "working_packet_path": "artifacts/r-b10-b10-diagonal-book-ramsey/working_packet.md",
+      "notes": "The Paley coloring of K_41 gives a correct lower-bound witness showing R(B10,B10) >= 42, but the exact value R(B10,B10)=42 is already a known theorem from prior art."
+    },
+    {
+      "canonical_problem_key": "stmt:9fb64cb7685eb1f5",
+      "identity_keys": [
+        "family_tuple:exact-value-r-b12-b14:53,26,11,14",
+        "slug:r b12 b14 book ramsey",
+        "source_tuple:78a3587a59234ecf:53,26,11,14",
+        "stmt:9fb64cb7685eb1f5",
+        "title:r b12 b14 book ramsey",
+        "title:the exact value of r b12 b14"
+      ],
+      "family_hint": "r-b12-b14-book-ramsey",
+      "parameter_tuple": [
+        53,
+        26,
+        11,
+        14
+      ],
+      "statement": "Either prove that every graph on 53 vertices contains B12 or its complement contains B14 and thus show R(B12, B14) = 53, or construct a 53-vertex graph avoiding B12 whose complement avoids B14 and thus show R(B12, B14) = 54.",
+      "canonical_source": "Stanis\u0142aw P. Radziszowski, \"Small Ramsey Numbers\" (Electronic Journal of Combinatorics, Dynamic Survey DS1.17, 2024), Section 5.3(g), together with Bernard Lidick\u00fd, Gwen McKinley, Florian Pfender, and Steven Van Overberghe, \"Small Ramsey Numbers for Books, Wheels, and Generalizations\" (Electronic Journal of Combinat...",
+      "source_unit_hint": "Section 5.3(g, Theorem 1",
+      "slug": "r-b12-b14-book-ramsey",
+      "slug_history": [
+        "r-b12-b14-book-ramsey"
+      ],
+      "title": "r-b12-b14-book-ramsey",
+      "current_status": "publication_audit",
+      "classification": "REDISCOVERY",
+      "verify_verdict": "VERIFIED",
+      "publication_status": "REDISCOVERY",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "rediscovery",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/r-b12-b14-book-ramsey/status.json",
+      "working_packet_path": "artifacts/r-b12-b14-book-ramsey/working_packet.md",
+      "notes": "If correct, the local Goodman-plus-strongly-regular obstruction argument gives an independent structural proof that R(B12, B14) <= 53. Combined with published lower-bound literature, that rederives the now-public exac..."
+    },
+    {
+      "canonical_problem_key": "stmt:b018005ae90a08f6",
+      "identity_keys": [
+        "slug:r b15 b15 diagonal book ramsey",
+        "stmt:b018005ae90a08f6",
+        "title:r b15 b15 diagonal book ramsey",
+        "title:the exact value of r b15 b15"
+      ],
+      "family_hint": "r-b15-b15-diagonal-book-ramsey",
+      "parameter_tuple": [],
+      "statement": "Determine the least n such that every red-blue coloring of K_n contains a monochromatic copy of the 15-page book graph B15.",
+      "canonical_source": "Bernard Lidick\u00fd, Gwen McKinley, Florian Pfender, and Steven Van Overberghe, \"Small Ramsey numbers for books, wheels, and generalizations\" (Electronic Journal of Combinatorics 32(4), 2025), Lemma 1, together with William J. Wesley, \"Lower bounds for book Ramsey numbers\" (Discrete Mathematics 349(5), 2026, 114913).",
+      "source_unit_hint": "Lemma 1",
+      "slug": "r-b15-b15-diagonal-book-ramsey",
+      "slug_history": [
+        "r-b15-b15-diagonal-book-ramsey"
+      ],
+      "title": "r-b15-b15-diagonal-book-ramsey",
+      "current_status": "publication_audit",
+      "classification": "REDISCOVERY",
+      "verify_verdict": "VERIFIED",
+      "publication_status": "REDISCOVERY",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "rediscovery",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/r-b15-b15-diagonal-book-ramsey/status.json",
+      "working_packet_path": "artifacts/r-b15-b15-diagonal-book-ramsey/working_packet.md",
+      "notes": "The Paley coloring of K_61 has monochromatic book number exactly 14 in both colors, but this only rederives the already-known exact value R(B15,B15)=62 covered by the prime-power diagonal book theorem recorded in Wesl..."
+    },
+    {
+      "canonical_problem_key": "stmt:ec4d9cb297c91e70",
+      "identity_keys": [
+        "family_tuple:exact-value-r-b21-b21:85,42,20,21",
+        "slug:r b21 diagonal book ramsey",
+        "source_tuple:adfcf10d8bbb99d8:85,42,20,21",
+        "stmt:ec4d9cb297c91e70",
+        "title:determine the exact value of r b21 b21",
+        "title:r b21 diagonal book ramsey"
+      ],
+      "family_hint": "r-b21-diagonal-book-ramsey",
+      "parameter_tuple": [
+        85,
+        42,
+        20,
+        21
+      ],
+      "statement": "Either prove that every graph on 85 vertices contains B21 or has a complement containing B21 and thus show R(B21, B21) = 85, or construct an 85-vertex graph with no B21 and no complement B21 and thus show R(B21, B21) = 86.",
+      "canonical_source": "Stanis\u0142aw P. Radziszowski, \"Small Ramsey Numbers\" (Electronic Journal of Combinatorics, Dynamic Survey DS1.17, 2024), item 5.3(f), together with Bernard Lidick\u00fd, Gwen McKinley, Florian Pfender, and Steven Van Overberghe, \"Small Ramsey Numbers for Books, Wheels, and Generalizations\" (Electronic Journal of Combinatori...",
+      "source_unit_hint": "Theorem 1",
+      "slug": "r-b21-diagonal-book-ramsey",
+      "slug_history": [
+        "r-b21-diagonal-book-ramsey"
+      ],
+      "title": "r-b21-diagonal-book-ramsey",
+      "current_status": "publication_audit",
+      "classification": "VARIANT",
+      "verify_verdict": "VARIANT",
+      "publication_status": "NONE",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "attempted",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/r-b21-diagonal-book-ramsey/status.json",
+      "working_packet_path": "artifacts/r-b21-diagonal-book-ramsey/working_packet.md",
+      "notes": "If G is a graph on 85 vertices such that neither G nor its complement contains B21, then G is strongly regular with parameters (85,42,20,21). Equivalently, R(B21,B21)=86 if and only if an srg(85,42,20,21) exists."
+    },
+    {
+      "canonical_problem_key": "stmt:625fb90120082eca",
+      "identity_keys": [
+        "slug:r b22 b22 diagonal book ramsey",
+        "stmt:625fb90120082eca",
+        "title:r b22 b22 diagonal book ramsey",
+        "title:the exact value of r b22 b22"
+      ],
+      "family_hint": "r-b22-b22-diagonal-book-ramsey",
+      "parameter_tuple": [],
+      "statement": "Determine the least n such that every red-blue coloring of K_n contains a monochromatic book B22.",
+      "canonical_source": "William J. Wesley, \"Lower bounds for book Ramsey numbers\" (Discrete Mathematics 349(5), 2026), introduction and diagonal-family summary, together with Bernard Lidick\u00fd, Gwen McKinley, Florian Pfender, and Steven Van Overberghe, \"Small Ramsey numbers for books, wheels, and generalizations\" (Electronic Journal of Combi...",
+      "source_unit_hint": "William J. Wesley, \"Lower bounds for book Ramsey numbers\" (Discrete Mathematics 349(5), 2026), introduction and diago...",
+      "slug": "r-b22-b22-diagonal-book-ramsey",
+      "slug_history": [
+        "r-b22-b22-diagonal-book-ramsey"
+      ],
+      "title": "r-b22-b22-diagonal-book-ramsey",
+      "current_status": "verify",
+      "classification": "REDISCOVERY",
+      "verify_verdict": "REDISCOVERY",
+      "publication_status": "REDISCOVERY",
+      "human_ready": false,
+      "lean_complete": false,
+      "infra_only": false,
+      "cooldown_until": null,
+      "should_skip_curation": true,
+      "curation_disposition": "rediscovery",
+      "surface_origins": [
+        "artifact_status",
+        "failed_problems"
+      ],
+      "artifact_status_path": "artifacts/r-b22-b22-diagonal-book-ramsey/status.json",
+      "working_packet_path": "artifacts/r-b22-b22-diagonal-book-ramsey/working_packet.md",
+      "notes": "The Paley(89) construction gives a clean rederivation of the known exact value R(B22, B22) = 90, already covered by the Rousseau-Sheehan prime-power theorem as cited in Wesley."
     },
     {
       "canonical_problem_key": "stmt:f9f237ad848bf0f1",

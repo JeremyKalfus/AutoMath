@@ -14,8 +14,11 @@ import signal
 import subprocess
 import tempfile
 import time
+import threading
 import unicodedata
 from dataclasses import dataclass
+
+import publication_runtime as pr
 
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -39,6 +42,12 @@ ATTEMPT_REGISTRY = MEMORY_DIR / "attempt_registry.json"
 SOURCE_REGISTRY = MEMORY_DIR / "source_registry.json"
 STOP_MARKER = ROOT / ".stop_harness"
 CAPABILITIES_CACHE = LOGS / "codex_capabilities.json"
+RUN_ID = os.environ.get("AUTOMATH_RUN_ID", "").strip() or None
+CYCLE_ID = os.environ.get("AUTOMATH_CYCLE_ID", "").strip() or None
+RUNTIME_ROLE = os.environ.get("AUTOMATH_RUNTIME_ROLE", "").strip() or None
+HEARTBEAT_ENABLED = RUNTIME_ROLE == "main_publication"
+HEARTBEAT_LOCK = threading.Lock()
+HEARTBEAT_STATE: dict[str, object] = {}
 
 PUBLICATION_STATUS_RANK = {
     "NONE": 0,
@@ -76,6 +85,7 @@ def today_str() -> str:
 
 
 def ensure_state() -> None:
+    pr.ensure_runtime_layout()
     LOGS.mkdir(parents=True, exist_ok=True)
     ARTIFACTS.mkdir(parents=True, exist_ok=True)
     MEMORY_DIR.mkdir(parents=True, exist_ok=True)
@@ -104,13 +114,15 @@ def ensure_state() -> None:
 
 
 def append_ledger(message: str) -> None:
+    rendered = pr.format_runtime_message(message, run_id=RUN_ID, cycle_id=CYCLE_ID)
     with LEDGER.open("a", encoding="utf-8") as fh:
-        fh.write(f"- {message}\n")
+        fh.write(f"- {rendered}\n")
 
 
 def append_cycle_log(message: str) -> None:
+    rendered = pr.format_runtime_message(message, run_id=RUN_ID, cycle_id=CYCLE_ID)
     with (LOGS / "cycle.log").open("a", encoding="utf-8") as fh:
-        fh.write(f"{message}\n")
+        fh.write(f"{rendered}\n")
 
 
 def load_json(path: pathlib.Path, default):
@@ -127,6 +139,165 @@ def write_json(path: pathlib.Path, data) -> None:
     if path.exists() and path.read_text(encoding="utf-8") == text:
         return
     path.write_text(text, encoding="utf-8")
+
+
+def _manager_pgid() -> int | None:
+    try:
+        return os.getpgid(os.getpid())
+    except OSError:
+        return None
+
+
+def _last_stdout_mtime(stdout_log: pathlib.Path | None) -> str | None:
+    if stdout_log is None:
+        return None
+    try:
+        stamp = stdout_log.stat().st_mtime
+    except FileNotFoundError:
+        return None
+    return dt.datetime.fromtimestamp(stamp, tz=dt.timezone.utc).astimezone().isoformat()
+
+
+def _heartbeat_base() -> dict[str, object]:
+    return {
+        "run_id": RUN_ID,
+        "cycle_id": CYCLE_ID,
+        "state": "idle",
+        "stage": None,
+        "active_slug": None,
+        "manager_pid": os.getpid(),
+        "manager_pgid": _manager_pgid(),
+        "stage_child_pid": None,
+        "stage_child_pgid": None,
+        "stdout_log": None,
+        "last_heartbeat_at": now_iso(),
+        "last_stdout_mtime": None,
+        "active_workers": [],
+    }
+
+
+def _normalize_worker_payload(worker: dict[str, object]) -> dict[str, object]:
+    payload: dict[str, object] = {}
+    for key, value in worker.items():
+        if value is None:
+            continue
+        if key in {"stdout_log", "selection_file"}:
+            payload[key] = pr.relative_display(value)
+        else:
+            payload[key] = value
+    return payload
+
+
+def _normalize_heartbeat_updates(updates: dict[str, object]) -> dict[str, object]:
+    normalized: dict[str, object] = {}
+    for key, value in updates.items():
+        if key == "stdout_log":
+            normalized[key] = pr.relative_display(value)
+            continue
+        if key == "active_workers" and isinstance(value, list):
+            normalized[key] = [_normalize_worker_payload(item) for item in value if isinstance(item, dict)]
+            continue
+        normalized[key] = value
+    return normalized
+
+
+def emit_runtime_event(event: str, **fields) -> None:
+    if not HEARTBEAT_ENABLED:
+        return
+    pr.emit_event(event, run_id=RUN_ID, cycle_id=CYCLE_ID, **fields)
+
+
+def update_cycle_heartbeat(**updates) -> dict[str, object]:
+    if not HEARTBEAT_ENABLED:
+        return {}
+    with HEARTBEAT_LOCK:
+        state = dict(HEARTBEAT_STATE) if HEARTBEAT_STATE else _heartbeat_base()
+        state.update(_normalize_heartbeat_updates(updates))
+        state["run_id"] = RUN_ID
+        state["cycle_id"] = CYCLE_ID
+        state["manager_pid"] = os.getpid()
+        state["manager_pgid"] = _manager_pgid()
+        active_workers = state.get("active_workers")
+        if not isinstance(active_workers, list):
+            active_workers = []
+        state["active_workers"] = [
+            _normalize_worker_payload(item) for item in active_workers if isinstance(item, dict)
+        ]
+        if "last_stdout_mtime" not in updates:
+            stdout_value = state.get("stdout_log")
+            stdout_path = ROOT / stdout_value if isinstance(stdout_value, str) else None
+            state["last_stdout_mtime"] = _last_stdout_mtime(stdout_path)
+        state["last_heartbeat_at"] = now_iso()
+        HEARTBEAT_STATE.clear()
+        HEARTBEAT_STATE.update(state)
+        pr.write_json_atomic(pr.HEARTBEAT_PATH, state)
+        return dict(state)
+
+
+def upsert_parallel_worker_heartbeat(
+    worker_role: str,
+    slug: str,
+    *,
+    child_pid: int | None = None,
+    child_pgid: int | None = None,
+    stdout_log: pathlib.Path | None = None,
+    selection_file: pathlib.Path | None = None,
+) -> dict[str, object]:
+    if not HEARTBEAT_ENABLED:
+        return {}
+    with HEARTBEAT_LOCK:
+        state = dict(HEARTBEAT_STATE) if HEARTBEAT_STATE else _heartbeat_base()
+        active_workers = [dict(item) for item in state.get("active_workers", []) if isinstance(item, dict)]
+        worker_map = {
+            str(item.get("worker_role")): item
+            for item in active_workers
+            if isinstance(item.get("worker_role"), str)
+        }
+        worker_entry = worker_map.get(worker_role, {"worker_role": worker_role, "slug": slug})
+        worker_entry["slug"] = slug
+        worker_entry["child_pid"] = child_pid
+        worker_entry["child_pgid"] = child_pgid
+        worker_entry["stdout_log"] = stdout_log
+        worker_entry["selection_file"] = selection_file
+        worker_entry["last_heartbeat_at"] = now_iso()
+        if stdout_log is not None:
+            worker_entry["last_stdout_mtime"] = _last_stdout_mtime(stdout_log)
+        worker_map[worker_role] = worker_entry
+        state["active_workers"] = [
+            worker_map[key] for key in sorted(worker_map.keys())
+        ]
+        slug_list = [str(item.get("slug")) for item in state["active_workers"] if item.get("slug")]
+        state["active_slug"] = ", ".join(slug_list) if slug_list else None
+        state["stage"] = "parallel_solve"
+        state["state"] = "parallel_solve"
+        state["stage_child_pid"] = None
+        state["stage_child_pgid"] = None
+        HEARTBEAT_STATE.clear()
+        HEARTBEAT_STATE.update(state)
+    return update_cycle_heartbeat(active_workers=state["active_workers"], active_slug=state.get("active_slug"), stage="parallel_solve", state="parallel_solve", stage_child_pid=None, stage_child_pgid=None, stdout_log=None, last_stdout_mtime=None)
+
+
+def clear_parallel_worker_heartbeat(worker_role: str) -> dict[str, object]:
+    if not HEARTBEAT_ENABLED:
+        return {}
+    with HEARTBEAT_LOCK:
+        state = dict(HEARTBEAT_STATE) if HEARTBEAT_STATE else _heartbeat_base()
+        active_workers = [
+            dict(item)
+            for item in state.get("active_workers", [])
+            if isinstance(item, dict) and item.get("worker_role") != worker_role
+        ]
+        slug_list = [str(item.get("slug")) for item in active_workers if item.get("slug")]
+        new_active_slug = ", ".join(slug_list) if slug_list else None
+    return update_cycle_heartbeat(active_workers=active_workers, active_slug=new_active_slug)
+
+
+def current_parallel_worker_heartbeat() -> list[dict[str, object]]:
+    with HEARTBEAT_LOCK:
+        active_workers = HEARTBEAT_STATE.get("active_workers", [])
+        if not isinstance(active_workers, list):
+            return []
+        return [dict(item) for item in active_workers if isinstance(item, dict)]
 
 
 def write_stable_memory_json(path: pathlib.Path, data: dict) -> None:
@@ -425,9 +596,25 @@ def publication_summary_ledger_tail(lines: int = 6) -> list[str]:
     return list(reversed(collected))
 
 
+def last_event_timestamp() -> str | None:
+    if not pr.EVENTS_PATH.exists():
+        return None
+    for line in reversed(pr.EVENTS_PATH.read_text(encoding="utf-8", errors="ignore").splitlines()):
+        line = line.strip()
+        if not line:
+            continue
+        try:
+            payload = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        value = payload.get("ts")
+        if isinstance(value, str) and value.strip():
+            return value
+    return None
+
+
 def emit_status_line(message: str) -> None:
-    print(message)
-    append_cycle_log(message)
+    print(pr.format_runtime_message(message, run_id=RUN_ID, cycle_id=CYCLE_ID))
 
 
 def slug_of(item) -> str | None:
@@ -548,7 +735,7 @@ def queue_preflight(required_entry_type: str | None = None, *, emit_log: bool = 
 
     if usable_slugs:
         if emit_log:
-            append_cycle_log("[queue_preflight] usable paper candidates: " + ", ".join(usable_slugs))
+            emit_runtime_event("queue_preflight", usable_candidates=usable_slugs)
         return True, rejection_reasons
 
     if not emit_log:
@@ -561,7 +748,7 @@ def queue_preflight(required_entry_type: str | None = None, *, emit_log: bool = 
     else:
         message = "Queue preflight found no `paper_candidate` entries in queue.json."
     append_ledger(message)
-    append_cycle_log(f"[queue_preflight] {message}")
+    emit_runtime_event("queue_preflight", usable_candidates=[], rejection_reasons=rejection_reasons[:5], detail=message)
     return False, rejection_reasons
 
 
@@ -591,11 +778,9 @@ def publication_stop_ready(path: pathlib.Path) -> bool:
     data = load_json(path, {})
     if data.get("publication_status") != "PAPER_READY":
         return False
-    if data.get("classification") != "EXACT":
+    if data.get("verify_verdict") != "VERIFIED":
         return False
-    if data.get("lean_complete") is not True:
-        return False
-    return bool(data.get("proof_artifacts_preserved") or data.get("lean_complete"))
+    return bool(data.get("proof_artifacts_preserved"))
 
 
 def human_ready_status(data: dict) -> bool:
@@ -653,6 +838,8 @@ class StageRunResult:
     last_message: pathlib.Path
     timed_out: bool
     timeout_secs: int
+    child_pid: int | None = None
+    child_pgid: int | None = None
 
 
 @dataclass
@@ -1210,8 +1397,94 @@ def candidate_working_packet_path(slug: str) -> pathlib.Path:
     return ROOT / "artifacts" / slug / "working_packet.md"
 
 
+def candidate_record_path(slug: str) -> pathlib.Path:
+    return ROOT / "artifacts" / slug / "record.md"
+
+
 def candidate_status_path(slug: str) -> pathlib.Path:
     return ROOT / "artifacts" / slug / "status.json"
+
+
+SOLVE_RECORD_SECTIONS = [
+    "statement_lock",
+    "definitions",
+    "approach_A",
+    "approach_B",
+    "lemma_graph",
+    "chosen_plan",
+    "self_checks",
+    "code_used",
+    "result",
+    "family_affinity",
+    "generalization_signal",
+    "proof_template_reuse",
+    "candidate_theorem_slice",
+    "smallest_param_shift_to_test",
+    "why_this_is_or_is_not_publishable",
+    "paper_shape_support",
+    "boundary_remark",
+    "likely_failure_points",
+    "what_verify_should_check",
+]
+
+
+def build_candidate_record_stub(entry: dict) -> str:
+    slug = entry["slug"]
+    title = entry.get("title") or entry.get("publication_packet_title") or slug
+    statement = entry.get("intended_statement") or entry.get("canonical_statement") or entry.get("question") or ""
+    packet_path = relative_display(candidate_working_packet_path(slug))
+    lines = [
+        f"# Solve Record: {title}",
+        "",
+        f"- slug: `{slug}`",
+        f"- working_packet: `{packet_path}`",
+        "",
+        "## statement_lock",
+        str(statement).strip() or "(pending solve)",
+        "",
+    ]
+    for section in SOLVE_RECORD_SECTIONS[1:]:
+        lines.extend([f"## {section}", "(pending solve)", ""])
+    return "\n".join(lines).rstrip() + "\n"
+
+
+def build_candidate_status_stub(entry: dict) -> dict:
+    return {
+        "slug": entry["slug"],
+        "title": entry.get("title") or entry["slug"],
+        "stage": "solve",
+        "classification": None,
+        "confidence": "low",
+        "code_used": False,
+        "lean_ready": False,
+        "lean_complete": False,
+        "publication_status": entry.get("publication_status") or "NONE",
+        "publication_confidence": "low",
+        "single_solve_to_paper_fraction": entry.get("single_solve_to_paper_fraction"),
+        "title_theorem_strength": entry.get("title_theorem_strength"),
+        "publication_narrative_strength": entry.get("publication_narrative_strength"),
+        "micro_paper_assessment": entry.get("micro_paper_assessment"),
+        "family_affinity": None,
+        "generalization_signal": None,
+        "candidate_theorem_slice": None,
+        "next_action": "write the first reasoning-first solve attempt",
+        "proof_artifacts_preserved": False,
+        "human_ready": False,
+    }
+
+
+def ensure_candidate_artifact_baseline(entry: dict) -> None:
+    slug = entry.get("slug")
+    if not slug:
+        return
+    record_path = candidate_record_path(slug)
+    status_path = candidate_status_path(slug)
+    record_path.parent.mkdir(parents=True, exist_ok=True)
+    if not record_path.exists():
+        record_path.write_text(build_candidate_record_stub(entry), encoding="utf-8")
+    if not status_path.exists():
+        write_json(status_path, build_candidate_status_stub(entry))
+    ensure_publication_defaults(status_path)
 
 
 def build_candidate_working_packet(entry: dict) -> str:
@@ -1220,8 +1493,8 @@ def build_candidate_working_packet(entry: dict) -> str:
     bounded_sources = [
         entry.get("canonical_source"),
         entry.get("publication_packet_literature_scope"),
-        relative_display(ROOT / "artifacts" / slug / "record.md"),
-        relative_display(ROOT / "artifacts" / slug / "status.json"),
+        relative_display(candidate_record_path(slug)),
+        relative_display(candidate_status_path(slug)),
     ]
     deduped_sources = [item for item in dict.fromkeys(str(x) for x in bounded_sources if x)]
     lines = [
@@ -2605,6 +2878,8 @@ def salvage_candidate_failure(
         "failure_reason": failure_reason,
         "timed_out": result.timed_out,
         "timeout_secs": result.timeout_secs,
+        "child_pid": result.child_pid,
+        "child_pgid": result.child_pgid,
         "salvaged_on": now_iso(),
         "stdout_log": relative_display(result.stdout_log),
         "last_message_path": relative_display(result.last_message),
@@ -2624,6 +2899,8 @@ def salvage_candidate_failure(
         f"- failure_reason: `{failure_reason}`",
         f"- timed_out: `{result.timed_out}`",
         f"- timeout_secs: `{result.timeout_secs}`",
+        f"- child_pid: `{result.child_pid}`",
+        f"- child_pgid: `{result.child_pgid}`",
         f"- salvaged_on: `{payload['salvaged_on']}`",
         f"- stdout_log: `{payload['stdout_log']}`",
         f"- last_message_path: `{payload['last_message_path']}`",
@@ -2681,6 +2958,9 @@ def run_stage(
     transport_profile: str = "default",
     selection_file: pathlib.Path = SELECTED,
     stop_when_queue_usable: str | None = None,
+    heartbeat_stage_name: str | None = None,
+    active_slug: str | None = None,
+    heartbeat_worker_role: str | None = None,
 ) -> StageRunResult:
     stamp = dt.datetime.now().strftime("%Y%m%dT%H%M%S")
     stdout_log = LOGS / f"{stamp}_{stage_name}.stdout.log"
@@ -2737,6 +3017,10 @@ def run_stage(
     timed_out = False
     returncode = 0
     queue_usable_polls = 0
+    child_pid: int | None = None
+    child_pgid: int | None = None
+    heartbeat_name = heartbeat_stage_name or stage_name
+    killed_reason: str | None = None
 
     with stdout_log.open("w", encoding="utf-8") as out:
         proc = subprocess.Popen(
@@ -2752,9 +3036,59 @@ def run_stage(
         assert proc.stdin is not None
         proc.stdin.write(prompt_text)
         proc.stdin.close()
+        child_pid = proc.pid
+        child_pgid = pr.process_group_id(proc.pid)
+
+        if heartbeat_worker_role:
+            upsert_parallel_worker_heartbeat(
+                heartbeat_worker_role,
+                active_slug or stage_name,
+                child_pid=child_pid,
+                child_pgid=child_pgid,
+                stdout_log=stdout_log,
+                selection_file=selection_file,
+            )
+        else:
+            update_cycle_heartbeat(
+                state="stage_running",
+                stage=heartbeat_name,
+                active_slug=active_slug,
+                stage_child_pid=child_pid,
+                stage_child_pgid=child_pgid,
+                stdout_log=stdout_log,
+                active_workers=[],
+            )
+        emit_runtime_event(
+            "stage_started",
+            stage=heartbeat_name,
+            slug=active_slug,
+            pid=child_pid,
+            pgid=child_pgid,
+            timeout_secs=timeout_secs,
+            worker_role=heartbeat_worker_role,
+            stdout_log=stdout_log,
+        )
 
         deadline = time.monotonic() + timeout_secs
         while True:
+            if heartbeat_worker_role:
+                upsert_parallel_worker_heartbeat(
+                    heartbeat_worker_role,
+                    active_slug or stage_name,
+                    child_pid=child_pid,
+                    child_pgid=child_pgid,
+                    stdout_log=stdout_log,
+                    selection_file=selection_file,
+                )
+            else:
+                update_cycle_heartbeat(
+                    state="stage_running",
+                    stage=heartbeat_name,
+                    active_slug=active_slug,
+                    stage_child_pid=child_pid,
+                    stage_child_pgid=child_pgid,
+                    stdout_log=stdout_log,
+                )
             returncode = proc.poll()
             if returncode is not None:
                 break
@@ -2764,12 +3098,31 @@ def run_stage(
                     kill_process_group(proc, signal.SIGTERM)
                     grace_deadline = time.monotonic() + 5
                     while proc.poll() is None and time.monotonic() < grace_deadline:
+                        if heartbeat_worker_role:
+                            upsert_parallel_worker_heartbeat(
+                                heartbeat_worker_role,
+                                active_slug or stage_name,
+                                child_pid=child_pid,
+                                child_pgid=child_pgid,
+                                stdout_log=stdout_log,
+                                selection_file=selection_file,
+                            )
+                        else:
+                            update_cycle_heartbeat(
+                                state="stage_stopping",
+                                stage=heartbeat_name,
+                                active_slug=active_slug,
+                                stage_child_pid=child_pid,
+                                stage_child_pgid=child_pgid,
+                                stdout_log=stdout_log,
+                            )
                         time.sleep(0.2)
                     if proc.poll() is None:
                         kill_process_group(proc, signal.SIGKILL)
                         proc.wait()
                     out.write(f"\n[run_stage early-stop after usable {stop_when_queue_usable} queue detected]\n")
                     returncode = 0
+                    killed_reason = f"usable_{stop_when_queue_usable}_queue_detected"
                     break
             else:
                 queue_usable_polls = 0
@@ -2779,9 +3132,56 @@ def run_stage(
                 proc.wait()
                 out.write(f"\n[run_stage timeout after {timeout_secs} seconds]\n")
                 returncode = 124
+                emit_runtime_event(
+                    "stage_timed_out",
+                    stage=heartbeat_name,
+                    slug=active_slug,
+                    pid=child_pid,
+                    pgid=child_pgid,
+                    timeout_secs=timeout_secs,
+                    worker_role=heartbeat_worker_role,
+                    stdout_log=stdout_log,
+                )
                 break
             time.sleep(2)
 
+    if killed_reason:
+        emit_runtime_event(
+            "stage_killed",
+            stage=heartbeat_name,
+            slug=active_slug,
+            pid=child_pid,
+            pgid=child_pgid,
+            timeout_secs=timeout_secs,
+            worker_role=heartbeat_worker_role,
+            reason=killed_reason,
+            stdout_log=stdout_log,
+        )
+    elif not timed_out:
+        emit_runtime_event(
+            "stage_finished",
+            stage=heartbeat_name,
+            slug=active_slug,
+            pid=child_pid,
+            pgid=child_pgid,
+            returncode=returncode,
+            timeout_secs=timeout_secs,
+            worker_role=heartbeat_worker_role,
+            stdout_log=stdout_log,
+        )
+
+    if heartbeat_worker_role:
+        clear_parallel_worker_heartbeat(heartbeat_worker_role)
+    else:
+        update_cycle_heartbeat(
+            state="stage_finished" if returncode == 0 else "stage_failed",
+            stage=heartbeat_name,
+            active_slug=active_slug,
+            stage_child_pid=None,
+            stage_child_pgid=None,
+            stdout_log=None,
+            last_stdout_mtime=_last_stdout_mtime(stdout_log),
+        )
     if temp_home is not None:
         temp_home.cleanup()
     return StageRunResult(
@@ -2791,6 +3191,8 @@ def run_stage(
         last_message=last_message,
         timed_out=timed_out,
         timeout_secs=timeout_secs,
+        child_pid=child_pid,
+        child_pgid=child_pgid,
     )
 
 
@@ -2869,6 +3271,7 @@ def run_curation_if_needed(required_entry_type: str | None = None) -> bool:
         append_ledger("Queue had no usable `paper_candidate`, so one-shot publication curation started.")
     else:
         append_ledger("Queue was empty or exhausted, so one-shot publication curation started.")
+    update_cycle_heartbeat(state="stage_pending", stage="curate", active_slug=None)
     result = run_stage(
         ROOT,
         "curate",
@@ -2878,6 +3281,7 @@ def run_curation_if_needed(required_entry_type: str | None = None) -> bool:
         preferred_effort("high"),
         "default",
         stop_when_queue_usable=required_entry_type,
+        heartbeat_stage_name="curate",
     )
     search_audit = curation_search_audit(result)
     if any(
@@ -2891,7 +3295,13 @@ def run_curation_if_needed(required_entry_type: str | None = None) -> bool:
             issue_bits.append(f"duplicate={search_audit['duplicate_count']}")
         if int(search_audit.get("raw_url_count", 0)) > 0:
             issue_bits.append(f"raw_url={search_audit['raw_url_count']}")
-        append_cycle_log("[curation_search_audit] " + ", ".join(issue_bits))
+        emit_runtime_event(
+            "curation_search_audit",
+            blank_count=search_audit.get("blank_count"),
+            duplicate_count=search_audit.get("duplicate_count"),
+            raw_url_count=search_audit.get("raw_url_count"),
+            detail=", ".join(issue_bits),
+        )
     if wait_for_usable_queue(required_entry_type=required_entry_type):
         normalize_queue_for_scheduler()
         if result.returncode == 124:
@@ -2971,10 +3381,15 @@ def write_publication_summary(worker_status: str) -> None:
         if paper_candidate
         else "(none)"
     )
+    event_cursor = last_event_timestamp() or "(none yet)"
     summary_lines = [
         "# AutoMath Publication Summary",
         "",
         f"- Updated: `{now_str()}`",
+        f"- Run id: `{RUN_ID or '(not set)'}`",
+        f"- Cycle id: `{CYCLE_ID or '(not set)'}`",
+        f"- Event cursor: `{event_cursor}`",
+        "- Snapshot semantics: current control-surface snapshot only; use `artifacts/_logs/events.jsonl` for authoritative history",
         f"- Queued one-shot paper candidate: {candidate_slug}",
         f"- Candidate title: {candidate_title}",
         f"- Candidate publication if solved: {candidate_publication_if_solved}",
@@ -2992,11 +3407,11 @@ def write_publication_summary(worker_status: str) -> None:
         f"- Next LEAN_QUEUE packet: `{lean_queue_entries[0].get('slug', '(none)') if lean_queue_entries else '(none)'}`",
         "- LEAN_QUEUE is processed only by the separate Lean runner, not by the main publication loop",
         "- Primary success tier: `publication_status = PAPER_READY` with verified preserved proof artifacts",
-        "- Formal stop condition: `publication_status = PAPER_READY`, `classification = EXACT`, and `lean_complete = true`",
+        "- Stop condition: HUMAN_READY micro-paper packet with `verify_verdict = VERIFIED`, `publication_status = PAPER_READY`, and preserved proof artifacts",
         f"- Worker infra status this cycle: `{worker_status}`",
         f"- Summary path: `{SUMMARY_PATH.relative_to(ROOT)}`",
         f"- Candidate status path: `{candidate_status_path}`",
-        "- Ledger tail:",
+        "- Filtered ledger tail (non-authoritative):",
     ]
     summary_tail = publication_summary_ledger_tail(6)
     if summary_tail:
@@ -3004,34 +3419,13 @@ def write_publication_summary(worker_status: str) -> None:
     else:
         summary_lines.append("  - no recent micro-paper ledger entries available")
     SUMMARY_PATH.write_text("\n".join(summary_lines).rstrip() + "\n", encoding="utf-8")
-
-    report_lines = [
-        f"[publication_summary] queued paper candidate: {candidate_slug}",
-        f"[publication_summary] candidate title: {candidate_title}",
-        f"[publication_summary] candidate publication if solved: {candidate_publication_if_solved}",
-        f"[publication_summary] candidate publication score: {candidate_publication_score}",
-        f"[publication_summary] candidate packet quality: {candidate_packet_quality}",
-        f"[publication_summary] candidate pre-solve gate: {candidate_pre_solve_gate}",
-        f"[publication_summary] candidate paper leverage score: {candidate_paper_leverage}",
-        f"[publication_summary] candidate single-solve paper fraction: {candidate_single_fraction}",
-        f"[publication_summary] candidate micro-paper lane: {candidate_micro_lane}",
-        f"[publication_summary] solve timeout seconds: {SOLVE_TIMEOUT}",
-        f"[publication_summary] concurrent solve slots: {SOLVE_CONCURRENCY}",
-        f"[publication_summary] human_ready backlog: {len(human_ready_packets)}",
-        f"[publication_summary] lean_queue backlog: {len(lean_queue_entries)}",
-        f"[publication_summary] next lean_queue packet: {lean_queue_entries[0].get('slug', '(none)') if lean_queue_entries else '(none)'}",
-        "[publication_summary] lean_queue is processed only by the separate lean runner",
-        f"[publication_summary] worker infra: {worker_status}",
-        f"[publication_summary] summary path: {SUMMARY_PATH.relative_to(ROOT)}",
-        f"[publication_summary] status path: {candidate_status_path}",
-        "[publication_summary] ledger tail:",
-    ]
-    if summary_tail:
-        report_lines.extend([f"[publication_summary] {line}" for line in summary_tail])
-    else:
-        report_lines.append("[publication_summary] - no recent micro-paper ledger entries available")
-    for line in report_lines:
-        emit_status_line(line)
+    emit_runtime_event(
+        "summary_updated",
+        slug=candidate_slug if candidate_slug != "(none queued)" else None,
+        worker_status=worker_status,
+        summary_path=SUMMARY_PATH,
+        event_cursor=event_cursor,
+    )
 
 
 
@@ -3067,6 +3461,7 @@ def run_instance_lean(entry: dict, status_path: pathlib.Path) -> None:
         append_ledger(f"Lean was skipped for {entry['slug']} because {reason}.")
         return
     render_queue_selection(entry)
+    update_cycle_heartbeat(state="stage_pending", stage="lean", active_slug=entry["slug"])
     result = run_stage(
         ROOT,
         f"lean_{entry['slug']}",
@@ -3075,6 +3470,8 @@ def run_instance_lean(entry: dict, status_path: pathlib.Path) -> None:
         LEAN_TIMEOUT,
         preferred_effort("high"),
         "default",
+        heartbeat_stage_name="lean",
+        active_slug=entry["slug"],
     )
     normalize_candidate_pending_lean(status_path)
     classification = status_value(status_path, "classification")
@@ -3136,6 +3533,7 @@ def run_solve_stage(
     selection_file: pathlib.Path = SELECTED,
     queue_mutations: bool = True,
 ) -> tuple[pathlib.Path, bool, StageRunResult | None, str | None]:
+    ensure_candidate_artifact_baseline(entry)
     status_path = render_queue_selection(
         entry,
         worker_role=worker_role,
@@ -3143,6 +3541,11 @@ def run_solve_stage(
         output_path=selection_file,
     )
     append_ledger(f"started solving {entry['slug']}")
+    update_cycle_heartbeat(
+        state="parallel_solve_pending" if worker_role else "stage_pending",
+        stage="parallel_solve" if worker_role else "solve",
+        active_slug=entry["slug"],
+    )
 
     result = run_stage(
         ROOT,
@@ -3153,6 +3556,9 @@ def run_solve_stage(
         preferred_effort("high"),
         "tuned_openai",
         selection_file=selection_file,
+        heartbeat_stage_name="solve",
+        active_slug=entry["slug"],
+        heartbeat_worker_role=worker_role if worker_role else None,
     )
     if result.returncode != 0:
         if result.returncode == 124:
@@ -3197,6 +3603,7 @@ def run_post_solve_pipeline(
     selection_file: pathlib.Path = SELECTED,
 ) -> int:
     render_queue_selection(entry, output_path=selection_file)
+    update_cycle_heartbeat(state="stage_pending", stage="verify", active_slug=entry["slug"])
 
     result = run_stage(
         ROOT,
@@ -3207,6 +3614,8 @@ def run_post_solve_pipeline(
         preferred_effort("high"),
         "tuned_openai",
         selection_file=selection_file,
+        heartbeat_stage_name="verify",
+        active_slug=entry["slug"],
     )
     if result.returncode != 0:
         if result.returncode == 124:
@@ -3248,6 +3657,7 @@ def run_post_solve_pipeline(
         return 0
 
     render_queue_selection(entry, output_path=selection_file)
+    update_cycle_heartbeat(state="stage_pending", stage="publication_audit", active_slug=entry["slug"])
     result = run_stage(
         ROOT,
         "publication_audit",
@@ -3257,6 +3667,8 @@ def run_post_solve_pipeline(
         preferred_effort("xhigh"),
         "tuned_openai",
         selection_file=selection_file,
+        heartbeat_stage_name="publication_audit",
+        active_slug=entry["slug"],
     )
     if result.returncode != 0:
         if result.returncode == 124:
@@ -3315,7 +3727,7 @@ def run_post_solve_pipeline(
         append_ledger(f"Publication-ready stop marker set after {entry['slug']} reached PAPER_READY.")
     elif publication_stop_ready(status_path):
         append_ledger(
-            f"{entry['slug']} reached the formal stop condition, but AUTOMATH_ENABLE_STOP_HARNESS=0 so continuous mode will keep running."
+            f"{entry['slug']} reached the HUMAN_READY stop condition, but AUTOMATH_ENABLE_STOP_HARNESS=0 so continuous mode will keep running."
         )
     if emit_summary:
         write_publication_summary("not_used")
@@ -3357,30 +3769,68 @@ def run_parallel_solve_batch(entries: list[dict]) -> list[ParallelSolveWorker]:
         )
     if not launches:
         return workers
+    update_cycle_heartbeat(
+        state="parallel_solve",
+        stage="parallel_solve",
+        active_slug=", ".join(entry["slug"] for entry, _ in launches),
+        stage_child_pid=None,
+        stage_child_pgid=None,
+        stdout_log=None,
+        active_workers=[],
+    )
     with concurrent.futures.ThreadPoolExecutor(max_workers=len(launches)) as executor:
         future_map = {
             executor.submit(run_parallel_solve_slot, entry, worker_role): (entry, worker_role)
             for entry, worker_role in launches
         }
-        for future in concurrent.futures.as_completed(future_map):
-            worker = future.result()
-            workers.append(worker)
-            if worker.solve_ok:
-                append_ledger(
-                    f"Parallel solve finish: {worker.worker_role} completed {worker.entry['slug']} with a usable solve artifact; worker log at {relative_display(worker.stdout_log)}."
-                )
-                continue
-            if worker.stage_result is not None and worker.failure_reason is not None:
-                record_candidate_infra_failure(
-                    worker.entry,
-                    worker.status_path,
-                    worker.stage_result,
-                    failure_reason=worker.failure_reason,
-                    rotate_queue=True,
-                )
-            append_ledger(
-                f"Parallel solve finish: {worker.worker_role} completed {worker.entry['slug']} without a usable solve artifact; worker log at {relative_display(worker.stdout_log)}."
+        pending = set(future_map.keys())
+        while pending:
+            done, pending = concurrent.futures.wait(
+                pending,
+                timeout=2,
+                return_when=concurrent.futures.FIRST_COMPLETED,
             )
+            active_workers = current_parallel_worker_heartbeat()
+            active_slugs = [str(item.get("slug")) for item in active_workers if item.get("slug")]
+            update_cycle_heartbeat(
+                state="parallel_solve",
+                stage="parallel_solve",
+                active_slug=", ".join(active_slugs) if active_slugs else None,
+                active_workers=active_workers,
+                stage_child_pid=None,
+                stage_child_pgid=None,
+                stdout_log=None,
+                last_stdout_mtime=None,
+            )
+            for future in done:
+                worker = future.result()
+                workers.append(worker)
+                if worker.solve_ok:
+                    append_ledger(
+                        f"Parallel solve finish: {worker.worker_role} completed {worker.entry['slug']} with a usable solve artifact; worker log at {relative_display(worker.stdout_log)}."
+                    )
+                    continue
+                if worker.stage_result is not None and worker.failure_reason is not None:
+                    record_candidate_infra_failure(
+                        worker.entry,
+                        worker.status_path,
+                        worker.stage_result,
+                        failure_reason=worker.failure_reason,
+                        rotate_queue=True,
+                    )
+                append_ledger(
+                    f"Parallel solve finish: {worker.worker_role} completed {worker.entry['slug']} without a usable solve artifact; worker log at {relative_display(worker.stdout_log)}."
+                )
+    update_cycle_heartbeat(
+        state="parallel_solve_finished",
+        stage="parallel_solve",
+        active_slug=None,
+        active_workers=[],
+        stage_child_pid=None,
+        stage_child_pgid=None,
+        stdout_log=None,
+        last_stdout_mtime=None,
+    )
     workers.sort(key=lambda item: item.worker_role)
     return workers
 
@@ -3434,12 +3884,14 @@ def run_selected_entry(
 
 
 def run_publication_cycle() -> int:
+    update_cycle_heartbeat(state="queue_preflight", stage="queue_preflight", active_slug=None)
     if STOP_MARKER.exists() and stop_harness_enabled():
         append_ledger("Stop marker already exists, so this cycle was skipped.")
+        update_cycle_heartbeat(state="cycle_skipped", stage="queue_preflight", active_slug=None)
         write_publication_summary("not_used")
         return 0
     if STOP_MARKER.exists() and not stop_harness_enabled():
-        append_cycle_log("[stop_harness] existing .stop_harness ignored because AUTOMATH_ENABLE_STOP_HARNESS=0")
+        emit_runtime_event("stop_marker_ignored", detail="existing .stop_harness ignored because AUTOMATH_ENABLE_STOP_HARNESS=0")
     if not run_curation_if_needed(required_entry_type="paper_candidate"):
         write_publication_summary("not_used")
         return 0
@@ -3489,7 +3941,7 @@ def main() -> int:
     args = parser.parse_args()
 
     ensure_state()
-    append_cycle_log(f"[automath_cycle] publication cycle started at {now_str()}.")
+    update_cycle_heartbeat(state="cycle_started", stage="startup", active_slug=None)
     try:
         if args.lean_queue:
             return run_lean_queue_cycle(emit_summary=not args.worker)
@@ -3508,7 +3960,15 @@ def main() -> int:
             )
         return run_publication_cycle()
     finally:
-        append_cycle_log(f"[automath_cycle] publication cycle finished at {now_str()}.")
+        update_cycle_heartbeat(
+            state="cycle_finished",
+            stage="complete",
+            active_slug=None,
+            stage_child_pid=None,
+            stage_child_pgid=None,
+            stdout_log=None,
+            active_workers=[],
+        )
 
 
 if __name__ == "__main__":

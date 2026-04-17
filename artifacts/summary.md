@@ -1,6 +1,10 @@
 # AutoMath Publication Summary
 
-- Updated: `2026-04-15 02:12:32 EDT`
+- Updated: `2026-04-16 00:50:53 EDT`
+- Run id: `run-20260416t042538z-9500989d`
+- Cycle id: `cycle-0001-20260416t042538z-6ffc1cc1`
+- Event cursor: `2026-04-16T00:50:53.119109-04:00`
+- Snapshot semantics: current control-surface snapshot only; use `artifacts/_logs/events.jsonl` for authoritative history
 - Queued one-shot paper candidate: (none queued)
 - Candidate title: (none queued)
 - Candidate publication if solved: (none queued)
@@ -13,19 +17,19 @@
 - Solve timeout: `2700` seconds
 - Concurrent solve slots: `2`
 - xhigh usable in this environment: `yes`
-- HUMAN_READY backlog: `1`
-- LEAN_QUEUE backlog: `1`
+- HUMAN_READY backlog: `8`
+- LEAN_QUEUE backlog: `8`
 - Next LEAN_QUEUE packet: `abelian-difference-set-64681-441-3`
 - LEAN_QUEUE is processed only by the separate Lean runner, not by the main publication loop
 - Primary success tier: `publication_status = PAPER_READY` with verified preserved proof artifacts
-- Formal stop condition: `publication_status = PAPER_READY`, `classification = EXACT`, and `lean_complete = true`
+- Stop condition: HUMAN_READY micro-paper packet with `verify_verdict = VERIFIED`, `publication_status = PAPER_READY`, and preserved proof artifacts
 - Worker infra status this cycle: `not_used`
 - Summary path: `artifacts/summary.md`
 - Candidate status path: `(none)`
-- Ledger tail:
-  - Queue had no usable `paper_candidate`, so one-shot publication curation started.
-  - Curation on 2026-04-15 02:08:40 EDT rebuilt `queue.json` around five exact residual circulant weighing-matrix cases from the current Gordon / Arasu-Zhang weight-36 frontier: `CW(105,36)`, `CW(112,36)`, `CW(117,36)`, `CW(140,36)`, and `CW(180,36)`.
-  - No audited survivor met the strict `micro_paper_lane_eligible = true` gate because the best packets still look certificate-heavy and search-driven rather than compact one-pass notes.
-  - `selected_problem.md` now points to `circulant-weighing-matrix-105-36` as the best current residual-case packet.
-  - Queue preflight found no usable `paper_candidate`s. Rejection reasons: circulant-weighing-matrix-105-36: micro_paper_lane_eligible is not an explicit pass; circulant-weighing-matrix-112-36: micro_paper_lane_eligible is not an explicit pass; circulant-weighing-matrix-117-36: micro_paper_lane_eligible is not an explicit pass; circulant-weighing-matrix-140-36: micro_paper_lane_eligible is not an explicit pass; circulant-weighing-matrix-180-36: micro_paper_lane_eligible is not an explicit pass
-  - Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- Filtered ledger tail (non-authoritative):
+  - [run:run-20260416t042538z-9500989d cycle:cycle-0001-20260416t042538z-6ffc1cc1] Parallel solve launch: solver-A started cyclic-difference-set-1925-260-35 with a 2700-second budget.
+  - [run:run-20260416t042538z-9500989d cycle:cycle-0001-20260416t042538z-6ffc1cc1] started solving cyclic-difference-set-1925-260-35
+  - [run:run-20260416t042538z-9500989d cycle:cycle-0001-20260416t042538z-6ffc1cc1] Parallel solve finish: solver-A completed cyclic-difference-set-1925-260-35 with a usable solve artifact; worker log at artifacts/_logs/20260416T003246_solve_cyclic-difference-set-1925-260-35.stdout.log.
+  - [run:run-20260416t042538z-9500989d cycle:cycle-0001-20260416t042538z-6ffc1cc1] Publication mode advanced cyclic-difference-set-1925-260-35 from solved status into verify/publication audit.
+  - [run:run-20260416t042538z-9500989d cycle:cycle-0001-20260416t042538z-6ffc1cc1] Resuming cyclic-difference-set-1925-260-35 from preserved solve artifacts instead of rerunning solve.
+  - [run:run-20260416t042538z-9500989d cycle:cycle-0001-20260416t042538z-6ffc1cc1] cyclic-difference-set-1925-260-35 reached HUMAN_READY and was moved off the main queue into LEAN_QUEUE so fresh discovery can continue.

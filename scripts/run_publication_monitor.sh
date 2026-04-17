@@ -79,6 +79,7 @@ seed_monitor_checkout() {
     run_continuous.sh
     lean/AutoMath.lean
     lean/AutoMath
+    artifacts/_logs/events.jsonl
     artifacts/summary.md
   )
 
@@ -98,8 +99,8 @@ sync_monitor_results_back() {
     queue.json
     selected_problem.md
     PROOFS.md
+    artifacts/_logs/events.jsonl
     artifacts/summary.md
-    artifacts/_logs/cycle.log
     artifacts/_logs/codex_capabilities.json
   )
 
@@ -133,4 +134,5 @@ seed_monitor_checkout
 sync_monitor_results_back
 
 printf 'Publication monitor cycle complete.\n'
-printf 'Summary: %s\n' "$ROOT/artifacts/summary.md"
+printf 'Events: %s\n' "$ROOT/artifacts/_logs/events.jsonl"
+printf 'Snapshot: %s\n' "$ROOT/artifacts/summary.md"

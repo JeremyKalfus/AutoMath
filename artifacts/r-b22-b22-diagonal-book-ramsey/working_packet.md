@@ -1,7 +1,7 @@
 # Working Packet: The Exact Value of R(B22, B22)
 
 - slug: `r-b22-b22-diagonal-book-ramsey`
-- title: Determine the exact value of R(B22, B22)
+- title: r-b22-b22-diagonal-book-ramsey
 - publication status: `NONE`
 - packet quality: `moderate`
 - micro-paper eligible: `True`
@@ -47,7 +47,7 @@ Determine the least n such that every red-blue coloring of K_n contains a monoch
 We determine the diagonal book Ramsey number R(B22, B22). Previously available results left this number in the interval 89 <= R(B22, B22) <= 90. Our result closes the remaining one-step gap for this larger diagonal book pair.
 
 ## single_solve_explanation
-This target barely clears the 70% paper threshold because the public frontier is still a single endpoint in an established family. A successful solve would already provide the title theorem and nearly all of the final narrative. The main reason it is weaker than B19-B21 is the increased risk of a bulkier certificate.
+This target barely clears the 70% paper threshold because the public frontier is still a single endpoint in an established family. A successful solve would already provide the title theorem and nearly all of the final narrative. The main reason it is weaker than the smaller diagonal cases is the increased risk of a bulkier certificate.
 
 ## broader_theorem_nonimplication
 The broad diagonal-book theory still stops at the one-step interval and does not decide the endpoint at n = 22. A proof of the exact endpoint would therefore remain the honest title theorem rather than a trivial corollary of an existing published statement.
@@ -56,8 +56,8 @@ The broad diagonal-book theory still stops at the one-step interval and does not
 Current public sources stop at 89 <= R(B22, B22) <= 90.
 
 ## transfer_kit
-- lemma: The classical diagonal-book bounds summarized in Wesley (2026) leave R(B22, B22) in the one-step interval 89 <= R(B22, B22) <= 90.
-- lemma: Wesley (2026) explains that diagonal lower bounds are built from Paley-type or block-circulant constructions, giving a concrete witness architecture to inspect.
+- lemma: The classical diagonal-book bounds summarized in Wesley 2026 leave R(B22, B22) in the one-step interval 89 <= R(B22, B22) <= 90.
+- lemma: Wesley 2026 explains that diagonal lower bounds are built from Paley-type or block-circulant constructions, giving a concrete witness architecture to inspect.
 - lemma: The 2025 paper reduces book counting to common-neighborhood counts along a spine edge, which is the natural forcing mechanism for any upper-bound proof.
 - lemma: Recent smaller diagonal and almost-diagonal cases in the 2025 paper show that the family remains exact-value legible rather than purely asymptotic.
 - toy example: The exact almost-diagonal case R(B20, B21) = 83 is the nearest audited exact benchmark for how a small note in this family is packaged.
@@ -67,7 +67,7 @@ Current public sources stop at 89 <= R(B22, B22) <= 90.
 - paper if solved: The paper would be a short exact-value note closing one more diagonal book Ramsey endpoint.
 
 ## bounded_source_list
-- Classical diagonal book Ramsey bounds summarized in William J. Wesley, "Lower bounds for book Ramsey numbers" (Discrete Mathematics 349(5) (2026)), introduction, together with Bernard Lidicky, Gwen McKinley, Florian Pfender, and Steven Van Overberghe, "Small Ramsey numbers for books, wheels, and generalizations" (Electronic Journal of Combinatorics 32(4) (2025)) for recent family context; and bounded 2026-04-14 exact-statement, alternate-notation, canonical-source, and recent-status web checks that did not reveal a later exact determination beyond the interval 89 <= R(B22, B22) <= 90.
-- Classical diagonal-book interval summarized in Wesley (2026), recent family context from the 2025 EJC paper, and bounded 2026-04-14 exact-statement, synonym, and status searches.
+- William J. Wesley, "Lower bounds for book Ramsey numbers" (Discrete Mathematics 349(5), 2026), introduction and diagonal-family summary, together with Bernard Lidický, Gwen McKinley, Florian Pfender, and Steven Van Overberghe, "Small Ramsey numbers for books, wheels, and generalizations" (Electronic Journal of Combinatorics 32(4), 2025).
+- Classical diagonal-book interval summarized in Wesley 2026, recent family context from the 2025 EJC paper, and bounded exact-statement, alternate-notation, canonical-source, and recent-status web checks performed on 2026-04-14, plus local 2026-04-15 attempt-registry conflict checks.
 - artifacts/r-b22-b22-diagonal-book-ramsey/record.md
 - artifacts/r-b22-b22-diagonal-book-ramsey/status.json

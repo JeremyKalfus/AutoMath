@@ -1,325 +1,325 @@
 {
-  "generated_on": "2026-04-15T02:02:33.223306-04:00",
-  "count": 103,
+  "generated_on": "2026-04-16T00:14:33.661072-04:00",
+  "count": 143,
   "recent_attempts": [
     {
-      "slug": "z13-z25-prime-zero-divisor-graph",
-      "reason": "CANDIDATE",
-      "title": "Is the zero-divisor graph \u0393(Z_13 \u00d7 Z_25) prime?",
-      "notes": "Verified feeder evidence archived so the refined F25(13) witness remains campaign input without reentering the live queue; the next decisive zero-divisor frontier is now z13-z13-z2-prime-zero-divisor-graph.",
-      "checked_on": "2026-04-09",
-      "publication_status": "SLICE_CANDIDATE"
-    },
-    {
-      "slug": "z17-z25-prime-zero-divisor-graph",
-      "reason": "CANDIDATE",
-      "title": "Is the zero-divisor graph \u0393(Z_17 \u00d7 Z_25) prime?",
-      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
-      "checked_on": "2026-04-10",
-      "publication_status": "INSTANCE_ONLY"
-    },
-    {
-      "slug": "z19-z25-prime-zero-divisor-graph",
-      "reason": "CANDIDATE",
-      "title": "Is the zero-divisor graph \u0393(Z_19 \u00d7 Z_25) prime?",
-      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
-      "checked_on": "2026-04-10",
-      "publication_status": "INSTANCE_ONLY"
-    },
-    {
-      "slug": "z17-z17-z2-prime-zero-divisor-graph",
-      "reason": "CANDIDATE",
-      "title": "Is the zero-divisor graph \u0393(Z_17 \u00d7 Z_17 \u00d7 Z_2) prime?",
-      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
-      "checked_on": "2026-04-10",
-      "publication_status": "SLICE_CANDIDATE"
-    },
-    {
-      "slug": "z23-z25-prime-zero-divisor-graph",
-      "reason": "CANDIDATE",
-      "title": "Is the zero-divisor graph Gamma(Z_23 x Z_25) prime?",
-      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
-      "checked_on": "2026-04-11",
-      "publication_status": "SLICE_CANDIDATE"
-    },
-    {
-      "slug": "z29-z25-prime-zero-divisor-graph",
-      "reason": "CANDIDATE",
-      "title": "Is the zero-divisor graph Gamma(Z_29 x Z_25) prime?",
-      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
-      "checked_on": "2026-04-11",
-      "publication_status": "SLICE_CANDIDATE"
-    },
-    {
-      "slug": "z31-z25-prime-zero-divisor-graph",
-      "reason": "CANDIDATE",
-      "title": "Is the zero-divisor graph Gamma(Z_31 x Z_25) prime?",
-      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
-      "checked_on": "2026-04-11",
-      "publication_status": "SLICE_CANDIDATE"
-    },
-    {
-      "slug": "z37-z25-prime-zero-divisor-graph",
-      "reason": "CANDIDATE",
-      "title": "Is the zero-divisor graph Gamma(Z_37 x Z_25) prime?",
-      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
-      "checked_on": "2026-04-11",
-      "publication_status": "SLICE_CANDIDATE"
-    },
-    {
-      "slug": "z41-z25-prime-zero-divisor-graph",
-      "reason": "CANDIDATE",
-      "title": "Is the zero-divisor graph Gamma(Z_41 x Z_25) prime?",
-      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
-      "checked_on": "2026-04-11",
-      "publication_status": "SLICE_CANDIDATE"
-    },
-    {
-      "slug": "z43-z25-prime-zero-divisor-graph",
-      "reason": "CANDIDATE",
-      "title": "Is the zero-divisor graph Gamma(Z_43 x Z_25) prime?",
-      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
-      "checked_on": "2026-04-11",
-      "publication_status": "SLICE_CANDIDATE"
-    },
-    {
-      "slug": "z47-z25-prime-zero-divisor-graph",
-      "reason": "CANDIDATE",
-      "title": "Is the zero-divisor graph Gamma(Z_47 x Z_25) prime?",
-      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
-      "checked_on": "2026-04-11",
-      "publication_status": "SLICE_CANDIDATE"
-    },
-    {
-      "slug": "z53-z25-prime-zero-divisor-graph",
-      "reason": "CANDIDATE",
-      "title": "Is the zero-divisor graph Gamma(Z_53 x Z_25) prime?",
-      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
-      "checked_on": "2026-04-11",
-      "publication_status": "SLICE_CANDIDATE"
-    },
-    {
-      "slug": "z59-z25-prime-zero-divisor-graph",
-      "reason": "CANDIDATE",
-      "title": "Is the zero-divisor graph Gamma(Z_59 x Z_25) prime?",
-      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
-      "checked_on": "2026-04-11",
-      "publication_status": "SLICE_CANDIDATE"
-    },
-    {
-      "slug": "z61-z25-prime-zero-divisor-graph",
-      "reason": "CANDIDATE",
-      "title": "Is the zero-divisor graph Gamma(Z_61 x Z_25) prime?",
-      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
-      "checked_on": "2026-04-11",
-      "publication_status": "SLICE_CANDIDATE"
-    },
-    {
-      "slug": "z67-z25-prime-zero-divisor-graph",
-      "reason": "CANDIDATE",
-      "title": "Is the zero-divisor graph Gamma(Z_67 x Z_25) prime?",
-      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
-      "checked_on": "2026-04-11",
-      "publication_status": "SLICE_CANDIDATE"
-    },
-    {
-      "slug": "z71-z25-prime-zero-divisor-graph",
-      "reason": "CANDIDATE",
-      "title": "Is the zero-divisor graph Gamma(Z_71 x Z_25) prime?",
-      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
-      "checked_on": "2026-04-11",
-      "publication_status": "SLICE_CANDIDATE"
-    },
-    {
-      "slug": "z73-z25-prime-zero-divisor-graph",
-      "reason": "CANDIDATE",
-      "title": "Is the zero-divisor graph Gamma(Z_73 x Z_25) prime?",
-      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
-      "checked_on": "2026-04-11",
-      "publication_status": "SLICE_CANDIDATE"
-    },
-    {
-      "slug": "z79-z25-prime-zero-divisor-graph",
-      "reason": "CANDIDATE",
-      "title": "Is the zero-divisor graph Gamma(Z_79 x Z_25) prime?",
-      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
-      "checked_on": "2026-04-11",
-      "publication_status": "SLICE_CANDIDATE"
-    },
-    {
-      "slug": "z83-z25-prime-zero-divisor-graph",
-      "reason": "CANDIDATE",
-      "title": "Is the zero-divisor graph Gamma(Z_83 x Z_25) prime?",
-      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
-      "checked_on": "2026-04-12",
-      "publication_status": "SLICE_CANDIDATE"
-    },
-    {
-      "slug": "z89-z25-prime-zero-divisor-graph",
-      "reason": "CANDIDATE",
-      "title": "Is the zero-divisor graph Gamma(Z_89 x Z_25) prime?",
-      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
-      "checked_on": "2026-04-12",
-      "publication_status": "SLICE_CANDIDATE"
-    },
-    {
-      "slug": "z97-z25-prime-zero-divisor-graph",
-      "reason": "CANDIDATE",
-      "title": "Is the zero-divisor graph Gamma(Z_97 x Z_25) prime?",
-      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
-      "checked_on": "2026-04-12",
-      "publication_status": "SLICE_CANDIDATE"
-    },
-    {
-      "slug": "z101-z25-prime-zero-divisor-graph",
-      "reason": "CANDIDATE",
-      "title": "Is the zero-divisor graph Gamma(Z_101 x Z_25) prime?",
-      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
-      "checked_on": "2026-04-12",
-      "publication_status": "INSTANCE_ONLY"
-    },
-    {
-      "slug": "z103-z25-prime-zero-divisor-graph",
-      "reason": "CANDIDATE",
-      "title": "Is the zero-divisor graph Gamma(Z_103 x Z_25) prime?",
-      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
-      "checked_on": "2026-04-12",
-      "publication_status": "SLICE_CANDIDATE"
-    },
-    {
-      "slug": "z107-z25-prime-zero-divisor-graph",
-      "reason": "CANDIDATE",
-      "title": "Is the zero-divisor graph Gamma(Z_107 x Z_25) prime?",
-      "notes": "Verified feeder evidence archived so publication mode can use it as campaign input without rerunning it as a fresh queue target.",
-      "checked_on": "2026-04-12",
-      "publication_status": "SLICE_CANDIDATE"
-    },
-    {
-      "slug": "forbidden-outdegree-orientation-d7",
-      "reason": "REDISCOVERY",
-      "title": "Settle the d = 7 slice of the forbidden out-degree orientation conjecture",
-      "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
-      "checked_on": "2026-04-12",
-      "publication_status": "REDISCOVERY"
-    },
-    {
-      "slug": "cocktail-party-two-monochromatic-diameter-2-cover",
-      "reason": "VARIANT",
-      "title": "Does every 2-colored cocktail party graph admit a cover by two monochromatic diameter-2 subsets?",
-      "notes": "Publication audit preserved an exact fallback packet: the empty-signature-class slice plus the exact 6-vertex case under the source-faithful reading.",
-      "checked_on": "2026-04-12",
-      "publication_status": "SLICE_EXACT"
-    },
-    {
-      "slug": "ladder-4-rungs-edge-erdos-posa",
-      "reason": "PARTIAL",
-      "title": "Does the ladder with 4 rungs have the edge-Erdos-Posa property?",
-      "notes": "PARTIAL",
-      "checked_on": "2026-04-12",
+      "slug": "abelian-difference-set-243-121-60-group-3-9-9",
+      "reason": "MINOR_FIX",
+      "title": "abelian-difference-set-243-121-60-group-3-9-9",
+      "notes": "MINOR_FIX",
+      "checked_on": "2026-04-15",
       "publication_status": "NONE"
     },
     {
-      "slug": "all-9-vertex-graphs-1-11-representable",
+      "slug": "abelian-difference-set-182733434811-740406-3",
+      "reason": "CRITICAL_FLAW",
+      "title": "abelian-difference-set-182733434811-740406-3",
+      "notes": "CRITICAL_FLAW",
+      "checked_on": "2026-04-15",
+      "publication_status": "NONE"
+    },
+    {
+      "slug": "cyclic-difference-set-465-145-45",
+      "reason": "WRONG_STATEMENT",
+      "title": "cyclic-difference-set-465-145-45",
+      "notes": "WRONG_STATEMENT",
+      "checked_on": "2026-04-15",
+      "publication_status": "NONE"
+    },
+    {
+      "slug": "cyclic-difference-set-469-208-92",
       "reason": "VARIANT",
-      "title": "Are all graphs on 9 vertices 1-11-representable?",
+      "title": "cyclic-difference-set-469-208-92",
       "notes": "VARIANT",
-      "checked_on": "2026-04-13",
+      "checked_on": "2026-04-15",
       "publication_status": "REDISCOVERY"
     },
     {
-      "slug": "r-b8-b10-book-ramsey",
-      "reason": "CANDIDATE",
-      "title": "Determine the exact value of R(B8, B10)",
-      "notes": "Verified but not fully sealed micro-paper attempt archived so it does not immediately recycle into the queue.",
-      "checked_on": "2026-04-13",
+      "slug": "cyclic-difference-set-639-232-84",
+      "reason": "VARIANT",
+      "title": "cyclic-difference-set-639-232-84",
+      "notes": "VARIANT",
+      "checked_on": "2026-04-15",
+      "publication_status": "NONE"
+    },
+    {
+      "slug": "abelian-difference-set-847-423-211-group-11-77",
+      "reason": "MINOR_FIX",
+      "title": "abelian-difference-set-847-423-211-group-11-77",
+      "notes": "MINOR_FIX",
+      "checked_on": "2026-04-15",
+      "publication_status": "NONE"
+    },
+    {
+      "slug": "cyclic-difference-set-781-300-115",
+      "reason": "NOT_VERIFIED",
+      "title": "cyclic-difference-set-781-300-115",
+      "notes": "NOT_VERIFIED",
+      "checked_on": "2026-04-15",
+      "publication_status": "NONE"
+    },
+    {
+      "slug": "cyclic-difference-set-703-325-150",
+      "reason": "UNVERIFIED",
+      "title": "cyclic-difference-set-703-325-150",
+      "notes": "UNVERIFIED",
+      "checked_on": "2026-04-15",
+      "publication_status": "NONE"
+    },
+    {
+      "slug": "abelian-difference-set-783-391-195-group-3-261",
+      "reason": "VERIFIED",
+      "title": "abelian-difference-set-783-391-195-group-3-261",
+      "notes": "VERIFIED",
+      "checked_on": "2026-04-15",
+      "publication_status": "REDISCOVERY"
+    },
+    {
+      "slug": "cyclic-difference-set-910-405-180",
+      "reason": "UNVERIFIED",
+      "title": "cyclic-difference-set-910-405-180",
+      "notes": "UNVERIFIED",
+      "checked_on": "2026-04-15",
+      "publication_status": "NONE"
+    },
+    {
+      "slug": "abelian-difference-set-855-183-39-group-3-285",
+      "reason": "VARIANT_REPAIRED",
+      "title": "abelian-difference-set-855-183-39-group-3-285",
+      "notes": "VARIANT_REPAIRED",
+      "checked_on": "2026-04-15",
+      "publication_status": "SLICE_EXACT"
+    },
+    {
+      "slug": "abelian-difference-set-425-160-60-group-5-85",
+      "reason": "PARTIAL",
+      "title": "abelian-difference-set-425-160-60-group-5-85",
+      "notes": "PARTIAL",
+      "checked_on": "2026-04-15",
+      "publication_status": "SLICE_EXACT"
+    },
+    {
+      "slug": "abelian-difference-set-729-273-102-group-3-3-3-3-3-3",
+      "reason": "CRITICAL_FLAW",
+      "title": "abelian-difference-set-729-273-102-group-3-3-3-3-3-3",
+      "notes": "CRITICAL_FLAW",
+      "checked_on": "2026-04-15",
+      "publication_status": "SLICE_EXACT"
+    },
+    {
+      "slug": "abelian-difference-set-765-192-48-group-3-255",
+      "reason": "VARIANT",
+      "title": "abelian-difference-set-765-192-48-group-3-255",
+      "notes": "VARIANT",
+      "checked_on": "2026-04-15",
+      "publication_status": "NONE"
+    },
+    {
+      "slug": "abelian-difference-set-909-228-57-group-3-303",
+      "reason": "VARIANT",
+      "title": "abelian-difference-set-909-228-57-group-3-303",
+      "notes": "VARIANT",
+      "checked_on": "2026-04-15",
       "publication_status": "SLICE_CANDIDATE"
     },
     {
-      "slug": "r-b15-b17-book-ramsey",
+      "slug": "abelian-difference-set-816-326-130-group-2-408",
+      "reason": "CRITICAL_FLAW",
+      "title": "abelian-difference-set-816-326-130-group-2-408",
+      "notes": "CRITICAL_FLAW",
+      "checked_on": "2026-04-15",
+      "publication_status": "NONE"
+    },
+    {
+      "slug": "r-b21-diagonal-book-ramsey",
+      "reason": "VARIANT",
+      "title": "r-b21-diagonal-book-ramsey",
+      "notes": "VARIANT",
+      "checked_on": "2026-04-15",
+      "publication_status": "NONE"
+    },
+    {
+      "slug": "r-b10-b10-diagonal-book-ramsey",
       "reason": "REDISCOVERY",
-      "title": "Determine the exact value of R(B15, B17)",
+      "title": "r-b10-b10-diagonal-book-ramsey",
       "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
-      "checked_on": "2026-04-14",
+      "checked_on": "2026-04-15",
       "publication_status": "REDISCOVERY"
     },
     {
-      "slug": "r-b4-b4-diagonal-book-ramsey",
+      "slug": "r-b15-b15-diagonal-book-ramsey",
+      "reason": "VERIFIED",
+      "title": "r-b15-b15-diagonal-book-ramsey",
+      "notes": "VERIFIED",
+      "checked_on": "2026-04-15",
+      "publication_status": "REDISCOVERY"
+    },
+    {
+      "slug": "r-b12-b14-book-ramsey",
+      "reason": "VERIFIED",
+      "title": "r-b12-b14-book-ramsey",
+      "notes": "VERIFIED",
+      "checked_on": "2026-04-15",
+      "publication_status": "REDISCOVERY"
+    },
+    {
+      "slug": "r-b22-b22-diagonal-book-ramsey",
       "reason": "REDISCOVERY",
-      "title": "Determine the exact value of R(B4, B4)",
+      "title": "r-b22-b22-diagonal-book-ramsey",
       "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
-      "checked_on": "2026-04-14",
+      "checked_on": "2026-04-15",
       "publication_status": "REDISCOVERY"
     },
     {
-      "slug": "r-b6-b6-diagonal-book-ramsey",
+      "slug": "cyclic-difference-set-616-165-44",
       "reason": "REDISCOVERY",
-      "title": "Determine the exact value of R(B6, B6)",
+      "title": "Does the cyclic group C_616 admit a (616,165,44)-difference set?",
       "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
-      "checked_on": "2026-04-14",
+      "checked_on": "2026-04-15",
       "publication_status": "REDISCOVERY"
     },
     {
-      "slug": "r-b7-b7-diagonal-book-ramsey",
+      "slug": "abelian-difference-set-448-150-50-group-4-112",
+      "reason": "UNVERIFIED",
+      "title": "Does the abelian group C_4 x C_112 admit a (448,150,50)-difference set?",
+      "notes": "UNVERIFIED",
+      "checked_on": "2026-04-15",
+      "publication_status": "NONE"
+    },
+    {
+      "slug": "abelian-difference-set-621-156-39-group-3-207",
+      "reason": "VARIANT",
+      "title": "Does the abelian group C_3 x C_207 admit a (621,156,39)-difference set?",
+      "notes": "VARIANT",
+      "checked_on": "2026-04-15",
+      "publication_status": "NONE"
+    },
+    {
+      "slug": "cyclic-difference-set-1093-169-26",
+      "reason": "CRITICAL_FLAW",
+      "title": "Does the cyclic group C_1093 admit a (1093,169,26)-difference set?",
+      "notes": "CRITICAL_FLAW",
+      "checked_on": "2026-04-15",
+      "publication_status": "NONE"
+    },
+    {
+      "slug": "abelian-difference-set-343-171-85-group-7-49",
       "reason": "REDISCOVERY",
-      "title": "Determine the exact value of R(B7, B7)",
+      "title": "Does the abelian group C_7 x C_49 admit a (343,171,85)-difference set?",
       "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
-      "checked_on": "2026-04-14",
+      "checked_on": "2026-04-15",
       "publication_status": "REDISCOVERY"
     },
     {
-      "slug": "r-b9-b9-diagonal-book-ramsey",
-      "reason": "REDISCOVERY",
-      "title": "Determine the exact value of R(B9, B9)",
-      "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
-      "checked_on": "2026-04-14",
-      "publication_status": "REDISCOVERY"
+      "slug": "cyclic-hadamard-difference-set-4355-2177-1088",
+      "reason": "VARIANT",
+      "title": "Does the cyclic group C_4355 admit a (4355,2177,1088)-difference set?",
+      "notes": "VARIANT",
+      "checked_on": "2026-04-15",
+      "publication_status": "NONE"
     },
     {
-      "slug": "r-k3-k4-k4-three-color-ramsey",
-      "reason": "REDISCOVERY",
-      "title": "Determine the exact value of R(K3, K4, K4)",
-      "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
-      "checked_on": "2026-04-14",
-      "publication_status": "REDISCOVERY"
+      "slug": "cyclic-hadamard-difference-set-8591-4295-2147",
+      "reason": "UNVERIFIED",
+      "title": "Does the cyclic group C_8591 admit a (8591,4295,2147)-difference set?",
+      "notes": "UNVERIFIED",
+      "checked_on": "2026-04-15",
+      "publication_status": "SLICE_EXACT"
     },
     {
-      "slug": "r-b12-b12-diagonal-book-ramsey",
-      "reason": "REDISCOVERY",
-      "title": "Determine the exact value of R(B12, B12)",
-      "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
-      "checked_on": "2026-04-14",
-      "publication_status": "REDISCOVERY"
+      "slug": "cyclic-hadamard-difference-set-9135-4567-2283",
+      "reason": "CRITICAL_FLAW",
+      "title": "Does the cyclic group C_9135 admit a (9135,4567,2283)-difference set?",
+      "notes": "CRITICAL_FLAW",
+      "checked_on": "2026-04-15",
+      "publication_status": "NONE"
     },
     {
-      "slug": "r-b13-b13-diagonal-book-ramsey",
-      "reason": "CANDIDATE_SURVIVES_WITH_CITATION_RISK",
-      "title": "Determine the exact value of R(B13, B13)",
-      "notes": "CANDIDATE_SURVIVES_WITH_CITATION_RISK",
-      "checked_on": "2026-04-14",
-      "publication_status": "REDISCOVERY"
-    },
-    {
-      "slug": "r-b19-b19-diagonal-book-ramsey",
-      "reason": "REDISCOVERED_IN_CANONICAL_SOURCE_DURING_PUBLICATION_AUDIT",
-      "title": "Determine the exact value of R(B19, B19)",
-      "notes": "REDISCOVERED_IN_CANONICAL_SOURCE_DURING_PUBLICATION_AUDIT",
-      "checked_on": "2026-04-14",
-      "publication_status": "REDISCOVERY"
-    },
-    {
-      "slug": "r-b20-b20-diagonal-book-ramsey",
-      "reason": "REDISCOVERY",
-      "title": "Determine the exact value of R(B20, B20)",
-      "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
-      "checked_on": "2026-04-14",
-      "publication_status": "REDISCOVERY"
-    },
-    {
-      "slug": "abelian-difference-set-1840051-2350-3",
+      "slug": "cyclic-hadamard-difference-set-9215-4607-2303",
       "reason": "MINOR_FIX",
-      "title": "abelian-difference-set-1840051-2350-3",
+      "title": "Does the cyclic group C_9215 admit a (9215,4607,2303)-difference set?",
       "notes": "MINOR_FIX",
       "checked_on": "2026-04-15",
+      "publication_status": "SLICE_CANDIDATE"
+    },
+    {
+      "slug": "abelian-difference-set-1008-266-70-group-g16-g9-7",
+      "reason": "VERIFIED",
+      "title": "Does an abelian group of type [G16,G9,7] admit a (1008,266,70)-difference set?",
+      "notes": "VERIFIED",
+      "checked_on": "2026-04-15",
+      "publication_status": "NONE"
+    },
+    {
+      "slug": "abelian-difference-set-990-345-120-group-2-g9-5-11",
+      "reason": "CRITICAL_FLAW",
+      "title": "Does an abelian group of type [2,G9,5,11] admit a (990,345,120)-difference set?",
+      "notes": "CRITICAL_FLAW",
+      "checked_on": "2026-04-15",
+      "publication_status": "NONE"
+    },
+    {
+      "slug": "abelian-difference-set-477-204-87-group-3-159",
+      "reason": "NOT_VERIFIED",
+      "title": "Does the abelian group C_3 x C_159 admit a (477,204,87)-difference set?",
+      "notes": "NOT_VERIFIED",
+      "checked_on": "2026-04-15",
+      "publication_status": "NONE"
+    },
+    {
+      "slug": "cyclic-difference-set-1123-154-21",
+      "reason": "NOT_VERIFIED",
+      "title": "Does the cyclic group C_1123 admit a (1123,154,21)-difference set?",
+      "notes": "NOT_VERIFIED",
+      "checked_on": "2026-04-15",
+      "publication_status": "REDISCOVERY"
+    },
+    {
+      "slug": "cyclic-difference-set-419-133-42",
+      "reason": "REDISCOVERY",
+      "title": "Does the cyclic group C_419 admit a (419,133,42)-difference set?",
+      "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
+      "checked_on": "2026-04-15",
+      "publication_status": "REDISCOVERY"
+    },
+    {
+      "slug": "cyclic-difference-set-1801-225-28",
+      "reason": "UNVERIFIED",
+      "title": "Does the cyclic group C_1801 admit a (1801,225,28)-difference set?",
+      "notes": "UNVERIFIED",
+      "checked_on": "2026-04-15",
+      "publication_status": "SLICE_EXACT"
+    },
+    {
+      "slug": "cyclic-difference-set-2160-255-30",
+      "reason": "VARIANT",
+      "title": "Does the cyclic group C_2160 admit a (2160,255,30)-difference set?",
+      "notes": "VARIANT",
+      "checked_on": "2026-04-15",
+      "publication_status": "NONE"
+    },
+    {
+      "slug": "cyclic-difference-set-1785-224-28",
+      "reason": "NOT_VERIFIED",
+      "title": "cyclic-difference-set-1785-224-28",
+      "notes": "NOT_VERIFIED",
+      "checked_on": "2026-04-15",
+      "publication_status": "NONE"
+    },
+    {
+      "slug": "cyclic-difference-set-2869-240-20",
+      "reason": "VERIFIED",
+      "title": "cyclic-difference-set-2869-240-20",
+      "notes": "VERIFIED",
+      "checked_on": "2026-04-15",
+      "publication_status": "SLICE_EXACT"
+    },
+    {
+      "slug": "abelian-difference-set-495-247-123-group-3-165",
+      "reason": "NOT_VERIFIED",
+      "title": "abelian-difference-set-495-247-123-group-3-165",
+      "notes": "NOT_VERIFIED",
+      "checked_on": "2026-04-16",
       "publication_status": "NONE"
     }
   ]

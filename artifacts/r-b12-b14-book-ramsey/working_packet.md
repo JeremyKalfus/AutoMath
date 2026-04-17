@@ -1,7 +1,7 @@
 # Working Packet: The Exact Value of R(B12, B14)
 
 - slug: `r-b12-b14-book-ramsey`
-- title: Determine the exact value of R(B12, B14)
+- title: r-b12-b14-book-ramsey
 - publication status: `NONE`
 - packet quality: `moderate`
 - micro-paper eligible: `True`
@@ -66,7 +66,7 @@ Current public sources support only the one-gap window 53 <= R(B12, B14) <= 54, 
 - paper if solved: The paper would be a short exact-value note on a fresh almost-diagonal book Ramsey case.
 
 ## bounded_source_list
-- Stanisław P. Radziszowski, "Small Ramsey Numbers" (Electronic Journal of Combinatorics, Dynamic Survey DS1.17, 2024), Section 5.3(g); Bernard Lidický, Gwen McKinley, Florian Pfender, and Steven Van Overberghe, "Small Ramsey Numbers for Books, Wheels, and Generalizations" (Electronic Journal of Combinatorics 32(4), 2025), Theorem 1; William J. Wesley, "Lower bounds for book Ramsey numbers" (Discrete Mathematics 349(5), 2026), Theorem 2 and appendix benchmarks; and bounded exact-term, alternate-notation, canonical-source, outside-source, and recent-status web checks performed on 2026-04-14.
-- DS1.17 Section 5.3(g), Lidický-McKinley-Pfender-Van Overberghe 2025 Theorem 1, Wesley 2026 Theorem 2 and appendix benchmarks, plus bounded exact-term, alternate-notation, canonical-source, outside-source, and recent-status searches on 2026-04-14.
+- Stanisław P. Radziszowski, "Small Ramsey Numbers" (Electronic Journal of Combinatorics, Dynamic Survey DS1.17, 2024), Section 5.3(g), together with Bernard Lidický, Gwen McKinley, Florian Pfender, and Steven Van Overberghe, "Small Ramsey Numbers for Books, Wheels, and Generalizations" (Electronic Journal of Combinatorics 32(4), 2025), Theorem 1, and William J. Wesley, "Lower bounds for book Ramsey numbers" (Discrete Mathematics 349(5), 2026).
+- DS1.17 Section 5.3(g), Lidický-McKinley-Pfender-Van Overberghe 2025 Theorem 1, Wesley 2026 Theorem 2 and appendix benchmarks, and bounded exact-term, alternate-notation, canonical-source, outside-source, and recent-status web checks performed on 2026-04-14, plus local 2026-04-15 attempt-registry conflict checks.
 - artifacts/r-b12-b14-book-ramsey/record.md
 - artifacts/r-b12-b14-book-ramsey/status.json

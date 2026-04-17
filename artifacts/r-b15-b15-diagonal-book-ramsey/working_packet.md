@@ -1,7 +1,7 @@
 # Working Packet: The Exact Value of R(B15, B15)
 
 - slug: `r-b15-b15-diagonal-book-ramsey`
-- title: Determine the exact value of R(B15, B15)
+- title: r-b15-b15-diagonal-book-ramsey
 - publication status: `NONE`
 - packet quality: `moderate`
 - micro-paper eligible: `True`
@@ -67,7 +67,7 @@ Current public sources stop at 61 <= R(B15, B15) <= 62.
 - paper if solved: The paper would be a short exact-value note settling a larger diagonal book Ramsey number.
 
 ## bounded_source_list
-- Bernard Lidicky, Gwen McKinley, Florian Pfender, and Steven Van Overberghe, "Small Ramsey numbers for books, wheels, and generalizations" (Electronic Journal of Combinatorics 32(4) (2025)), Lemma 1, together with William J. Wesley, "Lower bounds for book Ramsey numbers" (Discrete Mathematics 349(5) (2026), 114913), and bounded exact-statement, alternate-notation, outside-source, and recent-status checks through 2026-04-14.
-- Lidicky-McKinley-Pfender-Van Overberghe 2025, Wesley 2026, source-internal neighboring exact values, and bounded 2026-04-14 exact-term, synonym, outside-source, and recent-status checks.
+- Bernard Lidický, Gwen McKinley, Florian Pfender, and Steven Van Overberghe, "Small Ramsey numbers for books, wheels, and generalizations" (Electronic Journal of Combinatorics 32(4), 2025), Lemma 1, together with William J. Wesley, "Lower bounds for book Ramsey numbers" (Discrete Mathematics 349(5), 2026, 114913).
+- Lidický-McKinley-Pfender-Van Overberghe 2025, Wesley 2026, source-internal neighboring exact values, and bounded exact-statement, alternate-notation, outside-source, and recent-status checks through 2026-04-14, plus local 2026-04-15 attempt-registry conflict checks.
 - artifacts/r-b15-b15-diagonal-book-ramsey/record.md
 - artifacts/r-b15-b15-diagonal-book-ramsey/status.json

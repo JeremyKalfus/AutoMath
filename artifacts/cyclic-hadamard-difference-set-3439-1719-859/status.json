@@ -1,0 +1,22 @@
+{
+  "slug": "cyclic-hadamard-difference-set-3439-1719-859",
+  "title": "Does the cyclic group C_3439 admit a (3439,1719,859)-difference set?",
+  "stage": "solve",
+  "classification": "PARTIAL",
+  "confidence": "medium",
+  "code_used": true,
+  "lean_ready": false,
+  "lean_complete": false,
+  "publication_status": "NONE",
+  "publication_confidence": "low",
+  "single_solve_to_paper_fraction": 0.84,
+  "title_theorem_strength": "strong",
+  "publication_narrative_strength": "strong",
+  "micro_paper_assessment": "The target is still micro-paper eligible, but this solve pass only reached a structural quotient packet: exact C_19 and C_181 count systems, forced parity reductions, and a conditional two-pattern collapse on the C_19 quotient if the contracted multiplier theorem applies at w = 19. That is theorem-facing but still too thin for publication.",
+  "family_affinity": "high; exact residual cyclic Hadamard case with a quotient-character, parity, and potential contracted-multiplier obstruction profile",
+  "generalization_signal": "moderate; the quotient-count and parity-reduction template could transfer to other composite-order residual cyclic Hadamard cases with small factors",
+  "candidate_theorem_slice": "Unconditionally, any (3439,1719,859) cyclic difference set forces odd C_19 quotient deviations and even C_181 quotient deviations satisfying exact reduced autocorrelation systems; conditionally on the Baumert-Gordon w=19 multiplier theorem, the C_19 quotient counts collapse to (63,93,91) or (117,91,87) up to orbit swap.",
+  "next_action": "verify the exact contracted multiplier theorem hypotheses at w = 19 and then combine the two allowed C_19 patterns with the C_181 quotient constraints or a full 19x181 incidence argument",
+  "proof_artifacts_preserved": true,
+  "human_ready": false
+}

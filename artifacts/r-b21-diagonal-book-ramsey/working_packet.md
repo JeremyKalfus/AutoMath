@@ -1,7 +1,7 @@
 # Working Packet: The Exact Value of R(B21, B21)
 
 - slug: `r-b21-diagonal-book-ramsey`
-- title: Determine the exact value of R(B21, B21)
+- title: r-b21-diagonal-book-ramsey
 - publication status: `NONE`
 - packet quality: `strong`
 - micro-paper eligible: `True`
@@ -9,7 +9,7 @@
 - single-solve-to-paper fraction: `0.78`
 
 ## statement
-Either prove that every graph on 85 vertices contains B21 or has a complement containing B21 and thus show R(B21, B21) = 85, or construct a 85-vertex graph with no B21 and no complement B21 and thus show R(B21, B21) = 86.
+Either prove that every graph on 85 vertices contains B21 or has a complement containing B21 and thus show R(B21, B21) = 85, or construct an 85-vertex graph with no B21 and no complement B21 and thus show R(B21, B21) = 86.
 
 ## novelty_notes
 - frontier basis: DS1.17 records the exact diagonal criteria tied to prime powers and sums of two squares. The 2025 paper proves 4n + 1 <= R(Bn, Bn) <= 4n + 2 for 4 <= n <= 21 and covers n = 21 in that one-gap framework, while Wesley 2026 improves lower bounds for books but does not report an exact diagonal closure at n = 21.
@@ -19,7 +19,7 @@ Either prove that every graph on 85 vertices contains B21 or has a complement co
 
 ## proof_sketch
 - attack style: (not recorded)
-- likely route: This is again a mature one-gap diagonal packet rather than a campaign target. Once n = 21 is settled, the note mainly needs the short explanation of why 85 lies outside the standard exact criteria and the argument that closes the two-point window.
+- likely route: This is a mature one-gap diagonal packet rather than a campaign target. Once n = 21 is settled, the note mainly needs a short explanation of why 85 lies outside the standard exact criteria and the argument that closes the two-point window.
 - verifier focus: (not recorded)
 
 ## micro_paper_test
@@ -66,7 +66,7 @@ Current public sources support only the one-gap diagonal window 85 <= R(B21, B21
 - paper if solved: The paper would be a short exact-value note closing another diagonal book Ramsey residue outside the standard criteria.
 
 ## bounded_source_list
-- Stanisław P. Radziszowski, "Small Ramsey Numbers" (Electronic Journal of Combinatorics, Dynamic Survey DS1.17, 2024), item 5.3(f); Bernard Lidický, Gwen McKinley, Florian Pfender, and Steven Van Overberghe, "Small Ramsey Numbers for Books, Wheels, and Generalizations" (Electronic Journal of Combinatorics 32(4), 2025), Theorem 1 and Appendix A; William J. Wesley, "Lower bounds for book Ramsey numbers" (Discrete Mathematics 349(5), 2026); and bounded exact-term, alternate-notation, canonical-source, source-internal, outside-source, and recent-status web checks performed on 2026-04-13.
-- DS1.17 item 5.3(f), Lidický-McKinley-Pfender-Van Overberghe 2025 Theorem 1 and Appendix A, Wesley 2026, and bounded 2026-04-13 exact-statement, alternate-notation, source-internal, outside-source, and recent-status searches for R(B21, B21).
+- Stanisław P. Radziszowski, "Small Ramsey Numbers" (Electronic Journal of Combinatorics, Dynamic Survey DS1.17, 2024), item 5.3(f), together with Bernard Lidický, Gwen McKinley, Florian Pfender, and Steven Van Overberghe, "Small Ramsey Numbers for Books, Wheels, and Generalizations" (Electronic Journal of Combinatorics 32(4), 2025), Theorem 1 and Appendix A, and William J. Wesley, "Lower bounds for book Ramsey numbers" (Discrete Mathematics 349(5), 2026).
+- DS1.17 item 5.3(f), Lidický-McKinley-Pfender-Van Overberghe 2025 Theorem 1 and Appendix A, Wesley 2026, and bounded exact-term, alternate-notation, canonical-source, source-internal, outside-source, and recent-status web checks performed on 2026-04-13, plus local 2026-04-15 attempt-registry conflict checks.
 - artifacts/r-b21-diagonal-book-ramsey/record.md
 - artifacts/r-b21-diagonal-book-ramsey/status.json

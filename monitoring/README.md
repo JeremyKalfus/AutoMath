@@ -7,7 +7,8 @@ Use this repo-side setup if you want Codex app automation without running the ma
 - Prompt file: [monitoring/publication_monitor.prompt.md](/Users/jeremykalfus/CodingProjects/AutoMath/monitoring/publication_monitor.prompt.md)
 - Runner: [scripts/run_publication_monitor.sh](/Users/jeremykalfus/CodingProjects/AutoMath/scripts/run_publication_monitor.sh)
 - Continuous manager: [run_continuous.sh](/Users/jeremykalfus/CodingProjects/AutoMath/run_continuous.sh)
-- Cycle summary: [artifacts/summary.md](/Users/jeremykalfus/CodingProjects/AutoMath/artifacts/summary.md)
+- Authoritative event stream: [artifacts/_logs/events.jsonl](/Users/jeremykalfus/CodingProjects/AutoMath/artifacts/_logs/events.jsonl)
+- Current cycle snapshot: [artifacts/summary.md](/Users/jeremykalfus/CodingProjects/AutoMath/artifacts/summary.md)
 
 ## Manual Codex App Setup
 
@@ -21,7 +22,7 @@ Use this repo-side setup if you want Codex app automation without running the ma
 ## What The Runner Does
 
 - creates or reuses a dedicated git worktree under `.worktrees/publication-monitor`
-- seeds that worktree with the current publication-control surface and the active one-shot packet queue
+- seeds that worktree with the current publication-control surface, the active one-shot packet queue, the authoritative event stream, and the current snapshot
 - runs one publication cycle there
 - syncs stable monitoring and dossier outputs back to the main checkout
 
@@ -37,7 +38,8 @@ Use this repo-side setup if you want Codex app automation without running the ma
 
 - [selected_problem.md](/Users/jeremykalfus/CodingProjects/AutoMath/selected_problem.md)
 - [queue.json](/Users/jeremykalfus/CodingProjects/AutoMath/queue.json)
+- [artifacts/_logs/events.jsonl](/Users/jeremykalfus/CodingProjects/AutoMath/artifacts/_logs/events.jsonl)
 - [artifacts/summary.md](/Users/jeremykalfus/CodingProjects/AutoMath/artifacts/summary.md)
 - [ledger.md](/Users/jeremykalfus/CodingProjects/AutoMath/ledger.md)
 
-The summary file lives at `artifacts/summary.md` and should be read as the current micro-paper control surface.
+Read `artifacts/_logs/events.jsonl` for the authoritative timeline and `artifacts/summary.md` for the current snapshot only.

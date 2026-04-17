@@ -5,9 +5,22 @@ SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 ROOT="$SCRIPT_DIR"
 cd "$ROOT"
 
-if [[ -f "$HOME/.elan/env" ]]; then
-  # shellcheck source=/dev/null
-  source "$HOME/.elan/env"
-fi
+SUPERVISOR_ARGS=()
+CHILD_ARGS=()
 
-python3 "$ROOT/scripts/automath_cycle.py" "$@"
+for arg in "$@"; do
+  case "$arg" in
+    --verbose|-v) SUPERVISOR_ARGS+=("$arg") ;;
+    *) CHILD_ARGS+=("$arg") ;;
+  esac
+done
+
+if ((${#SUPERVISOR_ARGS[@]})) && ((${#CHILD_ARGS[@]})); then
+  exec python3 "$ROOT/scripts/publication_supervisor.py" --mode once "${SUPERVISOR_ARGS[@]}" -- "${CHILD_ARGS[@]}"
+elif ((${#SUPERVISOR_ARGS[@]})); then
+  exec python3 "$ROOT/scripts/publication_supervisor.py" --mode once "${SUPERVISOR_ARGS[@]}" --
+elif ((${#CHILD_ARGS[@]})); then
+  exec python3 "$ROOT/scripts/publication_supervisor.py" --mode once -- "${CHILD_ARGS[@]}"
+else
+  exec python3 "$ROOT/scripts/publication_supervisor.py" --mode once --
+fi

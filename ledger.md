@@ -15736,3 +15736,525 @@
 - publication cycle started at 2026-04-15 02:29:56 EDT.
 - Queue preflight found no `paper_candidate` entries in queue.json.
 - Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- publication cycle started at 2026-04-15 10:37:14 EDT.
+- Queue preflight found no `paper_candidate` entries in queue.json.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation used bounded thin-memory exclusion plus source-anchored web checks around Gordon-Schmidt Table 2 and rewrote the queue as five exact difference-set dossiers.
+- Curation selected `abelian-difference-set-477-204-87-group-3-159` as the top MICRO-PAPER packet: exact open row, no local attempt conflict, bounded novelty surface, and the cleanest solve-to-publication distance in the current shortlist.
+- Queue preflight found no `paper_candidate` entries in queue.json.
+- Curation search hygiene failed (blank/duplicate/raw-URL queries) and the cycle did not produce a usable queue, so the dead-end queue was cleared before the next cycle.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-15 10:46:21 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 10:47:21 EDT.
+- Queue preflight found no `paper_candidate` entries in queue.json.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Queue preflight found no `paper_candidate` entries in queue.json.
+- Curation search hygiene failed (blank/duplicate/raw-URL queries) and the cycle did not produce a usable queue, so the dead-end queue was cleared before the next cycle.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-15 10:57:16 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 10:58:16 EDT.
+- Queue preflight found no `paper_candidate` entries in queue.json.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation on 2026-04-15 used thin-memory exclusion plus bounded source-anchored web checks around Gordon-Schmidt Table 2 and Gordon 2022 Table 4, staying within the search cap and avoiding any attempted-problem duplicates.
+- `queue.json` was rebuilt as five difference-set `paper_candidate` dossiers ranked by shortest honest solve-to-publication distance: `abelian-difference-set-343-171-85-group-7-49`, `abelian-difference-set-16928-120-3`, `abelian-difference-set-621-156-39-group-3-3-69`, `abelian-difference-set-448-150-50-group-4-112`, and `abelian-difference-set-416-166-66-group-4-104`.
+- `selected_problem.md` now points to `abelian-difference-set-343-171-85-group-7-49` as the strongest current MICRO-PAPER packet; it is the only audited lane-eligible survivor in this queue.
+- Queue preflight found no `paper_candidate` entries in queue.json.
+- Curation search hygiene failed (blank/duplicate/raw-URL queries) and the cycle did not produce a usable queue, so the dead-end queue was cleared before the next cycle.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-15 11:08:01 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 11:09:01 EDT.
+- Queue preflight found no `paper_candidate` entries in queue.json.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation on 2026-04-15 rebuilt the queue from a bounded thin-memory exclusion sweep plus source-anchored web checks centered on Gordon-Schmidt Table 2, Gordon's 2019 La Jolla slides, and a bounded recent-status scan.
+- The previously selected `(343,171,85)` / `[7,49]` row was demoted after the audit surfaced Niklas Miller's 2025 preprint `Forbidden multipliers in abelian difference sets`, which appears to settle that case.
+- `queue.json` was rewritten as five difference-set `paper_candidate` dossiers ranked by shortest honest solve-to-publication distance: `cyclic-difference-set-963-222-51`, `abelian-difference-set-448-150-50-group-2-224`, `abelian-difference-set-416-166-66-group-2-208`, `abelian-difference-set-736-196-52-exp-le-368`, and `abelian-difference-set-343-171-85-group-7-49`.
+- `selected_problem.md` now points to `cyclic-difference-set-963-222-51` as the strongest currently usable MICRO-PAPER packet in the audited shortlist.
+- Queue preflight found no `paper_candidate` entries in queue.json.
+- Curation search hygiene failed (blank/duplicate/raw-URL queries) and the cycle did not produce a usable queue, so the dead-end queue was cleared before the next cycle.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-15 11:17:11 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 11:18:11 EDT.
+- Queue preflight found no `paper_candidate` entries in queue.json.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Queue preflight found no `paper_candidate` entries in queue.json.
+- Curation search hygiene failed (blank/duplicate/raw-URL queries) and the cycle did not produce a usable queue, so the dead-end queue was cleared before the next cycle.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-15 11:26:06 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 11:27:06 EDT.
+- Queue preflight found no `paper_candidate` entries in queue.json.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation on 2026-04-15 rebuilt the queue from a bounded thin-memory exclusion sweep plus a 20-search web audit centered on Gordon's 2019 La Jolla slides, Gordon-Schmidt Table 2, and bounded exact-status checks.
+- `queue.json` was rewritten as five `paper_candidate` dossiers ranked by smallest honest solve-to-publication distance: `cyclic-difference-set-963-222-51`, `abelian-difference-set-477-204-87-group-3-159`, `abelian-difference-set-448-150-50-group-2-224`, `abelian-difference-set-416-166-66-group-2-208`, and `abelian-difference-set-736-196-52-exp-le-368`.
+- The hard lane survivors were `cyclic-difference-set-963-222-51` and `abelian-difference-set-477-204-87-group-3-159`; the remaining three rows were retained as audited but non-eligible backups because theorem-slice stability or broader-theorem risk failed the strict MICRO-PAPER gate.
+- `selected_problem.md` now points to `cyclic-difference-set-963-222-51` as the highest-priority currently usable MICRO-PAPER packet.
+- Queue preflight found no `paper_candidate` entries in queue.json.
+- Curation search hygiene failed (blank/duplicate/raw-URL queries) and the cycle did not produce a usable queue, so the dead-end queue was cleared before the next cycle.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-15 11:36:21 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 11:37:21 EDT.
+- Queue preflight found no `paper_candidate` entries in queue.json.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Queue preflight found no `paper_candidate` entries in queue.json.
+- Curation search hygiene failed (blank/duplicate/raw-URL queries) and the cycle did not produce a usable queue, so the dead-end queue was cleared before the next cycle.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-15 11:44:39 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 11:45:39 EDT.
+- Queue preflight found no `paper_candidate` entries in queue.json.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation on 2026-04-15 rebuilt the queue from a bounded thin-memory exclusion sweep plus a source-anchored 13-search web audit centered on Gordon's 2019 La Jolla slides, Gordon-Schmidt Table 2, and bounded exact-status checks.
+- `queue.json` was rewritten as five `paper_candidate` dossiers ranked by smallest honest solve-to-publication distance: `cyclic-difference-set-963-222-51`, `abelian-difference-set-416-166-66-group-2-208`, `abelian-difference-set-477-204-87-group-3-159`, `abelian-difference-set-448-150-50-group-2-224`, and `abelian-difference-set-736-196-52-exp-le-368`.
+- Only `cyclic-difference-set-963-222-51` cleared the strict MICRO-PAPER lane; the other four were retained as audited backups that still fail on novelty-audit thinness or theorem-slice instability.
+- `selected_problem.md` now points to `cyclic-difference-set-963-222-51` as the highest-priority currently usable micro-paper packet.
+- Queue preflight found no `paper_candidate` entries in queue.json.
+- Curation search hygiene failed (blank/duplicate/raw-URL queries) and the cycle did not produce a usable queue, so the dead-end queue was cleared before the next cycle.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-15 11:52:55 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 11:53:55 EDT.
+- Queue preflight found no `paper_candidate` entries in queue.json.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Queue preflight found no `paper_candidate` entries in queue.json.
+- Curation search hygiene failed (blank/duplicate/raw-URL queries) and the cycle did not produce a usable queue, so the dead-end queue was cleared before the next cycle.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-15 11:59:43 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 12:00:43 EDT.
+- Queue preflight found no `paper_candidate` entries in queue.json.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Queue preflight found no `paper_candidate` entries in queue.json.
+- Curation search hygiene failed (blank/duplicate/raw-URL queries) and the cycle did not produce a usable queue, so the dead-end queue was cleared before the next cycle.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-15 12:10:42 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 12:11:42 EDT.
+- Queue preflight found no `paper_candidate` entries in queue.json.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation on 2026-04-15 rebuilt the queue from a bounded thin-memory exclusion sweep plus a 20-search web audit centered on Gordon's 2019 La Jolla slides, Gordon-Schmidt Table 2, and bounded exact-status checks for the current five-row shortlist.
+- `queue.json` was rewritten as five `paper_candidate` dossiers ranked by smallest honest solve-to-publication distance: `cyclic-difference-set-963-222-51`, `abelian-difference-set-416-166-66-group-2-208`, `abelian-difference-set-477-204-87-group-3-159`, `abelian-difference-set-448-150-50-group-2-224`, and `abelian-difference-set-736-196-52-exp-le-368`.
+- Only `cyclic-difference-set-963-222-51` cleared the strict MICRO-PAPER lane; the other four rows were retained as audited backups because novelty-audit thinness or theorem-slice instability still blocks lane eligibility.
+- `selected_problem.md` now points to `cyclic-difference-set-963-222-51` as the highest-priority currently usable micro-paper packet.
+- Queue preflight found no `paper_candidate` entries in queue.json.
+- Curation search hygiene failed (blank/duplicate/raw-URL queries) and the cycle did not produce a usable queue, so the dead-end queue was cleared before the next cycle.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-15 12:18:33 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 12:19:33 EDT.
+- Queue preflight found no `paper_candidate` entries in queue.json.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Queue preflight found no `paper_candidate` entries in queue.json.
+- Curation search hygiene failed (blank/duplicate/raw-URL queries) and the cycle did not produce a usable queue, so the dead-end queue was cleared before the next cycle.
+- Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-15 12:25:51 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 12:26:51 EDT.
+- Queue preflight found no `paper_candidate` entries in queue.json.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation produced a usable queue, but the search log still showed blank/duplicate/raw-URL queries; keep the queue, but this should be tightened in future prompt iterations.
+- Publication mode selected one-shot paper candidate cyclic-difference-set-963-222-51.
+- Parallel solve launch: solver-A started cyclic-difference-set-963-222-51 with a 2700-second budget.
+- started solving cyclic-difference-set-963-222-51
+- Parallel solve finish: solver-A completed cyclic-difference-set-963-222-51 with a usable solve artifact; worker log at artifacts/_logs/20260415T123347_solve_cyclic-difference-set-963-222-51.stdout.log.
+- Publication mode advanced cyclic-difference-set-963-222-51 from solved status into verify/publication audit.
+- Resuming cyclic-difference-set-963-222-51 from preserved solve artifacts instead of rerunning solve.
+- cyclic-difference-set-963-222-51 reached HUMAN_READY and was moved off the main queue into LEAN_QUEUE so fresh discovery can continue.
+- publication cycle finished at 2026-04-15 12:56:49 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 12:57:49 EDT.
+- Queue preflight found no usable `paper_candidate`s. Rejection reasons: abelian-difference-set-416-166-66-group-2-208: Thin local memory shows no duplicate mathematical attempt for the exact [2,208] row, and the canonical source still isolates it in Table 2, but the bounded 2026-04-15 audit reused only a shared thin outside-source sweep rather than a row-specific later-status check. Keep this as a backup packet until a dedicated novelty audit is completed.; abelian-difference-set-477-204-87-group-3-159: Thin local memory shows no duplicate mathematical attempt for the exact [3,159] row, and the canonical source still isolates it in Table 2, but the current shortlist preserved it from a bounded audit that did not spend a dedicated outside-source sweep on this row. Keep it as a backup until that candidate-specific novelty check is completed.; abelian-difference-set-448-150-50-group-2-224: Thin local memory shows no exact duplicate attempt for the [2,224] row, and the bounded 2026-04-15 audit surfaced no direct later settlement, but the theorem slice is not stable because the same parameters appear in three sibling Table 2 rows. This packet remains a backup until a proof strategy is shown to stay genuinely specific to [2,224].; abelian-difference-set-736-196-52-exp-le-368: Thin local memory shows no exact duplicate attempt for the exponent-bounded row, and the canonical source still lists it as open, but the theorem slice is not stable enough for one-shot solve because the shortest honest proof may broaden to a family statement over the allowed 2-primary group types. Keep it only as a backup packet until the branded theorem slice is sharpened.
+- Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- Curation produced a usable queue, but the search log still showed blank/duplicate/raw-URL queries; keep the queue, but this should be tightened in future prompt iterations.
+- Publication mode selected one-shot paper candidate cyclic-difference-set-616-165-44.
+- Parallel solve launch: solver-A started cyclic-difference-set-616-165-44 with a 2700-second budget.
+- started solving cyclic-difference-set-616-165-44
+- Parallel solve finish: solver-A completed cyclic-difference-set-616-165-44 with a usable solve artifact; worker log at artifacts/_logs/20260415T130737_solve_cyclic-difference-set-616-165-44.stdout.log.
+- Publication mode advanced cyclic-difference-set-616-165-44 from solved status into verify/publication audit.
+- Resuming cyclic-difference-set-616-165-44 from preserved solve artifacts instead of rerunning solve.
+- cyclic-difference-set-616-165-44 was reclassified as REDISCOVERY after the prior-art audit and was moved aside.
+- publication cycle ended with an error at 2026-04-15 13:27:12 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 13:28:12 EDT.
+- [run:run-20260415t172812z-5ea53df4 cycle:cycle-0001-20260415t172812z-67458cb8] Queue preflight found no usable `paper_candidate`s. Rejection reasons: cyclic-difference-set-936-375-150: The row is source-anchored and locally fresh, but the shortest plausible proof may honestly widen to a broader n = 225 cyclic-or-abelian obstruction rather than remain a single exact cyclic theorem. That theorem-slice drift fails the strict micro-paper lane.; cyclic-difference-set-990-345-120: The exact cyclic row is locally fresh and source-anchored, but the Lander slide keeps an exact 990 noncyclic row in view and the likely contradiction tools are shared with the 936 row. That makes the single-row theorem slice too fragile for the lane.; cyclic-hadamard-difference-set-3439-1719-859: The exact row is fresh relative to local memory, but the bounded web sweep surfaced only the 2019 slide deck and non-mathematical junk for exact-tuple searches. Combined with the likelihood that any strong proof would treat multiple remaining cyclic-Hadamard rows at once, this fails the strict lane.; cyclic-hadamard-difference-set-4355-2177-1088: The row is locally fresh, but exact-tuple and synonym searches surfaced only the 2019 slide deck plus non-mathematical junk, leaving high novelty-check cost, and any convincing proof would likely widen to several remaining cyclic-Hadamard rows.
+- [run:run-20260415t172812z-5ea53df4 cycle:cycle-0001-20260415t172812z-67458cb8] Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- [run:run-20260415t172812z-5ea53df4 cycle:cycle-0001-20260415t172812z-67458cb8] Curation produced a usable queue, but the search log still showed blank/duplicate/raw-URL queries; keep the queue, but this should be tightened in future prompt iterations.
+- [run:run-20260415t172812z-5ea53df4 cycle:cycle-0001-20260415t172812z-67458cb8] Publication mode selected one-shot paper candidate abelian-difference-set-448-150-50-group-4-112.
+- [run:run-20260415t172812z-5ea53df4 cycle:cycle-0001-20260415t172812z-67458cb8] Parallel solve launch: solver-A started abelian-difference-set-448-150-50-group-4-112 with a 2700-second budget.
+- [run:run-20260415t172812z-5ea53df4 cycle:cycle-0001-20260415t172812z-67458cb8] started solving abelian-difference-set-448-150-50-group-4-112
+- [run:run-20260415t172812z-5ea53df4 cycle:cycle-0001-20260415t172812z-67458cb8] Parallel solve finish: solver-A completed abelian-difference-set-448-150-50-group-4-112 with a usable solve artifact; worker log at artifacts/_logs/20260415T133428_solve_abelian-difference-set-448-150-50-group-4-112.stdout.log.
+- [run:run-20260415t172812z-5ea53df4 cycle:cycle-0001-20260415t172812z-67458cb8] Publication mode advanced abelian-difference-set-448-150-50-group-4-112 from solved status into verify/publication audit.
+- [run:run-20260415t172812z-5ea53df4 cycle:cycle-0001-20260415t172812z-67458cb8] Resuming abelian-difference-set-448-150-50-group-4-112 from preserved solve artifacts instead of rerunning solve.
+- [run:run-20260415t172812z-5ea53df4 cycle:cycle-0001-20260415t172812z-67458cb8] abelian-difference-set-448-150-50-group-4-112 failed and was moved aside: UNVERIFIED
+- publication cycle finished at 2026-04-15 13:56:28 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 13:57:28 EDT.
+- [run:run-20260415t175728z-367a9e56 cycle:cycle-0001-20260415t175728z-c260ee5c] Queue preflight found no usable `paper_candidate`s. Rejection reasons: cyclic-difference-set-936-375-150: The row is source-anchored and locally fresh, but the shortest plausible proof may honestly widen to a broader n = 225 cyclic-or-abelian obstruction rather than remain a single exact cyclic theorem. That theorem-slice drift fails the strict micro-paper lane.; cyclic-difference-set-990-345-120: The exact cyclic row is locally fresh and source-anchored, but the Lander slide keeps an exact 990 noncyclic row in view and the likely contradiction tools are shared with the 936 row. That makes the single-row theorem slice too fragile for the lane.; cyclic-hadamard-difference-set-3439-1719-859: The exact row is fresh relative to local memory, but the bounded web sweep surfaced only the 2019 slide deck and non-mathematical junk for exact-tuple searches. Combined with the likelihood that any strong proof would treat multiple remaining cyclic-Hadamard rows at once, this fails the strict lane.; cyclic-hadamard-difference-set-4355-2177-1088: The row is locally fresh, but exact-tuple and synonym searches surfaced only the 2019 slide deck plus non-mathematical junk, leaving high novelty-check cost, and any convincing proof would likely widen to several remaining cyclic-Hadamard rows.
+- [run:run-20260415t175728z-367a9e56 cycle:cycle-0001-20260415t175728z-c260ee5c] Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- [run:run-20260415t175728z-367a9e56 cycle:cycle-0001-20260415t175728z-c260ee5c] Curation produced a usable queue, but the search log still showed blank/duplicate/raw-URL queries; keep the queue, but this should be tightened in future prompt iterations.
+- [run:run-20260415t175728z-367a9e56 cycle:cycle-0001-20260415t175728z-c260ee5c] Publication mode selected one-shot paper candidate abelian-difference-set-621-156-39-group-3-207.
+- [run:run-20260415t175728z-367a9e56 cycle:cycle-0001-20260415t175728z-c260ee5c] Parallel solve launch: solver-A started abelian-difference-set-621-156-39-group-3-207 with a 2700-second budget.
+- [run:run-20260415t175728z-367a9e56 cycle:cycle-0001-20260415t175728z-c260ee5c] started solving abelian-difference-set-621-156-39-group-3-207
+- [run:run-20260415t175728z-367a9e56 cycle:cycle-0001-20260415t175728z-c260ee5c] Parallel solve finish: solver-A completed abelian-difference-set-621-156-39-group-3-207 with a usable solve artifact; worker log at artifacts/_logs/20260415T140408_solve_abelian-difference-set-621-156-39-group-3-207.stdout.log.
+- [run:run-20260415t175728z-367a9e56 cycle:cycle-0001-20260415t175728z-c260ee5c] Publication mode advanced abelian-difference-set-621-156-39-group-3-207 from solved status into verify/publication audit.
+- [run:run-20260415t175728z-367a9e56 cycle:cycle-0001-20260415t175728z-c260ee5c] Resuming abelian-difference-set-621-156-39-group-3-207 from preserved solve artifacts instead of rerunning solve.
+- [run:run-20260415t175728z-367a9e56 cycle:cycle-0001-20260415t175728z-c260ee5c] abelian-difference-set-621-156-39-group-3-207 failed and was moved aside: VARIANT
+- publication cycle finished at 2026-04-15 14:21:28 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 14:22:29 EDT.
+- [run:run-20260415t182229z-36b69d72 cycle:cycle-0001-20260415t182229z-680c99cf] Queue preflight found no usable `paper_candidate`s. Rejection reasons: abelian-difference-set-343-171-85-group-7-49: The theorem slice is stable and paper-shaped, but this run did not add a candidate-specific later-source sweep beyond the initial exact-row search surface. The local packet is strong enough for the shortlist but not strong enough to promote over the audited [3,207] row.; abelian-difference-set-416-166-66-group-2-208: The source already makes the paper shape real, but this run only preserved the shortlist packet and did not finish a dedicated candidate-specific outside-source sweep deep enough to promote it ahead of the selected row.; abelian-difference-set-477-204-87-group-3-159: This is paper-shaped and stable, but the current run did not finish the candidate-specific outside-source audit needed to promote it over the already-audited [3,207] row.; abelian-difference-set-495-247-123-group-3-165: The exact theorem slice is stable and paper-shaped, but the later-source audit stayed source-heavy and thinner than the selected row's audit.
+- [run:run-20260415t182229z-36b69d72 cycle:cycle-0001-20260415t182229z-680c99cf] Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- [run:run-20260415t182229z-36b69d72 cycle:cycle-0001-20260415t182229z-680c99cf] Curation produced a usable queue, but the search log still showed blank/duplicate/raw-URL queries; keep the queue, but this should be tightened in future prompt iterations.
+- [run:run-20260415t182229z-36b69d72 cycle:cycle-0001-20260415t182229z-680c99cf] Publication mode launched a parallel solve batch for cyclic-difference-set-645-161-40, cyclic-difference-set-1093-169-26 with 2 concurrent slots and 2700-second per-solve budgets.
+- [run:run-20260415t182229z-36b69d72 cycle:cycle-0001-20260415t182229z-680c99cf] Parallel solve launch: solver-A started cyclic-difference-set-645-161-40 with a 2700-second budget.
+- [run:run-20260415t182229z-36b69d72 cycle:cycle-0001-20260415t182229z-680c99cf] Parallel solve launch: solver-B started cyclic-difference-set-1093-169-26 with a 2700-second budget.
+- [run:run-20260415t182229z-36b69d72 cycle:cycle-0001-20260415t182229z-680c99cf] started solving cyclic-difference-set-645-161-40
+- [run:run-20260415t182229z-36b69d72 cycle:cycle-0001-20260415t182229z-680c99cf] started solving cyclic-difference-set-1093-169-26
+- [run:run-20260415t182229z-36b69d72 cycle:cycle-0001-20260415t182229z-680c99cf] Parallel solve finish: solver-B completed cyclic-difference-set-1093-169-26 with a usable solve artifact; worker log at artifacts/_logs/20260415T143053_solve_cyclic-difference-set-1093-169-26.stdout.log.
+- [run:run-20260415t182229z-36b69d72 cycle:cycle-0001-20260415t182229z-680c99cf] Parallel solve finish: solver-A completed cyclic-difference-set-645-161-40 with a usable solve artifact; worker log at artifacts/_logs/20260415T143053_solve_cyclic-difference-set-645-161-40.stdout.log.
+- [run:run-20260415t182229z-36b69d72 cycle:cycle-0001-20260415t182229z-680c99cf] Publication mode advanced cyclic-difference-set-645-161-40 from solved status into verify/publication audit.
+- [run:run-20260415t182229z-36b69d72 cycle:cycle-0001-20260415t182229z-680c99cf] Resuming cyclic-difference-set-645-161-40 from preserved solve artifacts instead of rerunning solve.
+- [run:run-20260415t182229z-36b69d72 cycle:cycle-0001-20260415t182229z-680c99cf] cyclic-difference-set-645-161-40 reached HUMAN_READY and was moved off the main queue into LEAN_QUEUE so fresh discovery can continue.
+- publication cycle finished at 2026-04-15 14:56:15 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 14:57:15 EDT.
+- [run:run-20260415t185715z-2f9b31ef cycle:cycle-0001-20260415t185715z-7df11b22] Publication mode resumed one-shot paper candidate cyclic-difference-set-1093-169-26 from preserved solve artifacts.
+- [run:run-20260415t185715z-2f9b31ef cycle:cycle-0001-20260415t185715z-7df11b22] Resuming cyclic-difference-set-1093-169-26 from preserved solve artifacts instead of rerunning solve.
+- [run:run-20260415t185715z-2f9b31ef cycle:cycle-0001-20260415t185715z-7df11b22] cyclic-difference-set-1093-169-26 failed and was moved aside: CRITICAL_FLAW
+- publication cycle finished at 2026-04-15 15:07:45 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 15:08:45 EDT.
+- [run:run-20260415t190845z-4ef05023 cycle:cycle-0001-20260415t190845z-ee451496] Queue preflight found no usable `paper_candidate`s. Rejection reasons: cyclic-difference-set-1111-186-31: The exact row is source-anchored and the local attempt registry is clean, but the bounded 2026-04-15 later-source sweep came back quieter and thinner here than for the top two rows. The packet still looks paper-shaped if open, yet I do not have enough candidate-specific later-source signal to promote it into the strict lane ahead of a fresh solve.; cyclic-difference-set-1801-225-28: This row remains a legitimate exact residual case, but compared with the top slots the likely proof looks less compact and the current later-source signal is thinner. The packet is still worth preserving in the queue, yet not as a strict micro-paper lead.; cyclic-difference-set-2291-230-23: The tuple is source-anchored and there is no local attempt conflict, but this pass did not complete a candidate-specific exact-tuple later-source sweep for (2291,230,23). The current packet is therefore only a reserve shortlist entry and fails the strict micro-paper gate on audit depth.
+- [run:run-20260415t190845z-4ef05023 cycle:cycle-0001-20260415t190845z-ee451496] Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- [run:run-20260415t190845z-4ef05023 cycle:cycle-0001-20260415t190845z-ee451496] Curation produced a usable queue, but the search log still showed blank/duplicate/raw-URL queries; keep the queue, but this should be tightened in future prompt iterations.
+- [run:run-20260415t190845z-4ef05023 cycle:cycle-0001-20260415t190845z-ee451496] Publication mode selected one-shot paper candidate abelian-difference-set-343-171-85-group-7-49.
+- [run:run-20260415t190845z-4ef05023 cycle:cycle-0001-20260415t190845z-ee451496] Parallel solve launch: solver-A started abelian-difference-set-343-171-85-group-7-49 with a 2700-second budget.
+- [run:run-20260415t190845z-4ef05023 cycle:cycle-0001-20260415t190845z-ee451496] started solving abelian-difference-set-343-171-85-group-7-49
+- [run:run-20260415t190845z-4ef05023 cycle:cycle-0001-20260415t190845z-ee451496] Parallel solve finish: solver-A completed abelian-difference-set-343-171-85-group-7-49 with a usable solve artifact; worker log at artifacts/_logs/20260415T151710_solve_abelian-difference-set-343-171-85-group-7-49.stdout.log.
+- [run:run-20260415t190845z-4ef05023 cycle:cycle-0001-20260415t190845z-ee451496] Publication mode advanced abelian-difference-set-343-171-85-group-7-49 from solved status into verify/publication audit.
+- [run:run-20260415t190845z-4ef05023 cycle:cycle-0001-20260415t190845z-ee451496] Resuming abelian-difference-set-343-171-85-group-7-49 from preserved solve artifacts instead of rerunning solve.
+- [run:run-20260415t190845z-4ef05023 cycle:cycle-0001-20260415t190845z-ee451496] abelian-difference-set-343-171-85-group-7-49 was reclassified as REDISCOVERY after the prior-art audit and was moved aside.
+- publication cycle finished at 2026-04-15 15:29:31 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 15:30:31 EDT.
+- [run:run-20260415t193031z-3d08a799 cycle:cycle-0001-20260415t193031z-a3386536] Queue preflight found no usable `paper_candidate`s. Rejection reasons: abelian-difference-set-416-166-66-group-2-208: The survey gives an exact open row and the local attempt registry is clean, but the only later-source signal I surfaced is Gordon's 2019 parameter-level update listing 416 as still open in various groups. That is not yet crisp enough to certify the exact [2,208] slice as the stable final theorem rather than part of a broader 416-family statement.; abelian-difference-set-416-166-66-group-4-104: The source anchor is exact and the local attempt registry is clean, but the later-source surface is still only parameter-level for 416 166 66 rather than exact-group-specific. That makes the honest theorem slice too uncertain for strict micro-paper promotion.; abelian-difference-set-477-204-87-group-3-159: The exact source anchor is good and the local attempt registry is clean, but the bounded web pass did not recover a later candidate-specific status source beyond the survey surface. That leaves novelty and theorem-slice audit too thin for strict lane use.; abelian-difference-set-495-247-123-group-3-165: The exact source anchor is honest and the local attempt registry is clean, but the bounded web pass did not recover a later candidate-specific status source beyond the survey. That leaves the novelty audit and theorem-slice audit too thin for promotion into the strict lane.
+- [run:run-20260415t193031z-3d08a799 cycle:cycle-0001-20260415t193031z-a3386536] Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- [run:run-20260415t193031z-3d08a799 cycle:cycle-0001-20260415t193031z-a3386536] Curation produced a usable queue, but the search log still showed blank/duplicate/raw-URL queries; keep the queue, but this should be tightened in future prompt iterations.
+- [run:run-20260415t193031z-3d08a799 cycle:cycle-0001-20260415t193031z-a3386536] Publication mode launched a parallel solve batch for cyclic-hadamard-difference-set-3439-1719-859, cyclic-hadamard-difference-set-4355-2177-1088 with 2 concurrent slots and 2700-second per-solve budgets.
+- [run:run-20260415t193031z-3d08a799 cycle:cycle-0001-20260415t193031z-a3386536] Parallel solve launch: solver-A started cyclic-hadamard-difference-set-3439-1719-859 with a 2700-second budget.
+- [run:run-20260415t193031z-3d08a799 cycle:cycle-0001-20260415t193031z-a3386536] Parallel solve launch: solver-B started cyclic-hadamard-difference-set-4355-2177-1088 with a 2700-second budget.
+- [run:run-20260415t193031z-3d08a799 cycle:cycle-0001-20260415t193031z-a3386536] started solving cyclic-hadamard-difference-set-4355-2177-1088
+- [run:run-20260415t193031z-3d08a799 cycle:cycle-0001-20260415t193031z-a3386536] started solving cyclic-hadamard-difference-set-3439-1719-859
+- publication cycle ended with an error at 2026-04-15 15:46:16 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 15:47:16 EDT.
+- [run:run-20260415t194716z-ece8b2e4 cycle:cycle-0001-20260415t194716z-e85e0c12] Queue preflight found no usable `paper_candidate`s. Rejection reasons: cyclic-hadamard-difference-set-3439-1719-859: local status classification=PARTIAL is terminal for queue scheduling; cyclic-hadamard-difference-set-4355-2177-1088: local status classification=PARTIAL is terminal for queue scheduling; abelian-difference-set-416-166-66-group-2-208: The survey gives an exact open row and the local attempt registry is clean, but the only later-source signal surfaced was Gordon's 2019 parameter-level update listing 416 as still open in various groups. That is not crisp enough to certify the exact [2,208] slice as the stable final theorem rather than part of a broader 416-family statement.; abelian-difference-set-416-166-66-group-4-104: The source anchor is exact and the local attempt registry is clean, but the later-source surface is still only parameter-level for 416 166 66 rather than exact-group-specific. That makes the honest theorem slice too uncertain for strict micro-paper promotion.; abelian-difference-set-477-204-87-group-3-159: The exact source anchor is good and the local attempt registry is clean, but the bounded web pass did not recover a later candidate-specific status source beyond the survey surface. That leaves novelty and theorem-slice audit too thin for strict lane use.
+- [run:run-20260415t194716z-ece8b2e4 cycle:cycle-0001-20260415t194716z-e85e0c12] Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- [run:run-20260415t194716z-ece8b2e4 cycle:cycle-0001-20260415t194716z-e85e0c12] Queue preflight found no usable `paper_candidate`s. Rejection reasons: cyclic-hadamard-difference-set-3439-1719-859: local status classification=PARTIAL is terminal for queue scheduling; cyclic-hadamard-difference-set-4355-2177-1088: local status classification=PARTIAL is terminal for queue scheduling; abelian-difference-set-416-166-66-group-2-208: The survey gives an exact open row and the local attempt registry is clean, but the only later-source signal surfaced was Gordon's 2019 parameter-level update listing 416 as still open in various groups. That is not crisp enough to certify the exact [2,208] slice as the stable final theorem rather than part of a broader 416-family statement.; abelian-difference-set-416-166-66-group-4-104: The source anchor is exact and the local attempt registry is clean, but the later-source surface is still only parameter-level for 416 166 66 rather than exact-group-specific. That makes the honest theorem slice too uncertain for strict micro-paper promotion.; abelian-difference-set-477-204-87-group-3-159: The exact source anchor is good and the local attempt registry is clean, but the bounded web pass did not recover a later candidate-specific status source beyond the survey surface. That leaves novelty and theorem-slice audit too thin for strict lane use.
+- [run:run-20260415t194716z-ece8b2e4 cycle:cycle-0001-20260415t194716z-e85e0c12] Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-15 15:49:02 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 15:50:02 EDT.
+- [run:run-20260415t195002z-93b20de7 cycle:cycle-0001-20260415t195002z-dd771ae0] Queue preflight found no usable `paper_candidate`s. Rejection reasons: cyclic-hadamard-difference-set-3439-1719-859: local status classification=PARTIAL is terminal for queue scheduling; cyclic-hadamard-difference-set-4355-2177-1088: local status classification=PARTIAL is terminal for queue scheduling; abelian-difference-set-416-166-66-group-2-208: The survey gives an exact open row and the local attempt registry is clean, but the only later-source signal surfaced was Gordon's 2019 parameter-level update listing 416 as still open in various groups. That is not crisp enough to certify the exact [2,208] slice as the stable final theorem rather than part of a broader 416-family statement.; abelian-difference-set-416-166-66-group-4-104: The source anchor is exact and the local attempt registry is clean, but the later-source surface is still only parameter-level for 416 166 66 rather than exact-group-specific. That makes the honest theorem slice too uncertain for strict micro-paper promotion.; abelian-difference-set-477-204-87-group-3-159: The exact source anchor is good and the local attempt registry is clean, but the bounded web pass did not recover a later candidate-specific status source beyond the survey surface. That leaves novelty and theorem-slice audit too thin for strict lane use.
+- [run:run-20260415t195002z-93b20de7 cycle:cycle-0001-20260415t195002z-dd771ae0] Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- [run:run-20260415t193031z-3d08a799 cycle:cycle-0001-20260415t193031z-a3386536] Parallel solve finish: solver-A completed cyclic-hadamard-difference-set-3439-1719-859 with a usable solve artifact; worker log at artifacts/_logs/20260415T153759_solve_cyclic-hadamard-difference-set-3439-1719-859.stdout.log.
+- [run:run-20260415t195002z-93b20de7 cycle:cycle-0001-20260415t195002z-dd771ae0] Publication mode resumed one-shot paper candidate cyclic-hadamard-difference-set-4355-2177-1088 from preserved solve artifacts.
+- [run:run-20260415t195002z-93b20de7 cycle:cycle-0001-20260415t195002z-dd771ae0] Resuming cyclic-hadamard-difference-set-4355-2177-1088 from preserved solve artifacts instead of rerunning solve.
+- publication cycle ended with an error at 2026-04-15 15:53:17 EDT.
+- publication cycle sleeping for 60 seconds.
+- [run:run-20260415t193031z-3d08a799 cycle:cycle-0001-20260415t193031z-a3386536] Parallel solve finish: solver-B completed cyclic-hadamard-difference-set-4355-2177-1088 with a usable solve artifact; worker log at artifacts/_logs/20260415T153759_solve_cyclic-hadamard-difference-set-4355-2177-1088.stdout.log.
+- [run:run-20260415t193031z-3d08a799 cycle:cycle-0001-20260415t193031z-a3386536] Publication mode advanced cyclic-hadamard-difference-set-4355-2177-1088 from solved status into verify/publication audit.
+- [run:run-20260415t193031z-3d08a799 cycle:cycle-0001-20260415t193031z-a3386536] Resuming cyclic-hadamard-difference-set-4355-2177-1088 from preserved solve artifacts instead of rerunning solve.
+- publication cycle started at 2026-04-15 15:54:17 EDT.
+- [run:run-20260415t195417z-7906e950 cycle:cycle-0001-20260415t195417z-d0f9c6e1] Publication mode resumed one-shot paper candidate cyclic-hadamard-difference-set-4355-2177-1088 from preserved solve artifacts.
+- [run:run-20260415t195417z-7906e950 cycle:cycle-0001-20260415t195417z-d0f9c6e1] Resuming cyclic-hadamard-difference-set-4355-2177-1088 from preserved solve artifacts instead of rerunning solve.
+- publication cycle ended with an error at 2026-04-15 15:57:32 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 15:58:32 EDT.
+- [run:run-20260415t195832z-17cce853 cycle:cycle-0001-20260415t195832z-091dfd66] Queue preflight found no usable `paper_candidate`s. Rejection reasons: cyclic-hadamard-difference-set-4355-2177-1088: local status classification=VARIANT is terminal for queue scheduling; cyclic-hadamard-difference-set-3439-1719-859: local status classification=PARTIAL is terminal for queue scheduling; abelian-difference-set-416-166-66-group-2-208: The survey gives an exact open row and the local attempt registry is clean, but the only later-source signal surfaced was Gordon's 2019 parameter-level update listing 416 as still open in various groups. That is not crisp enough to certify the exact [2,208] slice as the stable final theorem rather than part of a broader 416-family statement.; abelian-difference-set-416-166-66-group-4-104: The source anchor is exact and the local attempt registry is clean, but the later-source surface is still only parameter-level for 416 166 66 rather than exact-group-specific. That makes the honest theorem slice too uncertain for strict micro-paper promotion.; abelian-difference-set-477-204-87-group-3-159: The exact source anchor is good and the local attempt registry is clean, but the bounded web pass did not recover a later candidate-specific status source beyond the survey surface. That leaves novelty and theorem-slice audit too thin for strict lane use.
+- [run:run-20260415t195832z-17cce853 cycle:cycle-0001-20260415t195832z-091dfd66] Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- publication cycle ended with an error at 2026-04-15 16:01:48 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 16:02:48 EDT.
+- [run:run-20260415t200248z-d2a03e8a cycle:cycle-0001-20260415t200248z-9e906604] Queue preflight found no usable `paper_candidate`s. Rejection reasons: cyclic-hadamard-difference-set-4355-2177-1088: local status classification=VARIANT is terminal for queue scheduling; cyclic-hadamard-difference-set-3439-1719-859: local status classification=PARTIAL is terminal for queue scheduling; abelian-difference-set-416-166-66-group-2-208: The survey gives an exact open row and the local attempt registry is clean, but the only later-source signal surfaced was Gordon's 2019 parameter-level update listing 416 as still open in various groups. That is not crisp enough to certify the exact [2,208] slice as the stable final theorem rather than part of a broader 416-family statement.; abelian-difference-set-416-166-66-group-4-104: The source anchor is exact and the local attempt registry is clean, but the later-source surface is still only parameter-level for 416 166 66 rather than exact-group-specific. That makes the honest theorem slice too uncertain for strict micro-paper promotion.; abelian-difference-set-477-204-87-group-3-159: The exact source anchor is good and the local attempt registry is clean, but the bounded web pass did not recover a later candidate-specific status source beyond the survey surface. That leaves novelty and theorem-slice audit too thin for strict lane use.
+- [run:run-20260415t200248z-d2a03e8a cycle:cycle-0001-20260415t200248z-9e906604] Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- [run:run-20260415t193031z-3d08a799 cycle:cycle-0001-20260415t193031z-a3386536] cyclic-hadamard-difference-set-4355-2177-1088 failed and was moved aside: VARIANT
+- [run:run-20260415t200248z-d2a03e8a cycle:cycle-0001-20260415t200248z-9e906604] Publication mode launched a parallel solve batch for cyclic-hadamard-difference-set-8591-4295-2147, cyclic-hadamard-difference-set-8835-4417-2208 with 2 concurrent slots and 2700-second per-solve budgets.
+- [run:run-20260415t200248z-d2a03e8a cycle:cycle-0001-20260415t200248z-9e906604] Parallel solve launch: solver-A started cyclic-hadamard-difference-set-8591-4295-2147 with a 2700-second budget.
+- [run:run-20260415t200248z-d2a03e8a cycle:cycle-0001-20260415t200248z-9e906604] Parallel solve launch: solver-B started cyclic-hadamard-difference-set-8835-4417-2208 with a 2700-second budget.
+- [run:run-20260415t200248z-d2a03e8a cycle:cycle-0001-20260415t200248z-9e906604] started solving cyclic-hadamard-difference-set-8591-4295-2147
+- [run:run-20260415t200248z-d2a03e8a cycle:cycle-0001-20260415t200248z-9e906604] started solving cyclic-hadamard-difference-set-8835-4417-2208
+- [run:run-20260415t200248z-d2a03e8a cycle:cycle-0001-20260415t200248z-9e906604] Parallel solve finish: solver-B completed cyclic-hadamard-difference-set-8835-4417-2208 with a usable solve artifact; worker log at artifacts/_logs/20260415T160642_solve_cyclic-hadamard-difference-set-8835-4417-2208.stdout.log.
+- [run:run-20260415t200248z-d2a03e8a cycle:cycle-0001-20260415t200248z-9e906604] Parallel solve finish: solver-A completed cyclic-hadamard-difference-set-8591-4295-2147 with a usable solve artifact; worker log at artifacts/_logs/20260415T160642_solve_cyclic-hadamard-difference-set-8591-4295-2147.stdout.log.
+- [run:run-20260415t200248z-d2a03e8a cycle:cycle-0001-20260415t200248z-9e906604] Publication mode advanced cyclic-hadamard-difference-set-8591-4295-2147 from solved status into verify/publication audit.
+- [run:run-20260415t200248z-d2a03e8a cycle:cycle-0001-20260415t200248z-9e906604] Resuming cyclic-hadamard-difference-set-8591-4295-2147 from preserved solve artifacts instead of rerunning solve.
+- [run:run-20260415t200248z-d2a03e8a cycle:cycle-0001-20260415t200248z-9e906604] cyclic-hadamard-difference-set-8591-4295-2147 failed and was moved aside: UNVERIFIED
+- publication cycle finished at 2026-04-15 16:25:19 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 16:26:19 EDT.
+- [run:run-20260415t202619z-a977d1c8 cycle:cycle-0001-20260415t202619z-e0359592] Publication mode resumed one-shot paper candidate cyclic-hadamard-difference-set-8835-4417-2208 from preserved solve artifacts.
+- [run:run-20260415t202619z-a977d1c8 cycle:cycle-0001-20260415t202619z-e0359592] Resuming cyclic-hadamard-difference-set-8835-4417-2208 from preserved solve artifacts instead of rerunning solve.
+- [verify 2026-04-15 16:31:21 EDT] cyclic-hadamard-difference-set-8835-4417-2208: bounded prior-art audit did not establish rediscovery; recomputation confirmed the forced mod 3, mod 5, and mod 15 profiles and the final {5,10} mod 15 orbit-count obstruction; status updated to `verify_verdict = VERIFIED`, `classification = COUNTEREXAMPLE`, `publication_status = SLICE_CANDIDATE`, with multiplier citation pinning left for publication audit.
+- [run:run-20260415t202619z-a977d1c8 cycle:cycle-0001-20260415t202619z-e0359592] cyclic-hadamard-difference-set-8835-4417-2208 reached HUMAN_READY and was moved off the main queue into LEAN_QUEUE so fresh discovery can continue.
+- publication cycle finished at 2026-04-15 16:36:19 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 16:37:19 EDT.
+- [run:run-20260415t203719z-33a2921b cycle:cycle-0001-20260415t203719z-57f64b7b] Publication mode launched a parallel solve batch for cyclic-hadamard-difference-set-9135-4567-2283, cyclic-hadamard-difference-set-9215-4607-2303 with 2 concurrent slots and 2700-second per-solve budgets.
+- [run:run-20260415t203719z-33a2921b cycle:cycle-0001-20260415t203719z-57f64b7b] Parallel solve launch: solver-A started cyclic-hadamard-difference-set-9135-4567-2283 with a 2700-second budget.
+- [run:run-20260415t203719z-33a2921b cycle:cycle-0001-20260415t203719z-57f64b7b] Parallel solve launch: solver-B started cyclic-hadamard-difference-set-9215-4607-2303 with a 2700-second budget.
+- [run:run-20260415t203719z-33a2921b cycle:cycle-0001-20260415t203719z-57f64b7b] started solving cyclic-hadamard-difference-set-9215-4607-2303
+- [run:run-20260415t203719z-33a2921b cycle:cycle-0001-20260415t203719z-57f64b7b] started solving cyclic-hadamard-difference-set-9135-4567-2283
+- [run:run-20260415t203719z-33a2921b cycle:cycle-0001-20260415t203719z-57f64b7b] Parallel solve finish: solver-B completed cyclic-hadamard-difference-set-9215-4607-2303 with a usable solve artifact; worker log at artifacts/_logs/20260415T163719_solve_cyclic-hadamard-difference-set-9215-4607-2303.stdout.log.
+- [run:run-20260415t203719z-33a2921b cycle:cycle-0001-20260415t203719z-57f64b7b] Parallel solve finish: solver-A completed cyclic-hadamard-difference-set-9135-4567-2283 with a usable solve artifact; worker log at artifacts/_logs/20260415T163719_solve_cyclic-hadamard-difference-set-9135-4567-2283.stdout.log.
+- [run:run-20260415t203719z-33a2921b cycle:cycle-0001-20260415t203719z-57f64b7b] Publication mode advanced cyclic-hadamard-difference-set-9135-4567-2283 from solved status into verify/publication audit.
+- [run:run-20260415t203719z-33a2921b cycle:cycle-0001-20260415t203719z-57f64b7b] Resuming cyclic-hadamard-difference-set-9135-4567-2283 from preserved solve artifacts instead of rerunning solve.
+- [publication_audit 2026-04-15 16:45:00 EDT] cyclic-hadamard-difference-set-9135-4567-2283: bounded exact-tuple and cyclic-Hadamard status checks stayed consistent with Baumert-Gordon 2004 Table 5 and Gordon's 2019 seven-open-cases slide, but the packet is not near-paper after audit because the claimed `w = 203` closure failed. Preserved the mod-`7` / mod-`29` quotient-profile slice, updated `record.md` and `status.json`, kept `publication_status = NONE`, and marked the slug for cooldown unless a same-lane exact obstruction or construction appears.
+- [run:run-20260415t203719z-33a2921b cycle:cycle-0001-20260415t203719z-57f64b7b] cyclic-hadamard-difference-set-9135-4567-2283 failed and was moved aside: CRITICAL_FLAW
+- publication cycle finished at 2026-04-15 17:09:05 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 17:10:05 EDT.
+- [run:run-20260415t211006z-392f2be4 cycle:cycle-0001-20260415t211006z-8cb5010f] Publication mode resumed one-shot paper candidate cyclic-hadamard-difference-set-9215-4607-2303 from preserved solve artifacts.
+- [run:run-20260415t211006z-392f2be4 cycle:cycle-0001-20260415t211006z-8cb5010f] Resuming cyclic-hadamard-difference-set-9215-4607-2303 from preserved solve artifacts instead of rerunning solve.
+- [run:run-20260415t211006z-392f2be4 cycle:cycle-0001-20260415t211006z-8cb5010f] cyclic-hadamard-difference-set-9215-4607-2303 failed and was moved aside: MINOR_FIX
+- publication cycle finished at 2026-04-15 17:20:51 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 17:21:51 EDT.
+- [run:run-20260415t212151z-af79acf9 cycle:cycle-0001-20260415t212151z-60977f94] Publication mode selected one-shot paper candidate cyclic-hadamard-difference-set-9423-4711-2355.
+- [run:run-20260415t212151z-af79acf9 cycle:cycle-0001-20260415t212151z-60977f94] Parallel solve launch: solver-A started cyclic-hadamard-difference-set-9423-4711-2355 with a 2700-second budget.
+- [run:run-20260415t212151z-af79acf9 cycle:cycle-0001-20260415t212151z-60977f94] started solving cyclic-hadamard-difference-set-9423-4711-2355
+- [run:run-20260415t212151z-af79acf9 cycle:cycle-0001-20260415t212151z-60977f94] Parallel solve finish: solver-A completed cyclic-hadamard-difference-set-9423-4711-2355 with a usable solve artifact; worker log at artifacts/_logs/20260415T172151_solve_cyclic-hadamard-difference-set-9423-4711-2355.stdout.log.
+- [run:run-20260415t212151z-af79acf9 cycle:cycle-0001-20260415t212151z-60977f94] Publication mode advanced cyclic-hadamard-difference-set-9423-4711-2355 from solved status into verify/publication audit.
+- [run:run-20260415t212151z-af79acf9 cycle:cycle-0001-20260415t212151z-60977f94] Resuming cyclic-hadamard-difference-set-9423-4711-2355 from preserved solve artifacts instead of rerunning solve.
+- [run:run-20260415t212151z-af79acf9 cycle:cycle-0001-20260415t212151z-60977f94] cyclic-hadamard-difference-set-9423-4711-2355 reached HUMAN_READY and was moved off the main queue into LEAN_QUEUE so fresh discovery can continue.
+- publication cycle finished at 2026-04-15 17:37:07 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 17:38:07 EDT.
+- [run:run-20260415t213807z-31a8430f cycle:cycle-0001-20260415t213807z-95fdcfb2] Queue preflight found no `paper_candidate` entries in queue.json.
+- [run:run-20260415t213807z-31a8430f cycle:cycle-0001-20260415t213807z-95fdcfb2] Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- [run:run-20260415t213807z-31a8430f cycle:cycle-0001-20260415t213807z-95fdcfb2] Queue preflight found no `paper_candidate` entries in queue.json.
+- [run:run-20260415t213807z-31a8430f cycle:cycle-0001-20260415t213807z-95fdcfb2] Curation search hygiene failed (blank/duplicate/raw-URL queries) and the cycle did not produce a usable queue, so the dead-end queue was cleared before the next cycle.
+- [run:run-20260415t213807z-31a8430f cycle:cycle-0001-20260415t213807z-95fdcfb2] Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-15 17:45:52 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 17:46:52 EDT.
+- [run:run-20260415t214652z-e93443f2 cycle:cycle-0001-20260415t214652z-b91d93b3] Queue preflight found no `paper_candidate` entries in queue.json.
+- [run:run-20260415t214652z-e93443f2 cycle:cycle-0001-20260415t214652z-b91d93b3] Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- [run:run-20260415t214652z-e93443f2 cycle:cycle-0001-20260415t214652z-b91d93b3] Queue preflight found no `paper_candidate` entries in queue.json.
+- [run:run-20260415t214652z-e93443f2 cycle:cycle-0001-20260415t214652z-b91d93b3] Curation search hygiene failed (blank/duplicate/raw-URL queries) and the cycle did not produce a usable queue, so the dead-end queue was cleared before the next cycle.
+- [run:run-20260415t214652z-e93443f2 cycle:cycle-0001-20260415t214652z-b91d93b3] Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-15 17:55:38 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 17:56:38 EDT.
+- [run:run-20260415t215638z-22c30eae cycle:cycle-0001-20260415t215638z-7ea57117] Queue preflight found no `paper_candidate` entries in queue.json.
+- [run:run-20260415t215638z-22c30eae cycle:cycle-0001-20260415t215638z-7ea57117] Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- [run:run-20260415t215638z-22c30eae cycle:cycle-0001-20260415t215638z-7ea57117] Queue preflight found no `paper_candidate` entries in queue.json.
+- [run:run-20260415t215638z-22c30eae cycle:cycle-0001-20260415t215638z-7ea57117] Curation search hygiene failed (blank/duplicate/raw-URL queries) and the cycle did not produce a usable queue, so the dead-end queue was cleared before the next cycle.
+- [run:run-20260415t215638z-22c30eae cycle:cycle-0001-20260415t215638z-7ea57117] Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-15 18:06:23 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 18:07:23 EDT.
+- [run:run-20260415t220723z-7558c01a cycle:cycle-0001-20260415t220723z-e5b4681c] Queue preflight found no `paper_candidate` entries in queue.json.
+- [run:run-20260415t220723z-7558c01a cycle:cycle-0001-20260415t220723z-e5b4681c] Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- [run:run-20260415t220723z-7558c01a cycle:cycle-0001-20260415t220723z-e5b4681c] Curation produced a usable queue, but the search log still showed blank/duplicate/raw-URL queries; keep the queue, but this should be tightened in future prompt iterations.
+- [run:run-20260415t220723z-7558c01a cycle:cycle-0001-20260415t220723z-e5b4681c] Publication mode launched a parallel solve batch for abelian-difference-set-1008-266-70-group-g16-g9-7, abelian-difference-set-990-345-120-group-2-g9-5-11 with 2 concurrent slots and 2700-second per-solve budgets.
+- [run:run-20260415t220723z-7558c01a cycle:cycle-0001-20260415t220723z-e5b4681c] Parallel solve launch: solver-A started abelian-difference-set-1008-266-70-group-g16-g9-7 with a 2700-second budget.
+- [run:run-20260415t220723z-7558c01a cycle:cycle-0001-20260415t220723z-e5b4681c] Parallel solve launch: solver-B started abelian-difference-set-990-345-120-group-2-g9-5-11 with a 2700-second budget.
+- [run:run-20260415t220723z-7558c01a cycle:cycle-0001-20260415t220723z-e5b4681c] started solving abelian-difference-set-990-345-120-group-2-g9-5-11
+- [run:run-20260415t220723z-7558c01a cycle:cycle-0001-20260415t220723z-e5b4681c] started solving abelian-difference-set-1008-266-70-group-g16-g9-7
+- [run:run-20260415t220723z-7558c01a cycle:cycle-0001-20260415t220723z-e5b4681c] Parallel solve finish: solver-B completed abelian-difference-set-990-345-120-group-2-g9-5-11 with a usable solve artifact; worker log at artifacts/_logs/20260415T181549_solve_abelian-difference-set-990-345-120-group-2-g9-5-11.stdout.log.
+- [run:run-20260415t220723z-7558c01a cycle:cycle-0001-20260415t220723z-e5b4681c] Parallel solve finish: solver-A completed abelian-difference-set-1008-266-70-group-g16-g9-7 with a usable solve artifact; worker log at artifacts/_logs/20260415T181549_solve_abelian-difference-set-1008-266-70-group-g16-g9-7.stdout.log.
+- [run:run-20260415t220723z-7558c01a cycle:cycle-0001-20260415t220723z-e5b4681c] Publication mode advanced abelian-difference-set-1008-266-70-group-g16-g9-7 from solved status into verify/publication audit.
+- [run:run-20260415t220723z-7558c01a cycle:cycle-0001-20260415t220723z-e5b4681c] Resuming abelian-difference-set-1008-266-70-group-g16-g9-7 from preserved solve artifacts instead of rerunning solve.
+- Verify stage for `abelian-difference-set-1008-266-70-group-g16-g9-7` ran on 2026-04-15 with the required bounded prior-art audit first. That audit did not establish rediscovery within budget: the live Gordon repository/publications trail did not expose a later direct settlement of the exact row `1008 266 70 196 [G16,G9,7]`. Offline skeptical checking then found the load-bearing flaw in the solve packet: the claimed descent from a `0/7` fiber profile to a `(144,38,10)` quotient difference set is arithmetically impossible, since `X X^(-1) = 196*1_Q + 490*Q` would force `B B^(-1) = 4*1_Q + 10*Q`, and equivalently `sum x_q^2 = 686` is incompatible with `38` fibers of size `7`. A tiny repair preserves only the smaller variant slice that full order-`7` coset unions are impossible. The artifact is now `stage = verify`, `verify_verdict = VERIFIED`, `classification = VARIANT`, `confidence = high`, `publication_status = NONE`, and `lean_ready = false`, with next action `archive_variant_no_lean`.
+- Publication audit for `abelian-difference-set-1008-266-70-group-g16-g9-7` ran on 2026-04-15 as a bounded theorem-worthiness pass. The capped web check still points back to Gordon's 2019 open-row slide and did not expose a later settlement on Gordon's current publications or repository trail, but the local verified artifact remains only a small variant lemma excluding full order-`7` coset unions. Audit verdict: the row is not rediscovered within budget, yet the surviving theorem slice is too thin for the micro-paper lane, so the dossier stays `publication_status = NONE`, `human_ready = false`, `lean_ready = false`, with `publication_packet_quality = thin` and next action `archive_variant_no_lean`.
+- [run:run-20260415t220723z-7558c01a cycle:cycle-0001-20260415t220723z-e5b4681c] abelian-difference-set-1008-266-70-group-g16-g9-7 failed and was moved aside: VERIFIED
+- publication cycle finished at 2026-04-15 18:37:54 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 18:38:55 EDT.
+- [run:run-20260415t223855z-2c5b8fd7 cycle:cycle-0001-20260415t223855z-fc8946f6] Publication mode resumed one-shot paper candidate abelian-difference-set-990-345-120-group-2-g9-5-11 from preserved solve artifacts.
+- [run:run-20260415t223855z-2c5b8fd7 cycle:cycle-0001-20260415t223855z-fc8946f6] Resuming abelian-difference-set-990-345-120-group-2-g9-5-11 from preserved solve artifacts instead of rerunning solve.
+- [run:run-20260415t223855z-2c5b8fd7 cycle:cycle-0001-20260415t223855z-fc8946f6] abelian-difference-set-990-345-120-group-2-g9-5-11 failed and was moved aside: CRITICAL_FLAW
+- publication cycle finished at 2026-04-15 18:48:40 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 18:49:40 EDT.
+- [run:run-20260415t224940z-f81c9372 cycle:cycle-0001-20260415t224940z-a2ae2cf9] Publication mode selected one-shot paper candidate abelian-difference-set-477-204-87-group-3-159.
+- [run:run-20260415t224940z-f81c9372 cycle:cycle-0001-20260415t224940z-a2ae2cf9] Parallel solve launch: solver-A started abelian-difference-set-477-204-87-group-3-159 with a 2700-second budget.
+- [run:run-20260415t224940z-f81c9372 cycle:cycle-0001-20260415t224940z-a2ae2cf9] started solving abelian-difference-set-477-204-87-group-3-159
+- [run:run-20260415t224940z-f81c9372 cycle:cycle-0001-20260415t224940z-a2ae2cf9] Parallel solve finish: solver-A completed abelian-difference-set-477-204-87-group-3-159 with a usable solve artifact; worker log at artifacts/_logs/20260415T184940_solve_abelian-difference-set-477-204-87-group-3-159.stdout.log.
+- [run:run-20260415t224940z-f81c9372 cycle:cycle-0001-20260415t224940z-a2ae2cf9] Publication mode advanced abelian-difference-set-477-204-87-group-3-159 from solved status into verify/publication audit.
+- [run:run-20260415t224940z-f81c9372 cycle:cycle-0001-20260415t224940z-a2ae2cf9] Resuming abelian-difference-set-477-204-87-group-3-159 from preserved solve artifacts instead of rerunning solve.
+- [run:run-20260415t224940z-f81c9372 cycle:cycle-0001-20260415t224940z-a2ae2cf9] abelian-difference-set-477-204-87-group-3-159 failed and was moved aside: NOT_VERIFIED
+- publication cycle finished at 2026-04-15 19:04:56 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 19:05:56 EDT.
+- [run:run-20260415t230556z-1c70dca4 cycle:cycle-0001-20260415t230556z-8ecec867] Queue preflight found no usable `paper_candidate`s. Rejection reasons: abelian-difference-set-936-375-150-group-8-9-13: The attempt registry is clear on this exact group row and the bounded 2026-04-15 search only surfaced Gordon's 2019 slide. However, the same slide lists a second exact 936 row immediately beside [8,9,13], so the shortest honest proof may well collapse into a parameter-level or paired-row obstruction. That makes the theorem slice fragile and keeps this entry out of the micro-paper lane despite the good source anchor.; abelian-difference-set-936-375-150-group-2-4-9-13: The local attempt registry is clear on this exact row and the bounded 2026-04-15 tuple searches only surfaced Gordon's 2019 slide. But the same slide lists the sibling row [8,9,13] immediately adjacent, so a plausible shortest proof could honestly broaden to a joint 936-parameter result. That makes theorem-slice stability fragile and keeps the row outside the strict micro-paper lane.
+- [run:run-20260415t230556z-1c70dca4 cycle:cycle-0001-20260415t230556z-8ecec867] Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- [run:run-20260415t230556z-1c70dca4 cycle:cycle-0001-20260415t230556z-8ecec867] Curation produced a usable queue, but the search log still showed blank/duplicate/raw-URL queries; keep the queue, but this should be tightened in future prompt iterations.
+- [run:run-20260415t230556z-1c70dca4 cycle:cycle-0001-20260415t230556z-8ecec867] Publication mode selected one-shot paper candidate cyclic-difference-set-1111-186-31.
+- [run:run-20260415t230556z-1c70dca4 cycle:cycle-0001-20260415t230556z-8ecec867] Parallel solve launch: solver-A started cyclic-difference-set-1111-186-31 with a 2700-second budget.
+- [run:run-20260415t230556z-1c70dca4 cycle:cycle-0001-20260415t230556z-8ecec867] started solving cyclic-difference-set-1111-186-31
+- [run:run-20260415t230556z-1c70dca4 cycle:cycle-0001-20260415t230556z-8ecec867] Parallel solve finish: solver-A completed cyclic-difference-set-1111-186-31 with a usable solve artifact; worker log at artifacts/_logs/20260415T191425_solve_cyclic-difference-set-1111-186-31.stdout.log.
+- [run:run-20260415t230556z-1c70dca4 cycle:cycle-0001-20260415t230556z-8ecec867] Publication mode advanced cyclic-difference-set-1111-186-31 from solved status into verify/publication audit.
+- [run:run-20260415t230556z-1c70dca4 cycle:cycle-0001-20260415t230556z-8ecec867] Resuming cyclic-difference-set-1111-186-31 from preserved solve artifacts instead of rerunning solve.
+- [run:run-20260415t230556z-1c70dca4 cycle:cycle-0001-20260415t230556z-8ecec867] cyclic-difference-set-1111-186-31 reached HUMAN_READY and was moved off the main queue into LEAN_QUEUE so fresh discovery can continue.
+- publication cycle finished at 2026-04-15 19:30:42 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 19:31:42 EDT.
+- [run:run-20260415t233142z-836640ae cycle:cycle-0001-20260415t233142z-5b5e0a29] Queue preflight found no usable `paper_candidate`s. Rejection reasons: abelian-difference-set-495-247-123-group-3-165: The exact row is source-anchored and the attempt registry is clear, but the later-source audit recovered only a thin no-hit surface rather than a crisp independent recheck. That leaves broader-theorem nonimplication and theorem-slice stability too weakly audited for the strict lane.; cyclic-difference-set-1801-225-28: The attempt registry is clear and the theorem slice is stable, but the closability profile is weaker than for the selected slot and the later-source audit is not sharp enough to lower novelty risk further. That keeps the row as a credible backup rather than the lead micro-paper packet.; abelian-difference-set-416-166-66-group-2-208: The exact row is source-anchored and the attempt registry is clear, but the current audit does not cleanly separate [2,208] from the neighboring open 416-group rows. That leaves theorem-slice stability unclear and broader-theorem implication risk unresolved.; abelian-difference-set-416-166-66-group-4-104: The attempt registry is clear and the exact row is source-anchored, but the current audit does not yet show that [4,104] is stable as the final theorem rather than one facet of a broader order-416 classification statement.
+- [run:run-20260415t233142z-836640ae cycle:cycle-0001-20260415t233142z-5b5e0a29] Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- [run:run-20260415t233142z-836640ae cycle:cycle-0001-20260415t233142z-5b5e0a29] Curation produced a usable queue, but the search log still showed blank/duplicate/raw-URL queries; keep the queue, but this should be tightened in future prompt iterations.
+- [run:run-20260415t233142z-836640ae cycle:cycle-0001-20260415t233142z-5b5e0a29] Publication mode selected one-shot paper candidate cyclic-difference-set-1123-154-21.
+- [run:run-20260415t233142z-836640ae cycle:cycle-0001-20260415t233142z-5b5e0a29] Parallel solve launch: solver-A started cyclic-difference-set-1123-154-21 with a 2700-second budget.
+- [run:run-20260415t233142z-836640ae cycle:cycle-0001-20260415t233142z-5b5e0a29] started solving cyclic-difference-set-1123-154-21
+- [run:run-20260415t233142z-836640ae cycle:cycle-0001-20260415t233142z-5b5e0a29] Parallel solve finish: solver-A completed cyclic-difference-set-1123-154-21 with a usable solve artifact; worker log at artifacts/_logs/20260415T193927_solve_cyclic-difference-set-1123-154-21.stdout.log.
+- [run:run-20260415t233142z-836640ae cycle:cycle-0001-20260415t233142z-5b5e0a29] Publication mode advanced cyclic-difference-set-1123-154-21 from solved status into verify/publication audit.
+- [run:run-20260415t233142z-836640ae cycle:cycle-0001-20260415t233142z-5b5e0a29] Resuming cyclic-difference-set-1123-154-21 from preserved solve artifacts instead of rerunning solve.
+- [run:run-20260415t233142z-836640ae cycle:cycle-0001-20260415t233142z-5b5e0a29] cyclic-difference-set-1123-154-21 failed and was moved aside: NOT_VERIFIED
+- publication cycle finished at 2026-04-15 19:54:13 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 19:55:13 EDT.
+- [run:run-20260415t235513z-c98a83b1 cycle:cycle-0001-20260415t235513z-0c4c661d] Queue preflight found no usable `paper_candidate`s. Rejection reasons: cyclic-difference-set-2291-230-23: The row is source-anchored and attempt-registry clear, but the bounded audit here is thinner than for the selected slot and the current closure estimate stays just below the 70 percent paper threshold.; cyclic-difference-set-2869-240-20: The exact row is canonical and unattempted locally, but the current closure estimate remains below the strict micro-paper threshold and the bounded later-source audit is thinner than desirable.; cyclic-difference-set-1381-276-55: The row is exact and locally unattempted, but the current closure estimate is below the strict lane threshold and the bounded audit is thinner than desired for a lead packet.; cyclic-difference-set-817-289-102: The row is exact and locally unattempted, but the estimated solve-to-paper fraction is below the strict lane target and the packet is less compact than the other Table 3 survivors kept here.
+- [run:run-20260415t235513z-c98a83b1 cycle:cycle-0001-20260415t235513z-0c4c661d] Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- [run:run-20260415t235513z-c98a83b1 cycle:cycle-0001-20260415t235513z-0c4c661d] Curation produced a usable queue, but the search log still showed blank/duplicate/raw-URL queries; keep the queue, but this should be tightened in future prompt iterations.
+- [run:run-20260415t235513z-c98a83b1 cycle:cycle-0001-20260415t235513z-0c4c661d] Publication mode launched a parallel solve batch for cyclic-difference-set-419-133-42, cyclic-difference-set-1801-225-28 with 2 concurrent slots and 2700-second per-solve budgets.
+- [run:run-20260415t235513z-c98a83b1 cycle:cycle-0001-20260415t235513z-0c4c661d] Parallel solve launch: solver-A started cyclic-difference-set-419-133-42 with a 2700-second budget.
+- [run:run-20260415t235513z-c98a83b1 cycle:cycle-0001-20260415t235513z-0c4c661d] Parallel solve launch: solver-B started cyclic-difference-set-1801-225-28 with a 2700-second budget.
+- [run:run-20260415t235513z-c98a83b1 cycle:cycle-0001-20260415t235513z-0c4c661d] started solving cyclic-difference-set-419-133-42
+- [run:run-20260415t235513z-c98a83b1 cycle:cycle-0001-20260415t235513z-0c4c661d] started solving cyclic-difference-set-1801-225-28
+- [run:run-20260415t235513z-c98a83b1 cycle:cycle-0001-20260415t235513z-0c4c661d] Parallel solve finish: solver-A completed cyclic-difference-set-419-133-42 with a usable solve artifact; worker log at artifacts/_logs/20260415T200333_solve_cyclic-difference-set-419-133-42.stdout.log.
+- [run:run-20260415t235513z-c98a83b1 cycle:cycle-0001-20260415t235513z-0c4c661d] Parallel solve finish: solver-B completed cyclic-difference-set-1801-225-28 with a usable solve artifact; worker log at artifacts/_logs/20260415T200333_solve_cyclic-difference-set-1801-225-28.stdout.log.
+- [run:run-20260415t235513z-c98a83b1 cycle:cycle-0001-20260415t235513z-0c4c661d] Publication mode advanced cyclic-difference-set-419-133-42 from solved status into verify/publication audit.
+- [run:run-20260415t235513z-c98a83b1 cycle:cycle-0001-20260415t235513z-0c4c661d] Resuming cyclic-difference-set-419-133-42 from preserved solve artifacts instead of rerunning solve.
+- [run:run-20260415t235513z-c98a83b1 cycle:cycle-0001-20260415t235513z-0c4c661d] cyclic-difference-set-419-133-42 was reclassified as REDISCOVERY after the prior-art audit and was moved aside.
+- publication cycle finished at 2026-04-15 20:17:28 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 20:18:28 EDT.
+- [run:run-20260416t001829z-b905df99 cycle:cycle-0001-20260416t001829z-e6337755] Publication mode resumed one-shot paper candidate cyclic-difference-set-1801-225-28 from preserved solve artifacts.
+- [run:run-20260416t001829z-b905df99 cycle:cycle-0001-20260416t001829z-e6337755] Resuming cyclic-difference-set-1801-225-28 from preserved solve artifacts instead of rerunning solve.
+- [run:run-20260416t001829z-b905df99 cycle:cycle-0001-20260416t001829z-e6337755] cyclic-difference-set-1801-225-28 failed and was moved aside: UNVERIFIED
+- publication cycle finished at 2026-04-15 20:31:29 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 20:32:29 EDT.
+- [run:run-20260416t003229z-42028bc7 cycle:cycle-0001-20260416t003229z-e985e529] Queue preflight found no usable `paper_candidate`s. Rejection reasons: cyclic-difference-set-1785-224-28: The row is source-anchored and locally clear, but the current closure estimate stays below the strict micro-paper band and the broader Ryser-family implication risk is not low enough to pass the lane cleanly.; cyclic-difference-set-1925-260-35: The exact row is source-anchored and locally untouched, but the bounded audit is thinner and the estimated solve-to-paper fraction remains below the strict lane target.; cyclic-difference-set-2574-249-24: The exact row is source-anchored and locally untouched, but the later-source audit is thinner than for the other queued rows and the estimated solve-to-paper fraction is well below the strict lane band.
+- [run:run-20260416t003229z-42028bc7 cycle:cycle-0001-20260416t003229z-e985e529] Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- [run:run-20260416t003229z-42028bc7 cycle:cycle-0001-20260416t003229z-e985e529] Curation produced a usable queue, but the search log still showed blank/duplicate/raw-URL queries; keep the queue, but this should be tightened in future prompt iterations.
+- [run:run-20260416t003229z-42028bc7 cycle:cycle-0001-20260416t003229z-e985e529] Publication mode selected one-shot paper candidate cyclic-difference-set-2160-255-30.
+- [run:run-20260416t003229z-42028bc7 cycle:cycle-0001-20260416t003229z-e985e529] Parallel solve launch: solver-A started cyclic-difference-set-2160-255-30 with a 2700-second budget.
+- [run:run-20260416t003229z-42028bc7 cycle:cycle-0001-20260416t003229z-e985e529] started solving cyclic-difference-set-2160-255-30
+- [run:run-20260416t003229z-42028bc7 cycle:cycle-0001-20260416t003229z-e985e529] Parallel solve finish: solver-A completed cyclic-difference-set-2160-255-30 with a usable solve artifact; worker log at artifacts/_logs/20260415T203926_solve_cyclic-difference-set-2160-255-30.stdout.log.
+- [run:run-20260416t003229z-42028bc7 cycle:cycle-0001-20260416t003229z-e985e529] Publication mode advanced cyclic-difference-set-2160-255-30 from solved status into verify/publication audit.
+- [run:run-20260416t003229z-42028bc7 cycle:cycle-0001-20260416t003229z-e985e529] Resuming cyclic-difference-set-2160-255-30 from preserved solve artifacts instead of rerunning solve.
+- [run:run-20260416t003229z-42028bc7 cycle:cycle-0001-20260416t003229z-e985e529] cyclic-difference-set-2160-255-30 failed and was moved aside: VARIANT
+- publication cycle finished at 2026-04-15 21:12:16 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 21:13:16 EDT.
+- [run:run-20260416t011316z-363123cd cycle:cycle-0001-20260416t011316z-cec8380f] Queue preflight found no usable `paper_candidate`s. Rejection reasons: cyclic-difference-set-2291-230-23: The row is source-anchored and unattempted locally, and bounded exact-row web searches surfaced no direct later settlement, but the capped audit did not reduce the broader-implication and recent-status risk enough to clear the strict lane.; cyclic-difference-set-817-289-102: The row is source-anchored and unattempted locally, but only one bounded exact-row search was completed before the hard search cap, so unknown load-bearing audit fields default this slot out of the lane.; cyclic-difference-set-2869-240-20: The row is source-anchored and unattempted locally, but only one exact-row web search was completed before the search cap, so the packet fails the lane by the unknown-field rule.; cyclic-difference-set-1381-276-55: The row is source-anchored and locally unattempted, but the 20-search cap was reached before a dedicated exact-row external audit was completed, so unknown load-bearing fields force this slot out of the lane.
+- [run:run-20260416t011316z-363123cd cycle:cycle-0001-20260416t011316z-cec8380f] Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- [run:run-20260416t011316z-363123cd cycle:cycle-0001-20260416t011316z-cec8380f] Queue preflight found no usable `paper_candidate`s. Rejection reasons: cyclic-difference-set-2291-230-23: The row is source-anchored and unattempted locally, and bounded exact-row web searches surfaced no direct later settlement, but the capped audit did not reduce the broader-implication and recent-status risk enough to clear the strict lane.; cyclic-difference-set-817-289-102: The row is source-anchored and unattempted locally, but only one bounded exact-row search was completed before the hard search cap, so unknown load-bearing audit fields default this slot out of the lane.; cyclic-difference-set-2869-240-20: The row is source-anchored and unattempted locally, but only one exact-row web search was completed before the search cap, so the packet fails the lane by the unknown-field rule.; cyclic-difference-set-1381-276-55: The row is source-anchored and locally unattempted, but the 20-search cap was reached before a dedicated exact-row external audit was completed, so unknown load-bearing fields force this slot out of the lane.
+- [run:run-20260416t011316z-363123cd cycle:cycle-0001-20260416t011316z-cec8380f] Curation search hygiene failed (blank/duplicate/raw-URL queries) and the cycle did not produce a usable queue, so the dead-end queue was cleared before the next cycle.
+- [run:run-20260416t011316z-363123cd cycle:cycle-0001-20260416t011316z-cec8380f] Curation timed out before producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-15 21:24:31 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 21:25:31 EDT.
+- [run:run-20260416t012531z-5e963c65 cycle:cycle-0001-20260416t012531z-10a0b50c] Queue preflight found no `paper_candidate` entries in queue.json.
+- [run:run-20260416t012531z-5e963c65 cycle:cycle-0001-20260416t012531z-10a0b50c] Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- [run:run-20260416t012531z-5e963c65 cycle:cycle-0001-20260416t012531z-10a0b50c] Curation produced a usable queue, but the search log still showed blank/duplicate/raw-URL queries; keep the queue, but this should be tightened in future prompt iterations.
+- [run:run-20260416t012531z-5e963c65 cycle:cycle-0001-20260416t012531z-10a0b50c] Publication mode launched a parallel solve batch for cyclic-difference-set-1785-224-28, cyclic-difference-set-2869-240-20 with 2 concurrent slots and 2700-second per-solve budgets.
+- [run:run-20260416t012531z-5e963c65 cycle:cycle-0001-20260416t012531z-10a0b50c] Parallel solve launch: solver-A started cyclic-difference-set-1785-224-28 with a 2700-second budget.
+- [run:run-20260416t012531z-5e963c65 cycle:cycle-0001-20260416t012531z-10a0b50c] Parallel solve launch: solver-B started cyclic-difference-set-2869-240-20 with a 2700-second budget.
+- [run:run-20260416t012531z-5e963c65 cycle:cycle-0001-20260416t012531z-10a0b50c] started solving cyclic-difference-set-2869-240-20
+- [run:run-20260416t012531z-5e963c65 cycle:cycle-0001-20260416t012531z-10a0b50c] started solving cyclic-difference-set-1785-224-28
+- [run:run-20260416t012531z-5e963c65 cycle:cycle-0001-20260416t012531z-10a0b50c] Parallel solve finish: solver-B completed cyclic-difference-set-2869-240-20 with a usable solve artifact; worker log at artifacts/_logs/20260415T213212_solve_cyclic-difference-set-2869-240-20.stdout.log.
+- [run:run-20260416t012531z-5e963c65 cycle:cycle-0001-20260416t012531z-10a0b50c] Parallel solve finish: solver-A completed cyclic-difference-set-1785-224-28 with a usable solve artifact; worker log at artifacts/_logs/20260415T213212_solve_cyclic-difference-set-1785-224-28.stdout.log.
+- [run:run-20260416t012531z-5e963c65 cycle:cycle-0001-20260416t012531z-10a0b50c] Publication mode advanced cyclic-difference-set-1785-224-28 from solved status into verify/publication audit.
+- [run:run-20260416t012531z-5e963c65 cycle:cycle-0001-20260416t012531z-10a0b50c] Resuming cyclic-difference-set-1785-224-28 from preserved solve artifacts instead of rerunning solve.
+- [run:run-20260416t012531z-5e963c65 cycle:cycle-0001-20260416t012531z-10a0b50c] cyclic-difference-set-1785-224-28 failed and was moved aside: NOT_VERIFIED
+- publication cycle finished at 2026-04-15 22:16:03 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 22:17:03 EDT.
+- [run:run-20260416t021703z-53a6243f cycle:cycle-0001-20260416t021703z-b7ae71c8] Publication mode resumed one-shot paper candidate cyclic-difference-set-2869-240-20 from preserved solve artifacts.
+- [run:run-20260416t021703z-53a6243f cycle:cycle-0001-20260416t021703z-b7ae71c8] Resuming cyclic-difference-set-2869-240-20 from preserved solve artifacts instead of rerunning solve.
+- [run:run-20260416t021703z-53a6243f cycle:cycle-0001-20260416t021703z-b7ae71c8] cyclic-difference-set-2869-240-20 failed and was moved aside: VERIFIED
+- publication cycle finished at 2026-04-15 22:28:04 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 22:29:04 EDT.
+- [run:run-20260416t022904z-48754fa9 cycle:cycle-0001-20260416t022904z-b0d97a34] Publication mode selected one-shot paper candidate cyclic-difference-set-2291-230-23.
+- [run:run-20260416t022904z-48754fa9 cycle:cycle-0001-20260416t022904z-b0d97a34] Parallel solve launch: solver-A started cyclic-difference-set-2291-230-23 with a 2700-second budget.
+- [run:run-20260416t022904z-48754fa9 cycle:cycle-0001-20260416t022904z-b0d97a34] started solving cyclic-difference-set-2291-230-23
+- [run:run-20260416t022904z-48754fa9 cycle:cycle-0001-20260416t022904z-b0d97a34] Parallel solve finish: solver-A completed cyclic-difference-set-2291-230-23 with a usable solve artifact; worker log at artifacts/_logs/20260415T222904_solve_cyclic-difference-set-2291-230-23.stdout.log.
+- [run:run-20260416t022904z-48754fa9 cycle:cycle-0001-20260416t022904z-b0d97a34] Publication mode advanced cyclic-difference-set-2291-230-23 from solved status into verify/publication audit.
+- [run:run-20260416t022904z-48754fa9 cycle:cycle-0001-20260416t022904z-b0d97a34] Resuming cyclic-difference-set-2291-230-23 from preserved solve artifacts instead of rerunning solve.
+- [run:run-20260416t022904z-48754fa9 cycle:cycle-0001-20260416t022904z-b0d97a34] cyclic-difference-set-2291-230-23 reached HUMAN_READY and was moved off the main queue into LEAN_QUEUE so fresh discovery can continue.
+- publication cycle finished at 2026-04-15 22:48:04 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 22:49:04 EDT.
+- [run:run-20260416t024904z-e5cfa60c cycle:cycle-0001-20260416t024904z-8f24b286] Queue preflight found no usable `paper_candidate`s. Rejection reasons: cyclic-difference-set-817-289-102: The row is source-anchored and unattempted locally, but the 20-search cap was already spent before a candidate-specific outside-source audit for (817,289,102) could be completed; unresolved broader-implication risk forces a fail under the strict lane.; cyclic-difference-set-1925-260-35: The row is source-anchored and unattempted locally, but the 20-search cap was already spent before a candidate-specific exact-row and outside-source audit for (1925,260,35) could be completed; unresolved novelty risk forces a fail under the strict lane.
+- [run:run-20260416t024904z-e5cfa60c cycle:cycle-0001-20260416t024904z-8f24b286] Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- [run:run-20260416t024904z-e5cfa60c cycle:cycle-0001-20260416t024904z-8f24b286] Curation produced a usable queue, but the search log still showed blank/duplicate/raw-URL queries; keep the queue, but this should be tightened in future prompt iterations.
+- [run:run-20260416t024904z-e5cfa60c cycle:cycle-0001-20260416t024904z-8f24b286] Publication mode selected one-shot paper candidate abelian-difference-set-495-247-123-group-3-165.
+- [run:run-20260416t024904z-e5cfa60c cycle:cycle-0001-20260416t024904z-8f24b286] Parallel solve launch: solver-A started abelian-difference-set-495-247-123-group-3-165 with a 2700-second budget.
+- [run:run-20260416t024904z-e5cfa60c cycle:cycle-0001-20260416t024904z-8f24b286] started solving abelian-difference-set-495-247-123-group-3-165
+- [run:run-20260416t024904z-e5cfa60c cycle:cycle-0001-20260416t024904z-8f24b286] Parallel solve finish: solver-A completed abelian-difference-set-495-247-123-group-3-165 with a usable solve artifact; worker log at artifacts/_logs/20260415T225655_solve_abelian-difference-set-495-247-123-group-3-165.stdout.log.
+- [run:run-20260416t024904z-e5cfa60c cycle:cycle-0001-20260416t024904z-8f24b286] Publication mode advanced abelian-difference-set-495-247-123-group-3-165 from solved status into verify/publication audit.
+- [run:run-20260416t024904z-e5cfa60c cycle:cycle-0001-20260416t024904z-8f24b286] Resuming abelian-difference-set-495-247-123-group-3-165 from preserved solve artifacts instead of rerunning solve.
+- publication cycle finished at 2026-04-15 23:11:05 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 23:12:05 EDT.
+- [run:run-20260416t031205z-013fa58c cycle:cycle-0001-20260416t031205z-6b874290] Publication mode resumed one-shot paper candidate abelian-difference-set-495-247-123-group-3-165 from preserved solve artifacts.
+- [run:run-20260416t031205z-013fa58c cycle:cycle-0001-20260416t031205z-6b874290] Resuming abelian-difference-set-495-247-123-group-3-165 from preserved solve artifacts instead of rerunning solve.
+- [run:run-20260416t031205z-013fa58c cycle:cycle-0001-20260416t031205z-6b874290] Publication audit kept abelian-difference-set-495-247-123-group-3-165 at SLICE_CANDIDATE: bounded prior-art checks did not establish rediscovery, but the preserved proof still fails at the unsupported 2-multiplier step, so the packet is not HUMAN_READY.
+- publication cycle finished at 2026-04-15 23:23:50 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 23:24:50 EDT.
+- [run:run-20260416t032450z-0d64880b cycle:cycle-0001-20260416t032450z-35a38967] Publication mode resumed one-shot paper candidate abelian-difference-set-495-247-123-group-3-165 from preserved solve artifacts.
+- [run:run-20260416t032450z-0d64880b cycle:cycle-0001-20260416t032450z-35a38967] Resuming abelian-difference-set-495-247-123-group-3-165 from preserved solve artifacts instead of rerunning solve.
+- publication cycle finished at 2026-04-15 23:38:21 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 23:39:21 EDT.
+- [run:run-20260416t033921z-2cc8f1b5 cycle:cycle-0001-20260416t033921z-af49c3f1] Publication mode resumed one-shot paper candidate abelian-difference-set-495-247-123-group-3-165 from preserved solve artifacts.
+- [run:run-20260416t033921z-2cc8f1b5 cycle:cycle-0001-20260416t033921z-af49c3f1] Resuming abelian-difference-set-495-247-123-group-3-165 from preserved solve artifacts instead of rerunning solve.
+- publication cycle finished at 2026-04-15 23:52:36 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-15 23:53:36 EDT.
+- [run:run-20260416t035336z-ff9d7012 cycle:cycle-0001-20260416t035336z-61dee01e] Publication mode resumed one-shot paper candidate abelian-difference-set-495-247-123-group-3-165 from preserved solve artifacts.
+- [run:run-20260416t035336z-ff9d7012 cycle:cycle-0001-20260416t035336z-61dee01e] Resuming abelian-difference-set-495-247-123-group-3-165 from preserved solve artifacts instead of rerunning solve.
+- publication cycle finished at 2026-04-16 00:05:37 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-16 00:06:37 EDT.
+- [run:run-20260416t040637z-c4975ce0 cycle:cycle-0001-20260416t040637z-f4ce7343] Publication mode resumed one-shot paper candidate abelian-difference-set-495-247-123-group-3-165 from preserved solve artifacts.
+- [run:run-20260416t040637z-c4975ce0 cycle:cycle-0001-20260416t040637z-f4ce7343] Resuming abelian-difference-set-495-247-123-group-3-165 from preserved solve artifacts instead of rerunning solve.
+- [run:run-20260416t040637z-c4975ce0 cycle:cycle-0001-20260416t040637z-f4ce7343] abelian-difference-set-495-247-123-group-3-165 failed and was moved aside: NOT_VERIFIED
+- publication cycle finished at 2026-04-16 00:14:37 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-16 00:15:37 EDT.
+- [run:run-20260416t041537z-d98f24c1 cycle:cycle-0001-20260416t041537z-eca24874] Queue preflight found no usable `paper_candidate`s. Rejection reasons: abelian-difference-set-448-150-50-group-2-224: The exact row is source-anchored and locally clean, but the bounded audit did not resolve whether the shortest proof would really stay at [2,224] rather than collapse into a broader two-primary observation.; cyclic-difference-set-2574-249-24: The exact cyclic row is source-anchored and locally unattempted, but the bounded web audit hit the search cap before a stronger recent-status check could be completed.; cyclic-difference-set-990-345-120: The source anchor is real, but the same slides expose neighboring exact noncyclic 990 rows, so the bounded audit did not clear theorem-slice stability.; cyclic-difference-set-936-375-150: The family anchor is explicit, but the same source exposes exact noncyclic 936 rows and the bounded audit did not clear theorem-slice stability.
+- [run:run-20260416t041537z-d98f24c1 cycle:cycle-0001-20260416t041537z-eca24874] Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- [run:run-20260416t041537z-d98f24c1 cycle:cycle-0001-20260416t041537z-eca24874] Queue preflight found no usable `paper_candidate`s. Rejection reasons: cyclic-difference-set-945-177-33: The source packet is strong and the theorem slice looks stable, but this run exhausted its search budget before finishing the required exact-tuple outside-source status audit for the surviving 945 row.; cyclic-difference-set-1123-154-21: The exact row looks paper-shaped, but this run used its search budget earlier in the exclusion sweep and on discarded veins before finishing the independent exact-tuple status audit for (1123,154,21).; cyclic-difference-set-1801-225-28: The theorem slice looks stable, but the run ended before completing an independent outside-source status search for the exact tuple (1801,225,28).; cyclic-difference-set-1925-260-35: The canonical source leaves a clean exact row, but this capped run did not complete the independent exact-tuple status search needed to clear novelty risk.; cyclic-difference-set-1381-276-55: The source packet is clear, but the required later exact-tuple status recheck was not finished before the search cap was reached.
+- [run:run-20260416t041537z-d98f24c1 cycle:cycle-0001-20260416t041537z-eca24874] Curation search hygiene failed (blank/duplicate/raw-URL queries) and the cycle did not produce a usable queue, so the dead-end queue was cleared before the next cycle.
+- [run:run-20260416t041537z-d98f24c1 cycle:cycle-0001-20260416t041537z-eca24874] Curation finished without producing a usable `paper_candidate` queue, so this cycle ended cleanly.
+- publication cycle finished at 2026-04-16 00:24:38 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-16 00:25:38 EDT.
+- [run:run-20260416t042538z-9500989d cycle:cycle-0001-20260416t042538z-6ffc1cc1] Queue preflight found no `paper_candidate` entries in queue.json.
+- [run:run-20260416t042538z-9500989d cycle:cycle-0001-20260416t042538z-6ffc1cc1] Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- [run:run-20260416t042538z-9500989d cycle:cycle-0001-20260416t042538z-6ffc1cc1] Curation produced a usable queue, but the search log still showed blank/duplicate/raw-URL queries; keep the queue, but this should be tightened in future prompt iterations.
+- [run:run-20260416t042538z-9500989d cycle:cycle-0001-20260416t042538z-6ffc1cc1] Publication mode selected one-shot paper candidate cyclic-difference-set-1925-260-35.
+- [run:run-20260416t042538z-9500989d cycle:cycle-0001-20260416t042538z-6ffc1cc1] Parallel solve launch: solver-A started cyclic-difference-set-1925-260-35 with a 2700-second budget.
+- [run:run-20260416t042538z-9500989d cycle:cycle-0001-20260416t042538z-6ffc1cc1] started solving cyclic-difference-set-1925-260-35
+- [run:run-20260416t042538z-9500989d cycle:cycle-0001-20260416t042538z-6ffc1cc1] Parallel solve finish: solver-A completed cyclic-difference-set-1925-260-35 with a usable solve artifact; worker log at artifacts/_logs/20260416T003246_solve_cyclic-difference-set-1925-260-35.stdout.log.
+- [run:run-20260416t042538z-9500989d cycle:cycle-0001-20260416t042538z-6ffc1cc1] Publication mode advanced cyclic-difference-set-1925-260-35 from solved status into verify/publication audit.
+- [run:run-20260416t042538z-9500989d cycle:cycle-0001-20260416t042538z-6ffc1cc1] Resuming cyclic-difference-set-1925-260-35 from preserved solve artifacts instead of rerunning solve.
+- [run:run-20260416t042538z-9500989d cycle:cycle-0001-20260416t042538z-6ffc1cc1] cyclic-difference-set-1925-260-35 reached HUMAN_READY and was moved off the main queue into LEAN_QUEUE so fresh discovery can continue.
+- publication cycle finished at 2026-04-16 00:50:53 EDT.
+- publication cycle sleeping for 60 seconds.
+- publication cycle started at 2026-04-16 00:51:54 EDT.
+- [run:run-20260416t045154z-6fd63e1b cycle:cycle-0001-20260416t045154z-84a4517a] Queue preflight found no usable `paper_candidate`s. Rejection reasons: cyclic-difference-set-5859-203-7: The source packet is strong, but the bounded audit did not surface a clean independent later-status check beyond source-adjacent Gordon pages, so the novelty picture remains too thin for a green light.; cyclic-difference-set-2574-249-24: The source anchor is excellent, but the bounded search did not return a trustworthy independent later-status surface for the exact tuple, so the novelty audit is too weak to green-light solve.; cyclic-difference-set-817-289-102: The row is source-anchored, but the bounded audit left the later-status picture unclear enough that broader-theorem implication risk stays unresolved.; cyclic-difference-set-945-177-33: An outside-source exact-tuple search surfaced Tao Feng's 2010 paper 'Nonexistence of Some (945,177,33)-difference Sets', so the exact statement is already settled.
+- [run:run-20260416t045154z-6fd63e1b cycle:cycle-0001-20260416t045154z-84a4517a] Queue had no usable `paper_candidate`, so one-shot publication curation started.
+- [run:run-20260416t045154z-6fd63e1b cycle:cycle-0001-20260416t045154z-84a4517a] Curation produced a usable queue, but the search log still showed blank/duplicate/raw-URL queries; keep the queue, but this should be tightened in future prompt iterations.
+- [run:run-20260416t045154z-6fd63e1b cycle:cycle-0001-20260416t045154z-84a4517a] Publication mode selected one-shot paper candidate cyclic-difference-set-990-345-120.
+- [run:run-20260416t045154z-6fd63e1b cycle:cycle-0001-20260416t045154z-84a4517a] Parallel solve launch: solver-A started cyclic-difference-set-990-345-120 with a 2700-second budget.
+- [run:run-20260416t045154z-6fd63e1b cycle:cycle-0001-20260416t045154z-84a4517a] started solving cyclic-difference-set-990-345-120

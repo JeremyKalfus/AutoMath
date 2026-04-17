@@ -23,6 +23,11 @@ Use these files:
 - `artifacts/<slug>/status.json`
 - `artifacts/<slug>/lean/` only if needed later
 
+Local arithmetic note:
+
+- do not assume `sympy` or the shell `factor` command exists
+- if you need exact integer factorization, prefer `python3 scripts/factor_integer.py <n>` or built-in Python arithmetic
+
 Read budget:
 
 - target 3 to 6 local files total after the active selection file
@@ -37,6 +42,7 @@ Sidecar attempt mode:
 - if the sidecar output files already exist, continue from them instead of restarting from scratch
 - write the durable solve record and solve status to those sidecar output paths instead of the canonical artifact files
 - do not mutate canonical artifact files in this sidecar mode
+- if canonical `record.md` / `status.json` are just manager-seeded stubs, overwrite them directly with real reasoning instead of spending time re-orienting on their absence
 
 Work in this order:
 
@@ -51,6 +57,10 @@ Work in this order:
 7. After each major step, add a brief self-check.
 8. Only then decide whether minimal code is actually needed.
 9. After any strong result, extract the smallest supporting theorem slice, one natural corollary or boundary remark, and one exact sentence saying why the instance matters.
+
+Persistence rule:
+
+- after steps 1 to 4, update `record.md` and `status.json` immediately before any bounded experiment, so a timeout still leaves a theorem-facing artifact instead of only transient scratch work
 
 Code policy:
 

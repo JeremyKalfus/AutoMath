@@ -474,5 +474,290 @@
     "title": null,
     "publication_status": "NONE",
     "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "abelian-difference-set-243-121-60-group-3-9-9",
+    "reason": "MINOR_FIX",
+    "title": null,
+    "publication_status": "NONE",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "abelian-difference-set-182733434811-740406-3",
+    "reason": "CRITICAL_FLAW",
+    "title": null,
+    "publication_status": "NONE",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "cyclic-difference-set-465-145-45",
+    "reason": "WRONG_STATEMENT",
+    "title": null,
+    "publication_status": "NONE",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "cyclic-difference-set-469-208-92",
+    "reason": "VARIANT",
+    "title": null,
+    "publication_status": "REDISCOVERY",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "cyclic-difference-set-639-232-84",
+    "reason": "VARIANT",
+    "title": null,
+    "publication_status": "NONE",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "abelian-difference-set-847-423-211-group-11-77",
+    "reason": "MINOR_FIX",
+    "title": null,
+    "publication_status": "NONE",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "cyclic-difference-set-781-300-115",
+    "reason": "NOT_VERIFIED",
+    "title": null,
+    "publication_status": "NONE",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "cyclic-difference-set-703-325-150",
+    "reason": "UNVERIFIED",
+    "title": null,
+    "publication_status": "NONE",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "abelian-difference-set-783-391-195-group-3-261",
+    "reason": "VERIFIED",
+    "title": null,
+    "publication_status": "REDISCOVERY",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "cyclic-difference-set-910-405-180",
+    "reason": "UNVERIFIED",
+    "title": null,
+    "publication_status": "NONE",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "abelian-difference-set-855-183-39-group-3-285",
+    "reason": "VARIANT_REPAIRED",
+    "title": null,
+    "publication_status": "SLICE_EXACT",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "abelian-difference-set-425-160-60-group-5-85",
+    "reason": "PARTIAL",
+    "title": null,
+    "publication_status": "SLICE_EXACT",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "abelian-difference-set-729-273-102-group-3-3-3-3-3-3",
+    "reason": "CRITICAL_FLAW",
+    "title": null,
+    "publication_status": "SLICE_EXACT",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "abelian-difference-set-765-192-48-group-3-255",
+    "reason": "VARIANT",
+    "title": null,
+    "publication_status": "NONE",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "abelian-difference-set-909-228-57-group-3-303",
+    "reason": "VARIANT",
+    "title": null,
+    "publication_status": "SLICE_CANDIDATE",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "abelian-difference-set-816-326-130-group-2-408",
+    "reason": "CRITICAL_FLAW",
+    "title": null,
+    "publication_status": "NONE",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "r-b21-diagonal-book-ramsey",
+    "reason": "VARIANT",
+    "title": null,
+    "publication_status": "NONE",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "r-b10-b10-diagonal-book-ramsey",
+    "reason": "REDISCOVERY",
+    "title": null,
+    "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
+    "publication_status": "REDISCOVERY",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "r-b15-b15-diagonal-book-ramsey",
+    "reason": "VERIFIED",
+    "title": null,
+    "publication_status": "REDISCOVERY",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "r-b12-b14-book-ramsey",
+    "reason": "VERIFIED",
+    "title": null,
+    "publication_status": "REDISCOVERY",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "r-b22-b22-diagonal-book-ramsey",
+    "reason": "REDISCOVERY",
+    "title": null,
+    "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
+    "publication_status": "REDISCOVERY",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "cyclic-difference-set-616-165-44",
+    "reason": "REDISCOVERY",
+    "title": "Does the cyclic group C_616 admit a (616,165,44)-difference set?",
+    "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
+    "publication_status": "REDISCOVERY",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "abelian-difference-set-448-150-50-group-4-112",
+    "reason": "UNVERIFIED",
+    "title": "Does the abelian group C_4 x C_112 admit a (448,150,50)-difference set?",
+    "publication_status": "NONE",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "abelian-difference-set-621-156-39-group-3-207",
+    "reason": "VARIANT",
+    "title": "Does the abelian group C_3 x C_207 admit a (621,156,39)-difference set?",
+    "publication_status": "NONE",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "cyclic-difference-set-1093-169-26",
+    "reason": "CRITICAL_FLAW",
+    "title": "Does the cyclic group C_1093 admit a (1093,169,26)-difference set?",
+    "publication_status": "NONE",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "abelian-difference-set-343-171-85-group-7-49",
+    "reason": "REDISCOVERY",
+    "title": "Does the abelian group C_7 x C_49 admit a (343,171,85)-difference set?",
+    "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
+    "publication_status": "REDISCOVERY",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "cyclic-hadamard-difference-set-4355-2177-1088",
+    "reason": "VARIANT",
+    "title": "Does the cyclic group C_4355 admit a (4355,2177,1088)-difference set?",
+    "publication_status": "NONE",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "cyclic-hadamard-difference-set-8591-4295-2147",
+    "reason": "UNVERIFIED",
+    "title": "Does the cyclic group C_8591 admit a (8591,4295,2147)-difference set?",
+    "publication_status": "SLICE_EXACT",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "cyclic-hadamard-difference-set-9135-4567-2283",
+    "reason": "CRITICAL_FLAW",
+    "title": "Does the cyclic group C_9135 admit a (9135,4567,2283)-difference set?",
+    "publication_status": "NONE",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "cyclic-hadamard-difference-set-9215-4607-2303",
+    "reason": "MINOR_FIX",
+    "title": "Does the cyclic group C_9215 admit a (9215,4607,2303)-difference set?",
+    "publication_status": "SLICE_CANDIDATE",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "abelian-difference-set-1008-266-70-group-g16-g9-7",
+    "reason": "VERIFIED",
+    "title": "Does an abelian group of type [G16,G9,7] admit a (1008,266,70)-difference set?",
+    "publication_status": "NONE",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "abelian-difference-set-990-345-120-group-2-g9-5-11",
+    "reason": "CRITICAL_FLAW",
+    "title": "Does an abelian group of type [2,G9,5,11] admit a (990,345,120)-difference set?",
+    "publication_status": "NONE",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "abelian-difference-set-477-204-87-group-3-159",
+    "reason": "NOT_VERIFIED",
+    "title": "Does the abelian group C_3 x C_159 admit a (477,204,87)-difference set?",
+    "publication_status": "NONE",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "cyclic-difference-set-1123-154-21",
+    "reason": "NOT_VERIFIED",
+    "title": "Does the cyclic group C_1123 admit a (1123,154,21)-difference set?",
+    "publication_status": "REDISCOVERY",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "cyclic-difference-set-419-133-42",
+    "reason": "REDISCOVERY",
+    "title": "Does the cyclic group C_419 admit a (419,133,42)-difference set?",
+    "notes": "Prior-art audit during verify found the exact statement already covered in the literature.",
+    "publication_status": "REDISCOVERY",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "cyclic-difference-set-1801-225-28",
+    "reason": "UNVERIFIED",
+    "title": "Does the cyclic group C_1801 admit a (1801,225,28)-difference set?",
+    "publication_status": "SLICE_EXACT",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "cyclic-difference-set-2160-255-30",
+    "reason": "VARIANT",
+    "title": "Does the cyclic group C_2160 admit a (2160,255,30)-difference set?",
+    "publication_status": "NONE",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "cyclic-difference-set-1785-224-28",
+    "reason": "NOT_VERIFIED",
+    "title": null,
+    "publication_status": "NONE",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "cyclic-difference-set-2869-240-20",
+    "reason": "VERIFIED",
+    "title": null,
+    "publication_status": "SLICE_EXACT",
+    "checked_on": "2026-04-15"
+  },
+  {
+    "slug": "abelian-difference-set-495-247-123-group-3-165",
+    "reason": "NOT_VERIFIED",
+    "title": null,
+    "publication_status": "NONE",
+    "checked_on": "2026-04-16"
   }
 ]

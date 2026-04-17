@@ -1,0 +1,205 @@
+\documentclass[11pt]{amsart}
+\input{../paper_preamble.tex}
+
+\begin{document}
+
+\title[No Cyclic $(8835,4417,2208)$ Difference Set]{On the Nonexistence of a Cyclic $(8835,4417,2208)$-Difference Set\thanks{AutoMath assisted in generating the solution and preparing this draft.}}
+\date{April 15, 2026}
+
+\begin{abstract}
+We prove nonexistence of a cyclic difference set with parameters $(8835,4417,2208)$.
+The argument uses the multiplier $47$, forced residue profiles modulo $3$, $5$, and $15$, and a final orbit-count contradiction on the block of elements congruent to $5$ or $10$ modulo $15$.
+This removes one of the named small open cyclic Hadamard cases recorded by Baumert and Gordon.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+Baumert and Gordon list the parameter set $(8835,4417,2208)$ among the open cyclic Hadamard cases up to $10000$ \cite{BG2004}, and Gordon's La Jolla status slides continue to display $8835$ among the small unresolved cyclic Hadamard parameters \cite{Gordon2019}.
+We show that the case is impossible.
+
+\begin{theorem}
+There is no cyclic $(8835,4417,2208)$-difference set.
+\end{theorem}
+
+\begin{proof}
+Assume for contradiction that $D\subseteq G=\Cyc{8835}$ is a $(8835,4417,2208)$-difference set.
+Set
+\[
+n=k-\lambda=4417-2208=2209=47^2.
+\]
+By the standard prime-power multiplier theorem, $47$ is a multiplier.
+Since
+\[
+\gcd(47-1,8835)=\gcd(46,8835)=1,
+\]
+we may translate $D$ and assume
+\[
+47D=D.
+\]
+Because $47\equiv 2\pmod{m}$ for $m\in\{3,5,15\}$, the residue counts of $D$ modulo each of these moduli are constant on the multiplication-by-$2$ orbits.
+
+\medskip
+\noindent\textbf{Step 1: the profile modulo $3$.}
+Let $N_i$ be the number of elements of $D$ congruent to $i$ modulo $3$.
+Since multiplication by $2$ swaps the nonzero classes of $\Z/3\Z$, we have $N_1=N_2$.
+For a nontrivial character of $\Z/3\Z$ with value $\omega$ on $1$, the lifted character sum is
+\[
+N_0+N_1\omega+N_2\omega^2 = N_0-N_1.
+\]
+Every nonprincipal character value has modulus $47$, so $|N_0-N_1|=47$.
+Together with $N_0+2N_1=4417$, this forces
+\[
+(N_0,N_1,N_2)=(1441,1488,1488).
+\]
+
+\medskip
+\noindent\textbf{Step 2: the profile modulo $5$.}
+Let $M_j$ be the number of elements of $D$ congruent to $j$ modulo $5$.
+Multiplication by $2$ acts transitively on the four nonzero residue classes, so
+\[
+M_1=M_2=M_3=M_4.
+\]
+For a nontrivial order-$5$ character with primitive value $\zeta_5$, the lifted character sum is
+\[
+M_0+M_1(\zeta_5+\zeta_5^2+\zeta_5^3+\zeta_5^4)=M_0-M_1.
+\]
+Again the modulus is $47$, so $|M_0-M_1|=47$.
+Since $M_0+4M_1=4417$, we obtain
+\[
+(M_0,M_1,M_2,M_3,M_4)=(921,874,874,874,874).
+\]
+
+\medskip
+\noindent\textbf{Step 3: the profile modulo $15$.}
+Multiplication by $2$ on $\Z/15\Z$ has orbits
+\[
+\{0\},\quad \{5,10\},\quad \{3,6,9,12\},\quad \{1,2,4,8\},\quad \{7,11,13,14\}.
+\]
+Let the common counts on these five orbits be
+\[
+a,\ b,\ c,\ d,\ e
+\]
+respectively.
+Comparing with the profiles modulo $3$ and $5$ found above yields
+\begin{align}
+a+4c &= 1441, \label{eq:mod3} \\
+a+2b &= 921, \label{eq:mod5a} \\
+c+d+e &= 874, \label{eq:mod5b} \\
+b+2d+2e &= 1488. \label{eq:mod3b}
+\end{align}
+
+Now choose a primitive character of $\Z/15\Z$ with value $\zeta$ on $1$ and set
+\[
+U=\zeta+\zeta^2+\zeta^4+\zeta^8.
+\]
+Then the sum on the complementary unit orbit is $\overline{U}$, and one has
+\[
+U+\overline{U}=1,\qquad U=\frac{1\pm i\sqrt{15}}{2}.
+\]
+Therefore the lifted character sum is
+\[
+A_{15}=a-b-c+dU+e\overline{U},
+\]
+and $|A_{15}|=47$.
+Using \eqref{eq:mod3}--\eqref{eq:mod3b}, we obtain
+\[
+a=1441-4c,\qquad b=2c-260,\qquad d+e=874-c,
+\]
+hence
+\[
+A_{15}=\frac{4276-15c}{2}+\frac{(d-e)i\sqrt{15}}{2}.
+\]
+The equation $|A_{15}|^2=47^2$ becomes
+\[
+(4276-15c)^2+15(d-e)^2=8836.
+\]
+Since $|4276-15c|\le 94$ and $4276-15c\equiv 1\pmod{15}$, there are only finitely many candidates for the first term.
+A direct check shows that the unique possibility is
+\[
+4276-15c=-14,\qquad d-e=\pm 24.
+\]
+Thus
+\[
+c=286,\qquad b=312,\qquad a=297,\qquad \{d,e\}=\{306,282\}.
+\]
+In particular, the block
+\[
+B=\{x\in \Z/8835\Z: x\equiv 5 \text{ or } 10 \pmod{15}\}
+\]
+contains exactly
+\[
+2b=624
+\]
+elements of $D$.
+
+\medskip
+\noindent\textbf{Step 4: the final orbit obstruction.}
+Because $47D=D$, the set $D$ is a union of full $47$-orbits in $\Cyc{8835}$.
+Every element of $B$ has additive order one of
+\[
+3,\ 57,\ 93,\ 1767,
+\]
+so the possible $47$-orbit sizes inside $B$ are
+\begin{align*}
+\ord_3(47)&=2, & \ord_{57}(47)&=18,\\
+\ord_{93}(47)&=10, & \ord_{1767}(47)&=90.
+\end{align*}
+The numbers of such orbits available in the whole group are
+\[
+\frac{\varphi(3)}{2}=1,\qquad
+\frac{\varphi(57)}{18}=2,\qquad
+\frac{\varphi(93)}{10}=6,\qquad
+\frac{\varphi(1767)}{90}=12.
+\]
+Hence the total $624$ points of $D\cap B$ would have to satisfy
+\[
+624 = 2\alpha + 18\beta + 10\gamma + 90\delta
+\]
+with
+\[
+0\le \alpha\le 1,\qquad 0\le \beta\le 2,\qquad 0\le \gamma\le 6,\qquad 0\le \delta\le 12.
+\]
+After dividing by $2$,
+\[
+312=\alpha+9\beta+5\gamma+45\delta.
+\]
+If $\delta\le 4$, then the right-hand side is at most
+\[
+1+18+30+180=229,
+\]
+so $\delta\ge 5$.
+If $\delta=5$, the remainder is
+\[
+87=\alpha+9\beta+5\gamma,
+\]
+but the right-hand side is at most $49$.
+If $\delta=6$, the remainder is
+\[
+42=\alpha+9\beta+5\gamma,
+\]
+which is impossible for $\alpha\in\{0,1\}$, $0\le \beta\le 2$, and $0\le \gamma\le 6$.
+If $\delta\ge 7$, then $45\delta>312$.
+This contradiction proves that no cyclic $(8835,4417,2208)$-difference set exists.
+\end{proof}
+
+\begin{remark}
+The proof isolates a rigid mod-$15$ profile and then shows that the required $\{5,10\}\pmod{15}$ block cannot be assembled from full $47$-multiplier orbits.
+No search-heavy construction check is needed.
+\end{remark}
+
+\begin{thebibliography}{99}
+
+\bibitem{BG2004}
+Leonard D.~Baumert and Daniel M.~Gordon,
+\emph{On the existence of cyclic difference sets with small parameters},
+Fields Inst. Commun. \textbf{41} (2004), 29--40.
+
+\bibitem{Gordon2019}
+Daniel M.~Gordon,
+\emph{The La Jolla Difference Set Repository},
+ArasuFest talk slides, August 3, 2019.
+
+\end{thebibliography}
+
+\end{document}

@@ -5,17 +5,12 @@ SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 ROOT="$SCRIPT_DIR"
 cd "$ROOT"
 
-SLEEP_SECONDS="${AUTOMATH_SLEEP_SECONDS:-60}"
-CYCLE_LOG_PATH="$ROOT/artifacts/_logs/cycle.log"
-
 usage() {
   cat <<'EOF'
-Usage: ./run_n_cycles.sh <positive-integer>
+Usage: ./run_n_cycles.sh [--verbose|-v] <positive-integer> [automath_cycle args...]
 
-Runs AutoMath for a fixed number of publication-first cycles.
-`run_once.sh` runs the strict micro-paper lane.
-Any `.stop_harness` marker is deferred until the requested cycle count completes.
-Set AUTOMATH_SLEEP_SECONDS to override the default 60-second pause between cycles.
+Runs AutoMath for a fixed number of publication-first cycles through the
+authoritative publication supervisor.
 EOF
 }
 
@@ -24,74 +19,43 @@ if [[ "${1:-}" == "--help" || "${1:-}" == "-h" ]]; then
   exit 0
 fi
 
-if [[ $# -ne 1 || ! "$1" =~ ^[1-9][0-9]*$ ]]; then
+SUPERVISOR_ARGS=()
+TARGET_CYCLES=""
+CHILD_ARGS=()
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --verbose|-v)
+      SUPERVISOR_ARGS+=("$1")
+      shift
+      ;;
+    --)
+      shift
+      CHILD_ARGS+=("$@")
+      break
+      ;;
+    *)
+      if [[ -z "$TARGET_CYCLES" ]]; then
+        TARGET_CYCLES="$1"
+      else
+        CHILD_ARGS+=("$1")
+      fi
+      shift
+      ;;
+  esac
+done
+
+if [[ -z "$TARGET_CYCLES" || ! "$TARGET_CYCLES" =~ ^[1-9][0-9]*$ ]]; then
   usage >&2
   exit 1
 fi
 
-TARGET_CYCLES="$1"
-
-mkdir -p "$ROOT/artifacts" "$ROOT/artifacts/_logs"
-[[ -f "$ROOT/ledger.md" ]] || printf '# Ledger\n' >"$ROOT/ledger.md"
-
-append_ledger() {
-  printf -- "- %s\n" "$1" >>"$ROOT/ledger.md"
-}
-
-append_cycle_log() {
-  printf -- "%s\n" "$1" | tee -a "$CYCLE_LOG_PATH"
-}
-
-completed_cycles=0
-deferred_stop_marker=0
-while (( completed_cycles < TARGET_CYCLES )); do
-  cycle_number=$((completed_cycles + 1))
-  if [[ -f "$ROOT/.stop_harness" ]]; then
-    rm -f "$ROOT/.stop_harness"
-    deferred_stop_marker=1
-    message="bounded publication run deferred an existing stop marker before cycle ${cycle_number}/${TARGET_CYCLES} so the requested run could continue."
-    append_ledger "$message"
-    append_cycle_log "[run_n_cycles] $message"
-  fi
-
-  cycle_started_at="$(date '+%Y-%m-%d %H:%M:%S %Z')"
-  message="bounded publication run cycle ${cycle_number}/${TARGET_CYCLES} started at ${cycle_started_at}."
-  append_ledger "$message"
-  append_cycle_log "[run_n_cycles] $message"
-  if ./run_once.sh; then
-    message="bounded publication run cycle ${cycle_number}/${TARGET_CYCLES} finished at $(date '+%Y-%m-%d %H:%M:%S %Z')."
-    append_ledger "$message"
-    append_cycle_log "[run_n_cycles] $message"
-  else
-    message="bounded publication run cycle ${cycle_number}/${TARGET_CYCLES} ended with an error at $(date '+%Y-%m-%d %H:%M:%S %Z')."
-    append_ledger "$message"
-    append_cycle_log "[run_n_cycles] $message"
-  fi
-
-  if [[ -f "$ROOT/.stop_harness" ]]; then
-    rm -f "$ROOT/.stop_harness"
-    deferred_stop_marker=1
-    message="bounded publication run deferred a stop marker raised during cycle ${cycle_number}/${TARGET_CYCLES} until the requested run completes."
-    append_ledger "$message"
-    append_cycle_log "[run_n_cycles] $message"
-  fi
-
-  completed_cycles=$cycle_number
-
-  if (( completed_cycles < TARGET_CYCLES )); then
-    message="cycle sleeping for ${SLEEP_SECONDS} seconds."
-    append_ledger "$message"
-    append_cycle_log "[run_n_cycles] $message"
-    sleep "$SLEEP_SECONDS"
-  fi
-done
-
-message="bounded publication run completed ${completed_cycles}/${TARGET_CYCLES} requested cycle(s)."
-append_ledger "$message"
-append_cycle_log "[run_n_cycles] $message"
-if (( deferred_stop_marker == 1 )); then
-  : >"$ROOT/.stop_harness"
-  message="bounded publication run restored the deferred stop marker after completing ${completed_cycles}/${TARGET_CYCLES} requested cycle(s)."
-  append_ledger "$message"
-  append_cycle_log "[run_n_cycles] $message"
+if ((${#SUPERVISOR_ARGS[@]})) && ((${#CHILD_ARGS[@]})); then
+  exec python3 "$ROOT/scripts/publication_supervisor.py" --mode n-cycles --cycles "$TARGET_CYCLES" "${SUPERVISOR_ARGS[@]}" -- "${CHILD_ARGS[@]}"
+elif ((${#SUPERVISOR_ARGS[@]})); then
+  exec python3 "$ROOT/scripts/publication_supervisor.py" --mode n-cycles --cycles "$TARGET_CYCLES" "${SUPERVISOR_ARGS[@]}" --
+elif ((${#CHILD_ARGS[@]})); then
+  exec python3 "$ROOT/scripts/publication_supervisor.py" --mode n-cycles --cycles "$TARGET_CYCLES" -- "${CHILD_ARGS[@]}"
+else
+  exec python3 "$ROOT/scripts/publication_supervisor.py" --mode n-cycles --cycles "$TARGET_CYCLES" --
 fi

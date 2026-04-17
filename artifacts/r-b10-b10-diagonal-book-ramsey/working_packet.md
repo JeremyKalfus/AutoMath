@@ -1,7 +1,7 @@
 # Working Packet: The Exact Value of R(B10, B10)
 
 - slug: `r-b10-b10-diagonal-book-ramsey`
-- title: Determine the exact value of R(B10, B10)
+- title: r-b10-b10-diagonal-book-ramsey
 - publication status: `NONE`
 - packet quality: `moderate`
 - micro-paper eligible: `True`
@@ -19,7 +19,7 @@ Determine the least n such that every red-blue coloring of K_n contains a monoch
 
 ## proof_sketch
 - attack style: (not recorded)
-- likely route: If the endpoint is settled, the proof or critical coloring is already the main theorem. The surrounding family story, exact table placement, and comparison benchmarks are already present in the literature.
+- likely route: Once the endpoint is settled, the proof or critical coloring is already the main theorem and nearly all of the note. Only clean exposition and verification of the decisive witness or forcing argument remain.
 - verifier focus: (not recorded)
 
 ## micro_paper_test
@@ -67,7 +67,7 @@ Current public sources stop at 41 <= R(B10, B10) <= 42.
 - paper if solved: The paper would be a concise exact-value note on a one-step diagonal-book Ramsey gap.
 
 ## bounded_source_list
-- Maksim V. Pchelintsev, Peter Rath, and Sebastian Angeltveit, "New lower and upper bounds on Ramsey numbers" (Electronic Journal of Combinatorics 32(4) (2025), #P4.64), Theorem 1 and the note immediately following it, together with William J. Wesley, "Lower bounds for book Ramsey numbers" (Discrete Mathematics 349(5) (2026), 114913), and bounded exact-notation, alternate-notation, source-internal, outside-source, and recent-status checks through 2026-04-14.
-- Pchelintsev-Rath-Angeltveit 2025, Wesley 2026, and bounded 2026-04-14 exact-statement, synonym, source-internal, outside-source, and recent-status checks.
+- Maksim V. Pchelintsev, Peter Rath, and Sebastian Angeltveit, "New lower and upper bounds on Ramsey numbers" (Electronic Journal of Combinatorics 32(4), 2025), Theorem 1 and the note immediately following it, together with William J. Wesley, "Lower bounds for book Ramsey numbers" (Discrete Mathematics 349(5), 2026, 114913).
+- Pchelintsev-Rath-Angeltveit 2025 Theorem 1 and note after Theorem 1, Wesley 2026, and bounded exact-notation, alternate-notation, source-internal, outside-source, and recent-status checks through 2026-04-14, plus local 2026-04-15 attempt-registry conflict checks.
 - artifacts/r-b10-b10-diagonal-book-ramsey/record.md
 - artifacts/r-b10-b10-diagonal-book-ramsey/status.json
