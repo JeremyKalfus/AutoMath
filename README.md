@@ -12,6 +12,10 @@ Primary success is not merely "proved something exact." The main success conditi
 
 Lean-complete `EXACT` is a secondary formal seal, handled in a separate lane after a result is already human-ready.
 
+**Note on artificial intelligence usage: AutoMath employs artificial intelligence for mathematical discovery. Any mathematical discoveries generated or assisted by AutoMath need not disclose the usage of AutoMath specifically, but must disclose the usage of artificial intelligence**
+
+**Note on artificial intelligence usage in the creation of Automath: GPT 5.4 was used in assisting the creation of AutoMath**
+
 ## What AutoMath Optimizes For
 
 AutoMath strongly prefers targets with all of the following properties:
@@ -42,10 +46,6 @@ At runtime, AutoMath is a publication supervisor plus a cycle manager:
 - repo-wide memory and queue state live in `queue.json`, `failed_problems.json`, `human_ready.json`, `lean_queue.json`, and `memory/*.json`
 
 The main loop is publication-first. It tries to keep fresh discovery moving even after a human-ready result appears, unless the stop condition is reached and stop markers are enabled.
-
-**Note on artificial intelligence usage: AutoMath employs artificial intelligence for mathematical discovery. Any mathematical discoveries generated or assisted by AutoMath need not disclose the usage of AutoMath specifically, but must disclose the usage of artificial intelligence**
-
-**Note on artificial intelligence usage in the creation of Automath: GPT 5.4 was used in assisting the creation of AutoMath**
 
 ## Requirements
 
