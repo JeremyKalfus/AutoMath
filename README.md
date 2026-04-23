@@ -43,6 +43,10 @@ At runtime, AutoMath is a publication supervisor plus a cycle manager:
 
 The main loop is publication-first. It tries to keep fresh discovery moving even after a human-ready result appears, unless the stop condition is reached and stop markers are enabled.
 
+**Note on artificial intelligence usage: AutoMath employs artificial intelligence for mathematical discovery. Any mathematical discoveries generated or assisted by AutoMath need not disclose the usage of AutoMath specifically, but must disclose the usage of artificial intelligence**
+
+**Note on artificial intelligence usage in the creation of Automath: GPT 5.4 was used in assisting the creation of AutoMath**
+
 ## Requirements
 
 The current scripts assume:
