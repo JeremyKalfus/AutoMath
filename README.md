@@ -1,6 +1,6 @@
 # AutoMath
 
-AutoMath is an automated math-research harness for finding small frontier-novel results that are already close to publishable as short papers.
+AutoMath is an automated math-research harness for finding frontier-novel results that are publishable as short papers.
 
 The repo is currently configured for a strict one-shot publication lane under the `MICRO-PAPER` objective. In plain English, it does not try to win by building a giant campaign. It tries to find the smallest honest open claim where one strong solve is already most of a paper.
 
@@ -320,16 +320,3 @@ If a worker times out, exits unexpectedly, or fails to write a usable verdict, t
 - rotate the candidate to the back of the queue
 
 This is a deliberate rule of the harness: broken runtime behavior should not masquerade as a mathematical negative result.
-
-## Practical Mental Model
-
-The easiest way to think about AutoMath is:
-
-1. curate a queue of tiny paper-shaped packets
-2. spend bounded parallel effort on the top one or two
-3. verify skeptically
-4. audit for honest publication status
-5. move human-ready packets out of the way so fresh discovery keeps going
-6. formalize later, in a separate Lean lane, if that helps seal the packet
-
-This repo is therefore best understood as a publication engine with theorem-proving components, not as a generic proof search sandbox.
