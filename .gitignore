@@ -2,7 +2,6 @@
 .stop_harness
 .worktrees/
 scripts/__pycache__/
-artifacts/_logs/
 lean/.DS_Store
 
 # Local solving state / planning
@@ -13,7 +12,9 @@ human_ready.json
 lean_queue.json
 selected_problem.md
 memory/*.json
-artifacts/workflow_diagrams/
+artifacts/
+PHASE8_VALIDATION.md
+observer_issues.md
 PLANS.md
 *_PLAN.md
 *_PLANS.md

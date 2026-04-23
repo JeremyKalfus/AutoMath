@@ -1,5 +1,0 @@
-import AutoMath.Z2Power8
-
-#print axioms AutoMath.Z2Power8.z2_power_8_zeroDivisorGraph_prime
-#print axioms AutoMath.Z2Power8.z2_power_8_zeroDivisorGraph_prime_checked
-#print axioms AutoMath.Z2Power8.z2_power_8_zeroDivisorGraph_prime_explicit

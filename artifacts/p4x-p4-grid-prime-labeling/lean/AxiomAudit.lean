@@ -1,6 +1,0 @@
-import AutoMath.P4xP4GridPrimeLabeling
-
-#print axioms AutoMath.P4xP4GridPrimeLabeling.p4x_p4_grid_prime
-#print axioms AutoMath.P4xP4GridPrimeLabeling.p4x_p4_grid_prime_checked
-#print axioms AutoMath.P4xP4GridPrimeLabeling.p4x_p4_grid_prime_explicit
-#print axioms AutoMath.P4xP4GridPrimeLabeling.witness_values_match_record

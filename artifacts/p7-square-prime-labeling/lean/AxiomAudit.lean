@@ -1,5 +1,0 @@
-import AutoMath.P7SquarePrimeLabeling
-
-#print axioms AutoMath.P7SquarePrimeLabeling.p7_square_prime
-#print axioms AutoMath.P7SquarePrimeLabeling.p7_square_prime_explicit
-#print axioms AutoMath.P7SquarePrimeLabeling.witness_values_match_record

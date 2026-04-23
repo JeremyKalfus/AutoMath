@@ -1,9 +1,0 @@
-import AutoMath.SRG10033812
-
-#print axioms AutoMath.SRG10033812.srg_100_33_8_12_statement
-#print axioms AutoMath.SRG10033812.srg_100_33_8_12_nonexistence_skeleton
-#print axioms AutoMath.SRG10033812.parameters_satisfy_basic_srg_identity
-#print axioms AutoMath.SRG10033812.srg_matrix_identity
-#print axioms AutoMath.SRG10033812.nontrivial_multiplicities_forced_by_trace
-#print axioms AutoMath.SRG10033812.candidate_record_multiplicities_are_incorrect
-#print axioms AutoMath.SRG10033812.claimed_spectrum_line_from_record_is_false

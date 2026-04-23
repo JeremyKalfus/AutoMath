@@ -1,5 +1,0 @@
-import AutoMath.Z5Z5Z2
-
-#print axioms AutoMath.Z5Z5Z2.z5_z5_z2_zeroDivisorGraph_prime
-#print axioms AutoMath.Z5Z5Z2.z5_z5_z2_zeroDivisorGraph_prime_checked
-#print axioms AutoMath.Z5Z5Z2.z5_z5_z2_zeroDivisorGraph_prime_explicit

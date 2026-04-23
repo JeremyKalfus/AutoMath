@@ -1,8 +1,0 @@
-import AutoMath.DSRG9112651
-
-#print axioms AutoMath.DSRG9112651.no_dsrg_91_12_6_5_1_statement
-#print axioms AutoMath.DSRG9112651.exact_counterexample_statement_faithful
-#print axioms AutoMath.DSRG9112651.no_dsrg_91_12_6_5_1_skeleton
-#print axioms AutoMath.DSRG9112651.corrected_mutual_block_row_sum
-#print axioms AutoMath.DSRG9112651.corrected_out_only_block_row_sum
-#print axioms AutoMath.DSRG9112651.counterexample_linear_constraints_consistent

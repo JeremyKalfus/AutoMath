@@ -70,7 +70,10 @@ seed_monitor_checkout() {
     ledger.md
     queue.json
     failed_problems.json
+    human_ready.json
+    lean_queue.json
     selected_problem.md
+    memory
     prompts
     scripts
     run_once.sh
@@ -97,7 +100,11 @@ sync_monitor_results_back() {
   local items=(
     ledger.md
     queue.json
+    failed_problems.json
+    human_ready.json
+    lean_queue.json
     selected_problem.md
+    memory
     PROOFS.md
     artifacts/_logs/events.jsonl
     artifacts/summary.md
