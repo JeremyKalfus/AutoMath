@@ -1,4 +1,6 @@
 # AutoMath
+[![DOI](https://zenodo.org/badge/1204505297.svg)](https://doi.org/10.5281/zenodo.19712304)
+
 
 AutoMath is an automated math-research harness for finding frontier-novel results that are publishable as short papers.
 
