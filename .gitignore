@@ -4,3 +4,18 @@
 scripts/__pycache__/
 artifacts/_logs/
 lean/.DS_Store
+
+# Local solving state / planning
+ledger.md
+queue.json
+failed_problems.json
+human_ready.json
+lean_queue.json
+selected_problem.md
+memory/*.json
+artifacts/workflow_diagrams/
+PLANS.md
+*_PLAN.md
+*_PLANS.md
+*_plan.md
+*_plans.md
