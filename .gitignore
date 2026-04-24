@@ -8,7 +8,6 @@ lean/.DS_Store
 ledger.md
 queue.json
 failed_problems.json
-human_ready.json
 lean_queue.json
 selected_problem.md
 memory/*.json

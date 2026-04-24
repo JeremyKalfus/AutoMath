@@ -28,11 +28,10 @@ LOGS = ARTIFACTS / "_logs"
 SUMMARY_PATH = ARTIFACTS / "summary.md"
 RUNTIME_STATE = LOGS / "runtime_state.json"
 LEDGER = ROOT / "ledger.md"
-PROOFS = ROOT / "PROOFS.md"
 QUEUE = ROOT / "queue.json"
 FAILED = ROOT / "failed_problems.json"
-HUMAN_READY = ROOT / "human_ready.json"
 LEAN_QUEUE = ROOT / "lean_queue.json"
+LEAN_COMPLETE = ROOT / "lean_complete.json"
 SELECTED = ROOT / "selected_problem.md"
 AGENTS_FILE = ROOT / "AGENTS.md"
 MEMORY_DIR = ROOT / "memory"
@@ -97,10 +96,17 @@ def ensure_state() -> None:
         QUEUE.write_text("[]\n", encoding="utf-8")
     if not FAILED.exists():
         FAILED.write_text("[]\n", encoding="utf-8")
-    if not HUMAN_READY.exists():
-        HUMAN_READY.write_text("[]\n", encoding="utf-8")
     if not LEAN_QUEUE.exists():
         LEAN_QUEUE.write_text("[]\n", encoding="utf-8")
+    if not LEAN_COMPLETE.exists():
+        LEAN_COMPLETE.write_text(
+            '{\n  "schema_version": 1,\n  "generated_on": null,\n'
+            '  "meaning": "Publication-significant Lean-complete proofs AutoMath has definitively found and proved in Lean",\n'
+            '  "legacy_instance_only_archive": "archive/lean_complete.instance_only_legacy.json",\n'
+            '  "legacy_markdown_archive": "archive/PROOFS.legacy.md",\n'
+            '  "proof_count": 0,\n  "proofs": []\n}\n',
+            encoding="utf-8",
+        )
     if not SELECTED.exists():
         SELECTED.write_text("# Selected Problem\n\nNo problem selected yet.\n", encoding="utf-8")
     if not PAPER_MEMORY.exists():
@@ -783,7 +789,7 @@ def publication_stop_ready(path: pathlib.Path) -> bool:
     return bool(data.get("proof_artifacts_preserved"))
 
 
-def human_ready_status(data: dict) -> bool:
+def lean_queue_ready_status(data: dict) -> bool:
     if not isinstance(data, dict):
         return False
     if data.get("lean_complete") is True:
@@ -823,8 +829,8 @@ def candidate_terminal_reason(slug: str) -> str | None:
         return f"local status verify_verdict={verify_verdict} is terminal for queue scheduling"
     if data.get("publication_status") == "REDISCOVERY":
         return "local status publication_status=REDISCOVERY is terminal for queue scheduling"
-    if data.get("human_ready") is True:
-        return "local status human_ready=true is already archived to the Lean queue"
+    if data.get("lean_queue_ready") is True or data.get("human_ready") is True:
+        return "local status is already archived to lean_queue.json"
     if data.get("lean_complete") is True and classification == "EXACT":
         return "local status is already Lean-complete EXACT and should not be re-queued"
     return None
@@ -915,8 +921,8 @@ def ensure_publication_defaults(path: pathlib.Path) -> None:
     if "publication_confidence" not in data:
         data["publication_confidence"] = data.get("confidence", "medium")
         changed = True
-    if "human_ready" not in data:
-        data["human_ready"] = human_ready_status(data)
+    if "lean_queue_ready" not in data:
+        data["lean_queue_ready"] = lean_queue_ready_status(data)
         changed = True
     if changed:
         write_json(path, data)
@@ -1628,17 +1634,17 @@ def thin_failed_entry(item) -> dict:
     }
 
 
-def thin_human_ready_entry(item) -> dict:
+def thin_lean_queue_entry(item) -> dict:
     if not isinstance(item, dict):
         return {
             "slug": str(item),
             "title": str(item),
             "publication_status": "PAPER_READY",
-            "human_ready": True,
+            "lean_queue_ready": True,
             "lean_ready": False,
             "lean_complete": False,
             "checked_on": None,
-            "human_ready_on": None,
+            "lean_queue_on": None,
             "next_action": "",
             "working_packet_path": None,
             "entry_snapshot": {},
@@ -1648,38 +1654,38 @@ def thin_human_ready_entry(item) -> dict:
         "slug": item.get("slug") or "(missing slug)",
         "title": item.get("title") or item.get("slug") or "(untitled)",
         "publication_status": item.get("publication_status") or "PAPER_READY",
-        "human_ready": bool(item.get("human_ready", True)),
+        "lean_queue_ready": bool(item.get("lean_queue_ready", item.get("human_ready", True))),
         "lean_ready": bool(item.get("lean_ready", False)),
         "lean_complete": bool(item.get("lean_complete", False)),
         "checked_on": item.get("checked_on"),
-        "human_ready_on": item.get("human_ready_on"),
+        "lean_queue_on": item.get("lean_queue_on") or item.get("human_ready_on"),
         "next_action": compact_text(item.get("next_action")),
         "working_packet_path": item.get("working_packet_path"),
         "entry_snapshot": snapshot if isinstance(snapshot, dict) else {},
     }
 
 
-def load_human_ready_entries() -> list[dict]:
-    entries = load_json(HUMAN_READY, [])
+def load_lean_queue_entries() -> list[dict]:
+    entries = load_json(LEAN_QUEUE, [])
     if not isinstance(entries, list):
         return []
-    return [thin_human_ready_entry(item) for item in entries]
+    return [thin_lean_queue_entry(item) for item in entries]
 
 
-def upsert_human_ready_entry(item: dict) -> None:
-    entries = load_human_ready_entries()
+def upsert_lean_queue_entry(item: dict) -> None:
+    entries = load_lean_queue_entries()
     slug = item.get("slug")
     updated: list[dict] = []
     replaced = False
     for existing in entries:
         if existing.get("slug") == slug:
-            updated.append(thin_human_ready_entry(item))
+            updated.append(thin_lean_queue_entry(item))
             replaced = True
         else:
             updated.append(existing)
     if not replaced:
-        updated.append(thin_human_ready_entry(item))
-    write_json(HUMAN_READY, updated)
+        updated.append(thin_lean_queue_entry(item))
+    write_json(LEAN_QUEUE, updated)
 
 
 def candidate_last_lean_queue_attempt(slug: str) -> dt.datetime | None:
@@ -1696,14 +1702,146 @@ def lean_queue_priority(item: dict) -> tuple[int, float, str]:
     return (1, last_attempt.timestamp(), item.get("slug", ""))
 
 
-def build_human_ready_registry_entry(entry: dict, status_path: pathlib.Path) -> dict:
+def registry_value(status: dict, item: dict, snapshot: dict, key: str, default=None):
+    for source in (status, item, snapshot):
+        if not isinstance(source, dict):
+            continue
+        value = source.get(key)
+        if value is not None and value != "":
+            return value
+    return default
+
+
+def build_lean_complete_registry_entry(item: dict, status: dict) -> dict:
+    snapshot = item.get("entry_snapshot")
+    if not isinstance(snapshot, dict):
+        snapshot = {}
+    slug = item["slug"]
+    artifact_dir = ROOT / "artifacts" / slug
+    record_path = artifact_dir / "record.md"
+    status_path = candidate_status_path(slug)
+    working_packet_path = candidate_working_packet_path(slug)
+    lean_dir = artifact_dir / "lean"
+    lean_complete = bool(registry_value(status, item, snapshot, "lean_complete", False))
+    lean_ready = bool(registry_value(status, item, snapshot, "lean_ready", False))
+    formalization_status = "complete" if lean_complete else "pending" if lean_ready else "not_requested"
+    transfer_kit = registry_value(status, item, snapshot, "transfer_kit", {})
+    if not isinstance(transfer_kit, dict):
+        transfer_kit = {}
+    return {
+        "slug": slug,
+        "title": registry_value(status, item, snapshot, "title", slug),
+        "lean_complete": True,
+        "proved_on": registry_value(status, item, snapshot, "lean_completed_on")
+        or registry_value(status, item, snapshot, "checked_on"),
+        "lean_queue_on": registry_value(status, item, snapshot, "lean_queue_on")
+        or registry_value(status, item, snapshot, "human_ready_on"),
+        "checked_on": registry_value(status, item, snapshot, "checked_on"),
+        "verification": {
+            "verify_verdict": registry_value(status, item, snapshot, "verify_verdict"),
+            "classification": registry_value(status, item, snapshot, "classification"),
+            "publication_status": registry_value(status, item, snapshot, "publication_status"),
+            "publication_confidence": registry_value(status, item, snapshot, "publication_confidence"),
+            "proof_artifacts_preserved": bool(
+                registry_value(status, item, snapshot, "proof_artifacts_preserved", False)
+            ),
+            "strongest_honest_claim": registry_value(status, item, snapshot, "strongest_honest_claim"),
+        },
+        "claim": {
+            "question": registry_value(status, item, snapshot, "question"),
+            "canonical_statement": registry_value(status, item, snapshot, "canonical_statement"),
+            "intended_statement": registry_value(status, item, snapshot, "intended_statement"),
+            "candidate_theorem_slice": registry_value(status, item, snapshot, "candidate_theorem_slice"),
+        },
+        "paper_context": {
+            "canonical_source": registry_value(status, item, snapshot, "canonical_source"),
+            "open_status_checked_on": registry_value(status, item, snapshot, "open_status_checked_on"),
+            "literature_gap": registry_value(status, item, snapshot, "literature_gap"),
+            "publication_packet_frontier_basis": registry_value(
+                status, item, snapshot, "publication_packet_frontier_basis"
+            ),
+            "publication_packet_literature_scope": registry_value(
+                status, item, snapshot, "publication_packet_literature_scope"
+            ),
+            "prior_work_stop_sentence": transfer_kit.get("prior_work_stop_sentence"),
+            "broader_theorem_nonimplication_note": registry_value(
+                status, item, snapshot, "broader_theorem_nonimplication_note"
+            ),
+        },
+        "paper_shape": {
+            "paper_title_hint": registry_value(status, item, snapshot, "paper_title_hint"),
+            "hypothetical_title": registry_value(status, item, snapshot, "hypothetical_title"),
+            "hypothetical_abstract": registry_value(status, item, snapshot, "hypothetical_abstract"),
+            "paper_shape": registry_value(status, item, snapshot, "paper_shape"),
+            "publication_if_solved": registry_value(status, item, snapshot, "publication_if_solved"),
+            "single_solve_paper_explanation": registry_value(
+                status, item, snapshot, "single_solve_paper_explanation"
+            ),
+            "publication_packet_near_paper_reason": registry_value(
+                status, item, snapshot, "publication_packet_near_paper_reason"
+            ),
+        },
+        "proof_package": {
+            "transfer_kit": transfer_kit,
+            "publication_packet_artifact_requirements": registry_value(
+                status, item, snapshot, "publication_packet_artifact_requirements"
+            ),
+            "next_action": registry_value(status, item, snapshot, "next_action"),
+            "artifact_paths": {
+                "artifact_directory": relative_display(artifact_dir),
+                "working_packet": relative_display(working_packet_path),
+                "record": relative_display(record_path),
+                "status": relative_display(status_path),
+                "lean_artifact_directory": relative_display(lean_dir),
+            },
+        },
+        "quality_and_risk": {
+            "paper_leverage_score": registry_value(status, item, snapshot, "paper_leverage_score"),
+            "single_solve_to_paper_fraction": registry_value(
+                status, item, snapshot, "single_solve_to_paper_fraction"
+            ),
+            "title_theorem_strength": registry_value(status, item, snapshot, "title_theorem_strength"),
+            "family_anchor_strength": registry_value(status, item, snapshot, "family_anchor_strength"),
+            "publication_narrative_strength": registry_value(
+                status, item, snapshot, "publication_narrative_strength"
+            ),
+            "editorial_overhead": registry_value(status, item, snapshot, "editorial_overhead"),
+            "immediate_corollary_headroom": registry_value(
+                status, item, snapshot, "immediate_corollary_headroom"
+            ),
+            "isolated_exact_case_risk": registry_value(status, item, snapshot, "isolated_exact_case_risk"),
+            "broader_theorem_implication_risk": registry_value(
+                status, item, snapshot, "broader_theorem_implication_risk"
+            ),
+            "search_heavy": registry_value(status, item, snapshot, "search_heavy"),
+            "certificate_compactness": registry_value(status, item, snapshot, "certificate_compactness"),
+            "exact_gap_from_source": registry_value(status, item, snapshot, "exact_gap_from_source"),
+            "micro_paper_lane_eligible": registry_value(status, item, snapshot, "micro_paper_lane_eligible"),
+        },
+        "formalization": {
+            "status": formalization_status,
+            "lean_ready": lean_ready,
+            "lean_packet_seal": bool(registry_value(status, item, snapshot, "lean_packet_seal", False)),
+            "lean_complete": lean_complete,
+            "lean_gate_reason": registry_value(status, item, snapshot, "lean_gate_reason"),
+            "lean_statement": registry_value(status, item, snapshot, "lean_statement"),
+            "lean_backend_file": registry_value(status, item, snapshot, "lean_backend_file"),
+            "lean_mirrored_files": registry_value(status, item, snapshot, "lean_mirrored_files", []),
+            "main_lean_theorem": registry_value(status, item, snapshot, "main_lean_theorem"),
+            "axiom_audit_note": registry_value(status, item, snapshot, "axiom_audit_note"),
+        },
+        "source_packet": snapshot,
+    }
+
+
+def build_lean_queue_registry_entry(entry: dict, status_path: pathlib.Path) -> dict:
     status = candidate_status_snapshot(entry["slug"]) or {}
     merged_entry = dict(entry_with_working_packet(entry))
     merged_entry.update(
         {
             "publication_status": status.get("publication_status", merged_entry.get("publication_status", "NONE")),
             "publication_confidence": status.get("publication_confidence"),
-            "human_ready": True,
+            "lean_queue_ready": True,
             "lean_ready": status.get("lean_ready"),
             "lean_packet_seal": status.get("lean_packet_seal"),
             "lean_complete": status.get("lean_complete"),
@@ -1714,13 +1852,13 @@ def build_human_ready_registry_entry(entry: dict, status_path: pathlib.Path) -> 
             "proof_artifacts_preserved": status.get("proof_artifacts_preserved"),
         }
     )
-    human_ready_on = status.get("human_ready_on") or now_iso()
+    lean_queue_on = status.get("lean_queue_on") or status.get("human_ready_on") or now_iso()
     return {
         "slug": entry["slug"],
         "title": entry.get("title"),
         "checked_on": today_str(),
-        "human_ready": True,
-        "human_ready_on": human_ready_on,
+        "lean_queue_ready": True,
+        "lean_queue_on": lean_queue_on,
         "publication_status": status.get("publication_status", "PAPER_READY"),
         "publication_confidence": status.get("publication_confidence"),
         "classification": status.get("classification"),
@@ -1811,7 +1949,7 @@ def attempt_registry_raw_entry_from_failed(item) -> dict | None:
     }
 
 
-def attempt_registry_raw_entry_from_human_ready(item: dict) -> dict | None:
+def attempt_registry_raw_entry_from_lean_queue(item: dict) -> dict | None:
     if not isinstance(item, dict) or not item.get("slug"):
         return None
     snapshot = item.get("entry_snapshot") if isinstance(item.get("entry_snapshot"), dict) else {}
@@ -1830,20 +1968,21 @@ def attempt_registry_raw_entry_from_human_ready(item: dict) -> dict | None:
         "slug": item.get("slug"),
         "slug_history": [item.get("slug")],
         "title": item.get("title") or snapshot.get("title") or packet_meta.get("title") or item.get("slug"),
-        "current_status": "HUMAN_READY",
+        "current_status": "LEAN_QUEUE",
         "classification": item.get("classification"),
         "verify_verdict": item.get("verify_verdict"),
         "publication_status": item.get("publication_status") or "PAPER_READY",
-        "human_ready": bool(item.get("human_ready")),
+        "lean_queue_ready": bool(item.get("lean_queue_ready")),
+        "human_ready": bool(item.get("lean_queue_ready")),
         "lean_complete": bool(item.get("lean_complete")),
         "infra_only": False,
         "cooldown_until": None,
         "should_skip_curation": True,
-        "curation_disposition": "human_ready",
-        "surface_origins": ["human_ready"],
+        "curation_disposition": "lean_queue",
+        "surface_origins": ["lean_queue"],
         "artifact_status_path": item.get("artifact_status_path"),
         "working_packet_path": item.get("working_packet_path") or packet_meta.get("working_packet_path"),
-        "notes": compact_text(item.get("strongest_honest_claim") or item.get("next_action") or "Human-ready packet.", 220),
+        "notes": compact_text(item.get("strongest_honest_claim") or item.get("next_action") or "Lean queue packet.", 220),
     }
 
 
@@ -1869,8 +2008,8 @@ def attempt_registry_raw_entry_from_status(status_path: pathlib.Path) -> dict | 
     publication_status = data.get("publication_status")
     infra_only = False
     disposition = "artifact_status"
-    if data.get("human_ready") is True:
-        disposition = "human_ready"
+    if data.get("lean_queue_ready") is True or data.get("human_ready") is True:
+        disposition = "lean_queue"
     elif classification == "PARTIAL":
         disposition = "theorem_facing_partial" if theorem_facing_partial_status(data) else "partial"
     elif classification == "REDISCOVERY" or publication_status == "REDISCOVERY" or verify_verdict == "REDISCOVERY":
@@ -1886,7 +2025,8 @@ def attempt_registry_raw_entry_from_status(status_path: pathlib.Path) -> dict | 
         "classification": classification,
         "verify_verdict": verify_verdict,
         "publication_status": publication_status,
-        "human_ready": bool(data.get("human_ready")),
+        "lean_queue_ready": bool(data.get("lean_queue_ready", data.get("human_ready"))),
+        "human_ready": bool(data.get("lean_queue_ready", data.get("human_ready"))),
         "lean_complete": bool(data.get("lean_complete")),
         "infra_only": infra_only,
         "cooldown_until": runtime_candidate_state(slug).get("cooldown_until"),
@@ -1936,7 +2076,8 @@ def merge_attempt_registry_rows(existing: dict, incoming: dict) -> dict:
             merged[key] = incoming.get(key)
     if incoming.get("parameter_tuple") and not merged.get("parameter_tuple"):
         merged["parameter_tuple"] = incoming.get("parameter_tuple")
-    if incoming.get("human_ready"):
+    if incoming.get("lean_queue_ready") or incoming.get("human_ready"):
+        merged["lean_queue_ready"] = True
         merged["human_ready"] = True
     if incoming.get("lean_complete"):
         merged["lean_complete"] = True
@@ -1944,13 +2085,13 @@ def merge_attempt_registry_rows(existing: dict, incoming: dict) -> dict:
         merged["should_skip_curation"] = True
     merged["infra_only"] = bool(existing.get("infra_only")) and bool(incoming.get("infra_only"))
     current_priority = (
-        4 if merged.get("human_ready") else 0,
+        4 if (merged.get("lean_queue_ready") or merged.get("human_ready")) else 0,
         publication_rank(merged.get("publication_status")),
         1 if merged.get("verify_verdict") == "VERIFIED" else 0,
         1 if merged.get("classification") else 0,
     )
     incoming_priority = (
-        4 if incoming.get("human_ready") else 0,
+        4 if (incoming.get("lean_queue_ready") or incoming.get("human_ready")) else 0,
         publication_rank(incoming.get("publication_status")),
         1 if incoming.get("verify_verdict") == "VERIFIED" else 0,
         1 if incoming.get("classification") else 0,
@@ -1980,8 +2121,8 @@ def refresh_attempt_registry() -> None:
         raw = attempt_registry_raw_entry_from_failed(item)
         if raw:
             rows.append(raw)
-    for item in load_human_ready_entries():
-        raw = attempt_registry_raw_entry_from_human_ready(item)
+    for item in load_lean_queue_entries():
+        raw = attempt_registry_raw_entry_from_lean_queue(item)
         if raw:
             rows.append(raw)
     for status_path in sorted(ARTIFACTS.glob("*/status.json")):
@@ -2241,8 +2382,8 @@ def source_registry_exhausted_reason(entry: dict) -> str | None:
     return None
 
 
-def refresh_lean_queue() -> None:
-    entries = load_human_ready_entries()
+def derived_lean_queue_entries(*, rewrite_lean_queue: bool = False) -> list[dict]:
+    entries = load_lean_queue_entries()
     pending: list[dict] = []
     for item in entries:
         slug = item.get("slug")
@@ -2251,7 +2392,7 @@ def refresh_lean_queue() -> None:
         status = candidate_status_snapshot(slug)
         if status is None:
             continue
-        item["human_ready"] = human_ready_status(status)
+        item["lean_queue_ready"] = lean_queue_ready_status(status)
         item["lean_ready"] = status.get("lean_ready")
         item["lean_packet_seal"] = status.get("lean_packet_seal")
         item["lean_complete"] = status.get("lean_complete")
@@ -2260,11 +2401,76 @@ def refresh_lean_queue() -> None:
         item["classification"] = status.get("classification")
         item["next_action"] = status.get("next_action")
         item["strongest_honest_claim"] = compact_text(status.get("strongest_honest_claim"), 320)
-        if item.get("human_ready") and status.get("lean_complete") is not True and status.get("lean_ready") is True:
+        pending_for_lean = item.get("lean_queue_ready") and status.get("lean_complete") is not True and status.get("lean_ready") is True
+        if pending_for_lean:
+            item["next_action"] = (
+                "This packet belongs in lean_queue.json: solve, verification, and significance checks are done; Lean is the remaining gate."
+            )
+        elif item.get("lean_queue_ready") and status.get("lean_complete") is True:
+            item["next_action"] = (
+                "This packet is Lean-complete and should live in lean_complete.json, not lean_queue.json."
+            )
+        if (
+            item.get("next_action")
+            and item.get("next_action") != status.get("next_action")
+            and "LEAN_QUEUE" in str(status.get("next_action") or "")
+        ):
+            status["next_action"] = item["next_action"]
+            write_json(candidate_status_path(slug), status)
+        snapshot = item.get("entry_snapshot")
+        if isinstance(snapshot, dict) and item.get("next_action"):
+            snapshot["next_action"] = item["next_action"]
+            snapshot["lean_queue_ready"] = item["lean_queue_ready"]
+            snapshot["lean_ready"] = item["lean_ready"]
+            snapshot["lean_packet_seal"] = item["lean_packet_seal"]
+            snapshot["lean_complete"] = item["lean_complete"]
+        if pending_for_lean:
             pending.append(item)
-    write_json(HUMAN_READY, entries)
+    if rewrite_lean_queue:
+        write_json(LEAN_QUEUE, pending)
     pending.sort(key=lean_queue_priority)
-    write_json(LEAN_QUEUE, pending)
+    return pending
+
+
+def refresh_lean_complete_json() -> None:
+    existing = load_json(LEAN_COMPLETE, {})
+    proof_by_slug: dict[str, dict] = {}
+    if isinstance(existing, dict):
+        for item in existing.get("proofs", []) if isinstance(existing.get("proofs"), list) else []:
+            if isinstance(item, dict) and item.get("slug"):
+                proof_by_slug[item["slug"]] = item
+    for item in load_lean_queue_entries():
+        slug = item.get("slug")
+        if not slug:
+            continue
+        status = candidate_status_snapshot(slug) or {}
+        snapshot = item.get("entry_snapshot")
+        if not isinstance(snapshot, dict):
+            snapshot = {}
+        if registry_value(status, item, snapshot, "lean_complete") is not True:
+            continue
+        if registry_value(status, item, snapshot, "classification") != "EXACT":
+            continue
+        if registry_value(status, item, snapshot, "publication_status") != "PAPER_READY":
+            continue
+        proof_by_slug[slug] = build_lean_complete_registry_entry(item, status)
+    proofs = sorted(proof_by_slug.values(), key=lambda item: (str(item.get("proved_on") or ""), str(item.get("slug") or "")))
+    registry = {
+        "schema_version": 1,
+        "generated_on": now_iso(),
+        "meaning": "Publication-significant Lean-complete proofs AutoMath has definitively found and proved in Lean.",
+        "legacy_instance_only_archive": "archive/lean_complete.instance_only_legacy.json",
+        "legacy_markdown_archive": "archive/PROOFS.legacy.md",
+        "proof_count": len(proofs),
+        "proofs": proofs,
+    }
+    write_stable_memory_json(LEAN_COMPLETE, registry)
+
+
+def refresh_lean_queue() -> list[dict]:
+    pending = derived_lean_queue_entries(rewrite_lean_queue=True)
+    refresh_lean_complete_json()
+    return pending
 
 
 def refresh_search_memory() -> None:
@@ -2307,36 +2513,36 @@ def refresh_paper_memory(queue_entries: list[dict] | None = None) -> None:
         for item in (thin_failed_entry(entry) for entry in load_json(FAILED, []))
         if item.get("reason") == "EXACT"
     ]
-    human_ready_packets = [
+    lean_queue_packets = [
         {
             "slug": item.get("slug"),
             "title": item.get("title"),
             "publication_status": item.get("publication_status"),
-            "human_ready": item.get("human_ready"),
-            "human_ready_on": item.get("human_ready_on"),
+            "lean_queue_ready": item.get("lean_queue_ready"),
+            "lean_queue_on": item.get("lean_queue_on"),
             "lean_ready": item.get("lean_ready"),
             "lean_complete": item.get("lean_complete"),
             "next_action": item.get("next_action"),
             "working_packet_path": item.get("working_packet_path"),
         }
-        for item in load_human_ready_entries()
+        for item in load_lean_queue_entries()
     ]
     lean_queue_summary = [
         {
             "slug": item.get("slug"),
             "title": item.get("title"),
-            "human_ready_on": item.get("human_ready_on"),
+            "lean_queue_on": item.get("lean_queue_on"),
             "lean_ready": item.get("lean_ready"),
             "lean_complete": item.get("lean_complete"),
             "next_action": item.get("next_action"),
         }
-        for item in load_json(LEAN_QUEUE, [])
+        for item in derived_lean_queue_entries()
         if isinstance(item, dict)
     ]
     summary = {
         "generated_on": now_iso(),
         "queued_publication_packets": packets,
-        "human_ready_packets": human_ready_packets[-20:],
+        "lean_queue_packets": lean_queue_packets[-20:],
         "lean_queue": lean_queue_summary[-20:],
         "exact_wins": exact_wins[-20:],
     }
@@ -2728,32 +2934,30 @@ def archive_attempted_problem(entry: dict, reason: str, notes: str, publication_
     remove_problem_from_queue(slug)
 
 
-def register_human_ready_problem(entry: dict, status_path: pathlib.Path) -> None:
+def register_lean_queue_problem(entry: dict, status_path: pathlib.Path) -> None:
     status = candidate_status_snapshot(entry["slug"]) or {}
-    status["human_ready"] = True
-    status.setdefault("human_ready_on", now_iso())
+    status["lean_queue_ready"] = True
+    status.setdefault("lean_queue_on", now_iso())
     if status.get("lean_complete") is not True:
         if status.get("lean_ready") is True:
             status["next_action"] = (
-                "This packet is HUMAN_READY and has been moved to LEAN_QUEUE for formal sealing; "
-                "do not block fresh curation/solve work on pending Lean."
+                "This packet belongs in lean_queue.json: solve, verification, and significance checks are done; Lean is the remaining gate."
             )
         else:
             status["next_action"] = (
-                "This packet is HUMAN_READY and archived from the main queue; "
-                "Lean is a later optional seal and should not block fresh curation/solve work."
+                "This packet passed solve, verification, and significance checks but is not Lean-ready; keep it off the main queue without claiming Lean completion."
             )
     write_json(status_path, status)
-    upsert_human_ready_entry(build_human_ready_registry_entry(entry, status_path))
+    upsert_lean_queue_entry(build_lean_queue_registry_entry(entry, status_path))
     refresh_lean_queue()
     remove_problem_from_queue(entry["slug"])
     if status.get("lean_ready") is True:
         append_ledger(
-            f"{entry['slug']} reached HUMAN_READY and was moved off the main queue into LEAN_QUEUE so fresh discovery can continue."
+            f"{entry['slug']} entered lean_queue.json: solve, verification, and significance checks are done; Lean is the remaining gate."
         )
     else:
         append_ledger(
-            f"{entry['slug']} reached HUMAN_READY and was archived off the main queue without blocking on Lean."
+            f"{entry['slug']} passed publication checks but is not Lean-ready, so it was archived off the main queue without claiming Lean completion."
         )
 
 
@@ -3365,8 +3569,8 @@ def run_curation_if_needed(required_entry_type: str | None = None) -> bool:
 def write_publication_summary(worker_status: str) -> None:
     refresh_context_hygiene_surfaces()
     paper_candidate = select_paper_candidate_entry()
-    human_ready_packets = load_human_ready_entries()
-    lean_queue_entries = load_json(LEAN_QUEUE, [])
+    lean_queue_packets = load_lean_queue_entries()
+    lean_queue_entries = derived_lean_queue_entries()
     candidate_slug = paper_candidate["slug"] if paper_candidate else "(none queued)"
     candidate_title = paper_candidate.get("title", paper_candidate.get("slug", "(untitled)")) if paper_candidate else "(none queued)"
     candidate_publication_if_solved = paper_candidate.get("publication_if_solved", "(not recorded)") if paper_candidate else "(none queued)"
@@ -3402,12 +3606,11 @@ def write_publication_summary(worker_status: str) -> None:
         f"- Solve timeout: `{SOLVE_TIMEOUT}` seconds",
         f"- Concurrent solve slots: `{SOLVE_CONCURRENCY}`",
         f"- xhigh usable in this environment: `{'yes' if supports_xhigh() else 'no'}`",
-        f"- HUMAN_READY backlog: `{len(human_ready_packets)}`",
-        f"- LEAN_QUEUE backlog: `{len(lean_queue_entries)}`",
-        f"- Next LEAN_QUEUE packet: `{lean_queue_entries[0].get('slug', '(none)') if lean_queue_entries else '(none)'}`",
-        "- LEAN_QUEUE is processed only by the separate Lean runner, not by the main publication loop",
+        f"- lean_queue.json backlog: `{len(lean_queue_packets)}`",
+        f"- Next Lean packet: `{lean_queue_entries[0].get('slug', '(none)') if lean_queue_entries else '(none)'}`",
+        "- lean_queue.json means solve, verification, and significance checks are done; Lean is the remaining gate",
         "- Primary success tier: `publication_status = PAPER_READY` with verified preserved proof artifacts",
-        "- Stop condition: HUMAN_READY micro-paper packet with `verify_verdict = VERIFIED`, `publication_status = PAPER_READY`, and preserved proof artifacts",
+        "- Stop condition: packet enters `lean_queue.json` with `verify_verdict = VERIFIED`, `publication_status = PAPER_READY`, and preserved proof artifacts",
         f"- Worker infra status this cycle: `{worker_status}`",
         f"- Summary path: `{SUMMARY_PATH.relative_to(ROOT)}`",
         f"- Candidate status path: `{candidate_status_path}`",
@@ -3431,8 +3634,8 @@ def write_publication_summary(worker_status: str) -> None:
 
 
 def should_run_instance_lean(entry: dict, status_path: pathlib.Path) -> tuple[bool, str]:
-    if status_value(status_path, "human_ready") is not True:
-        return False, "the packet is not yet HUMAN_READY and should stay on the main discovery lane"
+    if status_value(status_path, "lean_queue_ready") is not True and status_value(status_path, "human_ready") is not True:
+        return False, "the packet is not in lean_queue.json and should stay on the main discovery lane"
     if status_value(status_path, "lean_ready") is not True:
         return False, "Lean is not marked ready"
     if status_value(status_path, "lean_packet_seal") is not True:
@@ -3483,21 +3686,20 @@ def run_instance_lean(entry: dict, status_path: pathlib.Path) -> None:
             "Lean verified the exact intended statement in the AutoMath backend; archived to avoid rerunning this solved micro-paper candidate.",
             publication_status,
         )
-        append_ledger(f"Lean verified the exact intended statement for {entry['slug']}; the solved micro-paper candidate was archived.")
-        upsert_human_ready_entry(build_human_ready_registry_entry(entry, status_path))
+        append_ledger(f"Lean verified the exact intended statement for {entry['slug']}; it now belongs in lean_complete.json.")
+        refresh_lean_complete_json()
         refresh_lean_queue()
         return
     if result.returncode == 124:
         append_ledger(f"Lean infrastructure timeout for {entry['slug']}; the instance stays archived only if later runs finish the exact proof.")
     elif result.returncode != 0:
         append_ledger(f"Lean infrastructure failure for {entry['slug']}; the candidate remains pending for a later micro-paper pass.")
-    upsert_human_ready_entry(build_human_ready_registry_entry(entry, status_path))
+    upsert_lean_queue_entry(build_lean_queue_registry_entry(entry, status_path))
     refresh_lean_queue()
 
 
 def run_lean_queue_cycle(*, emit_summary: bool = True) -> int:
-    refresh_lean_queue()
-    queue_entries = load_json(LEAN_QUEUE, [])
+    queue_entries = refresh_lean_queue()
     if not isinstance(queue_entries, list) or not queue_entries:
         if emit_summary:
             write_publication_summary("not_used")
@@ -3516,7 +3718,7 @@ def run_lean_queue_cycle(*, emit_summary: bool = True) -> int:
             write_publication_summary("not_used")
         return 0
     update_runtime_candidate_state(slug, last_lean_queue_attempt_on=now_iso())
-    append_ledger(f"LEAN_QUEUE selected HUMAN_READY packet {slug} for a non-blocking formal sealing pass.")
+    append_ledger(f"lean_queue.json selected {slug} for a non-blocking Lean proof pass.")
     render_queue_selection(entry)
     run_instance_lean(entry, status_path)
     if emit_summary:
@@ -3691,7 +3893,7 @@ def run_post_solve_pipeline(
     publication_status = status_value(status_path, "publication_status") or "NONE"
 
     if verify_verdict == "VERIFIED" and publication_status == "PAPER_READY":
-        register_human_ready_problem(entry, status_path)
+        register_lean_queue_problem(entry, status_path)
         if emit_summary:
             write_publication_summary("not_used")
         return 0
@@ -3716,18 +3918,18 @@ def run_post_solve_pipeline(
         archive_attempted_problem(
             entry,
             classification,
-            "Verified but not HUMAN_READY; archived off the main queue so fresh discovery can continue without waiting on Lean.",
+            "Verified but not ready for lean_queue.json; archived off the main queue so fresh discovery can continue without waiting on Lean.",
             publication_status,
         )
         append_ledger(
-            f"Archived the verified-but-not-human-ready micro-paper attempt for {entry['slug']} so the queue can move on cleanly."
+            f"Archived the verified-but-not-lean-queue-ready micro-paper attempt for {entry['slug']} so the queue can move on cleanly."
         )
     if publication_stop_ready(status_path) and stop_harness_enabled():
         STOP_MARKER.write_text("", encoding="utf-8")
         append_ledger(f"Publication-ready stop marker set after {entry['slug']} reached PAPER_READY.")
     elif publication_stop_ready(status_path):
         append_ledger(
-            f"{entry['slug']} reached the HUMAN_READY stop condition, but AUTOMATH_ENABLE_STOP_HARNESS=0 so continuous mode will keep running."
+            f"{entry['slug']} reached the lean_queue.json stop condition, but AUTOMATH_ENABLE_STOP_HARNESS=0 so continuous mode will keep running."
         )
     if emit_summary:
         write_publication_summary("not_used")

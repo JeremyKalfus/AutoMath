@@ -1,21 +1,24 @@
-# AutoMath Proofs
+# AutoMath Legacy Exact-Instance Proofs
 
-This file is maintained by the LEAN stage of AutoMath.
-When a candidate is upgraded to `EXACT`, the same Lean run should update or append that slug's section here before it finalizes `status.json`.
+Archived on 2026-04-24 when the publication-facing proof surface moved to root `proofs.json`.
+These entries are preserved as historical Lean-complete exact instances, but they are not the current paper-ready packet registry.
 
-It records every AutoMath result that currently counts as a full success inside the harness:
+This file is no longer maintained by the live harness.
+Before the `proofs.json` migration, the LEAN stage updated or appended a slug's section here before it finalized `status.json`.
+
+It records historical AutoMath exact-instance results that previously counted as full exact successes inside the harness:
 
 - `classification = EXACT`
 - `lean_complete = true`
 
 Publication-mode note:
 
-- this file remains the exact-instance inventory
+- this file is an archived exact-instance inventory
 - exact wins are preserved even when they are only feeder evidence
 - `EXACT` alone is no longer a global stop condition
 - each entry may still have `publication_status = INSTANCE_ONLY`
 
-## Update Rule
+### Former Update Rule
 
 - Keep exactly one section per solved slug using heading `## <slug>`.
 - If a slug's section already exists, replace that section instead of duplicating it.

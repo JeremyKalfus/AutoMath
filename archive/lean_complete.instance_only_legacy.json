@@ -1,0 +1,234 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-04-24T00:20:15.610988-04:00",
+  "meaning": "Lean-complete proofs AutoMath has definitively found and proved in Lean.",
+  "legacy_archive": "archive/PROOFS.legacy.md",
+  "proof_count": 9,
+  "proofs": [
+    {
+      "slug": "p4x-p4-grid-prime-labeling",
+      "title": "Does the 4x4 grid P_4 x P_4 admit a prime labeling?",
+      "classification": "EXACT",
+      "lean_complete": true,
+      "verify_verdict": "VERIFIED",
+      "publication_status": "INSTANCE_ONLY",
+      "exact_statement": "the Cartesian grid graph `P_4 x P_4` admits a prime labeling, meaning a bijection from its `16` vertices to `{1,2,...,16}` such that every horizontal or vertical edge joins coprime labels.",
+      "proved_on": "2026-04-08",
+      "artifact_paths": {
+        "artifact_directory": "artifacts/p4x-p4-grid-prime-labeling/",
+        "record": "artifacts/p4x-p4-grid-prime-labeling/record.md",
+        "status": "artifacts/p4x-p4-grid-prime-labeling/status.json",
+        "lean_backend_file": "lean/AutoMath/P4xP4GridPrimeLabeling.lean",
+        "mirrored_lean_file": "artifacts/p4x-p4-grid-prime-labeling/lean/AutoMath/P4xP4GridPrimeLabeling.lean`, `artifacts/p4x-p4-grid-prime-labeling/lean/AxiomAudit.lean",
+        "axiom_audit_file": null
+      },
+      "lean": {
+        "main_theorem": "AutoMath.P4xP4GridPrimeLabeling.p4x_p4_grid_prime",
+        "explicit_theorem": "AutoMath.P4xP4GridPrimeLabeling.p4x_p4_grid_prime_explicit",
+        "recorded_axiom_audit": null,
+        "extra_audit_note": null
+      },
+      "source": "archive/PROOFS.legacy.md"
+    },
+    {
+      "slug": "p7-square-prime-labeling",
+      "title": "Does the square of the 7-vertex path P_7^2 admit a prime labeling?",
+      "classification": "EXACT",
+      "lean_complete": true,
+      "verify_verdict": "VERIFIED",
+      "publication_status": "INSTANCE_ONLY",
+      "exact_statement": "the square of the seven-vertex path `P_7^2` admits a prime labeling, meaning a bijection from its `7` vertices to `{1,2,...,7}` such that adjacent vertices receive coprime labels.",
+      "proved_on": "2026-04-08",
+      "artifact_paths": {
+        "artifact_directory": "artifacts/p7-square-prime-labeling/",
+        "record": "artifacts/p7-square-prime-labeling/record.md",
+        "status": "artifacts/p7-square-prime-labeling/status.json",
+        "lean_backend_file": "lean/AutoMath/P7SquarePrimeLabeling.lean",
+        "mirrored_lean_file": "artifacts/p7-square-prime-labeling/lean/AutoMath/P7SquarePrimeLabeling.lean`, `artifacts/p7-square-prime-labeling/lean/AxiomAudit.lean",
+        "axiom_audit_file": null
+      },
+      "lean": {
+        "main_theorem": "AutoMath.P7SquarePrimeLabeling.p7_square_prime",
+        "explicit_theorem": "AutoMath.P7SquarePrimeLabeling.p7_square_prime_explicit",
+        "recorded_axiom_audit": null,
+        "extra_audit_note": null
+      },
+      "source": "archive/PROOFS.legacy.md"
+    },
+    {
+      "slug": "z2-power-8-prime-zero-divisor-graph",
+      "title": "Is the zero-divisor graph \u0393(Z_2^8) prime?",
+      "classification": "EXACT",
+      "lean_complete": true,
+      "verify_verdict": "VERIFIED",
+      "publication_status": "INSTANCE_ONLY",
+      "exact_statement": "the zero-divisor graph `\u0393(Z_2^8)` admits a prime labeling, i.e. a bijection from its `254` vertices to `{1,2,...,254}` such that adjacent vertices receive coprime labels.",
+      "proved_on": "2026-04-08",
+      "artifact_paths": {
+        "artifact_directory": "artifacts/z2-power-8-prime-zero-divisor-graph/",
+        "record": "artifacts/z2-power-8-prime-zero-divisor-graph/record.md",
+        "status": "artifacts/z2-power-8-prime-zero-divisor-graph/status.json",
+        "lean_backend_file": "lean/AutoMath/Z2Power8.lean",
+        "mirrored_lean_file": "artifacts/z2-power-8-prime-zero-divisor-graph/lean/AutoMath/Z2Power8.lean",
+        "axiom_audit_file": "artifacts/z2-power-8-prime-zero-divisor-graph/lean/AxiomAudit.lean"
+      },
+      "lean": {
+        "main_theorem": "AutoMath.Z2Power8.z2_power_8_zeroDivisorGraph_prime",
+        "explicit_theorem": "AutoMath.Z2Power8.z2_power_8_zeroDivisorGraph_prime_explicit",
+        "recorded_axiom_audit": "only `[propext, Classical.choice, Quot.sound]",
+        "extra_audit_note": null
+      },
+      "source": "archive/PROOFS.legacy.md"
+    },
+    {
+      "slug": "z3-z25-prime-zero-divisor-graph",
+      "title": "Is the zero-divisor graph \u0393(Z_3 \u00d7 Z_25) prime?",
+      "classification": "EXACT",
+      "lean_complete": true,
+      "verify_verdict": "VERIFIED",
+      "publication_status": "INSTANCE_ONLY",
+      "exact_statement": "the zero-divisor graph `\u0393(Z_3 \u00d7 Z_25)` admits a prime labeling, meaning a bijection from its `34` vertices to `{1,2,...,34}` such that adjacent vertices receive coprime labels.",
+      "proved_on": "2026-04-08",
+      "artifact_paths": {
+        "artifact_directory": "artifacts/z3-z25-prime-zero-divisor-graph/",
+        "record": "artifacts/z3-z25-prime-zero-divisor-graph/record.md",
+        "status": "artifacts/z3-z25-prime-zero-divisor-graph/status.json",
+        "lean_backend_file": "lean/AutoMath/Z3Z25.lean",
+        "mirrored_lean_file": "artifacts/z3-z25-prime-zero-divisor-graph/lean/Z3Z25.lean",
+        "axiom_audit_file": null
+      },
+      "lean": {
+        "main_theorem": "AutoMath.Z3Z25.z3_z25_zeroDivisorGraph_prime",
+        "explicit_theorem": "AutoMath.Z3Z25.z3_z25_zeroDivisorGraph_prime_explicit",
+        "recorded_axiom_audit": "only `[propext, Classical.choice, Quot.sound]",
+        "extra_audit_note": "lean4checker --fresh` was unavailable on this machine"
+      },
+      "source": "archive/PROOFS.legacy.md"
+    },
+    {
+      "slug": "z5-z25-prime-zero-divisor-graph",
+      "title": "Is the zero-divisor graph \u0393(Z_5 \u00d7 Z_25) prime?",
+      "classification": "EXACT",
+      "lean_complete": true,
+      "verify_verdict": "VERIFIED",
+      "publication_status": "INSTANCE_ONLY",
+      "exact_statement": "the zero-divisor graph `\u0393(Z_5 \u00d7 Z_25)` admits a prime labeling, i.e. a bijection from its `44` vertices to `{1,2,...,44}` such that adjacent vertices receive coprime labels.",
+      "proved_on": "2026-04-08",
+      "artifact_paths": {
+        "artifact_directory": "artifacts/z5-z25-prime-zero-divisor-graph/",
+        "record": "artifacts/z5-z25-prime-zero-divisor-graph/record.md",
+        "status": "artifacts/z5-z25-prime-zero-divisor-graph/status.json",
+        "lean_backend_file": "lean/AutoMath/Z5Z25.lean",
+        "mirrored_lean_file": "artifacts/z5-z25-prime-zero-divisor-graph/lean/Z5Z25.lean",
+        "axiom_audit_file": "artifacts/z5-z25-prime-zero-divisor-graph/lean/Z5Z25AxiomAudit.lean"
+      },
+      "lean": {
+        "main_theorem": "AutoMath.Z5Z25.z5_z25_zeroDivisorGraph_prime",
+        "explicit_theorem": "AutoMath.Z5Z25.z5_z25_zeroDivisorGraph_prime_explicit",
+        "recorded_axiom_audit": "only `[propext, Classical.choice, Quot.sound]",
+        "extra_audit_note": "lean4checker --fresh` was unavailable on this machine"
+      },
+      "source": "archive/PROOFS.legacy.md"
+    },
+    {
+      "slug": "z5-z5-z2-prime-zero-divisor-graph",
+      "title": "Is the zero-divisor graph \u0393(Z_5 \u00d7 Z_5 \u00d7 Z_2) prime?",
+      "classification": "EXACT",
+      "lean_complete": true,
+      "verify_verdict": "VERIFIED",
+      "publication_status": "INSTANCE_ONLY",
+      "exact_statement": "the zero-divisor graph `\u0393(Z_5 \u00d7 Z_5 \u00d7 Z_2)` admits a prime labeling, i.e. a bijection from its `33` vertices to `{1,2,...,33}` such that adjacent vertices receive coprime labels.",
+      "proved_on": "2026-04-08",
+      "artifact_paths": {
+        "artifact_directory": "artifacts/z5-z5-z2-prime-zero-divisor-graph/",
+        "record": "artifacts/z5-z5-z2-prime-zero-divisor-graph/record.md",
+        "status": "artifacts/z5-z5-z2-prime-zero-divisor-graph/status.json",
+        "lean_backend_file": "lean/AutoMath/Z5Z5Z2.lean",
+        "mirrored_lean_file": "artifacts/z5-z5-z2-prime-zero-divisor-graph/lean/AutoMath/Z5Z5Z2.lean",
+        "axiom_audit_file": "artifacts/z5-z5-z2-prime-zero-divisor-graph/lean/AxiomAudit.lean"
+      },
+      "lean": {
+        "main_theorem": "AutoMath.Z5Z5Z2.z5_z5_z2_zeroDivisorGraph_prime",
+        "explicit_theorem": "AutoMath.Z5Z5Z2.z5_z5_z2_zeroDivisorGraph_prime_explicit",
+        "recorded_axiom_audit": "only `[propext, Classical.choice, Quot.sound]",
+        "extra_audit_note": "lean4checker --fresh` was unavailable on this machine"
+      },
+      "source": "archive/PROOFS.legacy.md"
+    },
+    {
+      "slug": "z5-z5-z3-prime-zero-divisor-graph",
+      "title": "Is the zero-divisor graph \u0393(Z_5 \u00d7 Z_5 \u00d7 Z_3) prime?",
+      "classification": "EXACT",
+      "lean_complete": true,
+      "verify_verdict": "VERIFIED",
+      "publication_status": "INSTANCE_ONLY",
+      "exact_statement": "the zero-divisor graph `\u0393(Z_5 \u00d7 Z_5 \u00d7 Z_3)` admits a prime labeling, meaning a bijection from its `42` vertices to `{1,2,...,42}` such that adjacent vertices receive coprime labels.",
+      "proved_on": "2026-04-08",
+      "artifact_paths": {
+        "artifact_directory": "artifacts/z5-z5-z3-prime-zero-divisor-graph/",
+        "record": "artifacts/z5-z5-z3-prime-zero-divisor-graph/record.md",
+        "status": "artifacts/z5-z5-z3-prime-zero-divisor-graph/status.json",
+        "lean_backend_file": "lean/AutoMath/Z5Z5Z3.lean",
+        "mirrored_lean_file": "artifacts/z5-z5-z3-prime-zero-divisor-graph/lean/AutoMath/Z5Z5Z3.lean",
+        "axiom_audit_file": "artifacts/z5-z5-z3-prime-zero-divisor-graph/lean/AxiomAudit.lean"
+      },
+      "lean": {
+        "main_theorem": "AutoMath.Z5Z5Z3.z5_z5_z3_zeroDivisorGraph_prime",
+        "explicit_theorem": "AutoMath.Z5Z5Z3.z5_z5_z3_zeroDivisorGraph_prime_explicit",
+        "recorded_axiom_audit": "only `[propext, Classical.choice, Quot.sound]",
+        "extra_audit_note": "lean4checker --fresh` was unavailable on this machine"
+      },
+      "source": "archive/PROOFS.legacy.md"
+    },
+    {
+      "slug": "z7-z25-prime-zero-divisor-graph",
+      "title": "Is the zero-divisor graph \u0393(Z_7 \u00d7 Z_25) prime?",
+      "classification": "EXACT",
+      "lean_complete": true,
+      "verify_verdict": "VERIFIED",
+      "publication_status": "INSTANCE_ONLY",
+      "exact_statement": "the zero-divisor graph `\u0393(Z_7 \u00d7 Z_25)` admits a prime labeling, meaning a bijection from its `54` vertices to `{1,2,...,54}` such that adjacent vertices receive coprime labels.",
+      "proved_on": "2026-04-08",
+      "artifact_paths": {
+        "artifact_directory": "artifacts/z7-z25-prime-zero-divisor-graph/",
+        "record": "artifacts/z7-z25-prime-zero-divisor-graph/record.md",
+        "status": "artifacts/z7-z25-prime-zero-divisor-graph/status.json",
+        "lean_backend_file": "lean/AutoMath/Z7Z25.lean",
+        "mirrored_lean_file": "artifacts/z7-z25-prime-zero-divisor-graph/lean/Z7Z25.lean",
+        "axiom_audit_file": "artifacts/z7-z25-prime-zero-divisor-graph/lean/Z7Z25AxiomAudit.lean"
+      },
+      "lean": {
+        "main_theorem": "AutoMath.Z7Z25.z7_z25_zeroDivisorGraph_prime",
+        "explicit_theorem": "AutoMath.Z7Z25.z7_z25_zeroDivisorGraph_prime_explicit",
+        "recorded_axiom_audit": "only `[propext, Classical.choice, Quot.sound]",
+        "extra_audit_note": "lean4checker --fresh` was unavailable on this machine"
+      },
+      "source": "archive/PROOFS.legacy.md"
+    },
+    {
+      "slug": "z7-z7-z2-prime-zero-divisor-graph",
+      "title": "Is the zero-divisor graph \u0393(Z_7 \u00d7 Z_7 \u00d7 Z_2) prime?",
+      "classification": "EXACT",
+      "lean_complete": true,
+      "verify_verdict": "VERIFIED",
+      "publication_status": "INSTANCE_ONLY",
+      "exact_statement": "the zero-divisor graph `\u0393(Z_7 \u00d7 Z_7 \u00d7 Z_2)` admits a prime labeling, meaning a bijection from its `61` vertices to `{1,2,...,61}` such that adjacent vertices receive coprime labels.",
+      "proved_on": "2026-04-08",
+      "artifact_paths": {
+        "artifact_directory": "artifacts/z7-z7-z2-prime-zero-divisor-graph/",
+        "record": "artifacts/z7-z7-z2-prime-zero-divisor-graph/record.md",
+        "status": "artifacts/z7-z7-z2-prime-zero-divisor-graph/status.json",
+        "lean_backend_file": "lean/AutoMath/Z7Z7Z2.lean",
+        "mirrored_lean_file": "artifacts/z7-z7-z2-prime-zero-divisor-graph/lean/AutoMath/Z7Z7Z2.lean`, `artifacts/z7-z7-z2-prime-zero-divisor-graph/lean/AxiomAudit.lean",
+        "axiom_audit_file": null
+      },
+      "lean": {
+        "main_theorem": "AutoMath.Z7Z7Z2.z7_z7_z2_zeroDivisorGraph_prime",
+        "explicit_theorem": "AutoMath.Z7Z7Z2.z7_z7_z2_zeroDivisorGraph_prime_explicit",
+        "recorded_axiom_audit": "only `[propext, Classical.choice, Quot.sound]",
+        "extra_audit_note": null
+      },
+      "source": "archive/PROOFS.legacy.md"
+    }
+  ]
+}

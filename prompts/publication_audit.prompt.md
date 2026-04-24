@@ -101,7 +101,7 @@ Update `status.json` with:
 - `next_action`
 - `proof_artifacts_preserved`
 - `lean_ready`
-- `human_ready`
+- `lean_queue_ready`
 
 Publication status taxonomy:
 
@@ -123,8 +123,8 @@ Interpretation rules:
 
 Stop-condition rule:
 
-- treat `PAPER_READY` as the HUMAN_READY tier: the theorem packet is honestly publishable in human terms and should move off the main discovery queue even if Lean is still pending
-- set `human_ready = true` exactly when `publication_status = PAPER_READY` and the proof artifacts are preserved well enough to enter the secondary Lean queue
+- treat `PAPER_READY` as the `lean_queue.json` tier: the theorem packet is honestly publishable in human terms and should move off the main discovery queue even if Lean is still pending
+- set `lean_queue_ready = true` exactly when `publication_status = PAPER_READY` and the proof artifacts are preserved well enough that Lean is the only remaining gate
 - Lean is a secondary formal-seal lane, not a prerequisite for `PAPER_READY`
 - the formal stop tier still requires a Lean-complete exact result plus the paper-ready audit
 

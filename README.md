@@ -6,13 +6,15 @@ AutoMath is a fully autonomous end-to-end math research harness. AutoMath's disc
 
 The repo is currently configured for a strict one-shot publication lane under the `MICRO-PAPER` objective. In plain English, it does not try to win by building a giant campaign. It tries to find the smallest honest open claim where one strong solve is already most of a paper.
 
-Primary success is not merely "proved something exact." The main success condition is a `HUMAN_READY` packet with:
+Primary publication success is not merely "proved something exact." The main success condition is entry into `lean_queue.json`, which means everything except Lean is done:
 
 - `verify_verdict = VERIFIED`
 - `publication_status = PAPER_READY`
 - proof artifacts preserved
+- solve, verification, and significance audit complete
+- Lean still pending
 
-Lean-complete `EXACT` is a secondary formal seal, handled in a separate lane after a result is already human-ready.
+Publication-significant Lean-complete `EXACT` results move to `lean_complete.json`, which is the definitive list of proofs AutoMath has found and proved in Lean for this paper lane.
 
 **Note on artificial intelligence usage: AutoMath employs artificial intelligence for mathematical discovery. Any mathematical discoveries generated or assisted by AutoMath need not disclose the usage of AutoMath specifically, but must disclose the usage of artificial intelligence**
 
@@ -45,9 +47,9 @@ At runtime, AutoMath is a publication supervisor plus a cycle manager:
 - `scripts/automath_cycle.py` runs the actual publication logic: curation, parallel solve, serial verify, serial publication audit, and the separate Lean queue logic
 - stage prompts live in `prompts/`
 - candidate-local artifacts live in `artifacts/<slug>/`
-- repo-wide memory and queue state live in `queue.json`, `failed_problems.json`, `human_ready.json`, `lean_queue.json`, and `memory/*.json`
+- repo-wide memory and queue state live in `queue.json`, `failed_problems.json`, `lean_queue.json`, `lean_complete.json`, and `memory/*.json`
 
-The main loop is publication-first. It tries to keep fresh discovery moving even after a human-ready result appears, unless the stop condition is reached and stop markers are enabled.
+The main loop is publication-first. It tries to keep fresh discovery moving after a packet enters `lean_queue.json`, unless the stop condition is reached and stop markers are enabled.
 
 ## Requirements
 
@@ -85,18 +87,21 @@ flowchart TD
     L -->|Usable verdict| N["publication_audit stage"]
 
     N --> O{"publication_status"}
-    O -->|PAPER_READY| P["Register HUMAN_READY packet"]
+    O -->|PAPER_READY| P["Register in lean_queue.json"]
     O -->|Verified theorem-facing PARTIAL| Q["Preserve packet and rotate queue"]
-    O -->|Verified but not human-ready| R["Archive attempted packet so discovery continues"]
+    O -->|Verified but not lean-queue-ready| R["Archive attempted packet so discovery continues"]
     O -->|FAILED / UNSUITED / terminal| S["Move aside in failed_problems.json"]
 
     P --> T["Remove from main queue"]
     T --> U{"Lean-ready?"}
-    U -->|Yes| V["Add to lean_queue.json"]
-    U -->|No| W["Human-ready archive only"]
+    U -->|Yes| V["Remain in lean_queue.json"]
+    U -->|No| W["Archive without Lean claim"]
 
     V --> X["run_lean_queue_once.sh / run_lean_queue_continuous.sh"]
     X --> Y["Lean stage (non-blocking formal seal lane)"]
+    Y --> AA{"Lean complete?"}
+    AA -->|Yes| AB["Move to lean_complete.json"]
+    AA -->|No| V
 
     C --> Z["artifacts/_logs/events.jsonl + artifacts/summary.md + lease/heartbeat runtime files"]
 ```
@@ -195,7 +200,7 @@ This stage decides whether the result is:
 - `PAPER_READY`
 - or effectively non-publication-worthy
 
-If the result is verified and `PAPER_READY`, the packet is registered into `human_ready.json`, removed from the main queue, and fresh discovery is allowed to continue.
+If the result is verified and `PAPER_READY`, the packet is registered into `lean_queue.json`, removed from the main queue, and fresh discovery is allowed to continue. This file means solve, verification, significance, and artifact preservation are done; Lean is the only remaining gate.
 
 If the result is verified but not `PAPER_READY`, AutoMath may:
 
@@ -209,9 +214,9 @@ Lean is a separate, non-blocking formalization lane.
 
 The main publication loop does not stop to formalize every good result. Instead:
 
-- `human_ready.json` stores publishable packets
-- `lean_queue.json` is derived from human-ready packets that are eligible for formal sealing
+- `lean_queue.json` stores packets where solve, verification, significance audit, and artifact preservation are complete, but Lean is not complete
 - `run_lean_queue_once.sh` and `run_lean_queue_continuous.sh` process that queue independently
+- `lean_complete.json` stores publication-significant proofs AutoMath has definitively found and proved in Lean
 
 This means a result can already count as a success in human publication terms before Lean is complete.
 
@@ -242,8 +247,9 @@ The most important runtime surfaces are:
 - `artifacts/<slug>/status.json`: current status, classification, publication fields, and next action
 - `artifacts/<slug>/working_packet.md`: compact packet for the active theorem slice
 - `failed_problems.json`: do-not-recur archive, rediscoveries, exact archived cases, and failed attempts
-- `human_ready.json`: publishable packets
-- `lean_queue.json`: human-ready packets that are eligible for formal sealing
+- `lean_queue.json`: solved, verified, publication-significant packets waiting only on Lean
+- `lean_complete.json`: definitive publication-significant Lean-complete proofs found by AutoMath
+- `archive/PROOFS.legacy.md` and `archive/lean_complete.instance_only_legacy.json`: historical Lean-complete exact-instance inventory, including non-paper-ready feeder evidence
 - `memory/paper_memory.json` and `memory/search_memory.json`: thin canonical memory surfaces
 
 The supervisor also maintains runtime control files under `artifacts/_runtime/main_publication/`, including lease and heartbeat state. These are used to prevent overlapping managers and to detect stalls.
@@ -326,3 +332,16 @@ If a worker times out, exits unexpectedly, or fails to write a usable verdict, t
 - rotate the candidate to the back of the queue
 
 This is a deliberate rule of the harness: broken runtime behavior should not masquerade as a mathematical negative result.
+
+## Practical Mental Model
+
+The easiest way to think about AutoMath is:
+
+1. curate a queue of tiny paper-shaped packets
+2. spend bounded parallel effort on the top one or two
+3. verify skeptically
+4. audit for honest publication status
+5. move `lean_queue.json` packets out of the main discovery queue so fresh discovery keeps going
+6. formalize later, in a separate Lean lane, and move successful Lean proofs to `lean_complete.json`
+
+This repo is therefore best understood as a publication engine with theorem-proving components, not as a generic proof search sandbox.

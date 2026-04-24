@@ -68,7 +68,8 @@ Check, if present and inexpensive to read:
 - `failed_problems.json`
 - `queue.json`
 - `selected_problem.md`
-- `PROOFS.md`
+- `lean_queue.json`
+- `lean_complete.json`
 - artifact directory names and cheap status summaries if available
 - any `attempted_problems.json`, `rediscoveries.json`, `candidate_problems.json`, or similar memory file
 - `ledger.md` only if a conflict or ambiguity remains after the thin memory files

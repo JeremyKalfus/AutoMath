@@ -1,4 +1,4 @@
-Read `AGENTS.md`, the active selection file, the relevant `record.md`, the relevant `status.json`, and `PROOFS.md` if it exists.
+Read `AGENTS.md`, the active selection file, the relevant `record.md`, the relevant `status.json`, `lean_queue.json`, and `lean_complete.json` if they exist.
 Unless the manager preface names another file, the active selection file is `selected_problem.md`.
 If the active selection file includes `handoff_memo_path`, read that memo immediately after the active selection file and treat it as the binding scope authority for allowed files, stop condition, and output path.
 If the active selection file includes `working_packet_path`, read that file immediately after the active selection file.
@@ -8,8 +8,8 @@ Do NOT browse the internet.
 
 Work under `artifacts/<slug>/`.
 
-Only continue if the verified result is strong enough to formalize, the current classification is not `REDISCOVERY`, and the packet is already marked HUMAN_READY.
-This stage runs from the secondary `LEAN_QUEUE`, not the main discovery queue.
+Only continue if the verified result is strong enough to formalize, the current classification is not `REDISCOVERY`, and the packet is already in `lean_queue.json`.
+This stage runs from `lean_queue.json`, not the main discovery queue.
 Only continue when the current `status.json` makes it explicit that Lean is the direct packet-sealing step rather than optional polish.
 
 Sidecar attempt mode:
@@ -72,37 +72,41 @@ Update `status.json` with:
 - `next_action`
 - `proof_artifacts_preserved`
 
-`PROOFS.md` policy:
+State-file policy:
 
-- keep `PROOFS.md` as the exact-instance inventory
-- update `PROOFS.md` only if a run really earns `classification = "EXACT"` with `lean_complete = true`
-- do not remove existing exact wins
-- exact-instance entries may still have `publication_status = INSTANCE_ONLY`
+- keep `lean_queue.json` as the queue of packets where solve, verification, significance audit, and artifact preservation are done, with Lean still incomplete
+- keep `lean_complete.json` as the definitive list of publication-significant proofs AutoMath has found and proved in Lean
+- do not use `human_ready.json` or `proofs.json`; those names are obsolete
+- Lean completion moves the packet out of `lean_queue.json` and into `lean_complete.json`
+- do not add anything to `lean_complete.json` unless the relevant status has `classification = "EXACT"`, `lean_complete = true`, and `publication_status = "PAPER_READY"`
+- legacy non-paper-ready exact instances are preserved in `archive/PROOFS.legacy.md` and `archive/lean_complete.instance_only_legacy.json`; do not copy them into live `lean_complete.json`
 
-If and only if the run really earns `classification = "EXACT"` with `lean_complete = true`, also update `PROOFS.md` in the same run:
+If this run completes a Lean proof, also update `lean_complete.json` in the same run:
 
-- keep exactly one section per solved slug using heading `## <slug>`
-- if the slug already has a section, replace that section instead of duplicating it
-- if `PROOFS.md` does not exist yet, create it with a short header
+- keep exactly one object per solved slug in the top-level `proofs` array
+- if the slug already has an object, replace that object instead of duplicating it
+- if `lean_complete.json` does not exist yet, create it with `schema_version`, `generated_on`, `meaning`, `proof_count`, and `proofs`
 - include at least:
   - title
-  - exact statement
+  - question / canonical statement / intended statement
+  - strongest honest claim
   - verify verdict
   - publication status
-  - Lean completion date in repo state
+  - publication confidence
+  - Lean completion date
+  - source / prior-work stop sentence / literature gap
+  - paper title hint, abstract, and paper-shape notes
+  - transfer kit and proof-artifact requirements
   - artifact directory
   - record file
   - status file
-  - Lean backend file
-  - mirrored Lean file(s)
-  - main Lean theorem
-  - explicit Lean theorem if present
-  - axiom audit note if run
-  - `lean4checker --fresh` note if unavailable
+  - working packet file
+  - Lean readiness / packet-seal / completion status
+  - Lean backend file, mirrored Lean file(s), main theorem, and axiom audit note if available
 
 Important:
 
-- update `PROOFS.md` before the final `status.json` write that flips the run to `EXACT`
+- update `lean_complete.json` before the final `status.json` write that marks the packet Lean-complete
 - `EXACT` alone is not the global stop condition
 - the automatic stop condition is `publication_status = PAPER_READY`
 

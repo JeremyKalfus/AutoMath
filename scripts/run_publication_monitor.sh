@@ -66,11 +66,11 @@ seed_monitor_checkout() {
   local items=(
     AGENTS.md
     ONE_SHOT_PUBLICATION_REDESIGN_PLAN.md
-    PROOFS.md
+    lean_complete.json
+    archive
     ledger.md
     queue.json
     failed_problems.json
-    human_ready.json
     lean_queue.json
     selected_problem.md
     memory
@@ -101,11 +101,11 @@ sync_monitor_results_back() {
     ledger.md
     queue.json
     failed_problems.json
-    human_ready.json
     lean_queue.json
     selected_problem.md
     memory
-    PROOFS.md
+    lean_complete.json
+    archive
     artifacts/_logs/events.jsonl
     artifacts/summary.md
     artifacts/_logs/codex_capabilities.json

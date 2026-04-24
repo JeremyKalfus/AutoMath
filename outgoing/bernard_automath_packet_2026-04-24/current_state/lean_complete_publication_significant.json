@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-04-24T00:24:00-04:00",
+  "meaning": "Publication-significant Lean-complete proofs AutoMath has definitively found and proved in Lean.",
+  "legacy_instance_only_archive": "archive/lean_complete.instance_only_legacy.json",
+  "legacy_markdown_archive": "archive/PROOFS.legacy.md",
+  "proof_count": 0,
+  "proofs": []
+}
