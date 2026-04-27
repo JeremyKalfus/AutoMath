@@ -41,6 +41,7 @@ ATTEMPT_REGISTRY = MEMORY_DIR / "attempt_registry.json"
 SOURCE_REGISTRY = MEMORY_DIR / "source_registry.json"
 STOP_MARKER = ROOT / ".stop_harness"
 CAPABILITIES_CACHE = LOGS / "codex_capabilities.json"
+CODEX_MODEL = "gpt-5.5"
 RUN_ID = os.environ.get("AUTOMATH_RUN_ID", "").strip() or None
 CYCLE_ID = os.environ.get("AUTOMATH_CYCLE_ID", "").strip() or None
 RUNTIME_ROLE = os.environ.get("AUTOMATH_RUNTIME_ROLE", "").strip() or None
@@ -60,6 +61,15 @@ PUBLICATION_STATUS_RANK = {
 RESUMABLE_POST_SOLVE_CLASSIFICATIONS = {"CANDIDATE", "COUNTEREXAMPLE", "EXACT"}
 TERMINAL_QUEUE_CLASSIFICATIONS = {"FAILED", "UNSUITED", "VARIANT", "REDISCOVERY"}
 NON_RESUMABLE_VERIFY_VERDICTS = {"VARIANT", "REDISCOVERY"}
+RERUN_BLOCKED_CLASSIFICATIONS = {"REDISCOVERY", "EXACT"}
+RERUN_BLOCKED_VERIFY_VERDICTS = {"REDISCOVERY"}
+RERUN_DISPOSITION_PRIORITY = {
+    "theorem_facing_partial": 0,
+    "partial": 1,
+    "attempted": 2,
+    "artifact_status": 3,
+    "infra_only": 4,
+}
 
 CURATION_TIMEOUT = int(os.environ.get("AUTOMATH_CURATION_TIMEOUT", "660"))
 SOLVE_TIMEOUT = int(os.environ.get("AUTOMATH_SOLVE_TIMEOUT", "2700"))
@@ -999,6 +1009,10 @@ def render_selected_problem(entry: dict, output_path: pathlib.Path = SELECTED) -
     for key in [
         "entry_type",
         "slug",
+        "rerun_mode",
+        "rerun_source_status",
+        "rerun_source_disposition",
+        "rerun_reason",
         "worker_role",
         "canonical_source",
         "open_status_checked_on",
@@ -1601,6 +1615,10 @@ def entry_with_working_packet(entry: dict) -> dict:
     if entry.get("entry_type") != "paper_candidate" or not entry.get("slug"):
         return entry
     enriched = dict(entry)
+    existing_packet = candidate_working_packet_path(entry["slug"])
+    if entry.get("preserve_existing_working_packet") and existing_packet.exists():
+        enriched["working_packet_path"] = relative_display(existing_packet)
+        return enriched
     enriched["working_packet_path"] = relative_display(ensure_candidate_working_packet(entry))
     return enriched
 
@@ -3000,7 +3018,7 @@ def transport_env(profile: str) -> tuple[dict, tempfile.TemporaryDirectory | Non
     (codex_home / "config.toml").write_text(
         "\n".join(
             [
-                'model = "gpt-5.4"',
+                f'model = "{CODEX_MODEL}"',
                 'model_provider = "openai-tuned"',
                 'approval_policy = "never"',
                 'sandbox_mode = "workspace-write"',
@@ -3201,7 +3219,7 @@ def run_stage(
             "-C",
             str(root),
             "-m",
-            "gpt-5.4",
+            CODEX_MODEL,
             "-s",
             "workspace-write",
             "-c",
@@ -3402,13 +3420,13 @@ def run_stage(
 
 def supports_xhigh() -> bool:
     cached = load_json(CAPABILITIES_CACHE, {})
-    if isinstance(cached, dict) and cached.get("xhigh") is True:
+    if isinstance(cached, dict) and cached.get("model") == CODEX_MODEL and cached.get("xhigh") is True:
         return True
     probe_cmd = [
         "codex",
         "exec",
         "-m",
-        "gpt-5.4",
+        CODEX_MODEL,
         "-s",
         "workspace-write",
         "-c",
@@ -3432,13 +3450,11 @@ def supports_xhigh() -> bool:
         ok = result.returncode == 0 and "xhigh_ok" in result.stdout
     except Exception:
         ok = False
-    write_json(CAPABILITIES_CACHE, {"xhigh": ok, "checked_on": today_str()})
+    write_json(CAPABILITIES_CACHE, {"model": CODEX_MODEL, "xhigh": ok, "checked_on": today_str()})
     return ok
 
 
 def preferred_effort(level: str) -> str:
-    if level == "xhigh":
-        return "xhigh" if supports_xhigh() else "high"
     return level
 
 
@@ -3467,6 +3483,202 @@ def find_queue_entry_by_slug(slug: str) -> dict | None:
     return None
 
 
+def find_attempt_registry_entry_by_slug(slug: str) -> dict | None:
+    for row in load_attempt_registry_entries():
+        if row.get("slug") == slug or slug in row.get("slug_history", []):
+            return row
+    return None
+
+
+def rerun_status_value(row: dict, status: dict, key: str):
+    value = status.get(key)
+    if value is not None:
+        return value
+    return row.get(key)
+
+
+def rerun_attempt_block_reason(row: dict, status: dict) -> str | None:
+    classification = str(rerun_status_value(row, status, "classification") or "").upper()
+    verify_verdict = str(rerun_status_value(row, status, "verify_verdict") or "").upper()
+    publication_status = str(rerun_status_value(row, status, "publication_status") or "").upper()
+    disposition = str(row.get("curation_disposition") or "").lower()
+    if classification in RERUN_BLOCKED_CLASSIFICATIONS:
+        return f"classification={classification} is not eligible for rerun-attempted mode"
+    if verify_verdict in RERUN_BLOCKED_VERIFY_VERDICTS:
+        return f"verify_verdict={verify_verdict} is not eligible for rerun-attempted mode"
+    if publication_status == "REDISCOVERY":
+        return "publication_status=REDISCOVERY is not eligible for rerun-attempted mode"
+    if status.get("lean_complete") is True:
+        return "local status is already Lean-complete"
+    if status.get("lean_queue_ready") is True or status.get("human_ready") is True or disposition == "lean_queue":
+        return "candidate is already in the Lean-queue success lane"
+    if not candidate_status_path(str(row.get("slug") or "")).exists() and not candidate_record_path(str(row.get("slug") or "")).exists():
+        return "no local record.md or status.json exists to ground a rerun"
+    return None
+
+
+def rerun_attempt_sort_key(row: dict) -> tuple[int, int, str]:
+    status = candidate_status_snapshot(str(row.get("slug") or "")) or {}
+    disposition = str(row.get("curation_disposition") or "artifact_status")
+    priority = RERUN_DISPOSITION_PRIORITY.get(disposition, 9)
+    publication_status = rerun_status_value(row, status, "publication_status")
+    return (priority, -publication_rank(publication_status), str(row.get("slug") or ""))
+
+
+def rerunnable_attempt_registry_entries() -> list[dict]:
+    rows = []
+    for row in load_attempt_registry_entries():
+        slug = str(row.get("slug") or "")
+        if not slug:
+            continue
+        if row.get("curation_disposition") == "active_queue":
+            continue
+        status = candidate_status_snapshot(slug) or {}
+        if rerun_attempt_block_reason(row, status) is None:
+            rows.append(row)
+    rows.sort(key=rerun_attempt_sort_key)
+    return rows
+
+
+def build_rerun_attempt_entry(row: dict) -> dict:
+    slug = str(row.get("slug") or "")
+    queued = find_queue_entry_by_slug(slug)
+    status = candidate_status_snapshot(slug) or {}
+    packet_meta = candidate_packet_metadata(slug)
+    title = (
+        (queued.get("title") if isinstance(queued, dict) else None)
+        or row.get("title")
+        or status.get("title")
+        or packet_meta.get("title")
+        or slug
+    )
+    statement = (
+        packet_meta.get("statement")
+        or status.get("candidate_theorem_slice")
+        or status.get("strongest_honest_claim")
+        or row.get("statement")
+        or row.get("notes")
+        or title
+    )
+    canonical_source = (
+        (queued.get("canonical_source") if isinstance(queued, dict) else None)
+        or packet_meta.get("canonical_source")
+        or row.get("canonical_source")
+        or ""
+    )
+    entry = dict(queued) if isinstance(queued, dict) else {}
+    entry.update(
+        {
+            "entry_type": "paper_candidate",
+            "slug": slug,
+            "title": title,
+            "question": statement,
+            "canonical_statement": statement,
+            "intended_statement": statement,
+            "canonical_source": canonical_source,
+            "publication_status": status.get("publication_status") or row.get("publication_status") or "NONE",
+            "publication_if_solved": (
+                "Explicit second-pass rerun of a preserved AutoMath attempt; success still requires "
+                "a verified, publication-ready theorem packet rather than merely revisiting the old status."
+            ),
+            "publication_if_solved_score": entry.get("publication_if_solved_score") or "high",
+            "solve_to_publication_distance": entry.get("solve_to_publication_distance") or "short-medium",
+            "attempt_kind": "rerun_attempted",
+            "attack_style": entry.get("attack_style") or "second_pass_rerun",
+            "rerun_mode": "attempted",
+            "rerun_source_status": row.get("current_status") or status.get("stage") or "artifact_status",
+            "rerun_source_disposition": row.get("curation_disposition") or "artifact_status",
+            "rerun_reason": row.get("notes") or "selected from the local attempted-problem registry",
+            "preserve_existing_working_packet": True,
+        }
+    )
+    if packet_meta.get("working_packet_path"):
+        entry["working_packet_path"] = packet_meta["working_packet_path"]
+    return canonicalize_paper_candidate_entry(entry)
+
+
+def annotate_rerun_attempt(entry: dict, row: dict) -> None:
+    slug = entry["slug"]
+    ensure_candidate_artifact_baseline(entry)
+    status_path = candidate_status_path(slug)
+    status = load_json(status_path, {})
+    if not isinstance(status, dict):
+        status = build_candidate_status_stub(entry)
+    marker = {
+        "mode": "rerun_attempted",
+        "started_on": now_iso(),
+        "source_status": entry.get("rerun_source_status"),
+        "source_disposition": entry.get("rerun_source_disposition"),
+        "model": CODEX_MODEL,
+        "reasoning_effort": "xhigh",
+    }
+    attempts = status.get("rerun_attempts")
+    if not isinstance(attempts, list):
+        attempts = []
+    attempts.append(marker)
+    status["rerun_mode"] = "attempted"
+    status["rerun_started_on"] = marker["started_on"]
+    status["rerun_source_status"] = marker["source_status"]
+    status["rerun_source_disposition"] = marker["source_disposition"]
+    status["rerun_attempts"] = attempts[-10:]
+    write_json(status_path, status)
+
+    record_path = candidate_record_path(slug)
+    record_path.parent.mkdir(parents=True, exist_ok=True)
+    existing = read_text_if_exists(record_path)
+    section = [
+        "",
+        f"## rerun_attempt_{today_str()}",
+        f"- mode: `rerun_attempted`",
+        f"- started_on: `{marker['started_on']}`",
+        f"- source_status: `{marker['source_status']}`",
+        f"- source_disposition: `{marker['source_disposition']}`",
+        f"- reason: {entry.get('rerun_reason') or row.get('notes') or 'explicit rerun of preserved attempt'}",
+        "",
+    ]
+    with record_path.open("a", encoding="utf-8") as fh:
+        if existing and not existing.endswith("\n"):
+            fh.write("\n")
+        fh.write("\n".join(section).lstrip("\n"))
+
+
+def run_rerun_attempted(slug: str | None, *, emit_summary: bool = True, stop_after: str | None = None) -> int:
+    refresh_attempt_registry()
+    if slug:
+        row = find_attempt_registry_entry_by_slug(slug)
+        if row is None:
+            append_ledger(f"Rerun-attempted mode could not find {slug} in memory/attempt_registry.json.")
+            if emit_summary:
+                write_publication_summary("not_used")
+            return 0
+        rows = [row]
+    else:
+        rows = rerunnable_attempt_registry_entries()
+        if not rows:
+            append_ledger("Rerun-attempted mode found no safe preserved attempts to revisit.")
+            if emit_summary:
+                write_publication_summary("not_used")
+            return 0
+
+    row = rows[0]
+    selected_slug = str(row.get("slug") or slug or "")
+    status = candidate_status_snapshot(selected_slug) or {}
+    block_reason = rerun_attempt_block_reason(row, status)
+    if block_reason is not None:
+        append_ledger(f"Rerun-attempted mode rejected {selected_slug}: {block_reason}.")
+        if emit_summary:
+            write_publication_summary("not_used")
+        return 0
+
+    entry = build_rerun_attempt_entry(row)
+    append_ledger(
+        f"Rerun-attempted mode selected {entry['slug']} from prior status "
+        f"{entry.get('rerun_source_status')} / {entry.get('rerun_source_disposition')}."
+    )
+    annotate_rerun_attempt(entry, row)
+    return run_selected_entry(entry, emit_summary=emit_summary, stop_after=stop_after)
+
+
 def run_curation_if_needed(required_entry_type: str | None = None) -> bool:
     preflight_ok, _ = queue_preflight(required_entry_type=required_entry_type, emit_log=True)
     if preflight_ok:
@@ -3482,7 +3694,7 @@ def run_curation_if_needed(required_entry_type: str | None = None) -> bool:
         PROMPTS / "curate_batch.prompt.md",
         "on",
         CURATION_TIMEOUT,
-        preferred_effort("high"),
+        preferred_effort("xhigh"),
         "default",
         stop_when_queue_usable=required_entry_type,
         heartbeat_stage_name="curate",
@@ -3671,7 +3883,7 @@ def run_instance_lean(entry: dict, status_path: pathlib.Path) -> None:
         PROMPTS / "lean.prompt.md",
         "off",
         LEAN_TIMEOUT,
-        preferred_effort("high"),
+        preferred_effort("xhigh"),
         "default",
         heartbeat_stage_name="lean",
         active_slug=entry["slug"],
@@ -3755,7 +3967,7 @@ def run_solve_stage(
         PROMPTS / "solve_reasoning_first.prompt.md",
         "off",
         SOLVE_TIMEOUT,
-        preferred_effort("high"),
+        preferred_effort("xhigh"),
         "tuned_openai",
         selection_file=selection_file,
         heartbeat_stage_name="solve",
@@ -3813,7 +4025,7 @@ def run_post_solve_pipeline(
         PROMPTS / "verify_skeptical.prompt.md",
         "on",
         VERIFY_TIMEOUT,
-        preferred_effort("high"),
+        preferred_effort("xhigh"),
         "tuned_openai",
         selection_file=selection_file,
         heartbeat_stage_name="verify",
@@ -4134,6 +4346,7 @@ def run_publication_cycle() -> int:
 def main() -> int:
     parser = argparse.ArgumentParser(description="AutoMath cycle manager")
     parser.add_argument("--slug")
+    parser.add_argument("--rerun-attempted", action="store_true")
     parser.add_argument("--lean-queue", action="store_true")
     parser.add_argument("--worker", action="store_true")
     parser.add_argument("--artifact-only-worker", action="store_true")
@@ -4145,8 +4358,18 @@ def main() -> int:
     ensure_state()
     update_cycle_heartbeat(state="cycle_started", stage="startup", active_slug=None)
     try:
+        if args.rerun_attempted and args.lean_queue:
+            parser.error("--rerun-attempted cannot be combined with --lean-queue")
+        if args.rerun_attempted and args.artifact_only_worker:
+            parser.error("--rerun-attempted cannot be combined with --artifact-only-worker")
         if args.lean_queue:
             return run_lean_queue_cycle(emit_summary=not args.worker)
+        if args.rerun_attempted:
+            return run_rerun_attempted(
+                args.slug,
+                emit_summary=not args.worker,
+                stop_after=args.stop_after,
+            )
         if args.slug:
             entry = find_queue_entry_by_slug(args.slug)
             if entry is None:

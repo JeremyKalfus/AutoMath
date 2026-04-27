@@ -153,6 +153,9 @@ class PublicationSupervisor:
         self._lease_started_at = pr.now_iso()
         self._last_verbose_key: tuple[object, ...] | None = None
         self._last_verbose_emit_monotonic = 0.0
+        self._active_cycle_id: str | None = None
+        self._active_proc: subprocess.Popen[str] | None = None
+        self._active_heartbeat: dict[str, object] | None = None
 
     def verbose_print(self, message: str, *, cycle_id: str | None = None) -> None:
         if not self.verbose:
@@ -379,10 +382,107 @@ class PublicationSupervisor:
         append_cycle_log(f"publication cycle started at {now_str()}.", run_id=self.run_id, cycle_id=cycle_id)
         return proc
 
-    def _load_cycle_heartbeat(self, cycle_id: str) -> dict[str, object]:
+    def _load_cycle_heartbeat(self, cycle_id: str) -> dict[str, object] | None:
         heartbeat = pr.load_heartbeat()
         if heartbeat.get("run_id") != self.run_id or heartbeat.get("cycle_id") != cycle_id:
-            return {}
+            return None
+        return heartbeat
+
+    def _latest_event_cycle_state(self, cycle_id: str, proc: subprocess.Popen[str]) -> dict[str, object] | None:
+        state: dict[str, object] = {
+            "run_id": self.run_id,
+            "cycle_id": cycle_id,
+            "manager_pid": proc.pid,
+            "manager_pgid": pr.process_group_id(proc.pid),
+            "active_workers": [],
+        }
+        saw_event = False
+        try:
+            lines = pr.EVENTS_PATH.read_text(encoding="utf-8").splitlines()
+        except FileNotFoundError:
+            return None
+        for line in lines:
+            try:
+                event = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            if event.get("run_id") != self.run_id or event.get("cycle_id") != cycle_id:
+                continue
+            saw_event = True
+            event_name = event.get("event")
+            if event_name == "cycle_started":
+                if isinstance(event.get("pid"), int):
+                    state["manager_pid"] = event["pid"]
+                if isinstance(event.get("pgid"), int):
+                    state["manager_pgid"] = event["pgid"]
+                if isinstance(event.get("ts"), str):
+                    state["last_heartbeat_at"] = event["ts"]
+                state.setdefault("state", "cycle_launching")
+                state.setdefault("stage", "startup")
+            elif event_name == "stage_started":
+                state.update(
+                    {
+                        "state": "stage_running",
+                        "stage": event.get("stage"),
+                        "active_slug": event.get("slug"),
+                        "stage_child_pid": event.get("pid") if isinstance(event.get("pid"), int) else None,
+                        "stage_child_pgid": event.get("pgid") if isinstance(event.get("pgid"), int) else None,
+                        "stdout_log": event.get("stdout_log"),
+                        "last_heartbeat_at": event.get("ts") if isinstance(event.get("ts"), str) else state.get("last_heartbeat_at"),
+                    }
+                )
+            elif event_name in {"stage_finished", "stage_killed", "stage_timed_out"}:
+                if state.get("stage_child_pid") == event.get("pid") or state.get("stage") == event.get("stage"):
+                    state.update(
+                        {
+                            "state": "stage_finished" if event_name == "stage_finished" else "stage_failed",
+                            "stage": event.get("stage") or state.get("stage"),
+                            "active_slug": event.get("slug") or state.get("active_slug"),
+                            "stage_child_pid": None,
+                            "stage_child_pgid": None,
+                            "stdout_log": event.get("stdout_log") or state.get("stdout_log"),
+                            "last_heartbeat_at": event.get("ts") if isinstance(event.get("ts"), str) else state.get("last_heartbeat_at"),
+                        }
+                    )
+            elif event_name == "cycle_finished":
+                state.update(
+                    {
+                        "state": "cycle_finished",
+                        "stage": "complete",
+                        "active_slug": None,
+                        "stage_child_pid": None,
+                        "stage_child_pgid": None,
+                        "stdout_log": None,
+                        "last_heartbeat_at": event.get("ts") if isinstance(event.get("ts"), str) else state.get("last_heartbeat_at"),
+                    }
+                )
+        return state if saw_event else None
+
+    def _heartbeat_is_newer(self, candidate: dict[str, object], existing: dict[str, object] | None) -> bool:
+        if existing is None:
+            return True
+        candidate_ts = candidate.get("last_heartbeat_at") if isinstance(candidate.get("last_heartbeat_at"), str) else None
+        existing_ts = existing.get("last_heartbeat_at") if isinstance(existing.get("last_heartbeat_at"), str) else None
+        candidate_dt = pr.parse_iso(candidate_ts)
+        existing_dt = pr.parse_iso(existing_ts)
+        if candidate_dt is None:
+            return False
+        if existing_dt is None:
+            return True
+        return candidate_dt > existing_dt
+
+    def _fallback_heartbeat_from_events(
+        self,
+        *,
+        cycle_id: str,
+        proc: subprocess.Popen[str],
+        heartbeat: dict[str, object] | None,
+    ) -> dict[str, object]:
+        event_state = self._latest_event_cycle_state(cycle_id, proc)
+        if event_state is None:
+            return heartbeat or {}
+        if self._heartbeat_is_newer(event_state, heartbeat) or not heartbeat or not heartbeat.get("stage_child_pgid"):
+            return event_state
         return heartbeat
 
     def _write_stall_salvage(self, *, cycle_id: str, heartbeat: dict[str, object], heartbeat_age: float, proc: subprocess.Popen[str]) -> pathlib.Path:
@@ -510,51 +610,138 @@ class PublicationSupervisor:
         )
         return salvage_path
 
+    def _stop_active_cycle(self, *, reason: str) -> None:
+        proc = self._active_proc
+        cycle_id = self._active_cycle_id
+        if proc is None or cycle_id is None or proc.poll() is not None:
+            return
+
+        heartbeat = self._fallback_heartbeat_from_events(
+            cycle_id=cycle_id,
+            proc=proc,
+            heartbeat=self._load_cycle_heartbeat(cycle_id) or self._active_heartbeat,
+        )
+        manager_pgid = heartbeat.get("manager_pgid") if isinstance(heartbeat.get("manager_pgid"), int) else pr.process_group_id(proc.pid)
+        stage_child_pgid = heartbeat.get("stage_child_pgid") if isinstance(heartbeat.get("stage_child_pgid"), int) else None
+        stage = heartbeat.get("stage") if isinstance(heartbeat.get("stage"), str) else None
+        slugs = active_slugs_from_heartbeat(heartbeat)
+
+        signal_process_group(manager_pgid, signal.SIGTERM)
+        if stage_child_pgid and stage_child_pgid != manager_pgid:
+            signal_process_group(stage_child_pgid, signal.SIGTERM)
+
+        deadline = time.monotonic() + self.kill_grace_secs
+        while time.monotonic() < deadline:
+            if proc.poll() is not None and not pgid_alive(stage_child_pgid):
+                break
+            time.sleep(0.2)
+
+        if proc.poll() is None and manager_pgid is not None:
+            signal_process_group(manager_pgid, signal.SIGKILL)
+        if stage_child_pgid and stage_child_pgid != manager_pgid:
+            signal_process_group(stage_child_pgid, signal.SIGKILL)
+        try:
+            proc.wait(timeout=2)
+        except subprocess.TimeoutExpired:
+            pass
+
+        pr.emit_event(
+            "cycle_interrupted",
+            run_id=self.run_id,
+            cycle_id=cycle_id,
+            stage=stage,
+            slug=", ".join(slugs) if slugs else None,
+            pid=heartbeat.get("manager_pid") or proc.pid,
+            pgid=manager_pgid,
+            reason=reason,
+        )
+        if stage:
+            pr.emit_event(
+                "stage_killed",
+                run_id=self.run_id,
+                cycle_id=cycle_id,
+                stage=stage,
+                slug=", ".join(slugs) if slugs else None,
+                pid=heartbeat.get("stage_child_pid"),
+                pgid=stage_child_pgid,
+                reason=reason,
+                stdout_log=heartbeat.get("stdout_log"),
+            )
+        append_cycle_log(
+            f"publication cycle interrupted during stage {stage or 'unknown'}; active child process groups were stopped.",
+            run_id=self.run_id,
+            cycle_id=cycle_id,
+        )
+        if self._active_proc is proc:
+            self._active_proc = None
+            self._active_cycle_id = None
+            self._active_heartbeat = None
+
     def supervise_cycle(self, cycle_id: str) -> CycleOutcome:
         proc = self.launch_cycle(cycle_id)
+        self._active_cycle_id = cycle_id
+        self._active_proc = proc
+        self._active_heartbeat = self._load_cycle_heartbeat(cycle_id)
         launched_at = pr.now_iso()
-        while True:
-            heartbeat = self._load_cycle_heartbeat(cycle_id)
-            heartbeat_ts = heartbeat.get("last_heartbeat_at") if isinstance(heartbeat.get("last_heartbeat_at"), str) else launched_at
-            self.refresh_lease(cycle_id=cycle_id, last_heartbeat_at=heartbeat_ts)
-
-            returncode = proc.poll()
-            if returncode is not None:
-                event_name = "cycle_finished" if returncode == 0 else "cycle_errored"
-                pr.emit_event(
-                    event_name,
-                    run_id=self.run_id,
-                    cycle_id=cycle_id,
-                    returncode=returncode,
-                    stage=heartbeat.get("stage") if isinstance(heartbeat.get("stage"), str) else None,
-                    slug=", ".join(active_slugs_from_heartbeat(heartbeat)) or None,
-                    pid=proc.pid,
-                    pgid=pr.process_group_id(proc.pid),
-                )
-                if returncode == 0:
-                    append_cycle_log(f"publication cycle finished at {now_str()}.", run_id=self.run_id, cycle_id=cycle_id)
+        try:
+            while True:
+                fresh_heartbeat = self._load_cycle_heartbeat(cycle_id)
+                if fresh_heartbeat is not None:
+                    self._active_heartbeat = fresh_heartbeat
                 else:
-                    append_cycle_log(
-                        f"publication cycle ended with an error at {now_str()} (returncode {returncode}).",
+                    event_heartbeat = self._fallback_heartbeat_from_events(
+                        cycle_id=cycle_id,
+                        proc=proc,
+                        heartbeat=self._active_heartbeat,
+                    )
+                    if event_heartbeat:
+                        self._active_heartbeat = event_heartbeat
+                heartbeat = self._active_heartbeat or {}
+                heartbeat_ts = heartbeat.get("last_heartbeat_at") if isinstance(heartbeat.get("last_heartbeat_at"), str) else launched_at
+                self.refresh_lease(cycle_id=cycle_id, last_heartbeat_at=heartbeat_ts)
+
+                returncode = proc.poll()
+                if returncode is not None:
+                    event_name = "cycle_finished" if returncode == 0 else "cycle_errored"
+                    pr.emit_event(
+                        event_name,
                         run_id=self.run_id,
                         cycle_id=cycle_id,
+                        returncode=returncode,
+                        stage=heartbeat.get("stage") if isinstance(heartbeat.get("stage"), str) else None,
+                        slug=", ".join(active_slugs_from_heartbeat(heartbeat)) or None,
+                        pid=proc.pid,
+                        pgid=pr.process_group_id(proc.pid),
                     )
-                return CycleOutcome(cycle_id=cycle_id, status="finished" if returncode == 0 else "errored", returncode=returncode)
+                    if returncode == 0:
+                        append_cycle_log(f"publication cycle finished at {now_str()}.", run_id=self.run_id, cycle_id=cycle_id)
+                    else:
+                        append_cycle_log(
+                            f"publication cycle ended with an error at {now_str()} (returncode {returncode}).",
+                            run_id=self.run_id,
+                            cycle_id=cycle_id,
+                        )
+                    return CycleOutcome(cycle_id=cycle_id, status="finished" if returncode == 0 else "errored", returncode=returncode)
 
-            heartbeat_age = pr.iso_age_seconds(heartbeat_ts, default=None)
-            if heartbeat_age is None:
-                heartbeat_age = self.stall_secs + 1
-            self.maybe_emit_verbose_progress(
-                cycle_id=cycle_id,
-                proc=proc,
-                heartbeat=heartbeat,
-                heartbeat_age=heartbeat_age,
-            )
-            if heartbeat_age > self.stall_secs:
-                salvage_path = self._handle_stall(cycle_id, proc, heartbeat, heartbeat_age)
-                return CycleOutcome(cycle_id=cycle_id, status="stalled", returncode=1, salvage_path=salvage_path)
+                heartbeat_age = pr.iso_age_seconds(heartbeat_ts, default=None)
+                if heartbeat_age is None:
+                    heartbeat_age = self.stall_secs + 1
+                self.maybe_emit_verbose_progress(
+                    cycle_id=cycle_id,
+                    proc=proc,
+                    heartbeat=heartbeat,
+                    heartbeat_age=heartbeat_age,
+                )
+                if heartbeat_age > self.stall_secs:
+                    salvage_path = self._handle_stall(cycle_id, proc, heartbeat, heartbeat_age)
+                    return CycleOutcome(cycle_id=cycle_id, status="stalled", returncode=1, salvage_path=salvage_path)
 
-            time.sleep(self.heartbeat_secs)
+                time.sleep(self.heartbeat_secs)
+        finally:
+            if self._active_proc is proc and proc.poll() is not None:
+                self._active_proc = None
+                self._active_cycle_id = None
+                self._active_heartbeat = None
 
     def maybe_sleep_between_cycles(self) -> None:
         if self.mode == "once":
@@ -617,6 +804,9 @@ class PublicationSupervisor:
                     run_id=self.run_id,
                 )
             return 0
+        except KeyboardInterrupt:
+            self._stop_active_cycle(reason="keyboard_interrupt")
+            return 130
         finally:
             self.release_lease()
 
@@ -646,7 +836,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         print(str(exc), file=sys.stderr)
         return 1
     except KeyboardInterrupt:
-        print("publication supervisor interrupted; releasing lease.", file=sys.stderr)
+        print("publication supervisor interrupted; active cycle was stopped and lease released.", file=sys.stderr)
         return 130
 
 

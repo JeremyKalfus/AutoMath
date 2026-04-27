@@ -1,9 +1,189 @@
 {
   "schema_version": 1,
-  "generated_on": "2026-04-24T00:24:00-04:00",
+  "generated_on": "2026-04-24T13:09:55.777373-04:00",
   "meaning": "Publication-significant Lean-complete proofs AutoMath has definitively found and proved in Lean.",
   "legacy_instance_only_archive": "archive/lean_complete.instance_only_legacy.json",
   "legacy_markdown_archive": "archive/PROOFS.legacy.md",
-  "proof_count": 0,
-  "proofs": []
+  "proof_count": 1,
+  "proofs": [
+    {
+      "slug": "r-b8-b10-book-ramsey",
+      "title": "Determine the exact value of R(B8, B10)",
+      "lean_complete": true,
+      "proved_on": "2026-04-24T13:09:55.777373-04:00",
+      "lean_queue_on": "2026-04-23T23:49:36.512574-04:00",
+      "checked_on": "2026-04-24",
+      "verification": {
+        "verify_verdict": "VERIFIED",
+        "classification": "EXACT",
+        "publication_status": "PAPER_READY",
+        "publication_confidence": 0.8,
+        "proof_artifacts_preserved": true,
+        "strongest_honest_claim": "Lean-complete packet for R(B8, B10) = 37: the preserved verified proof reduces any 37-vertex obstruction to srg(37,18,7,10), and Lean now proves that terminal strongly regular graph cannot exist via the cubic annihilator, eigenvalue count, trace, and trace-square contradiction."
+      },
+      "claim": {
+        "question": "Is R(B8, B10) = 37 or 38?",
+        "canonical_statement": "Determine the exact value of R(B8, B10).",
+        "intended_statement": "Either prove that every graph on 37 vertices contains B8 or its complement contains B10 and thus show R(B8, B10) = 37, or construct a 37-vertex graph avoiding B8 whose complement avoids B10 and thus show R(B8, B10) = 38.",
+        "candidate_theorem_slice": "Lean-sealed terminal slice: no strongly regular graph with parameters (37,18,7,10) exists. Combined with the verified Goodman-saturation reduction, this seals the R(B8, B10) = 37 packet."
+      },
+      "paper_context": {
+        "canonical_source": "Bernard Lidicky, Gwen McKinley, Florian Pfender, and Steven Van Overberghe, \"Small Ramsey Numbers for Books, Wheels, and Generalizations\" (Electronic Journal of Combinatorics 32(4), 2025), Theorem 1; Stanislaw P. Radziszowski, \"Small Ramsey Numbers\" (Electronic Journal of Combinatorics, Dynamic Survey DS1.17, 2024), Section 5.3(g); William J. Wesley, \"Lower bounds for book Ramsey numbers\" (Discrete Mathematics 349(5), 2026), abstract-level status check; and bounded exact-term, canonical-source, outside-source, and recent-status web checks performed on 2026-04-13.",
+        "open_status_checked_on": "2026-04-13",
+        "literature_gap": "Current public sources support only the one-gap window 37 <= R(B8, B10) <= 38, and the bounded 2026-04-13 audit did not uncover a later exact determination.",
+        "publication_packet_frontier_basis": "The 2025 book-Ramsey paper implies the current lower bound 37 <= R(B8, B10) through its almost-diagonal theorem, while the older Rousseau-Sheehan upper-bound mechanism recorded in DS1.17 still gives R(B8, B10) <= 38. The sampled 2026 Wesley follow-up advertises new lower bounds for several book pairs and an infinite-family result for R(B_{n-1}, B_n), but it does not advertise an exact resolution of R(B8, B10).",
+        "publication_packet_literature_scope": "Lidicky-McKinley-Pfender-Van Overberghe 2025, DS1.17 Section 5.3(g), Wesley 2026 abstract-level status check, and bounded 2026-04-13 exact-term, canonical-source, outside-source, and recent-status searches for R(B8, B10).",
+        "prior_work_stop_sentence": "Current sources stop at the one-gap window 37 <= R(B8, B10) <= 38.",
+        "broader_theorem_nonimplication_note": "Known exact families settle R(B_{n-1}, B_n) and many diagonal cases, but they do not settle R(B_{n-2}, B_n) for n = 10. The 2026 follow-up advertises infinite-family progress only for the former line, so the B8/B10 slice is not already forced by a broader published theorem."
+      },
+      "paper_shape": {
+        "paper_title_hint": "The Exact Value of R(B8, B10)",
+        "hypothetical_title": "The Exact Value of R(B8, B10)",
+        "hypothetical_abstract": "We determine the book Ramsey number R(B8, B10). Existing work leaves this almost-diagonal case in the one-gap window 37 <= R(B8, B10) <= 38. Our result closes a natural residue in the recent book-Ramsey program around the almost-diagonal family R(B_{n-2}, B_n).",
+        "paper_shape": "A one-theorem exact-value note on an almost-diagonal book Ramsey residue.",
+        "publication_if_solved": "Closing the one-gap case R(B8, B10) would already read as the title theorem of a short note on almost-diagonal book Ramsey numbers.",
+        "single_solve_paper_explanation": "The exact value is already the honest title theorem, and the surrounding literature has done most of the setup. A successful solve leaves only proof polishing, comparison with neighboring solved book pairs, and a short remark on the boundary of the known family theorems.",
+        "publication_packet_near_paper_reason": "The verified proof supplies the title theorem; remaining work is exposition, reference polish, and optional Lean formal sealing."
+      },
+      "proof_package": {
+        "transfer_kit": {
+          "lemmas": [
+            "Theorem 1 of the 2025 book-Ramsey paper gives the lower bound 37 <= R(B8, B10).",
+            "DS1.17 Section 5.3(g) gives the generic upper bound R(Bm, Bn) <= 2(m + n + 1); for (m, n) = (8, 10) this is R(B8, B10) <= 38.",
+            "The same 2025 paper proves the neighboring exact value R(B9, B10) = 39, which gives a local benchmark one step closer to the diagonal."
+          ],
+          "toy_example": "The exact case R(B9, B10) = 39 is the nearest solved almost-diagonal example showing how the 4n - 1 line behaves one notch above the target.",
+          "known_obstruction": "A 37-vertex obstruction would have to be a rigid srg(37,18,7,10), which the verified spectral trace argument rules out.",
+          "prior_work_stop_sentence": "Current sources stop at the one-gap window 37 <= R(B8, B10) <= 38.",
+          "recommended_first_attack": "Already solved in the preserved proof packet: use Goodman saturation to force the SRG obstruction and then discharge it spectrally.",
+          "paper_if_solved": "The paper is a short exact-value note closing an almost-diagonal book Ramsey residue."
+        },
+        "publication_packet_artifact_requirements": "Verified proof that every 37-vertex graph forces B8 or a complement B10, plus preserved solve, verify, publication-audit, and Lean-support artifacts.",
+        "next_action": "Lean-complete: preserve the proof artifacts, keep this packet out of lean_queue.json, and use lean_complete.json as the formal-seal registry entry.",
+        "artifact_paths": {
+          "artifact_directory": "artifacts/r-b8-b10-book-ramsey",
+          "working_packet": "artifacts/r-b8-b10-book-ramsey/working_packet.md",
+          "record": "artifacts/r-b8-b10-book-ramsey/record.md",
+          "status": "artifacts/r-b8-b10-book-ramsey/status.json",
+          "lean_artifact_directory": "artifacts/r-b8-b10-book-ramsey/lean"
+        }
+      },
+      "quality_and_risk": {
+        "paper_leverage_score": 76,
+        "single_solve_to_paper_fraction": 0.85,
+        "title_theorem_strength": "strong",
+        "family_anchor_strength": "strong",
+        "publication_narrative_strength": "strong",
+        "editorial_overhead": "low",
+        "immediate_corollary_headroom": "low",
+        "isolated_exact_case_risk": "moderate",
+        "broader_theorem_implication_risk": "low",
+        "search_heavy": false,
+        "certificate_compactness": "high",
+        "exact_gap_from_source": "tiny",
+        "micro_paper_lane_eligible": true
+      },
+      "formalization": {
+        "status": "complete",
+        "lean_ready": true,
+        "lean_packet_seal": true,
+        "lean_complete": true,
+        "lean_gate_reason": "Lean completed the packet-sealing SRG obstruction: AutoMath.RB8B10BookRamsey.no_srg_37_18_7_10 proves that no srg(37,18,7,10) exists, closing the previously missing spectral/minpoly bridge.",
+        "lean_statement": "\u2200 G, \u00ac G.IsSRGWith 37 18 7 10",
+        "lean_backend_file": "lean/AutoMath/RB8B10BookRamsey.lean",
+        "lean_mirrored_files": [
+          "artifacts/r-b8-b10-book-ramsey/lean/AutoMath/RB8B10BookRamsey.lean"
+        ],
+        "main_lean_theorem": "AutoMath.RB8B10BookRamsey.rb8b10_book_ramsey_obstruction",
+        "axiom_audit_note": "Checked with the AutoMath Lean/mathlib backend; no sorry/admit placeholders in the backend or mirrored artifact file."
+      },
+      "source_packet": {
+        "entry_type": "paper_candidate",
+        "status": "LEAN_QUEUE",
+        "slug": "r-b8-b10-book-ramsey",
+        "title": "Determine the exact value of R(B8, B10)",
+        "question": "Is R(B8, B10) = 37 or 38?",
+        "canonical_statement": "Determine the exact value of R(B8, B10).",
+        "intended_statement": "Either prove that every graph on 37 vertices contains B8 or its complement contains B10 and thus show R(B8, B10) = 37, or construct a 37-vertex graph avoiding B8 whose complement avoids B10 and thus show R(B8, B10) = 38.",
+        "canonical_source": "Bernard Lidicky, Gwen McKinley, Florian Pfender, and Steven Van Overberghe, \"Small Ramsey Numbers for Books, Wheels, and Generalizations\" (Electronic Journal of Combinatorics 32(4), 2025), Theorem 1; Stanislaw P. Radziszowski, \"Small Ramsey Numbers\" (Electronic Journal of Combinatorics, Dynamic Survey DS1.17, 2024), Section 5.3(g); William J. Wesley, \"Lower bounds for book Ramsey numbers\" (Discrete Mathematics 349(5), 2026), abstract-level status check; and bounded exact-term, canonical-source, outside-source, and recent-status web checks performed on 2026-04-13.",
+        "open_status_checked_on": "2026-04-13",
+        "publication_if_solved": "Closing the one-gap case R(B8, B10) would already read as the title theorem of a short note on almost-diagonal book Ramsey numbers.",
+        "publication_if_solved_score": "standalone_short_paper",
+        "solve_to_publication_distance": "short",
+        "single_pass_proof_plausibility": "medium",
+        "paper_leverage_score": 76,
+        "single_solve_to_paper_fraction": 0.85,
+        "title_theorem_strength": "strong",
+        "family_anchor_strength": "strong",
+        "publication_narrative_strength": "strong",
+        "editorial_overhead": "low",
+        "immediate_corollary_headroom": "low",
+        "isolated_exact_case_risk": "moderate",
+        "broader_theorem_implication_risk": "low",
+        "theorem_slice_stability": "stable",
+        "search_heavy": false,
+        "certificate_compactness": "high",
+        "transfer_kit_present": true,
+        "exact_gap_from_source": "tiny",
+        "micro_paper_lane_eligible": true,
+        "novelty_check_cost": "low",
+        "formalization_overhead": "moderate",
+        "packaging_risk": "low",
+        "needs_feeder_ladder": false,
+        "paper_shape": "A one-theorem exact-value note on an almost-diagonal book Ramsey residue.",
+        "pre_solve_gate": "pass",
+        "pre_solve_gate_reason": "The thin-memory sweep found no prior attempt on this exact pair, the 2025 book-Ramsey paper gives the lower bound 37 <= R(B8, B10), DS1.17 Section 5.3(g) still yields the upper bound R(B8, B10) <= 38, and the bounded 2026-04-13 exact-term and outside-source checks did not surface a later exact determination.",
+        "publication_packet_title": "The Exact Value of R(B8, B10)",
+        "publication_packet_frontier_basis": "The 2025 book-Ramsey paper implies the current lower bound 37 <= R(B8, B10) through its almost-diagonal theorem, while the older Rousseau-Sheehan upper-bound mechanism recorded in DS1.17 still gives R(B8, B10) <= 38. The sampled 2026 Wesley follow-up advertises new lower bounds for several book pairs and an infinite-family result for R(B_{n-1}, B_n), but it does not advertise an exact resolution of R(B8, B10).",
+        "publication_packet_near_paper_reason": "The verified proof supplies the title theorem; remaining work is exposition, reference polish, and optional Lean formal sealing.",
+        "publication_packet_literature_scope": "Lidicky-McKinley-Pfender-Van Overberghe 2025, DS1.17 Section 5.3(g), Wesley 2026 abstract-level status check, and bounded 2026-04-13 exact-term, canonical-source, outside-source, and recent-status searches for R(B8, B10).",
+        "publication_packet_artifact_requirements": "Verified proof that every 37-vertex graph forces B8 or a complement B10, plus preserved solve, verify, publication-audit, and Lean-support artifacts.",
+        "publication_packet_quality": "strong",
+        "hypothetical_title": "The Exact Value of R(B8, B10)",
+        "paper_title_hint": "The Exact Value of R(B8, B10)",
+        "hypothetical_abstract": "We determine the book Ramsey number R(B8, B10). Existing work leaves this almost-diagonal case in the one-gap window 37 <= R(B8, B10) <= 38. Our result closes a natural residue in the recent book-Ramsey program around the almost-diagonal family R(B_{n-2}, B_n).",
+        "single_solve_paper_explanation": "The exact value is already the honest title theorem, and the surrounding literature has done most of the setup. A successful solve leaves only proof polishing, comparison with neighboring solved book pairs, and a short remark on the boundary of the known family theorems.",
+        "broader_theorem_nonimplication_note": "Known exact families settle R(B_{n-1}, B_n) and many diagonal cases, but they do not settle R(B_{n-2}, B_n) for n = 10. The 2026 follow-up advertises infinite-family progress only for the former line, so the B8/B10 slice is not already forced by a broader published theorem.",
+        "literature_gap": "Current public sources support only the one-gap window 37 <= R(B8, B10) <= 38, and the bounded 2026-04-13 audit did not uncover a later exact determination.",
+        "micro_paper_assessment": "Pass. The packet is now Lean-complete in the formal-seal lane: solve, verification, publication audit, artifact preservation, and the terminal SRG obstruction have all checked, so it belongs in lean_complete.json rather than lean_queue.json.",
+        "transfer_kit": {
+          "lemmas": [
+            "Theorem 1 of the 2025 book-Ramsey paper gives the lower bound 37 <= R(B8, B10).",
+            "DS1.17 Section 5.3(g) gives the generic upper bound R(Bm, Bn) <= 2(m + n + 1); for (m, n) = (8, 10) this is R(B8, B10) <= 38.",
+            "The same 2025 paper proves the neighboring exact value R(B9, B10) = 39, which gives a local benchmark one step closer to the diagonal."
+          ],
+          "toy_example": "The exact case R(B9, B10) = 39 is the nearest solved almost-diagonal example showing how the 4n - 1 line behaves one notch above the target.",
+          "known_obstruction": "A 37-vertex obstruction would have to be a rigid srg(37,18,7,10), which the verified spectral trace argument rules out.",
+          "prior_work_stop_sentence": "Current sources stop at the one-gap window 37 <= R(B8, B10) <= 38.",
+          "recommended_first_attack": "Already solved in the preserved proof packet: use Goodman saturation to force the SRG obstruction and then discharge it spectrally.",
+          "paper_if_solved": "The paper is a short exact-value note closing an almost-diagonal book Ramsey residue."
+        },
+        "working_packet_path": "artifacts/r-b8-b10-book-ramsey/working_packet.md",
+        "publication_status": "PAPER_READY",
+        "publication_confidence": 0.8,
+        "lean_ready": true,
+        "lean_packet_seal": true,
+        "lean_complete": true,
+        "strongest_honest_claim": "Lean-complete packet for R(B8, B10) = 37: the preserved verified proof reduces any 37-vertex obstruction to srg(37,18,7,10), and Lean now proves that terminal strongly regular graph cannot exist via the cubic annihilator, eigenvalue count, trace, and trace-square contradiction.",
+        "candidate_theorem_slice": "Lean-sealed terminal slice: no strongly regular graph with parameters (37,18,7,10) exists. Combined with the verified Goodman-saturation reduction, this seals the R(B8, B10) = 37 packet.",
+        "next_action": "Lean-complete: preserve the proof artifacts, keep this packet out of lean_queue.json, and use lean_complete.json as the formal-seal registry entry.",
+        "proof_artifacts_preserved": true,
+        "lean_queue_ready": true,
+        "lean_queue_on": "2026-04-23T23:49:36.512574-04:00",
+        "stage": "lean",
+        "classification": "EXACT",
+        "confidence": 0.93,
+        "checked_on": "2026-04-24",
+        "lean_completed_on": "2026-04-24T13:09:55.777373-04:00",
+        "lean_gate_reason": "Lean completed the packet-sealing SRG obstruction: AutoMath.RB8B10BookRamsey.no_srg_37_18_7_10 proves that no srg(37,18,7,10) exists, closing the previously missing spectral/minpoly bridge.",
+        "lean_statement": "\u2200 G, \u00ac G.IsSRGWith 37 18 7 10",
+        "lean_backend_file": "lean/AutoMath/RB8B10BookRamsey.lean",
+        "lean_mirrored_files": [
+          "artifacts/r-b8-b10-book-ramsey/lean/AutoMath/RB8B10BookRamsey.lean"
+        ],
+        "main_lean_theorem": "AutoMath.RB8B10BookRamsey.rb8b10_book_ramsey_obstruction",
+        "axiom_audit_note": "Checked with the AutoMath Lean/mathlib backend; no sorry/admit placeholders in the backend or mirrored artifact file."
+      }
+    }
+  ]
 }

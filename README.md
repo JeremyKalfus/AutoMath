@@ -218,7 +218,7 @@ The main publication loop does not stop to formalize every good result. Instead:
 - `run_lean_queue_once.sh` and `run_lean_queue_continuous.sh` process that queue independently
 - `lean_complete.json` stores publication-significant proofs AutoMath has definitively found and proved in Lean
 
-This means a result can already count as a success in human publication terms before Lean is complete.
+This means a result can already count as a success in paper-ready publication terms before Lean is complete.
 
 ## Scheduling And Selection
 
@@ -278,12 +278,16 @@ Advanced direct entrypoints:
 ```bash
 python3 scripts/automath_cycle.py --slug <queued-slug>
 python3 scripts/automath_cycle.py --slug <queued-slug> --stop-after solve
+python3 scripts/automath_cycle.py --rerun-attempted
+python3 scripts/automath_cycle.py --rerun-attempted --slug <old-slug>
 python3 scripts/automath_cycle.py --lean-queue
 ```
 
 `--verbose` is handled by the publication supervisor and prints heartbeat-based progress to the terminal.
 
 `run_publication_cycle.sh` is currently the same single-cycle entrypoint shape as `run_once.sh`.
+
+`--rerun-attempted` is an explicit second-pass lane over preserved local attempts. It bypasses the normal attempted-problem skip gate only for the selected rerun, keeps the default publication lane unchanged, and still blocks rediscoveries, Lean-complete exacts, and packets already in `lean_queue.json`. The wrapper scripts pass child arguments through, so `./run_once.sh --rerun-attempted --slug <old-slug>` is equivalent to running the direct cycle-manager command under the supervisor.
 
 ## Stop Markers
 
@@ -308,7 +312,7 @@ If the repo "looks idle" but something feels stuck, the supervisor heartbeat and
 
 ## Runtime Model Invocation
 
-Each stage is executed by calling the Codex CLI from `scripts/automath_cycle.py`. The stage runner uses `codex exec --ephemeral` with `gpt-5.4`, writes stdout logs under `artifacts/_logs/`, and stores the last stage message separately.
+Each stage is executed by calling the Codex CLI from `scripts/automath_cycle.py`. The stage runner uses `codex exec --ephemeral` with `gpt-5.5` and `model_reasoning_effort="xhigh"`, writes stdout logs under `artifacts/_logs/`, and stores the last stage message separately.
 
 Search is enabled only where the workflow allows it:
 

@@ -17,7 +17,7 @@ Observer: Codex
 - `run_n_cycles.sh` wraps `run_once.sh` for a fixed cycle count and deliberately defers `.stop_harness` markers until the requested count completes.
 - `run_once.sh` curates when the queue is unusable, renders the next problem into `selected_problem.md`, runs solve, then verify, and only runs Lean when verification marks the result `lean_ready = true`.
 - Solve and Lean run with web disabled; verify starts with a bounded rediscovery pass.
-- Exact successes are archived into `PROOFS.md` and also raise `.stop_harness`, which bounded runs temporarily defer.
+- In the current naming scheme, publication-significant Lean-complete successes go to `lean_complete.json`; this historical run predated the `PROOFS.md` archival split. Bounded runs temporarily defer stop markers such as `.stop_harness`.
 
 ## Confirmed Issues / Smells
 
