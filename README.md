@@ -1,6 +1,7 @@
 # AutoMath
+<div align="center">
 [![DOI](https://zenodo.org/badge/1204505297.svg)](https://doi.org/10.5281/zenodo.19712304)
-
+</div>
 
 AutoMath is a fully autonomous end-to-end math research harness. AutoMath's discoveries are available/submittable here: https://automath-solutions.vercel.app/
 
