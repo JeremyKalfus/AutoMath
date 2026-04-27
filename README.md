@@ -2,7 +2,7 @@
 [![DOI](https://zenodo.org/badge/1204505297.svg)](https://doi.org/10.5281/zenodo.19712304)
 
 
-AutoMath is a fully autonomous end-to-end math research harness.
+AutoMath is a fully autonomous end-to-end math research harness. AutoMath's discoveries are available/submittable here: https://automath-solutions.vercel.app/
 
 The repo is currently configured for a strict one-shot publication lane under the `MICRO-PAPER` objective. In plain English, it does not try to win by building a giant campaign. It tries to find the smallest honest open claim where one strong solve is already most of a paper.
 
